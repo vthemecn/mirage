@@ -64,93 +64,6 @@ window.addEventListener('load', function(){
 });
 
 
-
-
-/**
- * 首页模块排序
- */
-window.addEventListener('load', function(){
-  var items = document.querySelectorAll('.widget-item-list .widget-item');
-
-  items.forEach(function (item){
-      item.querySelector('a[up]').addEventListener('click', upAction);
-      item.querySelector('a[down]').addEventListener('click', downAction);
-      item.querySelector('a[remove]').addEventListener('click', removeAction);
-      item.querySelector('a[add]').addEventListener('click', addAction);
-  });
-
-  function upAction(button){
-      console.log('a[up]');
-      var item = this.parentNode.parentNode;
-      console.log('item ', item.querySelector('label').innerText );
-
-      var prevItem = item.previousElementSibling;
-      console.log(prevItem);
-      if(!prevItem) return;
-
-      document.querySelector('.widget-wrapper.enabled .widget-item-list').insertBefore(item, prevItem);
-  }
-
-  function downAction(){
-      console.log('a[down]');
-      var item = this.parentNode.parentNode;
-      console.log('item ', item.querySelector('label').innerText );
-
-      var nextItem = item.nextElementSibling;
-      if(!nextItem) return;
-
-      if(item.parentNode.lastChild == nextItem){
-          item.parentNode.appendChild(item);
-          return;
-      } else {
-         document.querySelector('.widget-wrapper.enabled .widget-item-list').insertBefore(item, nextItem.nextSibling); 
-      }
-  }
-
-  function removeAction(button){
-      var item = this.parentNode.parentNode;
-      var nameText = item.querySelector('input[type="hidden"]').getAttribute('name');
-      nameText = nameText.replace('enabled', 'disabled');
-      item.querySelector('input[type="hidden"]').setAttribute('name', nameText);
-      document.querySelector('.widget-wrapper.disabled .widget-item-list').insertBefore(item, null);
-  }
-
-  function addAction(button){
-      var item = this.parentNode.parentNode;
-      var nameText = item.querySelector('input[type="hidden"]').getAttribute('name');
-      nameText = nameText.replace('disabled', 'enabled');
-      item.querySelector('input[type="hidden"]').setAttribute('name', nameText);
-      document.querySelector('.widget-wrapper.enabled .widget-item-list').insertBefore(item, null);
-  }
-
-  /**
-   * 设置选项卡
-   */
-  document.querySelectorAll('.widget-options-container .nav a').forEach(function(item){
-      item.addEventListener('click', function(e){
-          document.querySelectorAll('.widget-options-container .nav a').forEach(function(item){
-              item.classList.remove('active');
-          });
-          this.classList.add('active');
-
-          document.querySelectorAll('.widget-options-container .options-content').forEach(function(d){
-              d.classList.remove('active');
-              console.log('e ', e.target.dataset)
-              if(d.classList.contains(e.target.dataset.id)){
-                  d.classList.add('active');
-              }
-          });
-
-          // 修改地址
-          let url ="?page=vtheme-options&action=home&tab=" + this.dataset.id;
-          let title = '标题';
-          history.pushState({id:0},title,url);
-      });
-  });
-
-});
-
-
 /**
  * 数字模块设置
  */
@@ -224,13 +137,15 @@ window.addEventListener('load', function(){
   /**
    * 增加幻灯片设置模块
    */
-  var addSliderButton = document.querySelector('.add-slider-button');
-  if(addSliderButton){
-    addSliderButton.addEventListener('click', function(e){
-      var str = document.querySelector('#slider-item-template').innerHTML;
-      document.querySelector('.slider-list').insertAdjacentHTML('beforeEnd', str);
+  var addSliderButton = document.querySelectorAll('.add-slider-button');
+  addSliderButton && addSliderButton.forEach( btn =>{
+    btn.addEventListener('click', function(e){
+      var id = e.target.dataset.id;
+      var str = document.querySelector("#" + id).innerHTML;
+      e.target.parentNode.querySelector('.slider-list').insertAdjacentHTML('beforeEnd', str);
+
       // 重构表单name
-      fixInputName();
+      fixInputName(e.target.parentNode);
     
       // 图片上传按钮
       document.querySelectorAll(".slider-list .upload-slider-button").forEach(function (btn) {
@@ -245,8 +160,7 @@ window.addEventListener('load', function(){
         btn.addEventListener("click", deleteHandler);
       });
     });
-  }
-  
+  });
   
   /**
    * 图片上传按钮事件
@@ -267,16 +181,17 @@ window.addEventListener('load', function(){
    * 删除按钮事件
    */
   function deleteHandler(){
+    let parent = this.parentNode.parentNode.parentNode;
     this.parentNode.parentNode.remove();
-    fixInputName();
+    fixInputName(parent);
     return false;
   }
   
   /**
    * 重构表单name
    */
-  function fixInputName(){
-    document.querySelectorAll('.slider-list .number-item').forEach(function(item, index){
+  function fixInputName(selector){
+    selector.querySelectorAll('.slider-list .number-item').forEach(function(item, index){
         console.log('item, index: ', item, index);
         item.querySelectorAll('input').forEach(function(input, i){
             var text = input.getAttribute('name').replace(/[{0-9}]/, index);

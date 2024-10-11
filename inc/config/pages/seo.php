@@ -13,11 +13,11 @@ defined('ABSPATH') || exit;
     <table class="form-table" role="presentation">
         <tbody>
             <tr>
-                <th scope="row"><label for="meta_keywords">主题关键词</label></th>
-                <td><input type="text" name="meta_keywords" id="meta_keywords" value="<?php echo ($vt_config['meta_keywords']); ?>" class="regular-text" placeholder="请输入主题关键词"></td>
+                <th scope="row"><label for="meta_keywords">网站关键词</label></th>
+                <td><input type="text" name="meta_keywords" id="meta_keywords" value="<?php echo ($vt_config['meta_keywords']); ?>" class="regular-text" placeholder="请输入网站关键词"></td>
             </tr>
             <tr>
-                <th scope="row"><label for="meta_description">主题描述</label></th>
+                <th scope="row"><label for="meta_description">网站描述</label></th>
                 <td>
                     <textarea name="meta_description" id="meta_description" class="regular-text" rows="5" placeholder="请输入主题描述"><?php echo ($vt_config['meta_description']); ?></textarea>
                     <p class="description" id="tagline-description">用简洁的文字描述本站点。</p>

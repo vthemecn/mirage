@@ -6,13 +6,12 @@ $action = isset($_GET['action']) ? $_GET['action'] : "basic";
 
 $option_pages = array(
     'basic'         => '常规设置',
-    'seo'           => 'SEO设置',
     'home'          => '首页调用',
     'header'        => '顶部设置',
     'footer'        => '底部设置',
+    'seo'           => 'SEO设置',
     'email'         => '邮箱设置',
     'api'           => 'API设置',
-    'third'         => '第三方登录',
     'backup'        => '备份'
 );
 

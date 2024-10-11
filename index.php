@@ -15,15 +15,9 @@ $vt_config = vt_get_config();
 
 <div class="main-container">
     <div class="widget-one">
-        <?php
-        if ($vt_config['_home_options']['enabled']) {
-            foreach ($vt_config['_home_options']['enabled'] as $k => $v) {
-                $k = str_replace('\\', '', $k);
-                $k = str_replace('/', '', $k);
-                require get_template_directory() . '/templates/home/' . $k . '.php';
-            }
-        }
-        ?>
+        <?php require get_template_directory() . '/templates/home/sliders.php'; ?>
+        <?php require get_template_directory() . '/templates/home/articles.php'; ?>
+        <?php require get_template_directory() . '/templates/home/links.php'; ?>
     </div>
     
     <div class="sider little-widget">

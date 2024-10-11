@@ -33,9 +33,34 @@
   background-color: var(--vt-color-primary);
   color:var(--vt-text-color-inverse);
 }
+.btn.btn-success {
+  background-color: var(--vt-color-success);
+  color:var(--vt-text-color-inverse);
+}
 .btn.btn-danger {
+  background-color: var(--vt-color-danger);
+  color:var(--vt-text-color-inverse);
+}
+.btn.btn-error {
   background-color: var(--vt-color-error);
   color:var(--vt-text-color-inverse);
+}
+
+.btn.btn-primary-sec {
+  border: 1px solid var(--vt-color-primary);
+  color: var(--vt-color-primary);
+}
+.btn.btn-success-sec {
+  border: 1px solid var(--vt-color-success);
+  color: var(--vt-color-success);
+}
+.btn.btn-danger-sec {
+  border: 1px solid var(--vt-color-danger);
+  color: var(--vt-color-danger);
+}
+.btn.btn-error-sec {
+  border: 1px solid var(--vt-color-error);
+  color: var(--vt-color-error);
 }
 
 

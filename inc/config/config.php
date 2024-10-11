@@ -94,27 +94,28 @@ function vt_get_default_config()
 	 * 首页设置
 	 */
 	$config['section_header_type'] = 1;
-	$config['_home_options']['enabled'] = array(
-	    'sliders' 	=> '幻灯片模块',
-		'articles' 	=> '最新文章模块'
-	);
-	$config['_home_options']['disabled'] = array(
-	    'links' 	=> '友情链接模块'
-	);
-	
-  
-	/* 幻灯片 */
+
+	// 幻灯片
+	$config['_home_options']['sliders_is_show'] = 1;
 	$config['_home_options']['sliders_height'] = '350px';
 	$config['_home_options']['sliders'] = array(
 	  array('pic-url' => get_bloginfo('template_url') . '/assets/images/banner1.jpg'),
 	  array('pic-url' => get_bloginfo('template_url') . '/assets/images/banner2.jpg'),
 	);
 
-	/* 最新文章 */
+	// 推荐
+	$config['_home_options']['recommend_is_show'] = 1;
+	$config['_home_options']['recommend'] = array();
+
+	// 最新文章
+	$config['_home_options']['articles_is_show'] = 1;
 	$config['_home_options']['articles_title'] = '最新文章';
 	$config['_home_options']['articles_not_in_ids'] = '';
 	$config['_home_options']['articles_auto_load'] = 0;
 	$config['_home_options']['articles_auto_limit'] = 0;
+
+	// 友情链接
+	$config['_home_options']['links_is_show'] = 1;
 
 	/**
 	 * 邮箱设置

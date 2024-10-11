@@ -16,13 +16,13 @@
 }
 
 
-th>.title-light{
+.title-light{
   position: relative;
   font-size: 15px;
   font-weight: 500;
   width: fit-content;
 }
-th>.title-light::after{
+.title-light::after{
   content: "";
   position: absolute; 
   left: 0;
@@ -35,12 +35,12 @@ th>.title-light::after{
 }
 
 
-.form-table td p{
-  margin-bottom: 10px;
-}
+.form-table td p{ margin-bottom: 10px; }
 td label{ margin-right:20px; }
 
+.hide{ display: none; }
 
+/*.home-header{ font-size: 20px; border-bottom: 1px solid #c3c4c7; padding:0 0 8px 0;}*/
 
 /**
  * basic.php
