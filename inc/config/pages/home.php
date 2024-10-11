@@ -89,18 +89,26 @@ $categories = get_categories($args);
         <table class="form-table" role="presentation">
             <tbody>
                 <tr>
-                    <th scope="row"><label for="_home_options[recommend_is_show]">显示推荐模块</label></th>
+                    <th scope="row"><label for="_home_options[hot_is_show]">显示推荐模块</label></th>
                     <td>
                         <label>
-                            <input name="_home_options[recommend_is_show]" type="radio" 
-                                value="1" <?php if ($config['_home_options']['recommend_is_show'] == 1) { ?>checked="checked" <?php } ?>>
+                            <input name="_home_options[hot_is_show]" type="radio" 
+                                value="1" <?php if ($config['_home_options']['hot_is_show'] == 1) { ?>checked="checked" <?php } ?>>
                             显示
                         </label>
                         <label>
-                            <input name="_home_options[recommend_is_show]" type="radio" 
-                                value="0" <?php if ($config['_home_options']['recommend_is_show'] == 0) { ?>checked="checked" <?php } ?>>
+                            <input name="_home_options[hot_is_show]" type="radio" 
+                                value="0" <?php if ($config['_home_options']['hot_is_show'] == 0) { ?>checked="checked" <?php } ?>>
                             隐藏
                         </label>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="_home_options[hot_title]">推荐模块标题</label></th>
+                    <td>
+                        <input type="text" name="_home_options[hot_title]" 
+                        value="<?= $config['_home_options']['hot_title']; ?>" 
+                        class="regular-text" placeholder="">
                     </td>
                 </tr>
                 <tr>
@@ -108,14 +116,14 @@ $categories = get_categories($args);
                     <td>
                         <div class="slider-list">
                           <?php
-                          if($config['_home_options']['recommend']):
-                              foreach($config['_home_options']['recommend'] as $k=>$v):
+                          if($config['_home_options']['hot']):
+                              foreach($config['_home_options']['hot'] as $k=>$v):
                           ?>
                               <div class="number-item">
                                   <img class="my-img-preview" src="<?php echo $v['pic-url'] ?>" style="display:block;">
-                                  <input type="text" name="_home_options[recommend][<?php echo $k ?>][pic-url]" value="<?php echo $v['pic-url'] ?>" class="pic-input" placeholder="图片地址">
-                                  <input type="text" name="_home_options[recommend][<?php echo $k ?>][title]" value="<?php echo $v['title'] ?>" class="" placeholder="标题">
-                                  <input type="text" name="_home_options[recommend][<?php echo $k ?>][url]" value="<?php echo $v['url'] ?>" class="" placeholder="链接地址">
+                                  <input type="text" name="_home_options[hot][<?php echo $k ?>][pic-url]" value="<?php echo $v['pic-url'] ?>" class="pic-input" placeholder="图片地址">
+                                  <input type="text" name="_home_options[hot][<?php echo $k ?>][title]" value="<?php echo $v['title'] ?>" class="" placeholder="标题">
+                                  <input type="text" name="_home_options[hot][<?php echo $k ?>][url]" value="<?php echo $v['url'] ?>" class="" placeholder="链接地址">
                                   <div class="action">
                                       <a href="javascript:;" class="upload-slider-button">上传</a>
                                       <a href="javascript:;" class="delete-slider-button">删除</a>
@@ -126,7 +134,7 @@ $categories = get_categories($args);
                           endif;
                           ?>
                         </div>
-                        <button type="button" class="add-slider-button" data-id="recommend-item-template">增加幻灯片</button>
+                        <button type="button" class="add-slider-button" data-id="hot-item-template">增加幻灯片</button>
                     </td>
                 </tr>
             </tbody>
@@ -274,12 +282,12 @@ $categories = get_categories($args);
     </div>
 </div>
 
-<div style="display: none;" id="recommend-item-template">
+<div style="display: none;" id="hot-item-template">
     <div class="number-item">
         <img class="my-img-preview" src="" style="display:none;">
-        <input type="text" name="_home_options[recommend][0][pic-url]" value="" class="pic-input" placeholder="图片地址">
-        <input type="text" name="_home_options[recommend][0][title]" value="" class="" placeholder="标题">
-        <input type="text" name="_home_options[recommend][0][url]" value="" class="" placeholder="链接地址">
+        <input type="text" name="_home_options[hot][0][pic-url]" value="" class="pic-input" placeholder="图片地址">
+        <input type="text" name="_home_options[hot][0][title]" value="" class="" placeholder="标题">
+        <input type="text" name="_home_options[hot][0][url]" value="" class="" placeholder="链接地址">
         <div class="action">
             <a href="javascript:;" class="upload-slider-button">上传</a>
             <a href="javascript:;" class="delete-slider-button">删除</a>

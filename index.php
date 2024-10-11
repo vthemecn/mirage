@@ -8,16 +8,36 @@
  */
 
 get_header();
-$vt_config = vt_get_config();
+$config = vt_get_config();
 
 ?>
 
 
 <div class="main-container">
     <div class="widget-one">
-        <?php require get_template_directory() . '/templates/home/sliders.php'; ?>
-        <?php require get_template_directory() . '/templates/home/articles.php'; ?>
-        <?php require get_template_directory() . '/templates/home/links.php'; ?>
+        <?php
+        if($config['_home_options']['sliders_is_show']){
+            require get_template_directory() . '/templates/home/sliders.php';
+        }
+        ?>
+
+        <?php
+        if($config['_home_options']['hot_is_show']){
+            require get_template_directory() . '/templates/home/hot.php';
+        }
+        ?>
+
+        <?php
+        if($config['_home_options']['articles_is_show']){
+            require get_template_directory() . '/templates/home/articles.php';
+        }
+        ?>
+
+        <?php
+        if($config['_home_options']['links_is_show']){
+            require get_template_directory() . '/templates/home/links.php';
+        }
+        ?>
     </div>
     
     <div class="sider little-widget">

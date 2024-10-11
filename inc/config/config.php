@@ -104,8 +104,9 @@ function vt_get_default_config()
 	);
 
 	// 推荐
-	$config['_home_options']['recommend_is_show'] = 1;
-	$config['_home_options']['recommend'] = array();
+	$config['_home_options']['hot_is_show'] = 1;
+	$config['_home_options']['hot_title'] = '热门推荐';
+	$config['_home_options']['hot'] = array();
 
 	// 最新文章
 	$config['_home_options']['articles_is_show'] = 1;
