@@ -378,7 +378,7 @@ template {
 /* 在线链接服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
 @font-face {
   font-family: "iconfont"; /* Project id 3210959 */
-  src: url("//at.alicdn.com/t/c/font_3210959_vnh5bpmwzwm.woff2?t=1718583496379") format("woff2"), url("//at.alicdn.com/t/c/font_3210959_vnh5bpmwzwm.woff?t=1718583496379") format("woff"), url("//at.alicdn.com/t/c/font_3210959_vnh5bpmwzwm.ttf?t=1718583496379") format("truetype");
+  src: url("//at.alicdn.com/t/c/font_3210959_71zkk5vzmi6.woff2?t=1726650104472") format("woff2"), url("//at.alicdn.com/t/c/font_3210959_71zkk5vzmi6.woff?t=1726650104472") format("woff"), url("//at.alicdn.com/t/c/font_3210959_71zkk5vzmi6.ttf?t=1726650104472") format("truetype");
 }
 .iconfont {
   font-family: "iconfont" !important;
@@ -1423,6 +1423,201 @@ nav.pagination a:hover {
   line-height: 15px !important;
 }
 
+/**
+ * 文章页，文档页等 公共的点赞，收藏 模块
+ */
+.content-action {
+  display: flex;
+  margin-top: 20px;
+  color: var(--vt-text-color-grey);
+}
+.content-action .widget-action {
+  font-size: 13px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+.content-action .widget-action.active {
+  color: var(--vt-color-primary);
+}
+.content-action .widget-action i.iconfont {
+  font-size: 23px;
+  position: relative;
+  right: -2px;
+}
+
+.widget-action.share-poster i.iconfont {
+  font-size: 20px;
+}
+
+/**
+ * 分享卡片
+ */
+.share-dialog-widget {
+  box-sizing: border-box;
+  font-size: 18px;
+  max-width: 100%;
+  width: 400px;
+  padding: 10px;
+  border-radius: var(--vt-border-radius);
+  background-color: var(--vt-bg-color-card);
+  box-shadow: 0 0 20px var(--vt-shadow-color);
+  position: relative;
+  color: var(--vt-text-color);
+}
+
+.share-dialog-widget .close-button {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  text-align: center;
+  color: var(--vt-text-color-grey);
+}
+
+.share-dialog-widget .close-button i.iconfont {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.share-dialog-widget .share-card {
+  margin: 15px 0 0 0;
+  position: relative;
+  padding: 10px;
+  z-index: -1;
+}
+
+.share-card .thumbnail {
+  width: 100%;
+  height: 0;
+  padding: 0 0 61% 0;
+  position: relative;
+}
+
+.share-card .thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.share-card .share-card-body h3 {
+  font-size: 20px;
+  font-weight: 400;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin: 10px 0 0 0;
+  text-align: justify;
+  line-height: 28px;
+}
+
+.share-card .share-card-body p {
+  font-size: 16px;
+  font-weight: 400;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  margin: 10px 0 0 0;
+  text-align: justify;
+  line-height: 25px;
+  color: var(--vt-text-color-grey);
+}
+
+.share-card .share-card-footer {
+  display: flex;
+  padding: 30px 0 0 0;
+}
+
+.share-card-footer .info {
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.share-card-footer .info img {
+  font-size: 13px;
+  width: 160px;
+  margin: 0 0 0px 0;
+  position: relative;
+}
+
+.share-card-footer #qrcode {
+  width: 80px;
+  height: 80px;
+  margin-left: auto;
+}
+
+.share-card-footer #qrcode img {
+  width: 100%;
+  height: 100%;
+}
+
+.share-dialog-widget .top-layer {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  color: var(--vt-text-color-grey);
+}
+
+.share-dialog-widget #poster {
+  height: auto;
+  width: auto;
+  position: absolute;
+  top: 25px;
+  left: 10px;
+}
+
+/**
+ * 投币
+ */
+.coin .iconfont {
+  transform: scale(1.1);
+}
+
+.coin-dialog-widget {
+  box-sizing: border-box;
+  font-size: 18px;
+  max-width: 100%;
+  padding: 10px;
+  border-radius: var(--vt-border-radius);
+  background-color: var(--vt-bg-color-card);
+  box-shadow: 0 0 20px var(--vt-shadow-color);
+  position: relative;
+  color: var(--vt-text-color);
+}
+
+.coin-dialog-widget .coin-widget {
+  display: flex;
+  margin: 20px 0 0 0;
+}
+
+.coin-dialog-widget .coin-widget img {
+  width: 160px;
+  height: 160px;
+}
+
+.coin-dialog-widget .coin-info {
+  font-size: 14px;
+  text-align: center;
+  line-height: 30px;
+}
+
 .toast-box {
   width: auto;
   max-width: 90%;
@@ -1540,49 +1735,106 @@ nav.pagination a:hover {
     display: block;
   }
 }
-dialog {
-  position: absolute;
-  left: 0;
-  right: 0;
-  width: -moz-fit-content;
-  width: -webkit-fit-content;
-  width: fit-content;
-  height: -moz-fit-content;
-  height: -webkit-fit-content;
-  height: fit-content;
-  margin: auto;
-  border: solid;
-  padding: 1em;
-  background: white;
-  color: black;
-  display: block;
-}
-
-dialog:not([open]) {
+.vt-dialog {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
   display: none;
 }
 
-dialog + .backdrop {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.1);
+.vt-dialog[open] {
+  display: flex !important;
 }
 
-._dialog_overlay {
+.vt-dialog[modal] {
+  position: fixed;
+  left: 0;
+  top: 0;
+  transform: translate(0, 0);
+  z-index: 99;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.vt-dialog[modal]::before {
+  content: "";
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--vt-bg-color-mask);
   position: fixed;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
 }
 
-dialog.fixed {
-  position: fixed;
-  top: 50%;
-  transform: translate(0, -50%);
+.no-scroll {
+  overflow-y: hidden;
+}
+
+.dialog-widget {
+  box-sizing: border-box;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: var(--vt-border-radius);
+  background-color: var(--vt-bg-color-card);
+  box-shadow: 0 0 20px var(--vt-shadow-color);
+  position: relative;
+  user-select: none;
+}
+
+.dialog-widget .close-button {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  text-align: center;
+  color: var(--vt-text-color-grey);
+  z-index: 9;
+}
+
+.dialog-widget .close-button i.iconfont {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.dialog-header {
+  height: 25px;
+  font-size: 16px;
+}
+
+.dialog-header .title {
+  float: left;
+}
+
+.dialog-header .close {
+  float: right;
+  font-size: 25px;
+  position: relative;
+  top: -5px;
+}
+
+.dialog-body {
+  padding: 10px 0;
+}
+
+.dialog-body label {
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dialog-action-group {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dialog-action-group .btn {
+  margin: 0 0 0 10px;
 }
 
 /**

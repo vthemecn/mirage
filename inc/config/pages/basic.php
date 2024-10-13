@@ -302,6 +302,23 @@ defined('ABSPATH') || exit;
             </tr>
 
             <tr>
+                <th scope="row"><label for="qrcode_image">收款二维码</label></th>
+                <td>
+                    <div>
+                        <?php if ($vt_config['qrcode_image']) { ?>
+                            <img class="my-img-preview" src="<?php echo $vt_config['qrcode_image']; ?>" style="display:block;">
+                        <?php } else { ?>
+                            <img class="my-img-preview" src="" style="display:none;">
+                        <?php } ?>
+                        <input type="text" name="qrcode_image" id="qrcode_image" value="<?php echo ($vt_config['qrcode_image']); ?>" class="regular-text image-input" />
+                        <button type="button" class="upload-button">上传</button>
+                        <button type="button" class="delete-button">删除</button>
+                        <p class="description" id="tagline-description">推荐图片尺寸 300*300 或 500*500</p>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
                 <th scope="row"><label for="dark_mode_type">暗黑模式</label></th>
                 <td>
                     <div>

@@ -64,6 +64,8 @@ $current_theme = wp_get_theme();
 
 ?>
 
+<script src="<?php bloginfo('template_url'); ?>/assets/js/lib/qrcode.js"></script>
+<script src="<?php bloginfo('template_url'); ?>/assets/js/lib/html2canvas.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/assets/js/bundle.js?t=<?php echo $current_theme->get('Version') ?>"></script>
 
 <?php wp_footer(); ?>

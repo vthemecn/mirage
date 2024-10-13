@@ -166,13 +166,55 @@
   });
 
   /**
+   * dialogTools
+   */
+
+  function registerDialog(selector){
+    selector.show = show;
+    selector.showModal = showModal;
+    selector.close = close;
+
+    closeButtonInit.apply(selector);
+  }
+
+  function show() {
+    this.setAttribute('open','');
+  }
+
+  function showModal() {
+    document.body.classList.add('no-scroll');
+    this.setAttribute('modal','');
+    this.setAttribute('open','');
+  }
+
+  function close() {
+    document.body.classList.remove('no-scroll');
+    this.removeAttribute('modal');
+    this.removeAttribute('open');
+  }
+
+  function closeButtonInit() {
+    var closeButtons = this.querySelectorAll('.close');
+    closeButtons.forEach(btn => {
+      btn.addEventListener('click', e => {
+        this.close();
+      });
+    });
+  }
+
+  var dialogTools = { registerDialog };
+
+  /**
    * 点赞，收藏，评论
    */
+
 
 
   function contentAction () {
     likeInit();
     starInit();
+    sharePosterInit();
+    coinInit();
   }
 
   /**
@@ -266,6 +308,85 @@
         }
         
       });
+    });
+  }
+
+
+  /**
+   * 海报生成
+   */
+  function sharePosterInit() {
+    var qrcodeSelector = document.getElementById("qrcode");
+    if(!qrcodeSelector) { return; }
+
+    window.addEventListener('load', function(){
+      var url = document.querySelector('input[name="post_url"]').value;
+      new QRCode(qrcodeSelector, {
+          text: url,
+          width: 80,
+          height: 80,
+          colorDark : "#000000",
+          colorLight : "#ffffff",
+          correctLevel : QRCode.CorrectLevel.H
+      });
+    });
+
+
+    var shareSelector = document.querySelector('.share-poster');
+    var shareDialog = document.querySelector('#share-dialog');
+    if(!shareSelector || !shareDialog){ return; }
+    dialogTools.registerDialog(shareDialog);
+
+    shareSelector.addEventListener('click', function(e){
+      // shareDialog.show();
+      shareDialog.showModal();
+      // document.body.classList.add('no-scroll');
+
+      var copyDom = document.querySelector('.share-card');
+      var width = copyDom.offsetWidth;
+      var height = copyDom.offsetHeight;
+      var canvas = document.createElement("canvas");
+
+      var scale = 1; // 图片缩放
+      canvas.width = width * scale;
+      canvas.height = height * scale;
+      canvas.getContext("2d").scale(scale, scale);
+      　　
+      var opts = {
+          scale: scale,
+          canvas: canvas,
+          width: width,
+          height: height
+      };
+
+      html2canvas(copyDom, opts).then(canvas => {
+          let dataURL = canvas.toDataURL("image/png"); // canvas转base64
+          document.querySelector('#poster').src = dataURL;
+          document.querySelector('#poster').classList.remove('hide');
+          document.querySelector('.top-layer').classList.add('hide');
+      });
+    });
+
+
+    shareDialog.querySelector('.close-button').addEventListener('click', e=>{
+      shareDialog.close();
+      // document.body.classList.remove('no-scroll');
+    });
+  }
+
+
+  /**
+   * 打赏
+   */
+  function coinInit(argument) {
+    var coinButton = document.querySelector('.coin');
+
+    var coinDialog = document.querySelector('#coin-dialog');
+    if(!coinButton){ return; }
+    dialogTools.registerDialog(coinDialog);
+
+    coinButton && coinButton.addEventListener('click', async e=> {
+      coinDialog.showModal();
     });
   }
 

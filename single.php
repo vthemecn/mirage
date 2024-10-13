@@ -53,6 +53,11 @@ if($current_user_id){
     $is_star = $res ? true : false;
 }
 
+$user_center_url = home_url() . '/users/' .$post->post_author;
+
+// 获取文章缩略图
+$thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($vt_post_id), 'large');
+$thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '/assets/images/user-center-banner.jpg';
 ?>
 
 
@@ -63,14 +68,28 @@ if($current_user_id){
                 <?php the_title(); ?>
             </div>
             <div class="article-meta">
-                <span class="meta author">
+                <!-- <span class="meta author">
                     <img src="<?php echo $vt_avatar ?>" >
                     <span>
                         <a href="/users/<?php echo $post->post_author ?>" target='_blank'>
                             <?php echo get_the_author_meta('nickname', $post->post_author) ?>
                         </a>
                     </span>
-                </span>
+                </span> -->
+
+                <?php if($vt_config['user_center_is_on']):?>
+                    <a class="meta author" href="<?php echo $user_center_url ?>" target="_blank">
+                        <img src="<?php echo $vt_avatar ?>">
+                        <span><?php echo get_the_author_meta('nickname', $post->post_author) ?></span>
+                    </a>
+                <?php else: ?>
+                    <span class="meta author">
+                        <img src="<?php echo $vt_avatar ?>">
+                        <span><?php echo get_the_author_meta('nickname', $post->post_author) ?></span>
+                    </span>
+                <?php endif ?>
+
+
                 <span class="meta date">
                     <i class="iconfont">&#xe76d;</i>
                     <?php the_time('Y-m-d'); ?>
@@ -140,10 +159,18 @@ if($current_user_id){
                     <span>收藏</span>
                     <span class='number'><?php echo $star_counter ?></span>
                 </div>
-                <!-- div class="widget-action comment">
-                    <i class="iconfont">&#xe8a6;</i>
+                <div class="widget-action comment">
+                    <i class="iconfont">&#xe68f;</i>
                     <span>评论</span>
-                </div -->
+                </div>
+                <div class="widget-action share-poster">
+                    <i class="iconfont">&#xe691;</i>
+                    <span>分享</span>
+                </div>
+                <div class="widget-action coin">
+                    <i class="iconfont">&#xe88d;</i>
+                    <span>打赏</span>
+                </div>
             </div>
         </div><!-- .singular-article-container -->
 
@@ -187,9 +214,45 @@ if($current_user_id){
 </div>
 
 
+<div class="vt-dialog" id="share-dialog" class="normal-dialog">
+    <div class="share-dialog-widget dialog-widget">
+        <a href="javascript:;" class="close-button close"><i class="iconfont">&#xe75e;</i></a>
+        <div class="share-card">
+            <div class="thumbnail">
+                <img src="<?= $thumbnail_image?>">    
+            </div>
+            <div class="share-card-body">
+                <h3><?= get_the_title(); ?></h3>
+                <p><?= mb_substr(get_the_excerpt(), 0, 100) ?></p>
+            </div>
+            <div class="share-card-footer">
+                <div class="info">
+                    <img src="<?= $vt_config['site_logo'] ?>">
+                    <p>识别右侧二维码阅读全文</p>
+                </div>
+                <div id="qrcode"></div>
+            </div>         
+        </div>
+        <div class="top-layer" class="">生成中...</div>
+        <img src="" id='poster' class="hide" />
+    </div>
+</div>
+
+
+<div class="vt-dialog" id="coin-dialog" class="normal-dialog">
+    <div class="coin-dialog-widget dialog-widget">
+        <a href="javascript:;" class="close-button close"><i class="iconfont">&#xe75e;</i></a>
+        <div class="coin-widget">
+            <img src="<?= $vt_config['qrcode_image']?>">
+        </div>
+        <div class="coin-info">真诚赞赏，手留余香</div>
+    </div>
+</div>
+
+
 <input type="hidden" name="wp_create_nonce" value="<?php echo wp_create_nonce('wp_rest'); ?>">
 <input type="hidden" name="post_id" value="<?php echo $vt_post_id ?>">
-
+<input type="hidden" name="post_url" value="<?= get_permalink() ?>">
 
 <?php if($vt_config['highlight_is_on']):?>
 <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/assets/js/lib/highlight/styles/stackoverflow-light.min.css">
