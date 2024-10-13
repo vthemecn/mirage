@@ -1,7 +1,7 @@
 <?php
 $config = vt_get_config();
 
-$hot_items = $config['_home_options']['hot'];
+$hot_items = $config['_home_options']['hot'] ? $config['_home_options']['hot'] : array();
 $hot_items = array_slice($hot_items, 0, 4);
 ?>
 
