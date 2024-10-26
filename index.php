@@ -4,16 +4,19 @@
  * 主模版文件
  *
  * @author: soushenji <soushenji@qq.com>
- * @link https://github.com/soushenji
+ * @link https://vtheme.cn
  */
 
 get_header();
+
 $config = vt_get_config();
+
+$full_width = $config['full_width']==1 ? 'full-width' : '';
 
 ?>
 
 
-<div class="main-container">
+<div class="main-container" <?=$full_width?> >
     <div class="widget-one">
         <?php
         if($config['_home_options']['sliders_is_show']){
@@ -44,11 +47,8 @@ $config = vt_get_config();
         <?php if ( is_active_sidebar( 'default-sidebar' ) ) : ?>
             <?php dynamic_sidebar( 'default-sidebar' ); ?>
         <?php endif; ?>
-    </div> 
+    </div>
 </div>
-
-
-
 
 
 <?php

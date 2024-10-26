@@ -7,28 +7,25 @@
   display: flex;
   margin-top: 20px;
   color: var(--vt-text-color-grey);
-  .widget-action{
-    font-size: 13px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-right: 20px;
-    cursor: pointer;
-    user-select: none;
-    &.active{
-      color:var(--vt-color-primary);
-    }
-    i.iconfont{
-      font-size: 23px;
-      position: relative;
-      // top: 2px;
-      right: -2px;
-    }
-    
-  }
 }
-
-
+.content-action a{ color: var(--vt-text-color-grey); }
+.widget-action{
+  font-size: 13px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+.widget-action.active{
+  color:var(--vt-color-primary);
+}
+.widget-action .iconfont{
+  font-size: 23px;
+  position: relative;
+  right: -2px;
+}
 .widget-action.share-poster i.iconfont{
   font-size: 20px;
 }

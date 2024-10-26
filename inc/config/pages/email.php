@@ -3,7 +3,7 @@
  * 邮箱设置
  *
  * @author: soushenji <soushenji@qq.com>
- * @link: https://github.com/soushenji
+ * @link: https://vtheme.cn
  */
 defined('ABSPATH') || exit;
 ?>

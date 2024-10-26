@@ -3,7 +3,7 @@
  * 底部设置
  *
  * @author: soushenji <soushenji@qq.com>
- * @link: https://github.com/soushenji
+ * @link: https://vtheme.cn
  */
 defined('ABSPATH') || exit;
 
@@ -39,14 +39,6 @@ $categories = get_categories($args);
             </tr>
 
             <tr>
-                <th scope="row"><label for="footer_description">底部标题</label></th>
-                <td>
-                    <textarea name="footer_description" id="footer_description" class="regular-text"><?php echo ($vt_config['footer_description']); ?></textarea>
-                    <p class="description" id="tagline-description">用简洁的文字描述本站点。</p>
-                </td>
-            </tr>
-
-            <tr>
                 <th scope="row"><label for="footer_copyright">底部版权</label></th>
                 <td>
                     <textarea name="footer_copyright" id="footer_copyright" class="regular-text" rows="5"><?php echo ($vt_config['footer_copyright']); ?></textarea>
@@ -55,24 +47,7 @@ $categories = get_categories($args);
             </tr>
 
             <tr>
-                <th scope="row"><label for="footer_logo">底部 logo</label></th>
-                <td>
-                    <div>
-                        <?php if ($vt_config['footer_logo']) { ?>
-                            <img class="my-img-preview" src="<?php echo $vt_config['footer_logo']; ?>" style="display:block;">
-                        <?php } else { ?>
-                            <img class="my-img-preview" src="" style="display:none;">
-                        <?php } ?>
-                        <input type="text" name="footer_logo" id="footer_logo" value="<?php echo ($vt_config['footer_logo']); ?>" class="regular-text image-input" />
-                        <button type="button" class="upload-button">上传</button>
-                        <button type="button" class="delete-button">删除</button>
-                        <p class="description" id="tagline-description">图片尺寸 180*50</p>
-                    </div>
-                </td>
-            </tr>
-
-            <tr>
-                <th scope="row"><label for="footer_bg_type">footer 颜色</label></th>
+                <th scope="row"><label for="footer_bg_type">footer 背景颜色</label></th>
                 <td>
                     <p>
                         <label>
@@ -83,9 +58,7 @@ $categories = get_categories($args);
                             <input name="footer_bg_type" type="radio" value="1" <?php if ($vt_config['footer_bg_type'] == 1) { ?>checked="checked" <?php } ?>>
                             亮色
                         </label>
-                        <!-- 跟随系统 -->
                     </p>
-                    <p class="description">背景色的类型</p>
                 </td>
             </tr>
 

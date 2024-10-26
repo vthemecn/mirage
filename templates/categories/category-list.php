@@ -4,7 +4,7 @@
  * 文章列表页 按类别请求帖子时，将使用类别模板
  * 
  * @author: soushenji <soushenji@qq.com>
- * @link https://github.com/soushenji
+ * @link https://vtheme.cn
  */
 
 get_header();
@@ -14,7 +14,10 @@ get_header();
 /**
  * 分类页 Banner
  */
-$vt_options = vt_get_config();
+$config = vt_get_config();
+
+$full_width = $config['full_width']==1 ? 'full-width' : '';
+
 $category = get_term($cat);
 
 
@@ -54,7 +57,7 @@ query_posts($args);
 </div>
 
 
-<div class="main-container">
+<div class="main-container" <?=$full_width?>>
     <div class="widget-one">
         <?php
         $sticky_arr = get_option( 'sticky_posts' );

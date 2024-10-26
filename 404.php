@@ -4,7 +4,7 @@
  * 404 模版
  * 
  * @author: soushenji <soushenji@qq.com>
- * @link https://github.com/soushenji
+ * @link https://vtheme.cn
  */
 
 get_header();

@@ -3,7 +3,7 @@
  * 主题样式设置
  *
  * @author: soushenji <soushenji@qq.com>
- * @link: https://github.com/soushenji
+ * @link: https://vtheme.cn
  */
 
 $args = array(

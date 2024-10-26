@@ -5,7 +5,7 @@
  * Template Post Type: post
  *
  * @author: soushenji <soushenji@qq.com>
- * @link https://github.com/soushenji
+ * @link https://vtheme.cn
  */
 
 get_header();
@@ -13,7 +13,9 @@ get_header();
 
 
 <?php
-$vt_config = vt_get_config();
+$config = vt_get_config();
+
+$full_width = $config['full_width']==1 ? 'full-width' : '';
 
 setPostViews(get_the_ID()); // 更新文章浏览次数
 
@@ -61,7 +63,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
 ?>
 
 
-<div class="main-container">
+<div class="main-container" <?=$full_width?>>
     <div class="widget-one">
         <div class="singular-article-container">
             <div class="article-title">
@@ -77,7 +79,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     </span>
                 </span> -->
 
-                <?php if($vt_config['user_center_is_on']):?>
+                <?php if($config['user_center_is_on']):?>
                     <a class="meta author" href="<?php echo $user_center_url ?>" target="_blank">
                         <img src="<?php echo $vt_avatar ?>">
                         <span><?php echo get_the_author_meta('nickname', $post->post_author) ?></span>
@@ -98,16 +100,9 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     <i class="iconfont">&#xe752;</i>
                     <?php echo getPostViews(get_the_ID()); ?>
                 </span>
-                <?php if($vt_config['show_comments_counter']):?>
+                <?php if($config['show_comments_counter']):?>
                     <span class='meta'>
                         <i class="iconfont">&#xe8a6;</i><?php echo $post->comment_count; ?>
-                    </span>
-                <?php endif ?>
-                <?php if( current_user_can( 'manage_options' ) ): ?>
-                     <span class="meta edit-button">
-                         <a href="/wp-admin/post.php?post=<?php echo get_the_ID() ?>&action=edit">
-                            <i class="iconfont">&#xe77a;</i> <span>编辑</span>
-                        </a>
                     </span>
                 <?php endif ?>
             </div>
@@ -129,10 +124,10 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                 }
                 ?>
 
-                <?php if($vt_config['show_copyright']):?>
+                <?php if($config['show_copyright']):?>
                     <div class="copyright-content">
                         <i class="iconfont">&#xe788;</i>
-                        <?php echo $vt_config['show_copyright_text']; ?>
+                        <?php echo $config['show_copyright_text']; ?>
                     </div>
                 <?php endif ?>
 
@@ -159,10 +154,12 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     <span>收藏</span>
                     <span class='number'><?php echo $star_counter ?></span>
                 </div>
+                <?php /*
                 <div class="widget-action comment">
                     <i class="iconfont">&#xe68f;</i>
                     <span>评论</span>
                 </div>
+                */ ?>
                 <div class="widget-action share-poster">
                     <i class="iconfont">&#xe691;</i>
                     <span>分享</span>
@@ -171,6 +168,12 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     <i class="iconfont">&#xe88d;</i>
                     <span>打赏</span>
                 </div>
+
+                <?php if( current_user_can( 'manage_options' ) ): ?>
+                    <a href="/wp-admin/post.php?post=<?php echo get_the_ID() ?>&action=edit" class="widget-action">
+                        <i class="iconfont">&#xe77a;</i> <span>编辑</span>
+                    </a>
+                <?php endif ?>
             </div>
         </div><!-- .singular-article-container -->
 
@@ -199,7 +202,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
         </div>
 
         <?php
-        if ($vt_config['comments_is_on'] && (comments_open() || get_comments_number()) ) {
+        if ($config['comments_is_on'] && (comments_open() || get_comments_number()) ) {
             comments_template();
         }
         ?>
@@ -227,7 +230,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
             </div>
             <div class="share-card-footer">
                 <div class="info">
-                    <img src="<?= $vt_config['site_logo'] ?>">
+                    <img src="<?= $config['site_logo'] ?>">
                     <p>识别右侧二维码阅读全文</p>
                 </div>
                 <div id="qrcode"></div>
@@ -243,7 +246,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
     <div class="coin-dialog-widget dialog-widget">
         <a href="javascript:;" class="close-button close"><i class="iconfont">&#xe75e;</i></a>
         <div class="coin-widget">
-            <img src="<?= $vt_config['qrcode_image']?>">
+            <img src="<?= $config['qrcode_image']?>">
         </div>
         <div class="coin-info">真诚赞赏，手留余香</div>
     </div>
@@ -254,7 +257,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
 <input type="hidden" name="post_id" value="<?php echo $vt_post_id ?>">
 <input type="hidden" name="post_url" value="<?= get_permalink() ?>">
 
-<?php if($vt_config['highlight_is_on']):?>
+<?php if($config['highlight_is_on']):?>
 <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/assets/js/lib/highlight/styles/stackoverflow-light.min.css">
 <script src="<?php bloginfo('template_url'); ?>/assets/js/lib/highlight/highlight.min.js"></script>
 <script>

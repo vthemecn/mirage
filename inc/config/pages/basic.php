@@ -3,7 +3,7 @@
  * 常规设置
  *
  * @author: soushenji <soushenji@qq.com>
- * @link: https://github.com/soushenji
+ * @link: https://vtheme.cn
  */
 defined('ABSPATH') || exit;
 ?>
@@ -117,7 +117,7 @@ defined('ABSPATH') || exit;
                     <div>
                         <label class="color-label">
                             <input name="widget_title_type" type="radio" value="0" <?php if ($vt_config['widget_title_type'] == 0) { ?>checked="checked" <?php } ?>>
-                            无样式
+                            默认
                         </label>
                         <label class="color-label">
                             <input name="widget_title_type" type="radio" value="1" <?php if ($vt_config['widget_title_type'] == 1) { ?>checked="checked" <?php } ?>>
@@ -132,7 +132,6 @@ defined('ABSPATH') || exit;
                             横线
                         </label>
                     </div>
-                    <p class="description">选择边框标题样式</p>
                 </td>
             </tr>
             
@@ -202,22 +201,6 @@ defined('ABSPATH') || exit;
                         </label>
                         <label class="color-label">
                             <input name="widget_header_is_show" type="radio" value="1" <?php if ($vt_config['widget_header_is_show'] == 1) { ?>checked="checked" <?php } ?>>
-                            显示
-                        </label>
-                    </div>
-                </td>
-            </tr>
-
-            <tr>
-                <th scope="row"><label for="page_data_type">右侧栏目</label></th>
-                <td>
-                    <div>
-                        <label class="color-label">
-                            <input name="litte_widget_is_show" type="radio" value="0" <?php if ($vt_config['litte_widget_is_show'] == 0) { ?>checked="checked" <?php } ?>>
-                            不显示
-                        </label>
-                        <label class="color-label">
-                            <input name="litte_widget_is_show" type="radio" value="1" <?php if ($vt_config['litte_widget_is_show'] == 1) { ?>checked="checked" <?php } ?>>
                             显示
                         </label>
                     </div>
@@ -356,6 +339,22 @@ defined('ABSPATH') || exit;
                         </label>
                     </p>
                     <p class="description">这个选项只控制是否显示注册登录按钮</p>
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row"><label for="page_data_type">全宽显示</label></th>
+                <td>
+                    <div>
+                        <label class="color-label">
+                            <input name="full_width" type="radio" value="1" <?= $vt_config['full_width']==1 ? 'checked="checked"' : '' ?>>
+                            开启
+                        </label>
+                        <label class="color-label">
+                            <input name="full_width" type="radio" value="0" <?= $vt_config['full_width']==0 ? 'checked="checked"' : '' ?>>
+                            关闭
+                        </label>
+                    </div>
                 </td>
             </tr>
             

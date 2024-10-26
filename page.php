@@ -5,29 +5,23 @@
  * Template Post Type: post
  * 
  * @author: soushenji <soushenji@qq.com>
- * @link https://github.com/soushenji
+ * @link https://vtheme.cn
  */
 
 get_header();
 
-$vt_options = vt_get_config();
+$config = vt_get_config();
+
+$full_width = $config['full_width']==1 ? 'full-width' : '';
 
 ?>
 
-<div class="main-container">
+<div class="main-container" <?=$full_width?>>
     <div class="widget-one">
         <div class="singular-article-container">
             <div class="page-title">
                 <?php the_title(); ?>
             </div>
-
-            <?php if( current_user_can( 'manage_options' ) ): ?>
-                 <div class="edit-button">
-                     <a href="/wp-admin/post.php?post=<?php echo get_the_ID() ?>&action=edit">
-                        <i class="iconfont">&#xe77a;</i> <span>编辑</span>
-                    </a>
-                </div>
-            <?php endif ?>
 
             <div class="page-content">
                 <?php
@@ -40,6 +34,14 @@ $vt_options = vt_get_config();
                     }
                 }
                 ?>
+            </div>
+
+            <div class="content-action">
+                <?php if( current_user_can( 'manage_options' ) ): ?>
+                    <a href="/wp-admin/post.php?post=<?php echo get_the_ID() ?>&action=edit" class="widget-action">
+                        <i class="iconfont">&#xe77a;</i> <span>编辑</span>
+                    </a>
+                <?php endif ?>
             </div>
         </div>
     </div><!-- .widget-one -->

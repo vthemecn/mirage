@@ -11,7 +11,7 @@ function vt_options_init()
 {
 	// 添加顶部菜单
     if(current_user_can( 'manage_options' )){
-        add_theme_page("BlogV 主题设置", "BlogV 主题设置", 'edit_theme_options', "vtheme-options",  'display');
+        add_theme_page("MirageV 主题设置", "MirageV 主题设置", 'edit_theme_options', "vtheme-options",  'display');
         // add_menu_page('Light 主题设置', 'Light 主题设置', 'administrator', 'vtheme-options', 'display', 'dashicons-admin-generic');
     }
     
@@ -97,7 +97,7 @@ function add_toolbar_link($wp_admin_bar)
 {
     $plugin_manage = array(
         'id'    => 'vtheme_manage',
-        'title' => 'BlogV 主题设置',
+        'title' => 'MirageV 主题设置',
         'href'  => home_url('/wp-admin/themes.php?page=vtheme-options')
     );
     if(current_user_can( 'manage_options' )){

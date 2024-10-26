@@ -4,7 +4,7 @@
  * 文章列表页 按类别请求帖子时，将使用类别模板
  * 
  * @author: soushenji <soushenji@qq.com>
- * @link https://github.com/soushenji
+ * @link https://vtheme.cn
  */
 
 get_header();
@@ -15,10 +15,13 @@ get_header();
 /**
  * 分类页 Banner
  */
-$vt_config = vt_get_config();
+$config = vt_get_config();
+
+$full_width = $config['full_width']==1 ? 'full-width' : '';
+
 $category = get_term($cat);
 
-// $default_image = $vt_config['default_image'] ? $vt_config['default_image'] : get_template_directory_uri() . '/assets/images/default.jpg';
+// $default_image = $config['default_image'] ? $config['default_image'] : get_template_directory_uri() . '/assets/images/default.jpg';
 
 // 获取分类第一篇文章的缩略图或者图片
 $banner_image = get_bloginfo('template_url') . '/assets/images/user-center-banner.jpg';
@@ -35,7 +38,7 @@ if($query_posts->posts){
 
 // 列数
 $col_num_class = 'col-num-5';
-switch ($vt_config['list_cards_col']) {
+switch ($config['list_cards_col']) {
     case '3':
         $col_num_class = 'col-num-3'; break;
     case '4':
@@ -60,7 +63,7 @@ switch ($vt_config['list_cards_col']) {
 </div>
 
 
-<div class="main-container">
+<div class="main-container" <?=$full_width?>>
     <div class="widget-one">
         <?php if (have_posts()) : ?>
             <div class="posts-widget <?php echo $col_num_class?>">

@@ -3,7 +3,7 @@
  * 文章列表页 按类别请求帖子时，将使用类别模板
  * 
  * @author: soushenji <soushenji@qq.com>
- * @link https://github.com/soushenji
+ * @link https://vtheme.cn
  */
 get_header();
 

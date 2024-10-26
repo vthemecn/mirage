@@ -1,6 +1,6 @@
 {
-  "name": "blogv",
-  "version": "2.2.2",
+  "name": "miragev",
+  "version": "2.3.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitee.com/soushenji/blogv"
+    "url": "git+https://gitee.com/vtheme/miragev"
   },
   "author": "soushenji",
   "license": "ISC"

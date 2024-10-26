@@ -26,8 +26,8 @@ function vt_get_default_config()
     $config['site_logo'] = get_bloginfo('template_url') . '/assets/images/logo.png';
     $config['basic_style'] = '1';
     $config['is_show_login_register'] = '1';
-    $config['user_center_is_on'] = '0';
-    
+    $config['full_width'] = '0';
+
     $config['basic_style_color'] = '#f5c802';
 
     $config['widget_title_type'] = 1;
@@ -79,7 +79,7 @@ function vt_get_default_config()
 	 * 底部设置
 	 */
 	$config['footer_logo'] = get_bloginfo('template_url') . '/assets/images/logo.png';
-	$config['footer_description'] = "在这里可以填写网站的简介和网站的 Slogan，或者留空";
+	$config['footer_description'] = "";
 	$config['footer_bg_color'] = '';
 	$config['footer_copyright'] = '&copy; Copyright '.date('Y').' <a href="https://vtheme.cn" target="_blank">VTHEME 微主题</a>';
 	$config['footer_qrcode'] = get_bloginfo('template_url') . '/assets/images/qrcode.jpg';
@@ -126,7 +126,7 @@ function vt_get_default_config()
 	$config['smtp_port'] 		= '465';
 	$config['smtp_username'] 	= '';
 	$config['smtp_password'] 	= '';
-	$config['smtp_nicename'] 	= 'BlogV 主题';
+	$config['smtp_nicename'] 	= 'MirageV 主题';
 	$config['test_email']		= '';
 
 	/**

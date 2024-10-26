@@ -4,7 +4,7 @@
  * functions and definitions
  * 
  * @author: soushenji <soushenji@qq.com>
- * @link https://github.com/soushenji
+ * @link https://vtheme.cn
  */
 
 
@@ -18,7 +18,7 @@ if (!function_exists('p')) :
     }
 endif;
 
-define('THEME_OPTION_NAME', '_blogv_config');
+define('THEME_OPTION_NAME', '_mirage_config');
 define('TEMP_DIR', get_template_directory());
 
 
@@ -73,8 +73,8 @@ function vt_get_thumbnail_url($post_id, $size='thumbnail')
 if (function_exists('register_nav_menus')) {
     register_nav_menus(
         array(
-            'header_main' => __('BlogV 顶部菜单'),
-            'footer_nav'  => __('BlogV 底部菜单')
+            'header_main' => __('MirageV 顶部菜单'),
+            'footer_nav'  => __('MirageV 底部菜单')
         )
     );
 }

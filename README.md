@@ -1,10 +1,10 @@
-![BlogV](screenshot.png)
+![MirageV](screenshot.png)
 
-BlogV 主题
+MirageV 主题
 ======
 
 ### 主题简介
-BlogV 是一款 WordPress 主题，无需任何代码，轻点鼠标即可对主题和网站进行设置，组合出各种丰富多彩的页面。
+MirageV 是一款 WordPress 主题，无需任何代码，轻点鼠标即可对主题和网站进行设置，组合出各种丰富多彩的页面。
 
 
 ### 主题功能

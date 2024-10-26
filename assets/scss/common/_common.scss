@@ -65,30 +65,30 @@ a:hover {
  * 文章页，文档页等 公共的点赞，收藏 模块
  */
 
-.content-action{
-  display: flex;
-  margin-top: 20px;
-  color: var(--vt-text-color-grey);
-  .widget-action{
-    font-size: 13px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-right: 20px;
-    cursor: pointer;
-    user-select: none;
-    &.active{
-      color:var(--vt-color-primary);
-    }
-    i.iconfont{
-      font-size: 23px;
-      position: relative;
-      // top: 2px;
-      right: -2px;
-    }
+// .content-action{
+//   display: flex;
+//   margin-top: 20px;
+//   color: var(--vt-text-color-grey);
+//   .widget-action{
+//     font-size: 13px;
+//     display: flex;
+//     justify-content: flex-start;
+//     align-items: center;
+//     margin-right: 20px;
+//     cursor: pointer;
+//     user-select: none;
+//     &.active{
+//       color:var(--vt-color-primary);
+//     }
+//     i.iconfont{
+//       font-size: 23px;
+//       position: relative;
+//       // top: 2px;
+//       right: -2px;
+//     }
     
-  }
-}
+//   }
+// }
 
 
 /**

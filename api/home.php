@@ -117,12 +117,12 @@ class HomeController
     
         // 发送邮件
         $to         = $request->get_json_params()['email'];
-        $subject    = "BlogV 主题邮箱 SMTP 设置成功";
+        $subject    = "MirageV 主题邮箱 SMTP 设置成功";
         $body       = "
         <div style='width:600px;margin:50px auto; padding-left:77px; background:#fff;font-size:16px;color:#55798d;padding-right80px;'>
-            <p><img src='https://www.9-f.cn/wp-content/themes/blogv/assets/images/logo.png' style='max-height:50px;user-select:none'></p>
-            <h3>BlogV 主题邮箱 SMTP 设置成功</h3>
-            <p>BlogV 主题官网地址 <a href='https://vtheme.cn/themes/blogv'>https://vtheme.cn/themes/blogv</a></p>
+            <p><img src='https://www.9-f.cn/wp-content/themes/mirage/assets/images/logo.png' style='max-height:50px;user-select:none'></p>
+            <h3>MirageV 主题邮箱 SMTP 设置成功</h3>
+            <p>MirageV 主题官网地址 <a href='https://vtheme.cnthemes/mirage'>https://vtheme.cnthemes/mirage</a></p>
         </div>
         ";
         $headers    = array('Content-Type: text/html; charset=UTF-8');

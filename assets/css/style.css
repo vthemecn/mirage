@@ -832,29 +832,6 @@ a:hover {
 /**
  * 文章页，文档页等 公共的点赞，收藏 模块
  */
-.content-action {
-  display: flex;
-  margin-top: 20px;
-  color: var(--vt-text-color-grey);
-}
-.content-action .widget-action {
-  font-size: 13px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-right: 20px;
-  cursor: pointer;
-  user-select: none;
-}
-.content-action .widget-action.active {
-  color: var(--vt-color-primary);
-}
-.content-action .widget-action i.iconfont {
-  font-size: 23px;
-  position: relative;
-  right: -2px;
-}
-
 /**
  * 面包屑
  */
@@ -1431,7 +1408,12 @@ nav.pagination a:hover {
   margin-top: 20px;
   color: var(--vt-text-color-grey);
 }
-.content-action .widget-action {
+
+.content-action a {
+  color: var(--vt-text-color-grey);
+}
+
+.widget-action {
   font-size: 13px;
   display: flex;
   justify-content: flex-start;
@@ -1440,10 +1422,12 @@ nav.pagination a:hover {
   cursor: pointer;
   user-select: none;
 }
-.content-action .widget-action.active {
+
+.widget-action.active {
   color: var(--vt-color-primary);
 }
-.content-action .widget-action i.iconfont {
+
+.widget-action .iconfont {
   font-size: 23px;
   position: relative;
   right: -2px;
@@ -2181,11 +2165,6 @@ nav.pagination a:hover {
   padding-left: 5px;
 }
 
-.article-meta .edit-button i {
-  position: relative;
-  top: 2px;
-}
-
 .copyright-content {
   padding: 10px;
   font-size: var(--vt-font-size-sm);
@@ -2323,22 +2302,6 @@ nav.pagination a:hover {
 
 .page-meta {
   margin: 2rem 0rem 5rem 0rem;
-}
-
-.singular-article-container .edit-button {
-  margin: 20px 0 20px 0;
-}
-
-.singular-article-container .edit-button,
-.singular-article-container .edit-button a {
-  font-size: 13px;
-  color: var(--vt-text-color-grey);
-}
-
-.singular-article-container .edit-button i {
-  position: relative;
-  top: 2px;
-  font-size: 20px;
 }
 
 .page-content {
@@ -3132,142 +3095,53 @@ nav.pagination a:hover {
  * @author: soushenji <soushenji@qq.com>
  * @link: https://vtheme.cn
  */
-footer.footer {
+.footer {
   width: 100%;
   height: auto;
   background-color: var(--vt-bg-color-card);
-  margin-top: 0px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: auto 100%;
   box-shadow: 0 0 1px 0 var(--vt-shadow-color);
   color: var(--vt-text-color);
   font-size: var(--vt-font-size-sm);
-  padding-bottom: 15px;
+  padding: 25px 0;
 }
 
-footer.footer a {
+.footer a {
   font-size: var(--vt-font-size-sm);
   color: var(--vt-text-color);
 }
 
 .footer-container {
-  width: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-.footer-container .footer-info {
-  padding: 0px 15px;
-  overflow: hidden;
-}
-
-.footer-info .footer-description {
-  overflow: hidden;
-  line-height: 1.5;
-  text-align: center;
-  margin-top: 15px;
-}
-
-.footer-info ul.footer-link {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 15px;
-  padding: 0px;
-  box-sizing: border-box;
-}
-
-.footer-info ul.footer-link > .menu-item {
-  display: flex;
-  margin: 0px 10px;
-}
-
-.footer-info .menu-item > a {
-  line-height: 20px;
-  overflow: hidden;
-}
-
-.footer-copyright {
-  min-height: 35px;
   border-top: 0px;
-  line-height: 25px;
+  line-height: 23px;
   padding: 0 15px;
-  margin-top: 15px;
   text-align: center;
 }
 
-.footer-copyright a {
-  color: var(--vt-text-color);
-  font-size: 15px;
+.footer-container a:hover {
+  color: var(--vt-color-primary);
 }
 
-.footer-copyright a:hover {
-  color: var(--vt-color-primary) !important;
-}
-
-.footer-copyright span {
+.footer-container span {
   text-align: center;
   align-items: center;
   margin-top: 20px;
   padding: 0px 4px;
 }
 
-.footer-copyright span:nth-child(1) {
+.footer-container span:nth-child(1) {
   margin-top: 0px;
 }
 
 /* .colored 暗色 footer */
-footer.footer.colored {
+.footer.colored {
   background-color: #333;
   color: var(--vt-text-color-grey);
 }
 
-footer.footer.colored a {
+.footer.colored a {
   color: var(--vt-text-color-grey);
 }
 
-@media only screen and (min-width: 900px) {
-  footer.footer {
-    margin-top: 0px;
-    background-size: cover;
-    padding: 15px 0;
-  }
-  .footer-container {
-    width: 1200px;
-    margin: 0px auto 0px auto;
-    display: flex;
-    justify-content: space-between;
-  }
-  .footer-container .footer-info {
-    width: auto;
-    max-width: 600px;
-    margin: 0px;
-    display: flex;
-    padding: 0px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-  .footer-container ul.footer-link {
-    flex-direction: row;
-    margin-top: 15px;
-  }
-  .footer-container ul.footer-link li:nth-child(1) {
-    margin-left: 0;
-  }
-  .footer-copyright {
-    width: 1200px;
-    padding: 0;
-    margin: 15px auto 0 auto;
-    text-align: left;
-  }
-}
-@media only screen and (min-width: 900px) {
-  footer.footer {
-    display: block;
-  }
-}
 .widget-container {
   background-color: var(--vt-bg-color-card);
   box-shadow: 0 0 2px 0 var(--vt-shadow-color);
@@ -3772,7 +3646,7 @@ body.dark-mode .user-card {
     margin-bottom: 20px;
   }
   .main-container .widget-one {
-    width: 880px !important;
+    width: 880px;
   }
   .main-container .widget-one .header {
     font-size: 20px;
@@ -3827,6 +3701,14 @@ body.dark-mode .user-card {
   }
   .sider > div {
     margin-bottom: 20px;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .main-container[full-width] .widget-one {
+    width: 100%;
+  }
+  .main-container[full-width] .sider {
+    display: none;
   }
 }
 .card-item {

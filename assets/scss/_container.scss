@@ -65,7 +65,7 @@
       // flex: 1 0 auto;
       // flex: 1;
       // flex: 1 1 880px;
-      width: 880px !important;
+      width: 880px;
       // flex: 1 1 0%;
     }
 
@@ -120,7 +120,6 @@
 .sider > div {
   margin-bottom: 10px;
 }
-
 @media only screen and (min-width: 900px) {
   .sider{
     width: 300px;
@@ -128,17 +127,27 @@
     margin-left: 20px;
     position:relative;
   }
-
   /* 最后一个模块粘性定位 */
   .sider .widget-container:last-child{
     position: sticky;
     top: 20px;
   }
-
   .sider > div {
     margin-bottom: 20px;
   }
+}
+
+
+
+@media only screen and (min-width: 900px) {
+  .main-container[full-width]{}
+  .main-container[full-width] .widget-one{ width: 100%; }
+  .main-container[full-width] .sider{ display: none;}
+
+
 
 }
+
+
 
 
