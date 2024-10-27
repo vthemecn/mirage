@@ -15,8 +15,6 @@ get_header();
 <?php
 $config = vt_get_config();
 
-$full_width = $config['full_width']==1 ? 'full-width' : '';
-
 setPostViews(get_the_ID()); // 更新文章浏览次数
 
 $vt_post_id = get_the_ID();
@@ -63,9 +61,9 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
 ?>
 
 
-<div class="main-container" <?=$full_width?>>
-    <div class="widget-one">
-        <div class="singular-article-container">
+<div class="main-container">
+    <div class="main-widget">
+        <div class="article-widget">
             <div class="article-title">
                 <?php the_title(); ?>
             </div>
@@ -100,7 +98,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     <i class="iconfont">&#xe752;</i>
                     <?php echo getPostViews(get_the_ID()); ?>
                 </span>
-                <?php if($config['show_comments_counter']):?>
+                <?php if($config['comments_is_on']):?>
                     <span class='meta'>
                         <i class="iconfont">&#xe8a6;</i><?php echo $post->comment_count; ?>
                     </span>
@@ -175,7 +173,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     </a>
                 <?php endif ?>
             </div>
-        </div><!-- .singular-article-container -->
+        </div><!-- .article-widget -->
 
         <div class="article-prev-next-nav">
             <?php
@@ -207,7 +205,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
         }
         ?>
 
-    </div><!-- .widget-one -->
+    </div><!-- .main-widget -->
 
     <div class="sider little-widget">
         <?php if ( is_active_sidebar( 'posts-sidebar' ) ) : ?>

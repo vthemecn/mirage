@@ -1843,7 +1843,7 @@ nav.pagination a:hover {
 }
 
 /* 加载更多按钮 */
-.widget-one button.posts-more-button {
+.main-widget button.posts-more-button {
   display: block;
   width: calc(100% - 30px);
   height: 40px;
@@ -1860,21 +1860,21 @@ nav.pagination a:hover {
 }
 
 /* 防止子元素响应 */
-.widget-one button.posts-more-button > * {
+.main-widget button.posts-more-button > * {
   pointer-events: none;
 }
 
-.widget-one button.posts-more-button .iconfont {
+.main-widget button.posts-more-button .iconfont {
   display: none;
 }
 
-.widget-one button.posts-more-button.loading .iconfont {
+.main-widget button.posts-more-button.loading .iconfont {
   display: inline-block;
   animation: rotation-load 1.5s linear infinite;
 }
 
 @media only screen and (min-width: 900px) {
-  .widget-one button.posts-more-button {
+  .main-widget button.posts-more-button {
     width: 120px;
     margin: 20px auto 20px auto;
   }
@@ -2102,7 +2102,7 @@ nav.pagination a:hover {
   }
 }
 /* 文章页 singular.php */
-.singular-article-container {
+.article-widget {
   padding: 15px;
   box-sizing: border-box;
   background-color: var(--vt-bg-color-card);
@@ -2110,14 +2110,14 @@ nav.pagination a:hover {
   border-radius: var(--vt-border-radius);
 }
 
-.singular-article-container .article-title {
+.article-widget .article-title {
   line-height: 28px;
   font-size: var(--vt-font-size-lg);
   font-weight: 600;
   color: var(--vt-text-color);
 }
 
-.singular-article-container .article-meta {
+.article-widget .article-meta {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -3600,32 +3600,37 @@ body.dark-mode .user-card {
   padding: 8px;
   box-sizing: border-box;
 }
+
 .main-container::after {
   content: "";
   display: block;
   clear: both;
 }
-.main-container .widget-one {
+
+.main-container .main-widget {
   width: 100%;
 }
-.main-container .widget-one .header {
+
+.main-container .main-widget .header {
   font-size: var(--vt-font-size-base);
   margin-bottom: 15px;
 }
-.main-container .widget-one .posts-widget {
+
+.main-container .main-widget .posts-widget {
   width: 100%;
   margin-right: -8px;
   display: flex;
   justify-content: normal;
   flex-wrap: wrap;
 }
-.main-container .widget-one .media-widget {
+
+.main-container .media-widget {
   background-color: var(--vt-bg-color-card);
   box-shadow: 0 0 2px 0 var(--vt-shadow-color);
   border-radius: var(--vt-border-radius);
 }
 
-.widget-one > * {
+.main-widget > * {
   margin-bottom: 10px;
 }
 
@@ -3642,43 +3647,43 @@ body.dark-mode .user-card {
     display: block;
     clear: both;
   }
-  .main-container .widget-one > * {
+  .main-container .main-widget > * {
     margin-bottom: 20px;
   }
-  .main-container .widget-one {
+  .main-container .main-widget {
     width: 880px;
   }
-  .main-container .widget-one .header {
+  .main-container .main-widget .header {
     font-size: 20px;
     margin-bottom: 20px;
   }
-  .main-container .widget-one .posts-widget {
+  .main-container .main-widget .posts-widget {
     width: auto;
     margin-right: -20px;
     display: flex;
     justify-content: normal;
     flex-wrap: wrap;
   }
-  .main-container .widget-one .posts-widget .card-item {
+  .main-container .main-widget .posts-widget .card-item {
     width: calc(25% - 20px);
     flex: 0 0 calc(25% - 20px);
     margin-right: 20px;
     margin-bottom: 20px;
   }
-  .main-container .widget-one .posts-widget.col-num-3 .card-item {
+  .main-container .main-widget .posts-widget.col-num-3 .card-item {
     width: calc(33.33% - 20px);
     width: 280px;
     flex: 0 0 auto;
   }
-  .main-container .widget-one .posts-widget.col-num-4 .card-item {
+  .main-container .main-widget .posts-widget.col-num-4 .card-item {
     width: calc(25% - 20px);
     flex: 0 0 auto;
   }
-  .main-container .widget-one .posts-widget.col-num-5 .card-item {
+  .main-container .main-widget .posts-widget.col-num-5 .card-item {
     width: calc(20% - 20px);
     flex: 0 0 auto;
   }
-  .main-container .widget-one .posts-widget.col-num-6 .card-item {
+  .main-container .main-widget .posts-widget.col-num-6 .card-item {
     width: calc(16.66% - 20px);
     flex: 0 0 auto;
   }
@@ -3704,7 +3709,7 @@ body.dark-mode .user-card {
   }
 }
 @media only screen and (min-width: 900px) {
-  .main-container[full-width] .widget-one {
+  .main-container[full-width] .main-widget {
     width: 100%;
   }
   .main-container[full-width] .sider {

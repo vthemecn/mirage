@@ -12,13 +12,11 @@ get_header();
 
 $config = vt_get_config();
 
-$full_width = $config['full_width']==1 ? 'full-width' : '';
-
 ?>
 
-<div class="main-container" <?=$full_width?>>
-    <div class="widget-one">
-        <div class="singular-article-container">
+<div class="main-container">
+    <div class="main-widget">
+        <div class="article-widget">
             <div class="page-title">
                 <?php the_title(); ?>
             </div>
@@ -44,7 +42,7 @@ $full_width = $config['full_width']==1 ? 'full-width' : '';
                 <?php endif ?>
             </div>
         </div>
-    </div><!-- .widget-one -->
+    </div><!-- .main-widget -->
 
     <div class="sider little-widget">
         <?php if ( is_active_sidebar( 'default-sidebar' ) ) : ?>

@@ -26,7 +26,6 @@ function vt_get_default_config()
     $config['site_logo'] = get_bloginfo('template_url') . '/assets/images/logo.png';
     $config['basic_style'] = '1';
     $config['is_show_login_register'] = '1';
-    $config['full_width'] = '0';
 
     $config['basic_style_color'] = '#f5c802';
 
@@ -50,7 +49,6 @@ function vt_get_default_config()
     $config['background_image'] = '';
     $config['dark_mode_type'] = 1;
     $config['highlight_is_on'] = 0;
-    $config['show_comments_counter'] = 1;
     $config['comments_is_on'] = 0;
 
     

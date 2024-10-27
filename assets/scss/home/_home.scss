@@ -1,6 +1,6 @@
 
 /* 加载更多按钮 */
-.widget-one button.posts-more-button {
+.main-widget button.posts-more-button {
   display: block;
   width: calc(100% - 30px);
   height: 40px;
@@ -18,27 +18,27 @@
 }
 
 /* 防止子元素响应 */
-.widget-one button.posts-more-button > * {
+.main-widget button.posts-more-button > * {
   pointer-events: none;
 }
 
-.widget-one button.posts-more-button .iconfont{
+.main-widget button.posts-more-button .iconfont{
   display: none;
 }
 
-.widget-one button.posts-more-button.loading .iconfont{
+.main-widget button.posts-more-button.loading .iconfont{
   display: inline-block;
   animation: rotation-load 1.5s linear infinite;
 }
 
-// .widget-one button.posts-more-button.loading,
-// .widget-one button.posts-more-button:hover{
+// .main-widget button.posts-more-button.loading,
+// .main-widget button.posts-more-button:hover{
 //   box-shadow: 0 0 3px 0 var(--vt-color-primary);
 //   color: var(--vt-color-primary);
 // }
 
 @media only screen and (min-width: 900px) {
-  .widget-one button.posts-more-button {
+  .main-widget button.posts-more-button {
     width: 120px;
     margin: 20px auto 20px auto;
   }

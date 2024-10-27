@@ -44,7 +44,7 @@ class HomeController
                 $avatar = vt_get_custom_avatar_url($author_id);
 
                 $user_center_url = home_url() . '/users/' . $current_post->post_author;
-                $display_name = get_the_author_meta('display_name', $current_post->post_author);
+                $nickname = get_the_author_meta('nickname', $current_post->post_author);
                 
                 $output .= '<div class="media-item">
                     <div class="media-thumbnail">
@@ -65,14 +65,14 @@ class HomeController
                     $output .=  <<<EOD
                                 <a class="author" href="{$user_center_url}" target="_blank">
                                     <img src="{$avatar}">
-                                    <span>{$display_name}</span>
+                                    <span>{$nickname}</span>
                                 </a>
                                 EOD;
                 } else {
                     $output .=  <<<EOD
                                 <span class="author">
                                     <img src="{$avatar}">
-                                    <span>{$display_name}</span>
+                                    <span>{$nickname}</span>
                                 </span>
                                 EOD;
                 }
@@ -84,7 +84,7 @@ class HomeController
                                 <i class="iconfont">&#xe752;</i>' .getPostViews(get_the_ID()). '
                             </span>';
                
-                if($vt_config['show_comments_counter']){
+                if($vt_config['comments_is_on']){
                     $output .= '<span class="meta"><i class="iconfont">&#xe8a6;</i>'. $current_post->comment_count .'</span>';
                 }
 

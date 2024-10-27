@@ -47,7 +47,7 @@ $user_center_url = home_url() . '/users/' .$post->post_author;
             <span class="hit-counter">
                 <i class="iconfont">&#xe752;</i><?php echo getPostViews(get_the_ID()); ?>
             </span>
-            <?php if($vt_config['show_comments_counter']):?>
+            <?php if($vt_config['comments_is_on']):?>
                 <span>
                     <i class="iconfont">&#xe8a6;</i><?php echo $post->comment_count; ?>
                 </span>

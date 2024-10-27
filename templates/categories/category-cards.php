@@ -17,7 +17,8 @@ get_header();
  */
 $config = vt_get_config();
 
-$full_width = $config['full_width']==1 ? 'full-width' : '';
+$full_width_option = get_option('vt_cat_full_width_' . $cat);
+$full_width = $full_width_option==1 ? 'full-width' : '';
 
 $category = get_term($cat);
 
@@ -64,7 +65,7 @@ switch ($config['list_cards_col']) {
 
 
 <div class="main-container" <?=$full_width?>>
-    <div class="widget-one">
+    <div class="main-widget">
         <?php if (have_posts()) : ?>
             <div class="posts-widget <?php echo $col_num_class?>">
                 <?php

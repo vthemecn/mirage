@@ -5,9 +5,7 @@
  */
 
 
-/**
- * 分类添加时的字段
- */
+// 分类添加页字段
 function vt_add_category_field()
 {
     echo '<div class="form-field">
@@ -24,9 +22,7 @@ function vt_add_category_field()
 add_action('category_add_form_fields', 'vt_add_category_field', 10, 2);
 
 
-/**
- * 编辑分类时的字段
- */
+// 分类编辑页字段
 function vt_edit_category_field($tag)
 {
     echo '<tr class="form-field">
@@ -43,13 +39,30 @@ function vt_edit_category_field($tag)
         <p class="description">输入缩略图的地址</p>
         </td>
         </tr>';
+
+    $vt_full_width = get_option('vt_cat_full_width_' . $tag->term_id);
+    $checked_0 = $vt_full_width == 0 ? 'checked="checked"' : '';
+    $checked_1 = $vt_full_width == 1 ? 'checked="checked"' : '';
+
+    echo '<tr class="form-field">
+            <th scope="row"><label>全宽显示</label></th>
+            <td>
+                <label>
+                    <input type="radio" name="vt_full_width" value="1" ' . $checked_1 . '>
+                    <span class="date-time-text">开启</span>
+                </label>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <label>
+                    <input type="radio" name="vt_full_width" value="0" ' . $checked_0 . '>
+                    <span class="date-time-text">关闭</span>
+                </label>
+            </td>
+        </tr>';
 }
 add_action('category_edit_form_fields', 'vt_edit_category_field', 10, 2);
 
 
-/**
- * 保存数据
- */
+// 保存数据
 function vt_taxonomy_metadate($term_id)
 {
     if (!current_user_can('manage_categories')) {
@@ -71,6 +84,12 @@ function vt_taxonomy_metadate($term_id)
     if (isset($_POST['vt_cat_tpl'])) {
         $key   = 'vt_cat_tpl_' . $term_id;
         $value = $_POST['vt_cat_tpl'];
+        update_option($key, $value);
+    }
+
+    if (isset($_POST['vt_full_width'])) {
+        $key   = 'vt_cat_full_width_' . $term_id;
+        $value = $_POST['vt_full_width'];
         update_option($key, $value);
     }
 }

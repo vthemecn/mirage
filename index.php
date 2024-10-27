@@ -11,13 +11,11 @@ get_header();
 
 $config = vt_get_config();
 
-$full_width = $config['full_width']==1 ? 'full-width' : '';
-
 ?>
 
 
-<div class="main-container" <?=$full_width?> >
-    <div class="widget-one">
+<div class="main-container">
+    <div class="main-widget">
         <?php
         if($config['_home_options']['sliders_is_show']){
             require get_template_directory() . '/templates/home/sliders.php';
@@ -35,12 +33,6 @@ $full_width = $config['full_width']==1 ? 'full-width' : '';
             require get_template_directory() . '/templates/home/articles.php';
         }
         ?>
-
-        <?php
-        if($config['_home_options']['links_is_show']){
-            require get_template_directory() . '/templates/home/links.php';
-        }
-        ?>
     </div>
     
     <div class="sider little-widget">
@@ -48,6 +40,14 @@ $full_width = $config['full_width']==1 ? 'full-width' : '';
             <?php dynamic_sidebar( 'default-sidebar' ); ?>
         <?php endif; ?>
     </div>
+</div>
+
+<div class="main-container">
+    <?php
+    if($config['_home_options']['links_is_show']){
+        require get_template_directory() . '/templates/home/links.php';
+    }
+    ?>
 </div>
 
 

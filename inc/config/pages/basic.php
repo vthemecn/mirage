@@ -341,22 +341,6 @@ defined('ABSPATH') || exit;
                     <p class="description">这个选项只控制是否显示注册登录按钮</p>
                 </td>
             </tr>
-
-            <tr>
-                <th scope="row"><label for="page_data_type">全宽显示</label></th>
-                <td>
-                    <div>
-                        <label class="color-label">
-                            <input name="full_width" type="radio" value="1" <?= $vt_config['full_width']==1 ? 'checked="checked"' : '' ?>>
-                            开启
-                        </label>
-                        <label class="color-label">
-                            <input name="full_width" type="radio" value="0" <?= $vt_config['full_width']==0 ? 'checked="checked"' : '' ?>>
-                            关闭
-                        </label>
-                    </div>
-                </td>
-            </tr>
             
             <tr>
                 <th scope="row"><label for="user_center_is_on">个人中心</label></th>
@@ -393,23 +377,6 @@ defined('ABSPATH') || exit;
             </tr>
 
             <tr>
-                <th scope="row"><label for="show_comments_counter">显示评论数</label></th>
-                <td>
-                    <p>
-                        <label>
-                            <input name="show_comments_counter" type="radio" value="1" <?php if ($vt_config['show_comments_counter'] == 1) { ?>checked="checked" <?php } ?>>
-                            开启
-                        </label>
-                        <label>
-                            <input name="show_comments_counter" type="radio" value="0" <?php if ($vt_config['show_comments_counter'] == 0) { ?>checked="checked" <?php } ?>>
-                            关闭
-                        </label>
-                    </p>
-                    <p class="description">在文章列表和文章详情页显示评论数</p>
-                </td>
-            </tr>
-
-            <tr>
                 <th scope="row"><label for="comments_is_on">开启评论</label></th>
                 <td>
                     <p>
@@ -422,7 +389,6 @@ defined('ABSPATH') || exit;
                             关闭
                         </label>
                     </p>
-                    <p class="description">在文章列表和文章详情页显示评论数</p>
                 </td>
             </tr>
             

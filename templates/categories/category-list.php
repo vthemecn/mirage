@@ -16,7 +16,8 @@ get_header();
  */
 $config = vt_get_config();
 
-$full_width = $config['full_width']==1 ? 'full-width' : '';
+$full_width_option = get_option('vt_cat_full_width_' . $cat);
+$full_width = $full_width_option==1 ? 'full-width' : '';
 
 $category = get_term($cat);
 
@@ -58,7 +59,7 @@ query_posts($args);
 
 
 <div class="main-container" <?=$full_width?>>
-    <div class="widget-one">
+    <div class="main-widget">
         <?php
         $sticky_arr = get_option( 'sticky_posts' );
         $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;

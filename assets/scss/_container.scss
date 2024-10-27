@@ -1,42 +1,41 @@
-
 .main-container {
   width: 100%;
   margin: 0 auto;
   padding: 8px;
   box-sizing:border-box;
   // overflow: hidden;
-
-  &::after {
-    content: "";
-    display: block;
-    clear: both;
-  }
-
-  .widget-one{
-    width: 100%;
-  }
-
-  .widget-one .header{
-    font-size: var(--vt-font-size-base);
-    margin-bottom: 15px;
-  }
-
-  .widget-one .posts-widget {
-    width: 100%;
-    margin-right: -8px;
-    display: flex;
-    justify-content: normal;
-    flex-wrap: wrap;
-  }
-
-  .widget-one .media-widget{
-    background-color: var(--vt-bg-color-card);
-    box-shadow: 0 0 2px 0 var(--vt-shadow-color);
-    border-radius: var(--vt-border-radius);
-  }
 }
 
-.widget-one > *{
+.main-container::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.main-container .main-widget{
+  width: 100%;
+}
+
+.main-container .main-widget .header{
+  font-size: var(--vt-font-size-base);
+  margin-bottom: 15px;
+}
+
+.main-container .main-widget .posts-widget {
+  width: 100%;
+  margin-right: -8px;
+  display: flex;
+  justify-content: normal;
+  flex-wrap: wrap;
+}
+
+.main-container .media-widget{
+  background-color: var(--vt-bg-color-card);
+  box-shadow: 0 0 2px 0 var(--vt-shadow-color);
+  border-radius: var(--vt-border-radius);
+}
+
+.main-widget > *{
   margin-bottom: 10px;
 }
 
@@ -45,71 +44,64 @@
   .main-container {
     width: 1200px;
     margin: 0 auto;
-    // padding: 20px 0;
     padding:20px 0 0 0;
     display: flex;
     justify-content: flex-start;
-  
-    &::after {
-      content: "";
-      display: block;
-      clear: both;
-    }
+  }
+  .main-container::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
 
-    .widget-one > *{
-      margin-bottom: 20px;
-    }
+  .main-container .main-widget > *{
+    margin-bottom: 20px;
+  }
 
-    .widget-one{
-      // width: 900px; //calc(1200px - 300px);
-      // flex: 1 0 auto;
-      // flex: 1;
-      // flex: 1 1 880px;
-      width: 880px;
-      // flex: 1 1 0%;
-    }
+  .main-container .main-widget{
+    width: 880px;
+  }
 
-    .widget-one .header{
-      font-size: 20px;
-      margin-bottom: 20px;
-    }
-  
-    .widget-one .posts-widget {
-      width: auto;
-      margin-right: -20px;
-      display: flex;
-      justify-content: normal;
-      flex-wrap: wrap;
-    }
+  .main-container .main-widget .header{
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
 
-    .widget-one .posts-widget .card-item{
-      width: calc(25% - 20px);
-      flex: 0 0 calc(25% - 20px);
-      margin-right: 20px;
-      margin-bottom: 20px;
-    }
+  .main-container .main-widget .posts-widget {
+    width: auto;
+    margin-right: -20px;
+    display: flex;
+    justify-content: normal;
+    flex-wrap: wrap;
+  }
 
-    .widget-one .posts-widget.col-num-3 .card-item{
-      width: calc(33.33% - 20px);
-      // flex: 0 0 calc(33.33% - 20px);
-      width: 280px;
-      flex: 0 0 auto;
-    }
-    .widget-one .posts-widget.col-num-4 .card-item{
-      width: calc(25% - 20px);
-      // width: 205px;
-      flex: 0 0 auto;
-    }
-    .widget-one .posts-widget.col-num-5 .card-item{
-      width: calc(20% - 20px);
-      // width: calc(184px - 20px);
-      flex: 0 0 auto;
-    }
-    .widget-one .posts-widget.col-num-6 .card-item{
-      width: calc(16.66% - 20px);
-      // width: calc(150px - 20px);
-      flex: 0 0 auto;
-    }
+  .main-container .main-widget .posts-widget .card-item{
+    width: calc(25% - 20px);
+    flex: 0 0 calc(25% - 20px);
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+
+  .main-container .main-widget .posts-widget.col-num-3 .card-item{
+    width: calc(33.33% - 20px);
+    // flex: 0 0 calc(33.33% - 20px);
+    width: 280px;
+    flex: 0 0 auto;
+  }
+  .main-container .main-widget .posts-widget.col-num-4 .card-item{
+    width: calc(25% - 20px);
+    // width: 205px;
+    flex: 0 0 auto;
+  }
+  .main-container .main-widget .posts-widget.col-num-5 .card-item{
+    width: calc(20% - 20px);
+    // width: calc(184px - 20px);
+    flex: 0 0 auto;
+  }
+  .main-container .main-widget .posts-widget.col-num-6 .card-item{
+    width: calc(16.66% - 20px);
+    // width: calc(150px - 20px);
+    flex: 0 0 auto;
   }
 
   
@@ -120,6 +112,7 @@
 .sider > div {
   margin-bottom: 10px;
 }
+
 @media only screen and (min-width: 900px) {
   .sider{
     width: 300px;
@@ -141,13 +134,8 @@
 
 @media only screen and (min-width: 900px) {
   .main-container[full-width]{}
-  .main-container[full-width] .widget-one{ width: 100%; }
+  .main-container[full-width] .main-widget{ width: 100%; }
   .main-container[full-width] .sider{ display: none;}
-
-
-
 }
-
-
 
 

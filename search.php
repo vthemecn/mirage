@@ -37,7 +37,7 @@ $banner_image = get_bloginfo('template_url') . '/assets/images/user-center-banne
 
 
 <div class="main-container">
-    <div class="widget-one">
+    <div class="main-widget">
         <?php if (have_posts()) : ?>
             <div class="media-list">
                 <?php while (have_posts()) : the_post(); ?>
