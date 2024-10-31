@@ -41,15 +41,14 @@ function vt_get_default_config()
 
     $config['list_type'] = 0;
     $config['widget_is_on'] = 0;
-    $config['list_cards_num'] = 0;
+
     $config['list_cards_col'] = 4;
-    $config['widget_header_is_show'] = 0;
     $config['image_items_height'] = '100%';
 	$config['default_image'] = get_bloginfo('template_url') . '/assets/images/default.jpg';
     $config['background_image'] = '';
     $config['dark_mode_type'] = 1;
     $config['highlight_is_on'] = 0;
-    $config['comments_is_on'] = 0;
+    $config['comments_is_on'] = 1;
 
     
 	/**

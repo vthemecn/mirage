@@ -4,7 +4,7 @@
  * Template Name: 页面模板
  * Template Post Type: post
  * 
- * @author: soushenji <soushenji@qq.com>
+ * @author: vtheme <mail@vtheme.cn>
  * @link https://vtheme.cn
  */
 

@@ -3,7 +3,7 @@
 /**
  * functions and definitions
  * 
- * @author: soushenji <soushenji@qq.com>
+ * @author: vtheme <mail@vtheme.cn>
  * @link https://vtheme.cn
  */
 
@@ -18,7 +18,7 @@ if (!function_exists('p')) :
     }
 endif;
 
-define('THEME_OPTION_NAME', '_mirage_config');
+define('THEME_OPTION_NAME', '_miragev_config');
 define('TEMP_DIR', get_template_directory());
 
 

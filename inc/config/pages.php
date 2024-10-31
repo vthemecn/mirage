@@ -27,7 +27,7 @@ if (!array_key_exists($action, $option_pages)) {
 <div class="wrap">
     <h1>MirageV 主题设置</h1>
     <p>
-        MirageV 主题地址： <a href="https://vtheme.cn/mirage" target="_blank">https://vtheme.cn/mirage</a>
+        MirageV 主题地址： <a href="https://vtheme.cn/miragev" target="_blank">https://vtheme.cn/miragev</a>
     </p>
     <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['input_save'])) { ?>
         <div id="setting-error-settings_updated" class="notice notice-success settings-error is-dismissible">

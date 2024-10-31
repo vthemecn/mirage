@@ -2,7 +2,7 @@
 /*
  * 主题样式设置
  *
- * @author: soushenji <soushenji@qq.com>
+ * @author: vtheme <mail@vtheme.cn>
  * @link: https://vtheme.cn
  */
 

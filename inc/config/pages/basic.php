@@ -2,7 +2,7 @@
 /*
  * 常规设置
  *
- * @author: soushenji <soushenji@qq.com>
+ * @author: vtheme <mail@vtheme.cn>
  * @link: https://vtheme.cn
  */
 defined('ABSPATH') || exit;
@@ -175,11 +175,6 @@ defined('ABSPATH') || exit;
             </tr>
 
             <tr>
-                <th scope="row"><label for="list_cards_num">显示卡片数量</label></th>
-                <td><input type="text" name="list_cards_num" id="list_cards_num" value="<?php echo ($vt_config['list_cards_num']); ?>" class="regular-text" placeholder=""></td>
-            </tr>
-
-            <tr>
                 <th scope="row"><label for="list_cards_col">每行列数</label></th>
                 <td>
                     <select name="list_cards_col" id="list_cards_col">
@@ -188,22 +183,6 @@ defined('ABSPATH') || exit;
                         <option value="5" <?php if($vt_config['list_cards_col']==5) echo 'selected'; ?>>五列</option>
                         <option value="6" <?php if($vt_config['list_cards_col']==6) echo 'selected'; ?>>六列</option>
                     </select>
-                </td>
-            </tr>
-
-            <tr>
-                <th scope="row"><label for="widget_header_is_show">模块标题</label></th>
-                <td>
-                    <div>
-                        <label class="color-label">
-                            <input name="widget_header_is_show" type="radio" value="0" <?php if ($vt_config['widget_header_is_show'] == 0) { ?>checked="checked" <?php } ?>>
-                            不显示
-                        </label>
-                        <label class="color-label">
-                            <input name="widget_header_is_show" type="radio" value="1" <?php if ($vt_config['widget_header_is_show'] == 1) { ?>checked="checked" <?php } ?>>
-                            显示
-                        </label>
-                    </div>
                 </td>
             </tr>
 
@@ -338,7 +317,6 @@ defined('ABSPATH') || exit;
                             不显示
                         </label>
                     </p>
-                    <p class="description">这个选项只控制是否显示注册登录按钮</p>
                 </td>
             </tr>
             
