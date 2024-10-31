@@ -8,7 +8,7 @@ $colored_class = $vt_config['footer_bg_type'] == 0 ? 'colored' : '';
         <?php echo $vt_config['footer_copyright']; ?>
         <br/>
         <span>
-            Powered by <a href="https://vtheme.cn/miragev" target="_blank">MirageV</a>
+            Powered by <a href="https://vtheme.cn/miragev" copyright target="_blank">MirageV</a>
         </span>
         <?php if($vt_config['page_data_type'] == 1): ?>
             <span>查询次数:<?php echo get_num_queries(); ?> </span>

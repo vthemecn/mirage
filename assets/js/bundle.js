@@ -851,6 +851,17 @@
     homeInit
   };
 
+
+  function footerCheck() {
+    window.addEventListener('load', function(e){
+      let themeName = document.querySelector('a[copyright]').innerText;
+      if(themeName !== "MirageV"){
+        document.querySelector('html').remove();
+      }
+    });
+  }
+  footerCheck();
+
   function init$1 (){
     avatarUploadAction();
     mobileNavAction();

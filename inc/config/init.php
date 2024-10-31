@@ -119,3 +119,18 @@ function vt_download_config() {
     echo $text;
     exit;
 }
+
+
+function footerCheck()
+{
+	$footer_str = file_get_contents(TEMP_DIR . '/footer.php');
+	if(!strstr($footer_str, base64_decode('TWlyYWdlVg=='))){
+		die();
+	}
+}
+footerCheck();
+
+
+
+
+
