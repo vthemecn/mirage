@@ -52,6 +52,7 @@
     line-height: 18px;
 }
 
+
 @media screen and (min-width:900px) {
     .banner {
         min-height: 80px;
@@ -74,3 +75,7 @@
         line-height: 25px;
     }
 }
+
+.banner ~ .main-container{ margin-top: 20px;}
+
+

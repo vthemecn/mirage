@@ -3,6 +3,7 @@ nav.pagination {
   font-size: 20px;
   border-top: 0px;
   border-bottom: 0px;
+  margin: 8px 0 0 0;
 }
 
 nav.pagination .nav-links {
@@ -51,4 +52,12 @@ nav.pagination a {
 nav.pagination a:hover {
   color: var(--vt-color-primary);
   border-color: var(--vt-color-primary);
+}
+
+
+@media only screen and (min-width: 900px) {
+  nav.pagination {
+    margin: 20px 0 0 0;
+  }
+
 }

@@ -139,7 +139,7 @@
 .image-title.widget-container {
   box-sizing: border-box;
   background-color: var(--vt-bg-color-card);
-  box-shadow: 0 1px 3px var(--vt-shadow-color);
+  box-shadow: 0 0 2px var(--vt-shadow-color);
   border-radius: var(--vt-border-radius);
 }
 .image-title.widget-container .item-list-wrapper {
@@ -515,11 +515,14 @@ body.dark-mode .user-card {
 /**
  * HTML 卡片
  */
-.html-card-container{   box-shadow: none !important; }
+.html-card-container{
+  box-shadow: none !important;
+}
 .html-card-container img{
   width: 100%;
   height: auto;
   border-radius: var(--vt-border-radius);
+  display: block;
 }
 
 

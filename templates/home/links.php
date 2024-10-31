@@ -25,16 +25,17 @@ $args = array(
 $links = get_bookmarks($args);
 ?>
 
-
-<div class="links widget-container">
-    <div class="widget-header <?php echo $widget_title_class?>">
-        <div class="widget-title"><?php echo __('友情链接','vt')?></div>
-    </div>
-    <div class="links-list">
-        <?php foreach($links as $k=>$v): ?>
-            <a href="<?php echo $v->link_url ?>" target="<?php echo $v->link_target ?>">
-                <?php echo $v->link_name ?>
-            </a>
-        <?php endforeach ?>
+<div class="main-container">
+    <div class="links widget-container">
+        <div class="widget-header <?php echo $widget_title_class?>">
+            <div class="widget-title"><?php echo __('友情链接','vt')?></div>
+        </div>
+        <div class="links-list">
+            <?php foreach($links as $k=>$v): ?>
+                <a href="<?php echo $v->link_url ?>" target="<?php echo $v->link_target ?>">
+                    <?php echo $v->link_name ?>
+                </a>
+            <?php endforeach ?>
+        </div>
     </div>
 </div>

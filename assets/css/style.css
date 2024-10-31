@@ -1067,6 +1067,7 @@ nav.pagination {
   font-size: 20px;
   border-top: 0px;
   border-bottom: 0px;
+  margin: 8px 0 0 0;
 }
 
 nav.pagination .nav-links {
@@ -1120,6 +1121,11 @@ nav.pagination a:hover {
   border-color: var(--vt-color-primary);
 }
 
+@media only screen and (min-width: 900px) {
+  nav.pagination {
+    margin: 20px 0 0 0;
+  }
+}
 .m-pagination {
   font-size: 13px;
   color: var(--vt-text-color);
@@ -1851,10 +1857,9 @@ nav.pagination a:hover {
   text-align: center;
   font-size: 14px;
   background-color: var(--vt-bg-color-card);
-  box-shadow: 0 0 3px 0 var(--vt-color-primary);
   color: var(--vt-color-primary);
   border-radius: var(--vt-border-radius);
-  border: none;
+  border: 1px solid var(--vt-color-primary);
   margin: 10px auto;
   cursor: pointer;
 }
@@ -2067,6 +2072,7 @@ nav.pagination a:hover {
   box-shadow: 0 0 2px 0 var(--vt-shadow-color);
   border-radius: var(--vt-border-radius);
   overflow: hidden;
+  margin: 10px 0 0 0;
 }
 
 .articles-widget::after {
@@ -2085,6 +2091,11 @@ nav.pagination a:hover {
   border-top: 1px solid var(--vt-border-color);
 }
 
+@media only screen and (min-width: 900px) {
+  .articles-widget {
+    margin: 20px 0 0 0;
+  }
+}
 .links-list {
   padding: 15px;
 }
@@ -2098,7 +2109,6 @@ nav.pagination a:hover {
 @media only screen and (min-width: 900px) {
   .links.widget-container {
     width: 100%;
-    margin: 0px auto 20px auto;
   }
 }
 /* 文章页 singular.php */
@@ -3255,7 +3265,7 @@ nav.pagination a:hover {
 .image-title.widget-container {
   box-sizing: border-box;
   background-color: var(--vt-bg-color-card);
-  box-shadow: 0 1px 3px var(--vt-shadow-color);
+  box-shadow: 0 0 2px var(--vt-shadow-color);
   border-radius: var(--vt-border-radius);
 }
 
@@ -3592,12 +3602,13 @@ body.dark-mode .user-card {
   width: 100%;
   height: auto;
   border-radius: var(--vt-border-radius);
+  display: block;
 }
 
 .main-container {
   width: 100%;
   margin: 0 auto;
-  padding: 8px;
+  padding: 0 8px 8px 8px;
   box-sizing: border-box;
 }
 
@@ -3609,6 +3620,7 @@ body.dark-mode .user-card {
 
 .main-container .main-widget {
   width: 100%;
+  margin-bottom: 8px;
 }
 
 .main-container .main-widget .header {
@@ -3619,6 +3631,7 @@ body.dark-mode .user-card {
 .main-container .main-widget .posts-widget {
   width: 100%;
   margin-right: -8px;
+  margin-bottom: -8px;
   display: flex;
   justify-content: normal;
   flex-wrap: wrap;
@@ -3630,15 +3643,15 @@ body.dark-mode .user-card {
   border-radius: var(--vt-border-radius);
 }
 
-.main-widget > * {
-  margin-bottom: 10px;
+.header + .main-container {
+  padding-top: 8px;
 }
 
 @media only screen and (min-width: 900px) {
   .main-container {
     width: 1200px;
     margin: 0 auto;
-    padding: 20px 0 0 0;
+    padding: 0 0 20px 0;
     display: flex;
     justify-content: flex-start;
   }
@@ -3647,22 +3660,20 @@ body.dark-mode .user-card {
     display: block;
     clear: both;
   }
-  .main-container .main-widget > * {
-    margin-bottom: 20px;
-  }
   .main-container .main-widget {
     width: 880px;
-  }
-  .main-container .main-widget .header {
-    font-size: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 0;
   }
   .main-container .main-widget .posts-widget {
     width: auto;
     margin-right: -20px;
+    margin-bottom: -20px;
     display: flex;
     justify-content: normal;
     flex-wrap: wrap;
+  }
+  .header + .main-container {
+    padding-top: 20px;
   }
   .main-container .main-widget .posts-widget .card-item {
     width: calc(25% - 20px);
@@ -3690,6 +3701,10 @@ body.dark-mode .user-card {
 }
 .sider > div {
   margin-bottom: 10px;
+}
+
+.sider > div:last-child {
+  margin-bottom: 0;
 }
 
 @media only screen and (min-width: 900px) {
@@ -3868,6 +3883,7 @@ body.dark-mode .user-card {
   font-size: 14px;
   background-color: var(--vt-color-primary);
   color: #fff;
+  flex: 0 0 auto;
 }
 
 .media-main .media-title a {
@@ -4033,12 +4049,16 @@ body.dark-mode .user-card {
     line-height: 25px;
   }
 }
+.banner ~ .main-container {
+  margin-top: 20px;
+}
+
 /*
  * 文章列表样式
  */
 .media-list {
   box-sizing: border-box;
-  margin: 0px 0px 20px 0;
+  margin: 0px 0px 0px 0;
   background-color: var(--vt-bg-color-card);
   box-shadow: 0 0 2px 0 var(--vt-shadow-color);
   border-radius: var(--vt-border-radius);

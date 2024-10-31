@@ -2,7 +2,8 @@
   background-color: var(--vt-bg-color-card);
   box-shadow: 0 0 2px 0 var(--vt-shadow-color);
   border-radius: var(--vt-border-radius);
-  overflow : hidden
+  overflow : hidden;
+  margin:10px 0 0 0;
 }
 
 .articles-widget::after {
@@ -19,4 +20,10 @@
 
 .articles-list .media-item:nth-child(1){
   border-top: 1px solid var(--vt-border-color);
+}
+
+@media only screen and (min-width: 900px) {
+  .articles-widget{
+    margin: 20px 0 0 0;
+  }
 }

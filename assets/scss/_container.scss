@@ -1,9 +1,8 @@
 .main-container {
   width: 100%;
   margin: 0 auto;
-  padding: 8px;
+  padding: 0 8px 8px 8px;
   box-sizing:border-box;
-  // overflow: hidden;
 }
 
 .main-container::after {
@@ -14,6 +13,7 @@
 
 .main-container .main-widget{
   width: 100%;
+  margin-bottom: 8px;
 }
 
 .main-container .main-widget .header{
@@ -24,6 +24,7 @@
 .main-container .main-widget .posts-widget {
   width: 100%;
   margin-right: -8px;
+  margin-bottom: -8px;
   display: flex;
   justify-content: normal;
   flex-wrap: wrap;
@@ -35,16 +36,14 @@
   border-radius: var(--vt-border-radius);
 }
 
-.main-widget > *{
-  margin-bottom: 10px;
-}
+.header + .main-container { padding-top: 8px; }
 
 
 @media only screen and (min-width: 900px) {
   .main-container {
     width: 1200px;
     margin: 0 auto;
-    padding:20px 0 0 0;
+    padding: 0 0 20px 0;
     display: flex;
     justify-content: flex-start;
   }
@@ -54,26 +53,21 @@
     clear: both;
   }
 
-  .main-container .main-widget > *{
-    margin-bottom: 20px;
-  }
-
   .main-container .main-widget{
     width: 880px;
-  }
-
-  .main-container .main-widget .header{
-    font-size: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 0;
   }
 
   .main-container .main-widget .posts-widget {
     width: auto;
     margin-right: -20px;
+    margin-bottom: -20px;
     display: flex;
     justify-content: normal;
     flex-wrap: wrap;
   }
+
+  .header + .main-container { padding-top: 20px; }
 
   .main-container .main-widget .posts-widget .card-item{
     width: calc(25% - 20px);
@@ -103,15 +97,12 @@
     // width: calc(150px - 20px);
     flex: 0 0 auto;
   }
-
-  
 }
 
 
 
-.sider > div {
-  margin-bottom: 10px;
-}
+.sider > div { margin-bottom: 10px; }
+.sider > div:last-child { margin-bottom: 0; }
 
 @media only screen and (min-width: 900px) {
   .sider{

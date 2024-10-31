@@ -9,10 +9,10 @@
   font-size: 14px;
   background-color: var(--vt-bg-color-card);
   // box-shadow: 0 0 3px 0 var(--vt-shadow-color);
-  box-shadow: 0 0 3px 0 var(--vt-color-primary);
+  // box-shadow: 0 0 3px 0 var(--vt-color-primary);
   color: var(--vt-color-primary);
   border-radius: var(--vt-border-radius);
-  border: none;
+  border: 1px solid var(--vt-color-primary);
   margin: 10px auto;
   cursor: pointer;
 }

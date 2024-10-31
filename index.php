@@ -42,13 +42,11 @@ $config = vt_get_config();
     </div>
 </div>
 
-<div class="main-container">
-    <?php
-    if($config['_home_options']['links_is_show']){
-        require get_template_directory() . '/templates/home/links.php';
-    }
-    ?>
-</div>
+<?php
+if($config['_home_options']['links_is_show']){
+    require get_template_directory() . '/templates/home/links.php';
+}
+?>
 
 
 <?php

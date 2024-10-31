@@ -1,10 +1,6 @@
-.links.widget-container{
+.links.widget-container{}
 
-}
-
-.links-list{
-  padding: 15px;
-}
+.links-list{ padding: 15px; }
 
 .links-list a{
   margin-right: 20px;
@@ -16,7 +12,7 @@
 @media only screen and (min-width: 900px) {
   .links.widget-container{
     width: 100%;
-    margin: 0px auto 20px auto;
+    // margin: 0px auto 20px auto;
   }
 }
 
