@@ -1,0 +1,76 @@
+@charset "UTF-8";
+/*
+ * 公共按钮
+ */
+.btn {
+  display: inline-block;
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  box-sizing: border-box;
+  border: 1px solid var(--vt-border-color);
+  border-radius: var(--vt-border-radius);
+  color: var(--vt-text-color);
+  cursor: pointer;
+  font-size: var(--vt-font-size-sm);
+  text-align: center;
+  padding: 0 8px;
+  font-size: 13px;
+}
+.btn:hover {
+  color: var(--vt-text-color);
+}
+
+.btn.btn-sm {
+  height: 22px;
+  line-height: 22px;
+  font-size: 12px;
+  width: auto;
+  padding: 0 8px;
+}
+
+.btn.btn-primary {
+  background-color: var(--vt-color-primary);
+  color: var(--vt-text-color-inverse);
+}
+
+.btn.btn-success {
+  background-color: var(--vt-color-success);
+  color: var(--vt-text-color-inverse);
+}
+
+.btn.btn-danger {
+  background-color: var(--vt-color-danger);
+  color: var(--vt-text-color-inverse);
+}
+
+.btn.btn-error {
+  background-color: var(--vt-color-error);
+  color: var(--vt-text-color-inverse);
+}
+
+.btn.btn-primary-sec {
+  border: 1px solid var(--vt-color-primary);
+  color: var(--vt-color-primary);
+}
+
+.btn.btn-success-sec {
+  border: 1px solid var(--vt-color-success);
+  color: var(--vt-color-success);
+}
+
+.btn.btn-danger-sec {
+  border: 1px solid var(--vt-color-danger);
+  color: var(--vt-color-danger);
+}
+
+.btn.btn-error-sec {
+  border: 1px solid var(--vt-color-error);
+  color: var(--vt-color-error);
+}
+
+@media only screen and (min-width: 900px) {
+  .btn, .btn-primary {
+    width: auto;
+  }
+}

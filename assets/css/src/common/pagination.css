@@ -1,0 +1,93 @@
+.m-pagination {
+  font-size: 13px;
+  color: var(--vt-text-color);
+  line-height: 28px;
+}
+.m-pagination .m-pager {
+  display: inline-block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.m-pagination .m-pagination-total {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.m-pagination .m-pagination-prev,
+.m-pagination .m-pagination-next,
+.m-pagination .m-pager-number {
+  display: inline-block;
+  cursor: pointer;
+  min-width: 30px;
+  height: 28px;
+  text-align: center;
+  vertical-align: middle;
+}
+.m-pagination .m-pagination-prev:hover, .m-pagination .m-pagination-prev.active,
+.m-pagination .m-pagination-next:hover,
+.m-pagination .m-pagination-next.active,
+.m-pagination .m-pager-number:hover,
+.m-pagination .m-pager-number.active {
+  color: var(--vt-color-primary);
+}
+.m-pagination .m-pagination-prev a,
+.m-pagination .m-pagination-next a,
+.m-pagination .m-pager-number a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  height: 100%;
+  width: 100%;
+  font-size: 14px;
+}
+.m-pagination .m-pagination-prev.disabled, .m-pagination .m-pagination-prev:disabled,
+.m-pagination .m-pagination-next.disabled,
+.m-pagination .m-pagination-next:disabled,
+.m-pagination .m-pager-number.disabled,
+.m-pagination .m-pager-number:disabled {
+  cursor: not-allowed;
+  color: var(--vt-text-color-disable);
+}
+.m-pagination .m-pagination-prev,
+.m-pagination .m-pagination-next {
+  background: none;
+  outline: none;
+  border: none;
+  padding: 0 10px;
+}
+.m-pagination .m-pagination-sizes {
+  height: 29px;
+  border-radius: 3px;
+  border: solid 1px #DCDFE6;
+  outline: none;
+  margin: 0 4px;
+  font-size: 12px;
+  padding: 0 10px;
+  vertical-align: middle;
+}
+.m-pagination .m-pagination-sizes:hover {
+  border-color: var(--vt-color-primary);
+}
+.m-pagination .m-pagination-sizes:focus {
+  box-shadow: 0 0 2px 0 var(--vt-text-color-grey);
+}
+.m-pagination.is-background .m-pagination-prev,
+.m-pagination.is-background .m-pagination-next,
+.m-pagination.is-background .m-pager-number {
+  background: var(--vt-bg-color-grey);
+  margin: 0 5px;
+  border-radius: 2px;
+}
+.m-pagination.is-background .m-pager-number.active {
+  background: var(--vt-color-primary);
+  color: #fff;
+}
+.m-pagination.is-background .m-pager-number.disabled {
+  filter: grayscale(1);
+}
+.m-pagination.text-center {
+  text-align: center;
+}
+.m-pagination.text-right {
+  text-align: right;
+}

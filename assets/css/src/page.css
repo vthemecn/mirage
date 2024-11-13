@@ -1,0 +1,27 @@
+@charset "UTF-8";
+/**
+ * 单页
+ */
+.singular-page-container {
+  margin-top: 10px;
+  padding: 15px;
+  box-sizing: border-box;
+  background-color: var(--vt-bg-color-card);
+  box-shadow: 0 0 2px 0 var(--vt-shadow-color);
+  border-radius: var(--vt-border-radius);
+}
+
+.page-title {
+  line-height: 30px;
+  font-size: var(--vt-font-size-lg);
+  font-weight: 600;
+  color: var(--vt-text-color);
+}
+
+.page-meta {
+  margin: 2rem 0rem 5rem 0rem;
+}
+
+.page-content {
+  margin-top: 30px;
+}

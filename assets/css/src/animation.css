@@ -1,0 +1,52 @@
+@charset "UTF-8";
+/* logo 闪烁 */
+.flash.logo {
+  position: relative;
+  overflow: hidden;
+}
+
+.flash.logo::before {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  transform: rotate(-45deg);
+  opacity: 0.7;
+  animation: logoLights 2s ease-in 1s infinite;
+}
+
+@keyframes logoLights {
+  0% {
+    left: -160px;
+    top: 0;
+  }
+  to {
+    left: 160px;
+    top: 0;
+  }
+}
+.flash.logo::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.5);
+  transform: rotate(-45deg);
+  opacity: 0.8;
+  animation: logoLights2 2s ease-in 1s infinite;
+}
+
+@keyframes logoLights2 {
+  0% {
+    left: -130px;
+    top: 0;
+  }
+  to {
+    left: 190px;
+    top: 0;
+  }
+}
+.dark-mode .flash.logo::after, .dark-mode .logo::before {
+  display: none;
+}

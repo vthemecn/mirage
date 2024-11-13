@@ -1,0 +1,45 @@
+@charset "UTF-8";
+/* 加载更多按钮 */
+.main-widget button.posts-more-button {
+  display: block;
+  width: calc(100% - 30px);
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 14px;
+  background-color: var(--vt-bg-color-card);
+  color: var(--vt-color-primary);
+  border-radius: var(--vt-border-radius);
+  border: 1px solid var(--vt-color-primary);
+  margin: 10px auto;
+  cursor: pointer;
+}
+
+/* 防止子元素响应 */
+.main-widget button.posts-more-button > * {
+  pointer-events: none;
+}
+
+.main-widget button.posts-more-button .iconfont {
+  display: none;
+}
+
+.main-widget button.posts-more-button.loading .iconfont {
+  display: inline-block;
+  animation: rotation-load 1.5s linear infinite;
+}
+
+@media only screen and (min-width: 900px) {
+  .main-widget button.posts-more-button {
+    width: 120px;
+    margin: 20px auto 20px auto;
+  }
+}
+@keyframes rotation-load {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(-360deg);
+  }
+}

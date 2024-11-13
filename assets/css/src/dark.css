@@ -1,0 +1,7 @@
+.dark-mode input, .dark-mode textarea {
+  color: var(--vt-text-color);
+  background-color: var(--vt-bg-color-card);
+}
+.dark-mode input:focus-visible, .dark-mode textarea:focus-visible {
+  outline: 1px solid var(--vt-color-primary);
+}

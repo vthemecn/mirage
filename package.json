@@ -1,11 +1,10 @@
 {
   "name": "miragev",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "sass -w ./assets/scss:./assets/css --no-source-map",
-    "sass:build": "sass -w ./assets/scss:./assets/css --style=compressed --no-source-map",
+    "merge":"node --watch ./assets/merge.js",
     "rollup": "rollup ./assets/js/src/index.js --file ./assets/js/index.js --format iife --watch",
     "i18n": "msgfmt -o inc/languages/zh_CN.mo inc/languages/zh_CN.po && msgfmt -o inc/languages/en_US.mo inc/languages/en_US.po"
   },

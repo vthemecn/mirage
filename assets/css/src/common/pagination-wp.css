@@ -1,0 +1,65 @@
+@charset "UTF-8";
+/* 分页 */
+nav.pagination {
+  font-size: 20px;
+  border-top: 0px;
+  border-bottom: 0px;
+  margin: 8px 0 0 0;
+}
+
+nav.pagination .nav-links {
+  align-items: baseline;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 1.8em;
+  font-weight: 100;
+  width: 100%;
+}
+
+nav.pagination .pagination-separator {
+  margin: 5em 0;
+}
+
+nav.pagination .nav-links > * {
+  min-width: 2em;
+  height: 2em;
+  line-height: 2.1em;
+  text-align: center;
+  font-size: 0.4em;
+  border: 1px solid var(--vt-border-color);
+  margin: 0px 7px 0px 0;
+  display: block;
+  background-color: var(--vt-bg-color-card);
+  box-shadow: 0 1px 3px var(--vt-shadow-color);
+  padding: 1px 1px;
+}
+
+nav.pagination .nav-links > .current {
+  background-color: var(--vt-color-primary);
+  border-color: var(--vt-color-primary);
+  color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px var(--vt-shadow-color);
+}
+
+nav.pagination .nav-links .placeholder {
+  display: none;
+  visibility: hidden;
+}
+
+nav.pagination a {
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+nav.pagination a:hover {
+  color: var(--vt-color-primary);
+  border-color: var(--vt-color-primary);
+}
+
+@media only screen and (min-width: 900px) {
+  nav.pagination {
+    margin: 20px 0 0 0;
+  }
+}

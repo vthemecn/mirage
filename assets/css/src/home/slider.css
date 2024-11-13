@@ -1,0 +1,69 @@
+@charset "UTF-8";
+/* 幻灯样式 */
+.swiper-container {
+  width: 100%;
+  height: 50vw;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 0px auto;
+  overflow: hidden;
+  border-radius: var(--vt-border-radius);
+}
+
+.swiper-container .swiper-slide {
+  background: var(--vt-bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.swiper-container .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+}
+
+.swiper-container .swiper-pagination-bullet-active {
+  background-color: var(--vt-color-primary);
+}
+
+.swiper-container .swiper-button-next,
+.swiper-container .swiper-button-prev {
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.3);
+  left: 20px;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 99;
+}
+.swiper-container .swiper-button-next::after,
+.swiper-container .swiper-button-prev::after {
+  color: #fff;
+  font-size: 18px;
+}
+.swiper-container .swiper-button-next.swiper-button-disabled,
+.swiper-container .swiper-button-prev.swiper-button-disabled {
+  opacity: 0.3;
+  pointer-events: auto;
+}
+
+.swiper-container .swiper-button-next {
+  left: auto;
+  right: 20px;
+}
+
+.swiper-container:hover .swiper-button-next,
+.swiper-container:hover .swiper-button-prev {
+  visibility: visible;
+}
+.swiper-container:hover .swiper-button-next:not(.swiper-button-disabled),
+.swiper-container:hover .swiper-button-prev:not(.swiper-button-disabled) {
+  opacity: 1;
+}

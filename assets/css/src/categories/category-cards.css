@@ -1,0 +1,40 @@
+.cards-section {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 20px auto;
+  padding: 0px;
+}
+.cards-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.cards-section .cards-list {
+  width: auto;
+  margin-right: -8px;
+  display: flex;
+  justify-content: normal;
+  flex-wrap: wrap;
+}
+.cards-section .cards-list::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+@media only screen and (min-width: 900px) {
+  .cards-section {
+    width: 100%;
+    padding: 0;
+    margin: 11px auto;
+  }
+  .cards-section .cards-list {
+    margin-right: -20px;
+    padding: 0;
+  }
+  .cards-section .cards-list .card-item {
+    width: auto;
+    margin: 0 20px 20px 0;
+    flex: 0 0 calc(33.33% - 20px);
+  }
+}

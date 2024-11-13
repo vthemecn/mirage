@@ -1,0 +1,15 @@
+.links-list {
+  padding: 15px;
+}
+
+.links-list a {
+  margin-right: 20px;
+  line-height: 30px;
+  font-size: 14px;
+}
+
+@media only screen and (min-width: 900px) {
+  .links.widget-container {
+    width: 100%;
+  }
+}

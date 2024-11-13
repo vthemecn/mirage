@@ -1,0 +1,127 @@
+@charset "UTF-8";
+.main-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 8px 8px 8px;
+  box-sizing: border-box;
+}
+
+.main-container::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.main-container .main-widget {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.main-container .main-widget .header {
+  font-size: var(--vt-font-size-base);
+  margin-bottom: 15px;
+}
+
+.main-container .main-widget .posts-widget {
+  width: 100%;
+  margin-right: -8px;
+  margin-bottom: -8px;
+  display: flex;
+  justify-content: normal;
+  flex-wrap: wrap;
+}
+
+.main-container .media-widget {
+  background-color: var(--vt-bg-color-card);
+  box-shadow: 0 0 2px 0 var(--vt-shadow-color);
+  border-radius: var(--vt-border-radius);
+}
+
+.header + .main-container {
+  padding-top: 8px;
+}
+
+@media only screen and (min-width: 900px) {
+  .main-container {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0 0 20px 0;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .main-container::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .main-container .main-widget {
+    width: 880px;
+    margin-bottom: 0;
+  }
+  .main-container .main-widget .posts-widget {
+    width: auto;
+    margin-right: -20px;
+    margin-bottom: -20px;
+    display: flex;
+    justify-content: normal;
+    flex-wrap: wrap;
+  }
+  .header + .main-container {
+    padding-top: 20px;
+  }
+  .main-container .main-widget .posts-widget .card-item {
+    width: calc(25% - 20px);
+    flex: 0 0 calc(25% - 20px);
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+  .main-container .main-widget .posts-widget.col-num-3 .card-item {
+    width: calc(33.33% - 20px);
+    width: 280px;
+    flex: 0 0 auto;
+  }
+  .main-container .main-widget .posts-widget.col-num-4 .card-item {
+    width: calc(25% - 20px);
+    flex: 0 0 auto;
+  }
+  .main-container .main-widget .posts-widget.col-num-5 .card-item {
+    width: calc(20% - 20px);
+    flex: 0 0 auto;
+  }
+  .main-container .main-widget .posts-widget.col-num-6 .card-item {
+    width: calc(16.66% - 20px);
+    flex: 0 0 auto;
+  }
+}
+.sider > div {
+  margin-bottom: 10px;
+}
+
+.sider > div:last-child {
+  margin-bottom: 0;
+}
+
+@media only screen and (min-width: 900px) {
+  .sider {
+    width: 300px;
+    flex: 0 0 300px;
+    margin-left: 20px;
+    position: relative;
+  }
+  /* 最后一个模块粘性定位 */
+  .sider .widget-container:last-child {
+    position: sticky;
+    top: 20px;
+  }
+  .sider > div {
+    margin-bottom: 20px;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .main-container[full-width] .main-widget {
+    width: 100%;
+  }
+  .main-container[full-width] .sider {
+    display: none;
+  }
+}

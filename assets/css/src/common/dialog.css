@@ -1,0 +1,101 @@
+.vt-dialog {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+  display: none;
+}
+
+.vt-dialog[open] {
+  display: flex !important;
+}
+
+.vt-dialog[modal] {
+  position: fixed;
+  left: 0;
+  top: 0;
+  transform: translate(0, 0);
+  z-index: 99;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.vt-dialog[modal]::before {
+  content: "";
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--vt-bg-color-mask);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.no-scroll {
+  overflow-y: hidden;
+}
+
+.dialog-widget {
+  box-sizing: border-box;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: var(--vt-border-radius);
+  background-color: var(--vt-bg-color-card);
+  box-shadow: 0 0 20px var(--vt-shadow-color);
+  position: relative;
+  user-select: none;
+}
+
+.dialog-widget .close-button {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  text-align: center;
+  color: var(--vt-text-color-grey);
+  z-index: 9;
+}
+
+.dialog-widget .close-button i.iconfont {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.dialog-header {
+  height: 25px;
+  font-size: 16px;
+}
+
+.dialog-header .title {
+  float: left;
+}
+
+.dialog-header .close {
+  float: right;
+  font-size: 25px;
+  position: relative;
+  top: -5px;
+}
+
+.dialog-body {
+  padding: 10px 0;
+}
+
+.dialog-body label {
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dialog-action-group {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dialog-action-group .btn {
+  margin: 0 0 0 10px;
+}

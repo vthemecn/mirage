@@ -1,0 +1,35 @@
+.user-item {
+  padding: 10px 0;
+  display: flex;
+  font-size: 15px;
+  line-height: 25px;
+}
+.user-item:first-child {
+  margin-top: 20px;
+}
+.user-item .user-item-header {
+  width: 70px;
+  flex: 0 0 70px;
+  color: var(--vt-text-color-grey);
+}
+.user-item-body.description {
+  text-align: justify;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.achievement {
+  display: flex;
+}
+.achievement .achievement-widget {
+  width: 33.33%;
+  box-sizing: border-box;
+  outline: 1px solid green;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 calc(33.33% - 0px);
+  align-items: center;
+}

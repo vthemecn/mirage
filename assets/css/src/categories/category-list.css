@@ -1,0 +1,36 @@
+@charset "UTF-8";
+/*
+ * 文章列表样式
+ */
+.media-list {
+  box-sizing: border-box;
+  margin: 0px 0px 0px 0;
+  background-color: var(--vt-bg-color-card);
+  box-shadow: 0 0 2px 0 var(--vt-shadow-color);
+  border-radius: var(--vt-border-radius);
+}
+
+@media only screen and (min-width: 900px) {
+  .media-item {
+    padding: 15px !important;
+  }
+  .media-item .media-widget .media-widget-right {
+    width: 160px;
+  }
+  .media-item .media-widget .media-widget-right img {
+    width: 160px;
+    height: 100px;
+    margin-top: 5px;
+    border-radius: 3px;
+    object-fit: cover;
+  }
+  .media-item .media-widget .media-thumbnail {
+    flex-shrink: 0;
+    width: 160px !important;
+    height: 85px !important;
+  }
+  .media-item .media-widget .media-thumbnail img {
+    width: 100%;
+    height: 100%;
+  }
+}

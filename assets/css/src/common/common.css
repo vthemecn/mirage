@@ -1,0 +1,141 @@
+@charset "UTF-8";
+/*
+ * 默认的样式
+ */
+html {
+  -webkit-text-size-adjust: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  border: 0;
+  height: auto;
+  width: auto;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: var(--vt-font-size-base);
+  color: var(--vt-text-color);
+  letter-spacing: 0.8px;
+  position: relative;
+  letter-spacing: 1px;
+  background-color: var(--vt-bg-color);
+}
+
+body:before {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.3;
+  z-index: -1;
+  display: block;
+  position: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  content: "";
+}
+
+a {
+  color: var(--vt-text-color);
+  font-size: var(--vt-font-size-base);
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+a:hover {
+  color: var(--vt-color-primary);
+}
+
+/**
+ * 文章页，文档页等 公共的点赞，收藏 模块
+ */
+/**
+ * 面包屑
+ */
+.breadcrumbs {
+  width: auto;
+  height: 35px;
+  line-height: 35px;
+  font-size: var(--vt-font-size-sm);
+  color: var(--vt-text-color-grey);
+}
+.breadcrumbs .iconfont {
+  font-size: var(--vt-font-size-lg);
+  vertical-align: -5px;
+}
+.breadcrumbs a {
+  font-size: var(--vt-font-size-sm);
+  color: var(--vt-text-color-grey);
+}
+
+/**
+ * 404
+ */
+.page-no-found {
+  width: 100%;
+  max-width: 350px;
+  margin: 60px auto 250px auto;
+  color: var(--vt-text-color);
+}
+.page-no-found img {
+  width: 100%;
+}
+.page-no-found p {
+  font-size: 30px;
+  text-align: center;
+}
+.page-no-found a {
+  display: block;
+  width: 100px;
+  height: 30px;
+  color: var(--vt-text-color-inverse);
+  font-size: 13px;
+  margin: 50px auto 0px auto;
+  line-height: 30px;
+  text-align: center;
+  background-color: var(--vt-color-primary);
+  border-radius: 3px;
+}
+.page-no-found a:hover {
+  color: var(--vt-text-color-inverse);
+}
+
+/**
+ * 没有内容
+ */
+.no-content {
+  text-align: center;
+  padding: 100px 0px;
+  font-size: var(--vt-font-size-base);
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.no-content img {
+  max-width: 150px;
+  margin: 20px auto;
+}
+.no-content p {
+  margin-top: 10px;
+  color: var(--vt-text-color-grey);
+}
+
+.search-title {
+  margin-top: 10px;
+  color: var(--vt-text-color);
+}
