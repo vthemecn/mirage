@@ -31,6 +31,7 @@ require_once TEMP_DIR . '/inc/shortcode.php';
 require_once TEMP_DIR . '/inc/category.php';
 require_once TEMP_DIR . '/inc/avatar.php';
 require_once TEMP_DIR . '/inc/rewrite.php';
+require_once TEMP_DIR . '/inc/meta-api.php';
 require_once TEMP_DIR . '/api/routes.php';
 
 
