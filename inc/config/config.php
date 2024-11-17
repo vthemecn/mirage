@@ -52,11 +52,13 @@ function vt_get_default_config()
 
     
 	/**
-	 * 接口设置
+	 * API 设置
 	 */
 	$config['is_development'] = 0; // 是否开启开发模式
-	$config['account_mode'] = array('mobile', 'email', 'username'); // 用户注册登录模式
 	$config['upload_images_limit'] = 50; // 每个用户每天上传图片的数量限制
+	$config['wx_app_id'] = 'wx7da9wdadcctg43x9';
+	$config['wx_app_secret'] = '';
+
 
 	/**
 	 * SEO设置

@@ -1,5 +1,7 @@
 <?php
 require_once TEMP_DIR . '/api/home.php';
+require_once TEMP_DIR . '/api/wxapp.php';
+
 
 add_action('rest_api_init', function (){
     /**
@@ -27,6 +29,20 @@ add_action('rest_api_init', function (){
             return $homeController->sendmail($request);
         }
     ]);
+
+
+    /**
+     * 微信小程序登录接口
+     * 路径：/wp-json/vtheme/v1/wxapp-login
+     */
+    register_rest_route('vtheme/v1', 'wxapp-login', [
+        'methods'  => 'POST',
+        'callback' => function ($request) {
+            $wxapp = new \vtheme\api\Wxapp();
+            return $wxapp->login($request);
+        }
+    ]);
+
 
     // /wp-json/vtheme/v1/home/test
     register_rest_route('vtheme/v1', 'home/test', [

@@ -37,28 +37,19 @@ defined('ABSPATH') || exit;
             </tr>
 
             <tr>
-                <th scope="row"><label for="account_mode">账户类型</label></th>
+                <th scope="row"><label for="wxa">微信AppID</label></th>
                 <td>
-                    <?php
-                    $account_mode = is_array($vt_config['account_mode']) ? $vt_config['account_mode'] : json_decode($vt_config['account_mode'], true);
-                    ?>
-                    <p>
-                        <label>
-                            <input name="account_mode[]" type="checkbox" value="mobile" <?php if (in_array('mobile', $account_mode)) { ?>checked="checked" <?php } ?>>
-                            手机登录
-                        </label>
-                        <label>
-                            <input name="account_mode[]" type="checkbox" value="email" <?php if (in_array('email', $account_mode)) { ?>checked="checked" <?php } ?>>
-                            邮箱登录
-                        </label>
-                        <label style="display:none">
-                            <input name="account_mode[]" type="checkbox" value="username" checked="checked">
-                            用户名登录
-                        </label>
-                    </p>
-                    <p class="description">用户注册登录模式</p>
+                    <input type="text" name="wx_app_id" value="<?= $vt_config['wx_app_id'] ?>" class="regular-text" placeholder="请输入微信小程序ID">
                 </td>
             </tr>
+            <tr>
+                <th scope="row"><label for="wxa">微信AppSecret</label></th>
+                <td>
+                    <input type="text" name="wx_app_secret" value="<?= $vt_config['wx_app_secret'] ?>" class="regular-text" placeholder="请输入微信小程序密钥">
+                </td>
+            </tr>
+
+
 
         </tbody>
     </table>
