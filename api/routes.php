@@ -43,6 +43,18 @@ add_action('rest_api_init', function (){
         }
     ]);
 
+    /**
+     * 小程序相关信息
+     * 路径：/wp-json/vtheme/v1/index
+     */
+    register_rest_route('vtheme/v1', 'index', [
+        'methods'  => 'GET',
+        'callback' => function ($request) {
+            $homeController = new \vtheme\api\HomeController();
+            return $homeController->index($request);
+        }
+    ]);
+
 
     // /wp-json/vtheme/v1/home/test
     register_rest_route('vtheme/v1', 'home/test', [

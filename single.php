@@ -105,7 +105,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                 <?php endif ?>
             </div>
             
-            <div class="article-content">
+            <div class="article-content line-numbers">
                 <?php /* if(get_the_excerpt()): ?>
                     <div class="content-excerpt">
                         <?php echo get_the_excerpt() ?>
@@ -256,15 +256,8 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
 <input type="hidden" name="post_url" value="<?= get_permalink() ?>">
 
 <?php if($config['highlight_is_on']):?>
-<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/assets/js/lib/highlight/styles/stackoverflow-light.min.css">
-<script src="<?php bloginfo('template_url'); ?>/assets/js/lib/highlight/highlight.min.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        document.querySelectorAll('pre').forEach((el) => {
-            hljs.highlightElement(el);
-        });
-    });
-</script>
+    <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/assets/lib/prism/prism.css">
+    <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/assets/lib/prism/prism.js"></script>
 <?php endif ?>
 
 <?php get_footer(); ?>

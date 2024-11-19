@@ -57,7 +57,9 @@ function vt_get_default_config()
 	$config['is_development'] = 0; // 是否开启开发模式
 	$config['upload_images_limit'] = 50; // 每个用户每天上传图片的数量限制
 	$config['wx_app_id'] = 'wx7da9wdadcctg43x9';
-	$config['wx_app_secret'] = '';
+	$config['app_about_id'] = '';
+	$config['app_using_id'] = '';
+	$config['app_privacy_id'] = '';
 
 
 	/**

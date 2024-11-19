@@ -38,12 +38,9 @@ if (!$vt_config['frontend_is_on']) {
     <meta name="api-url" content="<?php echo home_url() ?>">
     <?php wp_head(); ?>
 
-    <?php /*
-    <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/assets/css/style.css" />
-    */ ?>
-   
-    <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/assets/js/lib/swiper/swiper-bundle.min.css" />
-    <script src="<?php bloginfo('template_url'); ?>/assets/js/lib/swiper/swiper-bundle.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/assets/lib/swiper/swiper-bundle.min.css" />
+    <script src="<?php bloginfo('template_url'); ?>/assets/lib/swiper/swiper-bundle.min.js"></script>
 
     <?php
     // 自定义颜色

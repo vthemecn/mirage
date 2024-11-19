@@ -49,6 +49,40 @@ defined('ABSPATH') || exit;
                 </td>
             </tr>
 
+            <tr>
+                <th scope="row"><label>小程序最新列表</label></th>
+                <td>
+                    <input type="text" name="app_lastest_ids" value="<?= $vt_config['app_lastest_ids'] ?>" class="regular-text">
+                    <p class="description">请输入分类ID，多个ID以英文逗号分隔</p>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><label>小程序推荐列表</label></th>
+                <td>
+                    <input type="text" name="app_hot_ids" value="<?= $vt_config['app_hot_ids'] ?>" class="regular-text">
+                    <p class="description">请输入分类ID，多个ID以英文逗号分隔</p>
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row"><label>“关于“页面ID</label></th>
+                <td>
+                    <input type="text" name="app_about_id" value="<?= $vt_config['app_about_id'] ?>" class="regular-text" placeholder="请输入页面ID">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><label>”使用协议“页面ID</label></th>
+                <td>
+                    <input type="text" name="app_using_id" value="<?= $vt_config['app_using_id'] ?>" class="regular-text" placeholder="请输入页面ID">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><label>”隐私协议“页面ID</label></th>
+                <td>
+                    <input type="text" name="app_privacy_id" value="<?= $vt_config['app_privacy_id'] ?>" class="regular-text" placeholder="请输入页面ID">
+                </td>
+            </tr>
+
 
 
         </tbody>
