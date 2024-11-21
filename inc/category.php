@@ -81,9 +81,9 @@ function vt_taxonomy_metadate($term_id)
         update_option($cat_key, $cat_value);
     }
     
-    if (isset($_POST['vt_cat_tpl'])) {
-        $key   = 'vt_cat_tpl_' . $term_id;
-        $value = $_POST['vt_cat_tpl'];
+    if (isset($_POST['vt_cat_list_type'])) {
+        $key   = 'vt_cat_list_type_' . $term_id;
+        $value = $_POST['vt_cat_list_type'];
         update_option($key, $value);
     }
 
@@ -101,12 +101,13 @@ add_action('edited_category', 'vt_taxonomy_metadate', 10, 1);
 /**
  * 分类模板选择
  */
-add_action('category_edit_form_fields', 'vt_edit_category_tpl', 10, 2);
-function vt_edit_category_tpl($tag)
+add_action('category_edit_form_fields', 'vt_edit_category_list_type', 10, 2);
+function vt_edit_category_list_type($tag)
 {
-    $vt_cat_tpl = get_option('vt_cat_tpl_' . $tag->term_id);
-    $checked_0 = $vt_cat_tpl == 0 ? 'checked="checked"' : '';
-    $checked_1 = $vt_cat_tpl == 1 ? 'checked="checked"' : '';
+    $vt_cat_list_type = get_option('vt_cat_list_type_' . $tag->term_id);
+    $checked_0 = $vt_cat_list_type == 0 ? 'checked="checked"' : '';
+    $checked_1 = $vt_cat_list_type == 1 ? 'checked="checked"' : '';
+    $checked_2 = $vt_cat_list_type == 2 ? 'checked="checked"' : '';
 
     echo '<tr class="form-field">
             <th scope="row"><label for="cat-keywords">模版选择</label></th>
@@ -114,15 +115,19 @@ function vt_edit_category_tpl($tag)
                 <fieldset>
                     <legend class="screen-reader-text"><span>模版选择</span></legend>
                     <label>
-                        <input type="radio" name="vt_cat_tpl" value="0" ' . $checked_0 . '>
-                        <span class="date-time-text">文章列表</span>&nbsp;&nbsp;<code>主要用来展示文字内容</code>
+                        <input type="radio" name="vt_cat_list_type" value="0" ' . $checked_0 . '>
+                        <span class="date-time-text">跟随系统</span>
                     </label>
-                    <br>
+                    &nbsp;&nbsp;
                     <label>
-                        <input type="radio" name="vt_cat_tpl" value="1" ' . $checked_1 . '>
-                        <span class="date-time-text">卡片列表</span>&nbsp;&nbsp;<code>主要用来展示图片内容</code>
+                        <input type="radio" name="vt_cat_list_type" value="1" ' . $checked_1 . '>
+                        <span class="date-time-text">文章列表</span>
                     </label>
-                    <br>
+                    &nbsp;&nbsp;
+                    <label>
+                        <input type="radio" name="vt_cat_list_type" value="2" ' . $checked_2 . '>
+                        <span class="date-time-text">卡片列表</span><!--<code></code>-->
+                    </label>
                 </fieldset>
             </td>
         </tr>';

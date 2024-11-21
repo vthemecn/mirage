@@ -97,7 +97,9 @@ test
 test.php
 src/utils/validator/parameter
 
+docs/.vitepress
 docs/.vitepress/cache
 docs/.vitepress/dist
+.vitepress
 
 .editorconfig

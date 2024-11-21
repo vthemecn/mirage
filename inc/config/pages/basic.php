@@ -161,13 +161,13 @@ defined('ABSPATH') || exit;
                 <td>
                     <div style="display:flex">
                         <label class="color-label">
-                            <p><img src="<?php echo bloginfo('template_url'); ?>/inc/config/images/list-type-1.jpg"></p>
-                            <input name="list_type" type="radio" value="0" <?php if ($vt_config['list_type'] == 0) { ?>checked="checked" <?php } ?>>
+                            <p><img src="<?php echo bloginfo('template_url'); ?>/inc/config/images/list-type-0.jpg"></p>
+                            <input name="list_type" type="radio" value="1" <?php if ($vt_config['list_type'] == 1) { ?>checked="checked" <?php } ?>>
                             启用
                         </label>
                         <label class="color-label">
-                            <p><img src="<?php echo bloginfo('template_url'); ?>/inc/config/images/list-type-2.jpg"></p>
-                            <input name="list_type" type="radio" value="1" <?php if ($vt_config['list_type'] == 1) { ?>checked="checked" <?php } ?>>
+                            <p><img src="<?php echo bloginfo('template_url'); ?>/inc/config/images/list-type-1.jpg"></p>
+                            <input name="list_type" type="radio" value="2" <?php if ($vt_config['list_type'] == 2) { ?>checked="checked" <?php } ?>>
                             启用
                         </label>
                     </div>
@@ -222,7 +222,7 @@ defined('ABSPATH') || exit;
             </tr>
 
             <tr>
-                <th scope="row">图片高宽比</th>
+                <th scope="row">卡片图片高宽比</th>
                 <td>
                     <input type="text" name="image_items_height" id="image_items_height" value="<?php echo ($vt_config['image_items_height']); ?>" class="regular-text" placeholder="默认100%">
                     <p>填入图片高宽比</p>

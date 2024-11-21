@@ -39,7 +39,7 @@ function vt_get_default_config()
     $config['editor_revision'] = 0;
     $config['page_data_type'] = 0;
 
-    $config['list_type'] = 0;
+    $config['list_type'] = 0; // 0 文章列表，1 卡片列表
     $config['widget_is_on'] = 0;
 
     $config['list_cards_col'] = 4;
