@@ -83,7 +83,7 @@ class ImageArticleWidget extends WP_Widget {
                             <?php
                             $query->the_post();
                             $current_post = get_post();
-                            $thumbnail_image = wp_get_attachment_image_src(get_post_thumbnail_id($current_post->ID), 'thumbnail');
+                            $thumbnail = vt_get_thumbnail_url($current_post->ID, 'medium');
                             
                             $price = get_post_meta( $current_post->ID, 'price', true );
                             $price = $price ? number_format($price/100,2) : '';
@@ -91,11 +91,7 @@ class ImageArticleWidget extends WP_Widget {
                             
                             <li class='item-widget'>
                                 <a href="<?php the_permalink() ?>">
-                                    <?php if (!empty($thumbnail_image)) :?>
-                                        <img src="<?php echo $thumbnail_image[0] ?>" alt="<?php the_title(); ?>">
-                                    <?php else : ?>
-                                        <img src="<?php echo $vt_config['default_image'] ?>">
-                                    <?php endif ?>
+                                    <img src="<?= $thumbnail ?>">
                                     <div class="item-title">
                                         <div><?php the_title(); ?></div>
                                         <span><?php echo friendly_time(get_the_time('Y-m-d H:i:s')); ?></span>
@@ -371,7 +367,7 @@ class ImageWidget extends WP_Widget {
                         <?php
                         $query->the_post();
                         $current_post = get_post();
-                        $thumbnail_image = wp_get_attachment_image_src(get_post_thumbnail_id($current_post->ID), 'thumbnail');
+                        $thumbnail = vt_get_thumbnail_url($current_post->ID, 'medium');
                         
                         $price = get_post_meta( $current_post->ID, 'price', true );
                         $price = $price ? number_format($price/100,2) : '';
@@ -379,11 +375,7 @@ class ImageWidget extends WP_Widget {
                         
                         <li class='item-widget'>
                             <a href="<?php the_permalink() ?>">
-                                <?php if (!empty($thumbnail_image)) :?>
-                                    <img src="<?php echo $thumbnail_image[0] ?>" alt="<?php the_title(); ?>">
-                                <?php else : ?>
-                                    <img src="<?php echo $vt_config['default_image'] ?>">
-                                <?php endif ?>
+                                <img src="<?= $thumbnail?>">
                                 <div class="item-title"><?php the_title(); ?></div>
                                 <?php if($price): ?>
                                     <div class="item-price"><?php echo $vt_options['item_currency_symbol']?> <?php echo $price; ?></div>

@@ -117,7 +117,7 @@
 }
 
 .image-title.widget-container .item-list-wrapper {
-  padding: 15px;
+  padding: 0 15px 15px 15px;
   box-sizing: border-box;
 }
 
@@ -203,7 +203,7 @@
 }
 
 .hot-list {
-  margin-top: 10px;
+  margin-top: 0px;
   counter-reset: num1 0;
 }
 .hot-list li {
@@ -291,6 +291,10 @@
   border-left: 3px solid transparent;
 }
 
+
+/**
+ * 图片列表
+ */
 .item-list-container {
   box-sizing: border-box;
   background-color: var(--vt-bg-color-card);
@@ -298,7 +302,7 @@
   border-radius: var(--vt-border-radius);
 }
 .item-list-container .item-list-wrapper {
-  padding: 15px;
+  padding: 0 15px 15px 15px;
   box-sizing: border-box;
 }
 .item-list-container ul.item-list {
@@ -328,12 +332,22 @@
   border-radius: var(--vt-border-radius);
 }
 .item-list-container ul.item-list .item-widget a .item-title {
-  margin-top: 10px;
+  margin-top: 5px;
+  font-size: 15px;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  line-height: 18px;
+  text-align: justify;
 }
 .item-list-container ul.item-list .item-widget a .item-price {
   margin-top: 5px;
   color: #f44336;
 }
+
+
 
 /* 分类列表 */
 .category.widget-container .category-list {
