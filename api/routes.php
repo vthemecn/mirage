@@ -1,5 +1,6 @@
 <?php
 require_once TEMP_DIR . '/api/home.php';
+require_once TEMP_DIR . '/api/star.php';
 require_once TEMP_DIR . '/api/wxapp.php';
 
 
@@ -54,6 +55,34 @@ add_action('rest_api_init', function (){
             return $homeController->index($request);
         }
     ]);
+
+    /**
+     * 文章点赞和收藏接口
+     */
+    // 收藏列表
+    register_rest_route('vtheme/v1', '/stars', array(
+        'methods' => 'GET',
+        'callback' => function (\WP_REST_Request $request) {
+            $starsController = new \api\Star();
+            return $starsController->index($request);
+        }
+    ));
+    // 添加一个收藏
+    register_rest_route('vtheme/v1', '/stars', array(
+        'methods' => 'POST',
+        'callback' => function (\WP_REST_Request $request) {
+            $starsController = new \api\Star();
+            return $starsController->store($request);
+        }
+    ));
+    // 删除一个收藏
+    register_rest_route('vtheme/v1', '/stars/(?P<id>\d+)', array(
+        'methods' => 'DELETE',
+        'callback' => function (\WP_REST_Request $request) {
+            $starsController = new \api\Star();
+            return $starsController->destory($request);
+        }
+    ));
 
 
     // /wp-json/vtheme/v1/home/test

@@ -1,4 +1,4 @@
-import axios from '../lib/axios/axios.esm';
+import axios from '../../lib/axios/axios.esm';
 import toast from './toast';
 
 // axios.defaults.baseURL = 'https://dev.vtheme.cn';

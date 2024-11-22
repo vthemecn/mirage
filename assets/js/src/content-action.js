@@ -2,11 +2,9 @@
  * 点赞，收藏，评论
  */
 
-import toast from "./toast";
-import axios from './axios';
-
+import {getCookie, setCookie} from './utils.js';
+import lightTip from '../../lib/ui/light-tip.js';
 import dialogTools from './dialog.js';
-
 
 export default function () {
   likeInit();
@@ -30,37 +28,79 @@ async function likeInit(){
       
       var addUrl = '/wp-json/vtheme/v1/stars' + "?_wpnonce=" + wpnonce;
       var deleteUrl = '/wp-json/vtheme/v1/stars/' + post_id + "?_wpnonce=" + wpnonce;
+
+      var currentUser
       
+      // 登录用户取消点赞
       if( this.classList.contains('active') ){
-        await axios.request({ method: 'DELETE', url: deleteUrl, data: {'type':'like'} })
-        .then(function (response) {
-          if(response.status == 204){
-            that.classList.remove('active');
-            that.querySelector('.number').innerText = --that.querySelector('.number').innerText;
-          }
+        let response = await fetch(deleteUrl, {
+          method:'DELETE',
+          headers:{'Content-Type': 'application/json'},
+          body:JSON.stringify({'type':'like'})
         });
-      } else {
-        var data = {};
-        data.object_id = document.querySelector("input[name='post_id']").value;
-        data.type = 'like';
-        
-        await axios.request({
-          method: 'post',
-          url: addUrl,
-          data: JSON.stringify(data)
-        })
-        .then(function (response) {
-          console.log(response);
-          if(response.status == 201){
-            that.classList.add('active');
-            that.querySelector('.number').innerText = response.data.counter;
-          }
-        });
+        let responseJson = await response.json();
+        if(response.status == 200){
+          that.classList.remove('active');
+          let num = that.querySelector('.number').innerText;
+          num = (--num <= 0) ? '' : num; 
+
+          that.querySelector('.number').innerText = num;
+          // lightTip.custom('取消点赞', {type:'warning', time:500});
+        }else{
+          lightTip.error(responseJson.error);
+        }
+        return;
+      }
+
+      // 未登录用户，通过 cookie 判断是否点赞过
+      let currentUserId = document.querySelector('input[name="current_user_id"]').value;
+      let likeIdsArr = [];
+
+      if(currentUserId==0){
+        let likeIdsStr = getCookie('likeIds');
+        likeIdsArr = [];
+
+        try {
+          likeIdsArr = JSON.parse(likeIdsStr);
+        } catch(e) {
+          likeIdsArr = [];
+        }
+
+        if(likeIdsArr.indexOf(post_id) !== -1){
+          lightTip.success('今天已经点赞过了');
+          return;
+        }
+      }
+      
+      // 执行点赞请求
+      var data = {};
+      data.object_id = document.querySelector("input[name='post_id']").value;
+      data.type = 'like';
+
+      let response = await fetch(addUrl, {
+        method:'POST',
+        headers:{'Content-Type': 'application/json'},
+        body:JSON.stringify(data)
+      });
+
+      let responseJson = await response.json();
+      if(response.status == 201){
+        that.querySelector('.number').innerText = responseJson.counter;
+        if(responseJson.user_id == 0){ //未登录用户
+          likeIdsArr.push(post_id);
+          setCookie('likeIds', JSON.stringify(likeIdsArr), 1);
+          return;
+        }
+        that.classList.add('active');
+        lightTip.normal('点赞成功',1000);
+      }else{
+        lightTip.error(responseJson.error);
       }
       
     });
   });
 }
+
 
 /**
  * 收藏事件绑定
@@ -70,6 +110,15 @@ async function starInit(){
   if(!starButtons) return;
   starButtons.forEach( button=>{
     button.addEventListener('click', async function(){
+      // 未登录用户，弹出登录框
+      let currentUserId = document.querySelector('input[name="current_user_id"]').value;
+      var loginModal = document.querySelector('.login-dialog');
+      if(loginModal){
+        loginModal.showModal();
+        document.querySelector('body').classList.add('no-scroll');
+      }
+      
+
       var that = this;
       
       var wpnonce = document.querySelector("input[name='wp_create_nonce']").value;
@@ -79,31 +128,42 @@ async function starInit(){
       var deleteUrl = '/wp-json/vtheme/v1/stars/' + post_id + "?_wpnonce=" + wpnonce;
       
       if( this.classList.contains('active') ){
-        await axios.request({ method: 'DELETE', url: deleteUrl, data: {'type':'star'} })
-        .then(function (response) {
-          if(response.status == 204){
-            that.classList.remove('active');
-            that.querySelector('.number').innerText = --that.querySelector('.number').innerText;
-          }
+        var that = this;
+        var response = await fetch(deleteUrl, {
+          method:'DELETE',
+          headers:{'Content-Type': 'application/json'},
+          body:JSON.stringify({'type':'star'})
         });
+        var responseJson = await response.json();
+        if(response.status == 200){
+          that.classList.remove('active');
+          let num = that.querySelector('.number').innerText;
+          num = (--num <= 0) ? '' : num; 
+
+          that.querySelector('.number').innerText = num;
+        }else{
+          lightTip.error(responseJson.error);
+        }
       } else {
         var data = {};
         data.object_id = document.querySelector("input[name='post_id']").value;
         data.type = 'star';
         
-        await axios.request({
-          method: 'post',
-          url: addUrl,
-          data: JSON.stringify(data)
-        })
-        .then(function (response) {
-          console.log(response);
-          if(response.status == 201){
-            that.classList.add('active');
-            that.querySelector('.number').innerText = response.data.counter;
-          }
+        var response = await fetch(addUrl, {
+          method:'POST',
+          headers:{'Content-Type': 'application/json'},
+          body:JSON.stringify(data)
         });
+        var responseJson = await response.json();
+        if(response.status == 201){
+          that.classList.add('active');
+          that.querySelector('.number').innerText = responseJson.counter;
+          lightTip.normal('收藏成功',1000);
+        } else if(response.status == 401) {
+          lightTip.normal('请登录后重试',1000);
+        }
       }
+
       
     });
   });

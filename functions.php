@@ -27,6 +27,7 @@ require_once TEMP_DIR . '/inc/i18n.php';              // 国际化
 require_once TEMP_DIR . '/inc/my-menu.php';
 require_once TEMP_DIR . '/inc/widget.php';
 require_once TEMP_DIR . '/inc/setting.php';
+require_once TEMP_DIR . '/inc/switch.php';
 require_once TEMP_DIR . '/inc/shortcode.php';
 require_once TEMP_DIR . '/inc/category.php';
 require_once TEMP_DIR . '/inc/avatar.php';
@@ -38,6 +39,8 @@ require_once TEMP_DIR . "/inc/php-jwt/src/JWT.php";
 require_once TEMP_DIR . "/inc/php-jwt/src/BeforeValidException.php";
 require_once TEMP_DIR . "/inc/php-jwt/src/ExpiredException.php";
 require_once TEMP_DIR . "/inc/php-jwt/src/SignatureInvalidException.php";
+
+require_once TEMP_DIR . '/inc/validator/validator.php';
 
 require_once TEMP_DIR . '/api/routes.php';
 

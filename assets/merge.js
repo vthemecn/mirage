@@ -92,7 +92,8 @@ const cssFileArr = [
   './assets/css/src/users/index.css',
   './assets/css/src/users/user-center.css',
   './assets/css/src/users/star.css',
-  './assets/css/src/dark.css'
+  './assets/css/src/dark.css',
+  './assets/lib/ui/light-tip.css'
 ];
 
 fs.watch('./assets/css/src', {

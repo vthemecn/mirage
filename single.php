@@ -145,13 +145,15 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                 <div class="widget-action like <?php echo $is_like ? ' active' : '' ?>">
                     <i class="iconfont">&#xe663;</i>
                     <span>点赞</span>
-                    <span class='number'><?php echo $like_counter ?></span>
+                    <span class='number'><?= $like_counter ? $like_counter : '' ?></span>
                 </div>
+                <?php if($config['user_center_is_on']):?>
                 <div class="widget-action star <?php echo $is_star ? ' active' : '' ?>">
                     <i class="iconfont">&#xe882;</i>
                     <span>收藏</span>
-                    <span class='number'><?php echo $star_counter ?></span>
+                    <span class='number'><?= $star_counter ? $star_counter : '' ?></span>
                 </div>
+                <?php endif ?>
                 <?php /*
                 <div class="widget-action comment">
                     <i class="iconfont">&#xe68f;</i>
@@ -254,6 +256,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
 <input type="hidden" name="wp_create_nonce" value="<?php echo wp_create_nonce('wp_rest'); ?>">
 <input type="hidden" name="post_id" value="<?php echo $vt_post_id ?>">
 <input type="hidden" name="post_url" value="<?= get_permalink() ?>">
+<input type="hidden" name="current_user_id" value="<?= $current_user->ID?>" />
 
 <?php if($config['highlight_is_on']):?>
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/assets/lib/prism/prism.css">

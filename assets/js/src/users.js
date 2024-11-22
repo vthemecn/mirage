@@ -1,5 +1,5 @@
 import toast from "./toast";
-import axios from '../lib/axios/axios.esm.js';
+import axios from '../../lib/axios/axios.esm.js';
 
 export default function init (){
   avatarUploadAction();
