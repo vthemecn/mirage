@@ -117,7 +117,10 @@
   border-radius: var(--vt-border-radius);
 }
 
-/* 文章上一篇和下一篇导航 */
+
+/**
+ * 文章上一篇和下一篇导航
+ */
 .article-prev-next-nav {
   width: 100%;
   box-sizing: border-box;

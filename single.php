@@ -242,11 +242,14 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
 </div>
 
 
+<?php
+$qrcode_image = $config['qrcode_image'] ? $config['qrcode_image'] : get_template_directory_uri() . '/assets/images/default.jpg';
+?>
 <div class="vt-dialog" id="coin-dialog" class="normal-dialog">
     <div class="coin-dialog-widget dialog-widget">
         <a href="javascript:;" class="close-button close"><i class="iconfont">&#xe75e;</i></a>
         <div class="coin-widget">
-            <img src="<?= $config['qrcode_image']?>">
+            <img src="<?= $qrcode_image?>">
         </div>
         <div class="coin-info">真诚赞赏，手留余香</div>
     </div>

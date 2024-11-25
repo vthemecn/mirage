@@ -369,6 +369,35 @@ defined('ABSPATH') || exit;
                     </p>
                 </td>
             </tr>
+
+            <tr>
+                <th scope="row"><label>防暴力破解</label></th>
+                <td>
+                    <p>
+                        <label>
+                            <input name="attempts_is_on" type="radio" value="1" <?php if ($vt_config['attempts_is_on'] == 1) { ?>checked="checked" <?php } ?>>
+                            开启
+                        </label>
+                        <label>
+                            <input name="attempts_is_on" type="radio" value="0" <?php if ($vt_config['attempts_is_on'] == 0) { ?>checked="checked" <?php } ?>>
+                            关闭
+                        </label>
+                    </p>
+                    <?php if($vt_config['attempts_is_on']):?>
+                    <p>
+                        <?php
+                        $attempts = get_option('vt_failed_attempts', []);
+                        $ip_counter = sizeof($attempts);
+                        $attempt_counter = 0;
+                        foreach ($attempts as $k => $v) {
+                            $attempt_counter = $attempt_counter + $v['counter'];
+                        }
+                        ?>
+                        一个小时内有<?=$ip_counter?>个IP，<?=$attempt_counter?>次登录失败
+                    </p>
+                    <?php endif ?>
+                </td>
+            </tr>
             
         </tbody>
     </table>

@@ -49,6 +49,7 @@ function vt_get_default_config()
     $config['dark_mode_type'] = 1;
     $config['highlight_is_on'] = 0;
     $config['comments_is_on'] = 1;
+    $config['attempts_is_on'] = 1;
 
     
 	/**

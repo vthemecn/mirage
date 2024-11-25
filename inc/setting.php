@@ -253,3 +253,75 @@ if ($vt_config['vt_email_is_on'] == 1) {
 }
 
 
+/**
+ * 限制登录尝试次数
+ */
+if($vt_config['attempts_is_on']){
+    add_filter('authenticate', 'vt_authenticate_action', 1, 3);
+}
+function vt_authenticate_action($user, $username, $password){
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $attempts = get_option('vt_failed_attempts');
+    $need_update = false;
+
+    if (!$attempts) {
+        $attempts = array();
+    } else {
+        foreach ($attempts as $k => $v) {
+            if($v['flag'] != wp_date('YmdH')){
+                unset($attempts[$k]);
+                $need_update = true;
+            }
+        }
+    }
+
+    if($need_update){
+        update_option('vt_failed_attempts', $attempts);
+    }
+
+    $max_attempts = 10;
+    if ($attempts[$ip]['counter'] >= $max_attempts) {
+        remove_filter('authenticate', 'wp_authenticate_username_password', 20, 3);
+        remove_filter('authenticate', 'wp_authenticate_email_password', 20, 3);
+        return new WP_Error('too_many_retries', '您已多次登录失败，请1小时后重试！');
+    }
+}
+
+/**
+ * 更新错误记录
+ */
+if($vt_config['attempts_is_on']){
+    add_action('wp_login_failed', 'vt_login_failed_action');
+}
+function vt_login_failed_action($username){
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $attempts = get_option('vt_failed_attempts');
+ 
+    if (!$attempts) {
+        $attempts = array();
+    } else {
+        foreach ($attempts as $k => $v) {
+            if($v['flag'] != wp_date('YmdH')){ unset($attempts[$k]); }
+        }
+    }
+ 
+    if (isset($attempts[$ip])) {
+        $attempts[$ip]['counter']++;
+    } else {
+        $item = array('flag'=>wp_date('YmdH'), 'counter'=>1);
+        $attempts[$ip] = $item;
+    }
+ 
+    update_option('vt_failed_attempts', $attempts);
+}
+
+/**
+ * 登录框摇晃
+ */
+add_filter('shake_error_codes', function ($error_codes) {
+    $error_codes[]  = 'too_many_retries';
+    return $error_codes;
+});
+
+
+
