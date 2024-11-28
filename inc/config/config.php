@@ -80,9 +80,9 @@ function vt_get_default_config()
 	/**
 	 * 底部设置
 	 */
+	$config['footer_bg_type'] = 'light'; //背景色：light dark
 	$config['footer_logo'] = get_bloginfo('template_url') . '/assets/images/logo.png';
 	$config['footer_description'] = "";
-	$config['footer_bg_color'] = '';
 	$config['footer_copyright'] = '&copy; Copyright '.date('Y').' <a href="https://vtheme.cn" target="_blank">VTHEME 微主题</a>';
 	$config['footer_qrcode'] = get_bloginfo('template_url') . '/assets/images/qrcode.jpg';
 	$config['footer_qrcode_title'] = '扫一扫联系我';

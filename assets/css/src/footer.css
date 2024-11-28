@@ -42,12 +42,21 @@
   margin-top: 0px;
 }
 
-/* .colored 暗色 footer */
-.footer.colored {
+
+/**
+ * 颜色重写
+ */
+footer[darkness]{
   background-color: #333;
-  color: var(--vt-text-color-grey);
+  color: #999 !important;
 }
 
-.footer.colored a {
-  color: var(--vt-text-color-grey);
+footer[darkness] div,
+footer[darkness] span,
+footer[darkness] p,
+footer[darkness] a {
+  color: #999 !important;
 }
+
+
+

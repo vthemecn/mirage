@@ -39,29 +39,28 @@ $categories = get_categories($args);
             </tr>
 
             <tr>
+                <th scope="row"><label for="footer_bg_type">背景颜色</label></th>
+                <td>
+                    <p>
+                        <label>
+                            <input name="footer_bg_type" type="radio" value="light" <?php if ($vt_config['footer_bg_type'] == 'light') { ?>checked="checked" <?php } ?>>
+                            亮色
+                        </label>
+                        <label>
+                            <input name="footer_bg_type" type="radio" value="darkness" <?php if ($vt_config['footer_bg_type'] == 'darkness') { ?>checked="checked" <?php } ?>>
+                            暗色
+                        </label>
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
                 <th scope="row"><label for="footer_copyright">底部版权</label></th>
                 <td>
                     <textarea name="footer_copyright" id="footer_copyright" class="regular-text" rows="5"><?php echo ($vt_config['footer_copyright']); ?></textarea>
                     <p class="description" id="tagline-description">底部版权的文字信息，支持 HTML</p>
                 </td>
             </tr>
-
-            <tr>
-                <th scope="row"><label for="footer_bg_type">footer 背景颜色</label></th>
-                <td>
-                    <p>
-                        <label>
-                            <input name="footer_bg_type" type="radio" value="0" <?php if ($vt_config['footer_bg_type'] == 0) { ?>checked="checked" <?php } ?>>
-                            暗色
-                        </label>
-                        <label>
-                            <input name="footer_bg_type" type="radio" value="1" <?php if ($vt_config['footer_bg_type'] == 1) { ?>checked="checked" <?php } ?>>
-                            亮色
-                        </label>
-                    </p>
-                </td>
-            </tr>
-
 
             <tr class="td-top-line">
                 <th scope="row">

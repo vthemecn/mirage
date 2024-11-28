@@ -1,9 +1,14 @@
 <?php
 $vt_config = vt_get_config();
-$colored_class = $vt_config['footer_bg_type'] == 0 ? 'colored' : '';
+
+$footer_bg_type = $vt_config['footer_bg_type'] == 'darkness' ? 'darkness' : 'light';
+
+$current_theme = wp_get_theme();
+$version = $current_theme->get('Version');
 ?>
 
-<footer class="footer <?php echo $colored_class ?>">
+
+<footer class="footer" <?= $footer_bg_type ?> >
     <div class="footer-container">
         <?php echo $vt_config['footer_copyright']; ?>
         <br/>
@@ -26,14 +31,11 @@ require_once(get_stylesheet_directory() . "/templates/bar.php");
 if ($vt_config['is_mobile_nav_show'] == 1) {
     include_once(get_template_directory() . "/templates/mobile-nav.php");
 }
-
-$current_theme = wp_get_theme();
-
 ?>
 
 <script src="<?php bloginfo('template_url'); ?>/assets/lib/qrcode.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/assets/lib/html2canvas.js"></script>
-<script src="<?php bloginfo('template_url'); ?>/assets/js/index.js?t=<?php echo $current_theme->get('Version') ?>"></script>
+<script src="<?php bloginfo('template_url'); ?>/assets/js/index.js?v=<?= $version ?>"></script>
 
 <?php wp_footer(); ?>
 

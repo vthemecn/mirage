@@ -9,6 +9,8 @@ defined('ABSPATH') || exit;
 
 
 <form action="" method="post" enctype="multipart/form-data" name="op_form" id="op_form">
+    <!--
+    <h3 class="title-light">基础设置</h3>
     <table class="form-table" role="presentation">
         <tbody>
             <tr>
@@ -35,7 +37,13 @@ defined('ABSPATH') || exit;
                     <p class="description">每个用户每天上传图片的数量限制</p>
                 </td>
             </tr>
+        </tbody>
+    </table>
+    -->
 
+    <h3 class="title-light">微信小程序设置</h3>
+    <table class="form-table" role="presentation">
+        <tbody>
             <tr>
                 <th scope="row"><label for="wxa">微信AppID</label></th>
                 <td>
@@ -48,7 +56,12 @@ defined('ABSPATH') || exit;
                     <input type="text" name="wx_app_secret" value="<?= $vt_config['wx_app_secret'] ?>" class="regular-text" placeholder="请输入微信小程序密钥">
                 </td>
             </tr>
+        </tbody>
+    </table>
 
+    <h3 class="title-light">微信小程序设置</h3>
+    <table class="form-table" role="presentation">
+        <tbody>
             <tr>
                 <th scope="row"><label>小程序最新列表</label></th>
                 <td>
@@ -63,7 +76,12 @@ defined('ABSPATH') || exit;
                     <p class="description">请输入分类ID，多个ID以英文逗号分隔</p>
                 </td>
             </tr>
+        </tbody>
+    </table>
 
+    <h3 class="title-light">页面设置</h3>
+    <table class="form-table" role="presentation">
+        <tbody>
             <tr>
                 <th scope="row"><label>“关于“页面ID</label></th>
                 <td>
@@ -82,11 +100,9 @@ defined('ABSPATH') || exit;
                     <input type="text" name="app_privacy_id" value="<?= $vt_config['app_privacy_id'] ?>" class="regular-text" placeholder="请输入页面ID">
                 </td>
             </tr>
-
-
-
         </tbody>
     </table>
+
     <input type="hidden" name="_wpnonce" value="<?php echo wp_create_nonce('vt_options_update') ?>">
     <input type="hidden" name="_action" value="vt_options_update">
     <input type="submit" name="input_save" value="保存" class="button button-primary" />

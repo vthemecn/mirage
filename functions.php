@@ -288,12 +288,3 @@ function get_user_by_id($user_id)
     return $user_data;
 }
 
-
-/**
- * 获取默认图片
- * @return [type] [description]
- */
-// function get_default_image(){
-
-// }
-
