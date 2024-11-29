@@ -9,6 +9,13 @@ $avatar = vt_get_custom_avatar_url($author_id);
 $user_center_url = home_url() . '/users/' .$post->post_author;
 // $default_image = $vt_config['default_image'] ? $vt_config['default_image'] : 
 //                     get_template_directory_uri() . '/assets/images/default.jpg';
+
+// 喜欢数量
+$like_counter = 0;
+$sql = "SELECT count(*) AS num FROM {$wpdb->prefix}vt_star WHERE object_id=%s AND type=%s";
+$res = $wpdb->get_row($wpdb->prepare($sql, [$cur_post_id, 'like']), ARRAY_A );
+$like_counter = $res['num'];
+
 ?>
 
 <div class="media-item">
@@ -46,6 +53,9 @@ $user_center_url = home_url() . '/users/' .$post->post_author;
             </span>
             <span class="hit-counter">
                 <i class="iconfont">&#xe752;</i><?php echo getPostViews(get_the_ID()); ?>
+            </span>
+            <span class="star_counter">
+                <i class="iconfont">&#xe882;</i><?= $like_counter ?>
             </span>
             <?php if($vt_config['comments_is_on']):?>
                 <span>

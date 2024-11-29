@@ -6,6 +6,8 @@ class HomeController
 {
     public function getMoreArticles($request)
     {
+        global $wpdb;
+
         $vt_config = vt_get_config();
         // $default_image = $vt_config['default_image'] ? $vt_config['default_image'] : 
         //             get_template_directory_uri() . '/assets/images/default.jpg';
@@ -45,6 +47,12 @@ class HomeController
 
                 $user_center_url = home_url() . '/users/' . $current_post->post_author;
                 $nickname = get_the_author_meta('nickname', $current_post->post_author);
+
+                // 喜欢数量
+                $like_counter = 0;
+                $sql = "SELECT count(*) AS num FROM {$wpdb->prefix}vt_star WHERE object_id=%s AND type=%s";
+                $result = $wpdb->get_row($wpdb->prepare($sql, [$current_post->ID, 'like']), ARRAY_A );
+                $like_counter = $result['num'];
                 
                 $output .= '<div class="media-item">
                     <div class="media-thumbnail">
@@ -82,7 +90,11 @@ class HomeController
                             </span>
                             <span class="hit-counter">
                                 <i class="iconfont">&#xe752;</i>' .getPostViews(get_the_ID()). '
-                            </span>';
+                            </span>
+                            <span class="like_counter">
+                                <i class="iconfont">&#xe882;</i>' .$like_counter. '
+                            </span>
+                            ';
                
                 if($vt_config['comments_is_on']){
                     $output .= '<span class="meta"><i class="iconfont">&#xe8a6;</i>'. $current_post->comment_count .'</span>';

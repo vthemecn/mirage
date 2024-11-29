@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "merge":"node --watch ./assets/merge.js",
+    "css":"node --watch ./assets/merge.js",
     "docs": "vitepress dev docs --port 8080",
     "rollup": "rollup ./assets/js/src/index.js --file ./assets/js/index.js --format iife --watch",
     "i18n": "msgfmt -o inc/languages/zh_CN.mo inc/languages/zh_CN.po && msgfmt -o inc/languages/en_US.mo inc/languages/en_US.po"
