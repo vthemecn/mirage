@@ -6,7 +6,7 @@
  */
 function vt_add_admin_js(){ 
     wp_enqueue_media();
-    wp_enqueue_script('vt-uploader', get_stylesheet_directory_uri().'/assets/js/lib/avatar.js', array('jquery'), false, true );
+    wp_enqueue_script('vt-uploader', get_stylesheet_directory_uri().'/assets/lib/avatar.js', array('jquery'), false, true );
 }
 add_action('admin_enqueue_scripts', 'vt_add_admin_js');
 
