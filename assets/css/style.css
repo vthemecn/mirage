@@ -3284,6 +3284,10 @@ footer[darkness] a {
   border-radius: var(--vt-border-radius);
 }
 
+
+/**
+ * 图文列表
+ */
 .image-title.widget-container .item-list-wrapper {
   padding: 0 15px 15px 15px;
   box-sizing: border-box;
@@ -3329,7 +3333,7 @@ footer[darkness] a {
 }
 
 .image-title.widget-container ul.item-list .item-widget a .item-title div {
-  font-size: var(--vt-font-size-base);
+  font-size: 15px;
   line-height: 18px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -3342,7 +3346,11 @@ footer[darkness] a {
   color: var(--vt-text-color-grey);
 }
 
-/* 文章列表 文章模块 */
+
+
+/**
+ * 文章列表 文章模块
+ */
 .article.widget-container .article-list {
   counter-reset: num1 0;
   padding: 0 15px 15px 15px;
@@ -3367,9 +3375,14 @@ footer[darkness] a {
   content: counter(num1) ". ";
 }
 .article.widget-container .article-list .article-item:first-child {
-  margin-top: 15px;
+  margin-top: 0px;
 }
 
+
+
+/**
+ * 热门文章
+ */
 .hot-list {
   margin-top: 0px;
   counter-reset: num1 0;
@@ -3460,46 +3473,47 @@ footer[darkness] a {
 }
 
 
+
 /**
  * 图片列表
  */
-.item-list-container {
+.images-list-container {
   box-sizing: border-box;
   background-color: var(--vt-bg-color-card);
   box-shadow: 0 0 2px 0 var(--vt-shadow-color);
   border-radius: var(--vt-border-radius);
 }
-.item-list-container .item-list-wrapper {
+.images-list-container .item-list-wrapper {
   padding: 0 15px 15px 15px;
   box-sizing: border-box;
 }
-.item-list-container ul.item-list {
+.images-list-container ul.item-list {
   width: auto;
   margin-right: -15px;
   display: flex;
   justify-content: normal;
   flex-wrap: wrap;
 }
-.item-list-container ul.item-list .item-widget {
+.images-list-container ul.item-list .item-widget {
   width: auto;
   flex: 0 0 calc(50% - 15px);
   margin: 0px 15px 15px 0;
   box-sizing: border-box;
 }
-.item-list-container ul.item-list .item-widget a {
+.images-list-container ul.item-list .item-widget a {
   display: flex;
   width: 100%;
   height: 100%;
   flex-direction: column;
   font-size: var(--vt-font-size-base);
 }
-.item-list-container ul.item-list .item-widget a img {
+.images-list-container ul.item-list .item-widget a img {
   width: 100%;
   height: 100px;
   object-fit: cover;
   border-radius: var(--vt-border-radius);
 }
-.item-list-container ul.item-list .item-widget a .item-title {
+.images-list-container ul.item-list .item-widget a .item-title {
   margin-top: 5px;
   font-size: 15px;
   display: -webkit-box;
@@ -3510,14 +3524,17 @@ footer[darkness] a {
   line-height: 18px;
   text-align: justify;
 }
-.item-list-container ul.item-list .item-widget a .item-price {
+.images-list-container ul.item-list .item-widget a .item-price {
   margin-top: 5px;
   color: #f44336;
 }
 
 
 
-/* 分类列表 */
+
+/**
+ * 分类列表
+ */
 .category.widget-container .category-list {
   counter-reset: num1 0;
   padding: 0 15px 15px 15px;
@@ -3537,9 +3554,7 @@ footer[darkness] a {
 .category.widget-container .category-list .category-item a:hover {
   color: var(--vt-color-primary);
 }
-.category.widget-container .category-list .article-item:first-child {
-  margin-top: 15px;
-}
+
 
 /**
  * 作者卡片

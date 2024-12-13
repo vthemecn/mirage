@@ -355,7 +355,7 @@ class ImageWidget extends WP_Widget {
 
         $query = new WP_Query( $args );
         ?>
-        <div class="item-list-container widget-container">
+        <div class="images-list-container widget-container">
             <div class="widget-header <?php echo $widget_title_class; ?>">
                 <div class="widget-title"><?php echo $title ?></div>
             </div>
