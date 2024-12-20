@@ -288,3 +288,31 @@ function get_user_by_id($user_id)
     return $user_data;
 }
 
+
+/**
+ * 百度主动推送
+ * @param  [type] $vt_post_id 文章ID
+ * @param  [type] $baidu_key  百度准入密钥
+ * @return [json]              
+ */
+function baidu_seo($vt_post_id, $baidu_key)
+{
+    $post_url = get_permalink($vt_post_id);
+    $urls = array($post_url);
+
+    $api = 'http://data.zz.baidu.com/urls?site='.home_url().'&token='.$baidu_key;
+    echo $api;
+    $ch = curl_init();
+    $options =  array(
+        CURLOPT_URL => $api,
+        CURLOPT_POST => true,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_POSTFIELDS => implode("\n", $urls),
+        CURLOPT_HTTPHEADER => array('Content-Type: text/plain'),
+    );
+    curl_setopt_array($ch, $options);
+    $result = curl_exec($ch);
+    return $result;
+}
+
+

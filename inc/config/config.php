@@ -68,6 +68,8 @@ function vt_get_default_config()
 	 */
 	$config['meta_keywords'] = "";
 	$config['meta_description'] = "";
+	$config['baidu_is_on'] = 0;
+	$config['baidu_key'] = ''; // 修改准入密钥
 
 	/**
 	 * 顶部设置

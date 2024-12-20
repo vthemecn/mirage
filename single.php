@@ -266,4 +266,22 @@ $qrcode_image = $config['qrcode_image'] ? $config['qrcode_image'] : get_template
     <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/assets/lib/prism/prism.js"></script>
 <?php endif ?>
 
+
+<?php
+// 向百度搜索主动推送资源，缩短爬虫发现网站链接的时间，不保证收录和展现效果
+if($config['baidu_is_on']){
+    $baidu_seo = get_post_meta($vt_post_id,'baidu_seo',true);
+    if(!$baidu_seo){
+        $result = baidu_seo($vt_post_id, $config['baidu_key']);
+        $result = json_decode($result, true);
+        if($result['success']){
+            update_post_meta($vt_post_id,'baidu_seo','1');
+        }
+    }
+}
+?>
+
+
+
+
 <?php get_footer(); ?>

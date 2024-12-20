@@ -24,6 +24,32 @@ defined('ABSPATH') || exit;
                 </td>
             </tr>
 
+            <tr>
+                <th scope="row"><label for="baidu_is_on">百度主动推送</label></th>
+                <td>
+                    <p>
+                        <label>
+                            <input name="baidu_is_on" type="radio" value="1" <?php if ($vt_config['baidu_is_on'] == 1) { ?>checked="checked" <?php } ?>>
+                            开启
+                        </label>
+                        <label>
+                            <input name="baidu_is_on" type="radio" value="0" <?php if ($vt_config['baidu_is_on'] == 0) { ?>checked="checked" <?php } ?>>
+                            关闭
+                        </label>
+                    </p>
+                    <p class="description">百度提示：百度搜索主动推送资源，缩短爬虫发现网站链接的时间，不保证收录和展现效果</p>
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row"><label for="baidu_key">百度准入密钥</label></th>
+                <td><input type="text" name="baidu_key" id="baidu_key" value="<?= $vt_config['baidu_key'] ?>" class="regular-text" placeholder="百度准入密钥">
+                    <p class="description">
+                        获取地址： <a href="https://ziyuan.baidu.com/linksubmit/index" target="_blank">https://ziyuan.baidu.com/linksubmit/index</a>
+                    </p>
+                </td>
+            </tr>
+
 
 
         </tbody>
