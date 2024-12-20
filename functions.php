@@ -301,7 +301,7 @@ function baidu_seo($vt_post_id, $baidu_key)
     $urls = array($post_url);
 
     $api = 'http://data.zz.baidu.com/urls?site='.home_url().'&token='.$baidu_key;
-    echo $api;
+
     $ch = curl_init();
     $options =  array(
         CURLOPT_URL => $api,
