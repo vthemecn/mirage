@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 文章列表页 按类别请求帖子时，将使用类别模板
+ * 标签列表页
  * 
  * @author: vtheme
  * @link http://vtheme.cn
@@ -85,7 +85,7 @@ $col_num_class = $config['list_cards_col'];
         <?php else : ?>
             <div class="no-content">
                 <img src="<?php bloginfo('template_url'); ?>/assets/images/empty.png">
-                <p>本栏目暂无内容</p>
+                <p><?=__('暂无内容','vt')?></p>
             </div>
         <?php endif; ?>
 
