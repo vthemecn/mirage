@@ -118,7 +118,7 @@ query_posts($args);
         <?php if( !$query_posts->have_posts() ): ?>
             <div class="no-content">
                 <img src="<?php bloginfo('template_url'); ?>/assets/images/empty.png">
-                <p>本栏目暂无内容</p>
+                <p><?=__('暂无内容','vt')?></p>
             </div>
         <?php endif; ?>
 

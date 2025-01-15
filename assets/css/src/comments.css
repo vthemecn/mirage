@@ -47,7 +47,7 @@
   outline: none;
   border: 1px solid var(--vt-border-color);
   background-color: var(--vt-bg-color-card);
-  font-size: 16px;
+  font-size: 14px;
   line-height: 25px;
   color: var(--vt-text-color);
 }
@@ -103,7 +103,7 @@
   display: block;
   height: 35px;
   line-height: 35px;
-  padding: 0px 25px;
+  padding: 0px 10px;
   margin: 0;
   font-size: 15px;
   border: none;
@@ -127,6 +127,8 @@
     margin: 0;
   }
 }
+
+
 /* 评论列表 */
 .comments-title {
   font-size: var(--vt-font-size-base);
@@ -141,6 +143,8 @@
 .comment-list li.comment .children {
   padding-left: 50px;
 }
+
+.comment-list .comment:last-child .comment-item { border-bottom: 0; }
 
 .comment-item {
   padding: 20px 0;

@@ -3,6 +3,7 @@
  * 
  */
 
+
 //禁止新版小工具
 add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
 add_filter( 'use_widgets_block_editor', '__return_false');
@@ -36,7 +37,7 @@ add_action('init', 'vt_widgets_init');
  */
 class ImageArticleWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'image-article-list', __( '【MirageV】图文列表', 'vt' ), array( 'description' => __('图文列表描述', 'vt' ) ) );
+        $this->WP_Widget( 'image-article-list', '[MirageV] '.__( '图文列表', 'vt' ), array( 'description' => __('图文列表描述', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -94,7 +95,10 @@ class ImageArticleWidget extends WP_Widget {
                                     <img src="<?= $thumbnail ?>">
                                     <div class="item-title">
                                         <div><?php the_title(); ?></div>
-                                        <span><?php echo friendly_time(get_the_time('Y-m-d H:i:s')); ?></span>
+                                        <span>
+                                            <?= get_the_time('Y-m-d') ?>
+                                            <?php //echo friendly_time(get_the_time('Y-m-d H:i:s')); ?>  
+                                        </span>
                                     </div>
                                 </a>
                             </li>
@@ -114,15 +118,15 @@ class ImageArticleWidget extends WP_Widget {
         $cat_id = !empty($instance['cat_id']) ? $instance['cat_id'] : '';
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>">标题:</label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?= __('标题','vt') ?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($title); ?>">
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>">数量:</label>
+            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>"><?= __('数量','vt') ?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('posts_per_page'); ?>" name="<?php echo $this->get_field_name('posts_per_page'); ?>" value="<?php echo esc_attr($posts_per_page); ?>">
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('cat_id'); ?>">分类ID:</label>
+            <label for="<?php echo $this->get_field_id('cat_id'); ?>"><?= __('分类ID','vt') ?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('cat_id'); ?>" name="<?php echo $this->get_field_name('cat_id'); ?>" value="<?php echo esc_attr($cat_id); ?>">
         </p>
         <?php
@@ -143,7 +147,7 @@ class ImageArticleWidget extends WP_Widget {
  */
 class HotWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'hot-list', __( '【MirageV】热门', 'vt' ), array( 'description' => __( '热门描述', 'vt' ) ) );
+        $this->WP_Widget( 'hot-list', '[MirageV] '.__( '热门', 'vt' ), array( 'description' => __( '热门描述', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -193,11 +197,11 @@ class HotWidget extends WP_Widget {
         $posts_per_page = !empty($instance['posts_per_page']) ? $instance['posts_per_page'] : '';
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>">标题:</label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?= __('标题','vt')?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($title); ?>">
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>">数量:</label>
+            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>"><?= __('数量','vt')?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('posts_per_page'); ?>" name="<?php echo $this->get_field_name('posts_per_page'); ?>" value="<?php echo esc_attr($posts_per_page); ?>">
         </p>
         <?php
@@ -217,7 +221,7 @@ class HotWidget extends WP_Widget {
  */
 class ArticleWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'article-list', __( '【MirageV】文章列表', 'vt' ), array( 'description' => __( '文章列表描述', 'vt' ) ) );
+        $this->WP_Widget( 'article-list', '[MirageV] '.__( '文章列表', 'vt' ), array( 'description' => __( '文章列表描述', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -288,15 +292,15 @@ class ArticleWidget extends WP_Widget {
         $cat_id = !empty($instance['cat_id']) ? $instance['cat_id'] : '';
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>">标题:</label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?= __('标题','vt')?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($title); ?>">
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>">数量:</label>
+            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>"><?= __('数量','vt')?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('posts_per_page'); ?>" name="<?php echo $this->get_field_name('posts_per_page'); ?>" value="<?php echo esc_attr($posts_per_page); ?>">
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('cat_id'); ?>">分类ID:</label>
+            <label for="<?php echo $this->get_field_id('cat_id'); ?>"><?= __('分类ID','vt')?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('cat_id'); ?>" name="<?php echo $this->get_field_name('cat_id'); ?>" value="<?php echo esc_attr($cat_id); ?>">
         </p>
         <?php
@@ -317,7 +321,7 @@ class ArticleWidget extends WP_Widget {
  */
 class ImageWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'image-list', __( '【MirageV】图片列表', 'vt' ), array( 'description' => __( '图片列表描述', 'vt' ) ) );
+        $this->WP_Widget( 'image-list', '[MirageV] '.__( '图片列表', 'vt' ), array( 'description' => __( '图片列表描述', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -398,15 +402,15 @@ class ImageWidget extends WP_Widget {
         $cat_id = !empty($instance['cat_id']) ? $instance['cat_id'] : '';
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>">标题:</label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?= __('标题','vt')?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($title); ?>">
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>">数量:</label>
+            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>"><?= __('数量','vt')?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('posts_per_page'); ?>" name="<?php echo $this->get_field_name('posts_per_page'); ?>" value="<?php echo esc_attr($posts_per_page); ?>">
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('cat_id'); ?>">分类ID:</label>
+            <label for="<?php echo $this->get_field_id('cat_id'); ?>"><?= __('分类ID','vt')?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('cat_id'); ?>" name="<?php echo $this->get_field_name('cat_id'); ?>" value="<?php echo esc_attr($cat_id); ?>">
         </p>
         <?php
@@ -427,7 +431,7 @@ class ImageWidget extends WP_Widget {
  */
 class CategoryWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'category-list', __( '【MirageV】分类列表', 'vt' ), array( 'description' => __( '分类列表描述', 'vt' ) ) );
+        $this->WP_Widget( 'category-list', '[MirageV] '.__( '分类列表', 'vt' ), array( 'description' => __( '分类列表描述', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -470,15 +474,15 @@ class CategoryWidget extends WP_Widget {
         $cat_id = !empty($instance['cat_id']) ? $instance['cat_id'] : '';
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>">标题:</label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?= __('标题','vt') ?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($title); ?>">
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>">数量:</label>
+            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>"><?= __('数量','vt') ?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('posts_per_page'); ?>" name="<?php echo $this->get_field_name('posts_per_page'); ?>" value="<?php echo esc_attr($posts_per_page); ?>">
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('cat_id'); ?>">分类ID:</label>
+            <label for="<?php echo $this->get_field_id('cat_id'); ?>"><?= __('分类ID','vt') ?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('cat_id'); ?>" name="<?php echo $this->get_field_name('cat_id'); ?>" value="<?php echo esc_attr($cat_id); ?>">
         </p>
         <?php
@@ -501,7 +505,7 @@ class CategoryWidget extends WP_Widget {
  */
 class UserWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'user-widget', __( '【MirageV】用户卡片', 'vt' ), array( 'description' => __( '用户卡片描述', 'vt' ) ) );
+        $this->WP_Widget( 'user-widget', '[MirageV] '.__( '用户卡片', 'vt' ), array( 'description' => __( '用户卡片描述', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -554,13 +558,13 @@ class UserWidget extends WP_Widget {
                 </div>
                 <div class="user-meta">
                     <div class="meta-item">
-                        <span><?php echo $posts_counter ?></span> <span>文章</span>
+                        <span><?php echo $posts_counter ?></span> <span><?= __('文章','vt') ?></span>
                     </div>
                     <div class="meta-item">
-                        <span><?php echo $comments_counter ?></span> <span>评论</span>
+                        <span><?php echo $comments_counter ?></span> <span><?= __('评论','vt') ?></span>
                     </div>
                     <div class="meta-item">
-                        <span><?php echo $like_counter ?></span> <span>收藏</span>
+                        <span><?php echo $like_counter ?></span> <span><?= __('收藏','vt') ?></span>
                     </div>
                 </div>
             </div>
@@ -577,7 +581,7 @@ class UserWidget extends WP_Widget {
         $post_type = !empty($instance['post_type']) ? $instance['post_type'] : '';
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>">标题:</label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?= __('标题','vt')?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($title); ?>">
         </p>
         <?php
@@ -597,7 +601,7 @@ class UserWidget extends WP_Widget {
  */
 class HtmlWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'html-widget', __( '【MirageV】HTML卡片', 'vt' ), array( 'description' => __( 'HTML卡片描述', 'vt' ) ) );
+        $this->WP_Widget( 'html-widget', '[MirageV] '.__( 'HTML卡片', 'vt' ), array( 'description' => __( 'HTML卡片描述', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -624,7 +628,7 @@ class HtmlWidget extends WP_Widget {
         $html = !empty($instance['html']) ? $instance['html'] : '';
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('html'); ?>">标题:</label>
+            <label for="<?php echo $this->get_field_id('html'); ?>"><?= __('标题','vt')?>:</label>
             <textarea rows="3" name="<?php echo $this->get_field_name('html'); ?>"><?php echo $html ?></textarea>
         </p>
         <?php

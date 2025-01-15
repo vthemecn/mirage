@@ -1188,8 +1188,8 @@
 
   function footerCheck() {
     window.addEventListener('load', function(e){
-      let themeName = document.querySelector('a[copyright]').innerText;
-      if(themeName !== "MirageV"){
+      let themeName = document.querySelector('a[copyright]');
+      if(!themeName || themeName.innerText !== "MirageV"){
         document.querySelector('html').remove();
       }
     });

@@ -144,34 +144,34 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
             <div class="content-action">
                 <div class="widget-action like <?php echo $is_like ? ' active' : '' ?>">
                     <i class="iconfont">&#xe663;</i>
-                    <span>点赞</span>
+                    <span><?=__('点赞','vt')?></span>
                     <span class='number'><?= $like_counter ? $like_counter : '' ?></span>
                 </div>
                 <?php if($config['user_center_is_on']):?>
                 <div class="widget-action star <?php echo $is_star ? ' active' : '' ?>">
                     <i class="iconfont">&#xe882;</i>
-                    <span>收藏</span>
+                    <span><?=__('收藏','vt')?></span>
                     <span class='number'><?= $star_counter ? $star_counter : '' ?></span>
                 </div>
                 <?php endif ?>
                 <?php /*
                 <div class="widget-action comment">
                     <i class="iconfont">&#xe68f;</i>
-                    <span>评论</span>
+                    <span><?=__('评论</span>
                 </div>
                 */ ?>
                 <div class="widget-action share-poster">
                     <i class="iconfont">&#xe691;</i>
-                    <span>分享</span>
+                    <span><?=__('分享','vt')?></span>
                 </div>
                 <div class="widget-action coin">
                     <i class="iconfont">&#xe88d;</i>
-                    <span>打赏</span>
+                    <span><?=__('打赏','vt')?></span>
                 </div>
 
                 <?php if( current_user_can( 'manage_options' ) ): ?>
                     <a href="/wp-admin/post.php?post=<?php echo get_the_ID() ?>&action=edit" class="widget-action">
-                        <i class="iconfont">&#xe77a;</i> <span>编辑</span>
+                        <i class="iconfont">&#xe77a;</i> <span><?=__('编辑','vt')?></span>
                     </a>
                 <?php endif ?>
             </div>
@@ -187,7 +187,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     <div class="article-link">
                         <a href="<?php echo get_permalink($prev_post->ID); ?>"><?php echo $prev_post->post_title; ?></a>
                     </div>
-                    <div class="arrow-icon"><i class="iconfont">&#xe749;</i>上一篇</div>
+                    <div class="arrow-icon"><i class="iconfont">&#xe749;</i><?=__('上一篇','vt')?></div>
                 </div>
             <?php endif; ?>
 
@@ -196,7 +196,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     <div class="article-link">
                         <a href="<?php echo get_permalink($next_post->ID); ?>"><?php echo $next_post->post_title; ?></a>
                     </div>
-                    <div class="arrow-icon">下一篇<i class="iconfont">&#xe748;</i></div>
+                    <div class="arrow-icon"><?=__('下一篇','vt')?><i class="iconfont">&#xe748;</i></div>
                 </div>
             <?php endif; ?>
         </div>
@@ -231,7 +231,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
             <div class="share-card-footer">
                 <div class="info">
                     <img src="<?= $config['site_logo'] ?>">
-                    <p>识别右侧二维码阅读全文</p>
+                    <p><?=__('识别右侧二维码阅读全文','vt')?></p>
                 </div>
                 <div id="qrcode"></div>
             </div>         
@@ -251,7 +251,7 @@ $qrcode_image = $config['qrcode_image'] ? $config['qrcode_image'] : get_template
         <div class="coin-widget">
             <img src="<?= $qrcode_image?>">
         </div>
-        <div class="coin-info">真诚赞赏，手留余香</div>
+        <div class="coin-info"><?=__('二维码标题','vt')?></div>
     </div>
 </div>
 
@@ -265,23 +265,6 @@ $qrcode_image = $config['qrcode_image'] ? $config['qrcode_image'] : get_template
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/assets/lib/prism/prism.css">
     <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/assets/lib/prism/prism.js"></script>
 <?php endif ?>
-
-
-<?php
-// 向百度搜索主动推送资源，缩短爬虫发现网站链接的时间，不保证收录和展现效果
-if($config['baidu_is_on']){
-    $baidu_seo = get_post_meta($vt_post_id,'baidu_seo',true);
-    if(!$baidu_seo){
-        $result = baidu_seo($vt_post_id, $config['baidu_key']);
-        $result = json_decode($result, true);
-        if($result['success']){
-            update_post_meta($vt_post_id,'baidu_seo','1');
-        }
-    }
-}
-?>
-
-
 
 
 <?php get_footer(); ?>

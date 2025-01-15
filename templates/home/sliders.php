@@ -4,18 +4,16 @@ $vt_config = vt_get_config();
 
 <style>
 @media screen and (min-width:900px) {
-    .swiper.swiper-container {
-        height: <?php echo $vt_config['_home_options']['sliders_height'] ?>;
-    }
+    .swiper.swiper-container { height: <?= $vt_config['slider_height'] ?>px; }
 }
 </style>
 
 <div class="swiper swiper-container">
     <div class="swiper-wrapper">
-        <?php if ($vt_config['_home_options']['sliders']) : ?>
-            <?php foreach ($vt_config['_home_options']['sliders'] as $k => $v) : ?>
+        <?php if ($vt_config['slider_items']) : ?>
+            <?php foreach ($vt_config['slider_items'] as $k => $v) : ?>
                 <a class="swiper-slide" href="<?php echo $v['url'] ?>">
-                    <img src="<?php echo $v['pic-url'] ?>" />
+                    <img src="<?php echo $v['image'] ?>" />
                 </a>
             <?php endforeach ?>
         <?php endif ?>

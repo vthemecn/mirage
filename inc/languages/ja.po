@@ -1,0 +1,20 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rangtuo\n"
+"PO-Revision-Date: 2025-01-13 23:58:04+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/3.0.0-rc.3\n"
+"Language: zh_CN\n"
+
+msgid "海市蜃楼"
+msgstr "蜃気楼"
+
+msgid "图文列表"
+msgstr "図文リスト"
+
+
+
+

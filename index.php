@@ -11,26 +11,27 @@ get_header();
 
 $config = vt_get_config();
 
+// p($config);
 ?>
 
 
 <div class="main-container">
     <div class="main-widget">
         <?php
-        if($config['_home_options']['sliders_is_show']){
+        if( array_key_exists('sliders', $config['home_layout']['enabled']) ){
             require get_template_directory() . '/templates/home/sliders.php';
         }
         ?>
 
         <?php
-        if($config['_home_options']['hot_is_show']){
+        if( array_key_exists('hot', $config['home_layout']['enabled']) ){
             require get_template_directory() . '/templates/home/hot.php';
         }
         ?>
 
         <?php
-        if($config['_home_options']['articles_is_show']){
-            require get_template_directory() . '/templates/home/articles.php';
+        if( array_key_exists('posts', $config['home_layout']['enabled']) ){
+            require get_template_directory() . '/templates/home/posts.php';
         }
         ?>
     </div>
@@ -43,7 +44,7 @@ $config = vt_get_config();
 </div>
 
 <?php
-if($config['_home_options']['links_is_show']){
+if( array_key_exists('links', $config['home_layout']['enabled']) ){
     require get_template_directory() . '/templates/home/links.php';
 }
 ?>

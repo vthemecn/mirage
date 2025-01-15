@@ -2,11 +2,11 @@
 
 $vt_config = vt_get_config();
 
-if (!$vt_config['frontend_is_on']) {
-    header('HTTP/1.1 403 Forbidden');
-    echo '{error:"403 当前主题关闭了前端，仅能通过接口访问"}';
-    exit();
-}
+// if (!$vt_config['frontend_is_on']) {
+//     header('HTTP/1.1 403 Forbidden');
+//     echo '{error:"403 当前主题关闭了前端，仅能通过接口访问"}';
+//     exit();
+// }
 
 ?>
 
@@ -226,7 +226,7 @@ $flash_class = $vt_config['logo_is_flashing'] ? 'flash' : '';
                     </a>
                 <?php endif; ?>
                 <?php if (!$current_user->ID && $vt_config['is_show_login_register']) : ?>
-                    <a href="/wp-login.php" class="button login-button">登录</a>
+                    <a href="/wp-login.php" class="button login-button"><?= __('登录','vt')?></a>
                 <?php endif ?>
             </div>
 
@@ -254,20 +254,22 @@ $flash_class = $vt_config['logo_is_flashing'] ? 'flash' : '';
                     <div class="links-widget">
                         <?php if($vt_config['user_center_is_on']):?>
                             <a href="<?php bloginfo('siteurl') ?>/users/<?php echo $current_user->ID ?>">
-                                <i class="iconfont">&#xe8a5;</i>个人中心
+                                <i class="iconfont">&#xe8a5;</i><?= __('个人中心','vt') ?>
                             </a>
                         <?php else: ?>
                             <a href="<?php bloginfo('siteurl') ?>/wp-admin/profile.php">
-                                <i class="iconfont">&#xe8a5;</i>个人资料
+                                <i class="iconfont">&#xe8a5;</i><?= __('个人资料','vt') ?>
                             </a>
                         <?php endif ?>
                         
                         <?php if (in_array('administrator', $current_user->roles)) :?>
                             <a href="<?php bloginfo('siteurl') ?>/wp-admin/index.php">
-                                <i class="iconfont">&#xe763;</i>后台面板
+                                <i class="iconfont">&#xe763;</i><?= __('后台面板','vt') ?>
                             </a>
                         <?php endif ?>
-                        <a href="<?php echo wp_logout_url('/'); ?>"><i class="iconfont">&#xe7c1;</i>退出登录</a>
+                        <a href="<?php echo wp_logout_url('/'); ?>">
+                            <i class="iconfont">&#xe7c1;</i><?= __('退出登录','vt') ?>
+                        </a>
                     </div>
                 </div>
             <?php endif ?>
@@ -279,7 +281,7 @@ $flash_class = $vt_config['logo_is_flashing'] ? 'flash' : '';
                 <a href="javascript:;"><i class="iconfont">&#xe75e;</i></a>
             </div>
             <form method="get" class="search" action="/">
-                <input class="keyword" type="text" name="s" placeholder="搜索..." value="<?php echo get_search_query(); ?>">
+                <input class="keyword" type="text" name="s" placeholder="<?= __('搜索','vt')?>..." value="<?php echo get_search_query(); ?>">
                 <button class="button search-button" type="submit">
                     <i class="iconfont">&#xe8aa;</i>
                 </button>

@@ -11,7 +11,7 @@
   --vt-text-color-grey: #999;
   --vt-text-color-placeholder: #8c8c8c;
   --vt-text-color-disable: #e2e4eb;
-  --vt-bg-color: #f7f7fb;
+  --vt-bg-color: #f3f3f3;
   --vt-bg-color-grey: #f1f1f1;
   --vt-bg-color-hover: #f2f2f2;
   --vt-bg-color-mask: rgba(50, 50, 50, 0.5);
@@ -1720,11 +1720,23 @@ nav.pagination a:hover {
 @media only screen and (min-width: 900px) {
   .float-widget {
     position: fixed;
-    right: calc(50% - 680px);
+    right: 20px;
     bottom: 120px;
     display: block;
   }
 }
+
+@media only screen and (min-width: 1200px) {
+  .float-widget {
+    right: calc(50% - 680px);
+  }
+}
+
+
+
+
+
+
 .vt-dialog {
   position: fixed;
   left: 50%;
@@ -2371,7 +2383,7 @@ nav.pagination a:hover {
   outline: none;
   border: 1px solid var(--vt-border-color);
   background-color: var(--vt-bg-color-card);
-  font-size: 16px;
+  font-size: 14px;
   line-height: 25px;
   color: var(--vt-text-color);
 }
@@ -2427,7 +2439,7 @@ nav.pagination a:hover {
   display: block;
   height: 35px;
   line-height: 35px;
-  padding: 0px 25px;
+  padding: 0px 10px;
   margin: 0;
   font-size: 15px;
   border: none;
@@ -2451,6 +2463,8 @@ nav.pagination a:hover {
     margin: 0;
   }
 }
+
+
 /* 评论列表 */
 .comments-title {
   font-size: var(--vt-font-size-base);
@@ -2465,6 +2479,8 @@ nav.pagination a:hover {
 .comment-list li.comment .children {
   padding-left: 50px;
 }
+
+.comment-list .comment:last-child .comment-item { border-bottom: 0; }
 
 .comment-item {
   padding: 20px 0;

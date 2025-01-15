@@ -176,7 +176,9 @@ if($vt_config['editor_revision'] == 0){
 
 
 //开启友情链接管理
-add_filter( 'pre_option_link_manager_enabled', '__return_true' );
+if( $config['links_is_show'] ){
+    add_filter( 'pre_option_link_manager_enabled', '__return_true' );
+}
 
 
 /* 登录后跳转控制 */
@@ -324,7 +326,11 @@ add_filter('shake_error_codes', function ($error_codes) {
 });
 
 
-
+function vt_admin_jscss() {
+ wp_enqueue_style( 'vt-jscss', get_template_directory_uri() . '/assets/css/admin.css' );
+ // wp_enqueue_script('vt-jscss', get_template_directory_uri() . '/js/test.js' );
+}
+add_action('admin_head', 'vt_admin_jscss');
 
 
 

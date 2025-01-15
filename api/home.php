@@ -26,8 +26,12 @@ class HomeController
             // 'orderby' => array("menu_order" => "desc",'date' => "desc")
         );
         
-        if( $vt_config['_home_options']['artilces_not_in_ids'] ){
-            $args['category__not_in'] = explode(',', $vt_config['_home_options']['artilces_not_in_ids']);
+        if( $vt_config['posts_ids'] ){
+            $args['category__in'] = $vt_config['posts_ids'];
+        }
+
+        if( $vt_config['posts_not_in_ids'] ){
+            $args['category__not_in'] = $vt_config['posts_not_in_ids'];
         }
         
         $res = new \WP_Query( $args );

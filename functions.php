@@ -7,8 +7,10 @@
  * @link https://vtheme.cn
  */
 
+define('THEME_OPTION_NAME', 'miragev');
+define('TEMP_DIR', get_template_directory());
 
-// 打印函数
+
 if (!function_exists('p')) :
     function p($arg)
     {
@@ -18,12 +20,20 @@ if (!function_exists('p')) :
     }
 endif;
 
-define('THEME_OPTION_NAME', '_miragev_config');
-define('TEMP_DIR', get_template_directory());
+
+function vt_get_config()
+{
+    global $vt_config;
+    $vt_config = $vt_config ? $vt_config : get_option(THEME_OPTION_NAME);
+    return $vt_config;
+}
+
+$config = vt_get_config();
 
 
-require_once TEMP_DIR . '/inc/config/init.php';       // 主题后台面板 
-require_once TEMP_DIR . '/inc/i18n.php';              // 国际化
+require_once TEMP_DIR . '/inc/i18n.php';
+require_once TEMP_DIR . '/inc/config.php';
+// require_once TEMP_DIR . '/inc/config/init.php';
 require_once TEMP_DIR . '/inc/my-menu.php';
 require_once TEMP_DIR . '/inc/widget.php';
 require_once TEMP_DIR . '/inc/setting.php';
@@ -41,11 +51,18 @@ require_once TEMP_DIR . "/inc/php-jwt/src/ExpiredException.php";
 require_once TEMP_DIR . "/inc/php-jwt/src/SignatureInvalidException.php";
 
 require_once TEMP_DIR . '/inc/validator/validator.php';
-
 require_once TEMP_DIR . '/api/routes.php';
 
 
-$vt_config = vt_get_config();
+function footerCheck()
+{
+    $footer_str = file_get_contents(TEMP_DIR . '/footer.php');
+    if(!strstr($footer_str, base64_decode('TWlyYWdlVg=='))){
+        die();
+    }
+}
+// footerCheck();
+
 
 /*
  * 获取自定义头像
@@ -67,11 +84,11 @@ function vt_get_custom_avatar_url($user_id)
  */
 function vt_get_thumbnail_url($post_id, $size='thumbnail')
 {
-    $vt_config = vt_get_config();
+    $config = vt_get_config();
 
     $url = get_the_post_thumbnail_url($post_id, $size);
     if (!$url) {
-        $url = $vt_config['default_image'];
+        $url = $config['default_image'];
         $url = $url ? $url : get_template_directory_uri() . '/assets/images/default.jpg';
     }
     return $url;
@@ -286,33 +303,6 @@ function get_user_by_id($user_id)
     
     $user_data = array_merge($user_data, $res);
     return $user_data;
-}
-
-
-/**
- * 百度主动推送
- * @param  [type] $vt_post_id 文章ID
- * @param  [type] $baidu_key  百度准入密钥
- * @return [json]              
- */
-function baidu_seo($vt_post_id, $baidu_key)
-{
-    $post_url = get_permalink($vt_post_id);
-    $urls = array($post_url);
-
-    $api = 'http://data.zz.baidu.com/urls?site='.home_url().'&token='.$baidu_key;
-
-    $ch = curl_init();
-    $options =  array(
-        CURLOPT_URL => $api,
-        CURLOPT_POST => true,
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_POSTFIELDS => implode("\n", $urls),
-        CURLOPT_HTTPHEADER => array('Content-Type: text/plain'),
-    );
-    curl_setopt_array($ch, $options);
-    $result = curl_exec($ch);
-    return $result;
 }
 
 

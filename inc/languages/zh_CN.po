@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Rangtuo\n"
-"PO-Revision-Date: 2022-01-21 23:58:04+0000\n"
+"PO-Revision-Date: 2025-01-13 23:58:04+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,34 +17,5 @@ msgstr "您应备份现有的 %s 文件。"
 
 #. translators: %s: wp-config.php
 #: wp-admin/includes/network.php:463
-msgid "哒哒"
-msgstr "哒哒"
-
-msgid "立即购买"
-msgstr "立即购买"
-
-
-msgid "商品详情"
-msgstr "项目详情"
-
-msgid "商品推荐"
-msgstr "项目推荐"
-
-msgid "商品属性"
-msgstr "项目属性"
-
-msgid "手机或邮箱账号"
-msgstr "手机或邮箱账号"
-
-msgid "密码"
-msgstr "密码"
-
-msgid "验证码"
-msgstr "验证码"
-
-msgid "手机号码"
-msgstr "手机号码"
-
-msgid "邮箱地址"
-msgstr "邮箱地址"
-
+msgid "海市蜃楼"
+msgstr "海市蜃楼"

@@ -75,7 +75,7 @@ const cssFileArr = [
   './assets/css/src/home/home.css',
   './assets/css/src/home/slider.css',
   './assets/css/src/home/hot.css',
-  './assets/css/src/home/articles.css',
+  './assets/css/src/home/posts.css',
   './assets/css/src/home/links.css',
   './assets/css/src/article.css',
   './assets/css/src/page.css',
