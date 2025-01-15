@@ -39,6 +39,9 @@ $vt_config = vt_get_config();
     <?php wp_head(); ?>
 
 
+    <link rel="stylesheet" type="text/css" href="<?= get_bloginfo('template_url'); ?>/assets/lib/fontawesome/css/fontawesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="<?= get_bloginfo('template_url'); ?>/assets/lib/fontawesome/css/solid.min.css" />
+
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/assets/lib/swiper/swiper-bundle.min.css" />
     <script src="<?php bloginfo('template_url'); ?>/assets/lib/swiper/swiper-bundle.min.js"></script>
 

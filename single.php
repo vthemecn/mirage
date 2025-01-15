@@ -130,15 +130,29 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                 <?php endif ?>
 
                 <?php
-                $tags = get_the_tags( $vt_post_id );
+                $post_categories = wp_get_post_categories($vt_post_id);
+                ?>
+                <div class="tags-widget">
+                    <div class="icon"><i class="fa-solid fa-folder-open"></i></div>
+                    <?php foreach ($post_categories as $c): ?>
+                        <?php $cat = get_category($c); ?>
+                        <div class="tag-item">
+                            <a href="<?=esc_url(get_category_link($cat->term_id))?>" target="_blank"><?=$cat->name?></a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+
+                <?php
+                $tags = get_the_tags($vt_post_id);
                 ?>
                 <?php if($tags):?>
-                    <div class="article-tags-widget">
-                        <?php foreach($tags as $k=>$v):?>
-                            <a href="javascript:;" class="tag-item"><?php echo $v->name?></a>
-                        <?php endforeach?>
+                    <div class="tags-widget">
+                        <div class="icon"><i class="fa-solid fa-tag"></i></i></div>
+                        <?php foreach ($tags as $t): ?>
+                            <div class="tag-item"><a href="<?=get_tag_link($t->term_id)?>" target="_blank"><?=$t->name?></a></div>
+                        <?php endforeach; ?>
                     </div>
-                <?php endif ?>
+                <?php endif; ?>
 
             </div>
             <div class="content-action">

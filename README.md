@@ -7,13 +7,16 @@ MirageV 主题
 MirageV 是一款开源的 WordPress 主题，支持自适应、暗黑模式等功能，可快速构建高质量的网站。
 
 
-### 配置截图
-![Config](./docs/config.jpg)
+### 中文配置截图
+![Config](./docs/config_cn.jpg)
 
+### 英文配置截图
+![Config](./docs/config_en.jpg)
 
 ### 主题特色
 - 开源无加密
 - 支持白天与暗黑模式
+- 支持中文、英文和日文切换
 - 首页无刷新加载
 - 自适应设计，兼容多种主流浏览器
 - 自定义主色调

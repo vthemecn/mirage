@@ -119,6 +119,35 @@
 
 
 /**
+ * 文章内页分类和标签
+ */
+.tags-widget{
+  margin: 20px 0 0px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.tags-widget .icon{
+  font-size:18px;
+  color: var(--vt-text-color-grey);
+  margin-right: 8px;
+  position: relative;
+  /* top: -2px; */
+}
+.tags-widget .tag-item{
+  margin: 0 8px 8px 0;
+}
+.tags-widget .tag-item a{
+  display: block;
+  padding: 0px 10px;
+  line-height: 25px;
+  background-color: var(--vt-bg-color-grey);
+  color: var(--vt-text-color-grey);
+  font-size: var(--vt-font-size-sm);
+  border-radius: 10px;
+}
+
+
+/**
  * 文章上一篇和下一篇导航
  */
 .article-prev-next-nav {
