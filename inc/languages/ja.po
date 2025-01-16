@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Rangtuo\n"
+"Project-Id-Version: MirageV\n"
 "PO-Revision-Date: 2025-01-13 23:58:04+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -10,11 +10,530 @@ msgstr ""
 "Language: zh_CN\n"
 
 msgid "海市蜃楼"
-msgstr "蜃気楼"
+msgstr "Mirage"
+
+
+# 通用的
+###########################################################
+
+msgid "开启"
+msgstr "オン"
+
+msgid "关闭"
+msgstr "オフ"
+
+msgid "跟随系统"
+msgstr "システムを追従する"
+
+msgid "简单"
+msgstr "シンプル"
+
+msgid "全部"
+msgstr "すべて"
+
+msgid "默认图片"
+msgstr "デフォルトの画像"
+
+msgid "图片"
+msgstr "イメージ"
+
+msgid "亮色"
+msgstr "光"
+
+msgid "暗色"
+msgstr "暗い"
+
+msgid "二维码"
+msgstr "QRコード"
+
+msgid "扫描二维码"
+msgstr "QRコードをスキャン"
+
+msgid "显示"
+msgstr "表示"
+
+msgid "隐藏"
+msgstr "非表示"
+
+msgid "左侧"
+msgstr "左"
+
+msgid "居中"
+msgstr "センター"
+
+msgid "右侧"
+msgstr "正しい"
+
+msgid "标题"
+msgstr "タイトル"
+
+msgid "描述"
+msgstr "説明"
+
+msgid "上传"
+msgstr "アップロード"
+
+msgid "新窗口打开链接"
+msgstr "新しいウィンドウがリンクを開きます"
+
+msgid "链接地址"
+msgstr "リンクアドレス"
+
+msgid "自动播放"
+msgstr "自動再生"
+
+msgid "支持 HTML"
+msgstr "サポートHTML"
+
+msgid "相关分类"
+msgstr "関連カテゴリ"
+
+msgid "图标"
+msgstr "アイコン"
+
+msgid "链接"
+msgstr "リンク"
+
+msgid "单位"
+msgstr "ユニット"
+
+msgid "更多"
+msgstr "もっと"
+
+msgid "了解更多"
+msgstr "もっと詳しく"
+
+msgid "背景颜色"
+msgstr "背景色"
+
+msgid "背景图片"
+msgstr "背景画像"
+
+msgid "自定义JS代码"
+msgstr "カスタマイズ"
+
+
+# 配置页面
+###########################################################
+
+msgid "MirageV 设置"
+msgstr "MirageVの設定"
+
+msgid "MirageV 主题设置"
+msgstr "MirageVの設定"
+
+msgid "常规设置"
+msgstr "一般設定"
+
+msgid "SEO设置"
+msgstr "SEO設定"
+
+msgid "首页设置"
+msgstr "ホームページの設定"
+
+msgid "顶部设置"
+msgstr "ヘッダー設定"
+
+msgid "底部设置"
+msgstr "フッター設定"
+
+msgid "邮箱设置"
+msgstr "メール設定"
+
+msgid "备份"
+msgstr "バックアップ"
+
+
+# 配置页面 - 常规设置
+###########################################################
+
+msgid "网站LOGO"
+msgstr "ウェブサイトのロゴ"
+
+msgid "网站LOGO(暗黑模式)"
+msgstr "ウェブサイトのロゴ (ダークモード)"
+
+msgid "主题色调"
+msgstr "テーマの色調"
+
+msgid "更新提示"
+msgstr "更新プロンプト"
+
+msgid "关闭以后,不提示PHP版本,主题和插件更新提示"
+msgstr "閉じた後、PHPのバージョン、テーマ、およびプラグインの更新を求めるプロンプトはありません"
+
+msgid "编辑器模式"
+msgstr "エディタモード"
+
+msgid "古腾堡编辑器"
+msgstr "グーテンベルクエディター"
+
+msgid "经典编辑器"
+msgstr "クラシックエディタ"
+
+msgid "边框标题样式"
+msgstr "境界線のタイトルスタイル"
+
+msgid "无"
+msgstr "なし"
+
+msgid "竖线"
+msgstr "垂直線"
+
+msgid "圆点"
+msgstr "丸い点"
+
+msgid "横线"
+msgstr "水平線"
+
+msgid "显示页面参数"
+msgstr "ページパラメータを表示する"
+
+msgid "默认文章列表排版"
+msgstr "デフォルトの記事リストレイアウト"
+
+msgid "每行列数"
+msgstr "行数と列数"
+
+msgid "模块标题"
+msgstr "モジュールタイトル"
+
+msgid "右侧栏目"
+msgstr "右の列"
+
+msgid "顶部工具栏"
+msgstr "トップツールバー"
+
+msgid "文章版权声明"
+msgstr "記事の著作権に関する声明"
+
+msgid "图片高宽比"
+msgstr "画像のアスペクト比"
+
+msgid "填入图片高宽比,例如:70%"
+msgstr "画像のアスペクト比を埋めます。例:70%"
+
+msgid "暗黑模式"
+msgstr "ダークモード"
+
+msgid "防暴力破解"
+msgstr "アンチブルートフォースクラッキング"
+
+msgid "一个小时内有0个IP,0次登录失败"
+msgstr "1時間以内に、0個のIPアドレスと0回のログイン失敗がありました"
+
+msgid "文章修订版本"
+msgstr "記事の改訂版"
+
+msgid "收款二维码"
+msgstr "決済QRコード"
+
+msgid "二维码标题"
+msgstr "QRコードのタイトル"
+
+msgid "编辑器"
+msgstr "エディタ"
+
+msgid "个人中心"
+msgstr "パーソナルセンター"
+
+msgid "代码高亮"
+msgstr "コードの強調表示"
+
+msgid "开启评论"
+msgstr "オープンコメント"
+
+msgid "卡片"
+msgstr "カード"
+
+msgid "文章"
+msgstr "記事"
+
+
+# 配置页面 - SEO设置
+###########################################################
+
+msgid "网站关键词"
+msgstr "キーワード"
+
+msgid "网站描述"
+msgstr "説明"
+
+
+# 配置页面 - 首页设置 - 布局设置
+###########################################################
+
+msgid "布局设置"
+msgstr "レイアウト設定"
+
+msgid "幻灯片"
+msgstr "スライダー"
+
+msgid "热门推荐"
+msgstr "推奨事項"
+
+msgid "最新文章"
+msgstr "最新"
+
+msgid "友情链接"
+msgstr "リンク"
+
+
+# 配置页面 - 首页设置 - 幻灯片模块
+###########################################################
+
+msgid "幻灯片高度"
+msgstr "スライドの高さ"
+
+msgid "幻灯片列表"
+msgstr "スライドリスト"
+
+
+# 配置页面 - 首页设置 - 推荐模块
+###########################################################
+
+msgid "推荐模块标题"
+msgstr "ホットトピック"
+
+msgid "推荐模块"
+msgstr "推奨モジュール"
+
+msgid "推荐列表"
+msgstr "推奨リスト"
+
+
+# 配置页面 - 首页设置 - 文章列表
+###########################################################
+
+msgid "文章分类"
+msgstr "カテゴリ"
+
+msgid "排除分类"
+msgstr "分類を除外する"
+
+msgid "自动加载"
+msgstr "自動読み込み"
+
+msgid "自动加载次数"
+msgstr "自動読み込み時間"
+
+
+# 配置页面 - 顶部设置
+###########################################################
+msgid "顶部副标题"
+msgstr "ヘッダースローガン"
+
+msgid "电话标题"
+msgstr "電話のタイトル"
+
+msgid "电话号码"
+msgstr "電話番号"
+
+msgid "顶部图片"
+msgstr "ヘッダー画像"
+
+msgid "显示登录按钮"
+msgstr "ログインボタンを表示"
+
+
+# 配置页面 - 底部设置
+###########################################################
+msgid "显示类型"
+msgstr "表示タイプ"
+
+msgid "底部版权"
+msgstr "フッターの著作権"
+
+msgid "底部LOGO"
+msgstr "フッターロゴ"
+
+msgid "底部描述"
+msgstr "フッターの説明"
+
+msgid "二维码描述"
+msgstr "QRコードの説明"
+
+msgid "移动导航栏"
+msgstr "ナビゲーションバー"
+
+msgid "导航栏设置"
+msgstr "ナビゲーションバーの設定"
+
+
+# 配置页面 - 邮箱设置
+###########################################################
+msgid "自定义邮箱"
+msgstr "メールをカスタマイズする"
+
+msgid "SMTP地址"
+msgstr "SMTPアドレス"
+
+msgid "SMTP端口"
+msgstr "SMTPポート"
+
+msgid "SMTP账户"
+msgstr "SMTPアカウント"
+
+msgid "SMTP密码"
+msgstr "SMTPパスワード"
+
+msgid "发件人昵称"
+msgstr "送信者のニックネーム"
+
+
+# 配置页面 - 默认数据
+###########################################################
+
+msgid "你好，MirageV"
+msgstr "Hello MirageV"
+
+
+# 前台
+###########################################################
+
+msgid "查看更多"
+msgstr "もっと"
+
+msgid "数量"
+msgstr "数値"
+
+msgid "分类ID"
+msgstr "カテゴリID"
 
 msgid "图文列表"
-msgstr "図文リスト"
+msgstr "画像記事一覧"
+
+msgid "分类列表"
+msgstr "カテゴリ一覧"
+
+msgid "图文列表描述"
+msgstr "画像記事の説明"
+
+msgid "图片列表"
+msgstr "画像リスト"
+
+msgid "图片列表描述"
+msgstr "画像リストの説明"
+
+msgid "文章列表"
+msgstr "記事"
+
+msgid "文章列表描述"
+msgstr "記事の説明"
+
+msgid "用户卡片"
+msgstr "ユーザーカード"
+
+msgid "用户卡片描述"
+msgstr "ユーザーカードの説明"
+
+msgid "热门文章"
+msgstr "ホット記事"
+
+msgid "评论"
+msgstr "コメント"
+
+msgid "收藏"
+msgstr "星印"
+
+msgid "HTML卡片"
+msgstr "HTMLカード"
+
+msgid "HTML卡片描述"
+msgstr "HTMLカードの説明"
+
+msgid "热门"
+msgstr "ホット"
+
+msgid "后台面板"
+msgstr "ダッシュボード"
+
+msgid "个人资料"
+msgstr "プロファイル"
+
+msgid "退出登录"
+msgstr "ログアウト"
+
+msgid "登录"
+msgstr "ログイン"
+
+msgid "搜索"
+msgstr "検索"
+
+msgid "的相关内容"
+msgstr "結果"
+
+msgid "返回首页"
+msgstr "ホームへ戻る"
+
+msgid "页面没找到"
+msgstr "ページが見つかりません"
+
+msgid "暂无内容"
+msgstr "コンテンツではありません"
 
 
+# 前台 - 文章页
+###########################################################
+msgid "点赞"
+msgstr "いいね"
+
+msgid "分享"
+msgstr "共有"
+
+msgid "打赏"
+msgstr "寄付する"
+
+msgid "编辑"
+msgstr "編集"
+
+msgid "上一篇"
+msgstr "前へ"
+
+msgid "下一篇"
+msgstr "次へ"
+
+msgid "识别右侧二维码阅读全文"
+msgstr "QRコードをスキャン"
+
+msgid "生成中"
+msgstr "生成中"
 
 
+# 前台 - 文章页 - 评论
+###########################################################
+msgid "昵称(*)"
+msgstr "ニックネーム(*)"
+
+msgid "邮箱(*)"
+msgstr "メール (*)"
+
+msgid "网站地址"
+msgstr "ウェブサイトアドレス"
+
+msgid "发表评论"
+msgstr "コメントを残す"
+
+msgid "回复"
+msgstr "返信"
+
+msgid "取消"
+msgstr "キャンセル"
+
+msgid "评论内容"
+msgstr "コメント内容"
+
+msgid "注册不是必须的"
+msgstr "登録は必要ありません"
+
+msgid "当前账户"
+msgstr "現在のアカウント"
+
+msgid "需要登录,这里创建登录按钮"
+msgstr "ログインが必要です。ここにログインボタンを作成してください"
+
+msgid "条评论"
+msgstr "コメント"
+
+msgid "删除"
+msgstr "削除"

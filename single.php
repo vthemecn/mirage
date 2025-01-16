@@ -265,7 +265,7 @@ $qrcode_image = $config['qrcode_image'] ? $config['qrcode_image'] : get_template
         <div class="coin-widget">
             <img src="<?= $qrcode_image?>">
         </div>
-        <div class="coin-info"><?=__('二维码标题','vt')?></div>
+        <div class="coin-info"><?=$config['qrcode_title']?></div>
     </div>
 </div>
 
