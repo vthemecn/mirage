@@ -1184,17 +1184,7 @@
   var home = {
     homeInit
   };
-
-
-  function footerCheck() {
-    window.addEventListener('load', function(e){
-      let themeName = document.querySelector('a[copyright]');
-      if(!themeName || themeName.innerText !== "MirageV"){
-        document.querySelector('html').remove();
-      }
-    });
-  }
-  footerCheck();
+  // footerCheck();
 
   function init$1 (){
     avatarUploadAction();

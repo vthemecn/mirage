@@ -141,7 +141,7 @@ class MyMenu extends Walker_Nav_Menu
         }
 
         $fb_output .= '>';
-        $fb_output .= '<li class="menu-item"><a href="' . esc_url(admin_url('nav-menus.php')) . '">' . esc_html__('添加菜单', 'vt') . '</a></li>';
+        $fb_output .= '<li class="menu-item"><a href="' . esc_url(admin_url('nav-menus.php')) . '">' . __('添加菜单', 'vt') . '</a></li>';
         $fb_output .= '</ul>';
 
         if ($container) {

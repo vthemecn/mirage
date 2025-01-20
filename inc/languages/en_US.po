@@ -112,6 +112,9 @@ msgstr "Background image"
 msgid "自定义JS代码"
 msgstr "Customize JS code"
 
+msgid "添加菜单"
+msgstr "Add menu"
+
 
 # 配置页面
 ###########################################################

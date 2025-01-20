@@ -133,7 +133,8 @@ if ($vt_config['editor_type'] == 1) {
     add_filter( 'tiny_mce_before_init', 'vt_add_editor_style' );
 
     // 设置经典编辑器默认可视化
-    add_filter('wp_default_editor', create_function('', 'return "tinymce";'));
+    // add_filter('wp_default_editor', create_function('', 'return "tinymce";'));
+    add_filter('wp_default_editor', function(){return 'tinymce';});
 }
 
 

@@ -26,7 +26,7 @@ $version = $current_theme->get('Version');
 
 
 <?php
-require_once(get_stylesheet_directory() . "/templates/bar.php");
+require_once(TEMP_DIR . "/templates/bar.php");
 
 if ($vt_config['is_mobile_nav_show'] == 1) {
     include_once(get_template_directory() . "/templates/mobile-nav.php");
@@ -38,6 +38,8 @@ if ($vt_config['is_mobile_nav_show'] == 1) {
 <script src="<?php bloginfo('template_url'); ?>/assets/js/index.js?v=<?= $version ?>"></script>
 
 <?php wp_footer(); ?>
+
+<?= $vt_config['footer_js']?>
 
 </body>
 </html>

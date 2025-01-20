@@ -173,4 +173,4 @@ function footerCheck() {
     }
   });
 }
-footerCheck();
+// footerCheck();

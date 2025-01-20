@@ -1,5 +1,5 @@
 <?php
-require_once get_theme_file_path() .'/inc/codestar/codestar-framework.php';
+require_once TEMP_DIR .'/inc/codestar/codestar-framework.php';
 
 // Control core classes for avoid errors
 if( class_exists( 'CSF' ) ) {
