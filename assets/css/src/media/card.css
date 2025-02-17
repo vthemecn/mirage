@@ -83,7 +83,7 @@
   font-size: var(--vt-font-size-sm);
 }
 
-.card-meta .meta .iconfont {
+.card-meta .meta i {
   position: relative;
   top: 1px;
 }

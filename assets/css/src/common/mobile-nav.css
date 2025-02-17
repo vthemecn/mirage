@@ -25,7 +25,7 @@
   color: var(--vt-text-color-grey);
   border-radius: var(--vt-border-radius);
 }
-.mobile-nav .mobile-nav-container a.nav-button i.iconfont {
+.mobile-nav .mobile-nav-container a.nav-button i {
   font-size: 20px;
 }
 

@@ -90,18 +90,18 @@ class HomeController
                 }
 
                 $output .= '<span class="date">
-                                <i class="iconfont">&#xe76d;</i>'.get_the_time('Y-m-d').'
+                                <i class="fa-solid fa-clock"></i>'.get_the_time('Y-m-d').'
                             </span>
                             <span class="hit-counter">
-                                <i class="iconfont">&#xe752;</i>' .getPostViews(get_the_ID()). '
+                                <i class="fa-solid fa-eye"></i>' .getPostViews(get_the_ID()). '
                             </span>
                             <span class="like_counter">
-                                <i class="iconfont">&#xe882;</i>' .$like_counter. '
+                                <i class="fa-solid fa-star"></i>' .$like_counter. '
                             </span>
                             ';
                
                 if($vt_config['comments_is_on']){
-                    $output .= '<span class="meta"><i class="iconfont">&#xe8a6;</i>'. $current_post->comment_count .'</span>';
+                    $output .= '<span class="meta"><i class="fa-solid fa-comment"></i>'. $current_post->comment_count .'</span>';
                 }
 
                 $output .= '

@@ -115,12 +115,14 @@ if( class_exists( 'CSF' ) ) {
                 'id'         => 'show_copyright',
                 'type'       => 'switcher',
                 'title'      => __('文章版权声明','vt'),
+                'default'    => true
             ),
             array(
                 'id'         => 'show_copyright_text',
                 'type'       => 'textarea',
                 'title'      => __('文章版权声明','vt'),
                 'dependency' => array('show_copyright', '==', 'true'),
+                'default'    => __('文章版权声明','vt')
             ),
             array(
                 'id'    => 'image_items_height',

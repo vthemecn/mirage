@@ -30,8 +30,9 @@
   font-size: 13px;
 }
 
-.article-meta .iconfont {
-  font-size: 20px;
+.article-meta i {
+  font-size: 16px;
+  margin: 0 2px 0 0;
 }
 
 .article-meta .meta {
@@ -72,38 +73,11 @@
   background-color: var(--vt-bg-color);
 }
 
-.copyright-content .iconfont {
+.copyright-content i {
   display: inline-block;
-  transform: scale(1.2);
+  transform: scale(1.35);
   position: relative;
-  top: 1px;
-}
-
-.article-tags-widget {
-  margin-top: 20px;
-}
-
-.article-tags-widget a {
-  font-size: var(--vt-font-size-sm);
-  color: var(--vt-text-color-grey);
-  padding: 1px 0;
-  display: inline-block;
-  line-height: 25px;
-  height: 25px;
-  margin-right: 5px;
-}
-
-.article-tags-widget a:hover {
-  color: var(--vt-color-primary);
-}
-
-.article-tags-widget a::before {
-  content: "\e667";
-  font-family: "iconfont";
-  font-size: 20px;
-  position: relative;
-  top: -2px;
-  vertical-align: middle;
+  /* top: 1px; */
 }
 
 .dark-mode pre {

@@ -26,13 +26,13 @@
   color: var(--vt-color-primary);
 }
 
-.widget-action .iconfont {
-  font-size: 23px;
+.widget-action i {
+  font-size: 16px;
   position: relative;
-  right: -2px;
+  right: 2px;
 }
 
-.widget-action.share-poster i.iconfont {
+.widget-action.share-poster i {
   font-size: 20px;
 }
 
@@ -62,10 +62,10 @@
   color: var(--vt-text-color-grey);
 }
 
-.share-dialog-widget .close-button i.iconfont {
-  font-size: 20px;
+/* .share-dialog-widget .close-button i {
+  font-size: 23px;
   font-weight: bold;
-}
+} */
 
 .share-dialog-widget .share-card {
   margin: 15px 0 0 0;
@@ -169,10 +169,8 @@
 /**
  * 投币
  */
-.coin .iconfont {
-  transform: scale(1.1);
-}
-
+.coin i {}
+ 
 .coin-dialog-widget {
   box-sizing: border-box;
   font-size: 18px;

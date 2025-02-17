@@ -61,8 +61,8 @@
   z-index: 9;
 }
 
-.dialog-widget .close-button i.iconfont {
-  font-size: 20px;
+.dialog-widget .close-button i {
+  font-size: 22px;
   font-weight: bold;
 }
 

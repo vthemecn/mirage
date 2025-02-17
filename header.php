@@ -102,13 +102,13 @@ $flash_class = $vt_config['logo_is_flashing'] ? 'flash' : '';
     <header class="header mobile">
         <div class="header-nav">
             <a class="top-nav-button search-button" href="javascript:;">
-                <i class="iconfont">&#xe8aa;</i>
+                <i class="fa-solid fa-magnifying-glass"></i>
             </a>
             <a href="<?php bloginfo('siteurl') ?>" class="logo <?php echo $flash_class?>" title="" rel="home">
                 <img src="<?php echo $vt_config['site_logo']; ?>" alt="<?php bloginfo('name') ?>">
             </a>
             <a class="top-nav-button menu-button" href="javascript:;">
-                <i class="iconfont">&#xe7f6;</i>
+                <i class="fa-solid fa-bars"></i>
             </a>
         </div>
 
@@ -118,17 +118,17 @@ $flash_class = $vt_config['logo_is_flashing'] ? 'flash' : '';
                 <div class="action-widget">
                     <?php if ($current_user->ID && $vt_config['is_show_login_register']) : ?>
                         <a class="action-button" href="<?php bloginfo('siteurl') ?>/wp-admin/index.php">
-                            <i class="iconfont">&#xe8a5;</i>
+                            <i class="fa-solid fa-user"></i>
                         </a>
                     <?php endif ?>
                     <?php if($vt_config['dark_mode_type'] == 1): ?>
                         <a class="action-button dark-mode-button  <?php echo $is_dark_mode ? 'dark' : '' ?>">
-                            <i class="iconfont sun">&#xe7ff;</i>
-                            <i class="iconfont moon">&#xe804;</i>
+                            <i class="fa-solid fa-sun sun"></i>
+                            <i class="fa-solid fa-moon moon"></i>
                         </a>
                     <?php endif; ?>
                     <a class="action-button close" href="javascript:;">
-                        <i class="iconfont">&#xe75e;</i>
+                        <i class="fa-solid fa-xmark"></i>
                     </a>
                 </div>
 
@@ -178,7 +178,9 @@ $flash_class = $vt_config['logo_is_flashing'] ? 'flash' : '';
                         <button type="submit" class="">搜索</button>
                     </div>
                 </form>
-                <a class="modal-close-button" href="javascript:;"><i class="iconfont">&#xe75e;</i></a>
+                <a class="modal-close-button" href="javascript:;">
+                    <i class="fa-solid fa-xmark"></i>
+                </a>
             </div>
         </div>
     </header>
@@ -220,12 +222,12 @@ $flash_class = $vt_config['logo_is_flashing'] ? 'flash' : '';
             
             <div class="header-button-group">
                 <a class="nav-button search-toggle-button" href="javascript:;">
-                    <i class="iconfont">&#xe8aa;</i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
                 </a>
                 <?php if($vt_config['dark_mode_type'] == 1): ?>
                     <a class="nav-button dark-mode-button  <?php echo $is_dark_mode ? 'dark' : '' ?>">
-                        <i class="iconfont sun">&#xe7ff;</i>
-                        <i class="iconfont moon">&#xe804;</i>
+                        <i class="fa-solid fa-sun sun"></i>
+                        <i class="fa-solid fa-moon moon"></i>
                     </a>
                 <?php endif; ?>
                 <?php if (!$current_user->ID && $vt_config['is_show_login_register']) : ?>
@@ -257,21 +259,21 @@ $flash_class = $vt_config['logo_is_flashing'] ? 'flash' : '';
                     <div class="links-widget">
                         <?php if($vt_config['user_center_is_on']):?>
                             <a href="<?php bloginfo('siteurl') ?>/users/<?php echo $current_user->ID ?>">
-                                <i class="iconfont">&#xe8a5;</i><?= __('个人中心','vt') ?>
+                                <i class="fa-solid fa-user"></i><?= __('个人中心','vt') ?>
                             </a>
                         <?php else: ?>
                             <a href="<?php bloginfo('siteurl') ?>/wp-admin/profile.php">
-                                <i class="iconfont">&#xe8a5;</i><?= __('个人资料','vt') ?>
+                                <i class="fa-solid fa-user"></i><?= __('个人资料','vt') ?>
                             </a>
                         <?php endif ?>
                         
                         <?php if (in_array('administrator', $current_user->roles)) :?>
                             <a href="<?php bloginfo('siteurl') ?>/wp-admin/index.php">
-                                <i class="iconfont">&#xe763;</i><?= __('后台面板','vt') ?>
+                                <i class="fa-solid fa-gauge"></i><?= __('后台面板','vt') ?>
                             </a>
                         <?php endif ?>
                         <a href="<?php echo wp_logout_url('/'); ?>">
-                            <i class="iconfont">&#xe7c1;</i><?= __('退出登录','vt') ?>
+                            <i class="fa-solid fa-right-from-bracket"></i><?= __('退出登录','vt') ?>
                         </a>
                     </div>
                 </div>
@@ -281,12 +283,12 @@ $flash_class = $vt_config['logo_is_flashing'] ? 'flash' : '';
         <!-- 搜索弹窗 -->
         <div class="search-widget">
             <div class="close-widget">
-                <a href="javascript:;"><i class="iconfont">&#xe75e;</i></a>
+                <a href="javascript:;"><i class="fa-solid fa-xmark"></i></a>
             </div>
             <form method="get" class="search" action="/">
                 <input class="keyword" type="text" name="s" placeholder="<?= __('搜索','vt')?>..." value="<?php echo get_search_query(); ?>">
                 <button class="button search-button" type="submit">
-                    <i class="iconfont">&#xe8aa;</i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </form>
         </div>

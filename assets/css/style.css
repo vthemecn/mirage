@@ -27,7 +27,7 @@ body.dark-mode {
   --vt-text-color-grey: #999;
   --vt-text-color-placeholder: #808080;
   --vt-text-color-disable: #404244;
-  --vt-bg-color: #2c2c2c;
+  --vt-bg-color: #2e2e2e;
   --vt-bg-color-grey: #5a5a5a;
   --vt-bg-color-hover: #979797;
   --vt-bg-color-mask: rgba(50, 50, 50, 0.5);
@@ -50,7 +50,7 @@ body.dark-mode .logo {
     --vt-text-color-grey: #999;
     --vt-text-color-placeholder: #808080;
     --vt-text-color-disable: #404244;
-    --vt-bg-color: #2c2c2c;
+    --vt-bg-color: #2e2e2e;
     --vt-bg-color-grey: #5a5a5a;
     --vt-bg-color-hover: #979797;
     --vt-bg-color-mask: rgba(50, 50, 50, 0.5);
@@ -374,348 +374,6 @@ template {
   display: none;
 }
 @charset "UTF-8";
-/* 在线链接服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
-@font-face {
-  font-family: "iconfont"; /* Project id 3210959 */
-  src: url("//at.alicdn.com/t/c/font_3210959_71zkk5vzmi6.woff2?t=1726650104472") format("woff2"), url("//at.alicdn.com/t/c/font_3210959_71zkk5vzmi6.woff?t=1726650104472") format("woff"), url("//at.alicdn.com/t/c/font_3210959_71zkk5vzmi6.ttf?t=1726650104472") format("truetype");
-}
-.iconfont {
-  font-family: "iconfont" !important;
-  font-size: 16px;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-stroke-width: 0.2px;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-a-logout:before {
-  content: "\e682";
-}
-
-.icon-a-yue2:before {
-  content: "\e67d";
-}
-
-.icon-vip:before {
-  content: "\e67a";
-}
-
-.icon-lock:before {
-  content: "\e606";
-}
-
-.icon-home-fill:before {
-  content: "\e671";
-}
-
-.icon-hashjinghao:before {
-  content: "\e670";
-}
-
-.icon-a2:before {
-  content: "\e66f";
-}
-
-.icon-ss:before {
-  content: "\e669";
-}
-
-.icon-reload:before {
-  content: "\e895";
-}
-
-.icon-zanting:before {
-  content: "\e87a";
-}
-
-.icon-bofang:before {
-  content: "\e87c";
-}
-
-.icon-xiangji1:before {
-  content: "\e77f";
-}
-
-.icon-integral:before {
-  content: "\e6fb";
-}
-
-.icon-customization:before {
-  content: "\e774";
-}
-
-.icon-packing-labeling:before {
-  content: "\e7af";
-}
-
-.icon-responsetime:before {
-  content: "\e7c1";
-}
-
-.icon-menu:before {
-  content: "\e7f6";
-}
-
-.icon-tag:before {
-  content: "\e667";
-}
-
-.icon-clock:before {
-  content: "\e76d";
-}
-
-.icon-good-fill:before {
-  content: "\e666";
-}
-
-.icon-good:before {
-  content: "\e665";
-}
-
-.icon-favorites-fill1:before {
-  content: "\e664";
-}
-
-.icon-favorites1:before {
-  content: "\e663";
-}
-
-.icon-email:before {
-  content: "\e74f";
-}
-
-.icon-qq4:before {
-  content: "\e73a";
-}
-
-.icon-map:before {
-  content: "\e7a3";
-}
-
-.icon-security:before {
-  content: "\e7ca";
-}
-
-.icon-resonserate:before {
-  content: "\e7bf";
-}
-
-.icon-scanning:before {
-  content: "\e7c9";
-}
-
-.icon-zijin:before {
-  content: "\e8da";
-}
-
-.icon-phone3:before {
-  content: "\e71d";
-}
-
-.icon-close:before {
-  content: "\e75e";
-}
-
-.icon-cart-Empty:before {
-  content: "\e760";
-}
-
-.icon-conditions:before {
-  content: "\e763";
-}
-
-.icon-download:before {
-  content: "\e777";
-}
-
-.icon-editor1:before {
-  content: "\e77a";
-}
-
-.icon-filter:before {
-  content: "\e782";
-}
-
-.icon-folder:before {
-  content: "\e784";
-}
-
-.icon-history1:before {
-  content: "\e786";
-}
-
-.icon-help:before {
-  content: "\e788";
-}
-
-.icon-gift1:before {
-  content: "\e78b";
-}
-
-.icon-hot:before {
-  content: "\e78e";
-}
-
-.icon-mobile-phone:before {
-  content: "\e79e";
-}
-
-.icon-Notvisible1:before {
-  content: "\e7ab";
-}
-
-.icon-pic1:before {
-  content: "\e7b1";
-}
-
-.icon-play1:before {
-  content: "\e7b3";
-}
-
-.icon-reeor:before {
-  content: "\e7bb";
-}
-
-.icon-reduce:before {
-  content: "\e7bc";
-}
-
-.icon-remind:before {
-  content: "\e7c0";
-}
-
-.icon-viewlist:before {
-  content: "\e7f4";
-}
-
-.icon-set:before {
-  content: "\e7f5";
-}
-
-.icon-Daytimemode:before {
-  content: "\e7ff";
-}
-
-.icon-nightmode:before {
-  content: "\e804";
-}
-
-.icon-rankinglist:before {
-  content: "\e856";
-}
-
-.icon-service-fill:before {
-  content: "\e864";
-}
-
-.icon-collection:before {
-  content: "\e882";
-}
-
-.icon-collection-fill:before {
-  content: "\e884";
-}
-
-.icon-consumption:before {
-  content: "\e88d";
-}
-
-.icon-home:before {
-  content: "\e89a";
-}
-
-.icon-arrow-down:before {
-  content: "\e8a4";
-}
-
-.icon-account:before {
-  content: "\e8a5";
-}
-
-.icon-comments:before {
-  content: "\e8a6";
-}
-
-.icon-cart-Empty1:before {
-  content: "\e8a7";
-}
-
-.icon-search:before {
-  content: "\e8aa";
-}
-
-.icon-jiaobiao:before {
-  content: "\e8b5";
-}
-
-.icon-shenqingjilu:before {
-  content: "\e8bc";
-}
-
-.icon-wordpress1:before {
-  content: "\e904";
-}
-
-.icon-all:before {
-  content: "\e6ef";
-}
-
-.icon-pic:before {
-  content: "\e6ff";
-}
-
-.icon-rising:before {
-  content: "\e703";
-}
-
-.icon-QRcode:before {
-  content: "\e704";
-}
-
-.icon-Exportservices:before {
-  content: "\e702";
-}
-
-.icon-add:before {
-  content: "\e744";
-}
-
-.icon-arrow-right:before {
-  content: "\e748";
-}
-
-.icon-arrow-left:before {
-  content: "\e749";
-}
-
-.icon-arrow-up:before {
-  content: "\e74c";
-}
-
-.icon-ashbin:before {
-  content: "\e74e";
-}
-
-.icon-attachent:before {
-  content: "\e751";
-}
-
-.icon-browse:before {
-  content: "\e752";
-}
-
-.icon-calculator:before {
-  content: "\e75a";
-}
-
-.icon-category:before {
-  content: "\e75d";
-}
-
-.icon-weixin:before {
-  content: "\e903";
-}
-@charset "UTF-8";
 /* logo 闪烁 */
 .flash.logo {
   position: relative;
@@ -841,7 +499,7 @@ a:hover {
   font-size: var(--vt-font-size-sm);
   color: var(--vt-text-color-grey);
 }
-.breadcrumbs .iconfont {
+.breadcrumbs i {
   font-size: var(--vt-font-size-lg);
   vertical-align: -5px;
 }
@@ -1433,13 +1091,13 @@ nav.pagination a:hover {
   color: var(--vt-color-primary);
 }
 
-.widget-action .iconfont {
-  font-size: 23px;
+.widget-action i {
+  font-size: 16px;
   position: relative;
-  right: -2px;
+  right: 2px;
 }
 
-.widget-action.share-poster i.iconfont {
+.widget-action.share-poster i {
   font-size: 20px;
 }
 
@@ -1469,10 +1127,10 @@ nav.pagination a:hover {
   color: var(--vt-text-color-grey);
 }
 
-.share-dialog-widget .close-button i.iconfont {
-  font-size: 20px;
+/* .share-dialog-widget .close-button i {
+  font-size: 23px;
   font-weight: bold;
-}
+} */
 
 .share-dialog-widget .share-card {
   margin: 15px 0 0 0;
@@ -1576,10 +1234,8 @@ nav.pagination a:hover {
 /**
  * 投币
  */
-.coin .iconfont {
-  transform: scale(1.1);
-}
-
+.coin i {}
+ 
 .coin-dialog-widget {
   box-sizing: border-box;
   font-size: 18px;
@@ -1662,7 +1318,7 @@ nav.pagination a:hover {
   color: var(--vt-text-color-grey);
   border-radius: var(--vt-border-radius);
 }
-.mobile-nav .mobile-nav-container a.nav-button i.iconfont {
+.mobile-nav .mobile-nav-container a.nav-button i {
   font-size: 20px;
 }
 
@@ -1712,7 +1368,7 @@ nav.pagination a:hover {
 
 .float-widget a.tool-button i {
   z-index: 1;
-  font-size: 25px;
+  font-size: 20px;
   color: var(--vt-text-color);
   user-select: none;
 }
@@ -1800,8 +1456,8 @@ nav.pagination a:hover {
   z-index: 9;
 }
 
-.dialog-widget .close-button i.iconfont {
-  font-size: 20px;
+.dialog-widget .close-button i {
+  font-size: 22px;
   font-weight: bold;
 }
 
@@ -1881,11 +1537,11 @@ nav.pagination a:hover {
   pointer-events: none;
 }
 
-.main-widget button.posts-more-button .iconfont {
+.main-widget button.posts-more-button i {
   display: none;
 }
 
-.main-widget button.posts-more-button.loading .iconfont {
+.main-widget button.posts-more-button.loading i {
   display: inline-block;
   animation: rotation-load 1.5s linear infinite;
 }
@@ -2155,8 +1811,9 @@ nav.pagination a:hover {
   font-size: 13px;
 }
 
-.article-meta .iconfont {
-  font-size: 20px;
+.article-meta i {
+  font-size: 16px;
+  margin: 0 2px 0 0;
 }
 
 .article-meta .meta {
@@ -2197,38 +1854,11 @@ nav.pagination a:hover {
   background-color: var(--vt-bg-color);
 }
 
-.copyright-content .iconfont {
+.copyright-content i {
   display: inline-block;
-  transform: scale(1.2);
+  transform: scale(1.35);
   position: relative;
-  top: 1px;
-}
-
-.article-tags-widget {
-  margin-top: 20px;
-}
-
-.article-tags-widget a {
-  font-size: var(--vt-font-size-sm);
-  color: var(--vt-text-color-grey);
-  padding: 1px 0;
-  display: inline-block;
-  line-height: 25px;
-  height: 25px;
-  margin-right: 5px;
-}
-
-.article-tags-widget a:hover {
-  color: var(--vt-color-primary);
-}
-
-.article-tags-widget a::before {
-  content: "\e667";
-  font-family: "iconfont";
-  font-size: 20px;
-  position: relative;
-  top: -2px;
-  vertical-align: middle;
+  /* top: 1px; */
 }
 
 .dark-mode pre {
@@ -2655,7 +2285,7 @@ nav.pagination a:hover {
   height: 30px;
 }
 .header.mobile .header-nav a.top-nav-button i {
-  font-size: 25px;
+  font-size: 20px;
 }
 .header.mobile .mobile-menu-modal {
   width: 100vw;
@@ -2701,7 +2331,7 @@ nav.pagination a:hover {
   cursor: pointer;
 }
 .header.mobile .action-widget .action-button i {
-  font-size: 25px;
+  font-size: 20px;
 }
 .header.mobile .action-widget .action-button.dark-mode-button .moon {
   display: block;
@@ -2743,7 +2373,7 @@ nav.pagination a:hover {
   position: relative;
   margin: 15px auto;
 }
-.header.mobile .mobile-ul li > .iconfont {
+.header.mobile .mobile-ul li > i {
   font-size: 22px;
   position: relative;
   top: 2px;
@@ -2757,8 +2387,8 @@ nav.pagination a:hover {
 }
 .header.mobile .mobile-ul li.menu-item-has-children i {
   position: absolute;
-  font-size: 20px;
-  top: 0px;
+  font-size: 14px;
+  top: 6px;
   right: 0px;
 }
 .header.mobile .mobile-ul .child-menu {
@@ -2919,12 +2549,12 @@ nav.pagination a:hover {
     line-height: 60px;
     box-sizing: border-box;
   }
-  .pc-nav li > .iconfont {
+  .pc-nav li > i.fa-solid {
     font-size: 26px !important;
   }
-  .pc-nav li a .iconfont {
-    font-size: 16px;
-    font-weight: 600;
+  .pc-nav li a i.fa-solid {
+    font-size: 14px;
+    font-weight: bold;
   }
   .child-menu {
     background-color: var(--vt-bg-color-card);
@@ -2943,7 +2573,7 @@ nav.pagination a:hover {
     height: 45px;
     line-height: 45px;
   }
-  .child-menu li a .iconfont {
+  .child-menu li a i {
     font-size: 16px;
     font-weight: 600;
     position: absolute;
@@ -2951,7 +2581,8 @@ nav.pagination a:hover {
     right: 3px;
   }
   .menu-item-has-children .menu-item-has-children {
-    padding-right: 10px;
+    box-sizing: border-box;
+    padding-right: 20px;
   }
   .menu-item-has-children .menu-item-has-children .child-menu {
     top: 0px;
@@ -2959,6 +2590,9 @@ nav.pagination a:hover {
   }
   .menu-item-has-children.active > .child-menu {
     display: flex;
+  }
+  .menu-item-has-children .menu-item-has-children i{
+    top: 15px;
   }
   .menu-item-has-children.active > a i {
     display: inline-block;
@@ -2988,15 +2622,15 @@ nav.pagination a:hover {
   }
   .header.pc .header-button-group a.nav-button {
     width: 40px;
-    height: 30px;
-    line-height: 30px;
+    /* height: 30px;
+    line-height: 30px; */
     text-align: center;
     vertical-align: middle;
     cursor: pointer;
     user-select: none;
   }
   .header.pc .header-button-group a.nav-button i {
-    font-size: 27px;
+    font-size: 20px;
     font-weight: 300;
   }
   .header.pc .header-button-group a.nav-button.dark-mode-button {
@@ -3085,7 +2719,7 @@ nav.pagination a:hover {
     border-radius: var(--vt-border-radius);
   }
   .search-widget .search-button i {
-    font-size: 30px;
+    font-size: 18px;
     color: var(--vt-text-color-inverse);
   }
   /* 用户中心弹窗 */
@@ -3138,15 +2772,16 @@ nav.pagination a:hover {
     margin-top: 15px;
   }
   .user-widget .links-widget a {
+    font-size: 15px;
     margin: 5px 0;
   }
   .user-widget .links-widget i {
     color: var(--vt-color-primary);
     display: inline-block;
     position: relative;
-    top: 3px;
-    font-size: 22px;
-    margin-right: 3px;
+    top: 1px;
+    font-size: 20px;
+    margin-right: 7px;
   }
 }
 @charset "UTF-8";
@@ -3905,7 +3540,7 @@ body.dark-mode .user-card {
   font-size: var(--vt-font-size-sm);
 }
 
-.card-meta .meta .iconfont {
+.card-meta .meta i {
   position: relative;
   top: 1px;
 }
@@ -4011,9 +3646,10 @@ body.dark-mode .user-card {
   font-size: var(--vt-font-size-sm);
 }
 
-.media-main .media-meta .iconfont {
-  font-size: 23px;
-  vertical-align: -3px;
+.media-main .media-meta i {
+  font-size: 16px;
+  vertical-align: -1px;
+  margin: 0 2px 0 0;
 }
 
 .media-main .media-meta span {
@@ -4449,6 +4085,8 @@ body.dark-mode .user-card {
 .dark-mode input:focus-visible, .dark-mode textarea:focus-visible {
   outline: 1px solid var(--vt-color-primary);
 }
+
+
 /**
  *
  * @LightTip.css

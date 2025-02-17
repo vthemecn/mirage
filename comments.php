@@ -117,7 +117,7 @@ function vt_comment($comment, $args, $depth)
 						<?php if($user_url): ?>
 							<a href="javascript:;" target="_blank" data-url="<?php echo $user_url ?>">
 								<?php echo $author; ?>
-								<i class="iconfont">&#xe702;</i>
+								<i class="fa-solid fa-globe"></i>
 							</a>
 						<?php else:?>
 							<?php echo $author; ?>

@@ -91,16 +91,16 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
 
 
                 <span class="meta date">
-                    <i class="iconfont">&#xe76d;</i>
+                    <i class="fa-solid fa-clock"></i>
                     <?php the_time('Y-m-d'); ?>
                 </span>
                 <span class='meta hit-conuter'>
-                    <i class="iconfont">&#xe752;</i>
+                    <i class="fa-solid fa-eye"></i>
                     <?php echo getPostViews(get_the_ID()); ?>
                 </span>
                 <?php if($config['comments_is_on']):?>
                     <span class='meta'>
-                        <i class="iconfont">&#xe8a6;</i><?php echo $post->comment_count; ?>
+                        <i class="fa-solid fa-comment"></i><?php echo $post->comment_count; ?>
                     </span>
                 <?php endif ?>
             </div>
@@ -124,7 +124,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
 
                 <?php if($config['show_copyright']):?>
                     <div class="copyright-content">
-                        <i class="iconfont">&#xe788;</i>
+                        <i class="fa-solid fa-circle-info"></i>
                         <?php echo $config['show_copyright_text']; ?>
                     </div>
                 <?php endif ?>
@@ -157,13 +157,13 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
             </div>
             <div class="content-action">
                 <div class="widget-action like <?php echo $is_like ? ' active' : '' ?>">
-                    <i class="iconfont">&#xe663;</i>
+                    <i class="fa-solid fa-heart"></i>
                     <span><?=__('点赞','vt')?></span>
                     <span class='number'><?= $like_counter ? $like_counter : '' ?></span>
                 </div>
                 <?php if($config['user_center_is_on']):?>
                 <div class="widget-action star <?php echo $is_star ? ' active' : '' ?>">
-                    <i class="iconfont">&#xe882;</i>
+                    <i class="fa-solid fa-star"></i>
                     <span><?=__('收藏','vt')?></span>
                     <span class='number'><?= $star_counter ? $star_counter : '' ?></span>
                 </div>
@@ -175,17 +175,18 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                 </div>
                 */ ?>
                 <div class="widget-action share-poster">
-                    <i class="iconfont">&#xe691;</i>
+                    <i class="fa-solid fa-share-nodes"></i>
                     <span><?=__('分享','vt')?></span>
                 </div>
                 <div class="widget-action coin">
-                    <i class="iconfont">&#xe88d;</i>
+                    <i class="fa-solid fa-coins"></i>
                     <span><?=__('打赏','vt')?></span>
                 </div>
 
                 <?php if( current_user_can( 'manage_options' ) ): ?>
                     <a href="/wp-admin/post.php?post=<?php echo get_the_ID() ?>&action=edit" class="widget-action">
-                        <i class="iconfont">&#xe77a;</i> <span><?=__('编辑','vt')?></span>
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span><?=__('编辑','vt')?></span>
                     </a>
                 <?php endif ?>
             </div>
@@ -201,7 +202,10 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     <div class="article-link">
                         <a href="<?php echo get_permalink($prev_post->ID); ?>"><?php echo $prev_post->post_title; ?></a>
                     </div>
-                    <div class="arrow-icon"><i class="iconfont">&#xe749;</i><?=__('上一篇','vt')?></div>
+                    <div class="arrow-icon">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        <?=__('上一篇','vt')?>
+                    </div>
                 </div>
             <?php endif; ?>
 
@@ -210,7 +214,10 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     <div class="article-link">
                         <a href="<?php echo get_permalink($next_post->ID); ?>"><?php echo $next_post->post_title; ?></a>
                     </div>
-                    <div class="arrow-icon"><?=__('下一篇','vt')?><i class="iconfont">&#xe748;</i></div>
+                    <div class="arrow-icon">
+                        <?=__('下一篇','vt')?>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
                 </div>
             <?php endif; ?>
         </div>
@@ -233,7 +240,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
 
 <div class="vt-dialog" id="share-dialog" class="normal-dialog">
     <div class="share-dialog-widget dialog-widget">
-        <a href="javascript:;" class="close-button close"><i class="iconfont">&#xe75e;</i></a>
+        <a href="javascript:;" class="close-button close"><i class="fa-solid fa-xmark"></i></a>
         <div class="share-card">
             <div class="thumbnail">
                 <img src="<?= $thumbnail_image?>">    
@@ -261,7 +268,9 @@ $qrcode_image = $config['qrcode_image'] ? $config['qrcode_image'] : get_template
 ?>
 <div class="vt-dialog" id="coin-dialog" class="normal-dialog">
     <div class="coin-dialog-widget dialog-widget">
-        <a href="javascript:;" class="close-button close"><i class="iconfont">&#xe75e;</i></a>
+        <a href="javascript:;" class="close-button close">
+            <i class="fa-solid fa-xmark"></i>
+        </a>
         <div class="coin-widget">
             <img src="<?= $qrcode_image?>">
         </div>

@@ -100,9 +100,10 @@
   font-size: var(--vt-font-size-sm);
 }
 
-.media-main .media-meta .iconfont {
-  font-size: 23px;
-  vertical-align: -3px;
+.media-main .media-meta i {
+  font-size: 16px;
+  vertical-align: -1px;
+  margin: 0 2px 0 0;
 }
 
 .media-main .media-meta span {

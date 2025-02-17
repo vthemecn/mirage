@@ -6,7 +6,7 @@
  */
 function vt_add_admin_js(){ 
     wp_enqueue_media();
-    wp_enqueue_script('vt-uploader', get_stylesheet_directory_uri().'/assets/lib/avatar.js', array('jquery'), false, true );
+    wp_enqueue_script('vt-uploader', get_bloginfo('template_url').'/assets/lib/avatar.js', array('jquery'), false, true );
 }
 add_action('admin_enqueue_scripts', 'vt_add_admin_js');
 
@@ -52,7 +52,7 @@ function vt_custom_avatar($avatar, $id_or_email, $size, $default, $alt)
     $attachment_id = get_user_meta($id_or_email, "user_avatar_attachment_id")[0];
     $avatar = wp_get_attachment_image_src($attachment_id, 'thumbnail')[0];
     if(!$avatar) {
-        $avatar = get_stylesheet_directory_uri() . '/assets/images/avatar.jpg';
+        $avatar = get_bloginfo('template_url') . '/assets/images/avatar.jpg';
     }
     $avatar = "<img alt='{$alt}' src='{$avatar}' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
     return $avatar;

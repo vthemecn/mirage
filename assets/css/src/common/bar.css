@@ -39,7 +39,7 @@
 
 .float-widget a.tool-button i {
   z-index: 1;
-  font-size: 25px;
+  font-size: 20px;
   color: var(--vt-text-color);
   user-select: none;
 }

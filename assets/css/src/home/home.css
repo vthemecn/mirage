@@ -20,11 +20,11 @@
   pointer-events: none;
 }
 
-.main-widget button.posts-more-button .iconfont {
+.main-widget button.posts-more-button i {
   display: none;
 }
 
-.main-widget button.posts-more-button.loading .iconfont {
+.main-widget button.posts-more-button.loading i {
   display: inline-block;
   animation: rotation-load 1.5s linear infinite;
 }

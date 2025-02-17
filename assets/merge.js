@@ -58,7 +58,6 @@ var cssTimer = null;
 const cssFileArr = [
   './assets/css/src/variables.css',
   './assets/css/src/normalize.css',
-  './assets/css/src/iconfont.css',
   './assets/css/src/animation.css',
   './assets/css/src/common/common.css',
   './assets/css/src/common/form.css',

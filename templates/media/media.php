@@ -49,17 +49,17 @@ $like_counter = $res['num'];
             <?php endif ?>
 
             <span class="date">
-                <i class="iconfont">&#xe76d;</i><?php the_time('Y-m-d'); ?>
+                <i class="fa-solid fa-clock"></i><?php the_time('Y-m-d'); ?>
             </span>
             <span class="hit-counter">
-                <i class="iconfont">&#xe752;</i><?php echo getPostViews(get_the_ID()); ?>
+                <i class="fa-solid fa-eye"></i><?php echo getPostViews(get_the_ID()); ?>
             </span>
             <span class="star_counter">
-                <i class="iconfont">&#xe882;</i><?= $like_counter ?>
+                <i class="fa-solid fa-star"></i><?= $like_counter ?>
             </span>
             <?php if($vt_config['comments_is_on']):?>
                 <span>
-                    <i class="iconfont">&#xe8a6;</i><?php echo $post->comment_count; ?>
+                    <i class="fa-solid fa-comment"></i><?php echo $post->comment_count; ?>
                 </span>
             <?php endif ?>
         </div>

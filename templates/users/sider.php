@@ -50,8 +50,8 @@ function page_active($current_page_name)
 
     <div class="user-nav">
         <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>" class="sidebar-action <?php echo page_active('users'); ?>">
-            <i class="iconfont">&#xe8a5;</i><span>我的主页</span>
-            <i class="iconfont">&#xe748;</i>
+            <i class="fa-solid fa-user"></i><span>我的主页</span>
+            <i class="fa-solid fa-angle-right"></i>
         </a>
         
        <!--  <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/star" class="sidebar-action <?php echo page_active('star'); ?>">
@@ -76,9 +76,9 @@ function page_active($current_page_name)
                     <i class="iconfont">&#xe748;</i>
                 </a> -->
                 <a href="<?php echo wp_logout_url('/'); ?>" class="sidebar-action">
-                    <i class="iconfont">&#xe7bf;</i>
+                    <i class="fa-solid fa-right-from-bracket"></i>
                     <span>退出登录</span>
-                    <i class="iconfont">&#xe748;</i>
+                    <i class="fa-solid fa-angle-right"></i>
                 </a>
             <?php endif ?>
         <?php endif ?>

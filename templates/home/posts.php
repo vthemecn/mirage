@@ -75,8 +75,8 @@ $sticky_arr = get_option( 'sticky_posts' );
         data-auto-limit='<?php echo $vt_config['posts_auto_load_limit'] ?>'
         data-no-more='false'
         data-current-page='1'>
-        <i class="iconfont">&#xe895;</i>
         <span><?= __('查看更多','vt')?></span>
+        <i class="fa-solid fa-spinner"></i>
     </button>
 </div>
 

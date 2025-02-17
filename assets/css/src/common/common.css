@@ -72,7 +72,7 @@ a:hover {
   font-size: var(--vt-font-size-sm);
   color: var(--vt-text-color-grey);
 }
-.breadcrumbs .iconfont {
+.breadcrumbs i {
   font-size: var(--vt-font-size-lg);
   vertical-align: -5px;
 }

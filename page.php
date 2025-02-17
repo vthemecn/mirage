@@ -37,7 +37,7 @@ $config = vt_get_config();
             <div class="content-action">
                 <?php if( current_user_can( 'manage_options' ) ): ?>
                     <a href="/wp-admin/post.php?post=<?php echo get_the_ID() ?>&action=edit" class="widget-action">
-                        <i class="iconfont">&#xe77a;</i> <span>编辑</span>
+                        <i class="fa-solid fa-pen-to-square"></i> <span>编辑</span>
                     </a>
                 <?php endif ?>
             </div>

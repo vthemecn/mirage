@@ -25,7 +25,7 @@
 
     <div class="tool-widget">
         <a class="tool-button to-top" onclick="javascript:;" style="display:none">
-            <i class="iconfont">&#xe703;</i>
+            <i class="fa-solid fa-arrow-up"></i>
         </a>
     </div>
     

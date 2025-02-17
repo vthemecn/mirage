@@ -27,7 +27,7 @@ body.dark-mode {
   --vt-text-color-grey: #999;
   --vt-text-color-placeholder: #808080;
   --vt-text-color-disable: #404244;
-  --vt-bg-color: #2c2c2c;
+  --vt-bg-color: #2e2e2e;
   --vt-bg-color-grey: #5a5a5a;
   --vt-bg-color-hover: #979797;
   --vt-bg-color-mask: rgba(50, 50, 50, 0.5);
@@ -50,7 +50,7 @@ body.dark-mode .logo {
     --vt-text-color-grey: #999;
     --vt-text-color-placeholder: #808080;
     --vt-text-color-disable: #404244;
-    --vt-bg-color: #2c2c2c;
+    --vt-bg-color: #2e2e2e;
     --vt-bg-color-grey: #5a5a5a;
     --vt-bg-color-hover: #979797;
     --vt-bg-color-mask: rgba(50, 50, 50, 0.5);

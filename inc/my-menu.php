@@ -74,7 +74,7 @@ class MyMenu extends Walker_Nav_Menu
         // $item_output .= "<a class=\"category-title\" href=\"#id{$menu_item->ID}\">";
         $item_output .= $args->link_before . $title . $args->link_after;
         if (in_array('menu-item-has-children', $classes)) {
-            $item_output .= '<i class="iconfont">&#xe8a4;</i></a>';
+            $item_output .= '<i class="fa-solid fa-chevron-down"></i></a>';
             // $item_output .= '</a><i class="iconfont">&#xe8a4;</i>';
         } else {
             $item_output .= '</a>';
