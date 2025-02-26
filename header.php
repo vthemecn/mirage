@@ -46,18 +46,9 @@ $vt_config = vt_get_config();
     <script src="<?php bloginfo('template_url'); ?>/assets/lib/swiper/swiper-bundle.min.js"></script>
 
     <?php
-    // 自定义颜色
-    $primary_color = $vt_config['basic_style_color'];
-    $hover_color = $vt_config['basic_style_color'];
-    switch ($vt_config['basic_style']) {
-        case "0": break;
-        case "1": $primary_color = '#007aff'; $hover_color = '#007aff'; break;
-        case "2": $primary_color = '#dd524d'; $hover_color = '#dd524d'; break;
-        case "3": $primary_color = '#535353'; $hover_color = '#535353'; break;
-        case "4": $primary_color = '#62ad4c'; $hover_color = '#62ad4c'; break;
-        default: $primary_color = '#007aff'; $hover_color = '#007aff';
-    }
-    echo "<style> :root{ --vt-color-primary:{$primary_color}; --vt-color-primary-hover:{ $hover_color}; }  </style>";
+    $primary = $vt_config['basic_style'];
+    $hover = $vt_config['basic_style'];
+    echo "<style>:root{ --vt-color-primary:{$primary}; --vt-color-primary-hover:{ $hover}; }</style>";
     ?>
 
     <?php if($vt_config['background_image']): ?>
