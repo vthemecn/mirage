@@ -84,7 +84,7 @@ if ( ! class_exists( 'CSF_Setup' ) ) {
     public static function setup() {
 
       // Welcome
-      self::include_plugin_file( 'views/welcome.php' );
+      // self::include_plugin_file( 'views/welcome.php' );
 
       // Setup admin option framework
       $params = array();

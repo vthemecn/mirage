@@ -33,7 +33,6 @@ $config = vt_get_config();
 
 require_once TEMP_DIR . '/inc/i18n.php';
 require_once TEMP_DIR . '/inc/config.php';
-// require_once TEMP_DIR . '/inc/config/init.php';
 require_once TEMP_DIR . '/inc/my-menu.php';
 require_once TEMP_DIR . '/inc/widget.php';
 require_once TEMP_DIR . '/inc/setting.php';
