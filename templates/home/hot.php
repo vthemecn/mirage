@@ -12,7 +12,7 @@ $hot_items = $config['hot_items'] ? $config['hot_items'] : array();
     <div class="body">
         <div class="hot-list">
             <?php foreach($hot_items as $k => $v):?>
-                <a class="hot-item" href="<?= $v['url']?>" target="_blank">
+                <a class="hot-item" href="<?= $v['link']?>" target="_blank">
                     <div class="hot-thumbnail">
                         <img src="<?= $v['image']?>" alt="<?= $v['title']?>">
                     </div>
