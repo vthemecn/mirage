@@ -3269,6 +3269,7 @@ footer[darkness] a {
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+  box-shadow: 0 1px 3px var(--vt-shadow-color);
 }
 
 .user-header .nickname {
@@ -3387,6 +3388,9 @@ body.dark-mode .user-card {
   .main-container .main-widget {
     width: 880px;
     margin-bottom: 0;
+  }
+  .main-container .main-widget > *:nth-child(1){
+    margin-top: 0;
   }
   .main-container .main-widget .posts-widget {
     width: auto;

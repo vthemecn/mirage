@@ -58,6 +58,9 @@
     width: 880px;
     margin-bottom: 0;
   }
+  .main-container .main-widget > *:nth-child(1){
+    margin-top: 0;
+  }
   .main-container .main-widget .posts-widget {
     width: auto;
     margin-right: -20px;

@@ -13,6 +13,7 @@ if( class_exists( 'CSF' ) ) {
         'footer_text' => '',
         'theme' => 'light',
         'show_bar_menu' => false,
+        'footer_text' => '<img src="https://vtheme.cn/favicon.ico" style="width:20px;position:relative;top:5px"> Powered by <a href="https://vtheme.cn/miragev" copyright target="_blank">MirageV</a>'
     ));
 
 
@@ -165,7 +166,7 @@ if( class_exists( 'CSF' ) ) {
                 'type'       => 'radio',
                 'title'      => __('个人中心','vt'),
                 'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
-                'default'    => '1',
+                'default'    => '0',
                 'inline' => true
             ),
             array(

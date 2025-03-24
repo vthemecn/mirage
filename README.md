@@ -42,12 +42,11 @@ MirageV 是一款开源的 WordPress 主题，支持自适应、暗黑模式、�
 ### 文档
 - [项目官网](https://vtheme.cn/miragev)
 - [版本历史](./CHANGES.md)
-- [自定义接口](./docs/api.md)
 - 如果您发现任何BUG，欢迎[联系我](https://vtheme.cn/contact)
 
 
 ### LICENSE
-遵循GPL协议，非商业用途免费使用，请保留底部版权
+遵循GPL协议，您可自由使用本主题，请保留底部版权
 
 
 ### 演示地址
