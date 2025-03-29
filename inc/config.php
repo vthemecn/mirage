@@ -13,7 +13,7 @@ if( class_exists( 'CSF' ) ) {
         'footer_text' => '',
         'theme' => 'light',
         'show_bar_menu' => false,
-        'footer_text' => '<img src="https://vtheme.cn/favicon.ico" style="width:20px;position:relative;top:5px"> Powered by <a href="https://vtheme.cn/miragev" copyright target="_blank">MirageV</a>'
+        'footer_text' => '<img src="https://vtheme.cn/favicon.ico" style="width:20px;position:relative;top:5px"> Theme by <a href="https://vtheme.cn/miragev" copyright target="_blank">MirageV</a>'
     ));
 
 

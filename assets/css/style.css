@@ -3269,7 +3269,6 @@ footer[darkness] a {
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 1px 3px var(--vt-shadow-color);
 }
 
 .user-header .nickname {
@@ -3320,13 +3319,15 @@ body.dark-mode .user-card {
  * HTML 卡片
  */
 .html-card-container {
-  box-shadow: none !important;
+  box-shadow: 0 0 2px 0 var(--vt-shadow-color);
+  overflow: hidden;
+  /* padding: 15px; */
 }
 
 .html-card-container img {
-  width: 100%;
+  /* width: 100%; */
   height: auto;
-  border-radius: var(--vt-border-radius);
+  /* border-radius: var(--vt-border-radius); */
   display: block;
 }
 @charset "UTF-8";
