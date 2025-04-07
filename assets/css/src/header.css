@@ -365,6 +365,7 @@
     align-items: center;
     padding-left: 10px;
     margin-left: auto;
+    flex: 0 0 auto;
   }
   .header.pc .header-button-group .button {
     height: 30px;
