@@ -278,6 +278,7 @@
   .header.pc .pc-nav {
     list-style: none;
     height: 60px;
+    width: 820px;
     float: left;
     margin-left: 30px;
     padding: 0px;
@@ -294,6 +295,7 @@
     min-width: 60px;
     box-sizing: border-box;
     padding: 0px 15px;
+    flex: 0 0 auto;
   }
   .pc-nav li a {
     font-size: var(--vt-font-size-base);

@@ -30,6 +30,7 @@ body {
   position: relative;
   letter-spacing: 1px;
   background-color: var(--vt-bg-color);
+  overflow-x: hidden;
 }
 
 body:before {
