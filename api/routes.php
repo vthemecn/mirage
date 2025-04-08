@@ -58,19 +58,6 @@ add_action('rest_api_init', function (){
         }
     ));
 
-
-    // /wp-json/vtheme/v1/home/test
-    register_rest_route('vtheme/v1', 'home/test', [
-        'methods'  => 'GET',
-        'callback' => function ($request) {
-            $user_id = vt_get_user_id();
-            echo $user_id;
-
-            global $current_user;
-            p($current_user);
-        }
-    ]);
-
 });
 
 
