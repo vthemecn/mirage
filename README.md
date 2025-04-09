@@ -50,6 +50,5 @@ MirageV 是一款开源的 WordPress 主题，支持自适应、暗黑模式、�
 
 
 ### 演示地址
-- [https://www.9-f.cn](https://www.9-f.cn/)
-- [https://restfulapi.cn](https://restfulapi.cn/)
+- [https://miragev.vtheme.cn](https://miragev.vtheme.cn/)
 
