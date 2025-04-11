@@ -537,3 +537,8 @@ msgstr "コメント"
 
 msgid "删除"
 msgstr "削除"
+
+msgid "没有了"
+msgstr "ありません"
+
+

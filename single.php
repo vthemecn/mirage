@@ -197,29 +197,33 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
             $prev_post = get_previous_post();
             $next_post = get_next_post();
             ?>
-            <?php if ($prev_post) : ?>
-                <div class="article-nav prev-nav">
-                    <div class="article-link">
+            
+            <div class="article-nav prev-nav">
+                <div class="article-link">
+                    <?php if ($prev_post) : ?>
                         <a href="<?php echo get_permalink($prev_post->ID); ?>"><?php echo $prev_post->post_title; ?></a>
-                    </div>
-                    <div class="arrow-icon">
-                        <i class="fa-solid fa-chevron-left"></i>
-                        <?=__('上一篇','vt')?>
-                    </div>
+                    <?php else: ?>
+                        <?=__('没有了','vt')?>
+                    <?php endif; ?>
                 </div>
-            <?php endif; ?>
+                <div class="arrow-icon">
+                    <i class="fa-solid fa-chevron-left"></i>
+                    <?=__('上一篇','vt')?>
+                </div>
+            </div>
 
-            <?php if ($next_post) : ?>
-                <div class="article-nav next-nav">
-                    <div class="article-link">
+            <div class="article-nav next-nav">
+                <div class="article-link">
+                    <?php if ($next_post) : ?>
                         <a href="<?php echo get_permalink($next_post->ID); ?>"><?php echo $next_post->post_title; ?></a>
-                    </div>
-                    <div class="arrow-icon">
-                        <?=__('下一篇','vt')?>
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </div>
+                    <?php else: ?>
+                        <?=__('没有了','vt')?>
+                    <?php endif; ?>
                 </div>
-            <?php endif; ?>
+                <div class="arrow-icon">
+                    <?=__('下一篇','vt')?> <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
         </div>
 
         <?php

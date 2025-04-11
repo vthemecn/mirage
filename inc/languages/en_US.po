@@ -546,4 +546,5 @@ msgstr "Comments"
 msgid "删除"
 msgstr "Delete"
 
-
+msgid "没有了"
+msgstr "No more"
