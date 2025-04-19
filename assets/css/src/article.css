@@ -166,10 +166,11 @@
   -webkit-line-clamp: 2;
   overflow: hidden;
   margin: 0px 0px 10px;
+  font-size: 15px;
 }
 
 .article-nav .article-link a {
-  font-size: 14px;
+  font-size: 15px;
   cursor: pointer;
 }
 

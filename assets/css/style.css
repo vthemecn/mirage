@@ -1948,10 +1948,11 @@ nav.pagination a:hover {
   -webkit-line-clamp: 2;
   overflow: hidden;
   margin: 0px 0px 10px;
+  font-size: 15px;
 }
 
 .article-nav .article-link a {
-  font-size: 14px;
+  font-size: 15px;
   cursor: pointer;
 }
 
@@ -2058,7 +2059,7 @@ nav.pagination a:hover {
   outline: none;
   border: 1px solid var(--vt-border-color);
   color: var(--vt-text-color-grey);
-  font-size: 16px;
+  font-size: 14px;
   background-color: var(--vt-bg-color-card);
 }
 

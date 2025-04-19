@@ -285,16 +285,16 @@ if( class_exists( 'CSF' ) ) {
                 'type'       => 'group',
                 'title'      => __('幻灯片列表','vt'),
                 'fields'     => array(
-                    array(
-                        'id'      => 'title',
-                        'type'    => 'text',
-                        'title'   => __('标题','vt')
-                    ),
-                    array(
-                        'id'      => 'description',
-                        'type'    => 'text',
-                        'title'   => __('描述','vt')
-                    ),
+                    // array(
+                    //     'id'      => 'title',
+                    //     'type'    => 'text',
+                    //     'title'   => __('标题','vt')
+                    // ),
+                    // array(
+                    //     'id'      => 'description',
+                    //     'type'    => 'text',
+                    //     'title'   => __('描述','vt')
+                    // ),
                     array(
                         'id'          => 'image',
                         'type'        => 'upload',

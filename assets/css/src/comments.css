@@ -62,7 +62,7 @@
   outline: none;
   border: 1px solid var(--vt-border-color);
   color: var(--vt-text-color-grey);
-  font-size: 16px;
+  font-size: 14px;
   background-color: var(--vt-bg-color-card);
 }
 
