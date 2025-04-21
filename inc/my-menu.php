@@ -59,16 +59,16 @@ class MyMenu extends Walker_Nav_Menu
             }
         }
 
-        // $class_names = implode(' ', apply_filters('nav_menu_css_class', array_filter($classes), $menu_item, $args, $depth));
+        $class_names = implode(' ', apply_filters('nav_menu_css_class', array_filter($classes), $menu_item, $args, $depth));
         $class_names = $class_names ? ' class="' . $class_names . '"' : '';
         $output .= $indent . '<li' . $class_names . '>';
 
         $title = apply_filters('the_title', $menu_item->title, $menu_item->ID);
         $item_output  = $args->before;
 
-        if( $menu_item->classes[0] ){
-            $item_output .= '<i class="iconfont '.$menu_item->classes[0].'"></i>';
-        }
+        // if( $menu_item->classes[0] ){
+        //     $item_output .= '<i class="iconfont '.$menu_item->classes[0].'"></i>';
+        // }
 
         $item_output .= '<a' . $attributes . '>';
         // $item_output .= "<a class=\"category-title\" href=\"#id{$menu_item->ID}\">";

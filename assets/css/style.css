@@ -2248,7 +2248,7 @@ nav.pagination a:hover {
 }
 @charset "UTF-8";
 /**
-* header 类型1
+* header 移动端菜单
 */
 .no-scroll {
   overflow-y: hidden;
@@ -2258,7 +2258,6 @@ nav.pagination a:hover {
   width: 100%;
   height: 50px;
   background-color: var(--vt-bg-color-card);
-  /* 移动端菜单 */
 }
 .header.mobile .header-nav {
   box-sizing: border-box;
@@ -2522,7 +2521,11 @@ nav.pagination a:hover {
     display: block;
     max-height: 70%;
   }
-  /* PC 菜单样式 */
+
+
+  /**
+   * PC 菜单样式
+   */
   .header.pc .pc-nav {
     list-style: none;
     height: 60px;
@@ -2552,14 +2555,16 @@ nav.pagination a:hover {
     height: 60px;
     line-height: 60px;
     box-sizing: border-box;
+    font-weight: normal;
   }
-  .pc-nav li > i.fa-solid {
-    font-size: 26px !important;
+  /* .pc-nav .menu-item.fa-solid { font-weight: normal; } */
+  .pc-nav .menu-item.fa-solid::before {
+    font-size: 17px !important;
+    margin: 0 3px 0 0;
+    position: relative;
+    top: -1px;
   }
-  .pc-nav li a i.fa-solid {
-    font-size: 14px;
-    font-weight: bold;
-  }
+  .pc-nav li a i.fa-solid { font-size: 14px; font-weight: bold; }
   .child-menu {
     background-color: var(--vt-bg-color-card);
     box-shadow: 0 0 3px 0 var(--vt-shadow-color);
@@ -2606,6 +2611,8 @@ nav.pagination a:hover {
     display: inline-block;
     transform: rotate(-90deg);
   }
+
+
   /* 登录注册等按钮 */
   .header.pc .header-button-group {
     display: flex;
