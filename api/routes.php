@@ -19,11 +19,11 @@ add_action('rest_api_init', function (){
     
     /**
      * 测试邮箱设置
-     * 路径：/wp-json/vtheme/v1/home/get-more-articles
+     * 路径：/wp-json/vtheme/v1/sendmail-test
      * posts_per_page, page
      */
     register_rest_route('vtheme/v1', 'sendmail-test', [
-        'methods'  => 'POST',
+        'methods'  => 'GET',
         'callback' => function ($request) {
             $homeController = new \vtheme\api\HomeController();
             return $homeController->sendmail($request);

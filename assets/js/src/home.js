@@ -1,5 +1,3 @@
-import axios from "./axios";
-
 import {
   isElementVisible
 } from './utils.js';

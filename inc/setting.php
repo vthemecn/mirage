@@ -221,7 +221,7 @@ function vt_upload_filter($file)
 
 
 
-if ($vt_config['vt_email_is_on'] == 1) {
+if ($vt_config['smtp_is_on'] == 1) {
     add_action('phpmailer_init', 'mail_smtp');
     function mail_smtp($phpmailer)
     {

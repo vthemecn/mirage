@@ -130,13 +130,15 @@ class HomeController
         if (!is_user_logged_in() || !is_super_admin()) {
             wp_die("没有权限");
         }
-    
+        
+        $config = vt_get_config();
+
         // 发送邮件
-        $to         = $request->get_json_params()['email'];
+        $to         = $config['smtp_username'];
         $subject    = "MirageV 主题邮箱 SMTP 设置成功";
         $body       = "
         <div style='width:600px;margin:50px auto; padding-left:77px; background:#fff;font-size:16px;color:#55798d;padding-right80px;'>
-            <p><img src='https://www.9-f.cn/wp-content/themes/miragev/assets/images/logo.png' style='max-height:50px;user-select:none'></p>
+            <p><img src='".get_bloginfo('template_url')."/assets/images/logo.png' style='max-height:50px;user-select:none'></p>
             <h3>MirageV 主题邮箱 SMTP 设置成功</h3>
             <p>MirageV 主题官网地址 <a href='https://vtheme.cn/miragev'>https://vtheme.cn/miragev</a></p>
         </div>

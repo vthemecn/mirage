@@ -186,6 +186,14 @@ if( class_exists( 'CSF' ) ) {
                 'inline' => true
             ),
             array(
+                'id'         => 'border_radius_is_on',
+                'type'       => 'radio',
+                'title'      => __('开启圆角','vt'),
+                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
+                'default'    => '1',
+                'inline' => true
+            ),
+            array(
                 'id'         => 'attempts_is_on',
                 'type'       => 'radio',
                 'title'      => __('防暴力破解','vt'),
@@ -607,7 +615,7 @@ if( class_exists( 'CSF' ) ) {
         )
     ));
 
-
+    $email_test = home_url('/wp-json/vtheme/v1/sendmail-test') . '?_wpnonce=' . wp_create_nonce('wp_rest');
     /**
      * 邮箱设置
      */
@@ -618,10 +626,12 @@ if( class_exists( 'CSF' ) ) {
             array(
                 'id'    => 'smtp_is_on',
                 'type'  => 'radio',
-                'title' => __('导航栏','vt'),
+                'title' => __('开启邮箱','vt'),
                 'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
                 'default'    => '1',
-                'inline' => true
+                'inline' => true,
+                'desc' => __('SMTP测试链接，完成设置以后，点击此链接可以给管理员发送邮件','vt')."<br><a href='$email_test' target='_blank'>$email_test</a>"
+
             ),
             array(
                 'id'    => 'smtp_host',
@@ -647,7 +657,7 @@ if( class_exists( 'CSF' ) ) {
                 'id'    => 'smtp_nicename',
                 'type'  => 'text',
                 'title' => __('发件人昵称','vt'),
-            ),
+            )
         )
     ));
 

@@ -54,6 +54,9 @@ $vt_config = vt_get_config();
     <?php if($vt_config['background_image']): ?>
     <style>body:before { background-image:url(<?php echo $vt_config['background_image']?>) }</style>
     <?php endif ?>
+    <?php if($vt_config['border_radius_is_on']==0): ?>
+    <style>:root{ --vt-border-radius:0px; }</style>
+    <?php endif ?>
     
     <style> .card-item .card-image { padding-bottom: <?php echo $vt_config['image_items_height'] ?> !important; } </style>
 </head>
