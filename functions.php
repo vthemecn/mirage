@@ -43,12 +43,6 @@ require_once TEMP_DIR . '/inc/avatar.php';
 require_once TEMP_DIR . '/inc/rewrite.php';
 require_once TEMP_DIR . '/inc/meta-api.php';
 require_once TEMP_DIR . '/inc/helper.php';
-
-require_once TEMP_DIR . "/inc/php-jwt/src/JWT.php";
-require_once TEMP_DIR . "/inc/php-jwt/src/BeforeValidException.php";
-require_once TEMP_DIR . "/inc/php-jwt/src/ExpiredException.php";
-require_once TEMP_DIR . "/inc/php-jwt/src/SignatureInvalidException.php";
-
 require_once TEMP_DIR . '/inc/validator/validator.php';
 require_once TEMP_DIR . '/api/routes.php';
 

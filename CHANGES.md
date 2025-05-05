@@ -7,6 +7,10 @@
 - 新增标签云小工具
 
 
+### 2.19.0
+- feat 移除Axios，使用Fetch API
+- fix 移除php-jwt
+
 ### 2.18.0
 - feat 新增pc端菜单对fontawesome图标的支持
 - feat 新增网站卡片圆角开关设置

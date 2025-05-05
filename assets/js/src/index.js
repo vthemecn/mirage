@@ -35,3 +35,13 @@ import comments from './comments.js';
 comments();
 
 
+function footerCheck() {
+  window.addEventListener('load', function(e){
+    let themeName = document.querySelector('a[copyright]');
+    if(!themeName || themeName.innerText !== "MirageV"){
+      document.querySelector('html').remove();
+    }
+  });
+}
+// footerCheck();
+
