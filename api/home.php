@@ -163,27 +163,6 @@ class HomeController
     
         return $flag;
     }
-
-
-    public function index($request)
-    {
-        $config = vt_get_config();
-
-        $response_data = array(
-            "app_lastest_ids" => $config['app_lastest_ids'],
-            "app_hot_ids" => $config['app_hot_ids'],
-            "app_about_id" => $config['app_about_id'],
-            "app_using_id" => $config['app_using_id'],
-            "app_privacy_id" => $config['app_privacy_id']
-        );
-
-        $response = new \WP_REST_Response($response_data);
-        $response->set_status(200);
-        return $response;
-    }
-
-
-
 }
 
 
