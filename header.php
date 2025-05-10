@@ -82,12 +82,17 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
 
 /* logo 闪光 */
 $flash_class = $vt_config['logo_is_flashing'] ? 'flash' : '';
+
+/* 侧边栏位置 */
+$sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="left"' : '';
 ?>
 
-<body class="<?php echo $dark_mode_class ?>">
+<body class="<?php echo $dark_mode_class ?>" 
+    <?=$sidebar_position?>
+    >
+    
     <?php wp_body_open(); ?>
 
-   
     <?php
     global $current_user;
     get_currentuserinfo();

@@ -200,6 +200,14 @@ if( class_exists( 'CSF' ) ) {
                 'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
                 'default'    => '1',
                 'inline' => true
+            ),
+            array(
+                'id'         => 'sidebar_position',
+                'type'       => 'radio',
+                'title'      => __('侧边栏位置','vt'),
+                'options'    => array('1' => __('左侧','vt'), '0' => __('右侧','vt')),
+                'default'    => '0',
+                'inline' => true
             )
 
         )

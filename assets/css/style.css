@@ -3472,6 +3472,22 @@ body.dark-mode .user-card {
     display: none;
   }
 }
+
+
+/**
+ * 侧边栏居左覆盖
+ * body[sidebar-position="left"]
+ */
+[sidebar-position="left"] .main-container{
+  flex-direction: row-reverse;
+}
+
+[sidebar-position="left"] .main-container .sider{
+  margin-left: 0px;
+  margin-right: 20px;
+}
+
+
 .card-item {
   width: calc(50% - 8px);
   flex: 0 0 calc(50% - 8px);

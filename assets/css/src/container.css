@@ -128,3 +128,19 @@
     display: none;
   }
 }
+
+
+/**
+ * 侧边栏居左覆盖
+ * body[sidebar-position="left"]
+ */
+[sidebar-position="left"] .main-container{
+  flex-direction: row-reverse;
+}
+
+[sidebar-position="left"] .main-container .sider{
+  margin-left: 0px;
+  margin-right: 20px;
+}
+
+

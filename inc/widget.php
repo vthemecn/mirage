@@ -164,7 +164,8 @@ class HotWidget extends WP_Widget {
             'posts_per_page' => $instance['posts_per_page'] ? $instance['posts_per_page'] : 4,
             'meta_key'  => 'post_views_count',
             'orderby'   => 'meta_value',
-            'order' => 'DESC'
+            'order' => 'DESC',
+            'ignore_sticky_posts' => true
         );
         $query = new WP_Query($args);
         ?>
