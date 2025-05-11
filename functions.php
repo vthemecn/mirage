@@ -33,7 +33,7 @@ $config = vt_get_config();
 
 require_once TEMP_DIR . '/inc/i18n.php';
 require_once TEMP_DIR . '/inc/config.php';
-require_once TEMP_DIR . '/inc/my-menu.php';
+require_once TEMP_DIR . '/inc/menu.php';
 require_once TEMP_DIR . '/inc/widget.php';
 require_once TEMP_DIR . '/inc/setting.php';
 require_once TEMP_DIR . '/inc/switch.php';
@@ -95,7 +95,8 @@ if (function_exists('register_nav_menus')) {
     register_nav_menus(
         array(
             'header_main' => __('MirageV 顶部菜单'),
-            'footer_nav'  => __('MirageV 底部菜单')
+            'footer_nav'  => __('MirageV 底部菜单'),
+            'side_menu'   => __('MirageV 侧边菜单')
         )
     );
 }

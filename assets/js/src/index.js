@@ -34,6 +34,9 @@ users();
 import comments from './comments.js';
 comments();
 
+import widget from './widget.js';
+widget.sideMenuInit();
+
 
 function footerCheck() {
   window.addEventListener('load', function(e){
@@ -43,5 +46,5 @@ function footerCheck() {
     }
   });
 }
-// footerCheck();
+// footerCheck(); 主题底部署名检查
 

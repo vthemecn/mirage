@@ -443,13 +443,6 @@ class CategoryWidget extends WP_Widget {
 
         $widget_title_class = $vt_config['widget_title_type'] ? 'type-' . $vt_config['widget_title_type'] : '';
         $title = $instance['title'] ? $instance['title'] : __('分类列表', 'vt');
-
-        $child_categories = get_categories(array(
-            'child_of' => $instance['cat_id'],
-            'hide_empty' => false,
-            'orderby' => 'term_group',
-            'order' => 'ASC'
-        ));
         ?>
         <div class="category widget-container">
             <div class="widget-header <?php echo $widget_title_class; ?>">
@@ -458,11 +451,33 @@ class CategoryWidget extends WP_Widget {
                 </div>
             </div>
             <div class="category-list">
-                <?php if ( $child_categories ) : ?>
-                    <?php foreach ($child_categories as $k => $v): ?>
-                        <div class="category-item"><a href="<?php echo get_category_link($v->term_id) ?>"><?php echo $v->name; ?></a></div>
-                    <?php endforeach ?>
-                <?php endif; ?>
+                <?php
+                $theme_location = "primary";
+                if (has_nav_menu('side_menu')) {
+                    $theme_location = "side_menu";
+                }
+                $nav_str = wp_nav_menu(array(
+                    'theme_location'    => $theme_location, 
+                    'menu'              => '', 
+                    'container'         => false,
+                    'container_class'   => '', 
+                    'container_id'      => '', 
+                    'menu_class'        => 'side-menu', 
+                    'menu_id'           => '',  
+                    'echo'              => false, 
+                    'fallback_cb'       => 'SideMenu::fallback',  
+                    'before'            => '',
+                    'after'             => '',
+                    'link_before'       => '',
+                    'link_after'        => '',
+                    'items_wrap'        => '<ul id="%1$s" class="%2$s">%3$s</ul>',  
+                    'depth'             => 2, 
+                    'walker'            => new SideMenu()
+                ));
+
+                // echo str_replace('sub-menu', 'select', $nav_str);
+                echo $nav_str;
+                ?>
             </div>
         </div>
         <?php
@@ -470,30 +485,15 @@ class CategoryWidget extends WP_Widget {
     }
 
     function form($instance) {
-        $title = !empty($instance['title']) ? $instance['title'] : '';
-        $posts_per_page = !empty($instance['posts_per_page']) ? $instance['posts_per_page'] : '';
-        $cat_id = !empty($instance['cat_id']) ? $instance['cat_id'] : '';
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?= __('标题','vt') ?>:</label>
-            <input type="text" class="" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($title); ?>">
-        </p>
-        <p>
-            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>"><?= __('数量','vt') ?>:</label>
-            <input type="text" class="" id="<?php echo $this->get_field_id('posts_per_page'); ?>" name="<?php echo $this->get_field_name('posts_per_page'); ?>" value="<?php echo esc_attr($posts_per_page); ?>">
-        </p>
-        <p>
-            <label for="<?php echo $this->get_field_id('cat_id'); ?>"><?= __('分类ID','vt') ?>:</label>
-            <input type="text" class="" id="<?php echo $this->get_field_id('cat_id'); ?>" name="<?php echo $this->get_field_name('cat_id'); ?>" value="<?php echo esc_attr($cat_id); ?>">
+            <?= __('请创建主题侧边菜单','vt') ?>
         </p>
         <?php
     }
 
     function update($new_instance, $old_instance) {
         $instance = array();
-        $instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
-        $instance['posts_per_page'] = (!empty($new_instance['posts_per_page'])) ? strip_tags($new_instance['posts_per_page']) : '';
-        $instance['cat_id'] = (!empty($new_instance['cat_id'])) ? strip_tags($new_instance['cat_id']) : '';
         return $instance;
     }
 }
