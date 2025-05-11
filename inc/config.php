@@ -4,7 +4,7 @@ require_once TEMP_DIR .'/inc/codestar/codestar-framework.php';
 // Control core classes for avoid errors
 if( class_exists( 'CSF' ) ) {
 
-    $prefix = 'miragev';
+    $prefix = THEME_OPTION_NAME;
 
     CSF::createOptions( $prefix, array(
         'menu_title' => __('MirageV 设置','vt'),
