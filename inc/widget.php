@@ -644,6 +644,64 @@ class HtmlWidget extends WP_Widget {
 
 
 
+
+/**
+ * Tags Widget
+ */
+class TagsWidget extends WP_Widget {
+    function __construct(){
+        $this->WP_Widget( 'tags-widget', '[MirageV] '.__( '标签卡片', 'vt' ), array( 'description' => __( '标签卡片', 'vt' ) ) );
+    }
+ 
+    function widget( $args, $instance ){
+        extract( $args, EXTR_SKIP );
+        echo $before_widget;
+
+        global $wpdb;
+        wp_reset_postdata();
+
+        $vt_config = vt_get_config();
+        $title = $instance['title'] ? $instance['title'] : _('标签','vt');
+
+        $tags = get_tags(array('orderby'=>'count', 'order'=>'DESC', 'hide_empty'=>false));
+        ?>
+
+        <div class="tag-container widget-container">
+            <div class="widget-header <?php echo $widget_title_class; ?>">
+                <div class="widget-title"><?=$title?></div>
+            </div>
+            <div class="tag-list">
+                <?php foreach ($tags as $tag): ?>
+                    <a href="<?=get_tag_link($tag->term_id)?>" class="tag-item">
+                        <span>#</span><?=$tag->name?>
+                        <?php /*<span><?=$tag->count?></span>*/ ?>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        
+        <?php
+        echo $after_widget;
+    }
+
+    function form($instance) {
+        $title = !empty($instance['title']) ? $instance['title'] : '';
+        ?>
+        <p>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?= __('标题','vt')?>:</label>
+            <input type="text" class="" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($title); ?>">
+        </p>
+        <?php
+    }
+
+    function update($new_instance, $old_instance) {
+        $instance = array();
+        $instance['title'] = !empty($new_instance['title']) ? $new_instance['title'] : '';
+        return $instance;
+    }
+}
+
+
 function vt_add_widget(){
     register_widget('HotWidget');
     register_widget('ArticleWidget');
@@ -652,6 +710,7 @@ function vt_add_widget(){
     register_widget('CategoryWidget');
     register_widget('UserWidget');
     register_widget('HtmlWidget');
+    register_widget('TagsWidget');
 }
 
 add_action( 'widgets_init', 'vt_add_widget' );
