@@ -661,7 +661,7 @@ class TagsWidget extends WP_Widget {
         wp_reset_postdata();
 
         $vt_config = vt_get_config();
-        $title = $instance['title'] ? $instance['title'] : _('标签','vt');
+        $title = $instance['title'] ? $instance['title'] : __('标签','vt');
 
         $tags = get_tags(array('orderby'=>'count', 'order'=>'DESC', 'hide_empty'=>false));
         ?>
