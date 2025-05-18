@@ -338,3 +338,24 @@ add_action('admin_head', 'vt_admin_jscss');
 
 
 
+
+/**
+ * TinyMCE 增加 codesample 插件
+ * 参考： https://vtheme.cn/archives/1090
+ */
+function code_sample_add_external_plugin($mce_plugins)
+{
+    // $mce_plugins['codesample'] = 'https://cdn.jsdelivr.net/npm/tinymce@4.9.11/plugins/codesample/plugin.min.js';
+    $mce_plugins['codesample'] = get_template_directory_uri() . '/assets/lib/tinymce/codesample/plugin.min.js';
+    return $mce_plugins;
+}
+function code_sample_button($mce_buttons)
+{
+    $mce_buttons[] = 'codesample';
+    return $mce_buttons;
+}
+
+if($vt_config['tinymce_codesample']){
+    add_filter('mce_external_plugins', 'code_sample_add_external_plugin', 999, 1);
+    add_filter('mce_buttons', 'code_sample_button', 999, 1);
+}

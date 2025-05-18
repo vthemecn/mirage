@@ -6,8 +6,11 @@
 - 完善前端用户中心
 - 新增文章详情页的“相关推荐”
 
+### 2.24.0
+- feat 增加 TinyMCE codesample 插件设置开关和功能
+
 ### 2.23.0
-- TinyMCE 增加 codesample 插件
+- feat TinyMCE 增加 codesample 插件
 
 ### 2.22.2
 - refactor 修改主题默认圆角大小

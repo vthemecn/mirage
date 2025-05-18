@@ -51,6 +51,18 @@ if( class_exists( 'CSF' ) ) {
                 'inline' => true
             ),
             array(
+                'id'         => 'tinymce_codesample',
+                'type'       => 'radio',
+                'title'      => __('经典编辑器插入代码','vt'),
+                'options'    => array(
+                    '0' => __('关闭','vt'),
+                    '1' => __('启用','vt')
+                ),
+                'default'    => '1',
+                'inline' => true,
+                'dependency' => array('editor_type', '==', 'true'),
+            ),
+            array(
                 'id'         => 'editor_revision',
                 'type'       => 'radio',
                 'title'      => __('文章修订版本','vt'),
