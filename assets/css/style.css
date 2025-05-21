@@ -3561,8 +3561,13 @@ body.dark-mode .user-card {
 
 [sidebar-position="left"] .main-container .sider{
   margin-left: 0px;
-  margin-right: 20px;
 }
+@media only screen and (min-width: 900px) {
+  [sidebar-position="left"] .main-container .sider{
+    margin-right: 20px;
+  }
+}
+
 
 
 .card-item {
