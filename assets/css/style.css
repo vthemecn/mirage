@@ -1995,8 +1995,9 @@ nav.pagination a:hover {
 .page-content {
   margin-top: 30px;
 }
-@charset "UTF-8";
-/* 评论表单 */
+/******************************************************************************
+ * 评论表单
+ */
 .comments-area {
   background-color: var(--vt-bg-color-card);
   padding: 15px;
@@ -2126,7 +2127,10 @@ nav.pagination a:hover {
 }
 
 
-/* 评论列表 */
+
+/******************************************************************************
+ * 评论列表
+ */
 .comments-title {
   font-size: var(--vt-font-size-base);
   margin-top: 20px;
@@ -2222,30 +2226,29 @@ nav.pagination a:hover {
   margin-top: 10px;
 }
 
-/* 评论分页 */
-.navigation.comments-pagination .nav-links {
+
+/******************************************************************************
+ * 评论分页
+ */
+.comment-nav-widget{
   display: flex;
-  justify-content: flex-start;
-  margin-top: 20px;
+  justify-content: center;
+  padding: 0 0 30px 0;
 }
-.navigation.comments-pagination .nav-links a,
-.navigation.comments-pagination .nav-links span.page-numbers {
-  font-size: var(--vt-font-size-sm);
-  padding: 0px 5px;
-  display: block;
-  min-width: 20px;
+
+.comment-nav-widget a {
+  border: 1px solid var(--vt-color-primary);
+  width: 35px;
   height: 30px;
-  margin-right: 10px;
-  text-align: center;
-  line-height: 30px;
-  background-color: var(--vt-bg-color-card);
-  box-shadow: 0px 0px 5px 0 var(--vt-shadow-color);
+  margin: 0 5px;
   border-radius: var(--vt-border-radius);
+  color: var(--vt-color-primary);
+  /*  background-color: var(--vt-color-primary);*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.navigation.comments-pagination .nav-links span.current {
-  background-color: var(--vt-color-primary);
-  color: var(--vt-text-color-inverse);
-}
+
 @charset "UTF-8";
 /**
 * header 移动端菜单

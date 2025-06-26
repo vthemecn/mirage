@@ -1137,7 +1137,6 @@
 
   function sideMenuInit(){
   	var btns = document.querySelectorAll('.side-menu .arrow');
-  	console.log('ssssssss: ', btns);
   	if(btns.length){
   		btns.forEach(btn=>{
   			btn.addEventListener('click', e => {

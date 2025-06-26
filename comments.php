@@ -2,9 +2,7 @@
 /*
  * 评论模块
  */
-?>
 
-<?php
 global $current_user;
 
 /*
@@ -54,38 +52,51 @@ $comment_count = get_comments_number();
 
 
 	<?php
-	if (have_comments()) :;
+	// $post_id = get_the_ID();
+	// $total_comments_count = get_top_level_comment_count($post_id);
+	// $comments_per_page = get_option('comments_per_page');
+	// $page = get_query_var('cpage') ? intval(get_query_var('cpage')) : 1;
+	// $reverse_top = get_option('comment_order') == 'desc' ? false : true;
 	?>
-		<h2 class="comments-title">
-			<?php if ('1' === $comment_count) : ?>
-				1 <?= __('条评论','vt')?>
-			<?php else : ?>
-				<?php echo $comment_count; ?> <?= __('条评论','vt')?>
-			<?php endif; ?>
-		</h2>
 
-		<ol class="comment-list">
-			<?php
-			$arg = array(
-				'avatar_size' => 60,
-				'style' => 'li',
-				// 'short_ping'  => true,
-				'callback' => 'vt_comment',
-				// 'per_page' => get_option('comments_per_page'),
-				// 'reverse_top_level' => true
-				'reverse_children' => true
-			);
-			wp_list_comments($arg);
-			?>
-		</ol>
+	<ol class="comment-list">
+		<?php
+		$arg = array(
+			'avatar_size' => 60,
+			'style' => 'li',
+			'short_ping'  => true,
+			'callback' => 'vt_comment',
+	        // 'page'     => $page,
+			// 'reverse_top_level' => $reverse_top
+		);
 
-		<?php the_comments_pagination(); ?>
-		
-		<?php if (!comments_open()) : ?>
-			<div class="no-comments"><?php esc_html_e('Comments are closed.'); ?></div>
-		<?php endif; ?>
-	<?php endif; ?>
+		wp_list_comments($arg);
+		?>
+	</ol>
+	<?php
+	// if ($comments) {
+	                
+	// } else {
+	//     echo '<p>暂无评论。</p>';
+	// }
+	?>
+
+
+    <div class="comment-nav-widget">
+        <?php if ( get_previous_comments_link() ) : ?>
+            <?php previous_comments_link( '<i class="fa-solid fa-chevron-left"></i>' ); ?>
+        <?php endif; ?>
+        <?php if ( get_next_comments_link() ) : ?>
+            <?php next_comments_link( '<i class="fa-solid fa-chevron-right"></i>' ); ?>
+        <?php endif; ?>
+    </div>
+
+
+
+
 </div>
+
+
 
 
 <?php
@@ -100,7 +111,7 @@ function vt_comment($comment, $args, $depth)
 		echo $tag. ' ';
 		comment_class(empty($args['has_children']) ? '' : 'parent'); ?> 
 		id="comment-">
-		<div class="comment-item" id="div-comment-<?=$comment_id?>">
+		<div class="comment-item" id="comment-<?=$comment_id?>">
 			<div class="comment-header">
 				<div class="comment-author">
 					<?php
@@ -156,14 +167,32 @@ function vt_comment($comment, $args, $depth)
 				<a href=""><?=__('删除','vt')?></a>
 			<?php endif ?>
 		</div>
-<?php
+	<?php
 }
 ?>
 
 
 
 
+<?php
 
+
+function get_top_level_comment_count($post_id) {
+    global $wpdb;
+
+    $count = (int) $wpdb->get_var($wpdb->prepare("
+        SELECT COUNT(*) FROM $wpdb->comments
+        WHERE comment_post_ID = %d
+          AND comment_approved = '1'
+          AND comment_parent = 0
+    ", $post_id));
+
+    return $count;
+}
+
+
+
+?>
 
 
 
