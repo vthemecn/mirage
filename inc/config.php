@@ -95,7 +95,7 @@ if( class_exists( 'CSF' ) ) {
                 'id'         => 'list_type',
                 'type'       => 'radio',
                 'title'      => __('默认文章列表排版','vt'),
-                'options'    => array('1' => __('卡片','vt'), '0' => __('文章','vt')),
+                'options'    => array('0' => __('文章','vt'), '1' => __('卡片','vt'), ),
                 'default'    => '0',
                 'inline' => true
             ),

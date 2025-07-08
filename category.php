@@ -13,9 +13,9 @@ $template_path = 'templates/categories/category-list';
 
 if ($vt_cat_list_type == 0) {
     if($config['list_type']==1){
-        $template_path = 'templates/categories/category-list';
-    }else{
         $template_path = 'templates/categories/category-cards';
+    }else{
+        $template_path = 'templates/categories/category-list';
     }
 } else {
     if ($vt_cat_list_type ==1){

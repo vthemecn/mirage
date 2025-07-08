@@ -337,8 +337,6 @@ function vt_admin_jscss() {
 add_action('admin_head', 'vt_admin_jscss');
 
 
-
-
 /**
  * TinyMCE 增加 codesample 插件
  * 参考： https://vtheme.cn/archives/1090
@@ -359,3 +357,10 @@ if($vt_config['tinymce_codesample']){
     add_filter('mce_external_plugins', 'code_sample_add_external_plugin', 999, 1);
     add_filter('mce_buttons', 'code_sample_button', 999, 1);
 }
+
+
+/**
+ * 禁止定期管理员邮箱验证
+ */
+add_filter( 'admin_email_check_interval', '__return_false' );
+

@@ -89,6 +89,7 @@ $comment_count = get_comments_number();
         <?php if ( get_next_comments_link() ) : ?>
             <?php next_comments_link( '<i class="fa-solid fa-chevron-right"></i>' ); ?>
         <?php endif; ?>
+        <?php /*the_comments_pagination(); 可生成带页码的分页 */ ?>
     </div>
 
 
