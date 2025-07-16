@@ -28,7 +28,7 @@ $version = $current_theme->get('Version');
 <?php
 require_once(TEMP_DIR . "/templates/bar.php");
 
-if ($vt_config['is_mobile_nav_show'] == 1) {
+if ($vt_config['mobile_nav_show'] == 1) {
     include_once(get_template_directory() . "/templates/mobile-nav.php");
 }
 ?>

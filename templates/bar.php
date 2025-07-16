@@ -1,11 +1,13 @@
 <?php
 
+$vt_config = vt_get_config();
+
 ?>
 
 
 <div class="float-widget">
 
-    <?php if ($vt_options['is_side_bar_user_center_show']) : ?>
+    <?php if ($vt_config['is_side_bar_user_center_show']) : ?>
         <div class="tool-widget">
             <a class="tool-button" href="<?php echo home_url('/user-center'); ?>">
                 <i class="iconfont">&#xe8a5;</i>

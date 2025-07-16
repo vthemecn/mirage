@@ -286,7 +286,7 @@ function vt_authenticate_action($user, $username, $password){
     }
 
     $max_attempts = 10;
-    if ($attempts[$ip]['counter'] >= $max_attempts) {
+    if (isset($attempts[$ip]) && $attempts[$ip]['counter'] >= $max_attempts) {
         remove_filter('authenticate', 'wp_authenticate_username_password', 20, 3);
         remove_filter('authenticate', 'wp_authenticate_email_password', 20, 3);
         return new WP_Error('too_many_retries', '您已多次登录失败，请1小时后重试！');

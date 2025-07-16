@@ -81,7 +81,7 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
 }
 
 /* logo 闪光 */
-$flash_class = $vt_config['logo_is_flashing'] ? 'flash' : '';
+// $flash_class = $vt_config['logo_is_flashing'] ? 'flash' : '';
 
 /* 侧边栏位置 */
 $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="left"' : '';
@@ -103,7 +103,7 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
             <a class="top-nav-button search-button" href="javascript:;">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </a>
-            <a href="<?php bloginfo('siteurl') ?>" class="logo <?php echo $flash_class?>" title="" rel="home">
+            <a href="<?php bloginfo('siteurl') ?>" class="logo" title="" rel="home">
                 <img src="<?php echo $vt_config['site_logo']; ?>" alt="<?php bloginfo('name') ?>">
             </a>
             <a class="top-nav-button menu-button" href="javascript:;">
@@ -188,7 +188,7 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
     <!-- large screen -->
     <header class="header pc">
         <div class="header-nav">
-            <a href="<?php bloginfo('siteurl') ?>" class="logo <?php echo $flash_class?>" title="" rel="home">
+            <a href="<?php bloginfo('siteurl') ?>" class="logo" title="" rel="home">
                 <img src="<?php echo $vt_config['site_logo']; ?>" alt="<?php bloginfo('name') ?>">
             </a>
 

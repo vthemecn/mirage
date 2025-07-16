@@ -13,16 +13,12 @@ $current_user_id = get_current_user_id();
 <div class="mobile-nav">
     <div class="mobile-nav-container">
         <?php
-        $vt_mobile_nav_config = $vt_options['mobile_nav_config'];
-        $vt_mobile_nav_config = explode("\n", $vt_mobile_nav_config);
-        $vt_mobile_nav_config = array_filter($vt_mobile_nav_config);
-
-        foreach ($vt_mobile_nav_config as $k => $v) :
-            $nav_item = explode('|', $v);
+        $mobile_nav_config = $vt_options['mobile_nav_config'];
+        foreach ($mobile_nav_config as $k => $v) :
         ?>
-            <a class="nav-button" href="<?php echo $nav_item[2]; ?>">
-                <i class="iconfont">&<?php echo $nav_item[0]; ?></i>
-                <b><?php echo $nav_item[1]; ?></b>
+            <a class="nav-button" href="<?=$v['nav_link']?>">
+                <i class="<?=$v['nav_icon']?>"></i>
+                <b><?=$v['nav_text']?></b>
             </a>
         <?php endforeach ?>
     </div>

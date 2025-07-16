@@ -1,9 +1,23 @@
 <?php
 require_once TEMP_DIR .'/inc/codestar/codestar-framework.php';
 
+
+$attempts_text = "";
+
+if(is_admin() && isset($_GET['page']) && $_GET['page']=="miragev" ){
+    // 统计登录失败的次数
+    $attempts = get_option('vt_failed_attempts', []);
+    $ip_counter = sizeof($attempts);
+    $attempt_counter = 0;
+    foreach ($attempts as $k => $v) {
+        $attempt_counter = $attempt_counter + $v['counter'];
+    }
+    $attempts_text = "一个小时内有".$ip_counter."个IP，".$attempt_counter."次登录失败";
+}
+
+
 // Control core classes for avoid errors
 if( class_exists( 'CSF' ) ) {
-
     $prefix = THEME_OPTION_NAME;
 
     CSF::createOptions( $prefix, array(
@@ -211,7 +225,8 @@ if( class_exists( 'CSF' ) ) {
                 'title'      => __('防暴力破解','vt'),
                 'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
                 'default'    => '1',
-                'inline' => true
+                'desc'       => $attempts_text,
+                'inline'     => true
             ),
             array(
                 'id'         => 'sidebar_position',
@@ -625,10 +640,10 @@ if( class_exists( 'CSF' ) ) {
                                 ),
                             ),
                 'default'   => array(
-                    array('nav_text'=>__('首页','vt'), 'nav_icon'=>'#xe89a;', 'nav_link'=>'/'),
-                    array('nav_text'=>__('电话','vt'), 'nav_icon'=>'#xe71d;', 'nav_link'=>'tel:13312341234'),
-                    array('nav_text'=>__('微信','vt'), 'nav_icon'=>'#xe903;', 'nav_link'=>''),
-                    array('nav_text'=>__('产品','vt'), 'nav_icon'=>'#xe7f4;', 'nav_link'=>'/'),
+                    array('nav_text'=>__('首页','vt'), 'nav_icon'=>'fa-solid fa-house', 'nav_link'=>'/'),
+                    array('nav_text'=>__('电话','vt'), 'nav_icon'=>'fa-solid fa-phone', 'nav_link'=>'tel:13312341234'),
+                    array('nav_text'=>__('邮箱','vt'), 'nav_icon'=>'fa-solid fa-envelope', 'nav_link'=>''),
+                    array('nav_text'=>__('关于','vt'), 'nav_icon'=>'fa-solid fa-user', 'nav_link'=>'/'),
                 )
             ),
 
