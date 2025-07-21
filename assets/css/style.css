@@ -1383,7 +1383,7 @@ nav.pagination a:hover {
   }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1000px) {
   .float-widget {
     right: calc(50% - 680px);
   }
@@ -1780,8 +1780,10 @@ nav.pagination a:hover {
     width: 100%;
   }
 }
-@charset "UTF-8";
-/* 文章页 singular.php */
+/******************************************************************************
+ * single.php
+ */
+
 .article-widget {
   padding: 15px;
   box-sizing: border-box;
@@ -1966,6 +1968,61 @@ nav.pagination a:hover {
   }
   .article-prev-next-nav .article-nav {
     flex: 0 0 calc(50% - 10px);
+  }
+}
+
+
+/**
+ * TOC 目录
+ */
+.toc-widget{
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--vt-border-color);
+  border-radius: var(--vt-border-radius);
+  padding: 15px;
+}
+.toc-header{
+  display: flex;
+  justify-content: space-between;
+}
+.toc-button{
+  font-size:13px;
+  color: var(--vt-text-color-grey);
+  cursor: pointer;
+}
+.toc-button span:first-child{ display:block; }
+.toc-button span:last-child{ display:none; }
+.toc-widget.show .toc-button span:first-child{ display:none; }
+.toc-widget.show .toc-button span:last-child{ display:block; }
+
+ul.toc_list{
+  padding: 0;
+}
+ul.toc_list li{
+  list-style: none;
+  padding: 2px 0;
+}
+ul.toc_list li a{
+  font-size:14px;
+  color: var(--vt-text-color);
+}
+ul.toc_list .level-3 a{ padding:0 0 0 30px; }
+ul.toc_list .level-4 a{ padding:0 0 0 50px; }
+ul.toc_list .level-5 a{ padding:0 0 0 70px; }
+ul.toc_list .level-6 a{ padding:0 0 0 90px; }
+
+.toc-body {
+  display:none;
+  margin: 10px 0 0 0;
+  padding:10px 0;
+  border-top: 1px solid var(--vt-border-color);
+}
+.show .toc-body { display:block; }
+
+@media only screen and (min-width:900px){
+  .toc-widget{
+    max-width: 500px;
   }
 }
 @charset "UTF-8";

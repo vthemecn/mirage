@@ -449,15 +449,16 @@
   var dialogTools = { registerDialog };
 
   /**
-   * 点赞，收藏，评论
+   * 文章页
    */
 
 
-  function contentAction () {
+  function articles () {
     likeInit();
     starInit();
     sharePosterInit();
     coinInit();
+    tocInit();
   }
 
   /**
@@ -691,6 +692,19 @@
     coinButton && coinButton.addEventListener('click', async e=> {
       coinDialog.showModal();
     });
+  }
+
+
+  /**
+   * TOC 目录
+   */
+  function tocInit() {
+    var tocButton = document.querySelector('.toc-button');
+    if(!tocButton) return;
+    tocButton.addEventListener('click', function(e){
+      tocButton.parentNode.parentNode.classList.toggle('show');
+    });
+
   }
 
   /*
@@ -1160,7 +1174,7 @@
   swiper();
   init$1();
   lazyLoad();
-  contentAction();
+  articles();
   darkModeInit();
   headerMobile();
   headerPc();

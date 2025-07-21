@@ -13,8 +13,8 @@ bar();
 import { lazyLoad } from './lazy-load';
 lazyLoad();
 
-import contentAction from './content-action.js';
-contentAction();
+import articles from './articles.js';
+articles();
 
 import { darkModeInit } from './dark-mode';
 darkModeInit();

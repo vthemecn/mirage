@@ -71,6 +71,7 @@ function vt_get_custom_avatar_url($user_id)
     return $avatar;
 }
 
+
 /**
  * 获取特色图片 url
  * @param {int} $post_id 文章ID
@@ -100,7 +101,6 @@ if (function_exists('register_nav_menus')) {
         )
     );
 }
-
 
 
 /**
@@ -231,29 +231,11 @@ function friendly_time($ptime)
 }
 
 
-
 function vt_custom_js_and_css() {
     $current_theme = wp_get_theme();
     wp_enqueue_style('customstyle', get_template_directory_uri() . '/assets/css/style.css', array(), $current_theme->get('Version'), 'all');
 }
 add_action('wp_enqueue_scripts', 'vt_custom_js_and_css');
-
-
-add_filter('post_type_link', 'custom_type_link', 1, 3);
-function custom_type_link($link, $post = 0)
-{
-    if ($post->post_type == 'audios') {
-        return home_url('archives/audios/' . $post->ID);
-    } else {
-        return $link;
-    }
-}
-
-add_action('init', 'custom_type_rewrites_init');
-function custom_type_rewrites_init()
-{
-    add_rewrite_rule('archives/audios/([0-9]+)?$', 'index.php?post_type=audios&p=$matches[1]', 'top');
-}
 
 
 /**
@@ -298,6 +280,8 @@ function get_user_by_id($user_id)
     $user_data = array_merge($user_data, $res);
     return $user_data;
 }
+
+
 
 
 

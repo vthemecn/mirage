@@ -364,3 +364,65 @@ if($vt_config['tinymce_codesample']){
  */
 add_filter( 'admin_email_check_interval', '__return_false' );
 
+
+
+/**
+ * 生成文章目录（TOC）
+ */
+function create_table_of_contents($content) {
+    $matches = array();
+    $regexp = "/<h([2-6])>(.*?)<\/h[2-6]>/";
+    $regexp = '/<h([2-6]).*?\>(.*?)<\/h[2-6]>/is';
+
+    if (preg_match_all($regexp, $content, $matches)) {
+        $toc = '<ul class="toc_list">';
+        foreach ($matches[0] as $key => $match) {
+            $heading_level = intval($matches[1][$key]);
+            $heading_text = wp_kses($matches[2][$key], '');
+            $anchor = sanitize_title($heading_text);
+            $content = str_replace($match, '<h' . $heading_level . ' id="' . $anchor . '">' . $heading_text . '</h' . $heading_level . '>', $content);
+            $toc .= '<li class="level-'.$heading_level.'"><a href="#' . $anchor . '"> ' . $heading_text . '</a></li>';
+        }
+        $toc .= '</ul>';
+    }
+    return $toc ? $toc : '';
+}
+
+
+/**
+ * 识别文章中所有的 <h2> 到 <h6> 标签；
+ * 为每个标题添加唯一的 id（基于标题内容生成）；
+ */
+function add_heading_ids_to_content($content) {
+    if (is_single() || is_page() ) {
+        // 匹配所有 h2 到 h6 标签
+        $pattern = '/<h([2-6])>([^<]+)<\/h[2-6]>/i';
+        $pattern = '/<h([2-6]).*?\>(.*?)<\/h[2-6]>/is';
+
+        // 替换回调函数
+        $callback = function($matches) {
+            $heading_level = $matches[1]; // h2-h6
+            $heading_text = strip_tags($matches[2]); // 标题文字
+            $id = sanitize_title($heading_text); // 生成安全的 id
+
+            // 返回带 id 的新标题
+            return "<h{$heading_level} id=\"{$id}\">{$heading_text}</h2>";
+        };
+
+        // 执行正则替换
+        $content = preg_replace_callback($pattern, $callback, $content);
+    }
+
+    return $content;
+}
+add_filter('the_content', 'add_heading_ids_to_content');
+
+
+/**
+ * 后台添加自定义js
+ */
+function vt_add_admin_js(){ 
+    wp_enqueue_media();
+    wp_enqueue_script('vt-uploader', get_bloginfo('template_url').'/assets/lib/admin.js', array('jquery'), false, true );
+}
+add_action('admin_enqueue_scripts', 'vt_add_admin_js');

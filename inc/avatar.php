@@ -1,16 +1,5 @@
 <?php
 
-
-/**
- * 增加修改用户头像功能
- */
-function vt_add_admin_js(){ 
-    wp_enqueue_media();
-    wp_enqueue_script('vt-uploader', get_bloginfo('template_url').'/assets/lib/avatar.js', array('jquery'), false, true );
-}
-add_action('admin_enqueue_scripts', 'vt_add_admin_js');
-
-
 /**
  * 添加上传字段
  */

@@ -23,11 +23,12 @@ if( class_exists( 'CSF' ) ) {
     CSF::createOptions( $prefix, array(
         'menu_title' => __('MirageV 设置','vt'),
         'menu_slug'  => 'miragev',
+        'menu_position' => '81',
         'framework_title' => __('MirageV 主题设置','vt'),
         'footer_text' => '',
         'theme' => 'light',
         'show_bar_menu' => false,
-        'footer_text' => '<img src="https://vtheme.cn/favicon.ico" style="width:20px;position:relative;top:5px"> Theme by <a href="https://vtheme.cn/miragev" copyright target="_blank">MirageV</a>'
+        'footer_text' => '<img src="https://vtheme.cn/static/images/logo.png" style="width:20px;position:relative;top:5px"> Theme by <a href="https://vtheme.cn/miragev" copyright target="_blank">MirageV</a>'
     ));
 
 
@@ -53,37 +54,8 @@ if( class_exists( 'CSF' ) ) {
                 'inline' => true,
                 'desc' => __('关闭以后，不提示PHP版本，主题和插件更新提示','vt')
             ),
-            array(
-                'id'         => 'editor_type',
-                'type'       => 'radio',
-                'title'      => __('编辑器','vt'),
-                'options'    => array(
-                    '0' => __('古腾堡编辑器','vt'),
-                    '1' => __('经典编辑器','vt')
-                ),
-                'default'    => '1',
-                'inline' => true
-            ),
-            array(
-                'id'         => 'tinymce_codesample',
-                'type'       => 'radio',
-                'title'      => __('经典编辑器插入代码','vt'),
-                'options'    => array(
-                    '0' => __('关闭','vt'),
-                    '1' => __('启用','vt')
-                ),
-                'default'    => '1',
-                'inline' => true,
-                'dependency' => array('editor_type', '==', 'true'),
-            ),
-            array(
-                'id'         => 'editor_revision',
-                'type'       => 'radio',
-                'title'      => __('文章修订版本','vt'),
-                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
-                'default'    => '0',
-                'inline' => true
-            ),
+            
+
             array(
                 'id'         => 'widget_title_type',
                 'type'       => 'radio',
@@ -106,27 +78,6 @@ if( class_exists( 'CSF' ) ) {
                 'inline' => true
             ),
             array(
-                'id'         => 'list_type',
-                'type'       => 'radio',
-                'title'      => __('默认文章列表排版','vt'),
-                'options'    => array('0' => __('文章','vt'), '1' => __('卡片','vt'), ),
-                'default'    => '0',
-                'inline' => true
-            ),
-            array(
-                'id'         => 'list_cards_col',
-                'type'       => 'radio',
-                'title'      => __('每行列数','vt'),
-                'options'    => array(
-                    '3' => __('3','vt'),
-                    '4' => __('4','vt'),
-                    '5' => __('5','vt'),
-                    '6' => __('6','vt')
-                ),
-                'default'    => '3',
-                'inline' => true
-            ),
-            array(
                 'id'         => 'dark_mode_type',
                 'type'       => 'radio',
                 'title'      => __('暗黑模式','vt'),
@@ -137,19 +88,6 @@ if( class_exists( 'CSF' ) ) {
                 ),
                 'default'    => '1',
                 'inline' => true
-            ),
-            array(
-                'id'         => 'show_copyright',
-                'type'       => 'switcher',
-                'title'      => __('文章版权声明','vt'),
-                'default'    => true
-            ),
-            array(
-                'id'         => 'show_copyright_text',
-                'type'       => 'textarea',
-                'title'      => __('文章版权声明','vt'),
-                'dependency' => array('show_copyright', '==', 'true'),
-                'default'    => __('文章版权声明','vt')
             ),
             array(
                 'id'    => 'image_items_height',
@@ -174,20 +112,6 @@ if( class_exists( 'CSF' ) ) {
                 'preview' => true
             ),
             array(
-                'id'    => 'qrcode_image',
-                'type'  => 'upload',
-                'title' => __('收款二维码','vt'),
-                'default' => '',
-                'preview' => true
-            ),
-            array(
-                'id'    => 'qrcode_title',
-                'type'  => 'text',
-                'title' => __('二维码标题','vt'),
-                'default' => __('二维码标题','vt'),
-                'preview' => true
-            ),
-            array(
                 'id'         => 'user_center_is_on',
                 'type'       => 'radio',
                 'title'      => __('个人中心','vt'),
@@ -195,14 +119,7 @@ if( class_exists( 'CSF' ) ) {
                 'default'    => '0',
                 'inline' => true
             ),
-            array(
-                'id'         => 'highlight_is_on',
-                'type'       => 'radio',
-                'title'      => __('代码高亮','vt'),
-                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
-                'default'    => '1',
-                'inline' => true
-            ),
+            
             array(
                 'id'         => 'comments_is_on',
                 'type'       => 'radio',
@@ -649,6 +566,117 @@ if( class_exists( 'CSF' ) ) {
 
         )
     ));
+
+
+
+    /**
+     * 文章设置
+     */
+    CSF::createSection( $prefix, array(
+        'title'  => __('文章设置','vt'),
+        'icon'   => 'dashicons dashicons-admin-generic',
+        'fields' => array(
+            array(
+                'id'         => 'list_type',
+                'type'       => 'radio',
+                'title'      => __('默认文章列表排版','vt'),
+                'options'    => array('0' => __('文章','vt'), '1' => __('卡片','vt'), ),
+                'default'    => '0',
+                'inline' => true
+            ),
+            array(
+                'id'         => 'list_cards_col',
+                'type'       => 'radio',
+                'title'      => __('每行列数','vt'),
+                'options'    => array(
+                    '3' => __('3','vt'),
+                    '4' => __('4','vt'),
+                    '5' => __('5','vt'),
+                    '6' => __('6','vt')
+                ),
+                'default'    => '3',
+                'inline' => true
+            ),
+            array(
+                'id'         => 'editor_type',
+                'type'       => 'radio',
+                'title'      => __('编辑器','vt'),
+                'options'    => array(
+                    '0' => __('古腾堡编辑器','vt'),
+                    '1' => __('经典编辑器','vt')
+                ),
+                'default'    => '1',
+                'inline' => true
+            ),
+            array(
+                'id'         => 'tinymce_codesample',
+                'type'       => 'radio',
+                'title'      => __('经典编辑器插入代码','vt'),
+                'options'    => array(
+                    '0' => __('关闭','vt'),
+                    '1' => __('启用','vt')
+                ),
+                'default'    => '1',
+                'inline' => true,
+                'dependency' => array('editor_type', '==', 'true'),
+            ),
+                        array(
+                'id'         => 'editor_revision',
+                'type'       => 'radio',
+                'title'      => __('文章修订版本','vt'),
+                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
+                'default'    => '0',
+                'inline' => true
+            ),
+                        array(
+                'id'         => 'show_copyright',
+                'type'       => 'switcher',
+                'title'      => __('文章版权声明','vt'),
+                'default'    => true
+            ),
+            array(
+                'id'         => 'show_copyright_text',
+                'type'       => 'textarea',
+                'title'      => __('文章版权声明','vt'),
+                'dependency' => array('show_copyright', '==', 'true'),
+                'default'    => __('文章版权声明','vt')
+            ),
+            array(
+                'id'         => 'highlight_is_on',
+                'type'       => 'radio',
+                'title'      => __('代码高亮','vt'),
+                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
+                'default'    => '1',
+                'inline' => true
+            ),
+            array(
+                'id'         => 'toc_is_on',
+                'type'       => 'radio',
+                'title'      => __('生成目录','vt'),
+                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
+                'default'    => '1',
+                'inline'     => true,
+                'desc'       => '根据文章标题自动生成目录'
+            ),
+            array(
+                'id'    => 'qrcode_image',
+                'type'  => 'upload',
+                'title' => __('收款二维码','vt'),
+                'default' => '',
+                'preview' => true
+            ),
+            array(
+                'id'    => 'qrcode_title',
+                'type'  => 'text',
+                'title' => __('二维码标题','vt'),
+                'default' => __('二维码标题','vt'),
+                'preview' => true
+            ),
+        )   
+    ));
+
+
+
 
     $email_test = home_url('/wp-json/vtheme/v1/sendmail-test') . '?_wpnonce=' . wp_create_nonce('wp_rest');
     /**

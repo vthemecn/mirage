@@ -112,6 +112,27 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     </div>
                 <?php endif */ ?>
 
+                
+                <?php
+                $content = get_the_content();
+                $toc = create_table_of_contents($content);
+                ?>
+                <?php if($config['toc_is_on'] && $toc):?>                    
+                    <div class="toc-widget show">
+                        <div class="toc-header">
+                            <span>目录</span>
+                            <div class="toc-button">
+                                <span>展开<i class="fa-regular fa-chevron-down"></i></span>
+                                <span>收起<i class="fa-regular fa-chevron-up"></i></span>
+                            </div>
+                        </div>
+                        <div class="toc-body">
+                            <?=$toc?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                
+
                 <?php
                 if (have_posts()) {
                     while (have_posts()) {

@@ -1,4 +1,10 @@
 /**
+ * 文章页
+ */
+
+
+
+/**
  * 点赞，收藏，评论
  */
 
@@ -11,6 +17,7 @@ export default function () {
   starInit();
   sharePosterInit();
   coinInit();
+  tocInit();
 }
 
 /**
@@ -246,6 +253,19 @@ function coinInit(argument) {
   coinButton && coinButton.addEventListener('click', async e=> {
     coinDialog.showModal();
   });
+}
+
+
+/**
+ * TOC 目录
+ */
+function tocInit() {
+  var tocButton = document.querySelector('.toc-button');
+  if(!tocButton) return;
+  tocButton.addEventListener('click', function(e){
+    tocButton.parentNode.parentNode.classList.toggle('show');
+  });
+
 }
 
 

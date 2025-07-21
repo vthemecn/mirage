@@ -29,7 +29,7 @@ function vt_template_redirect() {
     global $wp_query;
     global $wp_rewrite;
 
-    $vt_page =  $wp_query->query_vars['vt_page']; //查询vt_page变量
+    $vt_page =  isset($wp_query->query_vars['vt_page']) ? $wp_query->query_vars['vt_page'] : null; //查询vt_page变量
     switch ($vt_page) {
         case 'like': require_once(TEMPLATEPATH.'/pages/like.php'); die(); // 个人中心-我的点赞
         case 'users': require_once(TEMPLATEPATH.'/pages/users.php'); die(); // 个人中心-用户列表

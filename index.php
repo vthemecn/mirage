@@ -11,7 +11,7 @@ get_header();
 
 $config = vt_get_config();
 
-// p($config);
+
 ?>
 
 
