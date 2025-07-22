@@ -461,10 +461,10 @@ if( class_exists( 'CSF' ) ) {
                 'preview' => true
             ),
             array(
-                'id'    => 'site_logo_dark',
+                'id'    => 'site_logo_darkness',
                 'type'  => 'upload',
                 'title' => __('网站LOGO(暗黑模式)','vt'),
-                'default' => get_template_directory_uri() . '/assets/images/logo.png',
+                'default' => get_template_directory_uri() . '/assets/images/logo-darkness.png',
                 'preview' => true
             ),
             array(
@@ -494,19 +494,11 @@ if( class_exists( 'CSF' ) ) {
         'icon'   => 'dashicons dashicons-admin-generic',
         'fields' => array(
             array(
-                'id'         => 'footer_type',
-                'type'       => 'radio',
-                'title'      => __('显示类型','vt'),
-                'options'    => array('0' => __('简单','vt'), '1' => __('全部','vt')),
-                'default'    => '1',
-                'inline' => true
-            ),
-            array(
                 'id'    => 'footer_bg_type',
                 'type'  => 'radio',
                 'title' => __('背景颜色','vt'),
-                'options' => array('0' => __('亮色','vt'), '1' => __('暗色','vt')),
-                'default' => 1,
+                'options' => array('light' => __('亮色','vt'), 'darkness' => __('暗色','vt')),
+                'default' => 'light',
                 'inline' => true
             ),
             array(
@@ -526,44 +518,7 @@ if( class_exists( 'CSF' ) ) {
                 // ),
                 'sanitize' => false,
                 'default'  => '',
-            ),
-            array(
-                'id'    => 'mobile_nav_show',
-                'type'  => 'radio',
-                'title' => __('移动导航栏','vt'),
-                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
-                'default'    => '0',
-                'inline' => true
-            ),
-            array(
-                'id'        => 'mobile_nav_config',
-                'type'      => 'group',
-                'title'     => __('导航栏设置','vt'),
-                'fields'    => array(
-                                array(
-                                    'id'    => 'nav_text',
-                                    'type'  => 'text',
-                                    'title' => __('标题','vt'),
-                                ),
-                                array(
-                                    'id'    => 'nav_icon',
-                                    'type'  => 'text',
-                                    'title' => __('图标','vt'),
-                                ),
-                                array(
-                                    'id'    => 'nav_link',
-                                    'type'  => 'text',
-                                    'title' => __('链接','vt')
-                                ),
-                            ),
-                'default'   => array(
-                    array('nav_text'=>__('首页','vt'), 'nav_icon'=>'fa-solid fa-house', 'nav_link'=>'/'),
-                    array('nav_text'=>__('电话','vt'), 'nav_icon'=>'fa-solid fa-phone', 'nav_link'=>'tel:13312341234'),
-                    array('nav_text'=>__('邮箱','vt'), 'nav_icon'=>'fa-solid fa-envelope', 'nav_link'=>''),
-                    array('nav_text'=>__('关于','vt'), 'nav_icon'=>'fa-solid fa-user', 'nav_link'=>'/'),
-                )
-            ),
-
+            )
         )
     ));
 

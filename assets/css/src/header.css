@@ -1,7 +1,7 @@
-@charset "UTF-8";
 /**
 * header 移动端菜单
 */
+
 .no-scroll {
   overflow-y: hidden;
 }
@@ -27,9 +27,11 @@
   display: block;
   height: 30px;
 }
-.header.mobile .header-nav a.logo img {
-  height: 30px;
-}
+.header.mobile .header-nav a.logo img { height: 30px; }
+.header.mobile .header-nav a.logo img[darkness]{ display:none; }
+body.dark-mode .header.mobile .header-nav a.logo img[light]{ display:none; }
+body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
+
 .header.mobile .header-nav a.top-nav-button {
   display: flex;
   justify-content: center;
@@ -40,6 +42,10 @@
 .header.mobile .header-nav a.top-nav-button i {
   font-size: 20px;
 }
+
+/**
+ * 移动对话框
+ */
 .header.mobile .mobile-menu-modal {
   width: 100vw;
   height: 100vh;
@@ -58,7 +64,7 @@
   background-color: var(--vt-bg-color-card);
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   width: 80vw;
   height: 100vh;
   flex-direction: column;
@@ -66,11 +72,11 @@
   z-index: 6;
 }
 .header.mobile .mobile-menu .action-widget {
-  height: 60px;
+  height: 50px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 5px;
   box-sizing: border-box;
 }
 .header.mobile .action-widget .action-button {
@@ -97,13 +103,6 @@
 }
 .header.mobile .action-widget .action-button.dark-mode-button.dark .sun {
   display: block;
-}
-.header.mobile .mobile-menu .site-logo {
-  display: flex;
-  justify-content: center;
-}
-.header.mobile .mobile-menu .site-logo img {
-  width: 50%;
 }
 .header.mobile .mobile-menu .mobile-ul {
   width: 100%;
@@ -154,6 +153,10 @@
 .header.mobile .mobile-ul .menu-item-has-children.active > i {
   transform: rotate(180deg);
 }
+
+.header.mobile .mobile-ul li.fa-solid{ font-weight:normal; }
+.header.mobile .mobile-ul li.fa-solid.menu-item::before { margin:0 2px 0 0; }
+
 .header.mobile .mobile-search-modal.modal {
   width: 100vw;
   height: 100vh;
@@ -273,7 +276,9 @@
     display: block;
     max-height: 70%;
   }
-
+  .header.pc .header-nav a.logo img[darkness]{ display:none; }
+  body.dark-mode .header.pc .header-nav a.logo img[light]{ display:none; }
+  body.dark-mode .header.pc .header-nav a.logo img[darkness]{ display:block; }
 
   /**
    * PC 菜单样式

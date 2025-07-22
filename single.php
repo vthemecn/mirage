@@ -67,41 +67,31 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
             <div class="article-title">
                 <?php the_title(); ?>
             </div>
-            <div class="article-meta">
-                <!-- <span class="meta author">
-                    <img src="<?php echo $vt_avatar ?>" >
-                    <span>
-                        <a href="/users/<?php echo $post->post_author ?>" target='_blank'>
-                            <?php echo get_the_author_meta('nickname', $post->post_author) ?>
-                        </a>
-                    </span>
-                </span> -->
 
-                <?php if($config['user_center_is_on']):?>
-                    <a class="meta author" href="<?php echo $user_center_url ?>" target="_blank">
-                        <img src="<?php echo $vt_avatar ?>">
+            <div class="article-box">
+                <?php if($vt_config['user_center_is_on']):?>
+                    <a class="meta-item author" href="<?php echo $user_center_url ?>" target="_blank">
+                        <div class="avatar"><img src="<?= $vt_avatar ?>"></div>
                         <span><?php echo get_the_author_meta('nickname', $post->post_author) ?></span>
                     </a>
                 <?php else: ?>
-                    <span class="meta author">
-                        <img src="<?php echo $vt_avatar ?>">
+                    <div class="meta-item author">
+                        <div class="avatar"><img src="<?= $vt_avatar ?>"></div>
                         <span><?php echo get_the_author_meta('nickname', $post->post_author) ?></span>
-                    </span>
+                    </div>
                 <?php endif ?>
+                <div class="meta-item date">
+                    <i class="fa-solid fa-clock"></i><?= vt_get_time(get_the_time('Y-m-d H:i:s')) ?>
+                </div>
 
+                <div class='meta-item hit-conuter'>
+                    <i class="fa-solid fa-eye"></i><?php echo getPostViews(get_the_ID()); ?>
+                </div>
 
-                <span class="meta date">
-                    <i class="fa-solid fa-clock"></i>
-                    <?php the_time('Y-m-d'); ?>
-                </span>
-                <span class='meta hit-conuter'>
-                    <i class="fa-solid fa-eye"></i>
-                    <?php echo getPostViews(get_the_ID()); ?>
-                </span>
                 <?php if($config['comments_is_on']):?>
-                    <span class='meta'>
-                        <i class="fa-solid fa-comment"></i><?php echo $post->comment_count; ?>
-                    </span>
+                <div class='meta-item comment-counter'>
+                    <i class="fa-solid fa-comment"></i><?php echo $post->comment_count; ?>
+                </div>
                 <?php endif ?>
             </div>
             
@@ -111,8 +101,6 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                         <?php echo get_the_excerpt() ?>
                     </div>
                 <?php endif */ ?>
-
-                
                 <?php
                 $content = get_the_content();
                 $toc = create_table_of_contents($content);

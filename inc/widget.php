@@ -96,8 +96,7 @@ class ImageArticleWidget extends WP_Widget {
                                     <div class="item-title">
                                         <div><?php the_title(); ?></div>
                                         <span>
-                                            <?= get_the_time('Y-m-d') ?>
-                                            <?php //echo friendly_time(get_the_time('Y-m-d H:i:s')); ?>  
+                                            <?= vt_get_time(get_the_time('Y-m-d H:i:s')) ?> 
                                         </span>
                                     </div>
                                 </a>
@@ -181,7 +180,9 @@ class HotWidget extends WP_Widget {
                             <div class="hot-order"></div>
                             <div class="item">
                                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                                <div class="time"><?php echo friendly_time(get_the_time('Y-m-d H:i:s')); ?></div>
+                                <div class="time">
+                                    <?= vt_get_time(get_the_time('Y-m-d H:i:s')) ?>
+                                </div>
                             </div>
                         </li>
                     <?php endwhile; ?>

@@ -25,7 +25,7 @@ $like_counter = $res['num'];
         </a>
     </div>
     
-    <div class="media-main">
+    <div class="media-body">
         <div class="media-title">
             <?php if(is_sticky()): ?>
                 <div class="sticky">置顶</div>
@@ -35,34 +35,23 @@ $like_counter = $res['num'];
         <div class="media-description">
             <?php echo get_the_excerpt(); ?>
         </div>
-        <div class="media-meta">
+        <div class="media-box">
             <?php if($vt_config['user_center_is_on']):?>
-                <a class="author" href="<?php echo $user_center_url ?>" target="_blank">
-                    <img src="<?php echo $avatar ?>">
+                <a class="meta-item author" href="<?php echo $user_center_url ?>" target="_blank">
+                    <div class="avatar"><img src="<?php echo $avatar ?>"></div>
                     <span><?php echo get_the_author_meta('nickname', $post->post_author) ?></span>
                 </a>
             <?php else: ?>
-                <span class="author">
-                    <img src="<?php echo $avatar ?>">
+                <div class="meta-item author">
+                    <div class="avatar"><img src="<?php echo $avatar ?>"></div>
                     <span><?php echo get_the_author_meta('nickname', $post->post_author) ?></span>
-                </span>
+                </div>
             <?php endif ?>
-
-            <span class="date">
-                <i class="fa-solid fa-clock"></i><?php the_time('Y-m-d'); ?>
-            </span>
-            <span class="hit-counter">
-                <i class="fa-solid fa-eye"></i><?php echo getPostViews(get_the_ID()); ?>
-            </span>
-            <span class="star_counter">
-                <i class="fa-solid fa-star"></i><?= $like_counter ?>
-            </span>
-            <?php if($vt_config['comments_is_on']):?>
-                <span>
-                    <i class="fa-solid fa-comment"></i><?php echo $post->comment_count; ?>
-                </span>
-            <?php endif ?>
+            <div class="meta-item date">
+                <i class="fa-solid fa-clock"></i><?= vt_get_time(get_the_time('Y-m-d H:i:s')) ?>
+            </div>
         </div>
+        
     </div>
 </div>
 

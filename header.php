@@ -80,9 +80,6 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
     $dark_mode_class = 'dark-mode-auto';
 }
 
-/* logo 闪光 */
-// $flash_class = $vt_config['logo_is_flashing'] ? 'flash' : '';
-
 /* 侧边栏位置 */
 $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="left"' : '';
 ?>
@@ -104,7 +101,8 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
                 <i class="fa-solid fa-magnifying-glass"></i>
             </a>
             <a href="<?php bloginfo('siteurl') ?>" class="logo" title="" rel="home">
-                <img src="<?php echo $vt_config['site_logo']; ?>" alt="<?php bloginfo('name') ?>">
+                <img light src="<?= $vt_config['site_logo']; ?>" alt="<?php bloginfo('name') ?>">
+                <img darkness src="<?= $vt_config['site_logo_darkness']; ?>" alt="<?php bloginfo('name') ?>">
             </a>
             <a class="top-nav-button menu-button" href="javascript:;">
                 <i class="fa-solid fa-bars"></i>
@@ -129,10 +127,6 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
                     <a class="action-button close" href="javascript:;">
                         <i class="fa-solid fa-xmark"></i>
                     </a>
-                </div>
-
-                <div class="site-logo">
-                    <img src="<?php echo $vt_config['site_logo']?>">
                 </div>
                 
                 <?php
@@ -189,7 +183,8 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
     <header class="header pc">
         <div class="header-nav">
             <a href="<?php bloginfo('siteurl') ?>" class="logo" title="" rel="home">
-                <img src="<?php echo $vt_config['site_logo']; ?>" alt="<?php bloginfo('name') ?>">
+                <img light src="<?= $vt_config['site_logo']; ?>" alt="<?php bloginfo('name') ?>">
+                <img darkness src="<?= $vt_config['site_logo_darkness']; ?>" alt="<?php bloginfo('name') ?>">
             </a>
 
             <?php
