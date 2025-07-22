@@ -53,10 +53,12 @@ class HomeController
                 $nickname = get_the_author_meta('nickname', $current_post->post_author);
 
                 // 喜欢数量
+                /*
                 $like_counter = 0;
                 $sql = "SELECT count(*) AS num FROM {$wpdb->prefix}vt_star WHERE object_id=%s AND type=%s";
                 $result = $wpdb->get_row($wpdb->prepare($sql, [$current_post->ID, 'like']), ARRAY_A );
                 $like_counter = $result['num'];
+                */
                 
                 $output .= '<div class="media-item">
                     <div class="media-thumbnail">
@@ -64,45 +66,35 @@ class HomeController
                             <img src="'.$thumbnail.'">
                         </a>
                     </div>
-                    <div class="media-main">
+                    <div class="media-body">
                         <div class="media-title">
                             <a class="title" href="'.get_the_permalink() .'" target="_blank">'.get_the_title(). '</a>
                         </div>
                         <div class="media-description">
                             '. get_the_excerpt() .'
                         </div>
-                        <div class="media-meta">';
+                        <div class="media-box">';
 
                 if($vt_config['user_center_is_on']){
                     $output .=  <<<EOD
-                                <a class="author" href="{$user_center_url}" target="_blank">
-                                    <img src="{$avatar}">
+                                <a class="meta-item author" href="{$user_center_url}" target="_blank">
+                                    <div class="avatar"><img src="{$avatar}"></div>
                                     <span>{$nickname}</span>
                                 </a>
                                 EOD;
                 } else {
                     $output .=  <<<EOD
-                                <span class="author">
-                                    <img src="{$avatar}">
+                                <div class="meta-item author">
+                                    <div class="avatar"><img src="{$avatar}"></div>
                                     <span>{$nickname}</span>
-                                </span>
+                                </div>
                                 EOD;
                 }
 
-                $output .= '<span class="date">
-                                <i class="fa-solid fa-clock"></i>'.get_the_time('Y-m-d').'
-                            </span>
-                            <span class="hit-counter">
-                                <i class="fa-solid fa-eye"></i>' .getPostViews(get_the_ID()). '
-                            </span>
-                            <span class="like_counter">
-                                <i class="fa-solid fa-star"></i>' .$like_counter. '
-                            </span>
+                $output .= '<div class="meta-item date">
+                                <i class="fa-solid fa-clock"></i>'.vt_get_time(get_the_time('Y-m-d')).'
+                            </div>
                             ';
-               
-                if($vt_config['comments_is_on']){
-                    $output .= '<span class="meta"><i class="fa-solid fa-comment"></i>'. $current_post->comment_count .'</span>';
-                }
 
                 $output .= '
                         </div>

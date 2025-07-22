@@ -206,31 +206,6 @@ function getPostViews($postID)
 }
 
 
-//时间格式多久以前  
-function friendly_time($ptime)
-{
-    $ptime = strtotime($ptime);
-    $etime = time() - $ptime;
-    if ($etime < 1) return '刚刚';
-    $interval = array(
-        12 * 30 * 24 * 60 * 60 => '年前 (' . date('Y-m-d', $ptime) . ')',
-        30 * 24 * 60 * 60 => '个月前 (' . date('m-d', $ptime) . ')',
-        7 * 24 * 60 * 60 => '周前 (' . date('m-d', $ptime) . ')',
-        24 * 60 * 60 => '天前',
-        60 * 60 => '小时前',
-        60 => '分钟前',
-        1 => '秒前'
-    );
-    foreach ($interval as $secs => $str) {
-        $d = $etime / $secs;
-        if ($d >= 1) {
-            $r = round($d);
-            return $r . $str;
-        }
-    };
-}
-
-
 function vt_custom_js_and_css() {
     $current_theme = wp_get_theme();
     wp_enqueue_style('customstyle', get_template_directory_uri() . '/assets/css/style.css', array(), $current_theme->get('Version'), 'all');
@@ -282,6 +257,47 @@ function get_user_by_id($user_id)
 }
 
 
+function vt_format_time($timestamp) {
+    $now = time();
+    $diff = $now - $timestamp;
+
+    // 如果是未来时间，返回标准格式
+    if ($diff < 0) {
+        // return date('Y-m-d H:i', $timestamp);
+        return date('Y-m-d', $timestamp);
+    }
+
+    $yearInSeconds = 365 * 24 * 60 * 60;
+    $monthInSeconds = 30 * 24 * 60 * 60;
+    $dayInSeconds = 24 * 60 * 60;
+    $hourInSeconds = 60 * 60;
+
+    if ($diff >= $yearInSeconds) {
+        // 超过一年，显示年-月-日
+        return date('Y-m-d', $timestamp);
+    } elseif ($diff >= $monthInSeconds) {
+        // 一年内，但超过一个月，显示月-日
+        return date('m-d', $timestamp);
+    } elseif ($diff >= $dayInSeconds) {
+        // 超过一天，显示 X天前
+        $days = floor($diff / $dayInSeconds);
+        return $days == 0 ? '今天' : "{$days}天前";
+    } else {
+        // 一天内，显示 X小时前
+        $hours = floor($diff / $hourInSeconds);
+        return $hours == 0 ? '刚刚' : "{$hours}小时前";
+    }
+}
+
+
+function vt_get_time($time){
+    if(is_int($timestamp)){
+        $timestamp = $time;
+    } else {
+        $timestamp = strtotime($time);
+    }
+    return vt_format_time($timestamp);
+}
 
 
 

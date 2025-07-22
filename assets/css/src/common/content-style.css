@@ -104,8 +104,8 @@
 .article-content blockquote::before,
 .item-content blockquote::before,
 .page-content blockquote::before {
-  content: "\e669";
-  font-family: "iconfont";
+  content: "\f10d";
+  font-family: "Font Awesome 6 Free";
   font-size: 38px;
   color: var(--vt-color-primary);
 }

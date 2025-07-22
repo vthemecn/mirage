@@ -354,6 +354,7 @@
   overflow: hidden;
   line-height: 18px;
   text-align: justify;
+  word-break: break-all;
 }
 .images-list-container ul.item-list .item-widget a .item-price {
   margin-top: 5px;
