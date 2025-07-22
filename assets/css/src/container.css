@@ -17,6 +17,10 @@
   margin-bottom: 8px;
 }
 
+.main-container .main-widget > * {
+  margin: 0 0 8px 0 !important;
+}
+
 .main-container .main-widget .header {
   font-size: var(--vt-font-size-base);
   margin-bottom: 15px;
@@ -58,6 +62,14 @@
     width: 880px;
     margin-bottom: 0;
   }
+
+  .main-container .main-widget > * {
+    margin: 0 0 20px 0 !important;
+  }
+  .main-container .main-widget > *:last-child {
+    margin: 0 !important;
+  }
+
   .main-container .main-widget > *:nth-child(1){
     margin-top: 0;
   }

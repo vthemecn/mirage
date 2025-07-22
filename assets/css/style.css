@@ -720,13 +720,11 @@ input:disabled, textarea:disabled {
     width: auto;
   }
 }
-@charset "UTF-8";
-/* 分页 */
 nav.pagination {
   font-size: 20px;
   border-top: 0px;
   border-bottom: 0px;
-  margin: 8px 0 0 0;
+  margin: 30px 0 20px 0;
 }
 
 nav.pagination .nav-links {
@@ -734,26 +732,26 @@ nav.pagination .nav-links {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  font-size: 1.8em;
+  font-size: 16px;
   font-weight: 100;
   width: 100%;
 }
 
 nav.pagination .pagination-separator {
-  margin: 5em 0;
+  margin: 16px 0;
 }
 
 nav.pagination .nav-links > * {
-  min-width: 2em;
-  height: 2em;
-  line-height: 2.1em;
+  min-width: 35px;
+  height: 35px;
+  line-height: 35px;
   text-align: center;
-  font-size: 0.4em;
+  font-size: 17px;
   border: 1px solid var(--vt-border-color);
-  margin: 0px 7px 0px 0;
+  margin: 0px 7px 7px 0;
   display: block;
   background-color: var(--vt-bg-color-card);
-  box-shadow: 0 1px 3px var(--vt-shadow-color);
+  box-shadow: 0 0 2px var(--vt-shadow-color);
   padding: 1px 1px;
 }
 
@@ -762,7 +760,7 @@ nav.pagination .nav-links > .current {
   border-color: var(--vt-color-primary);
   color: #fff;
   border-radius: 3px;
-  box-shadow: 0 1px 3px var(--vt-shadow-color);
+  box-shadow: 0 0 2px var(--vt-shadow-color);
 }
 
 nav.pagination .nav-links .placeholder {
@@ -782,7 +780,7 @@ nav.pagination a:hover {
 
 @media only screen and (min-width: 900px) {
   nav.pagination {
-    margin: 20px 0 0 0;
+/*    margin: 20px 0 0 0;*/
   }
 }
 .m-pagination {
@@ -3476,6 +3474,10 @@ body.dark-mode .user-card {
   margin-bottom: 8px;
 }
 
+.main-container .main-widget > * {
+  margin: 0 0 8px 0 !important;
+}
+
 .main-container .main-widget .header {
   font-size: var(--vt-font-size-base);
   margin-bottom: 15px;
@@ -3517,6 +3519,14 @@ body.dark-mode .user-card {
     width: 880px;
     margin-bottom: 0;
   }
+
+  .main-container .main-widget > * {
+    margin: 0 0 20px 0 !important;
+  }
+  .main-container .main-widget > *:last-child {
+    margin: 0 !important;
+  }
+
   .main-container .main-widget > *:nth-child(1){
     margin-top: 0;
   }
