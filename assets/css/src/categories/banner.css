@@ -55,7 +55,7 @@
 
 @media screen and (min-width: 900px) {
   .banner {
-    min-height: 80px;
+    min-height: 130px;
     padding: 10px 0;
   }
   .banner .banner-container {

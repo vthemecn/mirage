@@ -31,7 +31,7 @@ if($term_full_width == 1) {
 }
 
 // 获取分类第一篇文章的缩略图或者图片
-$banner_image = get_bloginfo('template_url') . '/assets/images/user-center-banner.jpg';
+$banner_image = get_bloginfo('template_url') . '/assets/images/banner.jpg';
 $args = array(
     'tag__in' => array($tagID),
     'orderby' => array("menu_order" => "desc",'date' => "desc"),

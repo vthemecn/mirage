@@ -7,7 +7,7 @@
  * @link https://vtheme.cn
  */
 
-define('THEME_OPTION_NAME', 'miragev');
+define('THEME_OPTION_NAME', 'mirage');
 define('TEMP_DIR', get_template_directory());
 
 
@@ -95,9 +95,9 @@ function vt_get_thumbnail_url($post_id, $size='thumbnail')
 if (function_exists('register_nav_menus')) {
     register_nav_menus(
         array(
-            'header_main' => __('MirageV 顶部菜单'),
-            'footer_nav'  => __('MirageV 底部菜单'),
-            'side_menu'   => __('MirageV 侧边菜单')
+            'header_main' => __('Mirage 顶部菜单'),
+            'footer_nav'  => __('Mirage 底部菜单'),
+            'side_menu'   => __('Mirage 侧边菜单')
         )
     );
 }

@@ -13,7 +13,7 @@ get_header();
 $vt_options = vt_get_config();
 
 // 获取分类第一篇文章的缩略图或者图片
-$banner_image = get_bloginfo('template_url') . '/assets/images/user-center-banner.jpg';
+$banner_image = get_bloginfo('template_url') . '/assets/images/banner.jpg';
 
 
 // $posts_per_page =  get_option('posts_per_page');

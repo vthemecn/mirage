@@ -127,12 +127,12 @@ class HomeController
 
         // 发送邮件
         $to         = $config['smtp_username'];
-        $subject    = "MirageV 主题邮箱 SMTP 设置成功";
+        $subject    = "Mirage 主题邮箱 SMTP 设置成功";
         $body       = "
         <div style='width:600px;margin:50px auto; padding-left:77px; background:#fff;font-size:16px;color:#55798d;padding-right80px;'>
             <p><img src='".get_bloginfo('template_url')."/assets/images/logo.png' style='max-height:50px;user-select:none'></p>
-            <h3>MirageV 主题邮箱 SMTP 设置成功</h3>
-            <p>MirageV 主题官网地址 <a href='https://vtheme.cn/miragev'>https://vtheme.cn/miragev</a></p>
+            <h3>Mirage 主题邮箱 SMTP 设置成功</h3>
+            <p>Mirage 主题官网地址 <a href='https://vtheme.cn/mirage'>https://vtheme.cn/mirage</a></p>
         </div>
         ";
         $headers    = array('Content-Type: text/html; charset=UTF-8');

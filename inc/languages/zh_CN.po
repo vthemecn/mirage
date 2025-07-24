@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: MirageV\n"
+"Project-Id-Version: Mirage\n"
 "PO-Revision-Date: 2025-01-13 23:58:04+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"

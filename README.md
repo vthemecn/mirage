@@ -1,10 +1,10 @@
-![MirageV](screenshot.png)
+![Mirage](screenshot.png)
 
-MirageV 主题
+Mirage 主题
 ======
 
 ### 主题简介
-MirageV 是一款开源的 WordPress 主题，支持自适应、暗黑模式、多语言等功能，可快速构建高质量的网站。
+Mirage 是一款开源的 WordPress 主题，支持自适应、暗黑模式、多语言等功能，可快速构建高质量的网站。
 
 
 ### 中文配置截图
@@ -40,7 +40,7 @@ MirageV 是一款开源的 WordPress 主题，支持自适应、暗黑模式、�
 
 
 ### 文档
-- [项目官网](https://vtheme.cn/miragev)
+- [项目官网](https://vtheme.cn/mirage)
 - [版本历史](./CHANGES.md)
 - 如果您发现任何BUG，欢迎[联系我](https://vtheme.cn/contact)
 
@@ -50,5 +50,5 @@ MirageV 是一款开源的 WordPress 主题，支持自适应、暗黑模式、�
 
 
 ### 演示地址
-- [https://miragev.vtheme.cn](https://miragev.vtheme.cn/)
+- [https://mirage.vtheme.cn](https://mirage.vtheme.cn/)
 

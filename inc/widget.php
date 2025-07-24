@@ -37,7 +37,7 @@ add_action('init', 'vt_widgets_init');
  */
 class ImageArticleWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'image-article-list', '[MirageV] '.__( '图文列表', 'vt' ), array( 'description' => __('图文列表描述', 'vt' ) ) );
+        $this->WP_Widget( 'image-article-list', '[Mirage] '.__( '图文列表', 'vt' ), array( 'description' => __('图文列表描述', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -146,7 +146,7 @@ class ImageArticleWidget extends WP_Widget {
  */
 class HotWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'hot-list', '[MirageV] '.__( '热门', 'vt' ), array( 'description' => __( '热门描述', 'vt' ) ) );
+        $this->WP_Widget( 'hot-list', '[Mirage] '.__( '热门', 'vt' ), array( 'description' => __( '热门描述', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -223,7 +223,7 @@ class HotWidget extends WP_Widget {
  */
 class ArticleWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'article-list', '[MirageV] '.__( '文章列表', 'vt' ), array( 'description' => __( '文章列表描述', 'vt' ) ) );
+        $this->WP_Widget( 'article-list', '[Mirage] '.__( '文章列表', 'vt' ), array( 'description' => __( '文章列表描述', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -323,7 +323,7 @@ class ArticleWidget extends WP_Widget {
  */
 class ImageWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'image-list', '[MirageV] '.__( '图片列表', 'vt' ), array( 'description' => __( '图片列表描述', 'vt' ) ) );
+        $this->WP_Widget( 'image-list', '[Mirage] '.__( '图片列表', 'vt' ), array( 'description' => __( '图片列表描述', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -433,7 +433,7 @@ class ImageWidget extends WP_Widget {
  */
 class CategoryWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'category-list', '[MirageV] '.__( '分类列表', 'vt' ), array( 'description' => __( '分类列表描述', 'vt' ) ) );
+        $this->WP_Widget( 'category-list', '[Mirage] '.__( '分类列表', 'vt' ), array( 'description' => __( '分类列表描述', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -507,7 +507,7 @@ class CategoryWidget extends WP_Widget {
  */
 class UserWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'user-widget', '[MirageV] '.__( '用户卡片', 'vt' ), array( 'description' => __( '用户卡片描述', 'vt' ) ) );
+        $this->WP_Widget( 'user-widget', '[Mirage] '.__( '用户卡片', 'vt' ), array( 'description' => __( '用户卡片描述', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -603,7 +603,7 @@ class UserWidget extends WP_Widget {
  */
 class HtmlWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'html-widget', '[MirageV] '.__( 'HTML卡片', 'vt' ), array( 'description' => __( 'HTML卡片描述', 'vt' ) ) );
+        $this->WP_Widget( 'html-widget', '[Mirage] '.__( 'HTML卡片', 'vt' ), array( 'description' => __( 'HTML卡片描述', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -651,7 +651,7 @@ class HtmlWidget extends WP_Widget {
  */
 class TagsWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'tags-widget', '[MirageV] '.__( '标签卡片', 'vt' ), array( 'description' => __( '标签卡片', 'vt' ) ) );
+        $this->WP_Widget( 'tags-widget', '[Mirage] '.__( '标签卡片', 'vt' ), array( 'description' => __( '标签卡片', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){

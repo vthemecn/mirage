@@ -1253,8 +1253,8 @@ nav.pagination a:hover {
 }
 
 .coin-dialog-widget .coin-widget img {
-  width: 160px;
-  height: 160px;
+  width: 180px;
+  height: 180px;
 }
 
 .coin-dialog-widget .coin-info {
@@ -2274,6 +2274,7 @@ ul.toc_list .level-6 a{ padding:0 0 0 90px; }
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 12px;
 }
 
 /**
@@ -3474,10 +3475,6 @@ body.dark-mode .user-card {
   margin-bottom: 8px;
 }
 
-.main-container .main-widget > * {
-  margin: 0 0 8px 0 !important;
-}
-
 .main-container .main-widget .header {
   font-size: var(--vt-font-size-base);
   margin-bottom: 15px;
@@ -3518,17 +3515,6 @@ body.dark-mode .user-card {
   .main-container .main-widget {
     width: 880px;
     margin-bottom: 0;
-  }
-
-  .main-container .main-widget > * {
-    margin: 0 0 20px 0 !important;
-  }
-  .main-container .main-widget > *:last-child {
-    margin: 0 !important;
-  }
-
-  .main-container .main-widget > *:nth-child(1){
-    margin-top: 0;
   }
   .main-container .main-widget .posts-widget {
     width: auto;
@@ -3617,7 +3603,18 @@ body.dark-mode .user-card {
 }
 
 
+/**
+ * 优化子元素样式
+ */
 
+.main-container .main-widget > * {
+  margin-bottom: 8px !important;
+}
+@media only screen and (min-width: 900px) {
+.main-container .main-widget > * { margin-bottom: 20px!important;}
+.main-container .main-widget > *:last-child { margin-bottom: 0 !important; }
+.main-container .main-widget > *:nth-child(1){ margin-bottom: 0; }
+}
 .card-item {
   width: calc(50% - 8px);
   flex: 0 0 calc(50% - 8px);
@@ -3931,7 +3928,7 @@ body.dark-mode .user-card {
 
 @media screen and (min-width: 900px) {
   .banner {
-    min-height: 80px;
+    min-height: 130px;
     padding: 10px 0;
   }
   .banner .banner-container {

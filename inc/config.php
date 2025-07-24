@@ -4,7 +4,7 @@ require_once TEMP_DIR .'/inc/codestar/codestar-framework.php';
 
 $attempts_text = "";
 
-if(is_admin() && isset($_GET['page']) && $_GET['page']=="miragev" ){
+if(is_admin() && isset($_GET['page']) && $_GET['page']=="mirage" ){
     // 统计登录失败的次数
     $attempts = get_option('vt_failed_attempts', []);
     $ip_counter = sizeof($attempts);
@@ -21,14 +21,14 @@ if( class_exists( 'CSF' ) ) {
     $prefix = THEME_OPTION_NAME;
 
     CSF::createOptions( $prefix, array(
-        'menu_title' => __('MirageV 设置','vt'),
-        'menu_slug'  => 'miragev',
+        'menu_title' => __('Mirage 设置','vt'),
+        'menu_slug'  => 'mirage',
         'menu_position' => '81',
-        'framework_title' => __('MirageV 主题设置','vt'),
+        'framework_title' => __('Mirage 主题设置','vt'),
         'footer_text' => '',
         'theme' => 'light',
         'show_bar_menu' => false,
-        'footer_text' => '<img src="https://vtheme.cn/static/images/logo.png" style="width:20px;position:relative;top:5px"> Theme by <a href="https://vtheme.cn/miragev" copyright target="_blank">MirageV</a>'
+        'footer_text' => '<img src="https://vtheme.cn/static/images/logo.png" style="width:20px;position:relative;top:5px"> Theme by <a href="https://vtheme.cn/mirage" copyright target="_blank">Mirage</a>'
     ));
 
 
@@ -277,15 +277,20 @@ if( class_exists( 'CSF' ) ) {
                 ),
                 'default' => array(
                                 array(
-                                    'title' => __('你好，MirageV','vt'),
+                                    'title' => __('你好，Mirage','vt'),
                                     'description' => __('这是幻灯片的内容展示，支持HTML代码','vt'),
                                     'image' => get_template_directory_uri() . '/assets/images/slider1.jpg'
                                 ),
                                 array(
-                                    'title' => __('你好，MirageV','vt'),
+                                    'title' => __('你好，Mirage','vt'),
                                     'description' => __('这是幻灯片的内容展示，支持HTML代码','vt'),
                                     'image' => get_template_directory_uri() . '/assets/images/slider2.jpg'
-                                )
+                                ),
+                                array(
+                                    'title' => __('你好，Mirage','vt'),
+                                    'description' => __('这是幻灯片的内容展示，支持HTML代码','vt'),
+                                    'image' => get_template_directory_uri() . '/assets/images/slider3.jpg'
+                                ),
                             )
             )
         )

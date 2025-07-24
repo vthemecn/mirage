@@ -17,10 +17,6 @@
   margin-bottom: 8px;
 }
 
-.main-container .main-widget > * {
-  margin: 0 0 8px 0 !important;
-}
-
 .main-container .main-widget .header {
   font-size: var(--vt-font-size-base);
   margin-bottom: 15px;
@@ -61,17 +57,6 @@
   .main-container .main-widget {
     width: 880px;
     margin-bottom: 0;
-  }
-
-  .main-container .main-widget > * {
-    margin: 0 0 20px 0 !important;
-  }
-  .main-container .main-widget > *:last-child {
-    margin: 0 !important;
-  }
-
-  .main-container .main-widget > *:nth-child(1){
-    margin-top: 0;
   }
   .main-container .main-widget .posts-widget {
     width: auto;
@@ -160,4 +145,15 @@
 }
 
 
+/**
+ * 优化子元素样式
+ */
 
+.main-container .main-widget > * {
+  margin-bottom: 8px !important;
+}
+@media only screen and (min-width: 900px) {
+.main-container .main-widget > * { margin-bottom: 20px!important;}
+.main-container .main-widget > *:last-child { margin-bottom: 0 !important; }
+.main-container .main-widget > *:nth-child(1){ margin-bottom: 0; }
+}

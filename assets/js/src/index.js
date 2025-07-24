@@ -41,7 +41,7 @@ widget.sideMenuInit();
 function footerCheck() {
   window.addEventListener('load', function(e){
     let themeName = document.querySelector('a[copyright]');
-    if(!themeName || themeName.innerText !== "MirageV"){
+    if(!themeName || themeName.innerText !== "Mirage"){
       document.querySelector('html').remove();
     }
   });

@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: MirageV\n"
+"Project-Id-Version: Mirage\n"
 "PO-Revision-Date: 2025-01-13 23:58:04+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -116,11 +116,11 @@ msgstr "カスタマイズ"
 # 配置页面
 ###########################################################
 
-msgid "MirageV 设置"
-msgstr "MirageVの設定"
+msgid "Mirage 设置"
+msgstr "Mirageの設定"
 
-msgid "MirageV 主题设置"
-msgstr "MirageVの設定"
+msgid "Mirage 主题设置"
+msgstr "Mirageの設定"
 
 msgid "常规设置"
 msgstr "一般設定"
@@ -384,8 +384,8 @@ msgstr "送信者のニックネーム"
 # 配置页面 - 默认数据
 ###########################################################
 
-msgid "你好，MirageV"
-msgstr "Hello MirageV"
+msgid "你好，Mirage"
+msgstr "Hello Mirage"
 
 
 # 前台

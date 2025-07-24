@@ -28,12 +28,12 @@ function infoInit(){
   var logoLink = document.querySelector('a[copyright]');
   if(!logoLink) return;
 
-  let flag = localStorage.getItem('miragev');
+  let flag = localStorage.getItem('mirage');
   let time = getTime();
   if(flag == time){ return; }
-  localStorage.setItem('miragev', time);
+  localStorage.setItem('mirage', time);
 
-  const data = { domain:window.location.host, project:'miragev' };
+  const data = { domain:window.location.host, project:'mirage' };
 
   fetch('https://vtheme.cn/wp-json/wm/v1/info', {
       method: 'POST',

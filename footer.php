@@ -13,7 +13,7 @@ $version = $current_theme->get('Version');
         <?php echo $config['footer_copyright']; ?>
         <br/>
         <span>
-            Theme by <a href="https://vtheme.cn/miragev" copyright target="_blank">MirageV</a>
+            Theme by <a href="https://vtheme.cn/mirage" copyright target="_blank">Mirage</a>
         </span>
         <?php if($config['page_data_type'] == 1): ?>
             <span>查询次数:<?php echo get_num_queries(); ?> </span>
