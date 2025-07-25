@@ -50,5 +50,5 @@ Mirage 是一款开源的 WordPress 主题，支持自适应、暗黑模式、�
 
 
 ### 演示地址
-- [https://mirage.vtheme.cn](https://mirage.vtheme.cn/)
+- [https://blog.vtheme.cn](https://blog.vtheme.cn/)
 

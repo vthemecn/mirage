@@ -6,7 +6,9 @@
 - 新增文章详情页的“相关推荐”
 
 ### v2.31.0
+- feat 美化主题
 - feat 项目名称 MirageV 改成 Mirage
+- feat 修改了多处图片和Logo
 
 ### v2.30.1
 - fix 优化分页样式
