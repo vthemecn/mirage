@@ -7,7 +7,9 @@
 add_action('after_switch_theme', 'vt_after_switch_action');
 function vt_after_switch_action()
 {
-    // 创建数据表
+    /**
+     * 创建数据表
+     */
     global $wpdb;
 
     // 创建收藏表
@@ -25,6 +27,52 @@ function vt_after_switch_action()
 
         require_once(ABSPATH . "wp-admin/includes/upgrade.php");
         dbDelta($sql);
+    }
+
+
+    /**
+     * 创建侧边小工具
+     */
+    $sidebars_widgets = get_option('sidebars_widgets');
+    if(!isset($sidebars_widgets['default-sidebar']) || !$sidebars_widgets['default-sidebar']) {
+        $new_widgets = array(
+            'wp_inactive_widgets' => [],
+            'default-sidebar' => array(
+                'hot-list-2',
+                'image-article-list-2',
+                'tags-widget-2'
+            ),
+            'posts-sidebar' => array(
+                'user-widget-3',
+                'image-article-list-3',
+                'tags-widget-3'
+            ),
+            'array_version' => 3
+        );
+        update_option('sidebars_widgets', $new_widgets);
+        
+        // 添加小工具的数据
+        $widget = get_option('widget_image-article-list');
+        $widget = $widget ? $widget : [];
+        $widget[2] = array('title' => '', 'posts_per_page'=>'', 'cat_id'=>'');
+        $widget[3] = array('title' => '');
+        update_option('widget_image-article-list', $widget);
+
+        $widget = get_option('widget_hot-list');
+        $widget = $widget ? $widget : [];
+        $widget[2] = array('title' => '');
+        update_option('widget_hot-list', $widget);
+
+        $widget = get_option('widget_tags-widget');
+        $widget = $widget ? $widget : [];
+        $widget[2] = array('title' => '');
+        $widget[3] = array('title' => '');
+        update_option('widget_tags-widget', $widget);
+
+        $widget = get_option('widget_user-widget');
+        $widget = $widget ? $widget : [];
+        $widget[3] = array('title' => '');
+        update_option('widget_user-widget', $widget);
     }
 }
 

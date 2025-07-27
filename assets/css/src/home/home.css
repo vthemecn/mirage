@@ -26,7 +26,8 @@
 
 .main-widget button.posts-more-button.loading i {
   display: inline-block;
-  animation: rotation-load 1.5s linear infinite;
+  /*  animation: rotation-load 1.5s linear infinite;*/
+  animation: rotation-load 1s steps(8, end) infinite;
 }
 
 @media only screen and (min-width: 900px) {

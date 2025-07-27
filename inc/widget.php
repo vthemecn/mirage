@@ -53,7 +53,7 @@ class ImageArticleWidget extends WP_Widget {
             'post_type' => 'post',
             'posts_per_page' => $instance['posts_per_page'] ? $instance['posts_per_page'] : 4,
             //'orderby' => 'rand',
-            'meta_query' => array(array( 'key' => '_thumbnail_id'))
+            // 'meta_query' => array(array( 'key' => '_thumbnail_id'))
         );
         if($instance['cat_id']){
             global $wpdb;
