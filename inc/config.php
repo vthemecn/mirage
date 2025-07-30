@@ -205,9 +205,9 @@ if( class_exists( 'CSF' ) ) {
                 'disabled_title' => __('隐藏','vt'),
                 'default'        => array(
                     'enabled'  => array(
-                        'sliders'   => __('幻灯片','vt'),                       
+                        'slider'   => __('幻灯片','vt'),                       
                         'hot'       => __('热门推荐','vt'),
-                        'posts'     => __('最新文章','vt'),
+                        'last'     => __('最新文章','vt'),
                         'links'     => __('友情链接','vt'),
                     ),
                     'disabled' => array()
@@ -292,7 +292,46 @@ if( class_exists( 'CSF' ) ) {
                                     'image' => get_template_directory_uri() . '/assets/images/slider3.jpg'
                                 ),
                             )
+            ),
+            array(
+                'id'         => 'top_items',
+                'type'       => 'group',
+                'title'      => __('推荐','vt'),
+                'fields'     => array(
+                    array(
+                        'id'          => 'image',
+                        'type'        => 'upload',
+                        'title'       => __('上传','vt'),
+                        'library'     => 'image',
+                        'placeholder' => 'http://',
+                        'preview'     => true
+                    ),
+                    array(
+                        'id'      => 'target',
+                        'type'    => 'switcher',
+                        'title'   => __('新窗口打开链接','vt'),
+                        'label'   => ''
+                    ),
+                    array(
+                        'id'      => 'link',
+                        'type'    => 'text',
+                        'title'   => __('链接地址','vt')
+                    ),
+                ),
+                'default' => array(
+                                array(
+                                    'title' => __('你好，Mirage','vt'),
+                                    'description' => __('这是幻灯片的内容展示，支持HTML代码','vt'),
+                                    'image' => get_template_directory_uri() . '/assets/images/hot.jpg'
+                                ),
+                                array(
+                                    'title' => __('你好，Mirage','vt'),
+                                    'description' => __('这是幻灯片的内容展示，支持HTML代码','vt'),
+                                    'image' => get_template_directory_uri() . '/assets/images/hot.jpg'
+                                )
+                            )
             )
+
         )
     ));
 
@@ -364,6 +403,10 @@ if( class_exists( 'CSF' ) ) {
                                 array(
                                     'title' => __('推荐模块标题','vt').' 4',
                                     'image' => get_template_directory_uri() . '/assets/images/hot.jpg'
+                                ),
+                                array(
+                                    'title' => __('推荐模块标题','vt').' 5',
+                                    'image' => get_template_directory_uri() . '/assets/images/hot.jpg'
                                 )
                             )
             )
@@ -407,19 +450,30 @@ if( class_exists( 'CSF' ) ) {
                 'options'     => 'categories'
             ),
             array(
+                'id'    => 'posts_nav',
+                'type'  => 'radio',
+                'title' => __('列表格式','vt'),
+                'options'    => array('0' => __('静态分页','vt'), '1' => __('Ajax 加载','vt')),
+                'default'    => '0',
+                'inline' => true
+            ),
+            array(
                 'id'    => 'posts_auto_load',
                 'type'  => 'radio',
                 'title' => __('自动加载','vt'),
                 'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
                 'default'    => '1',
-                'inline' => true
+                'inline' => true,
+                'dependency' => array('posts_nav', '==', '1'),
+
             ),
             array(
                 'id'    => 'posts_auto_load_limit',
                 'type'  => 'text',
                 'title' => __('自动加载次数','vt'),
                 'default' => '1',
-                'desc' => __('自动加载到第几页，0代表无限加载','vt')
+                'desc' => __('自动加载到第几页，0代表无限加载','vt'),
+                'dependency' => array('posts_nav', '==', '1')
             )
         )
     ));

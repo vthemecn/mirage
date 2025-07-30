@@ -1,13 +1,10 @@
-
+@charset "UTF-8";
 .main-container {
   width: 100%;
-  margin: 8px auto;
-  padding: 0 8px;
+  margin: 0 auto;
+  padding: 0 8px 8px 8px;
   box-sizing: border-box;
 }
-/*.main-container > div{ margin:0 0 8px 0; }*/
-/*.main-container > div:first-child{ margin-top: 8px; }*/
-/*.main-container:first-child{ padding-top:8px; }*/
 
 .main-container::after {
   content: "";
@@ -17,7 +14,7 @@
 
 .main-container .main-widget {
   width: 100%;
-  /* overflow-x: hidden; not this*/
+  margin-bottom: 8px;
 }
 
 .main-container .main-widget .header {
@@ -26,8 +23,9 @@
 }
 
 .main-container .main-widget .posts-widget {
-  /* width: 100%; */
+  width: 100%;
   margin-right: -8px;
+  margin-bottom: -8px;
   display: flex;
   justify-content: normal;
   flex-wrap: wrap;
@@ -39,15 +37,15 @@
   border-radius: var(--vt-border-radius);
 }
 
-/*.main-widget > * {
-  margin-bottom: 10px;
-}*/
+.header + .main-container {
+  padding-top: 8px;
+}
 
 @media only screen and (min-width: 900px) {
   .main-container {
     width: 1200px;
-    margin: 20px auto;
-    padding: 0px 0 0 0;
+    margin: 0 auto;
+    padding: 0 0 20px 0;
     display: flex;
     justify-content: flex-start;
   }
@@ -56,22 +54,20 @@
     display: block;
     clear: both;
   }
-  /*  .main-container .main-widget > * {
-      margin-bottom: 20px;
-    }*/
   .main-container .main-widget {
     width: 880px;
-  }
-  .main-container .main-widget .header {
-    font-size: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 0;
   }
   .main-container .main-widget .posts-widget {
     width: auto;
     margin-right: -20px;
+    margin-bottom: -20px;
     display: flex;
     justify-content: normal;
     flex-wrap: wrap;
+  }
+  .header + .main-container {
+    padding-top: 20px;
   }
   .main-container .main-widget .posts-widget .card-item {
     width: calc(25% - 20px);
@@ -98,7 +94,11 @@
   }
 }
 .sider > div {
-  margin: 8px 0;
+  margin-bottom: 10px;
+}
+
+.sider > div:last-child {
+  margin-bottom: 0;
 }
 
 @media only screen and (min-width: 900px) {
@@ -114,15 +114,9 @@
     top: 20px;
   }
   .sider > div {
-    /*    margin-bottom: 20px;*/
-    margin: 0 0 20px 0;
+    margin-bottom: 20px;
   }
 }
-
-
-/**
- * 宽屏样式覆盖
- */
 @media only screen and (min-width: 900px) {
   .main-container[full-width] .main-widget {
     width: 100%;
@@ -130,26 +124,36 @@
   .main-container[full-width] .sider {
     display: none;
   }
-
-  .main-container[full-width].article .main-widget,
-  .main-container[full-width].videos .main-widget,
-  .main-container[full-width].pages .main-widget,
-  .main-container[full-width].audios .main-widget
-  {
-    width: 1200px;
-    margin: 0 auto;
-  }
-
-  .main-container[full-width].article .main-widget .article-widget,
-  .main-container[full-width].videos .main-widget .article-widget,
-  .main-container[full-width].pages .main-widget .article-widget,
-  .main-container[full-width].audios .main-widget .article-widget
-  {
-    padding: 30px;
-  }
-
-
 }
 
 
+/**
+ * 侧边栏居左覆盖
+ * body[sidebar-position="left"]
+ */
+[sidebar-position="left"] .main-container{
+  flex-direction: row-reverse;
+}
 
+[sidebar-position="left"] .main-container .sider{
+  margin-left: 0px;
+}
+@media only screen and (min-width: 900px) {
+  [sidebar-position="left"] .main-container .sider{
+    margin-right: 20px;
+  }
+}
+
+
+/**
+ * 优化子元素样式
+ */
+
+.main-container .main-widget > * {
+  margin-bottom: 8px !important;
+}
+@media only screen and (min-width: 900px) {
+.main-container .main-widget > * { margin-bottom: 20px!important;}
+.main-container .main-widget > *:last-child { margin-bottom: 0 !important; }
+.main-container .main-widget > *:nth-child(1){ margin-bottom: 0; }
+}

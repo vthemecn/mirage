@@ -52,25 +52,12 @@ class ImageArticleWidget extends WP_Widget {
         $args = array(
             'post_type' => 'post',
             'posts_per_page' => $instance['posts_per_page'] ? $instance['posts_per_page'] : 4,
-            //'orderby' => 'rand',
-            // 'meta_query' => array(array( 'key' => '_thumbnail_id'))
+            'paged' => 1
         );
         if($instance['cat_id']){
-            global $wpdb;
-            $sql = "SELECT taxonomy FROM {$wpdb->prefix}term_taxonomy WHERE term_id=%s";
-            $res = $wpdb->get_row($wpdb->prepare($sql, $instance['cat_id']), ARRAY_A);
-
-            if($res['taxonomy'] == 'category'){
-                $args['cat'] = $instance['cat_id'];
-            } else {
-                $args['tax_query'] = array(
-                    array(
-                        'taxonomy' => $res['taxonomy'],
-                        'terms' => $instance['cat_id']
-                    )
-                );
-            }
+            $args['cat'] = $instance['cat_id'];
         }
+
         $query = new WP_Query($args);
         ?>
         <div class="image-title widget-container">
@@ -317,115 +304,6 @@ class ArticleWidget extends WP_Widget {
     }
 }
 
-
-/**
- * 图片列表
- */
-class ImageWidget extends WP_Widget {
-    function __construct(){
-        $this->WP_Widget( 'image-list', '[Mirage] '.__( '图片列表', 'vt' ), array( 'description' => __( '图片列表描述', 'vt' ) ) );
-    }
- 
-    function widget( $args, $instance ){
-        extract( $args, EXTR_SKIP );
-        echo $before_widget;
-
-        $vt_config = vt_get_config();
-
-        $widget_title_class = $vt_config['widget_title_type'] ? 'type-' . $vt_config['widget_title_type'] : '';
-        $title = $instance['title'] ? $instance['title'] : __('图片列表', 'vt');
-
-        wp_reset_postdata();
-        $args = array(
-            'posts_per_page' => $instance['posts_per_page'] ? $instance['posts_per_page'] : 4
-        );
-        // if($instance['cat_id']){
-        //     $args['cat'] = $instance['cat_id'];
-        // }
-        if($instance['cat_id']){
-            global $wpdb;
-            $sql = "SELECT taxonomy FROM {$wpdb->prefix}term_taxonomy WHERE term_id=%s";
-            $res = $wpdb->get_row($wpdb->prepare($sql, $instance['cat_id']), ARRAY_A);
-
-            if($res['taxonomy'] == 'category'){
-                $args['cat'] = $instance['cat_id'];
-            } else {
-                $args['tax_query'] = array(
-                    array(
-                        'taxonomy' => $res['taxonomy'],
-                        'terms' => $instance['cat_id']
-                    )
-                );
-            }
-        }
-
-        $query = new WP_Query( $args );
-        ?>
-        <div class="images-list-container widget-container">
-            <div class="widget-header <?php echo $widget_title_class; ?>">
-                <div class="widget-title"><?php echo $title ?></div>
-            </div>
-            
-            <div class="item-list-wrapper">
-                <ul class='item-list'>
-                    <?php if ( $query->have_posts() ) : ?>
-                        <?php while ( $query->have_posts() ) : ?>
-                        <?php
-                        $query->the_post();
-                        $current_post = get_post();
-                        $thumbnail = vt_get_thumbnail_url($current_post->ID, 'medium');
-                        
-                        $price = get_post_meta( $current_post->ID, 'price', true );
-                        $price = $price ? number_format($price/100,2) : '';
-                        ?>
-                        
-                        <li class='item-widget'>
-                            <a href="<?php the_permalink() ?>">
-                                <img src="<?= $thumbnail?>">
-                                <div class="item-title"><?php the_title(); ?></div>
-                                <?php if($price): ?>
-                                    <div class="item-price"><?php echo $vt_options['item_currency_symbol']?> <?php echo $price; ?></div>
-                                <?php endif; ?>
-                            </a>
-                        </li>
-                    <?php endwhile; ?>
-                    <?php endif; ?>
-                    <?php wp_reset_postdata(); ?>
-                </ul>
-            </div>
-        </div>
-        <?php
-        echo $after_widget;
-    }
-
-    function form($instance) {
-        $title = !empty($instance['title']) ? $instance['title'] : '';
-        $posts_per_page = !empty($instance['posts_per_page']) ? $instance['posts_per_page'] : '';
-        $cat_id = !empty($instance['cat_id']) ? $instance['cat_id'] : '';
-        ?>
-        <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?= __('标题','vt')?>:</label>
-            <input type="text" class="" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($title); ?>">
-        </p>
-        <p>
-            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>"><?= __('数量','vt')?>:</label>
-            <input type="text" class="" id="<?php echo $this->get_field_id('posts_per_page'); ?>" name="<?php echo $this->get_field_name('posts_per_page'); ?>" value="<?php echo esc_attr($posts_per_page); ?>">
-        </p>
-        <p>
-            <label for="<?php echo $this->get_field_id('cat_id'); ?>"><?= __('分类ID','vt')?>:</label>
-            <input type="text" class="" id="<?php echo $this->get_field_id('cat_id'); ?>" name="<?php echo $this->get_field_name('cat_id'); ?>" value="<?php echo esc_attr($cat_id); ?>">
-        </p>
-        <?php
-    }
-
-    function update($new_instance, $old_instance) {
-        $instance = array();
-        $instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
-        $instance['posts_per_page'] = (!empty($new_instance['posts_per_page'])) ? strip_tags($new_instance['posts_per_page']) : '';
-        $instance['cat_id'] = (!empty($new_instance['cat_id'])) ? strip_tags($new_instance['cat_id']) : '';
-        return $instance;
-    }
-}
 
 
 /**
@@ -707,7 +585,6 @@ function vt_add_widget(){
     register_widget('HotWidget');
     register_widget('ArticleWidget');
     register_widget('ImageArticleWidget');
-    register_widget('ImageWidget');
     register_widget('CategoryWidget');
     register_widget('UserWidget');
     register_widget('HtmlWidget');

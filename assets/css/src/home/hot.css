@@ -2,7 +2,7 @@
  * home - project list
  */
 .hot-widget {
-  margin: 10px 0px 0 0px;
+/*  margin: 10px 0px 0 0px;*/
   box-sizing: border-box;
   background-color: var(--vt-bg-color-card);
   box-shadow: 0 0 2px 0 var(--vt-shadow-color);
@@ -18,7 +18,7 @@
 
 .hot-widget .header .title {
   font-size: var(--vt-font-size-base);
-  font-weight: 900;
+  font-weight: bold;
 }
 
 .hot-widget .header a {
@@ -28,7 +28,7 @@
 .hot-widget .body {
   width: 100%;
   overflow: scroll;
-  padding: 0 10px 10px 10px;
+  padding: 0 15px 15px 15px;
   box-sizing: border-box;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .hot-widget .body .hot-list {
-  margin-right: -10px;
+  margin-right: -15px;
   margin-top: 0px;
   display: flex;
   padding: 0 2px;
@@ -84,10 +84,10 @@
 @media only screen and (min-width: 900px) {
   .hot-widget {
     width: 100%;
-    margin: 20px auto 0 auto;
+    margin: 0px auto 0 auto;
   }
   .hot-list .hot-item {
-    width: calc(25% - 15px);
+    width: calc(20% - 15px);
     margin-right: 15px;
   }
 }
@@ -102,5 +102,13 @@
 @media only screen and (min-width: 900px) {
   .media-widget {
     margin-top: 20px;
+  }
+}
+
+
+.main-container.hot .main-widget{}
+@media only screen and (min-width: 900px) {
+  .main-container.hot .main-widget{
+    width: 100%;
   }
 }

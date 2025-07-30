@@ -13,38 +13,13 @@ $config = vt_get_config();
 
 ?>
 
-
-<div class="main-container">
-    <div class="main-widget">
-        <?php
-        if( array_key_exists('sliders', $config['home_layout']['enabled']) ){
-            require get_template_directory() . '/templates/home/sliders.php';
-        }
-        ?>
-
-        <?php
-        if( array_key_exists('hot', $config['home_layout']['enabled']) ){
-            require get_template_directory() . '/templates/home/hot.php';
-        }
-        ?>
-
-        <?php
-        if( array_key_exists('posts', $config['home_layout']['enabled']) ){
-            require get_template_directory() . '/templates/home/posts.php';
-        }
-        ?>
-    </div>
-    
-    <div class="sider little-widget">
-        <?php if ( is_active_sidebar( 'default-sidebar' ) ) : ?>
-            <?php dynamic_sidebar( 'default-sidebar' ); ?>
-        <?php endif; ?>
-    </div>
-</div>
-
 <?php
-if( array_key_exists('links', $config['home_layout']['enabled']) ){
-    require get_template_directory() . '/templates/home/links.php';
+if($config['home_layout']['enabled']){
+    foreach($vt_config['home_layout']['enabled'] AS $k=>$v){
+        $k = str_replace('\\', '', $k);
+        $k = str_replace('/', '', $k);
+        require get_template_directory() . '/templates/home/'. $k .'.php';
+    }
 }
 ?>
 

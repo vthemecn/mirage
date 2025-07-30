@@ -3,7 +3,6 @@
   box-shadow: 0 0 2px 0 var(--vt-shadow-color);
   border-radius: var(--vt-border-radius);
   overflow: hidden;
-  margin: 10px 0 0 0;
 }
 
 .articles-widget::after {
@@ -23,7 +22,7 @@
 }
 
 @media only screen and (min-width: 900px) {
-  .articles-widget {
+ /* .articles-widget {
     margin: 20px 0 0 0;
-  }
+  }*/
 }
