@@ -291,7 +291,7 @@ function vt_format_time($timestamp) {
 
 
 function vt_get_time($time){
-    if(is_int($timestamp)){
+    if(is_int($time)){
         $timestamp = $time;
     } else {
         $timestamp = strtotime($time);

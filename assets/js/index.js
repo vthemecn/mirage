@@ -1013,7 +1013,6 @@
           headers: jsonHeaders
         });
 
-        var responseJson = await response.json();
         if(response.status == '404'){
           that.dataset.noMore = 'true';
           that.querySelector('span').innerText = '已经到底了';
@@ -1021,6 +1020,7 @@
           return;
         }
         if (response.status == 200) {
+          var responseJson = await response.json();
           that.previousElementSibling.insertAdjacentHTML("beforeend", responseJson.html_str);
           e.target.dataset.currentPage++;
         } else {
