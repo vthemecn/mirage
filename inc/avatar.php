@@ -38,10 +38,13 @@ add_filter('get_avatar', 'vt_custom_avatar', 1, 5);
 function vt_custom_avatar($avatar, $id_or_email, $size, $default, $alt)
 {
     // $id_or_email->user_id
-    $attachment_id = get_user_meta($id_or_email, "user_avatar_attachment_id")[0];
-    $avatar = wp_get_attachment_image_src($attachment_id, 'thumbnail')[0];
-    if(!$avatar) {
+    $attachment_id = get_user_meta($id_or_email, "user_avatar_attachment_id", true);
+    $avatar_item = wp_get_attachment_image_src($attachment_id, 'thumbnail');
+
+    if(!$avatar_item) {
         $avatar = get_bloginfo('template_url') . '/assets/images/avatar.jpg';
+    } else {
+        $avatar = $avatar_item[0];
     }
     $avatar = "<img alt='{$alt}' src='{$avatar}' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
     return $avatar;

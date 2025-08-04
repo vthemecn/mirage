@@ -15,7 +15,7 @@
     width: 1200px;
   }
   .main-container.top .swiper{
-    width: 780px;
+    width: 880px;
     height: 405px;
     flex: 0 0 auto;
   }
@@ -56,7 +56,15 @@
   user-select: none;
 }
 
+.swiper-container .swiper-pagination-bullet {
+  width: 10px;
+  height: 6px;
+  background-color: var(--vt-color-primary);
+  border-radius: 3px;
+}
+
 .swiper-container .swiper-pagination-bullet-active {
+  width: 20px;
   background-color: var(--vt-color-primary);
 }
 
@@ -127,8 +135,8 @@
 
 @media only screen and (min-width:900px) {
   .main-container.top .hot-img-widget{
-    width: 400px;
-    flex: 0 0 400px;
+    width: 300px;
+    flex: 0 0 300px;
     margin:0 0 0 20px;
     position: relative;
     flex-direction: column;

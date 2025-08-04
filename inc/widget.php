@@ -37,7 +37,7 @@ add_action('init', 'vt_widgets_init');
  */
 class ImageArticleWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'image-article-list', '[Mirage] '.__( '图文列表', 'vt' ), array( 'description' => __('图文列表描述', 'vt' ) ) );
+        parent::__construct( 'image-article-list', '[Mirage] '.__( '图文列表', 'vt' ), array( 'description' => __('图文列表描述', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -51,10 +51,10 @@ class ImageArticleWidget extends WP_Widget {
 
         $args = array(
             'post_type' => 'post',
-            'posts_per_page' => $instance['posts_per_page'] ? $instance['posts_per_page'] : 4,
+            'posts_per_page' => isset($instance['posts_per_page']) ? $instance['posts_per_page'] : 4,
             'paged' => 1
         );
-        if($instance['cat_id']){
+        if(isset($instance['cat_id']) && $instance['cat_id']){
             $args['cat'] = $instance['cat_id'];
         }
 
@@ -133,7 +133,7 @@ class ImageArticleWidget extends WP_Widget {
  */
 class HotWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'hot-list', '[Mirage] '.__( '热门', 'vt' ), array( 'description' => __( '热门描述', 'vt' ) ) );
+       parent::__construct( 'hot-list', '[Mirage] '.__( '热门', 'vt' ), array( 'description' => __( '热门描述', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -147,7 +147,7 @@ class HotWidget extends WP_Widget {
 
         $args = array(
             'post_type' => 'post',
-            'posts_per_page' => $instance['posts_per_page'] ? $instance['posts_per_page'] : 4,
+            'posts_per_page' => isset($instance['posts_per_page']) ? $instance['posts_per_page'] : 4,
             'meta_key'  => 'post_views_count',
             'orderby'   => 'meta_value',
             'order' => 'DESC',
@@ -210,7 +210,7 @@ class HotWidget extends WP_Widget {
  */
 class ArticleWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'article-list', '[Mirage] '.__( '文章列表', 'vt' ), array( 'description' => __( '文章列表描述', 'vt' ) ) );
+        parent::__construct( 'article-list', '[Mirage] '.__( '文章列表', 'vt' ), array( 'description' => __( '文章列表描述', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -227,7 +227,7 @@ class ArticleWidget extends WP_Widget {
 
         $args = array(
                     // 'post_type' => 'posts',
-                    'posts_per_page' => $instance['posts_per_page'] ? $instance['posts_per_page'] : 4,
+                    'posts_per_page' => isset($instance['posts_per_page']) ? $instance['posts_per_page'] : 4,
                     'meta_key' => 'post_views_count',
                     'orderby' => 'meta_value',
                     'order' => 'DESC'
@@ -311,7 +311,7 @@ class ArticleWidget extends WP_Widget {
  */
 class CategoryWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'category-list', '[Mirage] '.__( '分类列表', 'vt' ), array( 'description' => __( '分类列表描述', 'vt' ) ) );
+        parent::__construct( 'category-list', '[Mirage] '.__( '分类列表', 'vt' ), array( 'description' => __( '分类列表描述', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -385,7 +385,7 @@ class CategoryWidget extends WP_Widget {
  */
 class UserWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'user-widget', '[Mirage] '.__( '用户卡片', 'vt' ), array( 'description' => __( '用户卡片描述', 'vt' ) ) );
+        parent::__construct( 'user-widget', '[Mirage] '.__( '用户卡片', 'vt' ), array( 'description' => __( '用户卡片描述', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -481,7 +481,7 @@ class UserWidget extends WP_Widget {
  */
 class HtmlWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'html-widget', '[Mirage] '.__( 'HTML卡片', 'vt' ), array( 'description' => __( 'HTML卡片描述', 'vt' ) ) );
+        parent::__construct( 'html-widget', '[Mirage] '.__( 'HTML卡片', 'vt' ), array( 'description' => __( 'HTML卡片描述', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -529,7 +529,7 @@ class HtmlWidget extends WP_Widget {
  */
 class TagsWidget extends WP_Widget {
     function __construct(){
-        $this->WP_Widget( 'tags-widget', '[Mirage] '.__( '标签卡片', 'vt' ), array( 'description' => __( '标签卡片', 'vt' ) ) );
+        parent::__construct( 'tags-widget', '[Mirage] '.__( '标签卡片', 'vt' ), array( 'description' => __( '标签卡片', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){

@@ -101,6 +101,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                         <?php echo get_the_excerpt() ?>
                     </div>
                 <?php endif */ ?>
+                
                 <?php
                 $content = get_the_content();
                 $toc = create_table_of_contents($content);

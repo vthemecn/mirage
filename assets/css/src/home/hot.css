@@ -75,10 +75,14 @@
 
 .hot-item .hot-title {
   width: 100%;
-  height: 30px;
-  line-height: 30px;
+  /*  height: 30px;*/
+  /*  line-height: 30px;*/
+  padding: 10px 0 0 0;
   text-align: center;
   font-size: 14px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 
 @media only screen and (min-width: 900px) {

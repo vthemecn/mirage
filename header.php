@@ -92,7 +92,8 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
 
     <?php
     global $current_user;
-    get_currentuserinfo();
+    // get_currentuserinfo();
+    wp_get_current_user();
     ?>
 
     <header class="header mobile">

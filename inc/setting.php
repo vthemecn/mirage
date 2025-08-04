@@ -189,7 +189,7 @@ if( $config['links_is_show'] ){
 function vt_login_redirect( $redirect_to, $request, $user ) {
     $vt_config = vt_get_config();
     // 如果登录成功并且用户是管理员，则跳转到后台管理页面
-    if ( is_array( $user->roles ) && in_array( 'administrator', $user->roles ) ) {
+    if ( isset( $user->roles ) && in_array( 'administrator', $user->roles ) ) {
         return admin_url();
     } else {
         // 否则跳转到个人资料页面
@@ -374,6 +374,7 @@ function create_table_of_contents($content) {
     $regexp = "/<h([2-6])>(.*?)<\/h[2-6]>/";
     $regexp = '/<h([2-6]).*?\>(.*?)<\/h[2-6]>/is';
 
+    $toc = '';
     if (preg_match_all($regexp, $content, $matches)) {
         $toc = '<ul class="toc_list">';
         foreach ($matches[0] as $key => $match) {
@@ -385,7 +386,7 @@ function create_table_of_contents($content) {
         }
         $toc .= '</ul>';
     }
-    return $toc ? $toc : '';
+    return $toc;
 }
 
 

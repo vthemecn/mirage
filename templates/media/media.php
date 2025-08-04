@@ -3,7 +3,7 @@ $vt_config = vt_get_config();
 
 $cur_post_id = get_the_ID();
 
-$author_id = get_the_author_id();
+$author_id = get_the_author_meta('ID');
 $avatar = vt_get_custom_avatar_url($author_id);
 
 $user_center_url = home_url() . '/users/' .$post->post_author;
