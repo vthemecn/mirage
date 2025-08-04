@@ -101,7 +101,7 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
             <a class="top-nav-button search-button" href="javascript:;">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </a>
-            <a href="<?php bloginfo('siteurl') ?>" class="logo" title="" rel="home">
+            <a href="<?php bloginfo('url') ?>" class="logo" title="" rel="home">
                 <img light src="<?= $vt_config['site_logo']; ?>" alt="<?php bloginfo('name') ?>">
                 <img darkness src="<?= $vt_config['site_logo_darkness']; ?>" alt="<?php bloginfo('name') ?>">
             </a>
@@ -115,7 +115,7 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
             <div class="mobile-menu">
                 <div class="action-widget">
                     <?php if ($current_user->ID && $vt_config['is_show_login_register']) : ?>
-                        <a class="action-button" href="<?php bloginfo('siteurl') ?>/wp-admin/index.php">
+                        <a class="action-button" href="<?php bloginfo('url') ?>/wp-admin/index.php">
                             <i class="fa-solid fa-user"></i>
                         </a>
                     <?php endif ?>
@@ -183,7 +183,7 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
     <!-- large screen -->
     <header class="header pc">
         <div class="header-nav">
-            <a href="<?php bloginfo('siteurl') ?>" class="logo" title="" rel="home">
+            <a href="<?php bloginfo('url') ?>" class="logo" title="" rel="home">
                 <img light src="<?= $vt_config['site_logo']; ?>" alt="<?php bloginfo('name') ?>">
                 <img darkness src="<?= $vt_config['site_logo_darkness']; ?>" alt="<?php bloginfo('name') ?>">
             </a>
@@ -253,17 +253,17 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
                     </div>
                     <div class="links-widget">
                         <?php if($vt_config['user_center_is_on']):?>
-                            <a href="<?php bloginfo('siteurl') ?>/users/<?php echo $current_user->ID ?>">
+                            <a href="<?php bloginfo('url') ?>/users/<?php echo $current_user->ID ?>">
                                 <i class="fa-solid fa-user"></i><?= __('个人中心','vt') ?>
                             </a>
                         <?php else: ?>
-                            <a href="<?php bloginfo('siteurl') ?>/wp-admin/profile.php">
+                            <a href="<?php bloginfo('url') ?>/wp-admin/profile.php">
                                 <i class="fa-solid fa-user"></i><?= __('个人资料','vt') ?>
                             </a>
                         <?php endif ?>
                         
                         <?php if (in_array('administrator', $current_user->roles)) :?>
-                            <a href="<?php bloginfo('siteurl') ?>/wp-admin/index.php">
+                            <a href="<?php bloginfo('url') ?>/wp-admin/index.php">
                                 <i class="fa-solid fa-gauge"></i><?= __('后台面板','vt') ?>
                             </a>
                         <?php endif ?>
