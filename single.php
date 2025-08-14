@@ -165,41 +165,58 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                 <?php endif; ?>
 
             </div>
+
             <div class="content-action">
+                <?php
+                $config['post_action'] = is_array($config['post_action']) ? 
+                                            $config['post_action'] : [];
+                ?>
+
+                <?php if(in_array('like', $config['post_action'])):?>
                 <div class="widget-action like <?php echo $is_like ? ' active' : '' ?>">
                     <i class="fa-solid fa-heart"></i>
                     <span><?=__('点赞','vt')?></span>
                     <span class='number'><?= $like_counter ? $like_counter : '' ?></span>
                 </div>
-                <?php if($config['user_center_is_on']):?>
+                <?php endif; ?>
+
+                <?php /*
                 <div class="widget-action star <?php echo $is_star ? ' active' : '' ?>">
                     <i class="fa-solid fa-star"></i>
                     <span><?=__('收藏','vt')?></span>
                     <span class='number'><?= $star_counter ? $star_counter : '' ?></span>
                 </div>
-                <?php endif ?>
-                <?php /*
                 <div class="widget-action comment">
                     <i class="iconfont">&#xe68f;</i>
                     <span><?=__('评论</span>
                 </div>
                 */ ?>
+               
+                <?php if(in_array('share', $config['post_action'])):?>
                 <div class="widget-action share-poster">
                     <i class="fa-solid fa-share-nodes"></i>
                     <span><?=__('分享','vt')?></span>
                 </div>
+                <?php endif; ?>
+
+                <?php if(in_array('donate', $config['post_action'])):?>
                 <div class="widget-action coin">
                     <i class="fa-solid fa-coins"></i>
                     <span><?=__('打赏','vt')?></span>
                 </div>
+                <?php endif; ?>
 
-                <?php if( current_user_can( 'manage_options' ) ): ?>
+                <?php if(in_array('edit', $config['post_action'])):?>
+                    <?php if( current_user_can( 'manage_options' ) ): ?>
                     <a href="/wp-admin/post.php?post=<?php echo get_the_ID() ?>&action=edit" class="widget-action">
                         <i class="fa-solid fa-pen-to-square"></i>
                         <span><?=__('编辑','vt')?></span>
                     </a>
-                <?php endif ?>
+                    <?php endif ?>
+                <?php endif; ?>
             </div>
+
+
         </div><!-- .article-widget -->
 
         <div class="article-prev-next-nav">

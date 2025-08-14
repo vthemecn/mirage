@@ -564,7 +564,7 @@ if( class_exists( 'CSF' ) ) {
                 'id'    => 'footer_copyright',
                 'type'  => 'textarea',
                 'title' => __('底部版权','vt'),
-                'default' => '&copy; '.date('Y').' <a href="http://www.vtheme.cn">vtheme.cn</a> All Rights Reserved.'
+                'default' => '&copy; '.date('Y').' <a href="http://www.vtheme.cn">vtheme.cn</a> All Rights Reserved.<br/>'
             ),
             array(
                 'id'       => 'footer_js',
@@ -676,7 +676,7 @@ if( class_exists( 'CSF' ) ) {
                 'id'    => 'qrcode_image',
                 'type'  => 'upload',
                 'title' => __('收款二维码','vt'),
-                'default' => '',
+                'default' => get_template_directory_uri() . '/assets/images/qrcode.jpg',
                 'preview' => true
             ),
             array(
@@ -685,6 +685,18 @@ if( class_exists( 'CSF' ) ) {
                 'title' => __('二维码标题','vt'),
                 'default' => __('二维码标题','vt'),
                 'preview' => true
+            ),
+            array(
+              'id'         => 'post_action',
+              'type'       => 'checkbox',
+              'title'      => __('文章操作','vt'),
+              'options'    => array(
+                'like'      => __('点赞','vt'),
+                'share'     => __('分享','vt'),
+                'donate'    => __('捐赠','vt'),
+                'edit'      => __('编辑','vt'),
+              ),
+              'default'    => array( 'like', 'share', 'donate', 'edit')
             ),
         )   
     ));

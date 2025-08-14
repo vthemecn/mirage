@@ -65,26 +65,38 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
         $query_posts = new WP_Query( $args );
         ?>
-        <?php while ($query_posts->have_posts()) : ?>
-            <?php $query_posts->the_post(); ?>
-            <?php get_template_part( 'templates/media/media' ); ?>
-        <?php endwhile; ?>
+        <?php if ( $query_posts->have_posts() ) : ?>
+            <?php while ($query_posts->have_posts()) : ?>
+                <?php $query_posts->the_post(); ?>
+                <?php get_template_part( 'templates/media/media' ); ?>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <div class="no-content">
+                <img src="<?php bloginfo('template_url'); ?>/assets/images/empty.png">
+                <p><?=__('暂无内容','vt')?></p>
+            </div>
+        <?php endif; ?>  
     </div>
     
 </div>
 
 <?php
-        the_posts_pagination(array(
-            'mid_size' => 1,
-            'prev_text' => '<',
-            'next_text' => '>',
-            'screen_reader_text' => ' ',
-            'aria_label' => "",
-        ));
-        ?>
+/**
+ * 自定义查询分页
+ */
+// 设置全局 $wp_query 变量为你的自定义查询
+$original_wp_query = $GLOBALS['wp_query'];
+$GLOBALS['wp_query'] = $query_posts;
 
-<?php
+the_posts_pagination(array(
+    'mid_size' => 3,
+    'prev_text' => '<',
+    'next_text' => '>',
+    'screen_reader_text' => ' ',
+    'aria_label' => "",
+));
+// 重置全局 $wp_query 对象，重置文章数据
+$GLOBALS['wp_query'] = $original_wp_query;
 wp_reset_postdata();
 ?>
-
 

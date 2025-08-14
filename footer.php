@@ -11,7 +11,6 @@ $version = $current_theme->get('Version');
 <footer class="footer" <?= $footer_bg_type ?> >
     <div class="footer-container">
         <?php echo $config['footer_copyright']; ?>
-        <br/>
         <span>
             Theme by <a href="https://vtheme.cn/mirage" copyright target="_blank">Mirage</a>
         </span>

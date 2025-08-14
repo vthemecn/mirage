@@ -36,15 +36,15 @@ if($query_posts->posts){
 }
 
 
-$posts_per_page =  get_option('posts_per_page');
-$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-$args = array(
-    'paged' => $paged,
-    'cat' => $cat,
-    'orderby' => array("menu_order" => "desc",'date' => "desc"),
-    'showposts' => $posts_per_page
-);
-query_posts($args);
+// $posts_per_page =  get_option('posts_per_page');
+// $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+// $args = array(
+//     'paged' => $paged,
+//     'cat' => $cat,
+//     'orderby' => array("menu_order" => "desc",'date' => "desc"),
+//     'showposts' => $posts_per_page
+// );
+// query_posts($args);
 ?>
 
 
@@ -107,22 +107,24 @@ query_posts($args);
                     get_template_part( 'templates/media/media' );
                     ?>
                 <?php endwhile; ?>
+            <?php else: ?>
+                <div class="no-content">
+                    <img src="<?php bloginfo('template_url'); ?>/assets/images/empty.png">
+                    <p><?=__('暂无内容','vt')?></p>
+                </div>
             <?php endif; ?>  
         </div>
 
         
-        <?php
-        $args = array( 'cat' => $cat, 'posts_per_page' => 1 );
-        $query_posts = new WP_Query( $args );
-        ?>
-        <?php if( !$query_posts->have_posts() ): ?>
-            <div class="no-content">
-                <img src="<?php bloginfo('template_url'); ?>/assets/images/empty.png">
-                <p><?=__('暂无内容','vt')?></p>
-            </div>
-        <?php endif; ?>
 
         <?php
+        /**
+         * 自定义查询分页
+         */
+        // 设置全局 $wp_query 变量为你的自定义查询
+        $original_wp_query = $GLOBALS['wp_query'];
+        $GLOBALS['wp_query'] = $query_posts;
+
         the_posts_pagination(array(
             'mid_size' => 3,
             'prev_text' => '<',
@@ -130,7 +132,11 @@ query_posts($args);
             'screen_reader_text' => ' ',
             'aria_label' => "",
         ));
+        // 重置全局 $wp_query 对象，重置文章数据
+        $GLOBALS['wp_query'] = $original_wp_query;
+        wp_reset_postdata();
         ?>
+        
     </div>
 
 

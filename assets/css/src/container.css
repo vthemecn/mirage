@@ -20,6 +20,10 @@
   /* overflow-x: hidden; not this*/
 }
 
+.main-container .main-widget > div:last-child{
+  margin-bottom: 0;
+} 
+
 .main-container .main-widget .header {
   font-size: var(--vt-font-size-base);
   margin-bottom: 15px;

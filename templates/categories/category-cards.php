@@ -104,6 +104,13 @@ switch ($config['list_cards_col']) {
         <?php endif; ?>
 
         <?php
+        /**
+         * 自定义查询分页
+         */
+        // 设置全局 $wp_query 变量为你的自定义查询
+        $original_wp_query = $GLOBALS['wp_query'];
+        $GLOBALS['wp_query'] = $query_posts;
+
         the_posts_pagination(array(
             'mid_size' => 3,
             'prev_text' => '<',
@@ -111,6 +118,9 @@ switch ($config['list_cards_col']) {
             'screen_reader_text' => ' ',
             'aria_label' => "",
         ));
+        // 重置全局 $wp_query 对象，重置文章数据
+        $GLOBALS['wp_query'] = $original_wp_query;
+        wp_reset_postdata();
         ?>
     </div>
 
