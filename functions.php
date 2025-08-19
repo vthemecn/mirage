@@ -260,7 +260,7 @@ function get_user_by_id($user_id)
 function vt_format_time($timestamp) {
     $now = time();
     $diff = $now - $timestamp;
-
+    echo 'diff' . $diff .' -- ';
     // 如果是未来时间，返回标准格式
     if ($diff < 0) {
         // return date('Y-m-d H:i', $timestamp);
@@ -289,14 +289,82 @@ function vt_format_time($timestamp) {
     }
 }
 
+/**
+ * 将时间戳或文章ID格式化为人性化的时间显示
+ *
+ * 规则：
+ * - 1小时内：显示 "X分钟前"
+ * - 1小时到24小时内：显示 "X小时前"
+ * - 1天到30天内：显示 "X天前"
+ * - 30天到1年内：显示 "m-d" (月-日)
+ * - 超过1年：显示 "Y-m-d" (年-月-日)
+ *
+ * @param int|string $time 时间戳 (int) 或 日期时间字符串 (string) 或 文章ID (int)
+ * @return string 格式化后的时间字符串
+ */
+function wordpress_format_time_ago($time) {
+    // 获取 WordPress 设置的时区对象
+    $wp_timezone = wp_timezone();
+    
+    // 处理输入
+    if (is_numeric($time) && $time > 9999999999) { // 假设是文章ID (通常大于10位)
+        $post_id = $time;
+        $timestamp = get_post_time('U', true, $post_id); // 'U' 获取时间戳, true 获取GMT时间
+        if (!$timestamp) {
+            return '未知时间';
+        }
+    } elseif (is_numeric($time)) { // 假设是时间戳
+        $timestamp = (int)$time;
+    } else { // 假设是日期字符串
+        $date_obj = new DateTime($time, $wp_timezone);
+        $timestamp = $date_obj->getTimestamp();
+    }
+
+    // 创建 DateTime 对象并应用 WordPress 时区
+    $date_obj = new DateTime("@$timestamp");
+    $date_obj->setTimezone($wp_timezone);
+
+    // 获取当前时间 (WordPress 时区)
+    $now = new DateTime('now', $wp_timezone);
+
+    // 计算时间差 (使用 WordPress 的 human_time_diff 更精确)
+    $diff_in_seconds = $now->getTimestamp() - $timestamp;
+    $diff_in_days = $diff_in_seconds / DAY_IN_SECONDS; // DAY_IN_SECONDS 是 WordPress 常量 (86400)
+
+    // 判断规则
+    if ($diff_in_seconds < MINUTE_IN_SECONDS) { // 少于 1 分钟
+        return '刚刚';
+    } elseif ($diff_in_seconds < HOUR_IN_SECONDS) { // 少于 1 小时
+        $minutes = floor($diff_in_seconds / MINUTE_IN_SECONDS);
+        return $minutes . '分钟前';
+    } elseif ($diff_in_seconds < DAY_IN_SECONDS) { // 少于 24 小时
+        $hours = floor($diff_in_seconds / HOUR_IN_SECONDS);
+        return $hours . '小时前';
+    } elseif ($diff_in_days < 30) { // 少于 30 天
+        // 使用 human_time_diff 获取更人性化的“天”数 (它会处理 1天、2天等)
+        $days_text = human_time_diff($timestamp, $now->getTimestamp());
+        // human_time_diff 可能返回 "1 天", "2 天" 等，我们只取数字部分或直接使用
+        // 简单处理：如果包含“天”，就用它，否则计算
+        if (strpos($days_text, '天') !== false || strpos($days_text, 'day') !== false) {
+            return $days_text;
+        } else {
+            // 如果 human_time_diff 没有返回“天”，手动计算 (更精确)
+            $days = floor($diff_in_days);
+            return $days . '天前';
+        }
+    } elseif ($diff_in_days < 365) { // 少于 1 年
+        // 格式化为 "月-日"
+        return $date_obj->format('m-d');
+    } else { // 超过 1 年
+        // 格式化为 "年-月-日"
+        return $date_obj->format('Y-m-d');
+    }
+}
+
 
 function vt_get_time($time){
-    if(is_int($time)){
-        $timestamp = $time;
-    } else {
-        $timestamp = strtotime($time);
-    }
-    return vt_format_time($timestamp);
+
+    return wordpress_format_time_ago($time);
 }
 
 

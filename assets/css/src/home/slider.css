@@ -16,7 +16,7 @@
   }
   .main-container.top .swiper{
     width: 880px;
-    height: 405px;
+    height: 400px;
     flex: 0 0 auto;
   }
   /*  .main-container.top .top-hot-widget{
@@ -145,7 +145,7 @@
 
   .hot-img-widget .item{
     width: 100%;
-    height: 192px;
+    height: 190px;
     aspect-ratio: 1 / 0.1;
   }
 

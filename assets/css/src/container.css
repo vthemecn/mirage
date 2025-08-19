@@ -104,8 +104,16 @@
     flex: 0 0 auto;
   }
 }
+
+
+/******************************************************************************
+ * sider
+ */
 .sider > div {
   margin: 8px 0;
+}
+.sider > div:first-child {
+  margin-top: 0;
 }
 
 @media only screen and (min-width: 900px) {

@@ -6,7 +6,7 @@ $hot_items = $config['hot_items'] ? $config['hot_items'] : array();
 <div class="main-container">
     <div class="main-widget">
 
-
+        <?php if($config['hot_is_show']):?>
         <div class="hot-widget">
             <div class="header">
                 <div class="title"><?=$config['hot_title']?></div>
@@ -25,6 +25,7 @@ $hot_items = $config['hot_items'] ? $config['hot_items'] : array();
                 </div>
             </div>
         </div>
+        <?php endif;?>
 
 
         <?php
