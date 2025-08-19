@@ -66,6 +66,9 @@
   .main-container .main-widget {
     width: 880px;
   }
+  .main-container .main-widget > div:first-child{
+    margin-top: 0 !important;
+  }
   .main-container .main-widget .header {
     font-size: 20px;
     margin-bottom: 20px;

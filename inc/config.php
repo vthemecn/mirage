@@ -205,8 +205,7 @@ if( class_exists( 'CSF' ) ) {
                 'disabled_title' => __('隐藏','vt'),
                 'default'        => array(
                     'enabled'  => array(
-                        'slider'   => __('幻灯片','vt'),                       
-                        'hot'       => __('热门推荐','vt'),
+                        'slider'   => __('幻灯片','vt'),
                         'last'     => __('最新文章','vt'),
                         'links'     => __('友情链接','vt'),
                     ),
@@ -335,20 +334,15 @@ if( class_exists( 'CSF' ) ) {
         )
     ));
 
+
     /**
-     * 首页设置 - 热门推荐模块
+     * 首页设置 - 最新文章模块
      */
     CSF::createSection($prefix, array(
         'parent'      => 'home_fields',
-        'title'       => __('热门推荐','vt'),
+        'title'       => __('最新文章','vt'),
         'description' => '',
         'fields'      => array(
-            array(
-                'id'      => 'hot_title',
-                'type'    => 'text',
-                'title'   => __('标题','vt'),
-                'default' => __('推荐模块标题','vt')
-            ),
             array(
                 'id'    => 'hot_is_show',
                 'type'  => 'radio',
@@ -358,9 +352,17 @@ if( class_exists( 'CSF' ) ) {
                 'inline' => true
             ),
             array(
+                'id'      => 'hot_title',
+                'type'    => 'text',
+                'title'   => __('推荐模块标题','vt'),
+                'default' => __('推荐模块标题','vt'),
+                'dependency' => array('hot_is_show', '==', '1'),
+            ),
+            array(
                 'id'         => 'hot_items',
                 'type'       => 'group',
                 'title'      => __('推荐列表','vt'),
+                'dependency' => array('hot_is_show', '==', '1'),
                 'fields'     => array(
                     array(
                         'id'      => 'title',
@@ -403,36 +405,11 @@ if( class_exists( 'CSF' ) ) {
                                 array(
                                     'title' => __('推荐模块标题','vt').' 4',
                                     'image' => get_template_directory_uri() . '/assets/images/hot.jpg'
-                                ),
-                                array(
-                                    'title' => __('推荐模块标题','vt').' 5',
-                                    'image' => get_template_directory_uri() . '/assets/images/hot.jpg'
                                 )
                             )
-            )
-        )
-    ));
+            ),
 
-    /**
-     * 首页设置 - 最新文章模块
-     */
-    CSF::createSection($prefix, array(
-        'parent'      => 'home_fields',
-        'title'       => __('最新文章','vt'),
-        'description' => '',
-        'fields'      => array(
-            // array(
-            //     'id'      => 'posts_title',
-            //     'type'    => 'text',
-            //     'title'   => __('模块标题','vt'),
-            //     'default' => __('模块标题','vt')
-            // ),
-            // array(
-            //     'id'      => 'posts_description',
-            //     'type'    => 'textarea',
-            //     'title'   => __('模块描述','vt'),
-            //     'default' => __('模块描述','vt'),
-            // ),
+
             array(
                 'id'      => 'posts_ids',
                 'type'    => 'select',
