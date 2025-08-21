@@ -95,7 +95,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                 <?php endif ?>
             </div>
             
-            <div class="article-content line-numbers">
+            <div class="article-content content-style line-numbers">
                 <?php /* if(get_the_excerpt()): ?>
                     <div class="content-excerpt">
                         <?php echo get_the_excerpt() ?>

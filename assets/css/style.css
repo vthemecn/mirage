@@ -877,28 +877,22 @@ nav.pagination a:hover {
 .m-pagination.text-right {
   text-align: right;
 }
-.article-content,
-.item-content,
-.page-content {
+.content-style {
   font-size: var(--vt-font-size-base);
-  line-height: 30px;
+  line-height: 32px;
 }
 
-.article-content a,
-.item-content a,
-.page-content a {
+.content-style a {
   font-size: var(--vt-font-size-base);
   color: var(--vt-color-primary);
 }
-.article-content img,
-.item-content img,
-.page-content img {
+
+.content-style img {
   max-width: 100%;
   margin: 5px 0px;
 }
-.article-content pre,
-.item-content pre,
-.page-content pre {
+
+.content-style pre {
   line-height: 18px;
   font-size: 13px !important;
   background-color: #f0f0f0;
@@ -907,118 +901,83 @@ nav.pagination a:hover {
   margin: 5px 0;
   border-radius: var(--vt-border-radius);
 }
-.article-content p,
-.item-content p,
-.page-content p {
-  margin-top: 20px;
+
+.content-style p {
+  margin-top: 30px;
   overflow: hidden;
 }
-.article-content p:first-child,
-.item-content p:first-child,
-.page-content p:first-child {
+
+.content-style p:first-child {
   margin-top: 0px;
 }
-.article-content h1, .article-content h2, .article-content h3, .article-content h4, .article-content h5,
-.item-content h1,
-.item-content h2,
-.item-content h3,
-.item-content h4,
-.item-content h5,
-.page-content h1,
-.page-content h2,
-.page-content h3,
-.page-content h4,
-.page-content h5 {
+
+.content-style h1,
+.content-style h2,
+.content-style h3,
+.content-style h4,
+.content-style h5 {
   margin-top: 20px;
   margin-bottom: 10px;
 }
-.article-content h1,
-.item-content h1,
-.page-content h1 {
-  font-size: 25px;
-}
-.article-content h2,
-.item-content h2,
-.page-content h2 {
-  font-size: 22px;
-}
-.article-content h3,
-.item-content h3,
-.page-content h3 {
-  font-size: 18px;
-}
-.article-content h4,
-.item-content h4,
-.page-content h4 {
-  font-size: 16px;
-}
-.article-content h5,
-.item-content h5,
-.page-content h5 {
-  font-size: 10px;
-}
-.article-content ul,
-.item-content ul,
-.page-content ul {
+
+.content-style h1 { font-size: 25px; }
+.content-style h2 { font-size: 22px; }
+.content-style h3 { font-size: 18px; }
+.content-style h4 { font-size: 16px; }
+.content-style h5 { font-size: 10px; }
+
+.content-style ul {
   list-style: inherit;
   padding-left: 25px;
   margin-bottom: 5px;
 }
-.article-content ol,
-.item-content ol,
-.page-content ol {
+
+.content-style ol {
   list-style: decimal;
   padding-left: 25px;
   margin-bottom: 5px;
 }
-.article-content blockquote,
-.item-content blockquote,
-.page-content blockquote {
+
+.content-style blockquote {
   padding: 15px;
-  background-color: var(--vt-bg-color);
+  background-color: var(--vt-bg-color-grey);
   margin-top: 20px;
   color: var(--vt-text-color-grey);
   border-radius: var(--vt-border-radius);
 }
-.article-content blockquote::before,
-.item-content blockquote::before,
-.page-content blockquote::before {
+
+.content-style blockquote::before {
   content: "\f10d";
   font-family: "Font Awesome 6 Free";
   font-size: 38px;
   color: var(--vt-color-primary);
 }
-.article-content .content-excerpt,
-.item-content .content-excerpt,
-.page-content .content-excerpt {
+
+.content-style .content-excerpt {
   padding: 15px;
   background-color: var(--vt-bg-color);
   margin-top: 20px;
   color: var(--vt-text-color-grey);
   border-radius: var(--vt-border-radius);
 }
-.article-content table,
-.item-content table,
-.page-content table {
+
+.content-style table {
   border-collapse: collapse;
   border-spacing: 0;
   empty-cells: show;
   border: 1px solid var(--vt-border-color);
   margin-top: 10px;
 }
-.article-content table caption,
-.item-content table caption,
-.page-content table caption {
+
+.content-style table caption {
   color: var(--vt-text-color);
   font: italic 85%/1 arial, sans-serif;
   padding: 1em 0;
   text-align: center;
 }
-.article-content table td, .article-content table th,
-.item-content table td,
-.item-content table th,
-.page-content table td,
-.page-content table th {
+
+.content-style table td,
+.content-style table th {
   border-left: 1px solid var(--vt-border-color);
   border-width: 0 0 0 1px;
   font-size: inherit;
@@ -1026,43 +985,41 @@ nav.pagination a:hover {
   overflow: visible;
   padding: 0.5em 1em;
 }
-.article-content table thead,
-.item-content table thead,
-.page-content table thead {
+
+.content-style table thead {
   background-color: var(--vt-bg-color-grey);
   color: var(--vt-text-color);
   text-align: left;
   vertical-align: bottom;
 }
-.article-content table td, .article-content table th,
-.item-content table td,
-.item-content table th,
-.page-content table td,
-.page-content table th {
+
+.content-style table td,
+.content-style table th {
   background-color: transparent;
   border-bottom: 1px solid var(--vt-border-color);
 }
-.article-content .hljs,
-.item-content .hljs,
-.page-content .hljs {
+
+.content-style .hljs {
   /*background-color: transparent !important;*/
   white-space: pre-wrap;
 }
 
-.article-content .wp-caption {
+.content-style .wp-caption {
   max-width: 100% !important;
 }
 
-.article-content .wp-caption img {
+.content-style .wp-caption img {
   margin-bottom: 0px !important;
 }
 
-.article-content .wp-caption .wp-caption-text {
+.content-style .wp-caption .wp-caption-text {
   margin-top: 0px !important;
   font-size: var(--vt-font-size-sm) !important;
   color: var(--vt-text-color-grey);
   line-height: 15px !important;
 }
+
+
 @charset "UTF-8";
 /**
  * 文章页，文档页等 公共的点赞，收藏 模块

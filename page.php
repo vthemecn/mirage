@@ -21,7 +21,7 @@ $config = vt_get_config();
                 <?php the_title(); ?>
             </div>
 
-            <div class="page-content">
+            <div class="page-content content-style">
                 <?php
                 if (have_posts()) {
 
