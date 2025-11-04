@@ -62,7 +62,8 @@ function footerCheck()
  */
 function vt_get_custom_avatar_url($user_id)
 {
-    $attachment_id = get_user_meta($user_id, "user_avatar_attachment_id")[0];
+    $attachment_arr = get_user_meta($user_id, "user_avatar_attachment_id");
+    $attachment_id = is_array($attachment_arr) ? $attachment_arr[0] : 0;
     if ($attachment_id) {
         $avatar = wp_get_attachment_image_src($attachment_id, 'medium')[0];
     } else {

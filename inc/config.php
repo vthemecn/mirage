@@ -244,16 +244,11 @@ if( class_exists( 'CSF' ) ) {
                 'type'       => 'group',
                 'title'      => __('幻灯片列表','vt'),
                 'fields'     => array(
-                    // array(
-                    //     'id'      => 'title',
-                    //     'type'    => 'text',
-                    //     'title'   => __('标题','vt')
-                    // ),
-                    // array(
-                    //     'id'      => 'description',
-                    //     'type'    => 'text',
-                    //     'title'   => __('描述','vt')
-                    // ),
+                    array(
+                        'id'      => 'title',
+                        'type'    => 'text',
+                        'title'   => __('标题','vt')
+                    ),
                     array(
                         'id'          => 'image',
                         'type'        => 'upload',
@@ -277,17 +272,14 @@ if( class_exists( 'CSF' ) ) {
                 'default' => array(
                                 array(
                                     'title' => __('你好，Mirage','vt'),
-                                    'description' => __('这是幻灯片的内容展示，支持HTML代码','vt'),
                                     'image' => get_template_directory_uri() . '/assets/images/slider1.jpg'
                                 ),
                                 array(
                                     'title' => __('你好，Mirage','vt'),
-                                    'description' => __('这是幻灯片的内容展示，支持HTML代码','vt'),
                                     'image' => get_template_directory_uri() . '/assets/images/slider2.jpg'
                                 ),
                                 array(
                                     'title' => __('你好，Mirage','vt'),
-                                    'description' => __('这是幻灯片的内容展示，支持HTML代码','vt'),
                                     'image' => get_template_directory_uri() . '/assets/images/slider3.jpg'
                                 ),
                             )
@@ -298,6 +290,11 @@ if( class_exists( 'CSF' ) ) {
                 'title'      => __('推荐','vt'),
                 'fields'     => array(
                     array(
+                        'id'      => 'title',
+                        'type'    => 'text',
+                        'title'   => __('标题','vt')
+                    ),
+                    array(
                         'id'          => 'image',
                         'type'        => 'upload',
                         'title'       => __('上传','vt'),
@@ -320,12 +317,10 @@ if( class_exists( 'CSF' ) ) {
                 'default' => array(
                                 array(
                                     'title' => __('你好，Mirage','vt'),
-                                    'description' => __('这是幻灯片的内容展示，支持HTML代码','vt'),
                                     'image' => get_template_directory_uri() . '/assets/images/hot.jpg'
                                 ),
                                 array(
                                     'title' => __('你好，Mirage','vt'),
-                                    'description' => __('这是幻灯片的内容展示，支持HTML代码','vt'),
                                     'image' => get_template_directory_uri() . '/assets/images/hot.jpg'
                                 )
                             )
