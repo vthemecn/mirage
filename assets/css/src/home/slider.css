@@ -61,7 +61,7 @@
   left: 0;
   right: 0;
   color: #ffffff;
-  padding: 30px 30px;
+  padding: 30px 20px;
   height: 95px;
   box-sizing: border-box;
   text-align: left;
@@ -74,7 +74,7 @@
 .swiper-container .swiper-pagination {
   text-align: left;
   box-sizing: border-box;
-  padding: 0 27px;
+  padding: 0 20px;
 }
 .swiper-container .swiper-pagination-bullet {
   width: 10px;

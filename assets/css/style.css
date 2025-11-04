@@ -743,16 +743,17 @@ nav.pagination .pagination-separator {
 }
 
 nav.pagination .nav-links > * {
-  min-width: 35px;
-  height: 35px;
-  line-height: 35px;
+  min-width: 30px;
+  height: 30px;
+  line-height: 30px;
   text-align: center;
-  font-size: 17px;
+  font-size: 15px;
+  font-weight: 300;
   border: 1px solid var(--vt-border-color);
   margin: 0px 7px 7px 0;
   display: block;
   background-color: var(--vt-bg-color-card);
-  box-shadow: 0 0 2px var(--vt-shadow-color);
+  box-shadow: 0 0 1px var(--vt-shadow-color);
   padding: 1px 1px;
 }
 
@@ -1019,8 +1020,12 @@ nav.pagination a:hover {
   line-height: 15px !important;
 }
 
-
-@charset "UTF-8";
+.content-style hr {
+  height: 1px;
+  background-color: var(--vt-border-color);
+  border: none;
+  margin: 35px 0;
+}@charset "UTF-8";
 /**
  * 文章页，文档页等 公共的点赞，收藏 模块
  */
@@ -1545,7 +1550,7 @@ nav.pagination a:hover {
   left: 0;
   right: 0;
   color: #ffffff;
-  padding: 30px 30px;
+  padding: 30px 20px;
   height: 95px;
   box-sizing: border-box;
   text-align: left;
@@ -1558,7 +1563,7 @@ nav.pagination a:hover {
 .swiper-container .swiper-pagination {
   text-align: left;
   box-sizing: border-box;
-  padding: 0 27px;
+  padding: 0 20px;
 }
 .swiper-container .swiper-pagination-bullet {
   width: 10px;
@@ -3061,46 +3066,6 @@ footer[darkness] a {
   top: 6px;
   left: 0;
   z-index: -1;
-}
-
-.wp-block-search {
-  box-sizing: border-box;
-  padding: 15px;
-  background-color: var(--vt-bg-color-card);
-  box-shadow: 0 0 2px 0 var(--vt-shadow-color);
-  border-radius: var(--vt-border-radius);
-  display: flex;
-  flex-direction: column;
-}
-.wp-block-search .wp-block-search__label {
-  font-size: var(--vt-font-size-base);
-  font-weight: 900;
-  color: var(--vt-text-color);
-}
-.wp-block-search .wp-block-search__inside-wrapper {
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-}
-.wp-block-search .wp-block-search__inside-wrapper .wp-block-search__input {
-  width: 92%;
-  height: 35px;
-  box-sizing: border-box;
-  padding: 0 10px;
-  background: var(--vt-bg-color);
-  color: var(--vt-text-color);
-  border: 1px solid var(--vt-border-color);
-  border-radius: var(--vt-border-radius);
-  font-size: var(--vt-font-size-sm);
-}
-.wp-block-search .wp-block-search__inside-wrapper .wp-block-search__button {
-  width: 100px;
-  margin-left: 10px;
-  background-color: var(--vt-bg-color-card);
-  border-radius: 3px;
-  border: 1px solid var(--vt-border-color);
-  font-size: var(--vt-font-size-sm);
-  color: var(--vt-text-color);
 }
 
 .image-title.widget-container {

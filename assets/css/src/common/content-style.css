@@ -140,4 +140,9 @@
   line-height: 15px !important;
 }
 
-
+.content-style hr {
+  height: 1px;
+  background-color: var(--vt-border-color);
+  border: none;
+  margin: 35px 0;
+}

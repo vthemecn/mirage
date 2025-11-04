@@ -21,16 +21,17 @@ nav.pagination .pagination-separator {
 }
 
 nav.pagination .nav-links > * {
-  min-width: 35px;
-  height: 35px;
-  line-height: 35px;
+  min-width: 30px;
+  height: 30px;
+  line-height: 30px;
   text-align: center;
-  font-size: 17px;
+  font-size: 15px;
+  font-weight: 300;
   border: 1px solid var(--vt-border-color);
   margin: 0px 7px 7px 0;
   display: block;
   background-color: var(--vt-bg-color-card);
-  box-shadow: 0 0 2px var(--vt-shadow-color);
+  box-shadow: 0 0 1px var(--vt-shadow-color);
   padding: 1px 1px;
 }
 
