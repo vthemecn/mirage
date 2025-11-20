@@ -229,14 +229,16 @@ ul.toc_list li{
   list-style: none;
   padding: 2px 0;
 }
+ul.toc_list li,
 ul.toc_list li a{
   font-size:14px;
   color: var(--vt-text-color);
+  line-height: 25px !important;
 }
-ul.toc_list .level-3 a{ padding:0 0 0 30px; }
-ul.toc_list .level-4 a{ padding:0 0 0 50px; }
-ul.toc_list .level-5 a{ padding:0 0 0 70px; }
-ul.toc_list .level-6 a{ padding:0 0 0 90px; }
+ul.toc_list .level-3 a{ padding:0 0 0 0px; }
+ul.toc_list .level-4 a{ padding:0 0 0 20px; }
+ul.toc_list .level-5 a{ padding:0 0 0 40px; }
+ul.toc_list .level-6 a{ padding:0 0 0 60px; }
 
 .toc-body {
   display:none;
@@ -251,3 +253,96 @@ ul.toc_list .level-6 a{ padding:0 0 0 90px; }
     max-width: 500px;
   }
 }
+
+
+/**
+ * 推荐
+ */
+.related-posts-widget {
+  /* display: none; */
+  margin: 8px 0;
+  background-color: var(--vt-bg-color-card);
+  padding: 15px;
+  box-shadow: 0px 0px 3px 0 var(--vt-shadow-color);
+  border-radius: var(--vt-border-radius);
+}
+
+.related-posts-widget .related-header {
+  padding-bottom: 15px;
+}
+
+.related-posts-widget .related-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--vt-text-color);
+  position: relative;
+}
+
+.related-posts-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.related-post-item {
+  padding: 12px;
+  border: 1px solid var(--vt-border-color);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  background: var(--vt-bg-color-card);
+}
+
+.related-post-item:hover {
+  border-color: #007cba;
+  background: var(--vt-bg-color-card);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.related-post-item a {
+  text-decoration: none;
+}
+
+.related-post-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--vt-text-color);
+  line-height: 1.5;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.related-post-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--vt-text-color-grey);
+}
+
+.related-post-meta i {
+  margin-right: 4px;
+}
+
+.related-post-meta span {
+  display: flex;
+  align-items: center;
+}
+
+.no-related-posts {
+  text-align: center;
+  padding: 30px;
+  color: var(--vt-text-color-grey);
+  font-size: 14px;
+}
+
+@media only screen and (min-width: 900px) { 
+  .related-posts-widget {
+    margin: 20px 0 0 0;
+  }
+}
+
+
+

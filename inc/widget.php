@@ -581,6 +581,99 @@ class TagsWidget extends WP_Widget {
 }
 
 
+/**
+ * 最新评论
+ */
+class RecentCommentsWidget extends WP_Widget {
+    function __construct(){
+        parent::__construct( 'recent-comments', '[Mirage] '.__( '最新评论', 'vt' ), array( 'description' => __( '显示最新评论列表', 'vt' ) ) );
+    }
+ 
+    function widget( $args, $instance ){
+        extract( $args, EXTR_SKIP );
+        echo $before_widget;
+
+        $vt_config = vt_get_config();
+
+        $widget_title_class = $vt_config['widget_title_type'] ? 'type-' . $vt_config['widget_title_type'] : '';
+        $title = $instance['title'] ? $instance['title'] : __('最新评论', 'vt');
+
+        // 获取最新评论
+        $comments_per_page = isset($instance['comments_per_page']) ? $instance['comments_per_page'] : 5;
+        $comments = get_comments(array(
+            'number' => $comments_per_page,
+            'status' => 'approve',
+            'type' => 'comment'
+        ));
+        ?>
+        <div class="recent-comments widget-container">
+            <div class="widget-header <?php echo $widget_title_class; ?>">
+                <div class="widget-title"><?php echo $title ?></div>
+            </div>
+            <ul class="recent-comments-list">
+                <?php if ( $comments ) : ?>
+                    <?php foreach ( $comments as $comment ) : ?>
+                        <li class="recent-comment-item">
+                            <div class="comment-author">
+                                <div class="comment-author">
+                                    <?php 
+                                    // 使用用户ID获取自定义头像URL
+                                    $avatar_url = vt_get_custom_avatar_url($comment->user_id, 32);
+                                    if ($avatar_url): ?>
+                                        <img src="<?php echo esc_url($avatar_url); ?>" alt="<?php echo esc_attr($comment->comment_author); ?>" width="32" height="32" />
+                                    <?php else:
+                                        // 如果没有自定义头像，则使用默认头像
+                                        echo get_avatar($comment, 32);
+                                    endif; ?>
+                                    <span class="comment-author-name"><?php echo esc_html($comment->comment_author); ?></span>
+                                </div>
+                            </div>
+                            <div class="comment-content">
+                                <a href="<?php echo get_permalink( $comment->comment_post_ID ) . '#comment-' . $comment->comment_ID; ?>">
+                                    <?php echo wp_trim_words( $comment->comment_content, 15 ); ?>
+                                </a>
+                            </div>
+                            <div class="comment-meta">
+                                <span class="comment-date"><?= vt_get_time($comment->comment_date) ?></span>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <li class="no-comments"><?php _e('暂无评论', 'vt'); ?></li>
+                <?php endif; ?>
+            </ul>
+        </div>
+        <?php
+        echo $after_widget;
+    }
+
+    function form($instance) {
+        $title = !empty($instance['title']) ? $instance['title'] : '';
+        $comments_per_page = !empty($instance['comments_per_page']) ? $instance['comments_per_page'] : '';
+        ?>
+        <p>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?= __('标题','vt')?>:</label>
+            <input type="text" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($title); ?>">
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('comments_per_page'); ?>"><?= __('评论数量','vt')?>:</label>
+            <input type="text" class="widefat" id="<?php echo $this->get_field_id('comments_per_page'); ?>" name="<?php echo $this->get_field_name('comments_per_page'); ?>" value="<?php echo esc_attr($comments_per_page); ?>">
+        </p>
+        <?php
+    }
+
+    function update($new_instance, $old_instance) {
+        $instance = array();
+        $instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
+        $instance['comments_per_page'] = (!empty($new_instance['comments_per_page'])) ? intval($new_instance['comments_per_page']) : 5;
+        return $instance;
+    }
+}
+
+
+
+
+
 function vt_add_widget(){
     register_widget('HotWidget');
     register_widget('ArticleWidget');
@@ -589,6 +682,7 @@ function vt_add_widget(){
     register_widget('UserWidget');
     register_widget('HtmlWidget');
     register_widget('TagsWidget');
+    register_widget('RecentCommentsWidget'); 
 }
 
 add_action( 'widgets_init', 'vt_add_widget' );

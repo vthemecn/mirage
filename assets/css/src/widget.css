@@ -454,5 +454,71 @@ body.dark-mode .user-card {
 }
 
 
+/**
+ * 最新评论
+ */
+.recent-comments.widget-container .recent-comments-list {
+  padding: 0 15px 15px 15px;
+  margin: 0;
+  list-style: none;
+}
 
+.recent-comments.widget-container .recent-comment-item {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--vt-border-color);
+}
+
+.recent-comments.widget-container .recent-comment-item:last-child {
+  border-bottom: none;
+}
+
+.recent-comments.widget-container .comment-author {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.recent-comments.widget-container .comment-author img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.recent-comments.widget-container .comment-author-name {
+  font-size: var(--vt-font-size-sm);
+  font-weight: bold;
+  color: var(--vt-text-color);
+}
+
+.recent-comments.widget-container .comment-content {
+  margin-bottom: 5px;
+}
+
+.recent-comments.widget-container .comment-content a {
+  font-size: var(--vt-font-size-sm);
+  color: var(--vt-text-color);
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  padding: 3px 0;
+}
+
+.recent-comments.widget-container .comment-content a:hover {
+  color: var(--vt-color-primary);
+}
+
+.recent-comments.widget-container .comment-meta {
+  font-size: var(--vt-font-size-sm);
+  color: var(--vt-text-color-grey);
+}
+
+.recent-comments.widget-container .no-comments {
+  padding: 15px;
+  text-align: center;
+  color: var(--vt-text-color-grey);
+  font-style: italic;
+}
 

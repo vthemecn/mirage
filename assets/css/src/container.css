@@ -109,6 +109,10 @@
 /******************************************************************************
  * sider
  */
+.sider{
+  margin: 8px 0;
+}
+
 .sider > div {
   margin: 8px 0;
 }
@@ -120,6 +124,7 @@
   .sider {
     width: 300px;
     flex: 0 0 300px;
+    margin: 0;
     margin-left: 20px;
     position: relative;
   }

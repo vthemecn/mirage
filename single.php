@@ -259,6 +259,75 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
         }
         ?>
 
+
+        <?php /* 推荐模块 */ ?>
+        <div class="related-posts-widget">
+            <div class="related-header">
+                <h3><?=__('推荐','vt')?></h3>
+            </div>
+            <div class="widget-content">
+                <?php
+                // 获取当前文章的分类和标签
+                $post_categories = wp_get_post_categories($vt_post_id);
+                $post_tags = wp_get_post_tags($vt_post_id);
+                
+                // 构建查询参数
+                $related_args = array(
+                    'post_type' => 'post',
+                    'post_status' => 'publish',
+                    'posts_per_page' => 6,
+                    'post__not_in' => array($vt_post_id),
+                    'orderby' => 'rand'
+                );
+                
+                // 如果有分类或标签，则根据它们查找相关内容
+                if (!empty($post_categories) || !empty($post_tags)) {
+                    $tax_query = array('relation' => 'OR');
+                    
+                    if (!empty($post_categories)) {
+                        $tax_query[] = array(
+                            'taxonomy' => 'category',
+                            'field' => 'term_id',
+                            'terms' => $post_categories
+                        );
+                    }
+                    
+                    if (!empty($post_tags)) {
+                        $tax_query[] = array(
+                            'taxonomy' => 'post_tag',
+                            'field' => 'term_id',
+                            'terms' => wp_list_pluck($post_tags, 'term_id')
+                        );
+                    }
+                    
+                    $related_args['tax_query'] = $tax_query;
+                }
+                
+                $related_query = new WP_Query($related_args);    
+                if ($related_query->have_posts()) :
+                ?>
+                    <div class="related-posts-list">
+                        <?php while ($related_query->have_posts()) : $related_query->the_post(); ?>
+                            <div class="related-post-item">
+                                <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+                                    <div class="related-post-title"><?php the_title(); ?></div>
+                                    <div class="related-post-meta">
+                                        <span class="date"><i class="fa-regular fa-clock"></i> <?php echo get_the_date('Y-m-d'); ?></span>
+                                    </div>
+                                </a>
+                            </div>
+                        <?php endwhile; ?>
+                    </div>
+                <?php else : ?>
+                    <div class="no-related-posts">
+                        <?=__('暂无相关文章','vt')?>
+                    </div>
+                <?php endif; ?>
+                
+                <?php wp_reset_postdata(); ?>
+            </div>
+        </div>
+
     </div><!-- .main-widget -->
 
     <div class="sider little-widget">
