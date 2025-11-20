@@ -46,7 +46,6 @@ class ImageArticleWidget extends WP_Widget {
 
         $vt_config = vt_get_config();
 
-        $widget_title_class = $vt_config['widget_title_type'] ? 'type-' . $vt_config['widget_title_type'] : '';
         $title = $instance['title'] ? $instance['title'] : __('图文列表', 'vt');
 
         $args = array(
@@ -61,7 +60,7 @@ class ImageArticleWidget extends WP_Widget {
         $query = new WP_Query($args);
         ?>
         <div class="image-title widget-container">
-            <div class="widget-header <?php echo $widget_title_class; ?>">
+            <div class="widget-header">
                 <div class="widget-title"><?php echo $title ?></div>
             </div>
             <div class="item-list-wrapper">
@@ -142,7 +141,6 @@ class HotWidget extends WP_Widget {
 
         $vt_config = vt_get_config();
 
-        $widget_title_class = $vt_config['widget_title_type'] ? 'type-' . $vt_config['widget_title_type'] : '';
         $title = $instance['title'] ? $instance['title'] : __('热门文章', 'vt');
 
         $args = array(
@@ -156,7 +154,7 @@ class HotWidget extends WP_Widget {
         $query = new WP_Query($args);
         ?>
         <div class="hot widget-container">
-            <div class="widget-header <?php echo $widget_title_class; ?>">
+            <div class="widget-header">
                 <div class="widget-title"><?php echo $title ?></div>
             </div>
             <ul class="hot-list">
@@ -219,7 +217,6 @@ class ArticleWidget extends WP_Widget {
 
         $vt_config = vt_get_config();
 
-        $widget_title_class = $vt_config['widget_title_type'] ? 'type-' . $vt_config['widget_title_type'] : '';
 
         wp_reset_postdata();
 
@@ -256,7 +253,7 @@ class ArticleWidget extends WP_Widget {
         // p($post_query);
         ?>
         <div class="article widget-container">
-            <div class="widget-header <?php echo $widget_title_class; ?>">
+            <div class="widget-header">
                 <div class="widget-title">
                     <?php echo $title ?>
                 </div>
@@ -320,11 +317,10 @@ class CategoryWidget extends WP_Widget {
 
         $vt_config = vt_get_config();
 
-        $widget_title_class = $vt_config['widget_title_type'] ? 'type-' . $vt_config['widget_title_type'] : '';
         $title = $instance['title'] ? $instance['title'] : __('分类列表', 'vt');
         ?>
         <div class="category widget-container">
-            <div class="widget-header <?php echo $widget_title_class; ?>">
+            <div class="widget-header">
                 <div class="widget-title">
                     <?php echo $title ?>
                 </div>
@@ -397,7 +393,6 @@ class UserWidget extends WP_Widget {
 
         $vt_config = vt_get_config();
         
-        $widget_title_class = $vt_config['widget_title_type'] ? 'type-' . $vt_config['widget_title_type'] : '';
         $title = $instance['title'];
 
         $user_id = get_the_author_meta('ID');
@@ -425,7 +420,7 @@ class UserWidget extends WP_Widget {
         <?php if($user_id):?>
             <div class="user-card-container widget-container">
                 <?php if($title):?>
-                <div class="widget-header <?php echo $widget_title_class; ?>">
+                <div class="widget-header">
                     <div class="widget-title"><?php echo $title ?></div>
                 </div>
                 <?php endif ?>
@@ -546,7 +541,7 @@ class TagsWidget extends WP_Widget {
         ?>
 
         <div class="tag-container widget-container">
-            <div class="widget-header <?php echo $widget_title_class; ?>">
+            <div class="widget-header">
                 <div class="widget-title"><?=$title?></div>
             </div>
             <div class="tag-list">
@@ -593,13 +588,10 @@ class RecentCommentsWidget extends WP_Widget {
         extract( $args, EXTR_SKIP );
         echo $before_widget;
 
-        $vt_config = vt_get_config();
-
-        $widget_title_class = $vt_config['widget_title_type'] ? 'type-' . $vt_config['widget_title_type'] : '';
         $title = $instance['title'] ? $instance['title'] : __('最新评论', 'vt');
 
         // 获取最新评论
-        $comments_per_page = isset($instance['comments_per_page']) ? $instance['comments_per_page'] : 5;
+        $comments_per_page = isset($instance['comments_per_page']) ? $instance['comments_per_page'] : 3;
         $comments = get_comments(array(
             'number' => $comments_per_page,
             'status' => 'approve',
@@ -607,7 +599,7 @@ class RecentCommentsWidget extends WP_Widget {
         ));
         ?>
         <div class="recent-comments widget-container">
-            <div class="widget-header <?php echo $widget_title_class; ?>">
+            <div class="widget-header">
                 <div class="widget-title"><?php echo $title ?></div>
             </div>
             <ul class="recent-comments-list">
@@ -669,9 +661,6 @@ class RecentCommentsWidget extends WP_Widget {
         return $instance;
     }
 }
-
-
-
 
 
 function vt_add_widget(){

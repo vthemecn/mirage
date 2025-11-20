@@ -55,20 +55,6 @@ if( class_exists( 'CSF' ) ) {
                 'desc' => __('关闭以后，不提示PHP版本，主题和插件更新提示','vt')
             ),
             
-
-            array(
-                'id'         => 'widget_title_type',
-                'type'       => 'radio',
-                'title'      => __('边框标题样式','vt'),
-                'options'    => array(
-                    '0' => __('无','vt'),
-                    '1' => __('竖线','vt'),
-                    '2' => __('圆点','vt'),
-                    '3' => __('横线','vt')
-                ),
-                'default'    => '0',
-                'inline' => true
-            ),
             array(
                 'id'         => 'page_data_type',
                 'type'       => 'radio',

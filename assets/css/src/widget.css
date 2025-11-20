@@ -12,11 +12,13 @@
   color: var(--vt-text-color);
 }
 
-.widget-header.type-1 .widget-title {
+
+/* 标题样式
+.widget-header .widget-title {
   position: relative;
   padding-left: 15px;
 }
-.widget-header.type-1 .widget-title::after {
+.widget-header .widget-title::after {
   content: "";
   width: 5px;
   height: 14px;
@@ -27,42 +29,7 @@
   top: 2px;
   left: 0;
 }
-
-.widget-header.type-2 .widget-title {
-  position: relative;
-  padding-left: 15px;
-}
-.widget-header.type-2 .widget-title::after {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: var(--vt-color-primary);
-  display: block;
-  position: absolute;
-  top: 6px;
-  left: 0;
-}
-
-.widget-header.type-3 .widget-title {
-  display: inline-block;
-  position: relative;
-  z-index: 99;
-}
-.widget-header.type-3 .widget-title::after {
-  content: "";
-  width: 100%;
-  height: 12px;
-  background-color: var(--vt-color-primary);
-  background-image: linear-gradient(90deg, var(--vt-color-primary), var(--vt-color-primary));
-  opacity: 0.5;
-  transform: scale(105%);
-  display: block;
-  position: absolute;
-  top: 6px;
-  left: 0;
-  z-index: -1;
-}
+*/
 
 .image-title.widget-container {
   box-sizing: border-box;
@@ -503,7 +470,7 @@ body.dark-mode .user-card {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  padding: 3px 0;
+  padding: 3·px 0;
 }
 
 .recent-comments.widget-container .comment-content a:hover {

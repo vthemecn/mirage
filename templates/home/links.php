@@ -1,14 +1,6 @@
 <?php
 $vt_config = vt_get_config();
 
-switch ($vt_config['widget_title_type']) {
-    case '1': $widget_title_class='type-1'; break;
-    case '2': $widget_title_class='type-2'; break;
-    case '3': $widget_title_class='type-3'; break;
-    default:  $widget_title_class=''; break;
-}
-
-
 $args = array(
     'orderby' => 'name',
     'order' => 'ASC',
@@ -27,7 +19,7 @@ $links = get_bookmarks($args);
 
 <div class="main-container">
     <div class="links widget-container">
-        <div class="widget-header <?php echo $widget_title_class?>">
+        <div class="widget-header">
             <div class="widget-title"><?php echo __('友情链接','vt')?></div>
         </div>
         <div class="links-list">

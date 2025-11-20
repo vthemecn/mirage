@@ -62,8 +62,6 @@ $vt_config = vt_get_config();
 </head>
 
 <?php
-global $widget_title_class;
-$widget_title_class = $vt_config['widget_title_type'] ? ' type-'.$vt_config['widget_title_type'] : '';
 
 /* 暗黑模式 */
 $is_dark_mode = false;
