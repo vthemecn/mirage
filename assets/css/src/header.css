@@ -560,3 +560,25 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
     margin-right: 7px;
   }
 }
+
+
+/* 样式覆盖 */
+.menu-item badge{
+  font-size: 12px;
+  line-height: 15px;
+  padding: 2px 4px;
+  min-width: 8px;
+  min-height: 8px;
+  display: inline-block;
+  border-radius: 10px;
+  text-align: center;
+  color: #fff;
+  background-color: #fe3459;
+  transform: translate(-7px, -12px) scale(.85);
+}
+
+
+
+
+
+

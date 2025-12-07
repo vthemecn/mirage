@@ -3036,6 +3036,28 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
     margin-right: 7px;
   }
 }
+
+
+/* 样式覆盖 */
+.menu-item badge{
+  font-size: 12px;
+  line-height: 15px;
+  padding: 2px 4px;
+  min-width: 8px;
+  min-height: 8px;
+  display: inline-block;
+  border-radius: 10px;
+  text-align: center;
+  color: #fff;
+  background-color: #fe3459;
+  transform: translate(-7px, -12px) scale(.85);
+}
+
+
+
+
+
+
 @charset "UTF-8";
 /**
  * footer
@@ -3912,18 +3934,20 @@ body.dark-mode .user-card {
 }
 
 .media-body .media-title .sticky {
-  height: 20px;
-  width: 35px;
-  line-height: 20px;
+  height: 16px;
+  width: 30px;
+  line-height: 16px;
   text-align: center;
-  margin-right: 10px;
-  padding: 2px 4px;
+  margin-right: 5px;
+  padding: 2px 2px;
   border-radius: 3px;
-  font-size: 14px;
+  font-size: 12px;
   background-color: var(--vt-color-primary);
   color: #fff;
   float: left;
   display: inline-block;
+  position: relative;
+  top: 3px;
 }
 
 .media-body .media-title a {
