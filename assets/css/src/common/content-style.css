@@ -21,6 +21,7 @@
   padding: 12px;
   margin: 5px 0;
   border-radius: var(--vt-border-radius);
+  overflow-x: scroll;
 }
 
 .content-style p {
@@ -62,7 +63,7 @@
 .content-style blockquote {
   padding: 15px;
   background-color: var(--vt-bg-color-grey);
-  margin-top: 20px;
+  margin: 20px 0;
   color: var(--vt-text-color-grey);
   border-radius: var(--vt-border-radius);
 }

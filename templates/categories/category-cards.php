@@ -33,7 +33,7 @@ $args = array(
 );
 $query_posts = new WP_Query($args);
 if($query_posts->posts){
-    $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($query_posts->posts[0]->ID), 'medium');
+    $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($query_posts->posts[0]->ID), 'large');
     $banner_image = $thumbnail ? $thumbnail[0] : $banner_image;
 }
 
@@ -87,7 +87,7 @@ switch ($config['list_cards_col']) {
                     <div class="card-item">
                         <a class="card-image" href="<?php the_permalink() ?>">
                             <?php  $cur_post = get_post(); ?>
-                            <img src="<?= vt_get_thumbnail_url($cur_post->ID, 'medium') ?>" alt="<?php the_title(); ?>">
+                            <img src="<?= vt_get_thumbnail_url($cur_post->ID, 'large') ?>" alt="<?php the_title(); ?>">
                         </a>
                         <div class="item-info">
                             <a class="title" href="<?php the_permalink() ?>"><?php the_title(); ?></a>
