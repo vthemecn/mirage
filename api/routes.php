@@ -1,6 +1,7 @@
 <?php
 require_once TEMP_DIR . '/api/home.php';
 require_once TEMP_DIR . '/api/star.php';
+require_once TEMP_DIR . '/api/users.php';
 
 
 add_action('rest_api_init', function (){
@@ -55,6 +56,17 @@ add_action('rest_api_init', function (){
         'callback' => function (\WP_REST_Request $request) {
             $starsController = new \api\Star();
             return $starsController->destory($request);
+        }
+    ));
+
+    /**
+     * 用户更新接口
+     */
+    register_rest_route('vtheme/v1', '/users/(?P<id>\d+)', array(
+        'methods' => 'POST',
+        'callback' => function (\WP_REST_Request $request) {
+            $usersController = new \vtheme\api\Users();
+            return $usersController->update($request);
         }
     ));
 

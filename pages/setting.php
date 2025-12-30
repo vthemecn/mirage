@@ -1,6 +1,6 @@
 <?php
 /**
- * `/inc/rewrite.php` 所引用的文件
+ * `/inc/rewrite.php` 所引用的 file
  */
 
 global $wp_query;
@@ -66,21 +66,15 @@ get_header();
     
 </div>
 
-<input type="hidden" name="api_url" value="/wp-json/vtheme/v1/users/<?php echo $param_user_id ?>">
+<input type="hidden" name="api_url" value="<?php echo home_url('/wp-json/vtheme/v1/users/'.$param_user_id); ?>">
 <input type="hidden" name="wp_create_nonce" value="<?php echo wp_create_nonce('wp_rest'); ?>">
 
-<script type="module" src="<?php bloginfo('template_url'); ?>/assets/js/lib/axios/axios.esm.js"></script>
-<script type="module" src="<?php bloginfo('template_url'); ?>/assets/js/src/toast.js"></script>
-
-<script type="module">
-import axios from '<?php bloginfo('template_url'); ?>/assets/js/lib/axios/axios.esm.js';
-import toast from '<?php bloginfo('template_url'); ?>/assets/js/src/toast.js';
-
+<script>
 document.querySelector(".update-user").addEventListener("click", function(e) {
     e.preventDefault();
     
     var wpnonce = document.querySelector("input[name='wp_create_nonce']").value;
-    var url = document.querySelector('input[name="api_url"]').value + "?_wpnonce=" + wpnonce;
+    var url = document.querySelector('input[name="api_url"]').value;
     
     var requestData = {};
     requestData.nickname = document.querySelector("input[name='nickname']").value;
@@ -89,29 +83,51 @@ document.querySelector(".update-user").addEventListener("click", function(e) {
     requestData.mobile = document.querySelector("input[name='mobile']").value;
     requestData.email = document.querySelector("input[name='email']").value;
 
-    axios({
-        method: 'post',
-        url: url,
-        responseType: 'json',
-        data: JSON.stringify(requestData),
-        headers: {'Content-Type':'application/json'}
-      })
-      .then(function(response) {
-          console.log(response);
-        if (response.status == 200) {
-            toast.open({title: "修改成功！"});
-            document.querySelector('.user-info .nickname').innerText = response.data.nickname;
-        } else {
-            toast.open({title: "修改失败：" + response.data.error});
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-WP-Nonce': wpnonce
+        },
+        body: JSON.stringify(requestData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(errorData => {
+                throw new Error(errorData.message || '修改失败');
+            });
         }
-      })
-      .catch(function(error) {
-            console.log(error);
-            toast.open({title: "修改失败：" + error.response.data.error});
-      });
-    
+        console.log('1111');
+        
+        return response.json();
+    })
+    .then(data => {
+        console.log('2222');
+        
+        // 显示成功提示
+        if (typeof LightTip !== 'undefined' && typeof LightTip.success === 'function') {
+            LightTip.success('修改成功！');
+        } else {
+            alert('修改成功！');
+        }
+        
+        // 更新侧边栏昵称
+        var nicknameElement = document.querySelector('.user-nav .user-info .nickname');
+        if(nicknameElement) {
+            nicknameElement.textContent = data.display_name;
+        }
+    })
+    .catch(error => {
+        // 显示错误提示
+        if (typeof LightTip !== 'undefined' && typeof LightTip.error === 'function') {
+            LightTip.error('修改失败：' + error.message);
+        } else {
+            alert('修改失败：' + error.message);
+        }
+        
+        console.error('Error:', error);
+    });
 });
-
 </script>
 
 <?php get_footer(); ?>

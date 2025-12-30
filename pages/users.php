@@ -28,87 +28,104 @@ get_header();
 ?>
 
 
-
 <div class="user-center-container">
-    <?php // require_once get_template_directory() . '/templates/users/banner.php'; ?>
-
     <?php require_once get_template_directory() . '/templates/users/sider.php'; ?>
 
     <div class="user-center-panel">
-        <h3>基本资料</h3>
-
-        <div class="">
-            <div class="user-item">
-                <div class="user-item-header">昵称:</div>
-                <div class="user-item-body"><?php echo $param_user->display_name?></div>
+        <div class="user-profile-header">
+            <div class="user-avatar-large">
+                <img src="<?php echo vt_get_custom_avatar_url($param_user_id); ?>" alt="<?php echo $param_user->display_name; ?>">
             </div>
-            <div class="user-item">
-                <div class="user-item-header">性别:</div>
-                <div class="user-item-body"><?php echo $gender ?></div>
-            </div>
-
-            <?php if($has_auth): ?>
-                <div class="user-item">
-                    <div class="user-item-header">邮箱:</div>
-                    <div class="user-item-body">
-                        <?php echo $param_user->user_email ?>
-                        <span>仅自己可见</span>    
-                    </div>
+            <div class="user-basic-info">
+                <h1><?php echo $param_user->display_name; ?></h1>
+                <div class="user-meta">
+                    <span class="user-username">@<?php echo $param_user->user_nicename; ?></span>
+                    <span class="user-join-date">
+                        <i class="fa-regular fa-calendar"></i>
+                        加入于 <?php echo date('Y年m月', strtotime($param_user->user_registered)); ?>
+                    </span>
                 </div>
-            <?php endif ?>
-
-            <?php if($has_auth): ?>
-            <div class="user-item">
-                <div class="user-item-header">手机号:</div>
-                <div class="user-item-body"><?php echo get_user_meta($param_user_id, 'mobile', true); ?></div>
+                <div class="user-description">
+                    <?php echo $param_user->description ? $param_user->description : '暂无简介'; ?>
+                </div>
             </div>
-            <?php endif ?>
+        </div>
+
+        <div class="user-stats">
+            <div class="stat-item">
+                <div class="stat-value">
+                    <?php 
+                        $like_count = $wpdb->get_var($wpdb->prepare(
+                            "SELECT COUNT(*) FROM {$wpdb->prefix}vt_star WHERE type='like' AND user_id=%d", 
+                            $param_user_id
+                        )); 
+                        echo $like_count;
+                    ?>
+                </div>
+                <div class="stat-label">点赞</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">
+                    <?php 
+                        $star_count = $wpdb->get_var($wpdb->prepare(
+                            "SELECT COUNT(*) FROM {$wpdb->prefix}vt_star WHERE type='star' AND user_id=%d", 
+                            $param_user_id
+                        )); 
+                        echo $star_count;
+                    ?>
+                </div>
+                <div class="stat-label">收藏</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">
+                    <?php 
+                        $post_count = count_user_posts($param_user_id);
+                        echo $post_count;
+                    ?>
+                </div>
+                <div class="stat-label">文章</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value"><?php echo $gender; ?></div>
+                <div class="stat-label">性别</div>
+            </div>
+        </div>
+
+        <div class="user-details">
+            <h3><i class="fa-regular fa-user"></i> 个人资料</h3>
             
-            <div class="user-item">
-                <div class="user-item-header">简介:</div>
-                <div class="user-item-body description">
-                    <?php echo $param_user->description ?>
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <div class="detail-label">昵称</div>
+                    <div class="detail-value"><?php echo $param_user->display_name; ?></div>
                 </div>
-            </div>
-            
-            <div class="user-item achievement">
-                <div class="achievement-widget">
-                    <span>
-                        <?php 
-                            $like_count = $wpdb->get_var($wpdb->prepare(
-                                "SELECT COUNT(*) FROM {$wpdb->prefix}vt_star WHERE type='like' AND user_id=%d", 
-                                $param_user_id
-                            )); 
-                            echo $like_count;
-                        ?>
-                    </span>
-                    <span>点赞</span>
+                
+                <div class="detail-item">
+                    <div class="detail-label">用户名</div>
+                    <div class="detail-value"><?php echo $param_user->user_nicename; ?></div>
                 </div>
-                <div class="achievement-widget">
-                    <span>
-                        <?php 
-                            $star_count = $wpdb->get_var($wpdb->prepare(
-                                "SELECT COUNT(*) FROM {$wpdb->prefix}vt_star WHERE type='star' AND user_id=%d", 
-                                $param_user_id
-                            )); 
-                            echo $star_count;
-                        ?>
-                    </span>
-                    <span>收藏</span>
+                
+                <?php if($has_auth): ?>
+                <div class="detail-item">
+                    <div class="detail-label">邮箱</div>
+                    <div class="detail-value"><?php echo $param_user->user_email; ?> <span class="private-note">（仅自己可见）</span></div>
                 </div>
-                <div class="achievement-widget">
-                    <span>
-                        <?php 
-                            $post_count = count_user_posts($param_user_id);
-                            echo $post_count;
-                        ?>
-                    </span>
-                    <span>文章</span>
+                <?php endif ?>
+                
+                <?php if($has_auth): ?>
+                <div class="detail-item">
+                    <div class="detail-label">手机号</div>
+                    <div class="detail-value"><?php echo get_user_meta($param_user_id, 'mobile', true); ?></div>
+                </div>
+                <?php endif ?>
+                
+                <div class="detail-item full-width">
+                    <div class="detail-label">个人简介</div>
+                    <div class="detail-value description"><?php echo $param_user->description ? $param_user->description : '暂无简介'; ?></div>
                 </div>
             </div>
         </div>
     </div>
-    
 </div>
 
 <?php get_footer(); ?>
