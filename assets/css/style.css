@@ -4017,6 +4017,13 @@ body.dark-mode .user-card {
   height: 100%;
   object-fit: cover;
 }
+.media-box a {
+  font-size: 14px;
+  color: var(--vt-text-color-grey);
+}
+.media-box a:hover{
+  color: var(--vt-color-primary);
+}
 
 .media-box .meta-item { margin-right: 20px; }
 .media-box .meta-item:last-child { margin-right: 0px; }
