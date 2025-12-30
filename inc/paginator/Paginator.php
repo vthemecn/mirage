@@ -222,27 +222,6 @@ class Paginator
         return join('', $htmls);
     }
 
-    private function sizesHTML()
-    {
-        $action = $path = $_SERVER['SCRIPT_NAME'] . '?' . array2Query($this->querys) . '&' . $this->queryPageField . '=1';
-
-        $handlerChangeScript = "(function (e) {location.href='" . $action . "' + '&" . $this->queryPageSizeField . "=' + e.value;})(this)";
-
-        $htmls = [
-            '<select class="m-pagination-sizes" name="' . $this->queryPageSizeField . '" onchange="' . $handlerChangeScript . '">'
-        ];
-
-        $len = count($this->pageSizes);
-
-        for ($i = 0; $i < $len; $i++) {
-            array_push($htmls, '<option value="' . $this->pageSizes[$i] . '"' . ($this->pageSize == $this->pageSizes[$i] ? 'selected="selected"' : '') . '>' . $this->pageSizes[$i] . ' 条/页</option>');
-        }
-
-        array_push($htmls, '</select>');
-
-        return join('', $htmls);
-    }
-
     private function prevHTML()
     {
         $page = $this->page - 1;
@@ -260,11 +239,10 @@ class Paginator
     }
 
     // 输出分页
-    function links($layouts = ['total', 'sizes', 'prev', 'pager', 'next'])
+    function links($layouts = ['total', 'prev', 'pager', 'next'])
     {
         $layoutMap = [
             'total' => '<span class="m-pagination-total">共' . $this->total . '条</span>',
-            'sizes' => $this->sizesHTML(),
             'prev' => $this->prevHTML(),
             'pager' => $this->pagerHTML(),
             'next' => $this->nextHTML()

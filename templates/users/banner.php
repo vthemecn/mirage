@@ -1,6 +1,6 @@
 <?php
 $default_avatar = get_bloginfo('template_directory') . '/assets/images/avatar.jpg';
-$avatar = $param_user['avatar'] ? $param_user['avatar'] : $default_avatar; 
+$avatar = isset($param_user->avatar) ? $param_user->avatar : $default_avatar; 
 
 $upload_avatar_button = $param_user_id ==  $current_user->ID ? 'upload-avatar-button' : '';
 ?>
@@ -16,7 +16,7 @@ $upload_avatar_button = $param_user_id ==  $current_user->ID ? 'upload-avatar-bu
     </div>
     <div class="user-info">
         <div class="nickname">
-            <?php echo $param_user['nickname']; ?>
+            <?php echo $param_user->display_name; ?>
         </div>
     </div>
 </div>

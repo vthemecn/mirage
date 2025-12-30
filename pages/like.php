@@ -1,35 +1,32 @@
 <?php
 /**
- * `/inc/rewrite.php` 所引用的文件
+ * `/inc/rewrite.php` 所引用的 file
  */
 
 global $wp_query;
 global $current_user;
 
 $param_user_id = $wp_query->query_vars['user_id'];
-$usersService = new \api\users\UsersService();
-$param_user = $usersService->getUserById($param_user_id);
-
+$param_user = get_user_by('id', $param_user_id);
 
 global $wpdb;
 
-// 每页显示条数
-$pageSize = 3;
+// 每页显示条数 - 暂时设置为2
+$pageSize = 2;
 // 数据总数
-$sql = "SELECT s.id AS star_id, p.post_title FROM wp_vt_star AS s
-        LEFT JOIN wp_posts AS p ON p.ID=s.object_id 
-        WHERE `type`='like' AND user_id=%d";
-$counter = $wpdb->query($wpdb->prepare($sql, $param_user_id), ARRAY_A);
-// p($counter);
+$sql = "SELECT COUNT(s.id) FROM {$wpdb->prefix}vt_star AS s
+        WHERE s.type='like' AND s.user_id=%d";
+$count_query = $wpdb->prepare($sql, $param_user_id);
+$counter = $wpdb->get_var($count_query);
+
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $start = $pageSize * ($page - 1);
 
-$sql = "SELECT s.id AS star_id, s.user_id, s.object_id, p.post_title FROM wp_vt_star AS s
-        LEFT JOIN wp_posts AS p ON p.ID=s.object_id 
-        WHERE `type`='like' AND user_id=%d
+$sql = "SELECT s.id AS star_id, s.user_id, s.object_id, p.post_title FROM {$wpdb->prefix}vt_star AS s
+        LEFT JOIN {$wpdb->prefix}posts AS p ON p.ID=s.object_id 
+        WHERE s.type='like' AND s.user_id=%d
         ORDER BY s.id DESC LIMIT %d OFFSET %d";
-$list = $wpdb->get_results( $wpdb->prepare( $sql, $param_user_id, $pageSize, $start ));
-
+$list = $wpdb->get_results($wpdb->prepare($sql, $param_user_id, $pageSize, $start));
 
 foreach($list as $k=>$v){
     $list[$k]->nickname = get_user_meta($v->user_id, 'nickname', true);
@@ -37,7 +34,7 @@ foreach($list as $k=>$v){
     $list[$k]->user_id = $v->user_id;
     $list[$k]->post = get_post($v->object_id);
     $list[$k]->hit_counter = get_post_meta($v->object_id, 'post_views_count', true);
-    $list[$k]->thumbnail = get_the_post_thumbnail_url($v->object_id, 'thumbnail' );
+    $list[$k]->thumbnail = get_the_post_thumbnail_url($v->object_id, 'thumbnail');
 }
 
 // 分页类
@@ -48,20 +45,19 @@ $vt_page->pagerCount = 6; // 显示页数
 $vt_page->prevText = '上一页';
 $vt_page->nextText = '下一页';
 
-
 get_header();
 ?>
 
 
 <div class="user-center-container">
-    <?php require_once get_template_directory() . '/templates/users/banner.php'; ?>
+    <?php // require_once get_template_directory() . '/templates/users/banner.php'; ?>
 
     <?php require_once get_template_directory() . '/templates/users/sider.php'; ?>
 
     <div class="user-center-panel">
         <h3>我的点赞</h3>
 
-        <div>
+        <div class="user-likes-container">
             <?php if(!$list): ?>
                 <div class="user-no-content">
                     <img src="<?php bloginfo('template_url'); ?>/assets/images/empty.png">
@@ -69,46 +65,54 @@ get_header();
                 </div>
             <?php endif ?>
             
+            <div class="user-likes-list">
             <?php foreach($list as $k=>$v): ?>
-                <div class="media-item type-1">
-                    <div class="media-title">
-                        <a href="<?php echo get_permalink($v->object_id) ?>">
-                            <?php  echo $v->post_title ?>
-                        </a>
-                    </div>
-                    <div class="media-widget">
-                        <div class="media-content">
-                            <div class="media-description">
-                                <?php echo get_the_excerpt($v->post); ?>
-                            </div>
-                            <div class="media-meta">
-                                <span>
-                                    <i class="iconfont">&#xe76d;</i>
-                                    <?php echo wp_date('Y-m-d', strtotime($v->post->post_date) ); ?>
-                                </span>
-                                <span>
-                                    <i class="iconfont">&#xe752;</i>
-                                    <?php echo $v->hit_counter ?>
-                                </span>
-                                <span class="meta author">
-                                    <img src="<?php echo $v->avatar ?>">
-                                    <span>
-                                        <a href="/users/<?php echo $v->user_id ?>" target='_blank'><?php echo $v->nickname ?></a>
-                                    </span>
-                                </span>
-                            </div>
+                <div class="user-like-item">
+                    <div class="like-item-header">
+                        <div class="like-item-title">
+                            <a href="<?php echo get_permalink($v->object_id) ?>">
+                                <?php  echo $v->post_title ?>
+                            </a>
                         </div>
                         <?php if ($v->thumbnail) { ?>
-                            <div class="media-thumbnail">
-                                <img src="<?php echo $v->thumbnail ?>" />
-                            </div>
+                        <div class="like-item-thumb">
+                            <a href="<?php echo get_permalink($v->object_id) ?>">
+                                <img src="<?php echo $v->thumbnail ?>" alt="<?php echo $v->post_title ?>">
+                            </a>
+                        </div>
                         <?php } ?>
+                    </div>
+                    
+                    <div class="like-item-body">
+                        <div class="like-item-excerpt">
+                            <?php echo get_the_excerpt($v->post); ?>
+                        </div>
+                        
+                        <div class="like-item-meta">
+                            <span class="like-item-date">
+                                <i class="fa-regular fa-calendar"></i>
+                                <?php echo wp_date('Y-m-d', strtotime($v->post->post_date) ); ?>
+                            </span>
+                            <span class="like-item-views">
+                                <i class="fa-regular fa-eye"></i>
+                                <?php echo $v->hit_counter ?>
+                            </span>
+                            <span class="like-item-author">
+                                <img src="<?php echo $v->avatar ?>" alt="<?php echo $v->nickname ?>">
+                                <a href="/users/<?php echo $v->user_id ?>" target='_blank'><?php echo $v->nickname ?></a>
+                            </span>
+                        </div>
                     </div>
                 </div>
             <?php endforeach; ?>
+            </div>
         </div>
         
-        <?php echo $counter ? $vt_page->links(['pager']) : '' ?>
+        <?php if($list): ?>
+        <div class="pagination">
+            <?php echo $vt_page->links(); ?>
+        </div>
+        <?php endif; ?>
     </div>
 </div>
 

@@ -22,7 +22,7 @@ function page_active($current_page_name)
 <div class="user-center-sidebar">
     <?php
     $default_avatar = get_bloginfo('template_directory') . '/assets/images/avatar.jpg';
-    $avatar = $param_user['avatar'] ? $param_user['avatar'] : $default_avatar; 
+    $avatar = isset($param_user->avatar) ? $param_user->avatar : $default_avatar; 
     $upload_avatar_button = $param_user_id ==  $current_user->ID ? 'upload-avatar-button' : '';
     ?>
     <div class="user-profile">
@@ -36,7 +36,7 @@ function page_active($current_page_name)
         </div>
         <div class="user-info">
             <div class="nickname">
-                <?php echo $param_user['nickname']; ?>
+                <?php echo $param_user->display_name; ?>
             </div>
         </div>
         <form id="avatar_upload" method="post"
@@ -54,27 +54,23 @@ function page_active($current_page_name)
             <i class="fa-solid fa-angle-right"></i>
         </a>
         
-       <!--  <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/star" class="sidebar-action <?php echo page_active('star'); ?>">
-            <i class="iconfont">&#xe882;</i><span>我的收藏</span>
-            <i class="iconfont">&#xe748;</i>
+        <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/star" class="sidebar-action <?php echo page_active('star'); ?>">
+            <i class="fa-solid fa-star"></i><span>我的收藏</span>
+            <i class="fa-solid fa-angle-right"></i>
         </a>
         
         <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/like" class="sidebar-action <?php echo page_active('like'); ?>">
-            <i class="iconfont">&#xe663;</i><span>我的点赞</span>
-            <i class="iconfont">&#xe748;</i>
+            <i class="fa-solid fa-thumbs-up"></i><span>我的点赞</span>
+            <i class="fa-solid fa-angle-right"></i>
         </a>
-         -->
+        
         <?php if($current_user->ID == $param_user_id || current_user_can( 'manage_options' ) ): ?>
-            <!-- <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/orders" class="sidebar-action <?php echo page_active('orders'); ?>">
-                <i class="iconfont">&#xe8bc;</i><span>我的订单</span>
-                <i class="iconfont">&#xe748;</i>
-            </a>
-             -->
             <?php if ($current_user->ID == $param_user_id) : ?>
-                <!-- <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/setting" class="sidebar-action <?php echo page_active('setting'); ?>">
-                    <i class="iconfont">&#xe7f5;</i><span>我的设置</span>
-                    <i class="iconfont">&#xe748;</i>
-                </a> -->
+                <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/setting" class="sidebar-action <?php echo page_active('setting'); ?>">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>我的设置</span>
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
                 <a href="<?php echo wp_logout_url('/'); ?>" class="sidebar-action">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     <span>退出登录</span>
@@ -86,4 +82,3 @@ function page_active($current_page_name)
     
 
 </div>
-

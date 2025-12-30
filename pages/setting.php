@@ -7,9 +7,11 @@ global $wp_query;
 global $current_user;
 
 $param_user_id = $wp_query->query_vars['user_id'];
-$usersService = new \api\users\UsersService();
-$param_user = $usersService->getUserById($param_user_id);
+$param_user = get_user_by('id', $param_user_id);
 
+// 获取用户性别
+$user_meta = get_user_meta($param_user_id);
+$gender = isset($user_meta['gender'][0]) ? $user_meta['gender'][0] : '0';
 
 get_header();
 ?>
@@ -17,7 +19,7 @@ get_header();
 
 
 <div class="user-center-container">
-    <?php require_once get_template_directory() . '/templates/users/banner.php'; ?>
+    <?php // require_once get_template_directory() . '/templates/users/banner.php'; ?>
 
     <?php require_once get_template_directory() . '/templates/users/sider.php'; ?>
 
@@ -27,23 +29,34 @@ get_header();
         <div class="form">
             <div class="field field-text">
                 <label for="user_login">账号:</label>
-                <input name="user_login" id="user_login" type="text" value="<?php echo $param_user['user_login']?>" disabled>
+                <input name="user_login" id="user_login" type="text" value="<?php echo $param_user->user_login?>" disabled>
             </div>
             <div class="field field-text">
                 <label for="nickname">昵称:</label>
-                <input name="nickname" id="nickname" type="text" value="<?php echo $param_user['nickname']?>">
+                <input name="nickname" id="nickname" type="text" value="<?php echo $param_user->display_name?>">
+            </div>
+            <div class="field field-select">
+                <label for="gender">性别:</label>
+                <select name="gender" id="gender">
+                    <option value="0" <?php echo $gender == '0' ? 'selected' : ''; ?>>保密</option>
+                    <option value="1" <?php echo $gender == '1' ? 'selected' : ''; ?>>男</option>
+                    <option value="2" <?php echo $gender == '2' ? 'selected' : ''; ?>>女</option>
+                </select>
             </div>
             <div class="field field-text">
                 <label for="email">邮箱:</label>
-                <input name="email" id="email" type="text" value="<?php echo $param_user['user_email']?>" disabled>
+                <input name="email" id="email" type="email" value="<?php echo $param_user->user_email?>" <?php echo ($param_user_id == $current_user->ID) ? '' : 'disabled'; ?>>
+                <?php if($param_user_id != $current_user->ID): ?>
+                <span>仅自己可见</span>
+                <?php endif; ?>
             </div>
             <div class="field field-text">
                 <label for="mobile">手机号:</label>
-                <input name="mobile" id="mobile" type="text" value="<?php echo $param_user['mobile']?>" disabled>
+                <input name="mobile" id="mobile" type="text" value="<?php echo get_user_meta($param_user_id, 'mobile', true); ?>" <?php echo ($param_user_id == $current_user->ID) ? '' : 'disabled'; ?>>
             </div>
-            <div class="field field-text">
+            <div class="field field-textarea">
                 <label for="description">签名:</label>
-                <textarea name="description" id="description" cols="20" rows="6"><?php echo $param_user['description']?></textarea>
+                <textarea name="description" id="description" cols="20" rows="6"><?php echo $param_user->description?></textarea>
             </div>
             <div class="field">
                 <button class="btn btn-primary update-user">确定</button>
@@ -71,7 +84,10 @@ document.querySelector(".update-user").addEventListener("click", function(e) {
     
     var requestData = {};
     requestData.nickname = document.querySelector("input[name='nickname']").value;
+    requestData.gender = document.querySelector("select[name='gender']").value;
     requestData.description = document.querySelector("textarea[name='description']").value;
+    requestData.mobile = document.querySelector("input[name='mobile']").value;
+    requestData.email = document.querySelector("input[name='email']").value;
 
     axios({
         method: 'post',

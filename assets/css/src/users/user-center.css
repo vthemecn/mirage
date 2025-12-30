@@ -94,7 +94,7 @@
 }
 
 .user-nav a.sidebar-action i {
-  font-size: 40px;
+  font-size: 20px;
 }
 
 .user-nav a.sidebar-action i:last-child {
@@ -174,7 +174,7 @@
     padding-bottom: 0;
   }
   .user-nav a.sidebar-action i {
-    font-size: 30px;
+    font-size: 20px;
   }
   .user-nav a.sidebar-action i:last-child {
     font-size: 20px;
