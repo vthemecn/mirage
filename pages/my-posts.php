@@ -54,84 +54,88 @@ get_header();
 <div class="user-center-container">
     <?php require_once get_template_directory() . '/templates/users/sider.php'; ?>
 
-    <div class="user-center-panel">
-        <div class="my-posts-container">
-            <h3>我的文章</h3>
-            
-            <?php if (empty($my_posts)): ?>
-                <p>暂无文章</p>
-            <?php else: ?>
-                <table class="table my-posts-table">
-                    <thead>
-                        <tr>
-                            <th>标题</th>
-                            <th>分类</th>
-                            <th>状态</th>
-                            <th>发布时间</th>
-                            <th>操作</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($my_posts as $post): ?>
-                            <tr>
-                                <td>
-                                    <a href="<?php echo get_permalink($post->ID); ?>" target="_blank">
-                                        <?php echo esc_html($post->post_title); ?>
-                                    </a>
-                                </td>
-                                <td>
-                                    <?php
-                                    $categories = get_the_category($post->ID);
-                                    if (!empty($categories)) {
-                                        echo esc_html($categories[0]->name);
-                                    } else {
-                                        echo '未分类';
-                                    }
-                                    ?>
-                                </td>
-                                <td>
-                                    <?php
-                                    switch ($post->post_status) {
-                                        case 'publish':
-                                            echo '<span class="status status-publish">已发布</span>';
-                                            break;
-                                        case 'private':
-                                            echo '<span class="status status-private">待审核</span>';
-                                            break;
-                                        case 'draft':
-                                            echo '<span class="status status-draft">草稿</span>';
-                                            break;
-                                        case 'pending':
-                                            echo '<span class="status status-pending">待审核</span>';
-                                            break;
-                                        default:
-                                            echo '<span class="status status-unknown">' . $post->post_status . '</span>';
-                                    }
-                                    ?>
-                                </td>
-                                <td><?php echo get_the_date('Y-m-d H:i', $post->ID); ?></td>
-                                <td>
-                                    <a href="<?php echo home_url('/users/' . $param_user_id . '/edit-post/' . $post->ID); ?>" class="btn btn-sm btn-primary">编辑</a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+    <div class="user-wrapper">
+        <div class="user-center-panel">
+            <div class="my-posts-container">
+                <h3>我的文章</h3>
                 
-                <!-- 分页 -->
-                <div class="pagination-container">
-                    <?php 
-                        // 设置查询参数，确保URL正确
-                        $paginator->setQueryParams(array(
-                            'user_id' => $param_user_id,
-                            'vt_page' => 'my-posts'
-                        ));
-                        echo $paginator->links();
-                    ?>
-                </div>
-            <?php endif; ?>
+                <?php if (empty($my_posts)): ?>
+                    <p>暂无文章</p>
+                <?php else: ?>
+                    <table class="table my-posts-table">
+                        <thead>
+                            <tr>
+                                <th>标题</th>
+                                <th>分类</th>
+                                <th>状态</th>
+                                <th>发布时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($my_posts as $post): ?>
+                                <tr>
+                                    <td>
+                                        <a href="<?php echo get_permalink($post->ID); ?>" target="_blank">
+                                            <?php echo esc_html($post->post_title); ?>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <?php
+                                        $categories = get_the_category($post->ID);
+                                        if (!empty($categories)) {
+                                            echo esc_html($categories[0]->name);
+                                        } else {
+                                            echo '未分类';
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                        switch ($post->post_status) {
+                                            case 'publish':
+                                                echo '<span class="status status-publish">已发布</span>';
+                                                break;
+                                            case 'private':
+                                                echo '<span class="status status-private">待审核</span>';
+                                                break;
+                                            case 'draft':
+                                                echo '<span class="status status-draft">草稿</span>';
+                                                break;
+                                            case 'pending':
+                                                echo '<span class="status status-pending">待审核</span>';
+                                                break;
+                                            default:
+                                                echo '<span class="status status-unknown">' . $post->post_status . '</span>';
+                                        }
+                                        ?>
+                                    </td>
+                                    <td><?php echo get_the_date('Y-m-d H:i', $post->ID); ?></td>
+                                    <td>
+                                        <a href="<?php echo home_url('/users/' . $param_user_id . '/edit-post/' . $post->ID); ?>" class="btn btn-sm btn-primary">编辑</a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    
+                    <!-- 分页 -->
+                    <div class="pagination-container">
+                        <?php 
+                            // 设置查询参数，确保URL正确
+                            $paginator->setQueryParams(array(
+                                'user_id' => $param_user_id,
+                                'vt_page' => 'my-posts'
+                            ));
+                            echo $paginator->links();
+                        ?>
+                    </div>
+                <?php endif; ?>
+            </div>
         </div>
+    
     </div>
+
 </div>
 
 <style>

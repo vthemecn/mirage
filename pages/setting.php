@@ -23,43 +23,45 @@ get_header();
 
     <?php require_once get_template_directory() . '/templates/users/sider.php'; ?>
 
-    <div class="user-center-panel">
-        <h3>我的设置</h3>
+    <div class="user-wrapper">
+        <div class="user-center-panel">
+            <h3>我的设置</h3>
 
-        <div class="form">
-            <div class="field field-text">
-                <label for="user_login">账号:</label>
-                <input name="user_login" id="user_login" type="text" value="<?php echo $param_user->user_login?>" disabled>
-            </div>
-            <div class="field field-text">
-                <label for="nickname">昵称:</label>
-                <input name="nickname" id="nickname" type="text" value="<?php echo $param_user->display_name?>">
-            </div>
-            <div class="field field-select">
-                <label for="gender">性别:</label>
-                <select name="gender" id="gender">
-                    <option value="0" <?php echo $gender == '0' ? 'selected' : ''; ?>>保密</option>
-                    <option value="1" <?php echo $gender == '1' ? 'selected' : ''; ?>>男</option>
-                    <option value="2" <?php echo $gender == '2' ? 'selected' : ''; ?>>女</option>
-                </select>
-            </div>
-            <div class="field field-text">
-                <label for="email">邮箱:</label>
-                <input name="email" id="email" type="email" value="<?php echo $param_user->user_email?>" <?php echo ($param_user_id == $current_user->ID) ? '' : 'disabled'; ?>>
-                <?php if($param_user_id != $current_user->ID): ?>
-                <span>仅自己可见</span>
-                <?php endif; ?>
-            </div>
-            <div class="field field-text">
-                <label for="mobile">手机号:</label>
-                <input name="mobile" id="mobile" type="text" value="<?php echo get_user_meta($param_user_id, 'mobile', true); ?>" <?php echo ($param_user_id == $current_user->ID) ? '' : 'disabled'; ?>>
-            </div>
-            <div class="field field-textarea">
-                <label for="description">签名:</label>
-                <textarea name="description" id="description" cols="20" rows="6"><?php echo $param_user->description?></textarea>
-            </div>
-            <div class="field">
-                <button class="btn btn-primary update-user">确定</button>
+            <div class="form">
+                <div class="field field-text">
+                    <label for="user_login">账号:</label>
+                    <input name="user_login" id="user_login" type="text" value="<?php echo $param_user->user_login?>" disabled>
+                </div>
+                <div class="field field-text">
+                    <label for="nickname">昵称:</label>
+                    <input name="nickname" id="nickname" type="text" value="<?php echo $param_user->display_name?>">
+                </div>
+                <div class="field field-select">
+                    <label for="gender">性别:</label>
+                    <select name="gender" id="gender">
+                        <option value="0" <?php echo $gender == '0' ? 'selected' : ''; ?>>保密</option>
+                        <option value="1" <?php echo $gender == '1' ? 'selected' : ''; ?>>男</option>
+                        <option value="2" <?php echo $gender == '2' ? 'selected' : ''; ?>>女</option>
+                    </select>
+                </div>
+                <div class="field field-text">
+                    <label for="email">邮箱:</label>
+                    <input name="email" id="email" type="email" value="<?php echo $param_user->user_email?>" <?php echo ($param_user_id == $current_user->ID) ? '' : 'disabled'; ?>>
+                    <?php if($param_user_id != $current_user->ID): ?>
+                    <span>仅自己可见</span>
+                    <?php endif; ?>
+                </div>
+                <div class="field field-text">
+                    <label for="mobile">手机号:</label>
+                    <input name="mobile" id="mobile" type="text" value="<?php echo get_user_meta($param_user_id, 'mobile', true); ?>" <?php echo ($param_user_id == $current_user->ID) ? '' : 'disabled'; ?>>
+                </div>
+                <div class="field field-textarea">
+                    <label for="description">签名:</label>
+                    <textarea name="description" id="description" cols="20" rows="6"><?php echo $param_user->description?></textarea>
+                </div>
+                <div class="field">
+                    <button class="btn btn-primary update-user">确定</button>
+                </div>
             </div>
         </div>
     </div>

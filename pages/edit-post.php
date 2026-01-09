@@ -28,60 +28,63 @@ get_header();
 <div class="user-center-container">
     <?php require_once get_template_directory() . '/templates/users/sider.php'; ?>
 
-    <div class="user-center-panel">
-        <div class="publish-article-container">
-            <h2>编辑文章</h2>
-            
-            <form id="edit-post-form">
-                <div class="form-group">
-                    <label for="post-title">文章标题</label>
-                    <input type="text" id="post-title" name="post_title" class="form-control" value="<?php echo esc_attr($post->post_title); ?>" required>
-                </div>
+    <div class="user-wrapper">
+        <div class="user-center-panel">
+            <div class="publish-article-container">
+                <h2>编辑文章</h2>
                 
-                <div class="form-group">
-                    <label for="post-category">分类</label>
-                    <?php
-                    $categories = get_categories(array('hide_empty' => false));
-                    $post_categories = wp_get_post_categories($post_id);
-                    $selected_category = !empty($post_categories) ? $post_categories[0] : '';
-                    ?>
-                    <select id="post-category" name="post_category" class="form-control" required>
-                        <option value="">选择分类</option>
-                        <?php foreach($categories as $category): ?>
-                            <option value="<?php echo $category->term_id; ?>" <?php selected($selected_category, $category->term_id); ?>><?php echo $category->name; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="post-content">文章内容</label>
-                    <?php
-                    // 使用WordPress内置的编辑器函数，配置最简化的TinyMCE
-                    $settings = array(
-                        'tinymce' => array(
-                            'plugins' => 'wordpress,wpautoresize,lists,media,paste,tabfocus',
-                            'toolbar1' => 'bold,italic,underline,blockquote,bullist,numlist,link,wp_adv',
-                            'toolbar2' => 'formatselect,alignleft,aligncenter,alignright,undo,redo',
-                            'wpautop' => true,
-                            'indent' => false,
-                            'elementpath' => false,
-                            'branding' => false,
-                        ),
-                        'quicktags' => true,
-                        'media_buttons' => true,
-                        'textarea_name' => 'post_content',
-                        'textarea_rows' => 15
-                    );
-                    wp_editor($post->post_content, 'post-content', $settings);
-                    ?>
-                </div>
-                
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">更新文章</button>
-                </div>
-            </form>
+                <form id="edit-post-form">
+                    <div class="form-group">
+                        <label for="post-title">文章标题</label>
+                        <input type="text" id="post-title" name="post_title" class="form-control" value="<?php echo esc_attr($post->post_title); ?>" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="post-category">分类</label>
+                        <?php
+                        $categories = get_categories(array('hide_empty' => false));
+                        $post_categories = wp_get_post_categories($post_id);
+                        $selected_category = !empty($post_categories) ? $post_categories[0] : '';
+                        ?>
+                        <select id="post-category" name="post_category" class="form-control" required>
+                            <option value="">选择分类</option>
+                            <?php foreach($categories as $category): ?>
+                                <option value="<?php echo $category->term_id; ?>" <?php selected($selected_category, $category->term_id); ?>><?php echo $category->name; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="post-content">文章内容</label>
+                        <?php
+                        // 使用WordPress内置的编辑器函数，配置最简化的TinyMCE
+                        $settings = array(
+                            'tinymce' => array(
+                                'plugins' => 'wordpress,wpautoresize,lists,media,paste,tabfocus',
+                                'toolbar1' => 'bold,italic,underline,blockquote,bullist,numlist,link,wp_adv',
+                                'toolbar2' => 'formatselect,alignleft,aligncenter,alignright,undo,redo',
+                                'wpautop' => true,
+                                'indent' => false,
+                                'elementpath' => false,
+                                'branding' => false,
+                            ),
+                            'quicktags' => true,
+                            'media_buttons' => true,
+                            'textarea_name' => 'post_content',
+                            'textarea_rows' => 15
+                        );
+                        wp_editor($post->post_content, 'post-content', $settings);
+                        ?>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">更新文章</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
+
 </div>
 
 <script>

@@ -17,7 +17,7 @@
 - feat 新增用户中心文章发布功能
 - feat 新增底部署名检测，移除署名前端显示空白提示
 - fix 解决了移动端css不兼容wordpress顶部工具栏的问题
-- refactor 个人中心整理后
+- refactor 个人中心整理
 
 ### v2.58.0
 - refactor 重构css构建工具
