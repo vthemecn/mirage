@@ -4474,10 +4474,11 @@ body.dark-mode .user-card {
 .user-wrapper {
   width: 100%;
 }
+.user-wrapper > div:last-child { margin-bottom: 0 !important; }
 
 .user-center-panel {
   width: 100%;
-  min-height: 500px;
+  min-height: 200px;
   padding: 20px;
   margin-top: 10px;
   background-color: var(--vt-bg-color-card);
@@ -4647,6 +4648,31 @@ body.dark-mode .user-card {
 }
 
 
+/*****************************************************************************/
+
+
+.detail-widget {
+  position: relative;
+  font-size: 15px;
+}
+
+.detail-item{
+  padding: 20px 0;
+  line-height: 25px;
+}
+.detail-item > *{
+  display: inline-block;
+}
+
+.detail-item .detail-label{
+  min-width: 80px;
+  color: var(--vt-text-color-grey);
+}
+
+.detail-item .private-note{
+  font-size: 12px;
+  clear: both;
+}
 .user-center-panel .media-item {
   padding: 15px 0 !important;
 }
