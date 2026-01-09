@@ -17,5 +17,10 @@ msgstr "您应备份现有的 %s 文件。"
 
 #. translators: %s: wp-config.php
 #: wp-admin/includes/network.php:463
+
 msgid "海市蜃楼"
 msgstr "海市蜃楼"
+
+msgid "keep_theme_footer"
+msgstr "请保留主题底部署名"
+

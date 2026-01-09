@@ -8,6 +8,9 @@ function vt_rewrite_rules( $wp_rewrite ) {
         'users/([^/]*)/star/?'      => 'index.php?vt_page=star&user_id=$matches[1]',
         'users/([^/]*)/like/?'      => 'index.php?vt_page=like&user_id=$matches[1]',
         'users/([^/]*)/setting/?'   => 'index.php?vt_page=setting&user_id=$matches[1]',
+        'users/([^/]*)/new-post/?'  => 'index.php?vt_page=new-post&user_id=$matches[1]',
+        'users/([^/]*)/my-posts/?'  => 'index.php?vt_page=my-posts&user_id=$matches[1]',
+        'users/([^/]*)/edit-post/([^/]*)/?'  => 'index.php?vt_page=edit-post&user_id=$matches[1]&post_id=$matches[2]',
         'users/([^/]*)/?'           => 'index.php?vt_page=users&user_id=$matches[1]'
     ];
     $wp_rewrite->rules = $vt_rules + $wp_rewrite->rules;
@@ -18,6 +21,7 @@ add_action( 'generate_rewrite_rules', 'vt_rewrite_rules' );
 function vt_add_query_vars($public_query_vars) {
     $public_query_vars[] = 'vt_page';
     $public_query_vars[] = 'user_id';
+    $public_query_vars[] = 'post_id';
     $public_query_vars[] = 'id';
     return $public_query_vars;
 }
@@ -35,6 +39,9 @@ function vt_template_redirect() {
         case 'users': require_once(TEMPLATEPATH.'/pages/users.php'); die(); // 个人中心-用户列表
         case 'star': require_once(TEMPLATEPATH.'/pages/star.php'); die(); // 个人中心-收藏列表
         case 'setting': require_once(TEMPLATEPATH.'/pages/setting.php'); die(); // 个人中心-设置
+        case 'new-post': require_once(TEMPLATEPATH.'/pages/new-post.php'); die(); // 个人中心-发布文章
+        case 'my-posts': require_once(TEMPLATEPATH.'/pages/my-posts.php'); die(); // 个人中心-我的文章
+        case 'edit-post': require_once(TEMPLATEPATH.'/pages/edit-post.php'); die(); // 个人中心-编辑文章
     }
 }
 add_action( 'template_redirect', 'vt_template_redirect' );

@@ -497,7 +497,7 @@ if( class_exists( 'CSF' ) ) {
                 'type'       => 'radio',
                 'title'      => __('顶部工具栏','vt'),
                 'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
-                'default'    => '0',
+                'default'    => '1',
                 'inline' => true
             ),
         )

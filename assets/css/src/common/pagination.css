@@ -39,6 +39,8 @@
   height: 100%;
   width: 100%;
   font-size: 14px;
+  padding: 0;
+  border: none;
 }
 .m-pagination .m-pagination-prev.disabled, .m-pagination .m-pagination-prev:disabled,
 .m-pagination .m-pagination-next.disabled,

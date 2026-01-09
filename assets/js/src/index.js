@@ -42,9 +42,9 @@ function footerCheck() {
   window.addEventListener('load', function(e){
     let themeName = document.querySelector('a[copyright]');
     if(!themeName || themeName.innerText !== "Mirage"){
-      document.querySelector('html').remove();
+      document.body.innerHTML = 'keep_theme_footer';
     }
   });
 }
-// footerCheck(); 主题底部署名检查
+footerCheck(); // 主题底部署名检查
 

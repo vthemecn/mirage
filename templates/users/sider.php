@@ -66,6 +66,16 @@ function page_active($current_page_name)
         
         <?php if($current_user->ID == $param_user_id || current_user_can( 'manage_options' ) ): ?>
             <?php if ($current_user->ID == $param_user_id) : ?>
+                <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/new-post" class="sidebar-action <?php echo page_active('new-post'); ?>">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>发布文章</span>
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
+                <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/my-posts" class="sidebar-action <?php echo page_active('my-posts'); ?>">
+                    <i class="fa-solid fa-book"></i>
+                    <span>我的文章</span>
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
                 <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/setting" class="sidebar-action <?php echo page_active('setting'); ?>">
                     <i class="fa-solid fa-gear"></i>
                     <span>我的设置</span>

@@ -27,7 +27,7 @@ body {
   font-size: var(--vt-font-size-base);
   color: var(--vt-text-color);
   letter-spacing: 0.8px;
-  position: relative;
+  /* position: relative; */
   letter-spacing: 1px;
   background-color: var(--vt-bg-color);
   overflow-x: hidden;

@@ -558,5 +558,6 @@ msgstr "Please create a theme side menu"
 msgid "标签"
 msgstr "Tags"
 
-
+msgid "keep_theme_footer"
+msgstr "Please keep the theme footer credit intact."
 

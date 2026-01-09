@@ -2,6 +2,7 @@
 require_once TEMP_DIR . '/api/home.php';
 require_once TEMP_DIR . '/api/star.php';
 require_once TEMP_DIR . '/api/users.php';
+require_once TEMP_DIR . '/api/posts.php';
 
 
 add_action('rest_api_init', function (){
@@ -70,6 +71,43 @@ add_action('rest_api_init', function (){
         }
     ));
 
+    /**
+     * 文章接口
+     */
+    // 发布文章
+    register_rest_route('vtheme/v1', '/posts', array(
+        'methods' => 'POST',
+        'callback' => function (\WP_REST_Request $request) {
+            $postsController = new \vtheme\api\Posts();
+            return $postsController->create($request);
+        }
+    ));
+    
+    // 获取文章列表
+    register_rest_route('vtheme/v1', '/posts', array(
+        'methods' => 'GET',
+        'callback' => function (\WP_REST_Request $request) {
+            $postsController = new \vtheme\api\Posts();
+            return $postsController->index($request);
+        }
+    ));
+    
+    // 更新文章
+    register_rest_route('vtheme/v1', '/posts/(?P<id>\d+)', array(
+        'methods' => 'POST',
+        'callback' => function (\WP_REST_Request $request) {
+            $postsController = new \vtheme\api\Posts();
+            return $postsController->update($request);
+        }
+    ));
+    
+    // 删除文章
+    register_rest_route('vtheme/v1', '/posts/(?P<id>\d+)', array(
+        'methods' => 'DELETE',
+        'callback' => function (\WP_REST_Request $request) {
+            $postsController = new \vtheme\api\Posts();
+            return $postsController->delete($request);
+        }
+    ));
+
 });
-
-

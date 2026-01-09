@@ -2,6 +2,9 @@
 $vt_config = vt_get_config();
 
 
+footerCheck();
+
+
 function add_theme_support_all()
 {
     //文章编辑页，没有页面属性选择模板，添加注释 Template Name

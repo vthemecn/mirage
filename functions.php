@@ -49,12 +49,17 @@ require_once TEMP_DIR . '/api/routes.php';
 
 function footerCheck()
 {
-    $footer_str = file_get_contents(TEMP_DIR . '/footer.php');
-    if(!strstr($footer_str, base64_decode('TWlyYWdlVg=='))){
-        die();
+    global $pagenow;
+
+    if ( $pagenow === 'wp-login.php' ) return;
+
+    if ( ! is_admin() && ! wp_doing_ajax() && ! wp_doing_cron() && ! defined('WP_CLI') ) {
+        $footer_str = file_get_contents(TEMP_DIR . '/footer.php');
+        if(!strstr($footer_str, base64_decode('TWlyYWdl'))){
+            die(__('keep_theme_footer','vt'));
+        }
     }
 }
-// footerCheck();
 
 
 /*
@@ -368,5 +373,21 @@ function vt_get_time($time){
     return wordpress_format_time_ago($time);
 }
 
+// 添加发布文章页面所需的TinyMCE编辑器支持
+function enqueue_tinymce_for_frontend() {
+    global $wp_query;
+    
+    // 检查当前是否在用户中心发布文章页面
+    $vt_page = isset($wp_query->query_vars['vt_page']) ? $wp_query->query_vars['vt_page'] : null;
+    $current_user = wp_get_current_user();
+    
+    if (($vt_page === 'new-post' || $vt_page === 'my-posts') && $current_user->exists()) {
+        // 为前端加载TinyMCE编辑器
+        wp_enqueue_editor();
+    }
+}
 
+add_action('wp_enqueue_scripts', 'enqueue_tinymce_for_frontend');
 
+// 加载管理员审核功能
+require_once get_template_directory() . '/inc/admin-posts.php';
