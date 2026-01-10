@@ -7,15 +7,28 @@
   padding: 0 15px;
 }
 
-.field-text label {
+.field > label {
   display: block;
   font-size: 15px;
+  font-weight: 400;
   line-height: 22px;
-  margin-bottom: 3px;
+  margin-bottom: 6px;
 }
 
-.field-text label,
-.field-text input,
+.field .radio-group label{
+  font-size: 14px;
+  margin: 0 15px 0 0;
+}
+.field .radio-group input[type="radio"]{
+  position: relative;
+  top: 1px;
+}
+
+
+/* .field-text label, */
+.field-text input[type="text"],
+.field-text input[type="password"],
+.field-text input[type="email"],
 .field-text .form-help,
 .field-text textarea {
   width: 100%;
@@ -70,8 +83,16 @@ input:disabled, textarea:disabled {
   background-color: var(--vt-bg-color-grey);
 }
 
+
+
+
+
+
 @media only screen and (min-width: 900px) {
   .field {
     width: 500px;
   }
 }
+
+
+

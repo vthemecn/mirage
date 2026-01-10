@@ -17,6 +17,48 @@ get_header();
 ?>
 
 
+<style>
+/* .user-center-panel .form .field-textarea {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-center-panel .form .field-textarea label {
+    margin-bottom: 5px;
+}
+
+.user-center-panel .form .field-textarea textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    resize: vertical;
+} 
+
+.user-center-panel .field-text.gender .radio-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.user-center-panel .field-text.gender .radio-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.user-center-panel .field-text.gender label{
+    width: auto !important;
+}
+.user-center-panel .field-text.gender input[type="radio"] {
+    margin: 0;
+}*/
+
+.radio-group {
+
+}
+</style>
 
 <div class="user-center-container">
     <?php // require_once get_template_directory() . '/templates/users/banner.php'; ?>
@@ -36,28 +78,33 @@ get_header();
                     <label for="nickname">昵称:</label>
                     <input name="nickname" id="nickname" type="text" value="<?php echo $param_user->display_name?>">
                 </div>
-                <div class="field field-select">
-                    <label for="gender">性别:</label>
-                    <select name="gender" id="gender">
-                        <option value="0" <?php echo $gender == '0' ? 'selected' : ''; ?>>保密</option>
-                        <option value="1" <?php echo $gender == '1' ? 'selected' : ''; ?>>男</option>
-                        <option value="2" <?php echo $gender == '2' ? 'selected' : ''; ?>>女</option>
-                    </select>
+                <div class="field gender">
+                    <label>性别:</label>
+                    <div class="radio-group">                        
+                        <label for="gender_1">
+                            <input type="radio" name="gender" id="gender_1" value="1" <?php echo $gender == '1' ? 'checked' : ''; ?>>    
+                            男
+                        </label>
+                    
+                        <label for="gender_2">
+                            <input type="radio" name="gender" id="gender_2" value="2" <?php echo $gender == '2' ? 'checked' : ''; ?>>    
+                            女
+                        </label>
+
+                        <label for="gender_0">
+                            <input type="radio" name="gender" id="gender_0" value="0" <?php echo $gender == '0' ? 'checked' : ''; ?>>
+                            保密
+                        </label>
+                    </div>
                 </div>
                 <div class="field field-text">
                     <label for="email">邮箱:</label>
-                    <input name="email" id="email" type="email" value="<?php echo $param_user->user_email?>" <?php echo ($param_user_id == $current_user->ID) ? '' : 'disabled'; ?>>
-                    <?php if($param_user_id != $current_user->ID): ?>
-                    <span>仅自己可见</span>
-                    <?php endif; ?>
+                    <input name="email" id="email" type="email" value="<?php echo $param_user->user_email?>" disabled>
                 </div>
-                <div class="field field-text">
-                    <label for="mobile">手机号:</label>
-                    <input name="mobile" id="mobile" type="text" value="<?php echo get_user_meta($param_user_id, 'mobile', true); ?>" <?php echo ($param_user_id == $current_user->ID) ? '' : 'disabled'; ?>>
-                </div>
-                <div class="field field-textarea">
+                <!-- 手机号字段已隐藏 -->
+                <div class="field field-text textarea">
                     <label for="description">签名:</label>
-                    <textarea name="description" id="description" cols="20" rows="6"><?php echo $param_user->description?></textarea>
+                    <textarea name="description" id="description" cols="30" rows="5"><?php echo $param_user->description?></textarea>
                 </div>
                 <div class="field">
                     <button class="btn btn-primary update-user">确定</button>
@@ -80,10 +127,10 @@ document.querySelector(".update-user").addEventListener("click", function(e) {
     
     var requestData = {};
     requestData.nickname = document.querySelector("input[name='nickname']").value;
-    requestData.gender = document.querySelector("select[name='gender']").value;
+    requestData.gender = document.querySelector("input[name='gender']:checked").value;
     requestData.description = document.querySelector("textarea[name='description']").value;
-    requestData.mobile = document.querySelector("input[name='mobile']").value;
-    requestData.email = document.querySelector("input[name='email']").value;
+    // 不包含手机号和邮箱，因为它们被禁用了
+    requestData.email = "<?php echo $param_user->user_email?>"; // 使用原始邮箱值
 
     fetch(url, {
         method: 'POST',
