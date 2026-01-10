@@ -1,30 +1,16 @@
-<?php
-$default_avatar = get_bloginfo('template_directory') . '/assets/images/avatar.jpg';
-$avatar = isset($param_user->avatar) ? $param_user->avatar : $default_avatar; 
-
-$upload_avatar_button = $param_user_id ==  $current_user->ID ? 'upload-avatar-button' : '';
-?>
-
-<div class="user-panel">
-    <div class="user-avatar <?php echo $upload_avatar_button?>">
-        <?php
-        /* <a href="javascript:;" class="update-avatar-button">
-            <i class="iconfont">&#xe77f;</i>修改头像
-        </a> */ 
-        ?>
-        <img src="<?php echo $avatar ?>" class="avatar">
-    </div>
-    <div class="user-info">
-        <div class="nickname">
-            <?php echo $param_user->display_name; ?>
+<div class="user-center-container">
+    <div class="profile-hero">
+        <div class="hero-bg">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/banner.jpg" class="hero-bg-img" alt="Profile Banner" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, var(--theme-color, #5a667d) 0%, #7f8fa4 100%)'">
+        </div>
+        <div class="hero-content">
+            <div class="hero-avatar-widget">
+                <?php echo get_avatar($param_user->ID, 80, '', '', ''); ?>
+            </div>
+            <div class="hero-user-info">
+                <h1 class="hero-display-name"><?php echo esc_html($param_user->display_name); ?></h1>
+                <p class="hero-bio"><?php echo esc_html($param_user->description ? $param_user->description : '暂无个人简介'); ?></p>
+            </div>
         </div>
     </div>
 </div>
-
-<form id="avatar_upload" method="post" 
-    action="<?php echo home_url('/wp-json/vtheme/v1/upload/upload-avatar'); ?>?_wpnonce=<?php echo wp_create_nonce('wp_rest'); ?>" 
-    enctype="multipart/form-data" style="display: none;">
-    <input type="file" name="avatar-input" id="avatar-input" multiple="false" />
-    // <input type="hidden" name="post_id" id="post_id" value="55" />
-    <input id="submit_avatar-input" name="submit_avatar-input" type="submit" value="Upload" />
-</form>

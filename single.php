@@ -84,6 +84,14 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     <i class="fa-solid fa-clock"></i><?= vt_get_time(get_the_time('Y-m-d H:i:s')) ?>
                 </div>
 
+                <?php
+                $post_categories = wp_get_post_categories($vt_post_id);
+                ?>
+                <div class='meta-item'>
+                    <i class="fa-solid fa-folder"></i><?php foreach ($post_categories as $c): ?><?php $cat = get_category($c); ?><a href="<?=esc_url(get_category_link($cat->term_id))?>" class="category-meta-item"  target="_blank"><?=$cat->name?></a>
+                    <?php endforeach; ?>
+                </div>
+
                 <div class='meta-item hit-conuter'>
                     <i class="fa-solid fa-eye"></i><?php echo getPostViews(get_the_ID()); ?>
                 </div>
@@ -139,18 +147,6 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     </div>
                 <?php endif ?>
 
-                <?php
-                $post_categories = wp_get_post_categories($vt_post_id);
-                ?>
-                <div class="tags-widget">
-                    <div class="icon"><i class="fa-solid fa-folder-open"></i></div>
-                    <?php foreach ($post_categories as $c): ?>
-                        <?php $cat = get_category($c); ?>
-                        <div class="tag-item">
-                            <a href="<?=esc_url(get_category_link($cat->term_id))?>" target="_blank"><?=$cat->name?></a>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
 
                 <?php
                 $tags = get_the_tags($vt_post_id);

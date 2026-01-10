@@ -20,28 +20,7 @@ function page_active($current_page_name)
 ?>
 
 <div class="user-center-sidebar">
-    <div class="user-profile">
-        <div class="user-avatar <?php echo $upload_avatar_button?>">
-            <?php
-            /* <a href="javascript:;" class="update-avatar-button">
-                <i class="iconfont">&#xe77f;</i>修改头像
-            </a> */ 
-            ?>
-            <img src="<?= $avatar ?>" class="avatar">
-        </div>
-        <div class="user-info">
-            <div class="nickname">
-                <?php echo $param_user->display_name; ?>
-            </div>
-        </div>
-        <form id="avatar_upload" method="post"
-            action="<?php echo home_url('/wp-json/vtheme/v1/upload/upload-avatar'); ?>?_wpnonce=<?php echo wp_create_nonce('wp_rest'); ?>" 
-            enctype="multipart/form-data" style="display: none;">
-            <input type="file" name="avatar-input" id="avatar-input" multiple="false" />
-            // <input type="hidden" name="post_id" id="post_id" value="55" />
-            <input id="submit_avatar-input" name="submit_avatar-input" type="submit" value="Upload" />
-        </form>
-    </div>
+    <?php /* <div class="user-profile"></div> */ ?>
 
     <div class="user-nav">
         <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>" class="sidebar-action <?php echo page_active('users'); ?>">

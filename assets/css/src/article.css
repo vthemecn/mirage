@@ -50,15 +50,28 @@
   object-fit: cover;
 }
 
-.article-box .meta-item {
+.article-box .meta-item,
+.article-box .meta-item a {
   margin-right: 30px;
+  font-size: 14px;
+  color: var(--vt-text-color-grey);
 }
+
 .article-box .meta-item i {
   font-size: 13px;
   margin: 0 2px 0 0;
 }
 
-.meta-item.comment-counter { display:none; }
+.article-box .category-meta-item{
+  margin-right: 3px !important;
+}
+
+
+
+
+.meta-item.comment-counter {
+  display:none;
+}
 @media only screen and (min-width:900px){
   .meta-item.comment-counter { display:block; }
 }

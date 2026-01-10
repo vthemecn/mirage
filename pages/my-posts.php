@@ -51,6 +51,10 @@ $paginator = new \Paginator($total_posts, $posts_per_page);
 get_header();
 ?>
 
+
+<?php require_once get_template_directory() . '/templates/users/banner.php'; ?>
+
+
 <div class="user-center-container">
     <?php require_once get_template_directory() . '/templates/users/sider.php'; ?>
 
@@ -61,26 +65,22 @@ get_header();
                 
                 <?php if (empty($my_posts)): ?>
                     <p>暂无文章</p>
-                <?php else: ?>
-                    <table class="table my-posts-table">
-                        <thead>
-                            <tr>
-                                <th>标题</th>
-                                <th>分类</th>
-                                <th>状态</th>
-                                <th>发布时间</th>
-                                <th>操作</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($my_posts as $post): ?>
-                                <tr>
-                                    <td>
-                                        <a href="<?php echo get_permalink($post->ID); ?>" target="_blank">
-                                            <?php echo esc_html($post->post_title); ?>
-                                        </a>
-                                    </td>
-                                    <td>
+                <?php endif; ?>
+
+                <?php if ($my_posts): ?>
+                    <div class="user-likes-list">
+                        <?php foreach($my_posts as $k=>$post): ?>
+                        <div class="user-like-item">
+                            <a class="user-like-thumbnail" href="<?php echo get_permalink($post->ID) ?>">
+                                <img src="<?= vt_get_thumbnail_url($post->ID, 'medium') ?>" alt="<?php the_title(); ?>">
+                            </a>
+                            <div class="like-item-body">
+                                <a href="<?php echo get_permalink($post->ID) ?>">
+                                    <?php  echo $post->post_title ?>
+                                </a>
+                                <div class="like-item-action">
+                                    <div class="like-action-item">
+                                        <i class="fa-solid fa-folder"></i>
                                         <?php
                                         $categories = get_the_category($post->ID);
                                         if (!empty($categories)) {
@@ -89,8 +89,14 @@ get_header();
                                             echo '未分类';
                                         }
                                         ?>
-                                    </td>
-                                    <td>
+                                    </div>
+
+                                    <div class="like-action-item">
+                                        <i class="fa-solid fa-clock"></i>
+                                        <?php echo get_the_date('Y-m-d H:i', $post->ID); ?>
+                                    </div>
+
+                                    <div class="like-action-item">
                                         <?php
                                         switch ($post->post_status) {
                                             case 'publish':
@@ -109,28 +115,26 @@ get_header();
                                                 echo '<span class="status status-unknown">' . $post->post_status . '</span>';
                                         }
                                         ?>
-                                    </td>
-                                    <td><?php echo get_the_date('Y-m-d H:i', $post->ID); ?></td>
-                                    <td>
-                                        <a href="<?php echo home_url('/users/' . $param_user_id . '/edit-post/' . $post->ID); ?>" class="btn btn-sm btn-primary">编辑</a>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                    
-                    <!-- 分页 -->
-                    <div class="pagination-container">
-                        <?php 
-                            // 设置查询参数，确保URL正确
-                            $paginator->setQueryParams(array(
-                                'user_id' => $param_user_id,
-                                'vt_page' => 'my-posts'
-                            ));
-                            echo $paginator->links();
-                        ?>
+                                    </div>
+                                </div>
+                                <a href="<?php echo home_url('/users/' . $param_user_id . '/edit-post/' . $post->ID); ?>" class="btn btn-sm btn-primary like-edit-btn">编辑</a>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
+
+                <!-- 分页 -->
+                <div class="pagination-container">
+                    <?php 
+                        // 设置查询参数，确保URL正确
+                        $paginator->setQueryParams(array(
+                            'user_id' => $param_user_id,
+                            'vt_page' => 'my-posts'
+                        ));
+                        echo $paginator->links();
+                    ?>
+                </div>
             </div>
         </div>
     
@@ -139,23 +143,7 @@ get_header();
 </div>
 
 <style>
-.my-posts-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
 
-.my-posts-table th,
-.my-posts-table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.my-posts-table th {
-    background-color: #f5f5f5;
-    font-weight: bold;
-}
 
 .status {
     padding: 4px 8px;
@@ -191,44 +179,6 @@ get_header();
 .pagination-container {
     margin-top: 20px;
     text-align: center;
-}
-
-.m-pagination {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.m-pager {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 10px 0;
-}
-
-.m-pager-number {
-    margin: 0 5px;
-}
-
-.m-pager-number a,
-.m-pager-number span {
-    display: block;
-    padding: 8px 12px;
-    text-decoration: none;
-    border: 1px solid #ddd;
-    color: #333;
-}
-
-.m-pager-number.active a,
-.m-pager-number.active span {
-    background-color: #007cba;
-    color: white;
-    border-color: #007cba;
-}
-
-.m-pagination-prev,
-.m-pagination-next {
-    margin: 0 10px;
 }
 </style>
 

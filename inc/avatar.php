@@ -23,8 +23,11 @@ add_action( 'user_new_form', 'vt_add_profile_fields' );
  */
 function vt_update_profile($user_id){
     if( current_user_can('edit_users') ){
-        $avatar_id = empty($_POST['vt_avatar_id']) ? '' : $_POST['vt_avatar_id'];
-        update_user_meta($user_id, 'user_avatar_attachment_id', $avatar_id);
+        // 检查POST数据中是否提供了vt_avatar_id
+        if (isset($_POST['vt_avatar_id'])) {
+            $avatar_id = empty($_POST['vt_avatar_id']) ? '' : $_POST['vt_avatar_id'];
+            update_user_meta($user_id, 'user_avatar_attachment_id', $avatar_id);
+        }
     }
 }
 add_action('profile_update', 'vt_update_profile');

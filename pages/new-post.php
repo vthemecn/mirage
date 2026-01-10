@@ -23,6 +23,10 @@ if (!$has_auth) {
 get_header();
 ?>
 
+
+<?php require_once get_template_directory() . '/templates/users/banner.php'; ?>
+
+
 <div class="user-center-container">
     <?php require_once get_template_directory() . '/templates/users/sider.php'; ?>
 

@@ -60,6 +60,10 @@ get_header();
 }
 </style>
 
+
+<?php require_once get_template_directory() . '/templates/users/banner.php'; ?>
+
+
 <div class="user-center-container">
     <?php // require_once get_template_directory() . '/templates/users/banner.php'; ?>
 
