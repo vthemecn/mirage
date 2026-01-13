@@ -3,48 +3,6 @@ namespace vtheme\api;
 
 class Posts {
     
-    private function filter_external_images($content) {
-        // 获取当前站点的基础URL
-        $site_url = site_url();
-        
-        // 使用DOMDocument来解析HTML内容
-        $dom = new \DOMDocument();
-        // 使用LIBXML_NOERROR标志抑制错误输出，避免因HTML格式问题导致的警告
-        $dom->loadHTML('<?xml encoding="UTF-8">' . $content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_NOERROR);
-        
-        $images = $dom->getElementsByTagName('img');
-        $removed_nodes = array();
-        
-        foreach ($images as $img) {
-            $src = $img->getAttribute('src');
-            
-            // 检查src属性是否为外部链接
-            if (filter_var($src, FILTER_VALIDATE_URL)) {
-                // 解析URL以获取主机部分
-                $src_host = parse_url($src, PHP_URL_HOST);
-                $site_host = parse_url($site_url, PHP_URL_HOST);
-                
-                // 如果图片链接不在当前站点域内，则标记为删除
-                if ($src_host !== $site_host) {
-                    $removed_nodes[] = $img;
-                }
-            }
-        }
-        
-        // 移除外部图片标签
-        foreach ($removed_nodes as $node) {
-            $node->parentNode->removeChild($node);
-        }
-        
-        // 输出处理后的HTML内容
-        $output = $dom->saveHTML();
-        
-        // 移除loadHTML添加的额外HTML标签
-        $output = str_replace(['<?xml encoding="UTF-8">', '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">'], '', $output);
-        
-        return $output;
-    }
-    
     public function create($request) {
         $current_user = wp_get_current_user();
         
@@ -60,9 +18,6 @@ class Posts {
         if (empty($title) || empty($content)) {
             return new \WP_Error('invalid_data', '标题和内容不能为空', array('status' => 400));
         }
-        
-        // 过滤外部图片链接
-        $content = $this->filter_external_images($content);
         
         // 验证分类ID是否存在
         if (!empty($category_id) && !get_term_by('term_id', $category_id, 'category')) {
@@ -195,9 +150,6 @@ class Posts {
         if (empty($title) || empty($content)) {
             return new \WP_Error('invalid_data', '标题和内容不能为空', array('status' => 400));
         }
-        
-        // 过滤外部图片链接
-        $content = $this->filter_external_images($content);
         
         // 更新文章
         $post_data = array(

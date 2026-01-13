@@ -39,7 +39,7 @@ require_once TEMP_DIR . '/inc/setting.php';
 require_once TEMP_DIR . '/inc/switch.php';
 require_once TEMP_DIR . '/inc/shortcode.php';
 require_once TEMP_DIR . '/inc/category.php';
-require_once TEMP_DIR . '/inc/avatar.php';
+require_once TEMP_DIR . '/inc/user.php';
 require_once TEMP_DIR . '/inc/rewrite.php';
 require_once TEMP_DIR . '/inc/meta-api.php';
 require_once TEMP_DIR . '/inc/helper.php';

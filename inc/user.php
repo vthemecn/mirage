@@ -12,6 +12,35 @@ function vt_add_profile_fields( $user ) {
     ?>
     <input type="hidden" name="vt_avatar_id" id="vt_avatar_id" value="<?php echo !empty($avatar_id) ? $avatar_id : ''; ?>" />
     <?php
+    
+    // 获取当前用户会员等级
+    $membership_level = ($user!=='add-new-user') ? get_user_meta($user->ID, 'membership_level', true) : 'free';
+    $membership_level = $membership_level !=="" ? $membership_level : 'free';
+    echo '$membership_level: '.$membership_level;
+
+    // 显示会员等级选择
+    echo '<h3>' . __('会员等级', 'vt') . '</h3>';
+    echo '<table class="form-table">';
+    echo '<tr>';
+    echo '<th><label for="membership_level">' . __('等级选择', 'vt') . '</label></th>';
+    echo '<td>';
+    
+    // 定义会员等级选项
+    $levels = array(
+        'free' => __('普通用户', 'vt'),
+        'vip' => __('VIP用户', 'vt'),
+        'svip' => __('SVIP用户', 'vt')
+    );
+    
+    foreach ($levels as $level_key => $level_label) {
+        $checked = ($membership_level === $level_key) ? ' checked="checked"' : '';
+        echo '<p><input type="radio" id="level_'.$level_key.'" name="membership_level" value="'.$level_key.'"'.$checked.'> ';
+        echo '<label for="level_'.$level_key.'">'.$level_label.'</label></p>';
+    }
+    
+    echo '</td>';
+    echo '</tr>';
+    echo '</table>';
 }
 add_action( 'show_user_profile', 'vt_add_profile_fields' );
 add_action( 'edit_user_profile', 'vt_add_profile_fields' );
@@ -19,7 +48,7 @@ add_action( 'user_new_form', 'vt_add_profile_fields' );
 
 
 /**
- * 更新用户头像
+ * 更新用户头像和会员等级
  */
 function vt_update_profile($user_id){
     if( current_user_can('edit_users') ){
@@ -27,6 +56,12 @@ function vt_update_profile($user_id){
         if (isset($_POST['vt_avatar_id'])) {
             $avatar_id = empty($_POST['vt_avatar_id']) ? '' : $_POST['vt_avatar_id'];
             update_user_meta($user_id, 'user_avatar_attachment_id', $avatar_id);
+        }
+        
+        // 检查POST数据中是否提供了会员等级
+        if (isset($_POST['membership_level'])) {
+            $membership_level = sanitize_text_field($_POST['membership_level']);
+            update_user_meta($user_id, 'membership_level', $membership_level);
         }
     }
 }
@@ -69,4 +104,10 @@ function set_profile_avatar() {
 add_filter( 'user_profile_picture_description', 'set_profile_avatar', 1 );
 
 
-
+/**
+ * 获取用户会员等级
+ */
+function get_user_membership_level($user_id) {
+    $level = get_user_meta($user_id, 'membership_level', true);
+    return !empty($level) ? $level : 'free';
+}
