@@ -16,7 +16,6 @@ function vt_add_profile_fields( $user ) {
     // 获取当前用户会员等级
     $membership_level = ($user!=='add-new-user') ? get_user_meta($user->ID, 'membership_level', true) : 'free';
     $membership_level = $membership_level !=="" ? $membership_level : 'free';
-    echo '$membership_level: '.$membership_level;
 
     // 显示会员等级选择
     echo '<h3>' . __('会员等级', 'vt') . '</h3>';
@@ -110,4 +109,63 @@ add_filter( 'user_profile_picture_description', 'set_profile_avatar', 1 );
 function get_user_membership_level($user_id) {
     $level = get_user_meta($user_id, 'membership_level', true);
     return !empty($level) ? $level : 'free';
+}
+
+/**
+ * 在用户列表中添加会员等级列
+ */
+add_filter('manage_users_columns', 'add_membership_level_column');
+function add_membership_level_column($columns) {
+    $columns['membership_level'] = __('会员等级', 'vt');
+    return $columns;
+}
+
+/**
+ * 填充会员等级列的数据
+ */
+add_filter('manage_users_custom_column', 'show_membership_level_column_content', 10, 3);
+function show_membership_level_column_content($value, $column_name, $user_id) {
+    if ('membership_level' !== $column_name) {
+        return $value;
+    }
+
+    $level = get_user_meta($user_id, 'membership_level', true);
+    
+    // 如果没有设置等级，默认为 free
+    if (empty($level)) {
+        $level = 'free';
+    }
+    
+    // 定义等级对应的显示文本
+    $levels = array(
+        'free' => __('普通用户', 'vt'),
+        'vip' => __('VIP用户', 'vt'),
+        'svip' => __('SVIP用户', 'vt')
+    );
+    
+    return isset($levels[$level]) ? $levels[$level] : $levels['free'];
+}
+
+/**
+ * 使会员等级列可排序
+ */
+add_filter('manage_users_sortable_columns', 'add_membership_level_column_sortable');
+function add_membership_level_column_sortable($columns) {
+    $columns['membership_level'] = 'membership_level';
+    return $columns;
+}
+
+/**
+ * 处理用户列表排序
+ */
+add_action('pre_get_users', 'handle_membership_level_column_sorting');
+function handle_membership_level_column_sorting($query) {
+    if (!is_admin() || !$query->is_main_query()) {
+        return;
+    }
+    
+    if ('membership_level' === $query->get('orderby')) {
+        $query->set('meta_key', 'membership_level');
+        $query->set('orderby', 'meta_value');
+    }
 }

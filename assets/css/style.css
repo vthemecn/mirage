@@ -4525,17 +4525,44 @@ body.dark-mode .user-card {
 }
 
 .hero-display-name {
-  margin: 0 0 6px 0;
+  margin: 5px 0 6px 0;
   font-size: 20px;
   font-weight: 600;
   color: var(--text-color, #333);
   line-height: 1.3;
 }
+.hero-level {
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 500;
+  display: inline-block;
+  border-radius: var(--vt-border-radius);
+  color: #595d69;
+  background-color: #cecece;
+  padding: 3px 3px;
+  transform: scale(0.9);
+  position: relative;
+  top: -1px;
+}
+.hero-level i {
+  font-size: 13px;
+  margin: 0 3px 0 0;
+}
+.hero-level.vip {
+  color: #0cbc87;
+  background-color: #afffe7;
+}
+.hero-level.svip {
+  color: #D4AF37; /* 金属光泽 */
+  background-color: #FFF599; /* 光泽背景 */
+}
+
+/* .hero-level.svip { background-color: var(--vt-color-danger); } */
 
 .hero-bio {
   margin: 0;
   color: var(--text-color-secondary, #666);
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.4;
 }
 
