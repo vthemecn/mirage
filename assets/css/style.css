@@ -623,10 +623,10 @@ a:hover {
   border-color: var(--vt-color-primary);
 }
 
-.field-text :invalid {
+/* .field-text :invalid {
   border-color: var(--vt-color-danger);
   box-shadow: 0 0 5px rgba(229, 43, 37, 0.5);
-}
+} */
 
 .form-help {
   display: block;
@@ -664,7 +664,10 @@ input:disabled, textarea:disabled {
 
 @media only screen and (min-width: 900px) {
   .field {
-    width: 500px;
+    width: 100%;
+  }
+  .field .form-control{
+    max-width: 500px;
   }
 }
 

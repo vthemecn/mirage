@@ -31,17 +31,7 @@ $is_owner_or_admin = ($param_user_id == $current_user->ID || current_user_can('m
             <i class="fa-solid fa-user"></i><span>概览</span>
             <i class="fa-solid fa-angle-right"></i>
         </a>
-        
-        <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/star" class="sidebar-action <?php echo page_active('star'); ?>">
-            <i class="fa-solid fa-star"></i><span>收藏</span>
-            <i class="fa-solid fa-angle-right"></i>
-        </a>
-        
-        <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/like" class="sidebar-action <?php echo page_active('like'); ?>">
-            <i class="fa-solid fa-thumbs-up"></i><span>点赞</span>
-            <i class="fa-solid fa-angle-right"></i>
-        </a>
-        
+
         <?php if($is_owner_or_admin ): ?>
             <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/new-post" class="sidebar-action <?php echo page_active('new-post'); ?>">
                 <i class="fa-solid fa-plus"></i>
@@ -53,6 +43,16 @@ $is_owner_or_admin = ($param_user_id == $current_user->ID || current_user_can('m
         <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/my-posts" class="sidebar-action <?php echo page_active('my-posts'); ?>">
             <i class="fa-solid fa-book"></i>
             <span>发布的</span>
+            <i class="fa-solid fa-angle-right"></i>
+        </a>
+        
+        <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/star" class="sidebar-action <?php echo page_active('star'); ?>">
+            <i class="fa-solid fa-star"></i><span>收藏</span>
+            <i class="fa-solid fa-angle-right"></i>
+        </a>
+        
+        <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/like" class="sidebar-action <?php echo page_active('like'); ?>">
+            <i class="fa-solid fa-thumbs-up"></i><span>点赞</span>
             <i class="fa-solid fa-angle-right"></i>
         </a>
         
