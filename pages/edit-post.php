@@ -129,6 +129,7 @@ get_header();
                     
                     <div class="field">
                         <button type="submit" class="btn btn-primary">更新文章</button>
+                        <button type="button" id="delete-post-btn" class="btn btn-danger" style="margin-left: 10px;">删除文章</button>
                     </div>
                 </form>
             </div>
@@ -414,6 +415,34 @@ document.addEventListener('DOMContentLoaded', function() {
                     alert('更新失败：' + error.message);
                 });
             });
+        });
+    }
+    
+    // 删除文章按钮事件
+    const deletePostBtn = document.getElementById('delete-post-btn');
+    if (deletePostBtn) {
+        deletePostBtn.addEventListener('click', function() {
+            if (confirm('确定要删除这篇文章吗？此操作不可恢复！')) {
+                fetch('<?php echo home_url('/wp-json/vtheme/v1/posts/' . $post_id); ?>', {
+                    method: 'DELETE',
+                    headers: {
+                        'X-WP-Nonce': '<?php echo wp_create_nonce('wp_rest'); ?>'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('文章删除成功！');
+                        // 跳转到我的文章列表页
+                        window.location.href = '<?php echo home_url("/users/{$param_user_id}/my-posts"); ?>';
+                    } else {
+                        alert('删除失败：' + (data.message || '未知错误'));
+                    }
+                })
+                .catch(error => {
+                    alert('删除失败：' + error.message);
+                });
+            }
         });
     }
 });
