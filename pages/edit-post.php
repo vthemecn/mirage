@@ -69,8 +69,8 @@ get_header();
                                 <input type="file" id="featured-image" name="featured_image" accept="image/*" style="display: none;">
                                 <button type="button" class="btn btn-light" id="selectImageBtn">选择图片</button>
                             </div>
-                            <div class="image-preview" id="imagePreview" style="<?php echo get_post_meta($post->ID, 'featured_image', true) ? 'display: block;' : 'display: none;'; ?>">
-                                <img id="previewImage" src="<?php echo wp_get_attachment_url(get_post_meta($post->ID, 'featured_image', true)); ?>" alt="预览图">
+                            <div class="image-preview" id="imagePreview" style="<?php echo get_post_thumbnail_id($post->ID) ? 'display: block;' : 'display: none;'; ?>">
+                                <img id="previewImage" src="<?php echo wp_get_attachment_image_url(get_post_thumbnail_id($post->ID), 'medium'); ?>" alt="预览图">
                                 <button type="button" class="btn btn-sm btn-danger" id="removeImageBtn">移除图片</button>
                             </div>
                         </div>
@@ -82,23 +82,44 @@ get_header();
                         // 使用WordPress内置的编辑器函数，配置最简化的TinyMCE
                         $settings = array(
                             'tinymce' => array(
-                                'plugins' => 'wordpress,wpautoresize,lists,media,paste,tabfocus,fullscreen,image',
-                                'toolbar1' => 'bold,italic,underline,blockquote,bullist,numlist,link,wp_adv',
-                                'toolbar2' => 'formatselect,alignleft,aligncenter,alignright,|,image,|,undo,redo',
+                                'plugins' => 'wordpress,wpautoresize,lists,media,paste,tabfocus,image',
+                                'toolbar1' => 'bold,italic,underline,blockquote,bullist,numlist,link,|,image,|,undo,redo',
+                                'toolbar2' => '',
                                 'wpautop' => true,
                                 'indent' => false,
                                 'elementpath' => false,
                                 'branding' => false,
-                                'paste_data_images' => false,
-                                'automatic_uploads' => false,
-                                'file_picker_types' => 'image',
-                                'image_advtab' => false, // 不显示高级选项卡
-                                'image_class_list' => null,
+                                'images_upload_handler' => 'function(blobInfo, success, failure, progress) {
+                                    var formData = new FormData();
+                                    formData.append("image", blobInfo.blob(), blobInfo.filename());
+
+                                    fetch("' . home_url('/wp-json/vtheme/v1/upload/image') . '", {
+                                        method: "POST",
+                                        body: formData,
+                                        headers: {
+                                            "X-WP-Nonce": "' . wp_create_nonce('wp_rest') . '"
+                                        }
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if (data.success) {
+                                            success(data.url);
+                                        } else {
+                                            failure(data.message || "上传失败");
+                                        }
+                                    })
+                                    .catch(error => {
+                                        failure("上传过程中发生错误");
+                                    });
+                                }',
+                                'image_advtab' => false,
                                 'image_description' => false,
                                 'image_title' => false,
+                                'image_dimensions' => false,
+                                'paste_data_images' => false,
                             ),
                             'quicktags' => true,
-                            'media_buttons' => false, // 隐藏顶部媒体按钮
+                            'media_buttons' => false,
                             'textarea_name' => 'post_content',
                             'textarea_rows' => 15
                         );
@@ -226,120 +247,6 @@ get_header();
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    function customImageUploadHandler(blobInfo, success, failure, progress) {
-        const formData = new FormData();
-        formData.append('image', blobInfo.blob(), blobInfo.filename());
-
-        fetch('<?php echo home_url('/wp-json/vtheme/v1/upload/image'); ?>', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'X-WP-Nonce': '<?php echo wp_create_nonce('wp_rest'); ?>'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                success(data.url);
-            } else {
-                failure(data.message || '上传失败');
-            }
-        })
-        .catch(error => {
-            failure('上传过程中发生错误');
-        });
-    }
-
-    function customImageUploadCallback(callback, value, meta) {
-        // 只允许上传图片，不允许远程URL
-        if (meta.filetype === 'image') {
-            // 打开文件选择对话框
-            const input = document.createElement('input');
-            input.setAttribute('type', 'file');
-            input.setAttribute('accept', 'image/*');
-            
-            input.onchange = function() {
-                const file = this.files[0];
-                
-                if (!file) {
-                    callback('', {alt: ''});
-                    return;
-                }
-                
-                // 验证文件类型
-                if (!file.type.match('image.*')) {
-                    alert('请选择图片文件！');
-                    callback('', {alt: ''});
-                    return;
-                }
-                
-                const formData = new FormData();
-                formData.append('image', file, file.name);
-
-                fetch('<?php echo home_url('/wp-json/vtheme/v1/upload/image'); ?>', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-WP-Nonce': '<?php echo wp_create_nonce('wp_rest'); ?>'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        callback(data.url, {alt: ''});
-                    } else {
-                        alert(data.message || '上传失败');
-                        callback('', {alt: ''});
-                    }
-                })
-                .catch(error => {
-                    alert('上传过程中发生错误');
-                    callback('', {alt: ''});
-                });
-            };
-            
-            input.click();
-        }
-    }
-
-    // 等待TinyMCE完全初始化后再添加自定义上传处理器
-    const initCustomUploadHandler = () => {
-        if (typeof tinymce !== 'undefined' && tinymce.get('post-content') && tinymce.get('post-content').initialised) {
-            // 设置自定义上传处理器
-            tinymce.get('post-content').settings.images_upload_handler = customImageUploadHandler;
-            
-            // 添加按钮点击事件来处理图片上传
-            tinymce.get('post-content').on('ExecCommand', function(e) {
-                if(e.command === 'mceImage') {
-                    customImageUploadCallback(function(url, data) {
-                        tinymce.get('post-content').insertContent('<img src="' + url + '" alt="' + (data && data.alt ? data.alt : '') + '">');
-                    }, '', {filetype: 'image'});
-                }
-            });
-        } else {
-            // 如果编辑器还未初始化，稍后再试
-            setTimeout(initCustomUploadHandler, 500);
-        }
-    };
-
-    // 等待TinyMCE加载
-    if (typeof tinymce !== 'undefined') {
-        // 如果编辑器已经存在，则初始化上传处理器
-        if (tinymce.get('post-content')) {
-            initCustomUploadHandler();
-        } else {
-            // 否则等待编辑器添加
-            tinymce.on('AddEditor', function(e) {
-                if(e.editor.id === 'post-content') {
-                    // 等待编辑器初始化
-                    e.editor.on('init', function() {
-                        setTimeout(initCustomUploadHandler, 1000);
-                    });
-                }
-            });
-        }
-    }
-
     // 确保TinyMCE加载完成后再操作
     const waitForTinyMCE = function(callback) {
         if (typeof tinymce !== 'undefined' && tinymce.get && tinymce.get('post-content') && tinymce.get('post-content').initialized) {
@@ -386,8 +293,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             reader.onload = function(e) {
                 previewImage.src = e.target.result;
-                previewImage.style.display = 'block';
-                removeImageBtn.style.display = 'inline-block';
+                imagePreview.style.display = 'block';
             }
             
             reader.readAsDataURL(file);
@@ -397,10 +303,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // 移除图片
     removeImageBtn.addEventListener('click', function() {
         featuredImageInput.value = '';
+        imagePreview.style.display = 'none';
         previewImage.src = '';
-        previewImage.alt = '预览图';
-        previewImage.style.display = 'none';
-        removeImageBtn.style.display = 'none';
         
         // 添加一个标记，表示需要移除特色图片
         const removeFeaturedImageInput = document.createElement('input');
@@ -447,8 +351,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             reader.onload = function(e) {
                 previewImage.src = e.target.result;
-                previewImage.style.display = 'block';
-                removeImageBtn.style.display = 'inline-block';
+                imagePreview.style.display = 'block';
             }
             
             reader.readAsDataURL(file);
