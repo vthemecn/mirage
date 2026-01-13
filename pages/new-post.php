@@ -55,6 +55,22 @@ get_header();
                     </div>
                     
                     <div class="form-group">
+                        <label>封面图片</label>
+                        <div class="image-upload-area" id="imageUploadArea">
+                            <div class="image-upload-content">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>拖拽图片到这里或点击选择文件</p>
+                                <input type="file" id="featured-image" name="featured_image" accept="image/*" style="display: none;">
+                                <button type="button" class="btn btn-light" id="selectImageBtn">选择图片</button>
+                            </div>
+                            <div class="image-preview" id="imagePreview" style="display: none;">
+                                <img id="previewImage" src="" alt="预览图">
+                                <button type="button" class="btn btn-sm btn-danger" id="removeImageBtn">移除图片</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
                         <label for="post-content">文章内容</label>
                         <?php
                         // 使用WordPress内置的编辑器函数，配置最简化的TinyMCE
@@ -162,7 +178,145 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+    
+    // 图片上传功能
+    const imageUploadArea = document.getElementById('imageUploadArea');
+    const featuredImageInput = document.getElementById('featured-image');
+    const selectImageBtn = document.getElementById('selectImageBtn');
+    const removeImageBtn = document.getElementById('removeImageBtn');
+    const imagePreview = document.getElementById('imagePreview');
+    const previewImage = document.getElementById('previewImage');
+    
+    // 点击选择图片按钮
+    selectImageBtn.addEventListener('click', function() {
+        featuredImageInput.click();
+    });
+    
+    // 点击上传区域选择图片
+    imageUploadArea.addEventListener('click', function(e) {
+        if(e.target === imageUploadArea || e.target.classList.contains('image-upload-content')) {
+            featuredImageInput.click();
+        }
+    });
+    
+    // 文件选择事件
+    featuredImageInput.addEventListener('change', function() {
+        if(this.files && this.files[0]) {
+            const file = this.files[0];
+            
+            // 验证文件类型
+            if(!file.type.match('image.*')) {
+                alert('请选择图片文件！');
+                return;
+            }
+            
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                previewImage.src = e.target.result;
+                imagePreview.style.display = 'block';
+            }
+            
+            reader.readAsDataURL(file);
+        }
+    });
+    
+    // 移除图片
+    removeImageBtn.addEventListener('click', function() {
+        featuredImageInput.value = '';
+        imagePreview.style.display = 'none';
+        previewImage.src = '';
+    });
+    
+    // 拖拽上传功能
+    imageUploadArea.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.style.borderColor = '#007cba';
+        this.style.backgroundColor = '#e6f2ff';
+    });
+    
+    imageUploadArea.addEventListener('dragleave', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.style.borderColor = '#ccc';
+        this.style.backgroundColor = '#fafafa';
+    });
+    
+    imageUploadArea.addEventListener('drop', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.style.borderColor = '#ccc';
+        this.style.backgroundColor = '#fafafa';
+        
+        if(e.dataTransfer.files && e.dataTransfer.files[0]) {
+            const file = e.dataTransfer.files[0];
+            
+            // 验证文件类型
+            if(!file.type.match('image.*')) {
+                alert('请选择图片文件！');
+                return;
+            }
+            
+            // 将文件赋给隐藏的input
+            featuredImageInput.files = e.dataTransfer.files;
+            
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                previewImage.src = e.target.result;
+                imagePreview.style.display = 'block';
+            }
+            
+            reader.readAsDataURL(file);
+        }
+    });
 });
+
 </script>
+
+<style>
+.image-upload-area {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    background-color: #fafafa;
+    transition: all 0.3s ease;
+}
+
+.image-upload-area:hover {
+    border-color: #007cba;
+    background-color: #f0f8ff;
+}
+
+.image-upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-upload-content i {
+    font-size: 48px;
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+.image-preview {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#removeImageBtn {
+    margin-top: 10px;
+}
+</style>
 
 <?php get_footer(); ?>

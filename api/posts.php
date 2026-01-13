@@ -45,6 +45,50 @@ class Posts {
             wp_set_post_terms($post_id, array($category_id), 'category');
         }
         
+        // 处理上传的封面图片
+        if (isset($_FILES['featured_image'])) {
+            $upload_file = $_FILES['featured_image'];
+            
+            // 验证上传的文件
+            if ($upload_file['error'] === UPLOAD_ERR_OK) {
+                $file_type = wp_check_filetype($upload_file['name']);
+                
+                // 检查文件类型是否为允许的图片类型
+                if (in_array($file_type['type'], array('image/jpeg', 'image/png', 'image/gif', 'image/webp'))) {
+                    // 将文件移动到WordPress媒体库
+                    $upload_dir = wp_upload_dir();
+                    $file_path = $upload_dir['path'] . '/' . $upload_file['name'];
+                    
+                    if (move_uploaded_file($upload_file['tmp_name'], $file_path)) {
+                        // 使用WordPress媒体函数处理图片
+                        require_once(ABSPATH . 'wp-admin/includes/image.php');
+                        require_once(ABSPATH . 'wp-admin/includes/file.php');
+                        require_once(ABSPATH . 'wp-admin/includes/media.php');
+                        
+                        // 插入附件到媒体库
+                        $attachment = array(
+                            'guid'           => $upload_dir['url'] . '/' . basename($file_path),
+                            'post_mime_type' => $file_type['type'],
+                            'post_title'     => preg_replace('/\.[^.]+$/', '', basename($file_path)),
+                            'post_content'   => '',
+                            'post_status'    => 'inherit'
+                        );
+                        
+                        $attachment_id = wp_insert_attachment($attachment, $file_path, $post_id);
+                        
+                        if ($attachment_id) {
+                            // 生成缩略图等
+                            $attach_data = wp_generate_attachment_metadata($attachment_id, $file_path);
+                            wp_update_attachment_metadata($attachment_id, $attach_data);
+                            
+                            // 设置为特色图片
+                            set_post_thumbnail($post_id, $attachment_id);
+                        }
+                    }
+                }
+            }
+        }
+        
         // 返回成功信息
         return array(
             'success' => true,

@@ -22,6 +22,9 @@ switch($gender){
     default: $gender = '保密'; break;
 }
 
+// p($param_user_id);
+// p($current_user);
+
 $has_auth = false;
 if( $param_user_id ==  $current_user->ID || current_user_can( 'manage_options' ) ){
     $has_auth = true;
