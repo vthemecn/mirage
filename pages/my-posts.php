@@ -10,43 +10,16 @@ $param_user_id = $wp_query->query_vars['user_id'];
 
 $param_user = get_user_by('id', $param_user_id);
 
-$has_auth = false;
-if( $param_user_id ==  $current_user->ID || current_user_can( 'manage_options' ) ){
-    $has_auth = true;
+// 检查当前用户是否为文章作者或管理员
+$is_owner_or_admin = ($param_user_id == $current_user->ID || current_user_can('manage_options'));
+
+// 如果用户没有权限查看此页面（既不是作者也不是管理员），则只允许查看已发布的文章
+// 否则可以查看所有状态的文章
+if ($is_owner_or_admin) {
+    $allowed_statuses = array('publish', 'private', 'draft', 'pending');
+} else {
+    $allowed_statuses = array('publish');
 }
-
-// 如果用户没有权限，跳转到首页
-if (!$has_auth) {
-    wp_redirect(home_url());
-    exit;
-}
-
-// 分页参数
-$posts_per_page = 10; // 每页显示10篇文章
-$page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
-$offset = ($page - 1) * $posts_per_page;
-
-// 获取用户的文章总数
-$args = array(
-    'author' => $param_user_id,
-    'post_status' => array('publish', 'private', 'draft', 'pending'),
-    'post_type' => 'post',
-    'numberposts' => -1
-);
-$total_posts = count(get_posts($args));
-
-// 获取用户的文章（带分页）
-$my_posts = get_posts(array(
-    'author' => $param_user_id,
-    'posts_per_page' => $posts_per_page,
-    'offset' => $offset,
-    'post_status' => array('publish', 'private', 'draft', 'pending'),
-    'post_type' => 'post'
-));
-
-// 初始化分页器
-require_once get_template_directory() . '/inc/paginator/Paginator.php';
-$paginator = new \Paginator($total_posts, $posts_per_page);
 
 get_header();
 ?>
@@ -63,7 +36,35 @@ get_header();
             <div class="my-posts-container">
                 <h3>我的文章</h3>
                 
-                <?php if (empty($my_posts)): ?>
+                <?php 
+                // 分页参数
+                $posts_per_page = 10; // 每页显示10篇文章
+                $page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+                $offset = ($page - 1) * $posts_per_page;
+
+                // 获取用户的文章总数
+                $args = array(
+                    'author' => $param_user_id,
+                    'post_status' => $allowed_statuses,
+                    'post_type' => 'post',
+                    'numberposts' => -1
+                );
+                $total_posts = count(get_posts($args));
+
+                // 获取用户的文章（带分页）
+                $my_posts = get_posts(array(
+                    'author' => $param_user_id,
+                    'posts_per_page' => $posts_per_page,
+                    'offset' => $offset,
+                    'post_status' => $allowed_statuses,
+                    'post_type' => 'post'
+                ));
+
+                // 初始化分页器
+                require_once get_template_directory() . '/inc/paginator/Paginator.php';
+                $paginator = new \Paginator($total_posts, $posts_per_page);
+                
+                if (empty($my_posts)): ?>
                     <p>暂无文章</p>
                 <?php endif; ?>
 
@@ -96,6 +97,7 @@ get_header();
                                         <?php echo get_the_date('Y-m-d H:i', $post->ID); ?>
                                     </div>
 
+                                    <?php if ($is_owner_or_admin): // 仅对文章作者或管理员显示状态 ?>
                                     <div class="like-action-item">
                                         <?php
                                         switch ($post->post_status) {
@@ -116,8 +118,12 @@ get_header();
                                         }
                                         ?>
                                     </div>
+                                    <?php endif; ?>
                                 </div>
+                                
+                                <?php if ($is_owner_or_admin): // 仅对文章作者或管理员显示编辑按钮 ?>
                                 <a href="<?php echo home_url('/users/' . $param_user_id . '/edit-post/' . $post->ID); ?>" class="btn btn-sm btn-primary like-edit-btn">编辑</a>
+                                <?php endif; ?>
                             </div>
                         </div>
                         <?php endforeach; ?>
@@ -143,8 +149,6 @@ get_header();
 </div>
 
 <style>
-
-
 .status {
     padding: 4px 8px;
     border-radius: 4px;

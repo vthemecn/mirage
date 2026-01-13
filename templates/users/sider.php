@@ -17,6 +17,10 @@ function page_active($current_page_name)
     $vt_page =  $wp_query->query_vars['vt_page'];
     return $vt_page == $current_page_name ? "active" : "";
 }
+
+// 检查当前用户是否为文章作者或管理员
+$is_owner_or_admin = ($param_user_id == $current_user->ID || current_user_can('manage_options'));
+
 ?>
 
 <div class="user-center-sidebar">
@@ -38,29 +42,31 @@ function page_active($current_page_name)
             <i class="fa-solid fa-angle-right"></i>
         </a>
         
-        <?php if($current_user->ID == $param_user_id || current_user_can( 'manage_options' ) ): ?>
-            <?php if ($current_user->ID == $param_user_id) : ?>
-                <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/new-post" class="sidebar-action <?php echo page_active('new-post'); ?>">
-                    <i class="fa-solid fa-plus"></i>
-                    <span>发布</span>
-                    <i class="fa-solid fa-angle-right"></i>
-                </a>
-                <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/my-posts" class="sidebar-action <?php echo page_active('my-posts'); ?>">
-                    <i class="fa-solid fa-book"></i>
-                    <span>发布的</span>
-                    <i class="fa-solid fa-angle-right"></i>
-                </a>
-                <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/setting" class="sidebar-action <?php echo page_active('setting'); ?>">
-                    <i class="fa-solid fa-gear"></i>
-                    <span>设置</span>
-                    <i class="fa-solid fa-angle-right"></i>
-                </a>
-                <a href="<?php echo wp_logout_url('/'); ?>" class="sidebar-action">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                    <span>退出</span>
-                    <i class="fa-solid fa-angle-right"></i>
-                </a>
-            <?php endif ?>
+        <?php if($is_owner_or_admin ): ?>
+            <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/new-post" class="sidebar-action <?php echo page_active('new-post'); ?>">
+                <i class="fa-solid fa-plus"></i>
+                <span>发布</span>
+                <i class="fa-solid fa-angle-right"></i>
+            </a>
+        <?php endif ?>
+        
+        <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/my-posts" class="sidebar-action <?php echo page_active('my-posts'); ?>">
+            <i class="fa-solid fa-book"></i>
+            <span>发布的</span>
+            <i class="fa-solid fa-angle-right"></i>
+        </a>
+        
+        <?php if($is_owner_or_admin ): ?>
+            <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/setting" class="sidebar-action <?php echo page_active('setting'); ?>">
+                <i class="fa-solid fa-gear"></i>
+                <span>设置</span>
+                <i class="fa-solid fa-angle-right"></i>
+            </a>
+            <a href="<?php echo wp_logout_url('/'); ?>" class="sidebar-action">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>退出</span>
+                <i class="fa-solid fa-angle-right"></i>
+            </a>
         <?php endif ?>
     </div>
     
