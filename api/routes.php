@@ -3,6 +3,7 @@ require_once TEMP_DIR . '/api/home.php';
 require_once TEMP_DIR . '/api/star.php';
 require_once TEMP_DIR . '/api/users.php';
 require_once TEMP_DIR . '/api/posts.php';
+require_once TEMP_DIR . '/api/upload.php';
 
 
 add_action('rest_api_init', function (){
@@ -107,6 +108,17 @@ add_action('rest_api_init', function (){
         'callback' => function (\WP_REST_Request $request) {
             $postsController = new \vtheme\api\Posts();
             return $postsController->delete($request);
+        }
+    ));
+    
+    /**
+     * 图片上传接口
+     */
+    register_rest_route('vtheme/v1', '/upload/image', array(
+        'methods' => 'POST',
+        'callback' => function (\WP_REST_Request $request) {
+            $uploadController = new \vtheme\api\Upload();
+            return $uploadController->image($request);
         }
     ));
 

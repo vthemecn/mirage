@@ -32,16 +32,16 @@ get_header();
 
     <div class="user-wrapper">
         <div class="user-center-panel">
-            <div class="publish-article-container">
+            <div class="user-center-panel">
                 <h3>发布新文章</h3>
                 
-                <form id="publish-post-form">
-                    <div class="form-group">
+                <form id="publish-post-form" class="form">
+                    <div class="field field-text">
                         <label for="post-title">文章标题</label>
                         <input type="text" id="post-title" name="post_title" class="form-control" required>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="field field-select">
                         <label for="post-category">分类</label>
                         <?php
                         $categories = get_categories(array('hide_empty' => false));
@@ -54,7 +54,7 @@ get_header();
                         </select>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="field field-upload">
                         <label>封面图片</label>
                         <div class="image-upload-area" id="imageUploadArea">
                             <div class="image-upload-content">
@@ -70,22 +70,50 @@ get_header();
                         </div>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="field field-textarea">
                         <label for="post-content">文章内容</label>
                         <?php
                         // 使用WordPress内置的编辑器函数，配置最简化的TinyMCE
                         $settings = array(
                             'tinymce' => array(
-                                'plugins' => 'wordpress,wpautoresize,lists,media,paste,tabfocus',
-                                'toolbar1' => 'bold,italic,underline,blockquote,bullist,numlist,link,wp_adv',
-                                'toolbar2' => 'formatselect,alignleft,aligncenter,alignright,undo,redo',
+                                'plugins' => 'wordpress,wpautoresize,lists,media,paste,tabfocus,image',
+                                'toolbar1' => 'bold,italic,underline,blockquote,bullist,numlist,link,|,image,|,undo,redo',
+                                'toolbar2' => '',
                                 'wpautop' => true,
                                 'indent' => false,
                                 'elementpath' => false,
                                 'branding' => false,
+                                'images_upload_handler' => 'function(blobInfo, success, failure, progress) {
+                                    var formData = new FormData();
+                                    formData.append("image", blobInfo.blob(), blobInfo.filename());
+
+                                    fetch("' . home_url('/wp-json/vtheme/v1/upload/image') . '", {
+                                        method: "POST",
+                                        body: formData,
+                                        headers: {
+                                            "X-WP-Nonce": "' . wp_create_nonce('wp_rest') . '"
+                                        }
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if (data.success) {
+                                            success(data.url);
+                                        } else {
+                                            failure(data.message || "上传失败");
+                                        }
+                                    })
+                                    .catch(error => {
+                                        failure("上传过程中发生错误");
+                                    });
+                                }',
+                                'image_advtab' => false,
+                                'image_description' => false,
+                                'image_title' => false,
+                                'image_dimensions' => false,
+                                'paste_data_images' => false,
                             ),
                             'quicktags' => true,
-                            'media_buttons' => true,
+                            'media_buttons' => false,
                             'textarea_name' => 'post_content',
                             'textarea_rows' => 15
                         );
@@ -93,7 +121,7 @@ get_header();
                         ?>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="field">
                         <button type="submit" class="btn btn-primary">提交文章</button>
                     </div>
                 </form>
@@ -283,6 +311,7 @@ document.addEventListener('DOMContentLoaded', function() {
     text-align: center;
     background-color: #fafafa;
     transition: all 0.3s ease;
+    margin-top: 10px;
 }
 
 .image-upload-area:hover {
@@ -316,6 +345,69 @@ document.addEventListener('DOMContentLoaded', function() {
 
 #removeImageBtn {
     margin-top: 10px;
+}
+
+/* 使用类似设置页面的表单样式 */
+.form {
+    max-width: 800px;
+}
+
+.field {
+    margin-bottom: 20px;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.field input[type="text"],
+.field input[type="email"],
+.field select,
+.field textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.field input[type="text"]:focus,
+.field input[type="email"]:focus,
+.field select:focus,
+.field textarea:focus {
+    outline: none;
+    border-color: #007cba;
+    box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.2);
+}
+
+.field-textarea {
+    display: flex;
+    flex-direction: column;
+}
+
+.field-textarea label {
+    margin-bottom: 5px;
+}
+
+.field-textarea textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.user-center-panel h3 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    color: #333;
 }
 </style>
 

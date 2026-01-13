@@ -8,16 +8,18 @@ global $current_user;
 $param_user_id = $wp_query->query_vars['user_id'];
 $post_id = $wp_query->query_vars['post_id'];
 
-$param_user = get_user_by('id', $param_user_id);
+// 获取文章
 $post = get_post($post_id);
 
+$param_user = get_user_by('id', $param_user_id);
+
 $has_auth = false;
-if( $post && ($param_user_id == $current_user->ID || current_user_can( 'manage_options' )) && $post->post_author == $param_user_id ){
+if( $param_user_id ==  $current_user->ID || current_user_can( 'manage_options' ) ){
     $has_auth = true;
 }
 
-// 如果用户没有权限或文章不存在，跳转到首页
-if (!$has_auth || !$post) {
+// 如果用户没有权限，跳转到首页
+if (!$has_auth) {
     wp_redirect(home_url());
     exit;
 }
@@ -29,27 +31,26 @@ get_header();
 <?php require_once get_template_directory() . '/templates/users/banner.php'; ?>
 
 
-
 <div class="user-center-container">
     <?php require_once get_template_directory() . '/templates/users/sider.php'; ?>
 
     <div class="user-wrapper">
         <div class="user-center-panel">
-            <div class="publish-article-container">
+            <div class="user-center-panel">
                 <h2>编辑文章</h2>
                 
-                <form id="edit-post-form">
-                    <div class="form-group">
+                <form id="edit-post-form" class="form">
+                    <div class="field field-text">
                         <label for="post-title">文章标题</label>
                         <input type="text" id="post-title" name="post_title" class="form-control" value="<?php echo esc_attr($post->post_title); ?>" required>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="field field-select">
                         <label for="post-category">分类</label>
                         <?php
                         $categories = get_categories(array('hide_empty' => false));
-                        $post_categories = wp_get_post_categories($post_id);
-                        $selected_category = !empty($post_categories) ? $post_categories[0] : '';
+                        $post_category = get_the_category($post->ID);
+                        $selected_category = !empty($post_category) ? $post_category[0]->term_id : '';
                         ?>
                         <select id="post-category" name="post_category" class="form-control" required>
                             <option value="">选择分类</option>
@@ -59,22 +60,45 @@ get_header();
                         </select>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="field field-upload">
+                        <label>封面图片</label>
+                        <div class="image-upload-area" id="imageUploadArea">
+                            <div class="image-upload-content">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>拖拽图片到这里或点击选择文件</p>
+                                <input type="file" id="featured-image" name="featured_image" accept="image/*" style="display: none;">
+                                <button type="button" class="btn btn-light" id="selectImageBtn">选择图片</button>
+                            </div>
+                            <div class="image-preview" id="imagePreview" style="<?php echo get_post_meta($post->ID, 'featured_image', true) ? 'display: block;' : 'display: none;'; ?>">
+                                <img id="previewImage" src="<?php echo wp_get_attachment_url(get_post_meta($post->ID, 'featured_image', true)); ?>" alt="预览图">
+                                <button type="button" class="btn btn-sm btn-danger" id="removeImageBtn">移除图片</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="field field-textarea">
                         <label for="post-content">文章内容</label>
                         <?php
                         // 使用WordPress内置的编辑器函数，配置最简化的TinyMCE
                         $settings = array(
                             'tinymce' => array(
-                                'plugins' => 'wordpress,wpautoresize,lists,media,paste,tabfocus',
+                                'plugins' => 'wordpress,wpautoresize,lists,media,paste,tabfocus,fullscreen,image',
                                 'toolbar1' => 'bold,italic,underline,blockquote,bullist,numlist,link,wp_adv',
-                                'toolbar2' => 'formatselect,alignleft,aligncenter,alignright,undo,redo',
+                                'toolbar2' => 'formatselect,alignleft,aligncenter,alignright,|,image,|,undo,redo',
                                 'wpautop' => true,
                                 'indent' => false,
                                 'elementpath' => false,
                                 'branding' => false,
+                                'paste_data_images' => false,
+                                'automatic_uploads' => false,
+                                'file_picker_types' => 'image',
+                                'image_advtab' => false, // 不显示高级选项卡
+                                'image_class_list' => null,
+                                'image_description' => false,
+                                'image_title' => false,
                             ),
                             'quicktags' => true,
-                            'media_buttons' => true,
+                            'media_buttons' => false, // 隐藏顶部媒体按钮
                             'textarea_name' => 'post_content',
                             'textarea_rows' => 15
                         );
@@ -82,7 +106,7 @@ get_header();
                         ?>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="field">
                         <button type="submit" class="btn btn-primary">更新文章</button>
                     </div>
                 </form>
@@ -92,8 +116,230 @@ get_header();
 
 </div>
 
+<style>
+.image-upload-area {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    background-color: #fafafa;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.image-upload-area:hover {
+    border-color: #007cba;
+    background-color: #f0f8ff;
+}
+
+.image-upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-upload-content i {
+    font-size: 48px;
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+.image-preview {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#removeImageBtn {
+    margin-top: 10px;
+}
+
+/* 使用类似设置页面的表单样式 */
+.form {
+    max-width: 800px;
+}
+
+.field {
+    margin-bottom: 20px;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.field input[type="text"],
+.field input[type="email"],
+.field select,
+.field textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.field input[type="text"]:focus,
+.field input[type="email"]:focus,
+.field select:focus,
+.field textarea:focus {
+    outline: none;
+    border-color: #007cba;
+    box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.2);
+}
+
+.field-textarea {
+    display: flex;
+    flex-direction: column;
+}
+
+.field-textarea label {
+    margin-bottom: 5px;
+}
+
+.field-textarea textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.user-center-panel h2 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+</style>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    function customImageUploadHandler(blobInfo, success, failure, progress) {
+        const formData = new FormData();
+        formData.append('image', blobInfo.blob(), blobInfo.filename());
+
+        fetch('<?php echo home_url('/wp-json/vtheme/v1/upload/image'); ?>', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-WP-Nonce': '<?php echo wp_create_nonce('wp_rest'); ?>'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                success(data.url);
+            } else {
+                failure(data.message || '上传失败');
+            }
+        })
+        .catch(error => {
+            failure('上传过程中发生错误');
+        });
+    }
+
+    function customImageUploadCallback(callback, value, meta) {
+        // 只允许上传图片，不允许远程URL
+        if (meta.filetype === 'image') {
+            // 打开文件选择对话框
+            const input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
+            
+            input.onchange = function() {
+                const file = this.files[0];
+                
+                if (!file) {
+                    callback('', {alt: ''});
+                    return;
+                }
+                
+                // 验证文件类型
+                if (!file.type.match('image.*')) {
+                    alert('请选择图片文件！');
+                    callback('', {alt: ''});
+                    return;
+                }
+                
+                const formData = new FormData();
+                formData.append('image', file, file.name);
+
+                fetch('<?php echo home_url('/wp-json/vtheme/v1/upload/image'); ?>', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-WP-Nonce': '<?php echo wp_create_nonce('wp_rest'); ?>'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        callback(data.url, {alt: ''});
+                    } else {
+                        alert(data.message || '上传失败');
+                        callback('', {alt: ''});
+                    }
+                })
+                .catch(error => {
+                    alert('上传过程中发生错误');
+                    callback('', {alt: ''});
+                });
+            };
+            
+            input.click();
+        }
+    }
+
+    // 等待TinyMCE完全初始化后再添加自定义上传处理器
+    const initCustomUploadHandler = () => {
+        if (typeof tinymce !== 'undefined' && tinymce.get('post-content') && tinymce.get('post-content').initialised) {
+            // 设置自定义上传处理器
+            tinymce.get('post-content').settings.images_upload_handler = customImageUploadHandler;
+            
+            // 添加按钮点击事件来处理图片上传
+            tinymce.get('post-content').on('ExecCommand', function(e) {
+                if(e.command === 'mceImage') {
+                    customImageUploadCallback(function(url, data) {
+                        tinymce.get('post-content').insertContent('<img src="' + url + '" alt="' + (data && data.alt ? data.alt : '') + '">');
+                    }, '', {filetype: 'image'});
+                }
+            });
+        } else {
+            // 如果编辑器还未初始化，稍后再试
+            setTimeout(initCustomUploadHandler, 500);
+        }
+    };
+
+    // 等待TinyMCE加载
+    if (typeof tinymce !== 'undefined') {
+        // 如果编辑器已经存在，则初始化上传处理器
+        if (tinymce.get('post-content')) {
+            initCustomUploadHandler();
+        } else {
+            // 否则等待编辑器添加
+            tinymce.on('AddEditor', function(e) {
+                if(e.editor.id === 'post-content') {
+                    // 等待编辑器初始化
+                    e.editor.on('init', function() {
+                        setTimeout(initCustomUploadHandler, 1000);
+                    });
+                }
+            });
+        }
+    }
+
     // 确保TinyMCE加载完成后再操作
     const waitForTinyMCE = function(callback) {
         if (typeof tinymce !== 'undefined' && tinymce.get && tinymce.get('post-content') && tinymce.get('post-content').initialized) {
@@ -104,6 +350,110 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 250);
         }
     };
+    
+    // 图片上传功能
+    const imageUploadArea = document.getElementById('imageUploadArea');
+    const featuredImageInput = document.getElementById('featured-image');
+    const selectImageBtn = document.getElementById('selectImageBtn');
+    const removeImageBtn = document.getElementById('removeImageBtn');
+    const imagePreview = document.getElementById('imagePreview');
+    const previewImage = document.getElementById('previewImage');
+    
+    // 点击选择图片按钮
+    selectImageBtn.addEventListener('click', function() {
+        featuredImageInput.click();
+    });
+    
+    // 点击上传区域选择图片
+    imageUploadArea.addEventListener('click', function(e) {
+        if(e.target === imageUploadArea || e.target.classList.contains('image-upload-content')) {
+            featuredImageInput.click();
+        }
+    });
+    
+    // 文件选择事件
+    featuredImageInput.addEventListener('change', function() {
+        if(this.files && this.files[0]) {
+            const file = this.files[0];
+            
+            // 验证文件类型
+            if(!file.type.match('image.*')) {
+                alert('请选择图片文件！');
+                return;
+            }
+            
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                previewImage.src = e.target.result;
+                previewImage.style.display = 'block';
+                removeImageBtn.style.display = 'inline-block';
+            }
+            
+            reader.readAsDataURL(file);
+        }
+    });
+    
+    // 移除图片
+    removeImageBtn.addEventListener('click', function() {
+        featuredImageInput.value = '';
+        previewImage.src = '';
+        previewImage.alt = '预览图';
+        previewImage.style.display = 'none';
+        removeImageBtn.style.display = 'none';
+        
+        // 添加一个标记，表示需要移除特色图片
+        const removeFeaturedImageInput = document.createElement('input');
+        removeFeaturedImageInput.type = 'hidden';
+        removeFeaturedImageInput.name = 'remove_featured_image';
+        removeFeaturedImageInput.value = '1';
+        document.getElementById('edit-post-form').appendChild(removeFeaturedImageInput);
+    });
+    
+    // 拖拽上传功能
+    imageUploadArea.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.style.borderColor = '#007cba';
+        this.style.backgroundColor = '#e6f2ff';
+    });
+    
+    imageUploadArea.addEventListener('dragleave', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.style.borderColor = '#ccc';
+        this.style.backgroundColor = '#fafafa';
+    });
+    
+    imageUploadArea.addEventListener('drop', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.style.borderColor = '#ccc';
+        this.style.backgroundColor = '#fafafa';
+        
+        if(e.dataTransfer.files && e.dataTransfer.files[0]) {
+            const file = e.dataTransfer.files[0];
+            
+            // 验证文件类型
+            if(!file.type.match('image.*')) {
+                alert('请选择图片文件！');
+                return;
+            }
+            
+            // 将文件赋给隐藏的input
+            featuredImageInput.files = e.dataTransfer.files;
+            
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                previewImage.src = e.target.result;
+                previewImage.style.display = 'block';
+                removeImageBtn.style.display = 'inline-block';
+            }
+            
+            reader.readAsDataURL(file);
+        }
+    });
     
     // 表单提交事件
     const form = document.getElementById('edit-post-form');
