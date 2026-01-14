@@ -139,7 +139,16 @@ function handle_register_user() {
     } else {
         // 注册成功后删除验证码
         delete_user_verification_code($email);
-        wp_send_json_success('注册成功');
+        
+        // 自动登录用户
+        $user = get_user_by('id', $user_id);
+        if ($user) {
+            wp_set_current_user($user_id, $user->user_login);
+            wp_set_auth_cookie($user_id);
+            do_action('wp_login', $user->user_login, $user);
+        }
+        
+        wp_send_json_success('注册成功并已自动登录');
     }
 }
 

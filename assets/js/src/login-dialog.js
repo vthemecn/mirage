@@ -223,9 +223,11 @@ async function handleRegisterFormSubmit(e) {
     const result = await response.json();
     
     if(result.success) {
-      showNotification('注册成功，请登录', 'success');
-      // 切换到登录标签
-      switchToTab('login', '用户登录');
+      showNotification('注册成功，正在自动登录...', 'success');
+      // 注册成功，刷新页面以反映登录状态
+      setTimeout(() => {
+        location.reload();
+      }, 1000);
     } else {
       showNotification(result.data || result.message || '注册失败，请重试', 'error');
     }
