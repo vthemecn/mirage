@@ -2298,6 +2298,49 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
 }
 
 
+/**
+ * Shortcode Notice Blocks
+ */
+.notice-block {
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: var(--vt-border-radius);
+  display: flex;
+  align-items: center;
+  background-color: var(--vt-bg-color);
+  border: 1px solid var(--vt-border-color);
+}
+
+.notice-block i {
+  font-size: 20px;
+  margin-right: 10px;
+  color: var(--vt-text-color-grey);
+}
+
+.notice-block p {
+  margin: 0;
+  color: var(--vt-text-color-grey);
+}
+
+.notice-block a {
+  color: var(--vt-main-color);
+  text-decoration: none;
+}
+
+.comment-notice {
+  background-color: var(--vt-bg-color-card);
+  border-left: 4px solid #4CAF50;
+}
+
+.login-notice {
+  background-color: var(--vt-bg-color-card);
+  border-left: 4px solid #2196F3;
+}
+
+.vip-notice {
+  background-color: var(--vt-bg-color-card);
+  border-left: 4px solid #FF9800;
+}
 
 @charset "UTF-8";
 /**
