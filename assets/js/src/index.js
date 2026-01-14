@@ -37,6 +37,8 @@ comments();
 import widget from './widget.js';
 widget.sideMenuInit();
 
+import loginDialog from './login-dialog.js';
+loginDialog();
 
 function footerCheck() {
   window.addEventListener('load', function(e){
@@ -47,4 +49,3 @@ function footerCheck() {
   });
 }
 footerCheck(); // 主题底部署名检查
-

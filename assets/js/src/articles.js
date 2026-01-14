@@ -9,12 +9,27 @@
  */
 
 import {getCookie, setCookie} from './utils.js';
-
 import dialogTools from './dialog.js';
 
 export default function () {
-  likeInit();
-  starInit();
+  // 创建 Notyf 实例
+  const notyf = new Notyf({
+    duration: 2000,
+    position: { x: 'center', y: 'top' },
+    types: [
+      {
+        type: 'success',
+        background: '#28a745'
+      },
+      {
+        type: 'error',
+        background: '#dc3545'
+      }
+    ]
+  });
+
+  likeInit(notyf);
+  starInit(notyf);
   sharePosterInit();
   coinInit();
   tocInit();
@@ -23,12 +38,7 @@ export default function () {
 /**
  * 点赞事件绑定
  */
-async function likeInit(){
-  var notyf = new Notyf({
-    duration: 2000,
-    position: {  x: 'center', y: 'top' }
-  });
-
+async function likeInit(notyf){
   var likeButtons = document.querySelectorAll('.widget-action.like');
   if(!likeButtons) return;
   likeButtons.forEach( button=>{
@@ -41,7 +51,7 @@ async function likeInit(){
       var addUrl = '/wp-json/vtheme/v1/stars' + "?_wpnonce=" + wpnonce;
       var deleteUrl = '/wp-json/vtheme/v1/stars/' + post_id + "?_wpnonce=" + wpnonce;
 
-      // var currentUser
+      var currentUser
       
       // 登录用户取消点赞
       if( this.classList.contains('active') ){
@@ -57,14 +67,9 @@ async function likeInit(){
           num = (--num <= 0) ? '' : num; 
 
           that.querySelector('.number').innerText = num;
-          // notyf.success('取消点赞');  // 替换为notyf
+          // 取消点赞不显示提示
         }else{
-          // 检查notyf是否存在，如果不存在则使用alert作为备选
-          if (typeof notyf !== 'undefined') {
-            notyf.error(responseJson.error);
-          } else {
-            alert(responseJson.error);
-          }
+          notyf.error(responseJson.error);
         }
         return;
       }
@@ -84,12 +89,7 @@ async function likeInit(){
         }
 
         if(likeIdsArr.indexOf(post_id) !== -1){
-          // 检查notyf是否存在，如果不存在则使用alert作为备选
-          if (typeof notyf !== 'undefined') {
-            notyf.success('今天已经点赞过了');
-          } else {
-            alert('今天已经点赞过了');
-          }
+          notyf.success('今天已经点赞过了');
           return;
         }
       }
@@ -114,19 +114,9 @@ async function likeInit(){
           return;
         }
         that.classList.add('active');
-        // 检查notyf是否存在，如果不存在则使用alert作为备选
-        if (typeof notyf !== 'undefined') {
-          notyf.success('点赞成功');
-        } else {
-          alert('点赞成功');
-        }
+        notyf.success('点赞成功');
       }else{
-        // 检查notyf是否存在，如果不存在则使用alert作为备选
-        if (typeof notyf !== 'undefined') {
-          notyf.error(responseJson.error);
-        } else {
-          alert(responseJson.error);
-        }
+        notyf.error(responseJson.error);
       }
       
     });
@@ -137,7 +127,7 @@ async function likeInit(){
 /**
  * 收藏事件绑定
  */
-async function starInit(){
+async function starInit(notyf){
   var starButtons = document.querySelectorAll('.widget-action.star');
   if(!starButtons) return;
   starButtons.forEach( button=>{
@@ -174,12 +164,7 @@ async function starInit(){
 
           that.querySelector('.number').innerText = num;
         }else{
-          // 检查notyf是否存在，如果不存在则使用alert作为备选
-          if (typeof notyf !== 'undefined') {
-            notyf.error(responseJson.error);
-          } else {
-            alert(responseJson.error);
-          }
+          notyf.error(responseJson.error);
         }
       } else {
         var data = {};
@@ -195,19 +180,9 @@ async function starInit(){
         if(response.status == 201){
           that.classList.add('active');
           that.querySelector('.number').innerText = responseJson.counter;
-          // 检查notyf是否存在，如果不存在则使用alert作为备选
-          if (typeof notyf !== 'undefined') {
-            notyf.success('收藏成功');
-          } else {
-            alert('收藏成功');
-          }
+          notyf.success('收藏成功');
         } else if(response.status == 401) {
-          // 检查notyf是否存在，如果不存在则使用alert作为备选
-          if (typeof notyf !== 'undefined') {
-            notyf.error('请登录后重试');
-          } else {
-            alert('请登录后重试');
-          }
+          notyf.error('请登录后重试');
         }
       }
 
@@ -307,6 +282,8 @@ function tocInit() {
   });
 
 }
+
+
 
 
 

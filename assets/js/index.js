@@ -180,8 +180,24 @@
 
 
   function articles () {
-    likeInit();
-    starInit();
+    // 创建 Notyf 实例
+    const notyf = new Notyf({
+      duration: 2000,
+      position: { x: 'center', y: 'top' },
+      types: [
+        {
+          type: 'success',
+          background: '#28a745'
+        },
+        {
+          type: 'error',
+          background: '#dc3545'
+        }
+      ]
+    });
+
+    likeInit(notyf);
+    starInit(notyf);
     sharePosterInit();
     coinInit();
     tocInit();
@@ -190,12 +206,7 @@
   /**
    * 点赞事件绑定
    */
-  async function likeInit(){
-    var notyf = new Notyf({
-      duration: 2000,
-      position: {  x: 'center', y: 'top' }
-    });
-
+  async function likeInit(notyf){
     var likeButtons = document.querySelectorAll('.widget-action.like');
     if(!likeButtons) return;
     likeButtons.forEach( button=>{
@@ -207,8 +218,6 @@
         
         var addUrl = '/wp-json/vtheme/v1/stars' + "?_wpnonce=" + wpnonce;
         var deleteUrl = '/wp-json/vtheme/v1/stars/' + post_id + "?_wpnonce=" + wpnonce;
-
-        // var currentUser
         
         // 登录用户取消点赞
         if( this.classList.contains('active') ){
@@ -224,14 +233,9 @@
             num = (--num <= 0) ? '' : num; 
 
             that.querySelector('.number').innerText = num;
-            // notyf.success('取消点赞');  // 替换为notyf
+            // 取消点赞不显示提示
           }else {
-            // 检查notyf是否存在，如果不存在则使用alert作为备选
-            if (typeof notyf !== 'undefined') {
-              notyf.error(responseJson.error);
-            } else {
-              alert(responseJson.error);
-            }
+            notyf.error(responseJson.error);
           }
           return;
         }
@@ -251,12 +255,7 @@
           }
 
           if(likeIdsArr.indexOf(post_id) !== -1){
-            // 检查notyf是否存在，如果不存在则使用alert作为备选
-            if (typeof notyf !== 'undefined') {
-              notyf.success('今天已经点赞过了');
-            } else {
-              alert('今天已经点赞过了');
-            }
+            notyf.success('今天已经点赞过了');
             return;
           }
         }
@@ -281,19 +280,9 @@
             return;
           }
           that.classList.add('active');
-          // 检查notyf是否存在，如果不存在则使用alert作为备选
-          if (typeof notyf !== 'undefined') {
-            notyf.success('点赞成功');
-          } else {
-            alert('点赞成功');
-          }
+          notyf.success('点赞成功');
         }else {
-          // 检查notyf是否存在，如果不存在则使用alert作为备选
-          if (typeof notyf !== 'undefined') {
-            notyf.error(responseJson.error);
-          } else {
-            alert(responseJson.error);
-          }
+          notyf.error(responseJson.error);
         }
         
       });
@@ -304,7 +293,7 @@
   /**
    * 收藏事件绑定
    */
-  async function starInit(){
+  async function starInit(notyf){
     var starButtons = document.querySelectorAll('.widget-action.star');
     if(!starButtons) return;
     starButtons.forEach( button=>{
@@ -341,12 +330,7 @@
 
             that.querySelector('.number').innerText = num;
           }else {
-            // 检查notyf是否存在，如果不存在则使用alert作为备选
-            if (typeof notyf !== 'undefined') {
-              notyf.error(responseJson.error);
-            } else {
-              alert(responseJson.error);
-            }
+            notyf.error(responseJson.error);
           }
         } else {
           var data = {};
@@ -362,19 +346,9 @@
           if(response.status == 201){
             that.classList.add('active');
             that.querySelector('.number').innerText = responseJson.counter;
-            // 检查notyf是否存在，如果不存在则使用alert作为备选
-            if (typeof notyf !== 'undefined') {
-              notyf.success('收藏成功');
-            } else {
-              alert('收藏成功');
-            }
+            notyf.success('收藏成功');
           } else if(response.status == 401) {
-            // 检查notyf是否存在，如果不存在则使用alert作为备选
-            if (typeof notyf !== 'undefined') {
-              notyf.error('请登录后重试');
-            } else {
-              alert('请登录后重试');
-            }
+            notyf.error('请登录后重试');
           }
         }
 
@@ -934,6 +908,254 @@
   var widget = { sideMenuInit };
 
   /**
+   * 登录/注册/找回密码对话框
+   */
+
+
+  function loginDialog() {
+    initLoginDialog();
+  }
+
+  function initLoginDialog() {
+    const dialogElement = document.querySelector('.login-register-dialog');
+    if(!dialogElement) return;
+    
+    // 注册对话框功能
+    dialogTools.registerDialog(dialogElement);
+    
+    // 打开登录对话框
+    const loginBtn = document.querySelector('.open-login-dialog');
+    if(loginBtn) {
+      loginBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        dialogElement.showModal();
+      });
+    }
+    
+    // Tab切换功能
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        // 移除所有活动状态
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        
+        // 添加当前活动状态
+        this.classList.add('active');
+        document.getElementById(`tab-${this.dataset.tab}`).classList.add('active');
+        
+        // 更新标题
+        document.querySelector('.dialog-header .title').textContent = this.textContent;
+      });
+    });
+    
+    // 登录表单提交
+    const loginForm = document.getElementById('login-form');
+    if(loginForm) {
+      loginForm.addEventListener('submit', handleLoginFormSubmit);
+    }
+    
+    // 注册表单提交
+    const registerForm = document.getElementById('register-form');
+    if(registerForm) {
+      registerForm.addEventListener('submit', handleRegisterFormSubmit);
+    }
+    
+    // 找回密码表单提交
+    const forgotForm = document.getElementById('forgot-form');
+    if(forgotForm) {
+      forgotForm.addEventListener('submit', handleForgotFormSubmit);
+    }
+  }
+
+  async function handleLoginFormSubmit(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const username = formData.get('username');
+    const password = formData.get('password');
+    
+    // 简单验证
+    if (!username || !password) {
+      showNotification('请填写所有必填字段', 'error');
+      return;
+    }
+    
+    // 显示加载状态
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = '登录中...';
+    submitBtn.disabled = true;
+    
+    try {
+      const response = await fetch(ajax_object.ajax_url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `action=login_user&username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&security=${ajax_object.nonce}`
+      });
+      
+      const result = await response.json();
+      
+      if(result.success) {
+        showNotification('登录成功，正在跳转...', 'success');
+        // 登录成功，刷新页面
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+      } else {
+        showNotification(result.data || result.message || '登录失败，请重试', 'error');
+      }
+    } catch(error) {
+      showNotification('网络错误，请稍后重试', 'error');
+    } finally {
+      // 恢复按钮状态
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  }
+
+  async function handleRegisterFormSubmit(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const username = formData.get('username');
+    const email = formData.get('email');
+    const password = formData.get('password');
+    const confirmPassword = formData.get('confirm_password');
+    
+    // 验证
+    if (!username || !email || !password || !confirmPassword) {
+      showNotification('请填写所有必填字段', 'error');
+      return;
+    }
+    
+    if (password !== confirmPassword) {
+      showNotification('两次输入的密码不一致', 'error');
+      return;
+    }
+    
+    if (password.length < 6) {
+      showNotification('密码长度至少为6位', 'error');
+      return;
+    }
+    
+    // 验证邮箱格式
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      showNotification('请输入有效的邮箱地址', 'error');
+      return;
+    }
+    
+    // 显示加载状态
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = '注册中...';
+    submitBtn.disabled = true;
+    
+    try {
+      const response = await fetch(ajax_object.ajax_url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `action=register_user&username=${encodeURIComponent(username)}&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&security=${ajax_object.nonce}`
+      });
+      
+      const result = await response.json();
+      
+      if(result.success) {
+        showNotification('注册成功，请登录', 'success');
+        // 切换到登录标签
+        switchToTab('login', '用户登录');
+      } else {
+        showNotification(result.data || result.message || '注册失败，请重试', 'error');
+      }
+    } catch(error) {
+      showNotification('网络错误，请稍后重试', 'error');
+    } finally {
+      // 恢复按钮状态
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  }
+
+  async function handleForgotFormSubmit(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const email = formData.get('email');
+    
+    if (!email) {
+      showNotification('请输入邮箱地址', 'error');
+      return;
+    }
+    
+    // 验证邮箱格式
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      showNotification('请输入有效的邮箱地址', 'error');
+      return;
+    }
+    
+    // 显示加载状态
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = '发送中...';
+    submitBtn.disabled = true;
+    
+    try {
+      const response = await fetch(ajax_object.ajax_url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `action=forgot_password&email=${encodeURIComponent(email)}&security=${ajax_object.nonce}`
+      });
+      
+      const result = await response.json();
+      
+      if(result.success) {
+        showNotification('重置密码链接已发送到您的邮箱', 'success');
+        this.reset();
+      } else {
+        showNotification(result.data || result.message || '发送失败，请重试', 'error');
+      }
+    } catch(error) {
+      showNotification('网络错误，请稍后重试', 'error');
+    } finally {
+      // 恢复按钮状态
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  }
+
+  function switchToTab(tabName, title) {
+    // 移除所有活动状态
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    
+    // 添加当前活动状态
+    document.querySelector(`.tab-btn[data-tab="${tabName}"]`).classList.add('active');
+    document.getElementById(`tab-${tabName}`).classList.add('active');
+    document.querySelector('.dialog-header .title').textContent = title;
+  }
+
+  function showNotification(message, type) {
+    // 检查Notyf是否存在
+    if (typeof notyf !== 'undefined') {
+      if (type === 'success') {
+        notyf.success(message);
+      } else {
+        notyf.error(message);
+      }
+    } else {
+      alert(message);
+    }
+  }
+
+  /**
    * JavaScript 项目主文件
    */
 
@@ -948,7 +1170,7 @@
   init();
   comments();
   widget.sideMenuInit();
-
+  loginDialog();
 
   function footerCheck() {
     window.addEventListener('load', function(e){

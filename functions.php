@@ -47,6 +47,133 @@ require_once TEMP_DIR . '/inc/validator/validator.php';
 require_once TEMP_DIR . '/api/routes.php';
 
 
+// 添加登录、注册、找回密码的AJAX处理函数
+add_action('wp_ajax_nopriv_login_user', 'handle_login_user');
+add_action('wp_ajax_login_user', 'handle_login_user');
+add_action('wp_ajax_nopriv_register_user', 'handle_register_user');
+add_action('wp_ajax_register_user', 'handle_register_user');
+add_action('wp_ajax_nopriv_forgot_password', 'handle_forgot_password');
+add_action('wp_ajax_forgot_password', 'handle_forgot_password');
+
+function handle_login_user() {
+    // 验证nonce
+    if (!wp_verify_nonce($_POST['security'], 'ajax_nonce')) {
+        wp_die('Security check failed');
+    }
+
+    $username = sanitize_text_field($_POST['username']);
+    $password = $_POST['password'];
+
+    // 验证输入
+    if (empty($username) || empty($password)) {
+        wp_send_json_error('请填写所有必填字段');
+        return;
+    }
+
+    // 尝试登录用户
+    $credentials = array(
+        'user_login' => $username,
+        'user_password' => $password,
+        'remember' => true
+    );
+
+    $user = wp_signon($credentials, false);
+
+    if (is_wp_error($user)) {
+        wp_send_json_error($user->get_error_message());
+    } else {
+        wp_send_json_success('登录成功');
+    }
+}
+
+function handle_register_user() {
+    // 验证nonce
+    if (!wp_verify_nonce($_POST['security'], 'ajax_nonce')) {
+        wp_die('Security check failed');
+    }
+
+    $username = sanitize_text_field($_POST['username']);
+    $email = sanitize_email($_POST['email']);
+    $password = $_POST['password'];
+
+    // 验证输入
+    if (empty($username) || empty($email) || empty($password)) {
+        wp_send_json_error('请填写所有必填字段');
+        return;
+    }
+
+    if (strlen($password) < 6) {
+        wp_send_json_error('密码长度至少为6位');
+        return;
+    }
+
+    // 检查用户名是否已存在
+    if (username_exists($username)) {
+        wp_send_json_error('用户名已存在');
+        return;
+    }
+
+    // 检查邮箱是否已存在
+    if (email_exists($email)) {
+        wp_send_json_error('邮箱已被注册');
+        return;
+    }
+
+    // 创建新用户
+    $user_id = wp_create_user($username, $password, $email);
+
+    if (is_wp_error($user_id)) {
+        wp_send_json_error($user_id->get_error_message());
+    } else {
+        wp_send_json_success('注册成功');
+    }
+}
+
+function handle_forgot_password() {
+    // 验证nonce
+    if (!wp_verify_nonce($_POST['security'], 'ajax_nonce')) {
+        wp_die('Security check failed');
+    }
+
+    $user_email = sanitize_email($_POST['email']);
+
+    if (empty($user_email)) {
+        wp_send_json_error('请输入邮箱地址');
+        return;
+    }
+
+    // 获取用户数据
+    $user_data = get_user_by('email', $user_email);
+
+    if (!$user_data) {
+        wp_send_json_error('找不到与此邮箱关联的账户');
+        return;
+    }
+
+    // 生成密码重置密钥
+    $key = get_password_reset_key($user_data);
+    if (is_wp_error($key)) {
+        wp_send_json_error('发生错误，请稍后重试');
+        return;
+    }
+
+    // 发送密码重置邮件
+    $subject = '密码重置链接';
+    $message = sprintf(
+        "您好，\n\n您请求重置密码，请点击下面的链接进行重置：\n\n%s\n\n如果您没有请求重置密码，请忽略此邮件。",
+        network_site_url("wp-login.php?action=rp&key=$key&login=" . rawurlencode($user_data->user_login), 'login')
+    );
+
+    $sent = wp_mail($user_email, $subject, $message);
+
+    if ($sent) {
+        wp_send_json_success('重置密码链接已发送到您的邮箱');
+    } else {
+        wp_send_json_error('邮件发送失败，请联系管理员');
+    }
+}
+
+
 function footerCheck()
 {
     global $pagenow;

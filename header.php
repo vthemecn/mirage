@@ -228,7 +228,7 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
                     </a>
                 <?php endif; ?>
                 <?php if (!$current_user->ID && $vt_config['is_show_login_register']) : ?>
-                    <a href="<?= wp_login_url($current_url) ?>" class="button login-button"><?= __('登录','vt')?></a>
+                    <a href="javascript:;" class="button login-button open-login-dialog"><?= __('登录','vt')?></a>
                 <?php endif ?>
             </div>
 
@@ -290,3 +290,89 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
             </form>
         </div>
     </header>
+
+    <!-- 登录/注册/找回密码对话框 -->
+    <div class="vt-dialog login-register-dialog" id="login-register-dialog">
+        <div class="dialog-widget">
+            <div class="dialog-header">
+                <div class="title">用户登录</div>
+                <a class="close close-button" href="javascript:;">
+                    <i class="fa-solid fa-xmark"></i>
+                </a>
+            </div>
+            <div class="dialog-body">
+                <div class="auth-tabs">
+                    <div class="tabs-nav">
+                        <button type="button" class="tab-btn active" data-tab="login">登录</button>
+                        <button type="button" class="tab-btn" data-tab="register">注册</button>
+                        <button type="button" class="tab-btn" data-tab="forgot">找回密码</button>
+                    </div>
+                    
+                    <!-- 登录表单 -->
+                    <div class="tab-content active" id="tab-login">
+                        <form id="login-form">
+                            <div class="field field-text">
+                                <label for="login-username">用户名或邮箱</label>
+                                <input type="text" id="login-username" name="username" required>
+                            </div>
+                            <div class="field field-text">
+                                <label for="login-password">密码</label>
+                                <input type="password" id="login-password" name="password" required>
+                            </div>
+                            <div class="field field-button">
+                                <button type="submit" class="btn primary">登录</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- 注册表单 -->
+                    <div class="tab-content" id="tab-register">
+                        <form id="register-form">
+                            <div class="field field-text">
+                                <label for="register-username">用户名</label>
+                                <input type="text" id="register-username" name="username" required>
+                            </div>
+                            <div class="field field-text">
+                                <label for="register-email">邮箱</label>
+                                <input type="email" id="register-email" name="email" required>
+                            </div>
+                            <div class="field field-text">
+                                <label for="register-password">密码</label>
+                                <input type="password" id="register-password" name="password" required>
+                            </div>
+                            <div class="field field-text">
+                                <label for="register-confirm-password">确认密码</label>
+                                <input type="password" id="register-confirm-password" name="confirm_password" required>
+                            </div>
+                            <div class="field field-button">
+                                <button type="submit" class="btn primary">注册</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- 找回密码表单 -->
+                    <div class="tab-content" id="tab-forgot">
+                        <form id="forgot-form">
+                            <div class="field field-text">
+                                <label for="forgot-email">邮箱</label>
+                                <input type="email" id="forgot-email" name="email" required>
+                            </div>
+                            <div class="field field-button">
+                                <button type="submit" class="btn primary">发送重置链接</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 传递WordPress的AJAX URL和nonce到JavaScript
+        var ajax_object = {
+            ajax_url: "<?php echo admin_url('admin-ajax.php'); ?>",
+            nonce: "<?php echo wp_create_nonce('ajax_nonce'); ?>"
+        };
+    </script>
+</body>
+</html>

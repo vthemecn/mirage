@@ -123,11 +123,6 @@ get_header();
 <input type="hidden" name="wp_create_nonce" value="<?php echo wp_create_nonce('wp_rest'); ?>">
 
 <script>
-var notyf = new Notyf({
-    duration: 2000,
-    position: {  x: 'center', y: 'top' }
-});
-
 document.querySelector(".update-user").addEventListener("click", function(e) {
     e.preventDefault();
     
@@ -155,12 +150,20 @@ document.querySelector(".update-user").addEventListener("click", function(e) {
                 throw new Error(errorData.message || '修改失败');
             });
         }
- 
+        console.log('1111');
+        
         return response.json();
     })
     .then(data => {
-        notyf.success('修改成功');
-
+        console.log('2222');
+        
+        // 显示成功提示
+        if (typeof LightTip !== 'undefined' && typeof LightTip.success === 'function') {
+            LightTip.success('修改成功！');
+        } else {
+            alert('修改成功！');
+        }
+        
         // 更新侧边栏昵称
         var nicknameElement = document.querySelector('.user-nav .user-info .nickname');
         if(nicknameElement) {
@@ -169,8 +172,8 @@ document.querySelector(".update-user").addEventListener("click", function(e) {
     })
     .catch(error => {
         // 显示错误提示
-        if (typeof notyf !== 'undefined') {
-            notyf.error('修改失败：' + error.message);
+        if (typeof LightTip !== 'undefined' && typeof LightTip.error === 'function') {
+            LightTip.error('修改失败：' + error.message);
         } else {
             alert('修改失败：' + error.message);
         }
