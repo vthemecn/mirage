@@ -59,6 +59,9 @@ add_action('wp_ajax_forgot_password', 'handle_forgot_password');
 add_action('wp_ajax_nopriv_send_verification_code', 'handle_send_verification_code');
 add_action('wp_ajax_send_verification_code', 'handle_send_verification_code');
 
+// 添加上传头像的处理函数
+add_action('wp_ajax_upload_avatar', 'handle_upload_avatar');
+
 function handle_login_user() {
     // 验证nonce
     if (!wp_verify_nonce($_POST['security'], 'ajax_nonce')) {
@@ -295,6 +298,97 @@ function verify_email_verification_code($email, $code) {
 function delete_user_verification_code($email) {
     $option_name = 'email_verification_' . md5($email);
     delete_option($option_name);
+}
+
+function handle_upload_avatar() {
+    // 验证nonce
+    if (!wp_verify_nonce($_POST['security'], 'ajax_nonce')) {
+        wp_die('Security check failed');
+    }
+
+    // 检查用户权限
+    if (!is_user_logged_in()) {
+        wp_send_json_error('请先登录');
+        return;
+    }
+
+    $user_id = get_current_user_id();
+    
+    if (!isset($_FILES['avatar']) || $_FILES['avatar']['error'] !== UPLOAD_ERR_OK) {
+        wp_send_json_error('请选择要上传的头像文件');
+        return;
+    }
+
+    $file = $_FILES['avatar'];
+    
+    // 验证文件类型
+    $allowed_types = array('image/jpeg', 'image/jpg', 'image/png', 'image/gif');
+    if (!in_array($file['type'], $allowed_types)) {
+        wp_send_json_error('只允许上传 JPG、PNG 或 GIF 格式的图片');
+        return;
+    }
+    
+    // 验证文件大小 (最大5MB)
+    if ($file['size'] > 5 * 1024 * 1024) {
+        wp_send_json_error('头像文件不能超过5MB');
+        return;
+    }
+    
+    // 上传文件
+    $upload_overrides = array(
+        'test_form' => false,
+        'mimes' => array(
+            'jpeg' => 'image/jpeg',
+            'jpg' => 'image/jpg',
+            'png' => 'image/png',
+            'gif' => 'image/gif',
+        )
+    );
+    
+    $movefile = wp_handle_upload($file, $upload_overrides);
+    
+    if ($movefile && !isset($movefile['error'])) {
+        // 保存头像附件ID到用户元数据
+        $attachment_id = attachment_upload($movefile['url'], $user_id);
+        update_user_meta($user_id, 'user_avatar_attachment_id', $attachment_id);
+        
+        wp_send_json_success(array(
+            'message' => '头像上传成功',
+            'avatar_url' => vt_get_custom_avatar_url($user_id)
+        ));
+    } else {
+        wp_send_json_error($movefile['error']);
+    }
+}
+
+function attachment_upload($file_url, $post_id = 0) {
+    $file_name = basename($file_url);
+    $upload_dir = wp_upload_dir();
+    
+    // 复制文件到上传目录
+    $new_file = $upload_dir['path'] . '/' . wp_unique_filename($upload_dir['path'], $file_name);
+    copy($file_url, $new_file);
+    
+    // 获取文件类型
+    $wp_filetype = wp_check_filetype($new_file, null);
+    
+    // 创建附件对象
+    $attachment = array(
+        'post_mime_type' => $wp_filetype['type'],
+        'post_title' => sanitize_file_name($file_name),
+        'post_content' => '',
+        'post_status' => 'inherit'
+    );
+    
+    // 插入附件
+    $attach_id = wp_insert_attachment($attachment, $new_file, $post_id);
+    
+    // 生成缩略图
+    require_once ABSPATH . 'wp-admin/includes/image.php';
+    $attach_data = wp_generate_attachment_metadata($attach_id, $new_file);
+    wp_update_attachment_metadata($attach_id, $attach_data);
+    
+    return $attach_id;
 }
 
 

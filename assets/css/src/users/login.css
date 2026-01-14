@@ -140,6 +140,50 @@
   padding: 20px 15px;
 }
 
+/* 头像上传功能样式 */
+.avatar-upload-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-upload-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  /* border-radius: 50%; */
+  font-size: 14px;
+  text-align: center;
+}
+
+.avatar-upload-overlay span {
+  z-index: 2;
+  pointer-events: none;
+}
+
+.avatar-upload-container:hover .avatar-upload-overlay {
+  display: flex;
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .login-register-dialog .dialog-widget {
     width: calc(100% - 40px);
