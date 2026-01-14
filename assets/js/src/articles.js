@@ -9,7 +9,7 @@
  */
 
 import {getCookie, setCookie} from './utils.js';
-import lightTip from '../../lib/ui/light-tip.js';
+
 import dialogTools from './dialog.js';
 
 export default function () {
@@ -24,6 +24,11 @@ export default function () {
  * 点赞事件绑定
  */
 async function likeInit(){
+  var notyf = new Notyf({
+    duration: 2000,
+    position: {  x: 'center', y: 'top' }
+  });
+
   var likeButtons = document.querySelectorAll('.widget-action.like');
   if(!likeButtons) return;
   likeButtons.forEach( button=>{
@@ -36,7 +41,7 @@ async function likeInit(){
       var addUrl = '/wp-json/vtheme/v1/stars' + "?_wpnonce=" + wpnonce;
       var deleteUrl = '/wp-json/vtheme/v1/stars/' + post_id + "?_wpnonce=" + wpnonce;
 
-      var currentUser
+      // var currentUser
       
       // 登录用户取消点赞
       if( this.classList.contains('active') ){
@@ -52,9 +57,14 @@ async function likeInit(){
           num = (--num <= 0) ? '' : num; 
 
           that.querySelector('.number').innerText = num;
-          // lightTip.custom('取消点赞', {type:'warning', time:500});
+          // notyf.success('取消点赞');  // 替换为notyf
         }else{
-          lightTip.error(responseJson.error);
+          // 检查notyf是否存在，如果不存在则使用alert作为备选
+          if (typeof notyf !== 'undefined') {
+            notyf.error(responseJson.error);
+          } else {
+            alert(responseJson.error);
+          }
         }
         return;
       }
@@ -74,7 +84,12 @@ async function likeInit(){
         }
 
         if(likeIdsArr.indexOf(post_id) !== -1){
-          lightTip.success('今天已经点赞过了');
+          // 检查notyf是否存在，如果不存在则使用alert作为备选
+          if (typeof notyf !== 'undefined') {
+            notyf.success('今天已经点赞过了');
+          } else {
+            alert('今天已经点赞过了');
+          }
           return;
         }
       }
@@ -99,9 +114,19 @@ async function likeInit(){
           return;
         }
         that.classList.add('active');
-        lightTip.normal('点赞成功',1000);
+        // 检查notyf是否存在，如果不存在则使用alert作为备选
+        if (typeof notyf !== 'undefined') {
+          notyf.success('点赞成功');
+        } else {
+          alert('点赞成功');
+        }
       }else{
-        lightTip.error(responseJson.error);
+        // 检查notyf是否存在，如果不存在则使用alert作为备选
+        if (typeof notyf !== 'undefined') {
+          notyf.error(responseJson.error);
+        } else {
+          alert(responseJson.error);
+        }
       }
       
     });
@@ -149,7 +174,12 @@ async function starInit(){
 
           that.querySelector('.number').innerText = num;
         }else{
-          lightTip.error(responseJson.error);
+          // 检查notyf是否存在，如果不存在则使用alert作为备选
+          if (typeof notyf !== 'undefined') {
+            notyf.error(responseJson.error);
+          } else {
+            alert(responseJson.error);
+          }
         }
       } else {
         var data = {};
@@ -165,9 +195,19 @@ async function starInit(){
         if(response.status == 201){
           that.classList.add('active');
           that.querySelector('.number').innerText = responseJson.counter;
-          lightTip.normal('收藏成功',1000);
+          // 检查notyf是否存在，如果不存在则使用alert作为备选
+          if (typeof notyf !== 'undefined') {
+            notyf.success('收藏成功');
+          } else {
+            alert('收藏成功');
+          }
         } else if(response.status == 401) {
-          lightTip.normal('请登录后重试',1000);
+          // 检查notyf是否存在，如果不存在则使用alert作为备选
+          if (typeof notyf !== 'undefined') {
+            notyf.error('请登录后重试');
+          } else {
+            alert('请登录后重试');
+          }
         }
       }
 
@@ -267,8 +307,6 @@ function tocInit() {
   });
 
 }
-
-
 
 
 

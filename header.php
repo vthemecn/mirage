@@ -60,6 +60,9 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
     <?php endif ?>
     
     <style> .card-item .card-image { padding-bottom: <?php echo $vt_config['image_items_height'] ?> !important; } </style>
+
+    <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/assets/lib/notyf/notyf.min.css">
+    <script src="<?php bloginfo('template_url'); ?>/assets/lib/notyf/notyf.umd.js"></script>
 </head>
 
 <?php
