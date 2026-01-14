@@ -358,4 +358,50 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
 }
 
 
+/*****************************************************************************/
+
+
+/**
+ * short code 插入相册样式
+ */
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* 图片之间的间距 */
+  justify-content: center;
+}
+
+/* 单个图片项的样式 */
+.gallery .gallery-item {
+  flex: 1 1 calc(33.333% - 32px); /* 减去间距确保三张图一行 */
+  box-sizing: border-box;
+}
+
+.gallery .gallery-item img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--vt-border-radius);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* 鼠标悬停在图片上时的效果 */
+.gallery .gallery-item img:hover {
+  transform: scale(1.05);
+}
+
+/* 在小屏幕上调整布局 */
+@media (max-width: 768px) {
+  .gallery .gallery-item {
+    flex: 1 1 calc(50% - 32px); /* 双列布局 */
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery .gallery-item {
+    flex: 1 1 100%; /* 单列布局 */
+  }
+}
+
 

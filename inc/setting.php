@@ -430,3 +430,21 @@ function vt_add_admin_js(){
     wp_enqueue_script('vt-uploader', get_bloginfo('template_url').'/assets/lib/admin.js', array('jquery'), false, true );
 }
 add_action('admin_enqueue_scripts', 'vt_add_admin_js');
+
+
+/**
+ * 默认用户访问 ?attachment_id=1156 → 自动跳转到该图片所属的文章页面
+ * 一下访问附件页面（包括爬虫），可强制返回 404
+ * [gallery ids="1156,1154,1152" link="none" size="large"]，可以不添加超链接
+ */
+function disable_attachment_pages() {
+    if (is_attachment()) {
+        global $wp_query;
+        $wp_query->set_404();
+        status_header(404);
+        include get_query_template('404');
+        exit;
+    }
+}
+add_action('template_redirect', 'disable_attachment_pages');
+
