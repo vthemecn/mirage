@@ -8,6 +8,7 @@ $vt_config = vt_get_config();
 //     exit();
 // }
 
+$current_url = home_url(add_query_arg(array(), $wp->request));
 ?>
 
 
@@ -224,7 +225,7 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
                     </a>
                 <?php endif; ?>
                 <?php if (!$current_user->ID && $vt_config['is_show_login_register']) : ?>
-                    <a href="/wp-login.php" class="button login-button"><?= __('登录','vt')?></a>
+                    <a href="<?= wp_login_url($current_url) ?>" class="button login-button"><?= __('登录','vt')?></a>
                 <?php endif ?>
             </div>
 
@@ -265,7 +266,7 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
                                 <i class="fa-solid fa-gauge"></i><?= __('后台面板','vt') ?>
                             </a>
                         <?php endif ?>
-                        <a href="<?php echo wp_logout_url('/'); ?>">
+                        <a href="<?php echo wp_logout_url($current_url); ?>">
                             <i class="fa-solid fa-right-from-bracket"></i><?= __('退出登录','vt') ?>
                         </a>
                     </div>

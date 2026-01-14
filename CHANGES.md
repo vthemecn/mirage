@@ -10,6 +10,16 @@
 - 底部署名前添加 wp 标志
 - 美化登录注册页面
 
+### v2.65.0
+- feat 打通用户登录和注销的跳转逻辑
+
+
+### v2.64.0
+- feat 新增 shortcode
+    评论后可见: [comment_visible] - 评论后可查看隐藏内容
+    登录可见: [logged_in_visible] - 需要登录后查看
+    VIP内容: [vip_content] - 仅VIP会员可查看
+
 ### v2.63.0
 - feat 新增用户等级
 - feat 文章编辑和新增接口禁止文章内包含外站图片

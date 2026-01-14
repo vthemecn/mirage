@@ -188,24 +188,6 @@ if( $config['links_is_show'] ){
 }
 
 
-/* 登录后跳转控制 */
-function vt_login_redirect( $redirect_to, $request, $user ) {
-    $vt_config = vt_get_config();
-    // 如果登录成功并且用户是管理员，则跳转到后台管理页面
-    if ( isset( $user->roles ) && in_array( 'administrator', $user->roles ) ) {
-        return admin_url();
-    } else {
-        // 否则跳转到个人资料页面
-        if($vt_config['user_center_is_on']){
-            return home_url( '/users/' .  $user->ID );
-        }
-        return home_url( '/wp-admin/profile.php' );
-    }
-}
-
-add_filter( 'login_redirect', 'vt_login_redirect', 10, 3 );
-
-
 /**
  * 自定义图片名称
  */
@@ -447,4 +429,24 @@ function disable_attachment_pages() {
     }
 }
 add_action('template_redirect', 'disable_attachment_pages');
+
+
+/* 登录后跳转控制 */
+function vt_login_redirect( $redirect_to, $request, $user ) {
+    $vt_config = vt_get_config();
+    // 如果登录成功并且用户是管理员，则跳转到后台管理页面
+    if ( isset( $user->roles ) && in_array( 'administrator', $user->roles ) ) {
+        return admin_url();
+    } else {
+        // 如果有redirect_to参数，则跳转到该地址
+        if (!empty($request)) {
+            return $request;
+        }
+        // 否则跳转到首页
+        return home_url('/');
+    }
+}
+
+add_filter( 'login_redirect', 'vt_login_redirect', 10, 3 );
+
 

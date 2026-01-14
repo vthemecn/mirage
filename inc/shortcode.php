@@ -38,18 +38,25 @@ function comment_visible_shortcode($atts, $content = null) {
             'status' => 'approve'
         ]);
         if ($comment_count > 0) {
-            return do_shortcode($content);
+            return '<div class="privilege-content-wrapper comment-required">' . do_shortcode($content) . '</div>';
         }
     } else {
         // 未登录用户：通过 Cookie 检查是否评论过（需配合评论时设置 Cookie）
         if (isset($_COOKIE['comment_author_' . COOKIEHASH])) {
-            return do_shortcode($content);
+            return '<div class="privilege-content-wrapper comment-required">' . do_shortcode($content) . '</div>';
         }
     }
 
-    return '<div class="notice-block comment-notice">
-        <i class="fa-solid fa-circle-info"></i>
-        <p>评论本文后刷新页面即可查看隐藏内容。</p>
+    return '<div class="privilege-content-wrapper comment-required">
+        <div class="privilege-indicator"><i class="fa-solid fa-lock"></i>评论可见</div>
+        <div class="privilege-content">
+            <div class="privilege-title">
+                <i class="fa-solid fa-comment"></i>评论后可查看隐藏内容
+            </div>
+            <div class="privilege-action">
+                <a href="#respond" class="privilege-btn">发表评论</a>
+            </div>
+        </div>
     </div>';
 }
 add_shortcode('comment_visible', 'comment_visible_shortcode');
@@ -62,11 +69,18 @@ function logged_in_visible_shortcode($atts, $content = null) {
     }
     
     if (is_user_logged_in()) {
-        return do_shortcode($content);
+        return '<div class="privilege-content-wrapper login-required">' . do_shortcode($content) . '</div>';
     } else {
-        return '<div class="notice-block login-notice">
-            <i class="fa-solid fa-circle-info"></i>
-            <p>请先 <a href="' . wp_login_url(get_permalink()) . '">登录</a> 查看内容。</p>
+        return '<div class="privilege-content-wrapper login-required">
+            <div class="privilege-indicator"><i class="fa-solid fa-lock"></i>登录可见</div>
+            <div class="privilege-content">
+                <div class="privilege-title">
+                    <i class="fa-solid fa-lock"></i>本内容需登录后查看
+                </div>
+                <div class="privilege-action">
+                    <a href="' . wp_login_url(get_permalink()) . '" class="privilege-btn">立即登录</a>
+                </div>
+            </div>
         </div>';
     }
 }
@@ -80,9 +94,16 @@ function vip_visible_shortcode($atts, $content = null) {
     }
     
     if (!is_user_logged_in()) {
-        return '<div class="notice-block vip-notice">
-            <i class="fa-solid fa-circle-info"></i>
-            <p>请先 <a href="' . wp_login_url(get_permalink()) . '">登录</a>。</p>
+        return '<div class="privilege-content-wrapper vip-required">
+            <div class="privilege-indicator"><i class="fa-solid fa-lock"></i>VIP可见</div>
+            <div class="privilege-content">
+                <div class="privilege-title">
+                    <i class="fa-solid fa-crown"></i>VIP会员专享内容
+                </div>
+                <div class="privilege-action">
+                    <a href="' . wp_login_url(get_permalink()) . '" class="privilege-btn">登录查看</a>
+                </div>
+            </div>
         </div>';
     }
 
@@ -97,23 +118,30 @@ function vip_visible_shortcode($atts, $content = null) {
     if (!empty($atts['role'])) {
         // 检查用户角色
         if (in_array($atts['role'], (array) $user->roles)) {
-            return do_shortcode($content);
+            return '<div class="privilege-content-wrapper vip-required">' . do_shortcode($content) . '</div>';
         }
     } elseif (!empty($atts['capability'])) {
         // 检查用户权限
         if (current_user_can($atts['capability'])) {
-            return do_shortcode($content);
+            return '<div class="privilege-content-wrapper vip-required">' . do_shortcode($content) . '</div>';
         }
     } else {
         // 默认检查用户是否具有特殊权限
         if (current_user_can('read_vip_content') || in_array('vip', (array) $user->roles) || in_array('administrator', (array) $user->roles)) {
-            return do_shortcode($content);
+            return '<div class="privilege-content-wrapper vip-required">' . do_shortcode($content) . '</div>';
         }
     }
 
-    return '<div class="notice-block vip-notice">
-        <i class="fa-solid fa-circle-info"></i>
-        <p>您没有权限查看此内容，请联系管理员升级权限。</p>
+    return '<div class="privilege-content-wrapper vip-required">
+        <div class="privilege-indicator">VIP可见</div>
+        <div class="privilege-content">
+            <div class="privilege-title">
+                <i class="fa-solid fa-gem"></i>此内容仅限VIP会员查看
+            </div>
+            <div class="privilege-action">
+                <a href="' . wp_login_url(get_permalink()) . '" class="privilege-btn">登录升级</a>
+            </div>
+        </div>
     </div>';
 }
 add_shortcode('vip_content', 'vip_visible_shortcode');
