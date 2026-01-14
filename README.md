@@ -5,23 +5,15 @@
 <h1 align="center">Mirage Theme（幻影主题）</h1>
 
 <p align="center">
-  <a href="https://github.com/vtheme/mirage/releases"><img src="https://img.shields.io/github/v/release/vtheme/mirage?color=%234CAF50&label=Release&style=flat-square" alt="Latest Release"></a>
-  <a href="https://github.com/vtheme/mirage/blob/main/LICENSE"><img src="https://img.shields.io/github/license/vtheme/mirage?color=%234CAF50&style=flat-square" alt="License"></a>
-  <a href="https://wordpress.org/support/theme/mirage/"><img src="https://img.shields.io/badge/Support-Community-%234CAF50?style=flat-square" alt="Support"></a>
-  <a href="https://vtheme.cn/mirage"><img src="https://img.shields.io/badge/Documentation-Complete-%234CAF50?style=flat-square" alt="Documentation"></a>
-</p>
-
-<p align="center">
   Mirage 是一款现代化、开源的 WordPress 主题，支持暗黑模式、多语言、无刷新加载等特性，可快速构建高质量的网站。
 </p>
 
 <p align="center">
   <a href="#-功能特性">功能特性</a> •
-  <a href="#-快速开始">快速开始</a> •
-  <a href="#-安装指南">安装指南</a> •
-  <a href="#-开发">开发</a> •
-  <a href="#-贡献">贡献</a> •
-  <a href="#-许可证">许可证</a>
+  <a href="#-安装">安装</a> •
+  <a href="#-文档">文档</a> •
+  <a href="#-LICENSE">LICENSE</a>
+  <a href="#-演示地址">演示地址</a>
 </p>
 
 ---
@@ -62,48 +54,6 @@
 - **多种小工具** - 丰富的预设小工具
 
 ---
-
-## 🚀 快速开始
-
-### 环境要求
-- WordPress 6.1+
-- PHP 7.3+
-- MySQL 5.6+ 或 MariaDB 10.0+
-
-### 安装
-
-#### 方法一：通过 WordPress 后台
-1. 访问 WordPress 后台 > 外观 > 主题
-2. 点击"添加新主题" > "上传主题"
-3. 选择下载的 Mirage 主题压缩包
-4. 点击"立即安装"
-
-#### 方法二：FTP 上传
-1. 解压主题压缩包
-2. 将整个 `mirage` 文件夹上传到 `/wp-content/themes/` 目录
-3. 在 WordPress 后台激活主题
-
-### 配置
-1. 激活主题后进入"主题设置"页面
-2. 根据需要调整各项配置
-3. 保存设置并预览效果
-
----
-
-
-## 🤝 贡献
-
-我们欢迎任何形式的贡献！你可以：
-
-- 🐛 [报告 Bug](https://github.com/vtheme/mirage/issues) 并帮助我们改进
-- 💡 提出新功能建议
-- 📝 完善文档
-- 🌍 [帮助翻译](./inc/languages/) 为更多语言
-- 🔧 提交修复补丁
-
----
-
-
 
 ## 安装
 在发行版页面下载 .zip 文件，在 WordPress 后台 "主题" 页面上传并安装。
