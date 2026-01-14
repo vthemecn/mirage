@@ -344,6 +344,13 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
                                 <label for="register-confirm-password">确认密码</label>
                                 <input type="password" id="register-confirm-password" name="confirm_password" required>
                             </div>
+                            <div class="field field-text">
+                                <label for="register-verification-code">验证码</label>
+                                <div class="verification-input-group">
+                                    <input type="text" id="register-verification-code" name="verification_code" placeholder="请输入验证码" maxlength="6" required>
+                                    <button type="button" class="btn secondary" id="send-verification-code">发送验证码</button>
+                                </div>
+                            </div>
                             <div class="field field-button">
                                 <button type="submit" class="btn primary">注册</button>
                             </div>

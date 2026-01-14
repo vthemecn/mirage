@@ -55,6 +55,10 @@ add_action('wp_ajax_register_user', 'handle_register_user');
 add_action('wp_ajax_nopriv_forgot_password', 'handle_forgot_password');
 add_action('wp_ajax_forgot_password', 'handle_forgot_password');
 
+// 添加发送验证码的处理函数
+add_action('wp_ajax_nopriv_send_verification_code', 'handle_send_verification_code');
+add_action('wp_ajax_send_verification_code', 'handle_send_verification_code');
+
 function handle_login_user() {
     // 验证nonce
     if (!wp_verify_nonce($_POST['security'], 'ajax_nonce')) {
@@ -95,15 +99,23 @@ function handle_register_user() {
     $username = sanitize_text_field($_POST['username']);
     $email = sanitize_email($_POST['email']);
     $password = $_POST['password'];
+    $verification_code = sanitize_text_field($_POST['verification_code']);
 
     // 验证输入
-    if (empty($username) || empty($email) || empty($password)) {
+    if (empty($username) || empty($email) || empty($password) || empty($verification_code)) {
         wp_send_json_error('请填写所有必填字段');
         return;
     }
 
     if (strlen($password) < 6) {
         wp_send_json_error('密码长度至少为6位');
+        return;
+    }
+
+    // 检查验证码
+    $verification_result = verify_email_verification_code($email, $verification_code);
+    if (!$verification_result) {
+        wp_send_json_error('验证码错误或已过期');
         return;
     }
 
@@ -125,6 +137,8 @@ function handle_register_user() {
     if (is_wp_error($user_id)) {
         wp_send_json_error($user_id->get_error_message());
     } else {
+        // 注册成功后删除验证码
+        delete_user_verification_code($email);
         wp_send_json_success('注册成功');
     }
 }
@@ -171,6 +185,107 @@ function handle_forgot_password() {
     } else {
         wp_send_json_error('邮件发送失败，请联系管理员');
     }
+}
+
+function handle_send_verification_code() {
+    // 验证nonce
+    if (!wp_verify_nonce($_POST['security'], 'ajax_nonce')) {
+        wp_die('Security check failed');
+    }
+
+    $email = sanitize_email($_POST['email']);
+
+    if (empty($email)) {
+        wp_send_json_error('请输入邮箱地址');
+        return;
+    }
+
+    // 验证邮箱格式
+    if (!is_email($email)) {
+        wp_send_json_error('请输入有效的邮箱地址');
+        return;
+    }
+
+    // 检查邮箱是否已被注册
+    if (email_exists($email)) {
+        wp_send_json_error('该邮箱已被注册');
+        return;
+    }
+
+    // 生成验证码
+    $code = generate_verification_code();
+    
+    // 保存验证码到数据库
+    save_verification_code($email, $code);
+    
+    // 发送邮件
+    $subject = '注册验证码';
+    $message = "您的注册验证码是：<strong>{$code}</strong>，有效期为10分钟。";
+    
+    $sent = wp_mail($email, $subject, $message);
+
+    if ($sent) {
+        wp_send_json_success('验证码已发送到您的邮箱');
+    } else {
+        wp_send_json_error('验证码发送失败，请稍后重试');
+    }
+}
+
+function generate_verification_code($length = 6) {
+    return str_pad(rand(pow(10, $length-1), pow(10, $length)-1), $length, '0', STR_PAD_LEFT);
+}
+
+function save_verification_code($email, $code) {
+    // 使用选项API存储验证码，设置过期时间
+    $option_name = 'email_verification_' . md5($email);
+    $expiration_time = time() + 600; // 10分钟过期
+    
+    $data = array(
+        'code' => (string)$code,  // 确保验证码为字符串
+        'expires_at' => $expiration_time
+    );
+    
+    // 使用带过期时间的选项存储
+    update_option($option_name, $data, false);
+}
+
+function verify_email_verification_code($email, $code) {
+    $option_name = 'email_verification_' . md5($email);
+    $stored_data = get_option($option_name);
+    
+    if (!$stored_data || !isset($stored_data['code']) || !isset($stored_data['expires_at'])) {
+        error_log("Verification data not found for email: " . $email);
+        return false;
+    }
+
+    // 检查验证码是否过期
+    if ($stored_data['expires_at'] < time()) {
+        error_log("Verification code expired for email: " . $email);
+        // 删除过期的验证码
+        delete_user_verification_code($email);
+        return false;
+    }
+
+    // 确保两个验证码都是字符串再进行比较
+    $expected_code = (string)$stored_data['code'];
+    $received_code = (string)$code;
+    
+    // 使用更安全的比较方式
+    $is_valid = hash_equals($expected_code, $received_code);
+    
+    error_log("Verifying code for {$email}. Expected: {$expected_code}, Received: {$received_code}, Result: " . ($is_valid ? 'true' : 'false'));
+    
+    if ($is_valid) {
+        // 验证成功后删除验证码
+        delete_user_verification_code($email);
+    }
+    
+    return $is_valid;
+}
+
+function delete_user_verification_code($email) {
+    $option_name = 'email_verification_' . md5($email);
+    delete_option($option_name);
 }
 
 

@@ -64,6 +64,22 @@
   border-color: var(--vt-color-primary);
 }
 
+.verification-input-group {
+  display: flex;
+  gap: 10px;
+}
+
+.verification-input-group input {
+  flex: 1;
+}
+
+.verification-input-group button {
+  flex-shrink: 0;
+  height: auto;
+  padding: 10px 15px;
+  font-size: 13px;
+}
+
 .field-button {
   display: flex;
   justify-content: center;
@@ -92,6 +108,15 @@
 
 .btn.primary:hover {
   background-color: var(--vt-color-primary-hover);
+}
+
+.btn.secondary {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.btn.secondary:hover {
+  background-color: #e0e0e0;
 }
 
 .login-register-dialog .dialog-widget {
@@ -124,6 +149,8 @@
   .field-text input {
     font-size: 16px; /* Prevents zoom on iOS devices */
   }
+  
+  .verification-input-group {
+    flex-direction: column;
+  }
 }
-
-
