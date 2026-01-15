@@ -654,7 +654,7 @@ input:focus + .form-help {
 }
 
 input:disabled, textarea:disabled {
-  background-color: var(--vt-bg-color-grey);
+  background-color: var(--vt-bg-color-grey) !important;
 }
 
 
@@ -1403,10 +1403,10 @@ nav.pagination a:hover {
 .dialog-widget {
   box-sizing: border-box;
   font-size: 18px;
-  padding: 10px;
+  padding: 25px;
   border-radius: var(--vt-border-radius);
   background-color: var(--vt-bg-color-card);
-  box-shadow: 0 0 20px var(--vt-shadow-color);
+  /* box-shadow: 0 0 20px var(--vt-shadow-color); */
   position: relative;
   user-select: none;
 }
@@ -1726,7 +1726,6 @@ nav.pagination a:hover {
 
 
 
-@parameter=code_edit>
 /**
  * home - hot
  */
@@ -5007,7 +5006,6 @@ body.dark-mode .user-card {
   align-items: center;
   justify-content: center;
   color: white;
-  /* border-radius: 50%; */
   font-size: 14px;
   text-align: center;
 }
@@ -5019,7 +5017,26 @@ body.dark-mode .user-card {
 
 .avatar-upload-container:hover .avatar-upload-overlay {
   display: flex;
-  cursor: pointer;
+}
+
+/* 密码重置表单样式 */
+#forgot-form-step2 {
+  margin-top: 15px;
+}
+
+#forgot-back {
+  text-align: center;
+  margin-top: 15px;
+}
+
+#forgot-back a {
+  color: var(--vt-color-primary);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+#forgot-back a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {

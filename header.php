@@ -359,15 +359,37 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
                     
                     <!-- 找回密码表单 -->
                     <div class="tab-content" id="tab-forgot">
-                        <form id="forgot-form">
+                        <form id="forgot-form-step1">
                             <div class="field field-text">
                                 <label for="forgot-email">邮箱</label>
                                 <input type="email" id="forgot-email" name="email" required>
                             </div>
                             <div class="field field-button">
-                                <button type="submit" class="btn primary">发送重置链接</button>
+                                <button type="submit" class="btn primary">发送验证码</button>
                             </div>
                         </form>
+                        
+                        <form id="forgot-form-step2" style="display:none;">
+                            <div class="field field-text">
+                                <label for="forgot-code">验证码</label>
+                                <input type="text" id="forgot-code" name="code" placeholder="请输入收到的验证码" maxlength="6" required>
+                            </div>
+                            <div class="field field-text">
+                                <label for="forgot-new-password">新密码</label>
+                                <input type="password" id="forgot-new-password" name="new_password" placeholder="请输入新密码" required>
+                            </div>
+                            <div class="field field-text">
+                                <label for="forgot-confirm-password">确认新密码</label>
+                                <input type="password" id="forgot-confirm-password" name="confirm_new_password" placeholder="请再次输入新密码" required>
+                            </div>
+                            <div class="field field-button">
+                                <button type="submit" class="btn primary">重置密码</button>
+                            </div>
+                        </form>
+                        
+                        <div id="forgot-back" style="display:none; text-align:center; margin-top:15px;">
+                            <a href="javascript:;" onclick="showForgotStep1()">← 返回输入邮箱</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -380,6 +402,20 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
             ajax_url: "<?php echo admin_url('admin-ajax.php'); ?>",
             nonce: "<?php echo wp_create_nonce('ajax_nonce'); ?>"
         };
+        
+        // 显示第一步：输入邮箱
+        function showForgotStep1() {
+            document.getElementById('forgot-form-step1').style.display = 'block';
+            document.getElementById('forgot-form-step2').style.display = 'none';
+            document.getElementById('forgot-back').style.display = 'none';
+        }
+        
+        // 显示第二步：输入验证码和新密码
+        function showForgotStep2() {
+            document.getElementById('forgot-form-step1').style.display = 'none';
+            document.getElementById('forgot-form-step2').style.display = 'block';
+            document.getElementById('forgot-back').style.display = 'block';
+        }
     </script>
 </body>
 </html>

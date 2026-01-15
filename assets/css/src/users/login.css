@@ -169,7 +169,6 @@
   align-items: center;
   justify-content: center;
   color: white;
-  /* border-radius: 50%; */
   font-size: 14px;
   text-align: center;
 }
@@ -181,7 +180,26 @@
 
 .avatar-upload-container:hover .avatar-upload-overlay {
   display: flex;
-  cursor: pointer;
+}
+
+/* 密码重置表单样式 */
+#forgot-form-step2 {
+  margin-top: 15px;
+}
+
+#forgot-back {
+  text-align: center;
+  margin-top: 15px;
+}
+
+#forgot-back a {
+  color: var(--vt-color-primary);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+#forgot-back a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {

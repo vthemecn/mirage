@@ -80,7 +80,7 @@ input:focus + .form-help {
 }
 
 input:disabled, textarea:disabled {
-  background-color: var(--vt-bg-color-grey);
+  background-color: var(--vt-bg-color-grey) !important;
 }
 
 

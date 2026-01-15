@@ -42,10 +42,10 @@
 .dialog-widget {
   box-sizing: border-box;
   font-size: 18px;
-  padding: 10px;
+  padding: 25px;
   border-radius: var(--vt-border-radius);
   background-color: var(--vt-bg-color-card);
-  box-shadow: 0 0 20px var(--vt-shadow-color);
+  /* box-shadow: 0 0 20px var(--vt-shadow-color); */
   position: relative;
   user-select: none;
 }

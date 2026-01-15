@@ -54,6 +54,8 @@ add_action('wp_ajax_nopriv_register_user', 'handle_register_user');
 add_action('wp_ajax_register_user', 'handle_register_user');
 add_action('wp_ajax_nopriv_forgot_password', 'handle_forgot_password');
 add_action('wp_ajax_forgot_password', 'handle_forgot_password');
+add_action('wp_ajax_nopriv_reset_password_with_code', 'handle_reset_password_with_code');
+add_action('wp_ajax_reset_password_with_code', 'handle_reset_password_with_code');
 
 // 添加发送验证码的处理函数
 add_action('wp_ajax_nopriv_send_verification_code', 'handle_send_verification_code');
@@ -176,26 +178,89 @@ function handle_forgot_password() {
         return;
     }
 
-    // 生成密码重置密钥
-    $key = get_password_reset_key($user_data);
-    if (is_wp_error($key)) {
-        wp_send_json_error('发生错误，请稍后重试');
-        return;
-    }
-
-    // 发送密码重置邮件
-    $subject = '密码重置链接';
-    $message = sprintf(
-        "您好，\n\n您请求重置密码，请点击下面的链接进行重置：\n\n%s\n\n如果您没有请求重置密码，请忽略此邮件。",
-        network_site_url("wp-login.php?action=rp&key=$key&login=" . rawurlencode($user_data->user_login), 'login')
+    // 生成验证码
+    $code = generate_verification_code();
+    
+    // 保存验证码到数据库，前缀为reset_password_，表示是用于密码重置的
+    $option_name = 'reset_password_verification_' . md5($user_email);
+    $expiration_time = time() + 600; // 10分钟过期
+    
+    $data = array(
+        'code' => (string)$code,
+        'expires_at' => $expiration_time,
+        'user_id' => $user_data->ID
     );
-
+    
+    update_option($option_name, $data, false);
+    
+    // 发送邮件
+    $subject = '密码重置验证码';
+    $message = "您请求重置密码，验证码是：<strong>{$code}</strong>，有效期为10分钟。";
+    
     $sent = wp_mail($user_email, $subject, $message);
 
     if ($sent) {
-        wp_send_json_success('重置密码链接已发送到您的邮箱');
+        wp_send_json_success('密码重置验证码已发送到您的邮箱');
     } else {
         wp_send_json_error('邮件发送失败，请联系管理员');
+    }
+}
+
+function handle_reset_password_with_code() {
+    // 验证nonce
+    if (!wp_verify_nonce($_POST['security'], 'ajax_nonce')) {
+        wp_die('Security check failed');
+    }
+
+    $email = sanitize_email($_POST['email']);
+    $code = sanitize_text_field($_POST['code']);
+    $new_password = $_POST['new_password'];
+
+    if (empty($email) || empty($code) || empty($new_password)) {
+        wp_send_json_error('请填写所有必填字段');
+        return;
+    }
+
+    if (strlen($new_password) < 6) {
+        wp_send_json_error('密码长度至少为6位');
+        return;
+    }
+
+    // 验证验证码
+    $option_name = 'reset_password_verification_' . md5($email);
+    $stored_data = get_option($option_name);
+    
+    if (!$stored_data || !isset($stored_data['code']) || !isset($stored_data['expires_at']) || !isset($stored_data['user_id'])) {
+        wp_send_json_error('验证码错误或已过期');
+        return;
+    }
+
+    // 检查验证码是否过期
+    if ($stored_data['expires_at'] < time()) {
+        delete_reset_verification_code($email);
+        wp_send_json_error('验证码已过期，请重新获取');
+        return;
+    }
+
+    // 检查验证码是否匹配
+    $expected_code = (string)$stored_data['code'];
+    $received_code = (string)$code;
+    
+    if (!hash_equals($expected_code, $received_code)) {
+        wp_send_json_error('验证码错误');
+        return;
+    }
+
+    // 重置密码
+    $user_id = $stored_data['user_id'];
+    $result = wp_set_password($new_password, $user_id);
+
+    if (is_wp_error($result)) {
+        wp_send_json_error($result->get_error_message());
+    } else {
+        // 删除验证码
+        delete_reset_verification_code($email);
+        wp_send_json_success('密码重置成功');
     }
 }
 
@@ -297,6 +362,11 @@ function verify_email_verification_code($email, $code) {
 
 function delete_user_verification_code($email) {
     $option_name = 'email_verification_' . md5($email);
+    delete_option($option_name);
+}
+
+function delete_reset_verification_code($email) {
+    $option_name = 'reset_password_verification_' . md5($email);
     delete_option($option_name);
 }
 
