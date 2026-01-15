@@ -60,7 +60,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  color: #ffffff;
+  color: var(--vt-text-color-inverse);
   padding: 30px 20px;
   height: 95px;
   box-sizing: border-box;
@@ -162,7 +162,7 @@
   height: 50px;
   width: 100%;
   font-size: 15px;
-  color: #ffffff;
+  color: var(--vt-text-color-inverse);
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;

@@ -100,38 +100,93 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
 
     <header class="header mobile">
         <div class="header-nav">
-            <a class="top-nav-button search-button" href="javascript:;">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </a>
             <a href="<?php bloginfo('url') ?>" class="logo" title="" rel="home">
                 <img light src="<?= $vt_config['site_logo']; ?>" alt="<?php bloginfo('name') ?>">
                 <img darkness src="<?= $vt_config['site_logo_darkness']; ?>" alt="<?php bloginfo('name') ?>">
             </a>
+            <a class="top-nav-button dark-mode-button  <?php echo $is_dark_mode ? 'dark' : '' ?>">
+                <i class="fa-solid fa-sun sun"></i>
+                <i class="fa-solid fa-moon moon"></i>
+            </a>
+            <a class="top-nav-button search-button" href="javascript:;">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
             <a class="top-nav-button menu-button" href="javascript:;">
                 <i class="fa-solid fa-bars"></i>
             </a>
+            <?php /* if (!$current_user->ID && $vt_config['is_show_login_register']) : ?>
+                <a class="top-nav-button login-button open-login-dialog" href="javascript:;">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                </a>
+            <?php endif */ ?>
+            
+            <?php /* if ($current_user->ID) : ?>
+                <?php $avatar = vt_get_custom_avatar_url($current_user->ID) ?>
+                <a class="top-nav-button header-top-avatar" href="javascript:;">
+                    <img src="<?php echo $avatar ?>" alt="">
+                </a>
+            <?php endif */ ?>
         </div>
 
         <!-- 移动端菜单 -->
         <div class="mobile-menu-modal">
             <div class="mobile-menu">
                 <div class="action-widget">
-                    <?php if ($current_user->ID && $vt_config['is_show_login_register']) : ?>
-                        <a class="action-button" href="<?php bloginfo('url') ?>/wp-admin/index.php">
-                            <i class="fa-solid fa-user"></i>
-                        </a>
-                    <?php endif ?>
-                    <?php if($vt_config['dark_mode_type'] == 1): ?>
-                        <a class="action-button dark-mode-button  <?php echo $is_dark_mode ? 'dark' : '' ?>">
-                            <i class="fa-solid fa-sun sun"></i>
-                            <i class="fa-solid fa-moon moon"></i>
-                        </a>
-                    <?php endif; ?>
                     <a class="action-button close" href="javascript:;">
                         <i class="fa-solid fa-xmark"></i>
                     </a>
                 </div>
-                
+
+                <?php if ($current_user->ID) : ?>
+                    <?php
+                    $nickname = get_user_meta($current_user->ID, 'nickname', true);
+                    $description = get_user_meta($current_user->ID, 'description', true);
+                    $avatar = vt_get_custom_avatar_url($current_user->ID);
+                    ?>
+                    <div class="user-widget-mobile">
+                        <div class="user-header">
+                            <img src="<?php echo $avatar ?>" class="avatar" alt="Avatar">
+                            <div class="user-meta">
+                                <div class="user-nickname"><?php echo $nickname ?></div>
+                                <div class="user-more"><?php echo $description ?></div>
+                            </div>
+                        </div>
+                        <div class="links-widget">
+                            <?php if($vt_config['user_center_is_on']):?>
+                                <a href="<?php bloginfo('url') ?>/users/<?php echo $current_user->ID ?>">
+                                    <i class="fa-solid fa-user"></i><?= __('个人中心','vt') ?>
+                                </a>
+                            <?php else: ?>
+                                <a href="<?php bloginfo('url') ?>/wp-admin/profile.php">
+                                    <i class="fa-solid fa-user"></i><?= __('个人资料','vt') ?>
+                                </a>
+                            <?php endif ?>
+                            
+                            <?php if (in_array('administrator', $current_user->roles)) :?>
+                                <a href="<?php bloginfo('url') ?>/wp-admin/index.php">
+                                    <i class="fa-solid fa-gauge"></i><?= __('后台面板','vt') ?>
+                                </a>
+                            <?php endif ?>
+                            <a href="<?php echo wp_logout_url($current_url); ?>">
+                                <i class="fa-solid fa-right-from-bracket"></i><?= __('退出登录','vt') ?>
+                            </a>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <?php if ($vt_config['is_show_login_register']) : ?>
+                        <div class="user-widget-mobile">
+                            <div class="user-header login-button open-login-dialog">
+                                <?php $avatar = vt_get_custom_avatar_url($current_user->ID) ?>
+                                <img src="<?=$avatar ?>" class="avatar" alt="Avatar">
+                                <div class="user-meta">
+                                    <div class="user-nickname" style="cursor: pointer;"><?php _e('请登录', 'vt') ?></div>
+                                    <div class="user-more"></div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif ?>
+                <?php endif ?>
+
                 <?php
                 $theme_location = "primary";
                 if (has_nav_menu('header_main')) {

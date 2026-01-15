@@ -393,7 +393,11 @@ function switchToTab(tabName, title) {
 }
 
 function showNotification(message, type) {
-  // 检查Notyf是否存在
+  const notyf = new Notyf({
+    duration: 2000,
+    position: { x: 'center', y: 'top' }
+  });
+
   if (typeof notyf !== 'undefined') {
     if (type === 'success') {
       notyf.success(message);

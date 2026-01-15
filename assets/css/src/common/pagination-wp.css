@@ -38,7 +38,7 @@ nav.pagination .nav-links > * {
 nav.pagination .nav-links > .current {
   background-color: var(--vt-color-primary);
   border-color: var(--vt-color-primary);
-  color: #fff;
+  color: var(--vt-text-color);
   border-radius: 3px;
   box-shadow: 0 0 2px var(--vt-shadow-color);
 }
