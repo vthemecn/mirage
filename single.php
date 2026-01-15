@@ -176,12 +176,15 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                 </div>
                 <?php endif; ?>
 
-                <?php /*
+                <?php if(in_array('star', $config['post_action'])):?>
                 <div class="widget-action star <?php echo $is_star ? ' active' : '' ?>">
                     <i class="fa-solid fa-star"></i>
                     <span><?=__('收藏','vt')?></span>
                     <span class='number'><?= $star_counter ? $star_counter : '' ?></span>
                 </div>
+                <?php endif; ?>
+                
+                <?php /*
                 <div class="widget-action comment">
                     <i class="iconfont">&#xe68f;</i>
                     <span><?=__('评论</span>

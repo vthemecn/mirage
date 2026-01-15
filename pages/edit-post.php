@@ -24,6 +24,13 @@ if (!$has_auth) {
     exit;
 }
 
+// 关闭投稿的话，跳转到首页
+$config = vt_get_config();
+if(!$config['enable_user_posts']){
+    wp_redirect(home_url());
+    exit;
+}
+
 get_header();
 ?>
 

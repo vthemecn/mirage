@@ -85,7 +85,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   color: var(--vt-text-color-grey);
   font-size: 14px;
   margin-top: auto;

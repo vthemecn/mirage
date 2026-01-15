@@ -9,6 +9,17 @@ class Posts {
         if (!$current_user->exists()) {
             return new \WP_Error('unauthorized', '用户未登录', array('status' => 401));
         }
+
+        $config = vt_get_config();
+        if(!$config['enable_user_posts']){
+            return new \WP_Error('unauthorized', '没有启用投稿', array('status' => 401));
+        }
+
+        $config = vt_get_config();
+        if(!$config['enable_user_posts']){
+            wp_redirect(home_url());
+            exit;
+        }
         
         $title = sanitize_text_field($request->get_param('post_title'));
         $content = $request->get_param('post_content');
@@ -136,6 +147,11 @@ class Posts {
         if (!$current_user->exists()) {
             return new \WP_Error('unauthorized', '用户未登录', array('status' => 401));
         }
+
+        $config = vt_get_config();
+        if(!$config['enable_user_posts']){
+            return new \WP_Error('unauthorized', '没有启用投稿', array('status' => 401));
+        }
         
         // 检查是否是文章作者或管理员
         $post = get_post($post_id);
@@ -181,6 +197,11 @@ class Posts {
         
         if (!$current_user->exists()) {
             return new \WP_Error('unauthorized', '用户未登录', array('status' => 401));
+        }
+
+        $config = vt_get_config();
+        if(!$config['enable_user_posts']){
+            return new \WP_Error('unauthorized', '没有启用投稿', array('status' => 401));
         }
         
         // 检查是否是文章作者或管理员

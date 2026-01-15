@@ -195,7 +195,7 @@ function handle_forgot_password() {
     
     // 发送邮件
     $subject = '密码重置验证码';
-    $message = "您请求重置密码，验证码是：<strong>{$code}</strong>，有效期为10分钟。";
+    $message = "您请求重置密码，验证码是：{$code}，有效期为10分钟。";
     
     $sent = wp_mail($user_email, $subject, $message);
 
@@ -297,7 +297,7 @@ function handle_send_verification_code() {
     
     // 发送邮件
     $subject = '注册验证码';
-    $message = "您的注册验证码是：<strong>{$code}</strong>，有效期为10分钟。";
+    $message = "您的注册验证码是：{$code}，有效期为10分钟。";
     
     $sent = wp_mail($email, $subject, $message);
 

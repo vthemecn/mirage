@@ -11,6 +11,8 @@ $page_user_id = $wp_query->query_vars['user_id'];
 
 $avatar = vt_get_custom_avatar_url($page_user_id);
 
+$config = vt_get_config();
+
 function page_active($current_page_name)
 {
     global $wp_query;
@@ -27,40 +29,41 @@ function page_active($current_page_name)
             <i class="fa-solid fa-user"></i><span>概览</span>
             <i class="fa-solid fa-angle-right"></i>
         </a>
+
+        <?php if($config['enable_user_posts'] &&  ($current_user->ID == $param_user_id || current_user_can( 'manage_options' ))  ): ?>
+            <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/new-post" class="sidebar-action <?php echo page_active('new-post'); ?>">
+                <i class="fa-solid fa-plus"></i>
+                <span>发布</span>
+                <i class="fa-solid fa-angle-right"></i>
+            </a>
+            <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/my-posts" class="sidebar-action <?php echo page_active('my-posts'); ?>">
+                <i class="fa-solid fa-book"></i>
+                <span>发布的</span>
+                <i class="fa-solid fa-angle-right"></i>
+            </a>
+        <?php endif; ?>
+
+        <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/like" class="sidebar-action <?php echo page_active('like'); ?>">
+            <i class="fa-solid fa-thumbs-up"></i><span>点赞</span>
+            <i class="fa-solid fa-angle-right"></i>
+        </a>
         
         <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/star" class="sidebar-action <?php echo page_active('star'); ?>">
             <i class="fa-solid fa-star"></i><span>收藏</span>
             <i class="fa-solid fa-angle-right"></i>
         </a>
         
-        <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/like" class="sidebar-action <?php echo page_active('like'); ?>">
-            <i class="fa-solid fa-thumbs-up"></i><span>点赞</span>
-            <i class="fa-solid fa-angle-right"></i>
-        </a>
-        
         <?php if($current_user->ID == $param_user_id || current_user_can( 'manage_options' ) ): ?>
-            <?php if ($current_user->ID == $param_user_id) : ?>
-                <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/new-post" class="sidebar-action <?php echo page_active('new-post'); ?>">
-                    <i class="fa-solid fa-plus"></i>
-                    <span>发布</span>
-                    <i class="fa-solid fa-angle-right"></i>
-                </a>
-                <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/my-posts" class="sidebar-action <?php echo page_active('my-posts'); ?>">
-                    <i class="fa-solid fa-book"></i>
-                    <span>发布的</span>
-                    <i class="fa-solid fa-angle-right"></i>
-                </a>
-                <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/setting" class="sidebar-action <?php echo page_active('setting'); ?>">
-                    <i class="fa-solid fa-gear"></i>
-                    <span>设置</span>
-                    <i class="fa-solid fa-angle-right"></i>
-                </a>
-                <a href="<?php echo wp_logout_url('/'); ?>" class="sidebar-action">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                    <span>退出</span>
-                    <i class="fa-solid fa-angle-right"></i>
-                </a>
-            <?php endif ?>
+            <a href="<?php bloginfo("siteurl") ?>/users/<?php echo $page_user_id ?>/setting" class="sidebar-action <?php echo page_active('setting'); ?>">
+                <i class="fa-solid fa-gear"></i>
+                <span>设置</span>
+                <i class="fa-solid fa-angle-right"></i>
+            </a>
+            <a href="<?php echo wp_logout_url('/'); ?>" class="sidebar-action">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>退出</span>
+                <i class="fa-solid fa-angle-right"></i>
+            </a>
         <?php endif ?>
     </div>
     

@@ -1229,7 +1229,7 @@ nav.pagination a:hover {
 
 .share-dialog-widget #poster {
   height: auto;
-  width: auto;
+  width: 95%;
   position: absolute;
   top: 25px;
   left: 10px;
@@ -2768,7 +2768,7 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   position: fixed;
   top: 0;
   right: 0;
-  width: 80vw;
+  width: 65vw;
   height: 100vh;
   flex-direction: column;
   align-items: center;
@@ -3329,6 +3329,7 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   display: flex;
   flex-direction: column;
   text-align: center;
+  width: 100%;
 }
 
 .user-widget-mobile .user-nickname {
@@ -4290,7 +4291,7 @@ body.dark-mode .user-card {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   color: var(--vt-text-color-grey);
   font-size: 14px;
   margin-top: auto;
@@ -4756,7 +4757,7 @@ body.dark-mode .user-card {
   width: 100%;
   display: flex;
   align-items: center;
-  background: white;
+  background: var(--vt-bg-color-card);
   box-shadow: 0 -1px 4px rgba(0,0,0,0.08);
   padding: 0 8px 30px 0;
   box-sizing: border-box;

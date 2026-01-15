@@ -160,7 +160,7 @@
 
 .share-dialog-widget #poster {
   height: auto;
-  width: auto;
+  width: 95%;
   position: absolute;
   top: 25px;
   left: 10px;

@@ -61,7 +61,7 @@ class Upload {
             'test_form' => false,
             'mimes' => array(
                 'jpeg' => 'image/jpeg',
-                'jpg' => 'image/jpg',
+                'jpg' => 'image/jpeg',
                 'png' => 'image/png',
                 'gif' => 'image/gif',
                 'webp' => 'image/webp',

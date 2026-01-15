@@ -298,22 +298,28 @@
     if(!starButtons) return;
     starButtons.forEach( button=>{
       button.addEventListener('click', async function(){
-        // 未登录用户，弹出登录框
-        document.querySelector('input[name="current_user_id"]').value;
-        var loginModal = document.querySelector('.login-dialog');
-        if(loginModal){
-          loginModal.showModal();
-          document.querySelector('body').classList.add('no-scroll');
+        // 检查用户是否已登录
+        let currentUserId = document.querySelector('input[name="current_user_id"]').value;
+      
+        if(currentUserId == 0){
+          console.log('currentUserId', currentUserId, currentUserId == 0, 'xxx');
+
+          // 如果未登录，弹出登录对话框
+          var loginModal = document.querySelector('.login-register-dialog'); // 修复选择器
+          if(loginModal){
+            loginModal.showModal();
+            document.querySelector('body').classList.add('no-scroll');
+          }
+          return; // 直接返回，不执行后续操作
         }
         
-
         var that = this;
         
         var wpnonce = document.querySelector("input[name='wp_create_nonce']").value;
         var post_id = document.querySelector("input[name='post_id']").value;
         
         var addUrl = '/wp-json/vtheme/v1/stars' + "?_wpnonce=" + wpnonce;
-        var deleteUrl = '/wp-json/vtheme/v1/stars/' + post_id + "?_wpnonce=" + wpnonce;
+        var deleteUrl = '/wp-json/vtheme/v1/stars/' + post_id + "?_wpnonce=" + wpnonce; // 修复API URL，添加vtheme前缀
         
         if( this.classList.contains('active') ){
           var that = this;

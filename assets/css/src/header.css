@@ -87,7 +87,7 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   position: fixed;
   top: 0;
   right: 0;
-  width: 80vw;
+  width: 65vw;
   height: 100vh;
   flex-direction: column;
   align-items: center;
@@ -648,6 +648,7 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   display: flex;
   flex-direction: column;
   text-align: center;
+  width: 100%;
 }
 
 .user-widget-mobile .user-nickname {

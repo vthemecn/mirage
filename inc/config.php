@@ -600,7 +600,7 @@ if( class_exists( 'CSF' ) ) {
                 'default'    => '0',
                 'inline' => true
             ),
-                        array(
+            array(
                 'id'         => 'show_copyright',
                 'type'       => 'switcher',
                 'title'      => __('文章版权声明','vt'),
@@ -650,12 +650,20 @@ if( class_exists( 'CSF' ) ) {
               'title'      => __('文章操作','vt'),
               'options'    => array(
                 'like'      => __('点赞','vt'),
+                'star'      => __('收藏','vt'),
                 'share'     => __('分享','vt'),
                 'donate'    => __('捐赠','vt'),
                 'edit'      => __('编辑','vt'),
               ),
               'default'    => array( 'like', 'share', 'donate', 'edit')
             ),
+            array(
+                'id'         => 'enable_user_posts',
+                'type'       => 'switcher',
+                'title'      => __('启用投稿','vt'),
+                'default'    => true
+            )
+            
         )   
     ));
 
