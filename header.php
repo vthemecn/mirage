@@ -152,16 +152,9 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
                             </div>
                         </div>
                         <div class="links-widget">
-                            <?php if($vt_config['user_center_is_on']):?>
-                                <a href="<?php bloginfo('url') ?>/users/<?php echo $current_user->ID ?>">
-                                    <i class="fa-solid fa-user"></i><?= __('个人中心','vt') ?>
-                                </a>
-                            <?php else: ?>
-                                <a href="<?php bloginfo('url') ?>/wp-admin/profile.php">
-                                    <i class="fa-solid fa-user"></i><?= __('个人资料','vt') ?>
-                                </a>
-                            <?php endif ?>
-                            
+                            <a href="<?php bloginfo('url') ?>/users/<?php echo $current_user->ID ?>">
+                                <i class="fa-solid fa-user"></i><?= __('个人中心','vt') ?>
+                            </a>
                             <?php if (in_array('administrator', $current_user->roles)) :?>
                                 <a href="<?php bloginfo('url') ?>/wp-admin/index.php">
                                     <i class="fa-solid fa-gauge"></i><?= __('后台面板','vt') ?>
@@ -309,16 +302,10 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
                         </div>
                     </div>
                     <div class="links-widget">
-                        <?php if($vt_config['user_center_is_on']):?>
-                            <a href="<?php bloginfo('url') ?>/users/<?php echo $current_user->ID ?>">
-                                <i class="fa-solid fa-user"></i><?= __('个人中心','vt') ?>
-                            </a>
-                        <?php else: ?>
-                            <a href="<?php bloginfo('url') ?>/wp-admin/profile.php">
-                                <i class="fa-solid fa-user"></i><?= __('个人资料','vt') ?>
-                            </a>
-                        <?php endif ?>
-                        
+                        <a href="<?php bloginfo('url') ?>/users/<?php echo $current_user->ID ?>">
+                            <i class="fa-solid fa-user"></i><?= __('个人中心','vt') ?>
+                        </a>
+
                         <?php if (in_array('administrator', $current_user->roles)) :?>
                             <a href="<?php bloginfo('url') ?>/wp-admin/index.php">
                                 <i class="fa-solid fa-gauge"></i><?= __('后台面板','vt') ?>

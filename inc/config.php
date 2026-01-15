@@ -98,15 +98,6 @@ if( class_exists( 'CSF' ) ) {
                 'preview' => true
             ),
             array(
-                'id'         => 'user_center_is_on',
-                'type'       => 'radio',
-                'title'      => __('个人中心','vt'),
-                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
-                'default'    => '0',
-                'inline' => true
-            ),
-            
-            array(
                 'id'         => 'comments_is_on',
                 'type'       => 'radio',
                 'title'      => __('开启评论','vt'),
