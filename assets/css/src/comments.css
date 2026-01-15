@@ -110,9 +110,10 @@
   border: none;
   border-radius: var(--vt-border-radius);
   background: var(--vt-color-primary);
-  color: var(--vt-text-color-inverse);
+  color: #fff;
   cursor: pointer;
 }
+.dark-mode .comment-form .submit { color: #b9b9b9; }
 
 @media only screen and (min-width: 900px) {
   .comment-form .form-submit {

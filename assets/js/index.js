@@ -924,11 +924,13 @@
     dialogTools.registerDialog(dialogElement);
     
     // 打开登录对话框
-    const loginBtn = document.querySelector('.open-login-dialog');
-    if(loginBtn) {
-      loginBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        dialogElement.showModal();
+    const loginBtns = document.querySelectorAll('.open-login-dialog');
+    if(loginBtns.length > 0) {
+      loginBtns.forEach(function(loginBtn) {
+        loginBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          dialogElement.showModal();
+        });
       });
     }
     

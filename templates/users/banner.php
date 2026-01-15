@@ -24,7 +24,7 @@ $level_text = $levels[$param_user_level];
                             <?php echo get_avatar($param_user->ID, 80, '', '', ''); ?>
                         </div>
                         <div class="avatar-upload-overlay">
-                            <span>点击上传头像</span>
+                            <span>上传头像</span>
                             <input type="file" id="avatar-upload-input" accept="image/*" style="display: none;">
                         </div>
                     </div>
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
         formData.append('security', ajax_object.nonce);
         
         // 显示上传进度
-        showNotification('正在上传头像...', 'success');
+        // showNotification('正在上传头像...', 'success');
         
         fetch(ajax_object.ajax_url, {
             method: 'POST',
@@ -134,6 +134,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function showNotification(message, type) {
+        let notyf = new Notyf({
+            duration: 2000,
+            position: { x: 'center', y: 'top' }
+        });
+
         // 检查Notyf是否存在
         if (typeof notyf !== 'undefined') {
             if (type === 'success') {

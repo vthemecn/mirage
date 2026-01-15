@@ -38,10 +38,11 @@ nav.pagination .nav-links > * {
 nav.pagination .nav-links > .current {
   background-color: var(--vt-color-primary);
   border-color: var(--vt-color-primary);
-  color: var(--vt-text-color);
+  color: #fff;
   border-radius: 3px;
   box-shadow: 0 0 2px var(--vt-shadow-color);
 }
+.dark-mode nav.pagination .nav-links > .current { color: #b9b9b9; }
 
 nav.pagination .nav-links .placeholder {
   display: none;

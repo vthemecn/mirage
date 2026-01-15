@@ -66,12 +66,13 @@
   border-radius: 3px;
   font-size: 12px;
   background-color: var(--vt-color-primary);
-  color: var(--vt-text-color);
+  color: #fff;
   float: left;
   display: inline-block;
   position: relative;
   top: 3px;
 }
+.dark-mode .media-body .media-title .sticky { color: #b9b9b9; }
 
 .media-body .media-title a {
   font-size: 19px;

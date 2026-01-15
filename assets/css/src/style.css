@@ -35,6 +35,3 @@
 @import './users/login.css';
 @import './dark.css';
 
-/* 移除不再使用的light-tip.css
-@import '../../lib/ui/light-tip.css';
-*/

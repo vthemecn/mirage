@@ -86,33 +86,37 @@
   margin-top: 10px;
 }
 
-.btn {
-  padding: 10px 20px;
+.login-register-dialog .btn {
+  color: #fff !important;
+  padding: 3px 20px !important;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  /* 
   border: none;
   border-radius: var(--vt-border-radius);
   background-color: var(--vt-color-primary);
-  color: white;
+  color: #fff !important;
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  min-width: 120px;
+  min-width: 120px; */
 }
-
-.btn:hover {
-  background-color: var(--vt-color-primary-hover);
-}
+.dark-mode .login-register-dialog .btn { color: #fff; }
 
 .btn.primary {
   background-color: var(--vt-color-primary);
 }
 
 .btn.primary:hover {
-  background-color: var(--vt-color-primary-hover);
+  /* background-color: var(--vt-color-primary-hover); */
+  opacity: 0.9;
 }
 
 .btn.secondary {
-  background-color: #f0f0f0;
-  color: #333;
+  width: 150px;
+  background-color: var(--vt-text-color-grey);
+  color: #fff;
 }
 
 .btn.secondary:hover {
@@ -171,6 +175,7 @@
   color: white;
   font-size: 14px;
   text-align: center;
+  cursor: pointer;
 }
 
 .avatar-upload-overlay span {
@@ -216,3 +221,5 @@
     flex-direction: column;
   }
 }
+
+

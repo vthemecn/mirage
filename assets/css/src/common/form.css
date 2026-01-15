@@ -25,15 +25,19 @@
 }
 
 
-/* .field-text label, */
+/* .field-text label, 
+.field-text input:-internal-autofill-selected */
+
 .field-text input[type="text"],
 .field-text input[type="password"],
 .field-text input[type="email"],
 .field-text .form-help,
-.field-text textarea {
+.field-text textarea
+{
   width: 100%;
   box-sizing: border-box;
   font-size: 14px;
+  background-color: var(--vt-bg-color-card) !important;
 }
 
 .field-text input,

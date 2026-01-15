@@ -140,8 +140,8 @@
   z-index: 2;
   margin-left: 20px;
   margin-top: -50px;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border: 4px solid var(--vt-bg-color-card);
   border-radius: var(--vt-border-radius);
   box-shadow: 0 3px 8px rgba(0,0,0,0.1);
@@ -155,7 +155,7 @@
 
 .hero-user-info {
   flex: 1;
-  margin: 0 0 0 20px;
+  margin: 0 0 0 10px;
 }
 
 .hero-display-name {
@@ -211,6 +211,10 @@
       height: 130px;
       margin-left: 35px;
       margin-top: -65px;
+  }
+
+  .hero-user-info {
+    margin: 0 0 0 20px;
   }
 
 }
