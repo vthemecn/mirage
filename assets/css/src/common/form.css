@@ -83,13 +83,10 @@ input:focus + .form-help {
   crop: none;
 }
 
-input:disabled, textarea:disabled {
+.field-text input[disabled],
+.field-text textarea[disabled] {
   background-color: var(--vt-bg-color-grey) !important;
 }
-
-
-
-
 
 
 @media only screen and (min-width: 900px) {

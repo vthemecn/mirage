@@ -270,7 +270,7 @@ function vt_authenticate_action($user, $username, $password){
         update_option('vt_failed_attempts', $attempts);
     }
 
-    $max_attempts = 10;
+    $max_attempts = 30;
     if (isset($attempts[$ip]) && $attempts[$ip]['counter'] >= $max_attempts) {
         remove_filter('authenticate', 'wp_authenticate_username_password', 20, 3);
         remove_filter('authenticate', 'wp_authenticate_email_password', 20, 3);

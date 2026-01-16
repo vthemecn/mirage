@@ -1299,7 +1299,7 @@
 
   function showNotification(message, type) {
     const notyf = new Notyf({
-      duration: 2000,
+      duration: 3000,
       position: { x: 'center', y: 'top' }
     });
 
