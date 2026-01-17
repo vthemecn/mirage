@@ -1,7 +1,5 @@
 <?php
 $vt_config = vt_get_config();
-// $default_image = $vt_config['default_image'] ? $vt_config['default_image'] : 
-//                     get_template_directory_uri() . '/assets/images/default.jpg';
 ?>
 
 <div class="card-item">
@@ -11,16 +9,6 @@ $vt_config = vt_get_config();
     </a>
     <div class="item-info">
         <a class="title" href="<?php the_permalink() ?>"><?php the_title(); ?></a>
-         <?php  /* ?>
-        <div class="item-price">
-            <span class="price">
-                <i>¥</i><b>5.41</b>
-            </span>
-            <span class="price item-delete">
-                <i>¥</i><b>50.80</b>
-            </span>
-        </div>
-        <?php */ ?>
     </div>
     <?php /* ?>
     <div class="card-meta">

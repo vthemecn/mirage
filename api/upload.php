@@ -75,15 +75,50 @@ class Upload {
             // 增加用户当日上传计数
             update_user_meta($current_user->ID, $upload_count_option, $upload_count + 1);
             
-            // 返回图片URL
+            // 创建媒体附件并添加到媒体库
+            $attachment_id = $this->create_media_attachment($movefile['file'], $current_user->ID);
+            
+            // 返回图片URL和附件ID
             return array(
                 'success' => true,
                 'url' => $movefile['url'],
-                'file' => $movefile['file']
+                'file' => $movefile['file'],
+                'attachment_id' => $attachment_id
             );
         } else {
             $error_message = isset($movefile['error']) ? $movefile['error'] : '上传失败';
             return new \WP_Error('upload_failed', '文件上传失败：' . $error_message, array('status' => 500));
         }
+    }
+    
+    /**
+     * 创建媒体附件
+     */
+    private function create_media_attachment($file_path, $post_author) {
+        $file_name = basename($file_path);
+        $wp_filetype = wp_check_filetype($file_path, null);
+
+        // 创建附件对象
+        $attachment = array(
+            'post_mime_type' => $wp_filetype['type'],
+            'post_title' => sanitize_file_name($file_name),
+            'post_content' => '',
+            'post_status' => 'inherit',
+            'post_author' => $post_author
+        );
+
+        // 插入附件
+        $attach_id = wp_insert_attachment($attachment, $file_path, 0);
+        
+        if (!$attach_id || is_wp_error($attach_id)) {
+            return false;
+        }
+
+        // 生成缩略图
+        require_once ABSPATH . 'wp-admin/includes/image.php';
+        $attach_data = wp_generate_attachment_metadata($attach_id, $file_path);
+        wp_update_attachment_metadata($attach_id, $attach_data);
+
+        return $attach_id;
     }
 }

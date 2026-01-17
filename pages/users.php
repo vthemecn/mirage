@@ -150,7 +150,7 @@ get_header();
     display: flex;
     align-items: center;
     flex: 1;
-    background: #f8f9fa;
+    background: var(--vt-bg-color-card);
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 0 2px 0 var(--vt-shadow-color);
@@ -171,7 +171,7 @@ get_header();
 .stat-value {
     font-size: 24px;
     font-weight: bold;
-    color: #333;
+    color: var(--vt-text-color);
     line-height: 1.2;
 }
 

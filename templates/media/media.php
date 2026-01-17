@@ -36,10 +36,17 @@ $like_counter = $res['num'];
             <?php echo get_the_excerpt(); ?>
         </div>
         <div class="media-box">
-            <a class="meta-item author" href="<?php echo $user_center_url ?>" target="_blank">
-                <div class="avatar"><img src="<?php echo $avatar ?>"></div>
-                <span><?php echo get_the_author_meta('nickname', $post->post_author) ?></span>
-            </a>
+            <?php if($vt_config['user_center_is_on']):?>
+                <a class="meta-item author" href="<?php echo $user_center_url ?>" target="_blank">
+                    <div class="avatar"><img src="<?php echo $avatar ?>"></div>
+                    <span><?php echo get_the_author_meta('nickname', $post->post_author) ?></span>
+                </a>
+            <?php else: ?>
+                <div class="meta-item author">
+                    <div class="avatar"><img src="<?php echo $avatar ?>"></div>
+                    <span><?php echo get_the_author_meta('nickname', $post->post_author) ?></span>
+                </div>
+            <?php endif ?>
             <div class="meta-item date">
                 <i class="fa-solid fa-clock"></i><?= vt_get_time(get_the_time('Y-m-d H:i:s')) ?>
             </div>

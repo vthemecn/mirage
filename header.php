@@ -2,12 +2,6 @@
 
 $vt_config = vt_get_config();
 
-// if (!$vt_config['frontend_is_on']) {
-//     header('HTTP/1.1 403 Forbidden');
-//     echo '{error:"403 当前主题关闭了前端，仅能通过接口访问"}';
-//     exit();
-// }
-
 $current_url = home_url(add_query_arg(array(), $wp->request));
 ?>
 
@@ -59,7 +53,7 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
     <style>:root{ --vt-border-radius:0px; }</style>
     <?php endif ?>
     
-    <style> .card-item .card-image { padding-bottom: <?php echo $vt_config['image_items_height'] ?> !important; } </style>
+    <style> .card-item a.card-image { padding-bottom: <?= $vt_config['image_items_height'] ?>% !important; } </style>
 
     <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/assets/lib/notyf/notyf.min.css">
     <script src="<?php bloginfo('template_url'); ?>/assets/lib/notyf/notyf.umd.js"></script>
@@ -82,8 +76,6 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
     $dark_mode_class = 'dark-mode-auto';
 }
 
-/* 侧边栏位置 */
-$sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="left"' : '';
 ?>
 
 <body class="<?php echo $dark_mode_class ?>" 
@@ -152,9 +144,15 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
                             </div>
                         </div>
                         <div class="links-widget">
-                            <a href="<?php bloginfo('url') ?>/users/<?php echo $current_user->ID ?>">
-                                <i class="fa-solid fa-user"></i><?= __('个人中心','vt') ?>
-                            </a>
+                            <?php if($vt_config['user_center_is_on']):?>
+                                <a href="<?php bloginfo('url') ?>/users/<?php echo $current_user->ID ?>">
+                                    <i class="fa-solid fa-user"></i><?= __('个人中心','vt') ?>
+                                </a>
+                            <?php else: ?>
+                                <a href="<?php bloginfo('url') ?>/wp-admin/profile.php">
+                                    <i class="fa-solid fa-user"></i><?= __('个人资料','vt') ?>
+                                </a>
+                            <?php endif ?>
                             <?php if (in_array('administrator', $current_user->roles)) :?>
                                 <a href="<?php bloginfo('url') ?>/wp-admin/index.php">
                                     <i class="fa-solid fa-gauge"></i><?= __('后台面板','vt') ?>
@@ -275,20 +273,20 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
                         <i class="fa-solid fa-moon moon"></i>
                     </a>
                 <?php endif; ?>
-                <?php if (!$current_user->ID && $vt_config['is_show_login_register']) : ?>
+                <?php if (!$current_user->ID && $vt_config['user_center_is_on']) : ?>
                     <a href="javascript:;" class="button login-button open-login-dialog"><?= __('登录','vt')?></a>
                 <?php endif ?>
             </div>
 
-            <?php if ($current_user->ID) : ?>
+            <?php if ($current_user->ID && $vt_config['user_center_is_on']) : ?>
                 <?php $avatar = vt_get_custom_avatar_url($current_user->ID) ?>
                 <a href="javascript:;" class="header-top-avatar">
                     <img src="<?php echo $avatar ?>" alt="">
                 </a>
             <?php endif ?>
-            
+             
             <!-- 用户登录后的弹窗 -->
-            <?php if ($current_user->ID) : ?>
+            <?php if ($current_user->ID && $vt_config['user_center_is_on']): ?>
                 <?php
                 $nickname = get_user_meta($current_user->ID, 'nickname', true);
                 $description = get_user_meta($current_user->ID, 'description', true);
@@ -302,9 +300,15 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
                         </div>
                     </div>
                     <div class="links-widget">
-                        <a href="<?php bloginfo('url') ?>/users/<?php echo $current_user->ID ?>">
-                            <i class="fa-solid fa-user"></i><?= __('个人中心','vt') ?>
-                        </a>
+                        <?php if($vt_config['user_center_is_on']):?>
+                            <a href="<?php bloginfo('url') ?>/users/<?php echo $current_user->ID ?>">
+                                <i class="fa-solid fa-user"></i><?= __('个人中心','vt') ?>
+                            </a>
+                        <?php else: ?>
+                            <a href="<?php bloginfo('url') ?>/wp-admin/profile.php">
+                                <i class="fa-solid fa-user"></i><?= __('个人资料','vt') ?>
+                            </a>
+                        <?php endif ?>
 
                         <?php if (in_array('administrator', $current_user->roles)) :?>
                             <a href="<?php bloginfo('url') ?>/wp-admin/index.php">
@@ -381,10 +385,6 @@ $sidebar_position = $vt_config['sidebar_position']=='1' ? 'sidebar-position="lef
                             <div class="field field-text">
                                 <label for="register-password">密码</label>
                                 <input type="password" id="register-password" name="password" required>
-                            </div>
-                            <div class="field field-text">
-                                <label for="register-confirm-password">确认密码</label>
-                                <input type="password" id="register-confirm-password" name="confirm_password" required>
                             </div>
                             <div class="field field-text">
                                 <label for="register-verification-code">验证码</label>

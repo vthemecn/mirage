@@ -75,12 +75,21 @@ class HomeController
                         </div>
                         <div class="media-box">';
 
-                $output .=  <<<EOD
-                            <a class="meta-item author" href="{$user_center_url}" target="_blank">
-                                <div class="avatar"><img src="{$avatar}"></div>
-                                <span>{$nickname}</span>
-                            </a>
-                            EOD;
+                    if($vt_config['user_center_is_on']){
+                        $output .=  <<<EOD
+                                    <a class="meta-item author" href="{$user_center_url}" target="_blank">
+                                        <div class="avatar"><img src="{$avatar}"></div>
+                                        <span>{$nickname}</span>
+                                    </a>
+                                    EOD;
+                    } else {
+                        $output .=  <<<EOD
+                                    <div class="meta-item author">
+                                        <div class="avatar"><img src="{$avatar}"></div>
+                                        <span>{$nickname}</span>
+                                    </div>
+                                    EOD;
+                    }
 
 
                 $output .= '<div class="meta-item date">

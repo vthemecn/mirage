@@ -5081,12 +5081,13 @@ body.dark-mode .user-card {
 
 .btn.secondary {
   width: 150px;
-  background-color: var(--vt-text-color-grey);
-  color: #fff;
+  background-color: transparent;
+  border: 1px solid var(--vt-color-primary);
+  color: var(--vt-color-primary) !important;
 }
 
 .btn.secondary:hover {
-  background-color: #e0e0e0;
+  filter: brightness(1.2);
 }
 
 .login-register-dialog .dialog-widget {

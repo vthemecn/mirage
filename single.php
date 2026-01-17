@@ -69,10 +69,17 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
             </div>
 
             <div class="article-box">
-                <a class="meta-item author" href="<?php echo $user_center_url ?>" target="_blank">
-                    <div class="avatar"><img src="<?= $vt_avatar ?>"></div>
-                    <span><?php echo get_the_author_meta('nickname', $post->post_author) ?></span>
-                </a>
+                <?php if($vt_config['user_center_is_on']):?>
+                    <a class="meta-item author" href="<?php echo $user_center_url ?>" target="_blank">
+                        <div class="avatar"><img src="<?= $vt_avatar ?>"></div>
+                        <span><?php echo get_the_author_meta('nickname', $post->post_author) ?></span>
+                    </a>
+                <?php else: ?>
+                    <div class="meta-item author">
+                        <div class="avatar"><img src="<?= $vt_avatar ?>"></div>
+                        <span><?php echo get_the_author_meta('nickname', $post->post_author) ?></span>
+                    </div>
+                <?php endif ?>
                 
                 <div class="meta-item date">
                     <i class="fa-solid fa-clock"></i><?= vt_get_time(get_the_time('Y-m-d H:i:s')) ?>

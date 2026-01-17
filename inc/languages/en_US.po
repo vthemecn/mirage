@@ -336,9 +336,6 @@ msgstr "tel number"
 msgid "顶部图片"
 msgstr "header image"
 
-msgid "显示登录按钮"
-msgstr "Display login button"
-
 
 # 配置页面 - 底部设置
 ###########################################################

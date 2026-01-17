@@ -206,11 +206,10 @@ async function handleRegisterFormSubmit(e) {
   const username = formData.get('username');
   const email = formData.get('email');
   const password = formData.get('password');
-  const confirmPassword = formData.get('confirm_password');
   const verificationCode = formData.get('verification_code');
   
   // 验证
-  if (!username || !email || !password || !confirmPassword || !verificationCode) {
+  if (!username || !email || !password || !verificationCode) {
     showNotification('请填写所有必填字段', 'error');
     return;
   }

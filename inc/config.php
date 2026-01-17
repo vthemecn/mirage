@@ -76,14 +76,6 @@ if( class_exists( 'CSF' ) ) {
                 'inline' => true
             ),
             array(
-                'id'    => 'image_items_height',
-                'type'  => 'slider',
-                'title' => __('图片高宽比','vt'),
-                'unit'  => '%',
-                'max'   => '300',
-                'default' => '100'
-            ),
-            array(
                 'id'    => 'default_image',
                 'type'  => 'upload',
                 'title' => __('默认图片','vt'),
@@ -96,6 +88,15 @@ if( class_exists( 'CSF' ) ) {
                 'title' => __('背景图片','vt'),
                 'default' => '',
                 'preview' => true
+            ),
+            array(
+                'id'         => 'user_center_is_on',
+                'type'       => 'radio',
+                'title'      => __('个人中心','vt'),
+                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
+                'default'    => '1',
+                'inline'     => true,
+                'desc'=> '关闭后将禁止前台注册登录和重置密码，也不会显示header登录按钮'
             ),
             array(
                 'id'         => 'comments_is_on',
@@ -121,14 +122,6 @@ if( class_exists( 'CSF' ) ) {
                 'default'    => '1',
                 'desc'       => $attempts_text,
                 'inline'     => true
-            ),
-            array(
-                'id'         => 'sidebar_position',
-                'type'       => 'radio',
-                'title'      => __('侧边栏位置','vt'),
-                'options'    => array('1' => __('左侧','vt'), '0' => __('右侧','vt')),
-                'default'    => '0',
-                'inline' => true
             )
 
         )
@@ -476,14 +469,6 @@ if( class_exists( 'CSF' ) ) {
                 'preview' => true
             ),
             array(
-                'id'         => 'is_show_login_register',
-                'type'       => 'radio',
-                'title'      => __('显示登录按钮','vt'),
-                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
-                'default'    => '1',
-                'inline' => true
-            ),
-            array(
                 'id'         => 'show_admin_bar',
                 'type'       => 'radio',
                 'title'      => __('顶部工具栏','vt'),
@@ -653,7 +638,15 @@ if( class_exists( 'CSF' ) ) {
                 'type'       => 'switcher',
                 'title'      => __('启用投稿','vt'),
                 'default'    => true
-            )
+            ),
+            array(
+                'id'    => 'image_items_height',
+                'type'  => 'slider',
+                'title' => __('图片高宽比','vt'),
+                'unit'  => '%',
+                'max'   => '300',
+                'default' => '100'
+            ),
             
         )   
     ));
