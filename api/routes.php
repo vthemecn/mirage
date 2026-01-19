@@ -1,4 +1,10 @@
 <?php
+
+
+
+if (!defined('ABSPATH')) exit;
+
+
 require_once TEMP_DIR . '/api/home.php';
 require_once TEMP_DIR . '/api/star.php';
 require_once TEMP_DIR . '/api/users.php';

@@ -59,8 +59,8 @@ $current_url = home_url(add_query_arg(array(), $wp->request));
     <script src="<?php bloginfo('template_url'); ?>/assets/lib/notyf/notyf.umd.js"></script>
 </head>
 
-<?php
 
+<?php
 /* 暗黑模式 */
 $is_dark_mode = false;
 $dark_mode_class = '';
@@ -75,8 +75,8 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
     $is_dark_mode = isset($_COOKIE['darkMode']) && $_COOKIE['darkMode'] == 1 ? true : false;
     $dark_mode_class = 'dark-mode-auto';
 }
-
 ?>
+
 
 <body class="<?php echo $dark_mode_class ?>" 
     <?=$sidebar_position?>
@@ -336,6 +336,7 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
             </form>
         </div>
     </header>
+
 
     <!-- 登录/注册/找回密码对话框 -->
     <div class="vt-dialog login-register-dialog" id="login-register-dialog">

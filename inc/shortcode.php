@@ -54,7 +54,7 @@ function comment_visible_shortcode($atts, $content = null) {
                 <i class="fa-solid fa-comment"></i>评论后可查看隐藏内容
             </div>
             <div class="privilege-action">
-                <a href="#respond" class="privilege-btn">发表评论</a>
+                <a href="javascript:void(0)" class="privilege-btn open-login-dialog">发表评论</a>
             </div>
         </div>
     </div>';
@@ -78,7 +78,7 @@ function logged_in_visible_shortcode($atts, $content = null) {
                     <i class="fa-solid fa-lock"></i>本内容需登录后查看
                 </div>
                 <div class="privilege-action">
-                    <a href="' . wp_login_url(get_permalink()) . '" class="privilege-btn">立即登录</a>
+                    <a href="javascript:void(0)" class="privilege-btn open-login-dialog">立即登录</a>
                 </div>
             </div>
         </div>';
@@ -101,7 +101,7 @@ function vip_visible_shortcode($atts, $content = null) {
                     <i class="fa-solid fa-crown"></i>VIP会员专享内容
                 </div>
                 <div class="privilege-action">
-                    <a href="' . wp_login_url(get_permalink()) . '" class="privilege-btn">登录查看</a>
+                    <a href="javascript:void(0)" class="privilege-btn open-login-dialog">登录查看</a>
                 </div>
             </div>
         </div>';
@@ -139,7 +139,7 @@ function vip_visible_shortcode($atts, $content = null) {
                 <i class="fa-solid fa-gem"></i>此内容仅限VIP会员查看
             </div>
             <div class="privilege-action">
-                <a href="' . wp_login_url(get_permalink()) . '" class="privilege-btn">登录升级</a>
+                <a href="javascript:void(0)" class="privilege-btn open-login-dialog">登录升级</a>
             </div>
         </div>
     </div>';
