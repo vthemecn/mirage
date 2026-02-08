@@ -621,25 +621,6 @@ if( class_exists( 'CSF' ) ) {
                 'preview' => true
             ),
             array(
-              'id'         => 'post_action',
-              'type'       => 'checkbox',
-              'title'      => __('文章操作','vt'),
-              'options'    => array(
-                'like'      => __('点赞','vt'),
-                'star'      => __('收藏','vt'),
-                'share'     => __('分享','vt'),
-                'donate'    => __('捐赠','vt'),
-                'edit'      => __('编辑','vt'),
-              ),
-              'default'    => array( 'like', 'share', 'donate', 'edit')
-            ),
-            array(
-                'id'         => 'enable_user_posts',
-                'type'       => 'switcher',
-                'title'      => __('启用投稿','vt'),
-                'default'    => true
-            ),
-            array(
                 'id'    => 'image_items_height',
                 'type'  => 'slider',
                 'title' => __('图片高宽比','vt'),

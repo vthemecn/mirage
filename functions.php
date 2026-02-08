@@ -176,10 +176,10 @@ function vt_custom_js_and_css() {
     wp_enqueue_style('customstyle', get_template_directory_uri() . '/assets/css/style.css', array(), $current_theme->get('Version'), 'all');
     
     // 本地化脚本，传递AJAX URL和其他数据到前端
-    wp_localize_script('jquery', 'ajax_object', array(
-        'ajax_url' => admin_url('admin-ajax.php'),
-        'nonce' => wp_create_nonce('ajax_nonce')
-    ));
+    // wp_localize_script('jquery', 'ajax_object', array(
+    //     'ajax_url' => admin_url('admin-ajax.php'),
+    //     'nonce' => wp_create_nonce('ajax_nonce')
+    // ));
 }
 add_action('wp_enqueue_scripts', 'vt_custom_js_and_css');
 

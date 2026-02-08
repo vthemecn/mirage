@@ -80,7 +80,9 @@ async function likeInit(notyf){
             that.classList.add('active');
             // 更新按钮文本显示
             const spanElement = that.querySelector('span');
-            spanElement.textContent = '取消点赞';
+            if (spanElement) {
+              spanElement.textContent = '取消点赞';
+            }
           } else {
             that.classList.remove('active');
             // 更新按钮文本显示
@@ -116,73 +118,159 @@ async function likeInit(notyf){
  */
 async function starInit(notyf){
   var starButtons = document.querySelectorAll('.widget-action.star');
-  if(!starButtons) return;
-  starButtons.forEach( button=>{
-    button.addEventListener('click', async function(){
-      // 检查用户是否已登录
-      let currentUserId = document.querySelector('input[name="current_user_id"]').value;
-    
-      if(currentUserId == 0){
-        console.log('currentUserId', currentUserId, currentUserId == 0, 'xxx');
-
-        // 如果未登录，弹出登录对话框
-        var loginModal = document.querySelector('.login-register-dialog'); // 修复选择器
+  if(!starButtons.length) return;
+  
+  // 检查用户是否已登录，未登录则弹出登录对话框
+  if(!ajax_object.current_user_id || ajax_object.current_user_id == '0'){
+    starButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        // 弹出登录对话框
+        const loginModal = document.querySelector('.login-register-dialog');
         if(loginModal){
           loginModal.showModal();
           document.querySelector('body').classList.add('no-scroll');
         }
-        return; // 直接返回，不执行后续操作
-      }
-      
+      });
+    });
+    return;
+  }
+  
+  // 初始化收藏状态
+  // await initializeStarStatus(notyf);
+  
+  starButtons.forEach(button => {
+    button.addEventListener('click', async function() {
       var that = this;
       
-      var wpnonce = document.querySelector("input[name='wp_create_nonce']").value;
-      var post_id = document.querySelector("input[name='post_id']").value;
+      const objectId = ajax_object.post_id;
+      if (!objectId) return;
       
-      var addUrl = '/wp-json/vtheme/v1/stars' + "?_wpnonce=" + wpnonce;
-      var deleteUrl = '/wp-json/vtheme/v1/stars/' + post_id + "?_wpnonce=" + wpnonce; // 修复API URL，添加vtheme前缀
+      const isStarred = that.classList.contains('active');
+      let actionType = isStarred ? 'unstar' : 'star';
       
-      if( this.classList.contains('active') ){
-        var that = this;
-        var response = await fetch(deleteUrl, {
-          method:'DELETE',
-          headers:{'Content-Type': 'application/json'},
-          body:JSON.stringify({'type':'star'})
+      try {
+        const response = await fetch(ajax_object.ajax_url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: new URLSearchParams({
+            action: 'star_action',
+            object_id: objectId,
+            action_type: actionType,
+            nonce: ajax_object.nonce
+          })
         });
-        var responseJson = await response.json();
-        if(response.status == 200){
-          that.classList.remove('active');
-          let num = that.querySelector('.number').innerText;
-          num = (--num <= 0) ? '' : num; 
-
-          that.querySelector('.number').innerText = num;
-        }else{
-          notyf.error(responseJson.error);
-        }
-      } else {
-        var data = {};
-        data.object_id = document.querySelector("input[name='post_id']").value;
-        data.type = 'star';
         
-        var response = await fetch(addUrl, {
-          method:'POST',
-          headers:{'Content-Type': 'application/json'},
-          body:JSON.stringify(data)
-        });
-        var responseJson = await response.json();
-        if(response.status == 201){
-          that.classList.add('active');
-          that.querySelector('.number').innerText = responseJson.counter;
-          notyf.success('收藏成功');
-        } else if(response.status == 401) {
-          notyf.error('请登录后重试');
+        const result = await response.json();
+        
+        if (result.success) {
+          // 更新UI
+          if (actionType === 'star') {
+            that.classList.add('active');
+            // 更新按钮文本显示
+            const spanElement = that.querySelector('span');
+            if (spanElement) {
+              spanElement.textContent = '取消收藏';
+            }
+          } else {
+            that.classList.remove('active');
+            // 更新按钮文本显示
+            const spanElement = that.querySelector('span');
+            if (spanElement) {
+              spanElement.textContent = '收藏';
+            }
+          }
+          
+          // 更新收藏数
+          const numberElement = that.querySelector('.number');
+          if (numberElement) {
+            numberElement.textContent = result.data.star_count || '';
+          }
+          
+          notyf.success(result.data.message);
+        } else {
+          notyf.error(result.data.message || '操作失败');
+          // 如果是未登录错误，显示登录对话框
+          if (result.data.message && result.data.message.includes('请先登录')) {
+            var loginModal = document.querySelector('.login-register-dialog');
+            if(loginModal){
+              loginModal.showModal();
+              document.querySelector('body').classList.add('no-scroll');
+            }
+          }
         }
+      } catch (error) {
+        console.error('收藏操作失败:', error);
+        notyf.error('网络错误，请重试');
       }
-
-      
     });
   });
 }
+
+/**
+ * 初始化收藏状态
+ */
+async function initializeStarStatus(notyf) {
+  const objectId = ajax_object.post_id;
+  if (!objectId) return;
+  
+  try {
+    const response = await fetch(ajax_object.ajax_url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        action: 'get_star_status',
+        object_id: objectId,
+        nonce: ajax_object.nonce
+      })
+    });
+    
+    const result = await response.json();
+    
+    if (result.success) {
+      // 更新所有收藏按钮的状态
+      const starButtons = document.querySelectorAll('.widget-action.star');
+      
+      starButtons.forEach(button => {
+        const numberElement = button.querySelector('.number');
+        if (numberElement) {
+          numberElement.textContent = result.data.star_count || '';
+        }
+        
+        const spanElement = button.querySelector('span');
+        
+        if (result.data.is_starred) {
+          button.classList.add('active');
+          if (spanElement) {
+            spanElement.textContent = '取消收藏';
+          }
+        } else {
+          button.classList.remove('active');
+          if (spanElement) {
+            spanElement.textContent = '收藏';
+          }
+        }
+        
+        // 如果用户未登录，禁用收藏按钮
+        if (!result.data.can_star) {
+          button.style.opacity = '0.5';
+          button.style.cursor = 'not-allowed';
+          button.title = '请先登录';
+          // 移除点击事件监听器
+          const clone = button.cloneNode(true);
+          button.parentNode.replaceChild(clone, button);
+        }
+      });
+    }
+  } catch (error) {
+    console.error('获取收藏状态失败:', error);
+  }
+}
+
 
 /**
  * 海报生成

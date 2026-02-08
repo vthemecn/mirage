@@ -182,38 +182,28 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     nonce: "<?php echo wp_create_nonce('ajax_nonce'); ?>",
                     post_url: "<?php echo get_permalink(); ?>",
                     post_id: "<?= get_the_ID(); ?>",
+                    current_user_id: "<?=$current_user_id?>"
                 };
                 </script>
 
-                <?php if(in_array('like', $config['post_action'])):?>
                 <div class="widget-action like <?php echo $is_like ? ' active' : '' ?>">
                     <i class="fa-solid fa-heart"></i>
                     <span><?= $is_like ? __('取消点赞','vt') : __('点赞','vt')?></span>
                     <span class='number'><?= $like_counter ? $like_counter : '' ?></span>
                 </div>
-                <?php endif; ?>
 
-                <?php if(in_array('star', $config['post_action'])):?>
+                <?php if(is_captain_active()):?>
                 <div class="widget-action star <?php echo $is_star ? ' active' : '' ?>">
                     <i class="fa-solid fa-star"></i>
-                    <span><?=__('收藏','vt')?></span>
+                    <span><?= $is_star ? __('取消收藏','vt') : __('收藏','vt')?></span>
                     <span class='number'><?= $star_counter ? $star_counter : '' ?></span>
                 </div>
                 <?php endif; ?>
-                
-                <?php /*
-                <div class="widget-action comment">
-                    <i class="iconfont">&#xe68f;</i>
-                    <span><?=__('评论</span>
-                </div>
-                */ ?>
                
-                <?php if(in_array('share', $config['post_action'])):?>
                 <div class="widget-action share-poster">
                     <i class="fa-solid fa-share-nodes"></i>
                     <span><?=__('分享','vt')?></span>
                 </div>
-                <?php endif; ?>
 
                 <?php if(in_array('donate', $config['post_action'])):?>
                 <div class="widget-action coin">

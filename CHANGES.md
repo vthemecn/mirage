@@ -3,12 +3,15 @@
 
 ### TODO
 * 评论删除功能
-* 用户资料 hashid 加密功能
 * mirage 优化多语言
 * mirage 首页添加公告
 * mirage 增加广告功能
 * mirage 底部打赏可以添加两个首款码
 * 底部署名前添加 wp 标志
+
+### 2.76.0
+- refactor 使用ajax方法重构收藏功能
+- refactor 移除文章底部相关设置
 
 ### 2.75.0
 - refactor 使用ajax方法重构点赞功能
