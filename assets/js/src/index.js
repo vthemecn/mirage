@@ -40,7 +40,7 @@ widget.sideMenuInit();
 import loginDialog from './login-dialog.js';
 loginDialog();
 
-function footerCheck() {
+function vt_footer_check() {
   window.addEventListener('load', function(e){
     let themeName = document.querySelector('a[copyright]');
     if(!themeName || themeName.innerText !== "Mirage"){
@@ -48,4 +48,4 @@ function footerCheck() {
     }
   });
 }
-footerCheck(); // 主题底部署名检查
+vt_footer_check(); // 主题底部署名检查

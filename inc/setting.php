@@ -2,7 +2,7 @@
 $vt_config = vt_get_config();
 
 
-footerCheck();
+vt_footer_check();
 
 
 function add_theme_support_all()

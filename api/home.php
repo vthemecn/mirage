@@ -75,7 +75,7 @@ class HomeController
                         </div>
                         <div class="media-box">';
 
-                    if($vt_config['user_center_is_on']){
+                    if(is_captain_active()){
                         $output .=  <<<EOD
                                     <a class="meta-item author" href="{$user_center_url}" target="_blank">
                                         <div class="avatar"><img src="{$avatar}"></div>

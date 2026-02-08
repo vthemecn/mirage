@@ -5,7 +5,7 @@
   --vt-color-error: #dd524d;
   --vt-color-danger: #dd524d;
   --vt-font-size-sm: 13px;
-  --vt-font-size-base:17px;
+  --vt-font-size-base:16px;
   --vt-font-size-lg: 22px;
   --vt-text-color: #333;
   --vt-text-color-inverse: #fff;
@@ -4168,27 +4168,6 @@ body.dark-mode .user-card {
   overflow: hidden;
 }
 
-.card-item .item-price {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  width: 100%;
-  height: 30px;
-}
-
-.item-price .price {
-  padding: 3px 0px;
-  color: #f44336;
-  font-size: 15px;
-}
-
-.item-price .item-delete {
-  color: var(--vt-text-color-grey) !important;
-  text-decoration: line-through;
-  font-size: 10px;
-  margin-left: 10px;
-}
-
 .card-meta {
   box-sizing: border-box;
   padding: 5px 5px;
@@ -5081,13 +5060,12 @@ body.dark-mode .user-card {
 
 .btn.secondary {
   width: 150px;
-  background-color: transparent;
-  border: 1px solid var(--vt-color-primary);
-  color: var(--vt-color-primary) !important;
+  background-color: var(--vt-text-color-grey);
+  color: #fff;
 }
 
 .btn.secondary:hover {
-  filter: brightness(1.2);
+  background-color: #e0e0e0;
 }
 
 .login-register-dialog .dialog-widget {

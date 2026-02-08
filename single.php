@@ -15,7 +15,7 @@ get_header();
 <?php
 $config = vt_get_config();
 
-setPostViews(get_the_ID()); // 更新文章浏览次数
+set_post_views(get_the_ID()); // 更新文章浏览次数
 
 $vt_post_id = get_the_ID();
 $vt_post = get_post($vt_post_id, ARRAY_A);
@@ -69,7 +69,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
             </div>
 
             <div class="article-box">
-                <?php if($vt_config['user_center_is_on']):?>
+                <?php if(is_captain_active()):?>
                     <a class="meta-item author" href="<?php echo $user_center_url ?>" target="_blank">
                         <div class="avatar"><img src="<?= $vt_avatar ?>"></div>
                         <span><?php echo get_the_author_meta('nickname', $post->post_author) ?></span>
@@ -94,7 +94,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                 </div>
 
                 <div class='meta-item hit-conuter'>
-                    <i class="fa-solid fa-eye"></i><?php echo getPostViews(get_the_ID()); ?>
+                    <i class="fa-solid fa-eye"></i><?php echo get_post_views(get_the_ID()); ?>
                 </div>
 
                 <?php if($config['comments_is_on']):?>

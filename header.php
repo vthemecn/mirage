@@ -1,8 +1,16 @@
 <?php
+/**
+ * Copyright (c) vtheme.cn
+ *
+ * @author vthemecn <mail@vtheme.cn>
+ * @link https://vtheme.cn
+ */
 
 $vt_config = vt_get_config();
 
 $current_url = home_url(add_query_arg(array(), $wp->request));
+
+$sidebar_position = '';
 ?>
 
 
@@ -78,9 +86,7 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
 ?>
 
 
-<body class="<?php echo $dark_mode_class ?>" 
-    <?=$sidebar_position?>
-    >
+<body class="<?php echo $dark_mode_class ?>" <?=$sidebar_position?> >
     
     <?php wp_body_open(); ?>
 
@@ -144,8 +150,8 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
                             </div>
                         </div>
                         <div class="links-widget">
-                            <?php if($vt_config['user_center_is_on']):?>
-                                <a href="<?php bloginfo('url') ?>/users/<?php echo $current_user->ID ?>">
+                            <?php if(is_captain_active()):?>
+                                <a href="<?php bloginfo('url') ?>/account">
                                     <i class="fa-solid fa-user"></i><?= __('个人中心','vt') ?>
                                 </a>
                             <?php else: ?>
@@ -273,12 +279,12 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
                         <i class="fa-solid fa-moon moon"></i>
                     </a>
                 <?php endif; ?>
-                <?php if (!$current_user->ID && $vt_config['user_center_is_on']) : ?>
+                <?php if (!$current_user->ID && is_captain_active()) : ?>
                     <a href="javascript:;" class="button login-button open-login-dialog"><?= __('登录','vt')?></a>
                 <?php endif ?>
             </div>
 
-            <?php if ($current_user->ID && $vt_config['user_center_is_on']) : ?>
+            <?php if ($current_user->ID && is_captain_active()) : ?>
                 <?php $avatar = vt_get_custom_avatar_url($current_user->ID) ?>
                 <a href="javascript:;" class="header-top-avatar">
                     <img src="<?php echo $avatar ?>" alt="">
@@ -286,7 +292,7 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
             <?php endif ?>
              
             <!-- 用户登录后的弹窗 -->
-            <?php if ($current_user->ID && $vt_config['user_center_is_on']): ?>
+            <?php if ($current_user->ID && is_captain_active()): ?>
                 <?php
                 $nickname = get_user_meta($current_user->ID, 'nickname', true);
                 $description = get_user_meta($current_user->ID, 'description', true);
@@ -300,8 +306,8 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
                         </div>
                     </div>
                     <div class="links-widget">
-                        <?php if($vt_config['user_center_is_on']):?>
-                            <a href="<?php bloginfo('url') ?>/users/<?php echo $current_user->ID ?>">
+                        <?php if(is_captain_active()):?>
+                            <a href="<?php bloginfo('url') ?>/user/<?php echo $current_user->ID ?>">
                                 <i class="fa-solid fa-user"></i><?= __('个人中心','vt') ?>
                             </a>
                         <?php else: ?>

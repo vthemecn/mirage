@@ -6,7 +6,7 @@ $cur_post_id = get_the_ID();
 $author_id = get_the_author_meta('ID');
 $avatar = vt_get_custom_avatar_url($author_id);
 
-$user_center_url = home_url() . '/users/' .$post->post_author;
+$user_center_url = home_url() . '/user/' .$post->post_author;
 // $default_image = $vt_config['default_image'] ? $vt_config['default_image'] : 
 //                     get_template_directory_uri() . '/assets/images/default.jpg';
 
@@ -36,7 +36,7 @@ $like_counter = $res['num'];
             <?php echo get_the_excerpt(); ?>
         </div>
         <div class="media-box">
-            <?php if($vt_config['user_center_is_on']):?>
+            <?php if(is_captain_active()):?>
                 <a class="meta-item author" href="<?php echo $user_center_url ?>" target="_blank">
                     <div class="avatar"><img src="<?php echo $avatar ?>"></div>
                     <span><?php echo get_the_author_meta('nickname', $post->post_author) ?></span>

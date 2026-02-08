@@ -33,11 +33,11 @@ add_action('init', 'vt_widgets_init');
 
 
 /**
- * 图文列表
+ * 最新文章
  */
 class ImageArticleWidget extends WP_Widget {
     function __construct(){
-        parent::__construct( 'image-article-list', '[Mirage] '.__( '图文列表', 'vt' ), array( 'description' => __('图文列表描述', 'vt' ) ) );
+        parent::__construct( 'image-article-list', '[Mirage] '.__( '最新文章', 'vt' ), array( 'description' => __('最新文章描述', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -46,13 +46,14 @@ class ImageArticleWidget extends WP_Widget {
 
         $vt_config = vt_get_config();
 
-        $title = $instance['title'] ? $instance['title'] : __('图文列表', 'vt');
+        $title = $instance['title'] ? $instance['title'] : __('最新文章', 'vt');
 
         $args = array(
             'post_type' => 'post',
             'posts_per_page' => isset($instance['posts_per_page']) ? $instance['posts_per_page'] : 4,
             'paged' => 1
         );
+   
         if(isset($instance['cat_id']) && $instance['cat_id']){
             $args['cat'] = $instance['cat_id'];
         }

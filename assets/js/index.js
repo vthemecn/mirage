@@ -11,6 +11,7 @@
         el: '.swiper-pagination',
       },
       loop: true,
+      autoplay: true,
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
@@ -1325,7 +1326,7 @@
   widget.sideMenuInit();
   loginDialog();
 
-  function footerCheck() {
+  function vt_footer_check() {
     window.addEventListener('load', function(e){
       let themeName = document.querySelector('a[copyright]');
       if(!themeName || themeName.innerText !== "Mirage"){
@@ -1333,6 +1334,6 @@
       }
     });
   }
-  footerCheck(); // 主题底部署名检查
+  vt_footer_check(); // 主题底部署名检查
 
 })();

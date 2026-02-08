@@ -16,7 +16,7 @@ $vt_config = vt_get_config();
             <i class="iconfont">&#xe76d;</i><?php the_time('Y-m-d'); ?>
         </span>
         <span class='meta hit-conuter'>
-            <i class="iconfont">&#xe752;</i><?php echo getPostViews(get_the_ID()); ?>
+            <i class="iconfont">&#xe752;</i><?php echo get_post_views(get_the_ID()); ?>
         </span>
         <span class='meta hit-conuter'>
             <i class="iconfont">&#xe663;</i>238
