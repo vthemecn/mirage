@@ -9,6 +9,28 @@
 if (!defined('ABSPATH')) exit;
 
 /**
+ * 检查用户登录状态
+ */
+add_action('wp_ajax_check_user_login_status', 'check_user_login_status');
+add_action('wp_ajax_nopriv_check_user_login_status', 'check_user_login_status');
+
+function check_user_login_status() {
+    // 验证 nonce
+    if (!wp_verify_nonce($_POST['nonce'], 'ajax_nonce')) {
+        wp_send_json_error(['message' => '安全验证失败']);
+        return;
+    }
+    
+    $user_id = get_current_user_id();
+    $is_logged_in = $user_id > 0;
+    
+    wp_send_json_success([
+        'is_logged_in' => $is_logged_in,
+        'user_id' => $user_id
+    ]);
+}
+
+/**
  * 点赞功能 AJAX 处理
  */
 add_action('wp_ajax_like_action', 'handle_like_action');
@@ -129,7 +151,7 @@ function handle_star_action() {
     
     $object_id = intval($_POST['object_id']);
     $action_type = sanitize_text_field($_POST['action_type']); // 'star' or 'unstar'
-
+    
     if (!$object_id) {
         wp_send_json_error(['message' => '无效的对象ID']);
         return;
@@ -205,6 +227,49 @@ function handle_star_action() {
         }
     } else {
         wp_send_json_error(['message' => '无效的操作类型']);
+    }
+}
+
+/**
+ * 评论删除功能 AJAX 处理
+ */
+add_action('wp_ajax_delete_comment', 'handle_delete_comment');
+
+function handle_delete_comment() {
+    // 验证 nonce 安全性
+    if (!wp_verify_nonce($_POST['nonce'], 'ajax_nonce')) {
+        wp_send_json_error(['message' => '安全验证失败']);
+        return;
+    }
+    
+    $comment_id = intval($_POST['comment_id']);
+    $user_id = get_current_user_id();
+    
+    // 验证用户是否登录
+    if ($user_id <= 0) {
+        wp_send_json_error(['message' => '请先登录后再进行删除操作']);
+        return;
+    }
+    
+    // 验证用户权限（只能删除自己的评论）
+    $comment = get_comment($comment_id);
+    if (!$comment) {
+        wp_send_json_error(['message' => '评论不存在']);
+        return;
+    }
+    
+    if ($comment->user_id != $user_id) {
+        wp_send_json_error(['message' => '没有权限删除此评论']);
+        return;
+    }
+    
+    // 执行删除操作（true表示永久删除）
+    $result = wp_delete_comment($comment_id, true);
+    
+    if ($result) {
+        wp_send_json_success(['message' => '评论删除成功']);
+    } else {
+        wp_send_json_error(['message' => '删除失败']);
     }
 }
 

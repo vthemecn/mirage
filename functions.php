@@ -9,6 +9,7 @@
 
 define('THEME_OPTION_NAME', 'mirage');
 define('TEMP_DIR', get_template_directory());
+define('TEMP_URL', get_bloginfo('template_url'));
 
 
 if (!function_exists('p')) :
@@ -354,12 +355,12 @@ function vt_footer_check()
 if (!function_exists('vt_get_custom_avatar_url')) {
     function vt_get_custom_avatar_url($user_id)
     {
-        $attachment_arr = get_user_meta($user_id, "user_avatar_attachment_id");
-        $attachment_id = is_array($attachment_arr) ? $attachment_arr[0] : 0;
+        // 修复：统一使用正确的meta key
+        $attachment_id = get_user_meta($user_id, "user_avatar_attachment_id", true);
         if ($attachment_id) {
             $avatar = wp_get_attachment_image_src($attachment_id, 'medium')[0];
         } else {
-            $avatar = get_bloginfo('template_directory') . '/assets/images/avatar.jpg';
+            $avatar = TEMP_URL . '/assets/images/avatar.jpg';
         }
         return $avatar;
     }

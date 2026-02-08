@@ -156,7 +156,8 @@ function vt_comment($comment, $args, $depth)
 			<div class="comment-content">
 				<?php comment_text(); ?>
 			</div>
-			<div class="reply">
+
+			<div class="comment-actions">
 				<?php
 				$url = get_permalink();
 				$url = $url . "?replytocom=" . get_comment_ID() . "#respond";
@@ -164,11 +165,14 @@ function vt_comment($comment, $args, $depth)
 				<?php if($depth <= 1):?>
 					<a href="<?php echo $url?>" <?php echo $current_user->ID ? 'login="false"' : ''?> ><?=__('回复','vt')?></a>
 				<?php endif ?>
+
+				<?php if($comment->user_id == $current_user->ID && $current_user->ID != 0):?>
+					<a href="javascript:;" class="delete-comment" data-comment-id="<?=get_comment_ID()?>">
+						<?=__('删除','vt')?>
+					</a>
+				<?php endif ?>
 			</div>
 
-			<?php if($comment->user_id == $current_user->ID):?>
-				<a href=""><?=__('删除','vt')?></a>
-			<?php endif ?>
 		</div>
 	<?php
 }
@@ -196,7 +200,3 @@ function get_top_level_comment_count($post_id) {
 
 
 ?>
-
-
-
-
