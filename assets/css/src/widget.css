@@ -175,6 +175,7 @@
 }
 .hot-list li .item {
   padding-left: 10px;
+  padding-right: 10px;
 }
 .hot-list li .item a {
   font-size: var(--vt-font-size-base);

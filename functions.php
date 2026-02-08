@@ -381,10 +381,12 @@ if (!function_exists('vt_get_thumbnail_url')) {
     }
 }
 
-
-
 function vt_get_time($time){
     return wordpress_format_time_ago($time);
 }
+
+
+
+
 
 

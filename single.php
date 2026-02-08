@@ -53,7 +53,7 @@ if($current_user_id){
     $is_star = $res ? true : false;
 }
 
-$user_center_url = home_url() . '/users/' .$post->post_author;
+$user_profile_url = home_url() . '/user/' .$post->post_author;
 
 // 获取文章缩略图
 $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($vt_post_id), 'large');
@@ -70,7 +70,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
 
             <div class="article-box">
                 <?php if(is_captain_active()):?>
-                    <a class="meta-item author" href="<?php echo $user_center_url ?>" target="_blank">
+                    <a class="meta-item author" href="<?php echo $user_profile_url ?>" target="_blank">
                         <div class="avatar"><img src="<?= $vt_avatar ?>"></div>
                         <span><?php echo get_the_author_meta('nickname', $post->post_author) ?></span>
                     </a>

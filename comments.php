@@ -103,6 +103,8 @@ $comment_count = get_comments_number();
 <?php
 function vt_comment($comment, $args, $depth)
 {
+	global $current_user;
+	
 	$tag = 'li';
 	$add_below = 'div-comment';
 	$comment_id = get_comment_ID();

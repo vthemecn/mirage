@@ -49,7 +49,7 @@ class HomeController
                 $author_id = get_the_author_id();
                 $avatar = vt_get_custom_avatar_url($author_id);
 
-                $user_center_url = home_url() . '/users/' . $current_post->post_author;
+                $user_profile_url = home_url() . '/users/' . $current_post->post_author;
                 $nickname = get_the_author_meta('nickname', $current_post->post_author);
 
                 // 喜欢数量
@@ -77,7 +77,7 @@ class HomeController
 
                     if(is_captain_active()){
                         $output .=  <<<EOD
-                                    <a class="meta-item author" href="{$user_center_url}" target="_blank">
+                                    <a class="meta-item author" href="{$user_profile_url}" target="_blank">
                                         <div class="avatar"><img src="{$avatar}"></div>
                                         <span>{$nickname}</span>
                                     </a>
