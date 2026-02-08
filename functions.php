@@ -174,6 +174,12 @@ function get_post_views($postID)
 function vt_custom_js_and_css() {
     $current_theme = wp_get_theme();
     wp_enqueue_style('customstyle', get_template_directory_uri() . '/assets/css/style.css', array(), $current_theme->get('Version'), 'all');
+    
+    // 本地化脚本，传递AJAX URL和其他数据到前端
+    wp_localize_script('jquery', 'ajax_object', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce' => wp_create_nonce('ajax_nonce')
+    ));
 }
 add_action('wp_enqueue_scripts', 'vt_custom_js_and_css');
 
@@ -306,14 +312,14 @@ function wordpress_format_time_ago($time) {
         $hours = floor($diff_in_seconds / HOUR_IN_SECONDS);
         return $hours . '小时前';
     } elseif ($diff_in_days < 30) { // 少于 30 天
-        // 使用 human_time_diff 获取更人性化的“天”数 (它会处理 1天、2天等)
+        // 使用 human_time_diff 获取更人性化的"天"数 (它会处理 1天、2天等)
         $days_text = human_time_diff($timestamp, $now->getTimestamp());
         // human_time_diff 可能返回 "1 天", "2 天" 等，我们只取数字部分或直接使用
-        // 简单处理：如果包含“天”，就用它，否则计算
+        // 简单处理：如果包含"天"，就用它，否则计算
         if (strpos($days_text, '天') !== false || strpos($days_text, 'day') !== false) {
             return $days_text;
         } else {
-            // 如果 human_time_diff 没有返回“天”，手动计算 (更精确)
+            // 如果 human_time_diff 没有返回"天"，手动计算 (更精确)
             $days = floor($diff_in_days);
             return $days . '天前';
         }
@@ -382,7 +388,6 @@ if (!function_exists('vt_get_thumbnail_url')) {
 function vt_get_time($time){
     return wordpress_format_time_ago($time);
 }
-
 
 
 

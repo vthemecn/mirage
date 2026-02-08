@@ -40,88 +40,75 @@ export default function () {
  */
 async function likeInit(notyf){
   var likeButtons = document.querySelectorAll('.widget-action.like');
-  if(!likeButtons) return;
-  likeButtons.forEach( button=>{
-    button.addEventListener('click', async function(){
+  if(!likeButtons.length) return;
+  
+  // 初始化点赞状态
+  // await initializeLikeStatus(notyf);
+  
+  likeButtons.forEach(button => {
+    button.addEventListener('click', async function() {
+      console.log('click like button');
+      
       var that = this;
       
-      var wpnonce = document.querySelector("input[name='wp_create_nonce']").value;
-      var post_id = document.querySelector("input[name='post_id']").value;
+      const objectId = ajax_object.post_id;
+      if (!objectId) return;
+ 
+      const isLiked = that.classList.contains('active');
+      let actionType = isLiked ? 'unlike' : 'like';
       
-      var addUrl = '/wp-json/vtheme/v1/stars' + "?_wpnonce=" + wpnonce;
-      var deleteUrl = '/wp-json/vtheme/v1/stars/' + post_id + "?_wpnonce=" + wpnonce;
-
-      var currentUser
-      
-      // 登录用户取消点赞
-      if( this.classList.contains('active') ){
-        let response = await fetch(deleteUrl, {
-          method:'DELETE',
-          headers:{'Content-Type': 'application/json'},
-          body:JSON.stringify({'type':'like'})
+      try {
+        const response = await fetch(ajax_object.ajax_url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: new URLSearchParams({
+            action: 'like_action',
+            object_id: objectId,
+            action_type: actionType,
+            nonce: ajax_object.nonce,
+          })
         });
-        let responseJson = await response.json();
-        if(response.status == 200){
-          that.classList.remove('active');
-          let num = that.querySelector('.number').innerText;
-          num = (--num <= 0) ? '' : num; 
-
-          that.querySelector('.number').innerText = num;
-          // 取消点赞不显示提示
-        }else{
-          notyf.error(responseJson.error);
+        
+        const result = await response.json();
+        console.log('Result: ', result);
+        
+        if (result.success) {
+          // 更新UI
+          if (actionType === 'like') {
+            that.classList.add('active');
+            // 更新按钮文本显示
+            const spanElement = that.querySelector('span');
+            spanElement.textContent = '取消点赞';
+          } else {
+            that.classList.remove('active');
+            // 更新按钮文本显示
+            const spanElement = that.querySelector('span');
+            if (spanElement) {
+              spanElement.textContent = '点赞';
+            }
+          }
+          
+          // 更新点赞数
+          const numberElement = that.querySelector('.number');
+          if (numberElement) {
+            numberElement.textContent = result.data.like_count || '';
+          }
+          
+          notyf.success(result.data.message);
+        } else {
+          notyf.error(result.data.message || '操作失败');
         }
-        return;
+      } catch (error) {
+        console.error('点赞操作失败:', error);
+        notyf.error('网络错误，请重试');
       }
-
-      // 未登录用户，通过 cookie 判断是否点赞过
-      let currentUserId = document.querySelector('input[name="current_user_id"]').value;
-      let likeIdsArr = [];
-
-      if(currentUserId==0){
-        let likeIdsStr = getCookie('likeIds');
-        likeIdsArr = [];
-
-        try {
-          likeIdsArr = JSON.parse(likeIdsStr);
-        } catch(e) {
-          likeIdsArr = [];
-        }
-
-        if(likeIdsArr.indexOf(post_id) !== -1){
-          notyf.success('今天已经点赞过了');
-          return;
-        }
-      }
-      
-      // 执行点赞请求
-      var data = {};
-      data.object_id = document.querySelector("input[name='post_id']").value;
-      data.type = 'like';
-
-      let response = await fetch(addUrl, {
-        method:'POST',
-        headers:{'Content-Type': 'application/json'},
-        body:JSON.stringify(data)
-      });
-
-      let responseJson = await response.json();
-      if(response.status == 201){
-        that.querySelector('.number').innerText = responseJson.counter;
-        if(responseJson.user_id == 0){ //未登录用户
-          likeIdsArr.push(post_id);
-          setCookie('likeIds', JSON.stringify(likeIdsArr), 1);
-          return;
-        }
-        that.classList.add('active');
-        notyf.success('点赞成功');
-      }else{
-        notyf.error(responseJson.error);
-      }
-      
     });
   });
 }
+
+
 
 
 /**
@@ -197,7 +184,6 @@ async function starInit(notyf){
   });
 }
 
-
 /**
  * 海报生成
  */
@@ -206,7 +192,7 @@ function sharePosterInit() {
   if(!qrcodeSelector) { return; }
 
   window.addEventListener('load', function(){
-    var url = document.querySelector('input[name="post_url"]').value;
+    var url = ajax_object.post_url;
     var qrcode = new QRCode(qrcodeSelector, {
         text: url,
         width: 80,

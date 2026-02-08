@@ -170,18 +170,16 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
                         </div>
                     </div>
                 <?php else: ?>
-                    <?php if ($vt_config['is_show_login_register']) : ?>
-                        <div class="user-widget-mobile">
-                            <div class="user-header login-button open-login-dialog">
-                                <?php $avatar = vt_get_custom_avatar_url($current_user->ID) ?>
-                                <img src="<?=$avatar ?>" class="avatar" alt="Avatar">
-                                <div class="user-meta">
-                                    <div class="user-nickname" style="cursor: pointer;"><?php _e('请登录', 'vt') ?></div>
-                                    <div class="user-more"></div>
-                                </div>
+                    <div class="user-widget-mobile">
+                        <div class="user-header login-button open-login-dialog">
+                            <?php $avatar = vt_get_custom_avatar_url($current_user->ID) ?>
+                            <img src="<?=$avatar ?>" class="avatar" alt="Avatar">
+                            <div class="user-meta">
+                                <div class="user-nickname" style="cursor: pointer;"><?php _e('请登录', 'vt') ?></div>
+                                <div class="user-more"></div>
                             </div>
                         </div>
-                    <?php endif ?>
+                    </div>
                 <?php endif ?>
 
                 <?php
@@ -342,129 +340,3 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
             </form>
         </div>
     </header>
-
-
-    <!-- 登录/注册/找回密码对话框 -->
-    <div class="vt-dialog login-register-dialog" id="login-register-dialog">
-        <div class="dialog-widget">
-            <div class="dialog-header">
-                <div class="title">用户登录</div>
-                <a class="close close-button" href="javascript:;">
-                    <i class="fa-solid fa-xmark"></i>
-                </a>
-            </div>
-            <div class="dialog-body">
-                <div class="auth-tabs">
-                    <div class="tabs-nav">
-                        <button type="button" class="tab-btn active" data-tab="login">登录</button>
-                        <button type="button" class="tab-btn" data-tab="register">注册</button>
-                        <button type="button" class="tab-btn" data-tab="forgot">找回密码</button>
-                    </div>
-                    
-                    <!-- 登录表单 -->
-                    <div class="tab-content active" id="tab-login">
-                        <form id="login-form">
-                            <div class="field field-text">
-                                <label for="login-username">用户名或邮箱</label>
-                                <input type="text" id="login-username" name="username" required>
-                            </div>
-                            <div class="field field-text">
-                                <label for="login-password">密码</label>
-                                <input type="password" id="login-password" name="password" required>
-                            </div>
-                            <div class="field field-button">
-                                <button type="submit" class="btn primary">登录</button>
-                            </div>
-                        </form>
-                    </div>
-                    
-                    <!-- 注册表单 -->
-                    <div class="tab-content" id="tab-register">
-                        <form id="register-form">
-                            <div class="field field-text">
-                                <label for="register-username">用户名</label>
-                                <input type="text" id="register-username" name="username" required>
-                            </div>
-                            <div class="field field-text">
-                                <label for="register-email">邮箱</label>
-                                <input type="email" id="register-email" name="email" required>
-                            </div>
-                            <div class="field field-text">
-                                <label for="register-password">密码</label>
-                                <input type="password" id="register-password" name="password" required>
-                            </div>
-                            <div class="field field-text">
-                                <label for="register-verification-code">验证码</label>
-                                <div class="verification-input-group">
-                                    <input type="text" id="register-verification-code" name="verification_code" placeholder="请输入验证码" maxlength="6" required>
-                                    <button type="button" class="btn secondary" id="send-verification-code">发送验证码</button>
-                                </div>
-                            </div>
-                            <div class="field field-button">
-                                <button type="submit" class="btn primary">注册</button>
-                            </div>
-                        </form>
-                    </div>
-                    
-                    <!-- 找回密码表单 -->
-                    <div class="tab-content" id="tab-forgot">
-                        <form id="forgot-form-step1">
-                            <div class="field field-text">
-                                <label for="forgot-email">邮箱</label>
-                                <input type="email" id="forgot-email" name="email" required>
-                            </div>
-                            <div class="field field-button">
-                                <button type="submit" class="btn primary">发送验证码</button>
-                            </div>
-                        </form>
-                        
-                        <form id="forgot-form-step2" style="display:none;">
-                            <div class="field field-text">
-                                <label for="forgot-code">验证码</label>
-                                <input type="text" id="forgot-code" name="code" placeholder="请输入收到的验证码" maxlength="6" required>
-                            </div>
-                            <div class="field field-text">
-                                <label for="forgot-new-password">新密码</label>
-                                <input type="password" id="forgot-new-password" name="new_password" placeholder="请输入新密码" required>
-                            </div>
-                            <div class="field field-text">
-                                <label for="forgot-confirm-password">确认新密码</label>
-                                <input type="password" id="forgot-confirm-password" name="confirm_new_password" placeholder="请再次输入新密码" required>
-                            </div>
-                            <div class="field field-button">
-                                <button type="submit" class="btn primary">重置密码</button>
-                            </div>
-                        </form>
-                        
-                        <div id="forgot-back" style="display:none; text-align:center; margin-top:15px;">
-                            <a href="javascript:;" onclick="showForgotStep1()">← 返回输入邮箱</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // 传递WordPress的AJAX URL和nonce到JavaScript
-        var ajax_object = {
-            ajax_url: "<?php echo admin_url('admin-ajax.php'); ?>",
-            nonce: "<?php echo wp_create_nonce('ajax_nonce'); ?>"
-        };
-        
-        // 显示第一步：输入邮箱
-        function showForgotStep1() {
-            document.getElementById('forgot-form-step1').style.display = 'block';
-            document.getElementById('forgot-form-step2').style.display = 'none';
-            document.getElementById('forgot-back').style.display = 'none';
-        }
-        
-        // 显示第二步：输入验证码和新密码
-        function showForgotStep2() {
-            document.getElementById('forgot-form-step1').style.display = 'none';
-            document.getElementById('forgot-form-step2').style.display = 'block';
-            document.getElementById('forgot-back').style.display = 'block';
-        }
-    </script>
-</body>
-</html>

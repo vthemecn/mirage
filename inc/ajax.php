@@ -8,3 +8,151 @@
 
 if (!defined('ABSPATH')) exit;
 
+/**
+ * 点赞功能 AJAX 处理
+ */
+add_action('wp_ajax_like_action', 'handle_like_action');
+add_action('wp_ajax_nopriv_like_action', 'handle_like_action');
+
+function handle_like_action() {
+    // 验证 nonce
+    if (!wp_verify_nonce($_POST['nonce'], 'ajax_nonce')) {
+        wp_die('安全验证失败');
+    }
+    
+    $object_id = intval($_POST['object_id']);
+    $action_type = sanitize_text_field($_POST['action_type']); // 'like' or 'unlike'
+    
+    if (!$object_id) {
+        wp_send_json_error(['message' => '无效的对象ID']);
+        return;
+    }
+    
+    global $wpdb;
+    $user_id = get_current_user_id();
+    $table_name = $wpdb->prefix . 'vt_star';
+    
+    // 为未登录用户生成唯一标识
+    $user_identifier = $user_id > 0 ? $user_id : 'ip_' . md5($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
+    // $user_identifier = $user_id > 0 ? $user_id : 'ip_' . $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'];
+    
+    if ($action_type === 'like') {
+        // 检查是否已经点赞过（无论是登录用户还是未登录用户）
+        $existing = $wpdb->get_var($wpdb->prepare(
+            "SELECT id FROM {$table_name} WHERE (user_id = %d OR user_id = %s) AND object_id = %d AND type = 'like'",
+            $user_id, $user_identifier, $object_id
+        ));
+        
+        if (!$existing) {
+            // 插入点赞记录
+            $result = $wpdb->insert(
+                $table_name,
+                array(
+                    'user_id' => $user_id > 0 ? $user_id : $user_identifier,
+                    'object_id' => $object_id,
+                    'type' => 'like',
+                    'created_at' => current_time('mysql')
+                ),
+                array('%s', '%d', '%s', '%s')
+            );
+            
+            if ($result !== false) {
+                // 获取点赞总数
+                $like_count = $wpdb->get_var($wpdb->prepare(
+                    "SELECT COUNT(*) FROM {$table_name} WHERE object_id = %d AND type = 'like'",
+                    $object_id
+                ));
+                
+                wp_send_json_success([
+                    'message' => '点赞成功',
+                    'like_count' => $like_count,
+                    'liked' => true
+                ]);
+            } else {
+                wp_send_json_error(['message' => '点赞失败']);
+            }
+        } else {
+            wp_send_json_success(['message' => '已经点赞过了']);
+        }
+    } elseif ($action_type === 'unlike') {
+        // 取消点赞
+        $result = $wpdb->delete(
+            $table_name,
+            array(
+                'user_id' => $user_id,
+                'object_id' => $object_id,
+                'type' => 'like'
+            ),
+            array('%d', '%d', '%s')
+        );
+        
+        if ($result !== false) {
+            // 获取点赞总数
+            $like_count = $wpdb->get_var($wpdb->prepare(
+                "SELECT COUNT(*) FROM {$table_name} WHERE object_id = %d AND type = 'like'",
+                $object_id
+            ));
+            
+            wp_send_json_success([
+                'message' => '取消点赞成功',
+                'like_count' => $like_count,
+                'liked' => false,
+                'can_unlike' => false
+            ]);
+        } else {
+            wp_send_json_error(['message' => '取消点赞失败']);
+        }
+    } else {
+        wp_send_json_error(['message' => '无效的操作类型']);
+    }
+}
+
+/**
+ * 获取点赞状态
+ */
+add_action('wp_ajax_get_like_status', 'get_like_status');
+add_action('wp_ajax_nopriv_get_like_status', 'get_like_status');
+
+function get_like_status() {
+    $object_id = intval($_POST['object_id']);
+    
+    if (!$object_id) {
+        wp_send_json_error(['message' => '无效的对象ID']);
+        return;
+    }
+    
+    global $wpdb;
+    $user_id = get_current_user_id();
+    $table_name = $wpdb->prefix . 'vt_star';
+    
+    // 获取点赞总数
+    $like_count = $wpdb->get_var($wpdb->prepare(
+        "SELECT COUNT(*) FROM {$table_name} WHERE object_id = %d AND type = 'like'",
+        $object_id
+    ));
+    
+    // 检查当前用户是否已点赞（包括未登录用户）
+    $is_liked = false;
+    if ($user_id > 0) {
+        // 登录用户检查
+        $existing = $wpdb->get_var($wpdb->prepare(
+            "SELECT id FROM {$table_name} WHERE user_id = %d AND object_id = %d AND type = 'like'",
+            $user_id, $object_id
+        ));
+        $is_liked = !empty($existing);
+    } else {
+        // 未登录用户检查（基于IP和User-Agent）
+        $user_identifier = 'ip_' . md5($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
+        $existing = $wpdb->get_var($wpdb->prepare(
+            "SELECT id FROM {$table_name} WHERE user_id = %s AND object_id = %d AND type = 'like'",
+            $user_identifier, $object_id
+        ));
+        $is_liked = !empty($existing);
+    }
+    
+    wp_send_json_success([
+        'like_count' => $like_count,
+        'is_liked' => $is_liked,
+        'can_unlike' => $user_id > 0 // 只有登录用户可以取消点赞
+    ]);
+}

@@ -38,6 +38,13 @@ if($current_user_id){
     $res = $wpdb->get_row($wpdb->prepare($sql, [$vt_post_id, $current_user_id]), ARRAY_A );
     $is_like = $res ? true : false;
 }
+// 为未登录用户生成唯一标识
+$user_identifier = $current_user_id > 0 ? $current_user_id : 'ip_' . md5($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
+$existing = $wpdb->get_var($wpdb->prepare(
+    "SELECT id FROM {$wpdb->prefix}vt_star WHERE user_id = %s AND object_id = %d AND type = 'like'",
+    $user_identifier, $vt_post_id
+));
+$is_like = $existing ? true : $is_like;
 
 // 收藏数量
 $star_counter = 0;
@@ -169,10 +176,19 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                                             $config['post_action'] : [];
                 ?>
 
+                <script type="text/javascript">
+                var ajax_object = {
+                    ajax_url: "<?php echo admin_url('admin-ajax.php'); ?>",
+                    nonce: "<?php echo wp_create_nonce('ajax_nonce'); ?>",
+                    post_url: "<?php echo get_permalink(); ?>",
+                    post_id: "<?= get_the_ID(); ?>",
+                };
+                </script>
+
                 <?php if(in_array('like', $config['post_action'])):?>
                 <div class="widget-action like <?php echo $is_like ? ' active' : '' ?>">
                     <i class="fa-solid fa-heart"></i>
-                    <span><?=__('点赞','vt')?></span>
+                    <span><?= $is_like ? __('取消点赞','vt') : __('点赞','vt')?></span>
                     <span class='number'><?= $like_counter ? $like_counter : '' ?></span>
                 </div>
                 <?php endif; ?>
@@ -379,10 +395,7 @@ $qrcode_image = $config['qrcode_image'] ? $config['qrcode_image'] : get_template
 </div>
 
 
-<input type="hidden" name="wp_create_nonce" value="<?php echo wp_create_nonce('wp_rest'); ?>">
-<input type="hidden" name="post_id" value="<?php echo $vt_post_id ?>">
-<input type="hidden" name="post_url" value="<?= get_permalink() ?>">
-<input type="hidden" name="current_user_id" value="<?= $current_user->ID?>" />
+<!-- 已将必要的隐藏字段移至 content-action 区域 -->
 
 <?php if($config['highlight_is_on']):?>
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/assets/lib/prism/prism.css">
