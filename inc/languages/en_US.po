@@ -193,9 +193,6 @@ msgstr "horizontal line"
 msgid "显示页面参数"
 msgstr "Display page parameters"
 
-msgid "默认文章列表排版"
-msgstr "Default article list layout"
-
 msgid "每行列数"
 msgstr "Number of rows and columns"
 

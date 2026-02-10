@@ -1,0 +1,255 @@
+/**
+ * 通用文章卡片 20250209
+ *
+ * @author vthemecn <mail@vtheme.cn>
+ * @link https://vtheme.cn
+ */
+
+/* 基础文章卡片样式 */
+.vt-card-item {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 15px;
+  box-sizing: border-box;
+  padding: 15px;
+  margin: 10px 0;
+  border: 1px solid var(--vt-border-color);
+  transition: background-color 0.3s ease;
+  border-radius: var(--vt-border-radius);
+  background-color: var(--vt-bg-color-card);
+}
+
+/* 图片区域 - 移动端样式 */
+.vt-card-thumbnail {
+  flex: 0 0 auto;
+  width: 120px;
+  aspect-ratio: 1 / 0.6;
+  overflow: hidden;
+  border-radius: 8px;
+  position: relative;
+}
+.vt-card-thumbnail a{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.vt-card-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.vt-card-item:hover .vt-card-thumbnail img {
+  transform: scale(1.05);
+}
+
+.vt-card-thumbnail-default {
+  background-color: var(--vt-bg-color-grey);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--vt-text-color-grey);
+  font-size: 14px;
+  text-align: center;
+}
+
+/* 内容区域 */
+.vt-card-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.vt-card-title {
+  margin: 0 0 12px 0;
+  line-height: 20px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.vt-card-title a {
+  color: var(--vt-text-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vt-card-title a:hover {
+  color: var(--vt-color-primary);
+}
+
+.vt-card-meta {
+  margin-bottom: 10px;
+  margin-top: auto;
+  font-size: 14px;
+  color: var(--vt-text-color-grey);
+  display: flex;
+  overflow-x: scroll;
+  gap: 5px;
+}
+
+.vt-card-tag {
+  flex: 0 0 auto;
+  display: inline-block;
+  padding: 2px 8px;
+  background-color: var(--vt-bg-color-grey);
+  color: var(--vt-text-color-grey);
+  font-size: 12px;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.vt-card-tag:hover {
+  background-color: var(--vt-color-primary);
+  color: var(--vt-text-color-inverse);
+  text-decoration: none;
+}
+
+.vt-card-excerpt {
+  margin-bottom: 15px;
+  color: var(--vt-text-color-grey);
+  line-height: 1.6;
+  font-size: 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vt-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--vt-text-color-grey);
+  margin-top: auto;
+}
+
+.vt-card-footer a{
+  font-size: 12px;
+  color: var(--vt-text-color-grey);
+}
+
+.vt-card-author {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.vt-card-author img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.vt-card-time {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.vt-card-stats {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.vt-user-post-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+
+/*****************************************************************************/
+/* 平板端样式增强 */
+@media (min-width: 481px) {
+  .vt-card-item {
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  .vt-card-thumbnail {
+    flex: 0 0 200px;
+    height: auto;
+  }
+  
+  .vt-card-stats {
+    gap: 15px;
+  }
+}
+
+/*****************************************************************************/
+
+/* 桌面端样式增强 - 水平布局 */
+@media (min-width: 769px) {
+  .vt-card-item {
+    flex-direction: row;
+  }
+  
+  .vt-card-thumbnail {
+    width: 220px;
+    aspect-ratio: 1 / 0.7;
+  }
+  
+  .vt-card-footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/*****************************************************************************/
+/**
+ * 卡片样式
+ */
+.vt-column .vt-card-item{
+  flex-direction: column;
+}
+.vt-column .vt-card-item .vt-card-thumbnail {
+  width: 100%;
+}
+
+
+/**
+ * 窄屏模式，隐藏某些元素
+ */
+.vt-card-item .vt-card-meta,
+.vt-card-item .vt-card-author span,
+.vt-card-item .vt-user-post-stat-item:nth-child(2),
+.vt-card-item .vt-user-post-stat-item:nth-child(3),
+.vt-card-item .vt-card-excerpt{
+  display: none;
+}
+
+@media (min-width: 481px) {
+  .vt-card-item .vt-card-meta,
+  .vt-card-item .vt-card-author span,
+  .vt-card-item .vt-user-post-stat-item:nth-child(2),
+  .vt-card-item .vt-user-post-stat-item:nth-child(3){
+    display: flex;
+  }
+  .vt-card-item .vt-card-excerpt{
+    display: -webkit-box;
+  }
+}
+
+
+/**
+ * 样式覆盖
+ */
+.vt-card-item.vt-no-border{
+  border: none;
+}
+

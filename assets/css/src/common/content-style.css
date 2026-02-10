@@ -71,7 +71,7 @@
 .content-style blockquote::before {
   content: "\f10d";
   font-family: "Font Awesome 6 Free";
-  font-size: 38px;
+  font-size: 25px;
   color: var(--vt-color-primary);
 }
 

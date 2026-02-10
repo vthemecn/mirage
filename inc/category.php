@@ -107,7 +107,6 @@ function vt_edit_category_list_type($tag)
     $vt_cat_list_type = get_option('vt_cat_list_type_' . $tag->term_id);
     $checked_0 = $vt_cat_list_type == 0 ? 'checked="checked"' : '';
     $checked_1 = $vt_cat_list_type == 1 ? 'checked="checked"' : '';
-    $checked_2 = $vt_cat_list_type == 2 ? 'checked="checked"' : '';
 
     echo '<tr class="form-field">
             <th scope="row"><label for="cat-keywords">模版选择</label></th>
@@ -116,17 +115,12 @@ function vt_edit_category_list_type($tag)
                     <legend class="screen-reader-text"><span>模版选择</span></legend>
                     <label>
                         <input type="radio" name="vt_cat_list_type" value="0" ' . $checked_0 . '>
-                        <span class="date-time-text">跟随系统</span>
-                    </label>
-                    &nbsp;&nbsp;
-                    <label>
-                        <input type="radio" name="vt_cat_list_type" value="1" ' . $checked_1 . '>
                         <span class="date-time-text">文章列表</span>
                     </label>
                     &nbsp;&nbsp;
                     <label>
-                        <input type="radio" name="vt_cat_list_type" value="2" ' . $checked_2 . '>
-                        <span class="date-time-text">卡片列表</span><!--<code></code>-->
+                        <input type="radio" name="vt_cat_list_type" value="1" ' . $checked_1 . '>
+                        <span class="date-time-text">卡片列表</span>
                     </label>
                 </fieldset>
             </td>

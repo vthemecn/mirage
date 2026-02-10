@@ -107,14 +107,6 @@ if( class_exists( 'CSF' ) ) {
                 'inline' => true
             ),
             array(
-                'id'         => 'border_radius_is_on',
-                'type'       => 'radio',
-                'title'      => __('开启圆角','vt'),
-                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
-                'default'    => '1',
-                'inline' => true
-            ),
-            array(
                 'id'         => 'attempts_is_on',
                 'type'       => 'radio',
                 'title'      => __('防暴力破解','vt'),
@@ -525,24 +517,16 @@ if( class_exists( 'CSF' ) ) {
         'icon'   => 'dashicons dashicons-admin-generic',
         'fields' => array(
             array(
-                'id'         => 'list_type',
-                'type'       => 'radio',
-                'title'      => __('默认文章列表排版','vt'),
-                'options'    => array('0' => __('文章','vt'), '1' => __('卡片','vt'), ),
-                'default'    => '0',
-                'inline' => true
-            ),
-            array(
-                'id'         => 'list_cards_col',
+                'id'         => 'vt_columns',
                 'type'       => 'radio',
                 'title'      => __('每行列数','vt'),
                 'options'    => array(
+                    '2' => __('2','vt'),
                     '3' => __('3','vt'),
                     '4' => __('4','vt'),
-                    '5' => __('5','vt'),
-                    '6' => __('6','vt')
+                    '5' => __('5','vt')
                 ),
-                'default'    => '3',
+                'default'    => '2',
                 'inline' => true
             ),
             array(

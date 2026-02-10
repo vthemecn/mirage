@@ -189,9 +189,6 @@ msgstr "水平線"
 msgid "显示页面参数"
 msgstr "ページパラメータを表示する"
 
-msgid "默认文章列表排版"
-msgstr "デフォルトの記事リストレイアウト"
-
 msgid "每行列数"
 msgstr "行数と列数"
 

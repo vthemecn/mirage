@@ -1,4 +1,4 @@
-@charset "UTF-8";
+
 /**
  * 文章页，文档页等 公共的点赞，收藏 模块
  */
@@ -169,7 +169,9 @@
 /**
  * 投币
  */
-.coin i {}
+.coin i {
+  position: relative;
+}
  
 .coin-dialog-widget {
   box-sizing: border-box;

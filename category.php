@@ -12,11 +12,7 @@ $vt_cat_list_type = get_option('vt_cat_list_type_' . $cat_ID);
 $template_path = 'templates/categories/category-list';
 
 if ($vt_cat_list_type == 0) {
-    if($config['list_type']==1){
-        $template_path = 'templates/categories/category-cards';
-    }else{
-        $template_path = 'templates/categories/category-list';
-    }
+    $template_path = 'templates/categories/category';
 } else {
     if ($vt_cat_list_type ==1){
         $template_path = 'templates/categories/category-list';
