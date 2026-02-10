@@ -168,8 +168,7 @@ if( class_exists( 'CSF' ) ) {
                 'default'        => array(
                     'enabled'  => array(
                         'slider'   => __('幻灯片','vt'),
-                        'last'     => __('最新文章','vt'),
-                        'links'     => __('友情链接','vt'),
+                        'last'     => __('最新文章','vt')
                     ),
                     'disabled' => array()
                 ),
@@ -412,24 +411,6 @@ if( class_exists( 'CSF' ) ) {
         )
     ));
 
-    /**
-     * 首页设置 - 友情链接模块
-     */
-    CSF::createSection($prefix, array(
-        'parent'      => 'home_fields',
-        'title'       => __('友情链接','vt'),
-        'description' => '',
-        'fields'      => array(
-            array(
-                'id'    => 'links_is_show',
-                'type'  => 'radio',
-                'title' => __('友情链接','vt'),
-                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
-                'default'    => '1',
-                'inline' => true
-            ), 
-        )
-    ));
 
     /**
      * 顶部设置
@@ -526,7 +507,7 @@ if( class_exists( 'CSF' ) ) {
                     '4' => __('4','vt'),
                     '5' => __('5','vt')
                 ),
-                'default'    => '2',
+                'default'    => '3',
                 'inline' => true
             ),
             array(

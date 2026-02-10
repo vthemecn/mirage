@@ -181,13 +181,6 @@ if($vt_config['editor_revision'] == 0){
     }
 }
 
-
-//开启友情链接管理
-if( $config['links_is_show'] ){
-    add_filter( 'pre_option_link_manager_enabled', '__return_true' );
-}
-
-
 /**
  * 自定义图片名称
  */

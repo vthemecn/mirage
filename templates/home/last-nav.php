@@ -15,9 +15,6 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
 
 <div class="articles-widget">
-    <div class="articles-header">
-        <?= __('最新文章','vt')?>
-    </div>
     <div class="articles-list">
         <?php if($sticky_arr): ?>
             <?php
@@ -40,7 +37,7 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             ?>
             <?php while ($query_posts->have_posts()) : ?>
                 <?php $query_posts->the_post(); ?>
-                <?php get_template_part( 'templates/media/media' ); ?>
+                <?php get_template_part( 'templates/card' ); ?>
             <?php endwhile; ?>
             <?php wp_reset_postdata(); ?>
         <?php endif ?>
@@ -68,7 +65,7 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
         <?php if ( $query_posts->have_posts() ) : ?>
             <?php while ($query_posts->have_posts()) : ?>
                 <?php $query_posts->the_post(); ?>
-                <?php get_template_part( 'templates/media/media' ); ?>
+                <?php get_template_part( 'templates/card' ); ?>
             <?php endwhile; ?>
         <?php else: ?>
             <div class="no-content">

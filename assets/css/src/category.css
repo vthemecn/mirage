@@ -1,6 +1,6 @@
 /*
- * 文章列表样式
- */
+* 文章列表样式
+*/
 .media-list {
   box-sizing: border-box;
   margin: 0px 0px 0px 0;
@@ -13,8 +13,8 @@
 
 
 /*
- * 样式覆盖
- */
+  * 样式覆盖
+  */
 
 /* 平板端样式增强 */
 @media (min-width: 769px) {

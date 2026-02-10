@@ -13,24 +13,16 @@
 @import './home/slider.css';
 @import './home/hot.css';
 @import './home/posts.css';
-@import './home/links.css';
 @import './article-action.css';
 @import './article.css';
 @import './card.css';
+@import './category.css';
 @import './page.css';
 @import './comments.css';
 @import './header.css';
 @import './footer.css';
 @import './widget.css';
 @import './container.css';
-@import './media/card.css';
-@import './media/media.css';
-@import './categories/banner.css';
-@import './categories/category-list.css';
-@import './categories/category-cards.css';
-@import './users/index.css';
-@import './users/user-center.css';
-@import './users/star.css';
-@import './users/login.css';
+@import './banner.css';
 @import './dark.css';
 
