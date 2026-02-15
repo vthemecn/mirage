@@ -6,6 +6,10 @@
   margin: 0px 0px 0px 0;
 }
 
+.media-list .vt-card-item{
+  margin: 8px 0px;
+}
+
 @media only screen and (min-width: 900px) {
 
 }

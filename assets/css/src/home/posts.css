@@ -8,7 +8,9 @@
   clear: both;
 }
 
-
+.articles-widget .vt-card-item{
+  margin: 8px 0;
+}
 
 .articles-list .vt-card-item:nth-child(1) {
   margin-top: 0px !important;
@@ -21,4 +23,7 @@
  /* .articles-widget {
     margin: 20px 0 0 0;
   }*/
+  .articles-widget .vt-card-item{
+    margin: 15px 0;
+  }
 }

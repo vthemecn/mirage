@@ -15,7 +15,7 @@
   box-sizing: border-box;
   padding: 15px;
   margin: 10px 0;
-  border: 1px solid var(--vt-border-color);
+  /* border: 1px solid var(--vt-border-color); */
   transition: background-color 0.3s ease;
   border-radius: var(--vt-border-radius);
   background-color: var(--vt-bg-color-card);
@@ -47,14 +47,24 @@
   transform: scale(1.05);
 }
 
-.vt-card-thumbnail-default {
-  background-color: var(--vt-bg-color-grey);
+/* 缩略图上的 badget· */
+.vt-card-thumbnail .vt-card-badget-widget{
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--vt-text-color-grey);
-  font-size: 14px;
-  text-align: center;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  gap: 5px;
+}
+.vt-card-thumbnail .vt-card-badget{
+  padding: 3px 5px;
+  background-color: var(--vt-bg-color-mask);
+  color: #fff;
+  font-size: 12px;
+  border-radius: var(--vt-border-radius);
+}
+.vt-card-thumbnail .vt-card-badget.vip{
+  background-color: rgba(247, 195, 46, 0.75);
+  color: rgb(149, 0, 0);
 }
 
 /* 内容区域 */
@@ -108,12 +118,17 @@
   border-radius: 3px;
   transition: all 0.3s ease;
 }
-
 .vt-card-tag:hover {
   background-color: var(--vt-color-primary);
   color: var(--vt-text-color-inverse);
   text-decoration: none;
 }
+.vt-card-tag.vt-category:first-child{ background-color:rgba(41, 151, 247, 0.1); color: rgb(41, 151, 247); }
+.vt-card-tag.vt-category:nth-child(2){ background-color:rgb(255, 160, 0, 0.1); color: rgb(255, 160, 0); }
+.vt-card-tag.vt-category:nth-child(3){ background-color:rgba(18, 185, 40, 0.1); color: rgb(24, 165, 42); }
+.vt-card-tag.vt-category:nth-child(4){ background-color:rgba(213, 72, 245, 0.1); color: rgb(228, 52, 225); }
+.vt-card-tag.vt-category:nth-child(5){ background-color:rgba(255, 84, 115, 0.1); color: rgb(255, 84, 115); }
+
 
 .vt-card-excerpt {
   margin-bottom: 15px;
@@ -132,6 +147,7 @@
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
+  margin-top: auto;
   font-size: 13px;
   color: var(--vt-text-color-grey);
 }

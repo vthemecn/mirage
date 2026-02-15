@@ -171,11 +171,6 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
             </div>
 
             <div class="content-action">
-                <?php
-                $config['post_action'] = is_array($config['post_action']) ? 
-                                            $config['post_action'] : [];
-                ?>
-
                 <script type="text/javascript">
                 var ajax_object = {
                     ajax_url: "<?php echo admin_url('admin-ajax.php'); ?>",
@@ -205,21 +200,17 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     <span><?=__('分享','vt')?></span>
                 </div>
 
-                <?php if(in_array('donate', $config['post_action'])):?>
                 <div class="widget-action coin">
                     <i class="fa-solid fa-coins"></i>
                     <span><?=__('打赏','vt')?></span>
                 </div>
-                <?php endif; ?>
 
-                <?php if(in_array('edit', $config['post_action'])):?>
-                    <?php if( current_user_can( 'manage_options' ) ): ?>
-                    <a href="/wp-admin/post.php?post=<?php echo get_the_ID() ?>&action=edit" class="widget-action">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        <span><?=__('编辑','vt')?></span>
-                    </a>
-                    <?php endif ?>
-                <?php endif; ?>
+                <?php if( current_user_can( 'manage_options' ) ): ?>
+                <a href="/wp-admin/post.php?post=<?php echo get_the_ID() ?>&action=edit" class="widget-action">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <span><?=__('编辑','vt')?></span>
+                </a>
+                <?php endif ?>
             </div>
 
 

@@ -11,6 +11,12 @@ $avatar = vt_get_custom_avatar_url($post->post_author);
             <?php else : ?>
                 <img src="<?= esc_url( TEMP_URL . '/assets/images/default.jpg'); ?>" alt="<?php the_title_attribute(); ?>" />
             <?php endif; ?>
+            <div class="vt-card-badget-widget">
+                <?php if(is_sticky()): ?>
+                    <div class="vt-card-badget sticky">置顶</div>
+                <?php endif ?>
+                <?php /* <div class="vt-card-badget vip">VIP</div> */ ?>
+            </div>
         </a>
     </div>
     <div class="vt-card-body">
@@ -20,41 +26,27 @@ $avatar = vt_get_custom_avatar_url($post->post_author);
             </a>
         </h3>
 
-        <?php if (has_excerpt()) : ?>
-            <div class="vt-card-excerpt">
+        <div class="vt-card-excerpt">
+            <?php if (has_excerpt()) : ?>
                 <?php the_excerpt(); ?>
-            </div>
-        <?php else : ?>
-            <div class="vt-card-excerpt">
+            <?php else : ?>
                 <?php echo wp_trim_words(get_the_content(), 100, '...'); ?>
-            </div>
-        <?php endif; ?>
-        
+            <?php endif; ?>
+        </div>
+
         <div class="vt-card-meta no-scrollbar">
             <?php
             $categories = get_the_category();
             if ($categories) :
             ?>
                 <?php foreach ($categories as $category) : ?>
-                    <a href="<?php echo esc_url(get_tag_link($category->term_id)); ?>" class="vt-card-tag">
+                    <a href="<?php echo esc_url(get_tag_link($category->term_id)); ?>" class="vt-card-tag vt-category">
                         <i class="fas fa-folder"></i>
                         <?php echo esc_html($category->name); ?>
                     </a>
                 <?php endforeach; ?>
             <?php endif; ?>
             
-            <?php
-            $tags = get_the_tags();
-            if ($tags) :
-            ?>
-                <?php foreach ($tags as $tag) : ?>
-                    <a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>" class="vt-card-tag">
-                        <i class="fas fa-tags"></i>
-                        <?php echo esc_html($tag->name); ?>
-                    </a>
-                <?php endforeach; ?>
-            <?php endif; ?>
-
             <?php
             $tags = get_the_tags();
             if ($tags) :
