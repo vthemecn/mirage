@@ -22,11 +22,20 @@ if (!function_exists('p')) :
 endif;
 
 
-function vt_get_config()
+function vt_get_config($key = null, $default = null)
 {
-    global $vt_config;
-    $vt_config = $vt_config ? $vt_config : get_option(THEME_OPTION_NAME);
-    return $vt_config;
+    static $config = null;
+
+    if ($config === null) {
+        $raw = get_option(THEME_OPTION_NAME);
+        $config = is_array($raw) ? $raw : [];
+    }
+
+    if ($key === null) {
+        return $config;
+    }
+
+    return array_key_exists($key, $config) ? $config[$key] : $default;
 }
 
 $config = vt_get_config();

@@ -407,7 +407,22 @@ if( class_exists( 'CSF' ) ) {
                 'default' => '1',
                 'desc' => __('自动加载到第几页，0代表无限加载','vt'),
                 'dependency' => array('posts_nav', '==', '1')
-            )
+            ),
+            array(
+                'id'      => 'full_width',
+                'type'    => 'switcher',
+                'title'   => __('全宽','vt'),
+                'label'   => '',
+                'default' => false,
+            ),
+            array(
+                'id'    => 'list_type',
+                'type'  => 'radio',
+                'title' => __('列表格式','vt'),
+                'options'    => array('0' => __('列表','vt'), '1' => __('卡片','vt')),
+                'default'    => '0',
+                'inline' => true
+            ),
         )
     ));
 

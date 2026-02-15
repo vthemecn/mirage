@@ -14,8 +14,8 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
 
 
-<div class="articles-widget">
-    <div class="articles-list">
+<div class="main-widget">
+    <div class="media-list <?=$vt_list_type_class?>">
         <?php if($sticky_arr): ?>
             <?php
             $args = array(

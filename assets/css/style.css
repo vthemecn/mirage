@@ -1523,7 +1523,7 @@ nav.pagination a:hover {
   }
 }
 
-.articles-widget {
+/* .articles-widget {
   overflow: hidden;
 }
 
@@ -1545,13 +1545,11 @@ nav.pagination a:hover {
 }
 
 @media only screen and (min-width: 900px) {
- /* .articles-widget {
-    margin: 20px 0 0 0;
-  }*/
+
   .articles-widget .vt-card-item{
     margin: 15px 0;
   }
-}
+} */
 
 
 /**
