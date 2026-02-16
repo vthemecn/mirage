@@ -36,16 +36,16 @@ $comment_count = get_comments_number();
 			'url' => '<input id="url" class="input-field" name="url" placeholder="' .__('网站地址'). '" value="' . esc_attr($commenter['comment_author_url']) . '"></input></div>',
 			// 'cookies' => '<input type="checkbox" required>By commenting you accept the<a href="' . get_privacy_policy_url() . '">Privacy Policy</a>'
 		),
-		'label_submit' => __('发表评论','vt'),
-		'title_reply' => __('发表评论','vt'),
-		'title_reply_to' => __('回复','vt') .' '. $author_name,
-		'cancel_reply_link' => __('取消','vt'),
-		'comment_field' => '<div class="comment-form-comment"><textarea id="comment" name="comment" aria-required="true" placeholder="' .__('评论内容','vt'). '"></textarea></div>',
-		'comment_notes_before' => '<div class="top-info logged-in-as">'.__('注册不是必须的','vt').'</div>',
+		'label_submit' => __('Leave a comment','vt'),
+		'title_reply' => __('Leave a comment','vt'),
+		'title_reply_to' => __('Reply','vt') .' '. $author_name,
+		'cancel_reply_link' => __('Cancel','vt'),
+		'comment_field' => '<div class="comment-form-comment"><textarea id="comment" name="comment" aria-required="true" placeholder="' .__('Comment Content','vt'). '"></textarea></div>',
+		'comment_notes_before' => '<div class="top-info logged-in-as">'.__('Registration is not required','vt').'</div>',
 		'comment_notes_after' => '',
 		'id_submit' => __('comment-submit'),
-		'logged_in_as' => '<div class="top-info logged-in-as">'.__('当前账户','vt').': ' . $current_user->nickname . '</div>',
-		'must_log_in'  => '<div class="top-info must-log-in">'.__('需要登录，这里创建登录按钮','vt').'</div>'
+		'logged_in_as' => '<div class="top-info logged-in-as">'.__('Current Account','vt').': ' . $current_user->nickname . '</div>',
+		'must_log_in'  => '<div class="top-info must-log-in">'.__('Login required, create login button here','vt').'</div>'
 	);
 	comment_form($comments_args);
 	?>
@@ -163,12 +163,12 @@ function vt_comment($comment, $args, $depth)
 				$url = $url . "?replytocom=" . get_comment_ID() . "#respond";
 				?>
 				<?php if($depth <= 1):?>
-					<a href="<?php echo $url?>" <?php echo $current_user->ID ? 'login="false"' : ''?> ><?=__('回复','vt')?></a>
+					<a href="<?php echo $url?>" <?php echo $current_user->ID ? 'login="false"' : ''?> ><?=__('Reply','vt')?></a>
 				<?php endif ?>
 
 				<?php if($comment->user_id == $current_user->ID && $current_user->ID != 0):?>
 					<a href="javascript:;" class="delete-comment" data-comment-id="<?=get_comment_ID()?>">
-						<?=__('删除','vt')?>
+						<?=__('Delete','vt')?>
 					</a>
 				<?php endif ?>
 			</div>

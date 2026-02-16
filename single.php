@@ -224,12 +224,12 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     <?php if ($prev_post) : ?>
                         <a href="<?php echo get_permalink($prev_post->ID); ?>"><?php echo $prev_post->post_title; ?></a>
                     <?php else: ?>
-                        <?=__('没有了','vt')?>
+                        <?=__('No more','vt')?>
                     <?php endif; ?>
                 </div>
                 <div class="arrow-icon">
                     <i class="fa-solid fa-chevron-left"></i>
-                    <?=__('上一篇','vt')?>
+                    <?=__('Previous','vt')?>
                 </div>
             </div>
 
@@ -238,11 +238,11 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     <?php if ($next_post) : ?>
                         <a href="<?php echo get_permalink($next_post->ID); ?>"><?php echo $next_post->post_title; ?></a>
                     <?php else: ?>
-                        <?=__('没有了','vt')?>
+                        <?=__('No more','vt')?>
                     <?php endif; ?>
                 </div>
                 <div class="arrow-icon">
-                    <?=__('下一篇','vt')?> <i class="fa-solid fa-chevron-right"></i>
+                    <?=__('Next','vt')?> <i class="fa-solid fa-chevron-right"></i>
                 </div>
             </div>
         </div>
@@ -257,7 +257,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
         <?php /* 推荐模块 */ ?>
         <div class="related-posts-widget">
             <div class="related-header">
-                <h3><?=__('推荐','vt')?></h3>
+                <h3><?=__('Recommendation','vt')?></h3>
             </div>
             <div class="widget-content">
                 <?php
@@ -308,7 +308,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     </div>
                 <?php else : ?>
                     <div class="no-related-posts">
-                        <?=__('暂无相关文章','vt')?>
+                        <?=__('No related articles','vt')?>
                     </div>
                 <?php endif; ?>
                 
@@ -340,7 +340,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
             <div class="share-card-footer">
                 <div class="info">
                     <img src="<?= $config['site_logo'] ?>">
-                    <p><?=__('识别右侧二维码阅读全文','vt')?></p>
+                    <p><?=__('Scan QR code','vt')?></p>
                 </div>
                 <div id="qrcode"></div>
             </div>         

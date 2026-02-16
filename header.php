@@ -149,20 +149,20 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
                         <div class="links-widget">
                             <?php if(is_captain_active()):?>
                                 <a href="<?php bloginfo('url') ?>/account">
-                                    <i class="fa-solid fa-user"></i><?= __('个人中心','vt') ?>
+                                    <i class="fa-solid fa-user"></i><?= __('Dashboard','vt') ?>
                                 </a>
                             <?php else: ?>
                                 <a href="<?php bloginfo('url') ?>/wp-admin/profile.php">
-                                    <i class="fa-solid fa-user"></i><?= __('个人资料','vt') ?>
+                                    <i class="fa-solid fa-user"></i><?= __('Profile','vt') ?>
                                 </a>
                             <?php endif ?>
                             <?php if (in_array('administrator', $current_user->roles)) :?>
                                 <a href="<?php bloginfo('url') ?>/wp-admin/index.php">
-                                    <i class="fa-solid fa-gauge"></i><?= __('后台面板','vt') ?>
+                                    <i class="fa-solid fa-gauge"></i><?= __('Dashboard','vt') ?>
                                 </a>
                             <?php endif ?>
                             <a href="<?php echo wp_logout_url($current_url); ?>">
-                                <i class="fa-solid fa-right-from-bracket"></i><?= __('退出登录','vt') ?>
+                                <i class="fa-solid fa-right-from-bracket"></i><?= __('Logout','vt') ?>
                             </a>
                         </div>
                     </div>
@@ -275,7 +275,7 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
                     </a>
                 <?php endif; ?>
                 <?php if (!$current_user->ID && is_captain_active()) : ?>
-                    <a href="javascript:;" class="button login-button open-login-dialog"><?= __('登录','vt')?></a>
+                    <a href="javascript:;" class="button login-button open-login-dialog"><?= __('Login','vt')?></a>
                 <?php endif ?>
             </div>
 
@@ -303,21 +303,21 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
                     <div class="links-widget">
                         <?php if(is_captain_active()):?>
                             <a href="<?php bloginfo('url') ?>/account">
-                                <i class="fa-solid fa-user"></i><?= __('个人中心','vt') ?>
+                                <i class="fa-solid fa-user"></i><?= __('Dashboard','vt') ?>
                             </a>
                         <?php else: ?>
                             <a href="<?php bloginfo('url') ?>/wp-admin/profile.php">
-                                <i class="fa-solid fa-user"></i><?= __('个人资料','vt') ?>
+                                <i class="fa-solid fa-user"></i><?= __('Profile','vt') ?>
                             </a>
                         <?php endif ?>
 
                         <?php if (in_array('administrator', $current_user->roles)) :?>
                             <a href="<?php bloginfo('url') ?>/wp-admin/index.php">
-                                <i class="fa-solid fa-gauge"></i><?= __('后台面板','vt') ?>
+                                <i class="fa-solid fa-gauge"></i><?= __('Dashboard','vt') ?>
                             </a>
                         <?php endif ?>
                         <a href="<?php echo wp_logout_url($current_url); ?>">
-                            <i class="fa-solid fa-right-from-bracket"></i><?= __('退出登录','vt') ?>
+                            <i class="fa-solid fa-right-from-bracket"></i><?= __('Logout','vt') ?>
                         </a>
                     </div>
                 </div>
@@ -330,7 +330,7 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
                 <a href="javascript:;"><i class="fa-solid fa-xmark"></i></a>
             </div>
             <form method="get" class="search" action="/">
-                <input class="keyword" type="text" name="s" placeholder="<?= __('搜索','vt')?>..." value="<?php echo get_search_query(); ?>">
+                <input class="keyword" type="text" name="s" placeholder="<?= __('Search','vt')?>..." value="<?php echo get_search_query(); ?>">
                 <button class="button search-button" type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>

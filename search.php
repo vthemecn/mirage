@@ -30,11 +30,11 @@ $banner_image = get_bloginfo('template_url') . '/assets/images/banner.jpg';
 
 <div class="banner" style="background-image: url(<?php echo $banner_image; ?>)">
     <div class="banner-container">
-        <div class="title"><?= __('搜索','vt')?></div>
+        <div class="title"><?= __('Search','vt')?></div>
         <div class="description">
-            <?= __('搜索','vt')?>
+            <?= __('Search','vt')?>
             "<?php echo get_search_query(); ?>"
-            <?= __('的相关内容','vt')?>
+            <?= __('results','vt')?>
         </div>
     </div>
 </div>
@@ -52,7 +52,7 @@ $banner_image = get_bloginfo('template_url') . '/assets/images/banner.jpg';
         <?php else : ?>
             <div class="no-content">
                 <img src="<?php bloginfo('template_url'); ?>/assets/images/empty.png">
-                <p><?=__('暂无内容','vt')?></p>
+                <p><?=__('Not content','vt')?></p>
             </div>
         <?php endif; ?>
 

@@ -37,7 +37,7 @@ add_action('init', 'vt_widgets_init');
  */
 class ArticleWidget extends WP_Widget {
     function __construct(){
-        parent::__construct( 'image-article-list', '[Mirage] '.__( '最新文章', 'vt' ), array( 'description' => __('最新文章描述', 'vt' ) ) );
+        parent::__construct( 'image-article-list', '[Mirage] '.__( '最新文章', 'vt' ), array( 'description' => __('最新文章', 'vt' ) ) );
     }
     function widget( $args, $instance ) {
         extract( $args, EXTR_SKIP );
@@ -131,7 +131,7 @@ class ArticleWidget extends WP_Widget {
  */
 class HotWidget extends WP_Widget {
     function __construct(){
-       parent::__construct( 'hot-list', '[Mirage] '.__( '热门', 'vt' ), array( 'description' => __( '热门描述', 'vt' ) ) );
+       parent::__construct( 'hot-list', '[Mirage] '.__( '热门', 'vt' ), array( 'description' => __( '热门', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -207,7 +207,7 @@ class HotWidget extends WP_Widget {
  */
 class CategoryWidget extends WP_Widget {
     function __construct(){
-        parent::__construct( 'category-list', '[Mirage] '.__( '分类列表', 'vt' ), array( 'description' => __( '分类列表描述', 'vt' ) ) );
+        parent::__construct( 'category-list', '[Mirage] '.__( '分类列表', 'vt' ), array( 'description' => __( '分类列表', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -373,7 +373,7 @@ class UserWidget extends WP_Widget {
  */
 class TagsWidget extends WP_Widget {
     function __construct(){
-        parent::__construct( 'tags-widget', '[Mirage] '.__( '标签卡片', 'vt' ), array( 'description' => __( '标签卡片', 'vt' ) ) );
+        parent::__construct( 'tags-widget', '[Mirage] '.__( 'Tags', 'vt' ), array( 'description' => __( 'Tags', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -384,7 +384,7 @@ class TagsWidget extends WP_Widget {
         wp_reset_postdata();
 
         $vt_config = vt_get_config();
-        $title = $instance['title'] ? $instance['title'] : __('标签','vt');
+        $title = $instance['title'] ? $instance['title'] : __('Tags','vt');
 
         $tags = get_tags(array('orderby'=>'count', 'order'=>'DESC', 'hide_empty'=>false));
         ?>
@@ -430,14 +430,14 @@ class TagsWidget extends WP_Widget {
  */
 class CommentsWidget extends WP_Widget {
     function __construct(){
-        parent::__construct( 'recent-comments', '[Mirage] '.__( '最新评论', 'vt' ), array( 'description' => __( '显示最新评论列表', 'vt' ) ) );
+        parent::__construct( 'recent-comments', '[Mirage] '.__( 'Comments', 'vt' ), array( 'description' => __( 'Comments', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
         extract( $args, EXTR_SKIP );
         echo $before_widget;
 
-        $title = $instance['title'] ? $instance['title'] : __('最新评论', 'vt');
+        $title = $instance['title'] ? $instance['title'] : __('Comments', 'vt');
 
         // 获取最新评论
         $comments_per_page = isset($instance['comments_per_page']) ? $instance['comments_per_page'] : 3;
@@ -522,3 +522,35 @@ function vt_add_widget(){
 }
 
 add_action( 'widgets_init', 'vt_add_widget' );
+
+
+// 1. 禁用区块小工具
+add_action('after_setup_theme', function() {
+    remove_theme_support('widgets-block-editor');
+});
+
+// 2. 移除区块小工具菜单项
+add_action('admin_menu', function() {
+    remove_submenu_page('themes.php', 'gutenberg-widgets');
+}, 999);
+
+// 3. 只保留自定义小工具（传统模式下）
+add_action('widgets_init', function() {
+    if (!is_admin()) return;
+    
+    global $wp_widget_factory;
+    $allowed = [
+        'HotWidget',
+        'ArticleWidget',
+        'UserWidget',
+        'TagsWidget',
+        'CommentsWidget',
+        'CategoryWidget',
+    ];
+    
+    foreach (array_keys($wp_widget_factory->widgets) as $class) {
+        if (!in_array($class, $allowed, true)) {
+            unregister_widget($class);
+        }
+    }
+}, 9999);

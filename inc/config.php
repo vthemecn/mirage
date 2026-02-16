@@ -21,56 +21,56 @@ if( class_exists( 'CSF' ) ) {
     $prefix = THEME_OPTION_NAME;
 
     CSF::createOptions( $prefix, array(
-        'menu_title' => __('Mirage 设置','vt'),
+        'menu_title' => __('Mirage settings','vt'),
         'menu_slug'  => 'mirage',
         'menu_position' => '81',
-        'framework_title' => __('Mirage 主题设置','vt'),
+        'framework_title' => __('Mirage settings','vt'),
         'footer_text' => '',
         'theme' => 'light',
         'show_bar_menu' => false,
         'footer_text' => '<img src="https://vtheme.cn/static/images/logo.png" style="width:20px;position:relative;top:5px"> Theme by <a href="https://vtheme.cn/mirage" copyright target="_blank">Mirage</a>'
     ));
 
-
+}
     /**
      * 常规设置
      */
     CSF::createSection( $prefix, array(
-        'title'  => __('常规设置','vt'),
+        'title'  => __('General settings','vt'),
         'icon'   => 'dashicons dashicons-admin-generic',
         'fields' => array(
             array(
                 'id'    => 'basic_style',
                 'type'  => 'color',
-                'title' => __('主题色调','vt'),
+                'title' => __('Theme color tone','vt'),
                 'default' => '#007aff'
             ),
             array(
                 'id'         => 'update_is_on',
                 'type'       => 'radio',
-                'title'      => __('更新提示','vt'),
-                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
+                'title'      => __('Update prompt','vt'),
+                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
                 'default'    => '0',
                 'inline' => true,
-                'desc' => __('关闭以后，不提示PHP版本，主题和插件更新提示','vt')
+                'desc' => __('After closing, there will be no prompts for PHP version, theme, and plugin updates','vt')
             ),
             
             array(
                 'id'         => 'page_data_type',
                 'type'       => 'radio',
-                'title'      => __('显示页面参数','vt'),
-                'options'    => array('1' => __('显示','vt'), '0' => __('隐藏','vt')),
+                'title'      => __('Display page parameters','vt'),
+                'options'    => array('1' => __('display','vt'), '0' => __('hide','vt')),
                 'default'    => '0',
                 'inline' => true
             ),
             array(
                 'id'         => 'dark_mode_type',
                 'type'       => 'radio',
-                'title'      => __('暗黑模式','vt'),
+                'title'      => __('Dark mode','vt'),
                 'options'    => array(
-                    '1' => __('开启','vt'),
-                    '0' => __('关闭','vt'),
-                    '2' => __('跟随系统','vt'),
+                    '1' => __('on','vt'),
+                    '0' => __('off','vt'),
+                    '2' => __('Follow the system','vt'),
                 ),
                 'default'    => '1',
                 'inline' => true
@@ -78,22 +78,22 @@ if( class_exists( 'CSF' ) ) {
             array(
                 'id'    => 'default_image',
                 'type'  => 'upload',
-                'title' => __('默认图片','vt'),
+                'title' => __('Default Image','vt'),
                 'default' => get_template_directory_uri() . '/assets/images/default.jpg',
                 'preview' => true
             ),
             array(
                 'id'    => 'background_image',
                 'type'  => 'upload',
-                'title' => __('背景图片','vt'),
+                'title' => __('Background image','vt'),
                 'default' => '',
                 'preview' => true
             ),
             array(
                 'id'         => 'user_center_is_on',
                 'type'       => 'radio',
-                'title'      => __('个人中心','vt'),
-                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
+                'title'      => __('Personal Center','vt'),
+                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
                 'default'    => '1',
                 'inline'     => true,
                 'desc'=> '关闭后将禁止前台注册登录和重置密码，也不会显示header登录按钮'
@@ -101,16 +101,16 @@ if( class_exists( 'CSF' ) ) {
             array(
                 'id'         => 'comments_is_on',
                 'type'       => 'radio',
-                'title'      => __('开启评论','vt'),
-                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
+                'title'      => __('Open comment','vt'),
+                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
                 'default'    => '1',
                 'inline' => true
             ),
             array(
                 'id'         => 'attempts_is_on',
                 'type'       => 'radio',
-                'title'      => __('防暴力破解','vt'),
-                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
+                'title'      => __('Anti brute force cracking','vt'),
+                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
                 'default'    => '1',
                 'desc'       => $attempts_text,
                 'inline'     => true
@@ -124,18 +124,18 @@ if( class_exists( 'CSF' ) ) {
      * SEO设置
      */
     CSF::createSection( $prefix, array(
-        'title'  => __('SEO设置','vt'),
+        'title'  => __('SEO settings','vt'),
         'icon'   => 'dashicons dashicons-admin-generic',
         'fields' => array(
             array(
                 'id'    => 'meta_keywords',
                 'type'  => 'text',
-                'title' => __('网站关键词','vt')
+                'title' => __('keyword','vt')
             ),
             array(
                 'id'    => 'meta_description',
                 'type'  => 'textarea',
-                'title' => __('网站描述','vt')
+                'title' => __('description','vt')
             ),
         )
     ));
@@ -146,7 +146,7 @@ if( class_exists( 'CSF' ) ) {
      */
     CSF::createSection( $prefix, array(
         'id' => 'home_fields',
-        'title' => __('首页设置','vt'),
+        'title' => __('Home page settings','vt'),
         'icon' => 'dashicons dashicons-admin-home'
     ));
 
@@ -155,7 +155,7 @@ if( class_exists( 'CSF' ) ) {
      */
     CSF::createSection($prefix, array(
         'parent'      => 'home_fields',
-        'title'       => __('布局设置','vt'),
+        'title'       => __('Layout setting','vt'),
         // 'icon'        => 'fa fa-home',
         'description' => '',
         'fields'      => array(
@@ -163,12 +163,12 @@ if( class_exists( 'CSF' ) ) {
                 'id'             => 'home_layout',
                 'type'           => 'sorter',
                 'title'          => '',
-                'enabled_title'  => __('显示','vt'),
-                'disabled_title' => __('隐藏','vt'),
+                'enabled_title'  => __('display','vt'),
+                'disabled_title' => __('hide','vt'),
                 'default'        => array(
                     'enabled'  => array(
-                        'slider'   => __('幻灯片','vt'),
-                        'last'     => __('最新文章','vt')
+                        'slider'   => __('Sliders','vt'),
+                        'last'     => __('Latest','vt')
                     ),
                     'disabled' => array()
                 ),
@@ -183,37 +183,37 @@ if( class_exists( 'CSF' ) ) {
      */
     CSF::createSection($prefix, array(
         'parent'      => 'home_fields',
-        'title'       => __('幻灯片','vt'),
+        'title'       => __('Sliders','vt'),
         // 'icon'        => 'fa fa-home',
         'description' => '',
         'fields'      => array(
             array(
                 'id'      => 'slider_autoplay',
                 'type'    => 'switcher',
-                'title'   => __('自动播放','vt'),
+                'title'   => __('autoplay','vt'),
                 'label'   => '',
                 'default' => true,
             ),
             array(
                 'id'      => 'slider_height',
                 'type'    => 'text',
-                'title'   => __('幻灯片高度','vt'),
+                'title'   => __('Slide height','vt'),
                 'default' => '380'
             ),
             array(
                 'id'         => 'slider_items',
                 'type'       => 'group',
-                'title'      => __('幻灯片列表','vt'),
+                'title'      => __('Slide list','vt'),
                 'fields'     => array(
                     array(
                         'id'      => 'title',
                         'type'    => 'text',
-                        'title'   => __('标题','vt')
+                        'title'   => __('title','vt')
                     ),
                     array(
                         'id'          => 'image',
                         'type'        => 'upload',
-                        'title'       => __('上传','vt'),
+                        'title'       => __('upload','vt'),
                         'library'     => 'image',
                         'placeholder' => 'http://',
                         'preview'     => true
@@ -221,26 +221,26 @@ if( class_exists( 'CSF' ) ) {
                     array(
                         'id'      => 'target',
                         'type'    => 'switcher',
-                        'title'   => __('新窗口打开链接','vt'),
+                        'title'   => __('new window opens link','vt'),
                         'label'   => ''
                     ),
                     array(
                         'id'      => 'link',
                         'type'    => 'text',
-                        'title'   => __('链接地址','vt')
+                        'title'   => __('link address','vt')
                     ),
                 ),
                 'default' => array(
                                 array(
-                                    'title' => __('你好，Mirage','vt'),
+                                    'title' => __('Hello Mirage','vt'),
                                     'image' => get_template_directory_uri() . '/assets/images/slider1.jpg'
                                 ),
                                 array(
-                                    'title' => __('你好，Mirage','vt'),
+                                    'title' => __('Hello Mirage','vt'),
                                     'image' => get_template_directory_uri() . '/assets/images/slider2.jpg'
                                 ),
                                 array(
-                                    'title' => __('你好，Mirage','vt'),
+                                    'title' => __('Hello Mirage','vt'),
                                     'image' => get_template_directory_uri() . '/assets/images/slider3.jpg'
                                 ),
                             )
@@ -248,17 +248,17 @@ if( class_exists( 'CSF' ) ) {
             array(
                 'id'         => 'top_items',
                 'type'       => 'group',
-                'title'      => __('推荐','vt'),
+                'title'      => __('Recommendation','vt'),
                 'fields'     => array(
                     array(
                         'id'      => 'title',
                         'type'    => 'text',
-                        'title'   => __('标题','vt')
+                        'title'   => __('title','vt')
                     ),
                     array(
                         'id'          => 'image',
                         'type'        => 'upload',
-                        'title'       => __('上传','vt'),
+                        'title'       => __('upload','vt'),
                         'library'     => 'image',
                         'placeholder' => 'http://',
                         'preview'     => true
@@ -266,22 +266,22 @@ if( class_exists( 'CSF' ) ) {
                     array(
                         'id'      => 'target',
                         'type'    => 'switcher',
-                        'title'   => __('新窗口打开链接','vt'),
+                        'title'   => __('new window opens link','vt'),
                         'label'   => ''
                     ),
                     array(
                         'id'      => 'link',
                         'type'    => 'text',
-                        'title'   => __('链接地址','vt')
+                        'title'   => __('link address','vt')
                     ),
                 ),
                 'default' => array(
                                 array(
-                                    'title' => __('你好，Mirage','vt'),
+                                    'title' => __('Hello Mirage','vt'),
                                     'image' => get_template_directory_uri() . '/assets/images/hot.jpg'
                                 ),
                                 array(
-                                    'title' => __('你好，Mirage','vt'),
+                                    'title' => __('Hello Mirage','vt'),
                                     'image' => get_template_directory_uri() . '/assets/images/hot.jpg'
                                 )
                             )
@@ -296,39 +296,39 @@ if( class_exists( 'CSF' ) ) {
      */
     CSF::createSection($prefix, array(
         'parent'      => 'home_fields',
-        'title'       => __('最新文章','vt'),
+        'title'       => __('Latest','vt'),
         'description' => '',
         'fields'      => array(
             array(
                 'id'    => 'hot_is_show',
                 'type'  => 'radio',
-                'title' => __('推荐模块','vt'),
-                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
+                'title' => __('Recommended module','vt'),
+                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
                 'default'    => '1',
                 'inline' => true
             ),
             array(
                 'id'      => 'hot_title',
                 'type'    => 'text',
-                'title'   => __('推荐模块标题','vt'),
-                'default' => __('推荐模块标题','vt'),
+                'title'   => __('Hot topics','vt'),
+                'default' => __('Hot topics','vt'),
                 'dependency' => array('hot_is_show', '==', '1'),
             ),
             array(
                 'id'         => 'hot_items',
                 'type'       => 'group',
-                'title'      => __('推荐列表','vt'),
+                'title'      => __('Recommended List','vt'),
                 'dependency' => array('hot_is_show', '==', '1'),
                 'fields'     => array(
                     array(
                         'id'      => 'title',
                         'type'    => 'text',
-                        'title'   => __('标题','vt')
+                        'title'   => __('title','vt')
                     ),
                     array(
                         'id'          => 'image',
                         'type'        => 'upload',
-                        'title'       => __('上传','vt'),
+                        'title'       => __('upload','vt'),
                         'library'     => 'image',
                         'placeholder' => 'http://',
                         'preview'     => true
@@ -336,30 +336,30 @@ if( class_exists( 'CSF' ) ) {
                     array(
                         'id'      => 'target',
                         'type'    => 'switcher',
-                        'title'   => __('新窗口打开链接','vt'),
+                        'title'   => __('new window opens link','vt'),
                         'label'   => ''
                     ),
                     array(
                         'id'      => 'link',
                         'type'    => 'text',
-                        'title'   => __('链接地址','vt')
+                        'title'   => __('link address','vt')
                     ),
                 ),
                 'default' => array(
                                 array(
-                                    'title' => __('推荐模块标题','vt').' 1',
+                                    'title' => __('Hot topics','vt').' 1',
                                     'image' => get_template_directory_uri() . '/assets/images/hot.jpg'
                                 ),
                                 array(
-                                    'title' => __('推荐模块标题','vt').' 2',
+                                    'title' => __('Hot topics','vt').' 2',
                                     'image' => get_template_directory_uri() . '/assets/images/hot.jpg'
                                 ),
                                 array(
-                                    'title' => __('推荐模块标题','vt').' 3',
+                                    'title' => __('Hot topics','vt').' 3',
                                     'image' => get_template_directory_uri() . '/assets/images/hot.jpg'
                                 ),
                                 array(
-                                    'title' => __('推荐模块标题','vt').' 4',
+                                    'title' => __('Hot topics','vt').' 4',
                                     'image' => get_template_directory_uri() . '/assets/images/hot.jpg'
                                 )
                             )
@@ -369,7 +369,7 @@ if( class_exists( 'CSF' ) ) {
             array(
                 'id'      => 'posts_ids',
                 'type'    => 'select',
-                'title'   => __('文章分类','vt'),
+                'title'   => __('Category','vt'),
                 'chosen'      => true,
                 'multiple'    => true,
                 'options'     => 'categories'
@@ -377,7 +377,7 @@ if( class_exists( 'CSF' ) ) {
             array(
                 'id'      => 'posts_not_in_ids',
                 'type'    => 'select',
-                'title'   => __('排除分类','vt'),
+                'title'   => __('Exclude classification','vt'),
                 'chosen'      => true,
                 'multiple'    => true,
                 'options'     => 'categories'
@@ -385,8 +385,8 @@ if( class_exists( 'CSF' ) ) {
             array(
                 'id'    => 'posts_auto_load',
                 'type'  => 'radio',
-                'title' => __('自动加载','vt'),
-                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
+                'title' => __('Auto Load','vt'),
+                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
                 'default'    => '1',
                 'inline' => true,
                 'dependency' => array('posts_nav', '==', '1'),
@@ -395,23 +395,23 @@ if( class_exists( 'CSF' ) ) {
             array(
                 'id'    => 'posts_auto_load_limit',
                 'type'  => 'text',
-                'title' => __('自动加载次数','vt'),
+                'title' => __('Automatic loading times','vt'),
                 'default' => '1',
-                'desc' => __('自动加载到第几页，0代表无限加载','vt'),
+                'desc' => __('Automatically load to which page, 0 means unlimited loading','vt'),
                 'dependency' => array('posts_nav', '==', '1')
             ),
             array(
                 'id'      => 'full_width',
                 'type'    => 'switcher',
-                'title'   => __('全宽','vt'),
+                'title'   => __('Full width','vt'),
                 'label'   => '',
                 'default' => false,
             ),
             array(
                 'id'    => 'list_type',
                 'type'  => 'radio',
-                'title' => __('列表格式','vt'),
-                'options'    => array('0' => __('列表','vt'), '1' => __('卡片','vt')),
+                'title' => __('List Format','vt'),
+                'options'    => array('0' => __('List','vt'), '1' => __('Card','vt')),
                 'default'    => '0',
                 'inline' => true
             ),
@@ -423,7 +423,7 @@ if( class_exists( 'CSF' ) ) {
      * 顶部设置
      */
     CSF::createSection( $prefix, array(
-        'title'  => __('顶部设置','vt'),
+        'title'  => __('Header settings','vt'),
         'icon'   => 'dashicons dashicons-admin-generic',
         'fields' => array(
             // array(
@@ -437,22 +437,22 @@ if( class_exists( 'CSF' ) ) {
             array(
                 'id'    => 'site_logo',
                 'type'  => 'upload',
-                'title' => __('网站LOGO','vt'),
+                'title' => __('Website Logo','vt'),
                 'default' => get_template_directory_uri() . '/assets/images/logo.png',
                 'preview' => true
             ),
             array(
                 'id'    => 'site_logo_darkness',
                 'type'  => 'upload',
-                'title' => __('网站LOGO(暗黑模式)','vt'),
+                'title' => __('Website Logo (Dark Mode)','vt'),
                 'default' => get_template_directory_uri() . '/assets/images/logo-darkness.png',
                 'preview' => true
             ),
             array(
                 'id'         => 'show_admin_bar',
                 'type'       => 'radio',
-                'title'      => __('顶部工具栏','vt'),
-                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
+                'title'      => __('Top Toolbar','vt'),
+                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
                 'default'    => '1',
                 'inline' => true
             ),
@@ -463,27 +463,27 @@ if( class_exists( 'CSF' ) ) {
      * 底部设置
      */
     CSF::createSection( $prefix, array(
-        'title'  => __('底部设置','vt'),
+        'title'  => __('Footer setting','vt'),
         'icon'   => 'dashicons dashicons-admin-generic',
         'fields' => array(
             array(
                 'id'    => 'footer_bg_type',
                 'type'  => 'radio',
-                'title' => __('背景颜色','vt'),
-                'options' => array('light' => __('亮色','vt'), 'darkness' => __('暗色','vt')),
+                'title' => __('Background color','vt'),
+                'options' => array('light' => __('light','vt'), 'darkness' => __('dark','vt')),
                 'default' => 'light',
                 'inline' => true
             ),
             array(
                 'id'    => 'footer_copyright',
                 'type'  => 'textarea',
-                'title' => __('底部版权','vt'),
+                'title' => __('Footer copyright','vt'),
                 'default' => '&copy; '.date('Y').' <a href="http://www.vtheme.cn">vtheme.cn</a> All Rights Reserved.<br/>'
             ),
             array(
                 'id'       => 'footer_js',
                 'type'     => 'code_editor',
-                'title'    => __("自定义JS代码",'vt'),
+                'title'    => __("Customize JS code",'vt'),
                 'subtitle' => '',
                 // 'settings' => array(
                 //     'theme' => 'dracula',
@@ -501,13 +501,13 @@ if( class_exists( 'CSF' ) ) {
      * 文章设置
      */
     CSF::createSection( $prefix, array(
-        'title'  => __('文章设置','vt'),
+        'title'  => __('Article Settings','vt'),
         'icon'   => 'dashicons dashicons-admin-generic',
         'fields' => array(
             array(
                 'id'         => 'vt_columns',
                 'type'       => 'radio',
-                'title'      => __('每行列数','vt'),
+                'title'      => __('Number of columns per row','vt'),
                 'options'    => array(
                     '2' => __('2','vt'),
                     '3' => __('3','vt'),
@@ -520,10 +520,10 @@ if( class_exists( 'CSF' ) ) {
             array(
                 'id'         => 'editor_type',
                 'type'       => 'radio',
-                'title'      => __('编辑器','vt'),
+                'title'      => __('Editor','vt'),
                 'options'    => array(
-                    '0' => __('古腾堡编辑器','vt'),
-                    '1' => __('经典编辑器','vt')
+                    '0' => __('Gutenberg Editor','vt'),
+                    '1' => __('Classic Editor','vt')
                 ),
                 'default'    => '1',
                 'inline' => true
@@ -531,10 +531,10 @@ if( class_exists( 'CSF' ) ) {
             array(
                 'id'         => 'tinymce_codesample',
                 'type'       => 'radio',
-                'title'      => __('经典编辑器插入代码','vt'),
+                'title'      => __('Classic editor insert code','vt'),
                 'options'    => array(
-                    '0' => __('关闭','vt'),
-                    '1' => __('启用','vt')
+                    '0' => __('off','vt'),
+                    '1' => __('enable','vt')
                 ),
                 'default'    => '1',
                 'inline' => true,
@@ -543,37 +543,37 @@ if( class_exists( 'CSF' ) ) {
                         array(
                 'id'         => 'editor_revision',
                 'type'       => 'radio',
-                'title'      => __('文章修订版本','vt'),
-                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
+                'title'      => __('Article revision version','vt'),
+                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
                 'default'    => '0',
                 'inline' => true
             ),
             array(
                 'id'         => 'show_copyright',
                 'type'       => 'switcher',
-                'title'      => __('文章版权声明','vt'),
+                'title'      => __('Article copyright statement','vt'),
                 'default'    => true
             ),
             array(
                 'id'         => 'show_copyright_text',
                 'type'       => 'textarea',
-                'title'      => __('文章版权声明','vt'),
+                'title'      => __('Article copyright statement','vt'),
                 'dependency' => array('show_copyright', '==', 'true'),
-                'default'    => __('文章版权声明','vt')
+                'default'    => __('Article copyright statement','vt')
             ),
             array(
                 'id'         => 'highlight_is_on',
                 'type'       => 'radio',
-                'title'      => __('代码高亮','vt'),
-                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
+                'title'      => __('Code Highlighting','vt'),
+                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
                 'default'    => '1',
                 'inline' => true
             ),
             array(
                 'id'         => 'toc_is_on',
                 'type'       => 'radio',
-                'title'      => __('生成目录','vt'),
-                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
+                'title'      => __('Generate table of contents','vt'),
+                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
                 'default'    => '1',
                 'inline'     => true,
                 'desc'       => '根据文章标题自动生成目录'
@@ -581,21 +581,21 @@ if( class_exists( 'CSF' ) ) {
             array(
                 'id'    => 'qrcode_image',
                 'type'  => 'upload',
-                'title' => __('收款二维码','vt'),
+                'title' => __('Collection QR code','vt'),
                 'default' => get_template_directory_uri() . '/assets/images/qrcode.jpg',
                 'preview' => true
             ),
             array(
                 'id'    => 'qrcode_title',
                 'type'  => 'text',
-                'title' => __('二维码标题','vt'),
-                'default' => __('二维码标题','vt'),
+                'title' => __('QR code title','vt'),
+                'default' => __('QR code title','vt'),
                 'preview' => true
             ),
             array(
                 'id'    => 'image_items_height',
                 'type'  => 'slider',
-                'title' => __('图片高宽比','vt'),
+                'title' => __('Image aspect ratio','vt'),
                 'unit'  => '%',
                 'max'   => '300',
                 'default' => '100'
@@ -612,43 +612,43 @@ if( class_exists( 'CSF' ) ) {
      * 邮箱设置
      */
     CSF::createSection( $prefix, array(
-        'title'  => __('邮箱设置','vt'),
+        'title'  => __('Mailbox Settings','vt'),
         'icon'   => 'dashicons dashicons-admin-generic',
         'fields' => array(
             array(
                 'id'    => 'smtp_is_on',
                 'type'  => 'radio',
-                'title' => __('开启邮箱','vt'),
-                'options'    => array('1' => __('开启','vt'), '0' => __('关闭','vt')),
+                'title' => __('Open mailbox','vt'),
+                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
                 'default'    => '1',
                 'inline' => true,
-                'desc' => __('SMTP测试链接，完成设置以后，点击此链接可以给管理员发送邮件','vt')."<br><a href='$email_test' target='_blank'>$email_test</a>"
+                'desc' => __('SMTP test link. After completing the settings, click this link to send an email to the administrator','vt')."<br><a href='$email_test' target='_blank'>$email_test</a>"
 
             ),
             array(
                 'id'    => 'smtp_host',
                 'type'  => 'text',
-                'title' => __('SMTP地址','vt'),
+                'title' => __('SMTP address','vt'),
             ),
             array(
                 'id'    => 'smtp_port',
                 'type'  => 'text',
-                'title' => __('SMTP端口','vt'),
+                'title' => __('SMTP port','vt'),
             ),
             array(
                 'id'    => 'smtp_username',
                 'type'  => 'text',
-                'title' => __('SMTP账户','vt'),
+                'title' => __('SMTP account','vt'),
             ),
             array(
                 'id'    => 'smtp_password',
                 'type'  => 'text',
-                'title' => __('SMTP密码','vt'),
+                'title' => __('SMTP password','vt'),
             ),
             array(
                 'id'    => 'smtp_nicename',
                 'type'  => 'text',
-                'title' => __('发件人昵称','vt'),
+                'title' => __('Sender nickname','vt'),
             )
         )
     ));
@@ -658,7 +658,7 @@ if( class_exists( 'CSF' ) ) {
      * 备份
      */
     CSF::createSection( $prefix, array(
-        'title'  => __('备份','vt'),
+        'title'  => __('Backup','vt'),
         'icon'   => 'dashicons dashicons-shield',
         'fields' => array(
             array(
@@ -666,9 +666,5 @@ if( class_exists( 'CSF' ) ) {
             )
         )
     ));
-
-
-}
-
 
 

@@ -339,7 +339,7 @@ function vt_footer_check()
     if ( ! is_admin() && ! wp_doing_ajax() && ! wp_doing_cron() && ! defined('WP_CLI') ) {
         $footer_str = file_get_contents(TEMP_DIR . '/footer.php');
         if(!strstr($footer_str, base64_decode('TWlyYWdl'))){
-            die(__('keep_theme_footer','vt'));
+            die(__('Please keep the theme footer credit intact.','vt'));
         }
     }
 }

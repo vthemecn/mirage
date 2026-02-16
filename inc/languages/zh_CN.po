@@ -9,32 +9,543 @@ msgstr ""
 "X-Generator: GlotPress/3.0.0-rc.3\n"
 "Language: zh_CN\n"
 
-
-#. translators: %s: wp-config.php
-#: wp-admin/includes/network.php:463
-msgid "You should back up your existing %s file."
-msgstr "您应备份现有的 %s 文件。"
-
-#. translators: %s: wp-config.php
-#: wp-admin/includes/network.php:463
-
 msgid "Mirage"
 msgstr "海市蜃楼"
 
-msgid "keep_theme_footer"
-msgstr "请保留主题底部署名"
 
+# 通用的
+###########################################################
+
+msgid "on"
+msgstr "开启"
+
+msgid "off"
+msgstr "关闭"
+
+msgid "Follow the system"
+msgstr "跟随系统"
+
+msgid "simple"
+msgstr "简单"
+
+msgid "all"
+msgstr "全部"
+
+msgid "Default Image"
+msgstr "默认图片"
+
+msgid "image"
+msgstr "图片"
+
+msgid "light"
+msgstr "亮色"
+
+msgid "dark"
+msgstr "暗色"
+
+msgid "QR code"
+msgstr "二维码"
+
+msgid "Scan QR code"
+msgstr "扫描二维码"
+
+msgid "display"
+msgstr "显示"
+
+msgid "hide"
+msgstr "隐藏"
+
+msgid "left"
+msgstr "左侧"
+
+msgid "center"
+msgstr "居中"
+
+msgid "right"
+msgstr "右侧"
+
+msgid "title"
+msgstr "标题"
+
+msgid "description"
+msgstr "描述"
+
+msgid "upload"
+msgstr "上传"
+
+msgid "new window opens link"
+msgstr "新窗口打开链接"
+
+msgid "link address"
+msgstr "链接地址"
+
+msgid "autoplay"
+msgstr "自动播放"
+
+msgid "Support HTML"
+msgstr "支持 HTML"
+
+msgid "Related Categories"
+msgstr "相关分类"
+
+msgid "icon"
+msgstr "图标"
+
+msgid "link"
+msgstr "链接"
+
+msgid "unit"
+msgstr "单位"
+
+msgid "More"
+msgstr "更多"
+
+msgid "Learn more"
+msgstr "了解更多"
+
+msgid "Background color"
+msgstr "背景颜色"
+
+msgid "Background image"
+msgstr "背景图片"
+
+msgid "Customize JS code"
+msgstr "自定义JS代码"
+
+msgid "Add menu"
+msgstr "添加菜单"
+
+
+# 配置页面
+###########################################################
+
+msgid "Mirage settings"
+msgstr "Mirage 设置"
+
+msgid "General settings"
+msgstr "常规设置"
+
+msgid "SEO settings"
+msgstr "SEO设置"
+
+msgid "Home page settings"
+msgstr "首页设置"
+
+msgid "Header settings"
+msgstr "顶部设置"
+
+msgid "Footer setting"
+msgstr "底部设置"
+
+msgid "Email settings"
+msgstr "邮箱设置"
+
+msgid "backups"
+msgstr "备份"
+
+
+
+# 配置页面 - 常规设置
+###########################################################
+
+msgid "Website Logo"
+msgstr "网站LOGO"
+
+msgid "Website Logo (Dark Mode)"
+msgstr "网站LOGO(暗黑模式)"
+
+msgid "Theme color tone"
+msgstr "主题色调"
+
+msgid "Update prompt"
+msgstr "更新提示"
+
+msgid "After closing, there will be no prompts for PHP version, theme, and plugin updates"
+msgstr "关闭以后，不提示PHP版本，主题和插件更新提示"
+
+msgid "Editor Mode"
+msgstr "编辑器模式"
+
+msgid "Gutenberg Editor"
+msgstr "古腾堡编辑器"
+
+msgid "Classic Editor"
+msgstr "经典编辑器"
+
+msgid "Border Title Style"
+msgstr "边框标题样式"
+
+msgid "none"
+msgstr "无"
+
+msgid "Vertical line"
+msgstr "竖线"
+
+msgid "round dot"
+msgstr "圆点"
+
+msgid "horizontal line"
+msgstr "横线"
+
+msgid "Display page parameters"
+msgstr "显示页面参数"
+
+msgid "Number of rows and columns"
+msgstr "每行列数"
+
+msgid "Module Title"
+msgstr "模块标题"
+
+msgid "Right column"
+msgstr "右侧栏目"
+
+msgid "Top Toolbar"
+msgstr "顶部工具栏"
+
+msgid "Article Copyright Statement"
+msgstr "文章版权声明"
+
+msgid "Image aspect ratio"
+msgstr "图片高宽比"
+
+msgid "Fill in the aspect ratio of the image, for example: 70%"
+msgstr "填入图片高宽比，例如：70%"
+
+msgid "Dark mode"
+msgstr "暗黑模式"
+
+msgid "Anti brute force cracking"
+msgstr "防暴力破解"
+
+msgid "Within one hour, there were 0 IP addresses and 0 login failures"
+msgstr "一个小时内有0个IP，0次登录失败"
+
+msgid "Revised version of the article"
+msgstr "文章修订版本"
+
+msgid "Payment QR code"
+msgstr "收款二维码"
+
+msgid "QR code title"
+msgstr "二维码标题"
+
+msgid "Editor"
+msgstr "编辑器"
+
+msgid "Personal Center"
+msgstr "个人中心"
+
+msgid "Code highlighting"
+msgstr "代码高亮"
+
+msgid "Open comment"
+msgstr "开启评论"
+
+msgid "Card"
+msgstr "卡片"
+
+msgid "Articles"
+msgstr "文章"
+
+
+
+# 配置页面 - SEO设置
+###########################################################
+
+
+
+# 配置页面 - 首页设置 - 布局设置
+###########################################################
+
+msgid "Layout setting"
+msgstr "布局设置"
+
+msgid "Sliders"
+msgstr "幻灯片"
+
+msgid "Recommendation"
+msgstr "热门推荐"
+
+msgid "Latest"
+msgstr "最新文章"
+
+msgid "Links"
+msgstr "友情链接"
+
+
+# 配置页面 - 首页设置 - 幻灯片模块
+###########################################################
+
+msgid "Slide height"
+msgstr "幻灯片高度"
+
+msgid "Slide list"
+msgstr "幻灯片列表"
+
+
+# 配置页面 - 首页设置 - 推荐模块
+###########################################################
+
+msgid "Hot topics"
+msgstr "推荐模块标题"
+
+msgid "Recommended module"
+msgstr "推荐模块"
+
+msgid "Recommended List"
+msgstr "推荐列表"
+
+
+# 配置页面 - 首页设置 - 文章列表
+###########################################################
+msgid "Category"
+msgstr "文章分类"
+
+msgid "Exclude classification"
+msgstr "排除分类"
+
+msgid "Auto Load"
+msgstr "自动加载"
+
+msgid "Automatic loading times"
+msgstr "自动加载次数"
+
+
+# 配置页面 - 顶部设置
+###########################################################
+msgid "header slogan"
+msgstr "顶部副标题"
+
+msgid "tel title"
+msgstr "电话标题"
+
+msgid "tel number"
+msgstr "电话号码"
+
+msgid "header image"
+msgstr "顶部图片"
+
+
+# 配置页面 - 底部设置
+###########################################################
+msgid "display type"
+msgstr "显示类型"
+
+msgid "Footer copyright"
+msgstr "底部版权"
+
+msgid "Footer Logo"
+msgstr "底部LOGO"
+
+msgid "Footer description"
+msgstr "底部描述"
+
+msgid "qrcode description"
+msgstr "二维码描述"
+
+msgid "nav bar"
+msgstr "移动导航栏"
+
+msgid "nav bar settings"
+msgstr "导航栏设置"
+
+
+# 配置页面 - 邮箱设置
+###########################################################
+msgid "Customize email"
+msgstr "自定义邮箱"
+
+msgid "SMTP address"
+msgstr "SMTP地址"
+
+msgid "SMTP port"
+msgstr "SMTP端口"
+
+msgid "SMTP account"
+msgstr "SMTP账户"
+
+msgid "SMTP password"
+msgstr "SMTP密码"
+
+msgid "Sender nickname"
+msgstr "发件人昵称"
+
+
+
+# 配置页面 - 默认数据
+###########################################################
+
+msgid "Hello Mirage"
+msgstr "你好，Mirage"
+
+
+
+
+
+# 前台
+###########################################################
+
+msgid "Number"
+msgstr "数量"
+
+msgid "Category ID"
+msgstr "分类ID"
+
+msgid "Images article list"
+msgstr "图文列表"
+
+msgid "Category list"
+msgstr "分类列表"
+
+msgid "Images article description"
+msgstr "图文列表描述"
+
+msgid "Images list"
+msgstr "图片列表"
+
+msgid "Images list description"
+msgstr "图片列表描述"
+
+msgid "Articles Description"
+msgstr "文章列表描述"
+
+msgid "User card"
+msgstr "用户卡片"
+
+msgid "User card description"
+msgstr "用户卡片描述"
+
+msgid "Hot articles"
+msgstr "热门文章"
+
+msgid "Comments"
+msgstr "评论"
+
+msgid "Star"
+msgstr "收藏"
+
+msgid "HTML card"
+msgstr "HTML卡片"
+
+msgid "HTML card description"
+msgstr "HTML卡片描述"
+
+msgid "Hot"
+msgstr "热门"
+
+msgid "Dashboard"
+msgstr "后台面板"
+
+msgid "Profile"
+msgstr "个人资料"
+
+msgid "Logout"
+msgstr "退出登录"
+
+msgid "Login"
+msgstr "登录"
+
+msgid "Search"
+msgstr "搜索"
+
+msgid "results"
+msgstr "的相关内容"
+
+msgid "Go to home"
+msgstr "返回首页"
+
+msgid "Page not found"
+msgstr "页面没找到"
+
+msgid "Not content"
+msgstr "暂无内容"
+
+
+# 前台 - 文章页
+###########################################################
 msgid "Like"
 msgstr "喜欢"
+
+msgid "Share"
+msgstr "分享"
+
+msgid "Donate"
+msgstr "打赏"
+
+msgid "Edit"
+msgstr "编辑"
+
+msgid "Previous"
+msgstr "上一篇"
+
+msgid "Next"
+msgstr "下一篇"
+
+msgid "Generating"
+msgstr "生成中"
+
+
+# 前台 - 文章页 - 评论
+###########################################################
+msgid "Nickname (*)"
+msgstr "昵称(*)"
+
+msgid "Email (*)"
+msgstr "邮箱(*)"
+
+msgid "Website Address"
+msgstr "网站地址"
+
+msgid "Leave a comment"
+msgstr "发表评论"
+
+msgid "Reply"
+msgstr "回复"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Comment Content"
+msgstr "评论内容"
+
+msgid "Registration is not required"
+msgstr "注册不是必须的"
+
+msgid "Current Account"
+msgstr "当前账户"
+
+msgid "Login required, create login button here"
+msgstr "需要登录，这里创建登录按钮"
+
+msgid "条评论"
+msgstr "条评论"
+
+msgid "Delete"
+msgstr "删除"
+
+msgid "No more"
+msgstr "没有了"
+
+
+# 其他
+###########################################################
+msgid "Please create a theme side menu"
+msgstr "请创建主题侧边菜单"
+
+msgid "Tags"
+msgstr "标签"
+
+msgid "Please keep the theme footer credit intact."
+msgstr "keep_theme_footer"
+
+msgid "keep_theme_footer"
+msgstr "请保留主题底部署名"
 
 msgid "Remove like"
 msgstr "取消喜欢"
 
 msgid "Already liked"
 msgstr "已经喜欢"
-
-msgid "Star"
-msgstr "收藏"
 
 msgid "Remove star"
 msgstr "取消收藏"
@@ -62,12 +573,3 @@ msgstr "请登录"
 
 msgid "Invalid object ID"
 msgstr "无效的对象ID"
-
-msgid "Share"
-msgstr "分享"
-
-msgid "Donate"
-msgstr "打赏"
-
-msgid "Edit"
-msgstr "编辑"

@@ -81,7 +81,7 @@ if($query_posts->posts){
             ?>
                 <div class="no-content">
                     <img src="<?php bloginfo('template_url'); ?>/assets/images/empty.png">
-                    <p><?php echo __('暂无内容','vt'); ?></p>
+                    <p><?php echo __('Not content','vt'); ?></p>
                 </div>
             <?php 
             }
