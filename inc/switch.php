@@ -19,7 +19,7 @@ function vt_after_switch_action()
                     `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
                     `user_id` bigint(20) unsigned NOT NULL DEFAULT '0',
                     `object_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '相关文章或者评论的ID',
-                    `type` varchar(10) NOT NULL COMMENT 'like 点赞、star 收藏等',
+                    `type` varchar(10) NOT NULL COMMENT 'like 喜欢、star 收藏等',
                     `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
                     PRIMARY KEY (`id`),
                     KEY `type` (`type`)

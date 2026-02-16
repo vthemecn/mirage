@@ -383,14 +383,6 @@ if( class_exists( 'CSF' ) ) {
                 'options'     => 'categories'
             ),
             array(
-                'id'    => 'posts_nav',
-                'type'  => 'radio',
-                'title' => __('列表格式','vt'),
-                'options'    => array('0' => __('静态分页','vt'), '1' => __('Ajax 加载','vt')),
-                'default'    => '0',
-                'inline' => true
-            ),
-            array(
                 'id'    => 'posts_auto_load',
                 'type'  => 'radio',
                 'title' => __('自动加载','vt'),

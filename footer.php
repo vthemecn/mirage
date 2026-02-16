@@ -30,7 +30,7 @@ require_once(TEMP_DIR . "/templates/bar.php");
 
 <script src="<?php bloginfo('template_url'); ?>/assets/lib/qrcode.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/assets/lib/html2canvas.js"></script>
-<script src="<?php bloginfo('template_url'); ?>/assets/js/index.js?v=<?= $version ?>"></script>
+<!-- <script src="<?php bloginfo('template_url'); ?>/assets/js/index.js?v=<?= $version ?>"></script> -->
 
 <?php wp_footer(); ?>
 

@@ -39,13 +39,132 @@ if($vt_list_type > 0){
 
 
         <?php
-        if($config['posts_nav'] == '0'){
-            require_once get_template_directory() . '/templates/home/last-nav.php';
-        } else {
-            require_once get_template_directory() . '/templates/home/last-ajax.php';
+        wp_reset_postdata();
+
+        $vt_config = vt_get_config();
+
+        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+        $posts_per_page = get_option('posts_per_page');
+        $offset = ($paged - 1) * $posts_per_page;
+
+        // 获取置顶文章ID
+        $sticky_posts = get_option('sticky_posts');
+        $sticky_ids = !empty($sticky_posts) ? implode(',', array_map('intval', $sticky_posts)) : '0';
+        ?>
+
+
+
+        <div class="main-widget">
+            <div class="media-list <?=$vt_list_type_class?>">
+                <?php
+                global $wpdb;
+                
+                // 构建分类条件
+                $cat_where = '';
+                if( $vt_config['posts_ids'] ){
+                    $cat_ids = implode(',', array_map('intval', $vt_config['posts_ids']));
+                    $cat_where .= " AND p.ID IN (
+                        SELECT object_id FROM {$wpdb->term_relationships} tr
+                        INNER JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+                        WHERE tt.term_id IN ($cat_ids)
+                    )";
+                }
+                
+                if( $vt_config['posts_not_in_ids'] ){
+                    $not_cat_ids = implode(',', array_map('intval', $vt_config['posts_not_in_ids']));
+                    $cat_where .= " AND p.ID NOT IN (
+                        SELECT object_id FROM {$wpdb->term_relationships} tr
+                        INNER JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+                        WHERE tt.term_id IN ($not_cat_ids)
+                    )";
+                }
+                
+                // 使用自定义SQL确保置顶文章优先
+                $sql = "
+                    SELECT * FROM (
+                        -- 置顶文章查询
+                        (SELECT p.*, 1 as is_sticky_priority
+                        FROM {$wpdb->posts} p
+                        WHERE p.post_status = 'publish' 
+                        AND p.post_type = 'post'
+                        AND p.ID IN ($sticky_ids)
+                        $cat_where
+                        ORDER BY p.post_date DESC)
+                        
+                        UNION ALL
+                        
+                        -- 普通文章查询
+                        (SELECT p.*, 0 as is_sticky_priority
+                        FROM {$wpdb->posts} p
+                        WHERE p.post_status = 'publish' 
+                        AND p.post_type = 'post'
+                        AND p.ID NOT IN ($sticky_ids)
+                        $cat_where
+                        ORDER BY p.post_date DESC)
+                    ) as combined_results
+                    ORDER BY is_sticky_priority DESC, post_date DESC
+                    LIMIT $offset, $posts_per_page
+                ";
+                
+                $posts = $wpdb->get_results($sql);
+                ?>
+                
+                <?php if ( !empty($posts) ) : ?>
+                    <?php 
+                    foreach ($posts as $post) {
+                        setup_postdata($post);
+                        get_template_part( 'templates/card' );
+                    }
+                    wp_reset_postdata();
+                    ?>
+                <?php else: ?>
+                    <div class="no-content">
+                        <img src="<?php bloginfo('template_url'); ?>/assets/images/empty.png">
+                        <p><?php echo __('暂无内容','vt'); ?></p>
+                    </div>
+                <?php endif; ?>  
+            </div>
+            
+        </div>
+
+        <?php
+        // 分页逻辑需要重新计算（因为使用了自定义查询）
+        $total_sticky = !empty($sticky_posts) ? count($sticky_posts) : 0;
+
+        // 重新查询获取总数用于分页
+        $args = array(
+            'posts_per_page' => -1,
+            'ignore_sticky_posts' => true,
+            'fields' => 'ids'
+        );
+
+        if( $vt_config['posts_ids'] ){
+            $args['category__in'] = $vt_config['posts_ids'];
         }
+
+        if( $vt_config['posts_not_in_ids'] ){
+            $args['category__not_in'] = $vt_config['posts_not_in_ids'];
+        }
+
+        $count_query = new WP_Query($args);
+        $total_posts = $count_query->found_posts;
+
+        // 计算总页数
+        $max_num_pages = ceil($total_posts / $posts_per_page);
+
+        // 显示分页
+        the_posts_pagination(array(
+            'current' => $paged,
+            'total' => $max_num_pages,
+            'mid_size' => 2,
+            'prev_text' => '<',
+            'next_text' => '>',
+            'screen_reader_text' => ' ',
+            'aria_label' => "",
+        ));
         ?>
     </div>
+
 
     <?php if(!vt_get_config('full_width')):?>
         <div class="sider little-widget">

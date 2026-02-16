@@ -181,19 +181,6 @@ function get_post_views($postID)
 }
 
 
-function vt_custom_js_and_css() {
-    $current_theme = wp_get_theme();
-    wp_enqueue_style('customstyle', get_template_directory_uri() . '/assets/css/style.css', array(), $current_theme->get('Version'), 'all');
-    
-    // 本地化脚本，传递AJAX URL和其他数据到前端
-    // wp_localize_script('jquery', 'ajax_object', array(
-    //     'ajax_url' => admin_url('admin-ajax.php'),
-    //     'nonce' => wp_create_nonce('ajax_nonce')
-    // ));
-}
-add_action('wp_enqueue_scripts', 'vt_custom_js_and_css');
-
-
 /**
  * 参考：https://stackoverflow.com/questions/62241215/get-current-user-id-returns-0-even-after-modificaton-to-user-php/62242542#62242542
  */

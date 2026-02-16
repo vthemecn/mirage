@@ -492,7 +492,7 @@ a:hover {
 }
 
 /**
- * 文章页，文档页等 公共的点赞，收藏 模块
+ * 文章页，文档页等 公共的喜欢，收藏 模块
  */
 /**
  * 面包屑
@@ -572,6 +572,20 @@ a:hover {
   color: var(--vt-text-color);
 }
 
+.no-scrollbar {
+  /* 隐藏滚动条（WebKit 浏览器：Chrome, Safari, Edge） */
+  -ms-overflow-style: none;  /* IE 和 Edge（旧版） */
+  scrollbar-width: none;     /* Firefox */
+
+  /* 可选：如果你希望完全禁止滚动（不推荐），用 overflow: hidden */
+  /* 但通常我们只是隐藏滚动条，仍允许滚动 */
+  overflow: auto; /* 或 overflow-y: auto; overflow-x: hidden; 等 */
+}
+
+/* WebKit 浏览器（Chrome, Safari, 新版 Edge）专用 */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 .field {
   margin: 20px 0 0 0;
   position: relative;
@@ -815,7 +829,7 @@ nav.pagination a:hover {
 
 @media only screen and (min-width: 900px) {
   nav.pagination {
-    padding: 20px 0 0 0;
+    padding: 0px 0 0 0;
   }
 }
 
@@ -1160,52 +1174,6 @@ nav.pagination a:hover {
 }
 
 
-/* 加载更多按钮 */
-.main-widget button.posts-more-button {
-  display: block;
-  width: calc(100% - 30px);
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-  font-size: 14px;
-  background-color: var(--vt-bg-color-card);
-  color: var(--vt-color-primary);
-  border-radius: var(--vt-border-radius);
-  border: 1px solid var(--vt-color-primary);
-  margin: 10px auto;
-  cursor: pointer;
-}
-
-/* 防止子元素响应 */
-.main-widget button.posts-more-button > * {
-  pointer-events: none;
-}
-
-.main-widget button.posts-more-button i {
-  display: none;
-}
-
-.main-widget button.posts-more-button.loading i {
-  display: inline-block;
-  /*  animation: rotation-load 1.5s linear infinite;*/
-  animation: rotation-load 1s steps(8, end) infinite;
-}
-
-@media only screen and (min-width: 900px) {
-  .main-widget button.posts-more-button {
-    width: 120px;
-    margin: 20px auto 20px auto;
-  }
-}
-@keyframes rotation-load {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(-360deg);
-  }
-}
-
 /**
  * top
  */
@@ -1523,37 +1491,9 @@ nav.pagination a:hover {
   }
 }
 
-/* .articles-widget {
-  overflow: hidden;
-}
-
-.articles-widget::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.articles-widget .vt-card-item{
-  margin: 8px 0;
-}
-
-.articles-list .vt-card-item:nth-child(1) {
-  margin-top: 0px !important;
-}
-.articles-list .vt-card-item:last-child {
-  margin-bottom: 0px !important;
-}
-
-@media only screen and (min-width: 900px) {
-
-  .articles-widget .vt-card-item{
-    margin: 15px 0;
-  }
-} */
-
 
 /**
- * 文章页，文档页等 公共的点赞，收藏 模块
+ * 文章页，文档页等 公共的喜欢，收藏 模块
  */
 .content-action {
   display: flex;
@@ -2048,69 +1988,50 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
 }
 
 .related-posts-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 15px;
 }
 
-.related-post-item {
-  padding: 12px;
-  border: 1px solid var(--vt-border-color);
-  border-radius: 6px;
-  transition: all 0.3s ease;
-  background: var(--vt-bg-color-card);
+.related-posts-list .vt-card-item{
+  margin: 0;
+  padding: 0;
 }
 
-.related-post-item:hover {
-  border-color: #007cba;
-  background: var(--vt-bg-color-card);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+.related-posts-list .vt-card-item .vt-card-meta,
+.related-posts-list .vt-card-item .vt-card-author span,
+.related-posts-list .vt-card-item .vt-user-post-stat-item:nth-child(2),
+.related-posts-list .vt-card-item .vt-user-post-stat-item:nth-child(3),
+.related-posts-list .vt-card-item .vt-card-excerpt{
+  display: none;
 }
 
-.related-post-item a {
-  text-decoration: none;
+@media (min-width: 481px) {
+  .related-posts-widget .vt-card-thumbnail {
+      flex: 0 0 auto !important;
+  }
 }
 
-.related-post-title {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--vt-text-color);
-  line-height: 1.5;
-  margin-bottom: 8px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.related-post-meta {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  color: var(--vt-text-color-grey);
-}
-
-.related-post-meta i {
-  margin-right: 4px;
-}
-
-.related-post-meta span {
-  display: flex;
-  align-items: center;
-}
-
-.no-related-posts {
-  text-align: center;
-  padding: 30px;
-  color: var(--vt-text-color-grey);
-  font-size: 14px;
-}
-
-@media only screen and (min-width: 900px) { 
+@media only screen and (min-width: 768px) { 
   .related-posts-widget {
     margin: 20px 0 0 0;
   }
+  .related-posts-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-right: -20px;
+    margin-bottom: -20px;
+  }
+  .related-posts-list .vt-card-item{
+    width: calc(50% - 20px);
+    margin: 0 20px 20px 0;
+  }
+  .related-posts-list .vt-card-item .vt-card-thumbnail{
+    width: 35%;
+    flex: 0 0 auto;
+  }
+
 }
 
 
@@ -4408,4 +4329,13 @@ body.dark-mode .user-card {
 
 
 
+
+/*
+Breakpoints 
+sm: 640px
+md: 768px
+lg: 1024px
+xl: 1280px
+2xl: 1536px
+*/
 

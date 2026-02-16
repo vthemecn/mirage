@@ -172,43 +172,40 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
 
             <div class="content-action">
                 <script type="text/javascript">
-                var ajax_object = {
-                    ajax_url: "<?php echo admin_url('admin-ajax.php'); ?>",
-                    nonce: "<?php echo wp_create_nonce('ajax_nonce'); ?>",
+                var post_object = {
                     post_url: "<?php echo get_permalink(); ?>",
                     post_id: "<?= get_the_ID(); ?>",
-                    current_user_id: "<?=$current_user_id?>"
                 };
                 </script>
 
                 <div class="widget-action like <?php echo $is_like ? ' active' : '' ?>">
                     <i class="fa-solid fa-heart"></i>
-                    <span><?= $is_like ? __('取消点赞','vt') : __('点赞','vt')?></span>
+                    <span><?= $is_like ? __('Remove like','vt') : __('Like','vt')?></span>
                     <span class='number'><?= $like_counter ? $like_counter : '' ?></span>
                 </div>
 
                 <?php if(is_captain_active()):?>
                 <div class="widget-action star <?php echo $is_star ? ' active' : '' ?>">
                     <i class="fa-solid fa-star"></i>
-                    <span><?= $is_star ? __('取消收藏','vt') : __('收藏','vt')?></span>
+                    <span><?= $is_star ? __('Remove star','vt') : __('Star','vt')?></span>
                     <span class='number'><?= $star_counter ? $star_counter : '' ?></span>
                 </div>
                 <?php endif; ?>
                
                 <div class="widget-action share-poster">
                     <i class="fa-solid fa-share-nodes"></i>
-                    <span><?=__('分享','vt')?></span>
+                    <span><?=__('Share','vt')?></span>
                 </div>
 
                 <div class="widget-action coin">
                     <i class="fa-solid fa-coins"></i>
-                    <span><?=__('打赏','vt')?></span>
+                    <span><?=__('Donate','vt')?></span>
                 </div>
 
                 <?php if( current_user_can( 'manage_options' ) ): ?>
                 <a href="/wp-admin/post.php?post=<?php echo get_the_ID() ?>&action=edit" class="widget-action">
                     <i class="fa-solid fa-pen-to-square"></i>
-                    <span><?=__('编辑','vt')?></span>
+                    <span><?=__('Edit','vt')?></span>
                 </a>
                 <?php endif ?>
             </div>
@@ -305,14 +302,8 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                 ?>
                     <div class="related-posts-list">
                         <?php while ($related_query->have_posts()) : $related_query->the_post(); ?>
-                            <div class="related-post-item">
-                                <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-                                    <div class="related-post-title"><?php the_title(); ?></div>
-                                    <div class="related-post-meta">
-                                        <span class="date"><i class="fa-regular fa-clock"></i> <?php echo get_the_date('Y-m-d'); ?></span>
-                                    </div>
-                                </a>
-                            </div>
+                            <!-- 使用 templates/card.php 模板显示相关文章 -->
+                            <?php get_template_part('templates/card'); ?>
                         <?php endwhile; ?>
                     </div>
                 <?php else : ?>

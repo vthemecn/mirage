@@ -204,14 +204,11 @@
   }
 
   /**
-   * 点赞事件绑定
+   * 喜欢事件绑定
    */
   async function likeInit(notyf){
     var likeButtons = document.querySelectorAll('.widget-action.like');
     if(!likeButtons.length) return;
-    
-    // 初始化点赞状态
-    // await initializeLikeStatus(notyf);
     
     likeButtons.forEach(button => {
       button.addEventListener('click', async function() {
@@ -219,7 +216,7 @@
         
         var that = this;
         
-        const objectId = ajax_object.post_id;
+        const objectId = post_object.post_id;
         if (!objectId) return;
    
         const isLiked = that.classList.contains('active');
@@ -249,36 +246,34 @@
               // 更新按钮文本显示
               const spanElement = that.querySelector('span');
               if (spanElement) {
-                spanElement.textContent = '取消点赞';
+                spanElement.textContent = i18n.remove_like;
+                console.log('i18n.remove_like',i18n.remove_like);
+                
               }
             } else {
               that.classList.remove('active');
               // 更新按钮文本显示
               const spanElement = that.querySelector('span');
               if (spanElement) {
-                spanElement.textContent = '点赞';
+                spanElement.textContent = i18n.like;
               }
             }
             
-            // 更新点赞数
+            // 更新喜欢数
             const numberElement = that.querySelector('.number');
             if (numberElement) {
               numberElement.textContent = result.data.like_count || '';
             }
-            
-            notyf.success(result.data.message);
           } else {
-            notyf.error(result.data.message || '操作失败');
+            notyf.error(result.data.message || i18n.operation_failed);
           }
         } catch (error) {
-          console.error('点赞操作失败:', error);
-          notyf.error('网络错误，请重试');
+          console.error(error);
+          notyf.error(i18n.network_error);
         }
       });
     });
   }
-
-
 
 
   /**
@@ -304,14 +299,11 @@
       return;
     }
     
-    // 初始化收藏状态
-    // await initializeStarStatus(notyf);
-    
     starButtons.forEach(button => {
       button.addEventListener('click', async function() {
         var that = this;
         
-        const objectId = ajax_object.post_id;
+        const objectId = post_object.post_id;
         if (!objectId) return;
         
         const isStarred = that.classList.contains('active');
@@ -340,14 +332,14 @@
               // 更新按钮文本显示
               const spanElement = that.querySelector('span');
               if (spanElement) {
-                spanElement.textContent = '取消收藏';
+                spanElement.textContent = i18n.remove_star;
               }
             } else {
               that.classList.remove('active');
               // 更新按钮文本显示
               const spanElement = that.querySelector('span');
               if (spanElement) {
-                spanElement.textContent = '收藏';
+                spanElement.textContent = i18n.star;
               }
             }
             
@@ -357,11 +349,11 @@
               numberElement.textContent = result.data.star_count || '';
             }
             
-            notyf.success(result.data.message);
+            // notyf.success(result.data.message);
           } else {
-            notyf.error(result.data.message || '操作失败');
+            notyf.error(result.data.message || i18n.operation_failed);
             // 如果是未登录错误，显示登录对话框
-            if (result.data.message && result.data.message.includes('请先登录')) {
+            if (result.data.message && result.data.message.includes(i18n.please_log_in)) {
               var loginModal = document.querySelector('.login-register-dialog');
               if(loginModal){
                 loginModal.showModal();
@@ -370,7 +362,7 @@
             }
           }
         } catch (error) {
-          console.error('收藏操作失败:', error);
+          console.error(error);
           notyf.error('网络错误，请重试');
         }
       });
@@ -386,7 +378,7 @@
     if(!qrcodeSelector) { return; }
 
     window.addEventListener('load', function(){
-      var url = ajax_object.post_url;
+      var url = post_object.post_url;
       new QRCode(qrcodeSelector, {
           text: url,
           width: 80,
@@ -530,7 +522,7 @@
     if (!mobileTopMenuButton) {
       return;
     }
-    console.log('mobileMenuCloseButton', mobileMenuCloseButton);
+    // console.log('mobileMenuCloseButton', mobileMenuCloseButton);
 
     mobileTopMenuButton.addEventListener('click', function () {
       mobileTopMenuButton.classList.add('hidden');

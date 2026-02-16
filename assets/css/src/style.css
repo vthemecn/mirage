@@ -12,7 +12,6 @@
 @import './home/home.css';
 @import './home/slider.css';
 @import './home/hot.css';
-@import './home/posts.css';
 @import './article-action.css';
 @import './article.css';
 @import './card.css';
@@ -25,4 +24,13 @@
 @import './container.css';
 @import './banner.css';
 @import './dark.css';
+
+/*
+Breakpoints 
+sm: 640px
+md: 768px
+lg: 1024px
+xl: 1280px
+2xl: 1536px
+*/
 

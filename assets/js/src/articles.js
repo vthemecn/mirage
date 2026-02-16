@@ -5,7 +5,7 @@
 
 
 /**
- * 点赞，收藏，评论
+ * 喜欢，收藏，评论
  */
 
 import {getCookie, setCookie} from './utils.js';
@@ -36,14 +36,11 @@ export default function () {
 }
 
 /**
- * 点赞事件绑定
+ * 喜欢事件绑定
  */
 async function likeInit(notyf){
   var likeButtons = document.querySelectorAll('.widget-action.like');
   if(!likeButtons.length) return;
-  
-  // 初始化点赞状态
-  // await initializeLikeStatus(notyf);
   
   likeButtons.forEach(button => {
     button.addEventListener('click', async function() {
@@ -51,7 +48,7 @@ async function likeInit(notyf){
       
       var that = this;
       
-      const objectId = ajax_object.post_id;
+      const objectId = post_object.post_id;
       if (!objectId) return;
  
       const isLiked = that.classList.contains('active');
@@ -81,36 +78,34 @@ async function likeInit(notyf){
             // 更新按钮文本显示
             const spanElement = that.querySelector('span');
             if (spanElement) {
-              spanElement.textContent = '取消点赞';
+              spanElement.textContent = i18n.remove_like;
+              console.log('i18n.remove_like',i18n.remove_like);
+              
             }
           } else {
             that.classList.remove('active');
             // 更新按钮文本显示
             const spanElement = that.querySelector('span');
             if (spanElement) {
-              spanElement.textContent = '点赞';
+              spanElement.textContent = i18n.like;
             }
           }
           
-          // 更新点赞数
+          // 更新喜欢数
           const numberElement = that.querySelector('.number');
           if (numberElement) {
             numberElement.textContent = result.data.like_count || '';
           }
-          
-          notyf.success(result.data.message);
         } else {
-          notyf.error(result.data.message || '操作失败');
+          notyf.error(result.data.message || i18n.operation_failed);
         }
       } catch (error) {
-        console.error('点赞操作失败:', error);
-        notyf.error('网络错误，请重试');
+        console.error(error);
+        notyf.error(i18n.network_error);
       }
     });
   });
 }
-
-
 
 
 /**
@@ -136,14 +131,11 @@ async function starInit(notyf){
     return;
   }
   
-  // 初始化收藏状态
-  // await initializeStarStatus(notyf);
-  
   starButtons.forEach(button => {
     button.addEventListener('click', async function() {
       var that = this;
       
-      const objectId = ajax_object.post_id;
+      const objectId = post_object.post_id;
       if (!objectId) return;
       
       const isStarred = that.classList.contains('active');
@@ -172,14 +164,14 @@ async function starInit(notyf){
             // 更新按钮文本显示
             const spanElement = that.querySelector('span');
             if (spanElement) {
-              spanElement.textContent = '取消收藏';
+              spanElement.textContent = i18n.remove_star;
             }
           } else {
             that.classList.remove('active');
             // 更新按钮文本显示
             const spanElement = that.querySelector('span');
             if (spanElement) {
-              spanElement.textContent = '收藏';
+              spanElement.textContent = i18n.star;
             }
           }
           
@@ -189,11 +181,11 @@ async function starInit(notyf){
             numberElement.textContent = result.data.star_count || '';
           }
           
-          notyf.success(result.data.message);
+          // notyf.success(result.data.message);
         } else {
-          notyf.error(result.data.message || '操作失败');
+          notyf.error(result.data.message || i18n.operation_failed);
           // 如果是未登录错误，显示登录对话框
-          if (result.data.message && result.data.message.includes('请先登录')) {
+          if (result.data.message && result.data.message.includes(i18n.please_log_in)) {
             var loginModal = document.querySelector('.login-register-dialog');
             if(loginModal){
               loginModal.showModal();
@@ -202,73 +194,11 @@ async function starInit(notyf){
           }
         }
       } catch (error) {
-        console.error('收藏操作失败:', error);
+        console.error(error);
         notyf.error('网络错误，请重试');
       }
     });
   });
-}
-
-/**
- * 初始化收藏状态
- */
-async function initializeStarStatus(notyf) {
-  const objectId = ajax_object.post_id;
-  if (!objectId) return;
-  
-  try {
-    const response = await fetch(ajax_object.ajax_url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: new URLSearchParams({
-        action: 'get_star_status',
-        object_id: objectId,
-        nonce: ajax_object.nonce
-      })
-    });
-    
-    const result = await response.json();
-    
-    if (result.success) {
-      // 更新所有收藏按钮的状态
-      const starButtons = document.querySelectorAll('.widget-action.star');
-      
-      starButtons.forEach(button => {
-        const numberElement = button.querySelector('.number');
-        if (numberElement) {
-          numberElement.textContent = result.data.star_count || '';
-        }
-        
-        const spanElement = button.querySelector('span');
-        
-        if (result.data.is_starred) {
-          button.classList.add('active');
-          if (spanElement) {
-            spanElement.textContent = '取消收藏';
-          }
-        } else {
-          button.classList.remove('active');
-          if (spanElement) {
-            spanElement.textContent = '收藏';
-          }
-        }
-        
-        // 如果用户未登录，禁用收藏按钮
-        if (!result.data.can_star) {
-          button.style.opacity = '0.5';
-          button.style.cursor = 'not-allowed';
-          button.title = '请先登录';
-          // 移除点击事件监听器
-          const clone = button.cloneNode(true);
-          button.parentNode.replaceChild(clone, button);
-        }
-      });
-    }
-  } catch (error) {
-    console.error('获取收藏状态失败:', error);
-  }
 }
 
 
@@ -280,7 +210,7 @@ function sharePosterInit() {
   if(!qrcodeSelector) { return; }
 
   window.addEventListener('load', function(){
-    var url = ajax_object.post_url;
+    var url = post_object.post_url;
     var qrcode = new QRCode(qrcodeSelector, {
         text: url,
         width: 80,

@@ -18,9 +18,56 @@ msgstr "您应备份现有的 %s 文件。"
 #. translators: %s: wp-config.php
 #: wp-admin/includes/network.php:463
 
-msgid "海市蜃楼"
+msgid "Mirage"
 msgstr "海市蜃楼"
 
 msgid "keep_theme_footer"
 msgstr "请保留主题底部署名"
 
+msgid "Like"
+msgstr "喜欢"
+
+msgid "Remove like"
+msgstr "取消喜欢"
+
+msgid "Already liked"
+msgstr "已经喜欢"
+
+msgid "Star"
+msgstr "收藏"
+
+msgid "Remove star"
+msgstr "取消收藏"
+
+msgid "Already starred"
+msgstr "已经收藏"
+
+msgid "Operation failed"
+msgstr "操作失败"
+
+msgid "Operation succeeded"
+msgstr "操作成功"
+
+msgid "Network error. Please try again"
+msgstr "网络错误，请重试"
+
+msgid "Security verification failed"
+msgstr "安全验证失败"
+
+msgid "Invalid action type"
+msgstr "无效的操作类型"
+
+msgid "Please log in"
+msgstr "请登录"
+
+msgid "Invalid object ID"
+msgstr "无效的对象ID"
+
+msgid "Share"
+msgstr "分享"
+
+msgid "Donate"
+msgstr "打赏"
+
+msgid "Edit"
+msgstr "编辑"

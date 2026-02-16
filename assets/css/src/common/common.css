@@ -61,7 +61,7 @@ a:hover {
 }
 
 /**
- * 文章页，文档页等 公共的点赞，收藏 模块
+ * 文章页，文档页等 公共的喜欢，收藏 模块
  */
 /**
  * 面包屑
@@ -139,4 +139,19 @@ a:hover {
 .search-title {
   margin-top: 10px;
   color: var(--vt-text-color);
+}
+
+.no-scrollbar {
+  /* 隐藏滚动条（WebKit 浏览器：Chrome, Safari, Edge） */
+  -ms-overflow-style: none;  /* IE 和 Edge（旧版） */
+  scrollbar-width: none;     /* Firefox */
+
+  /* 可选：如果你希望完全禁止滚动（不推荐），用 overflow: hidden */
+  /* 但通常我们只是隐藏滚动条，仍允许滚动 */
+  overflow: auto; /* 或 overflow-y: auto; overflow-x: hidden; 等 */
+}
+
+/* WebKit 浏览器（Chrome, Safari, 新版 Edge）专用 */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

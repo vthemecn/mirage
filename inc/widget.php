@@ -52,6 +52,7 @@ class ArticleWidget extends WP_Widget {
             'post_type'      => 'post',
             'post_status'    => 'publish',
             'posts_per_page' =>  $posts_per_page,
+            'ignore_sticky_posts' => true
         );
     
         // 如果指定了分类 ID，才加入分类条件

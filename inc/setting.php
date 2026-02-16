@@ -4,6 +4,30 @@ $vt_config = vt_get_config();
 
 vt_footer_check();
 
+/**
+ * 添加相关资源
+ */
+function vt_custom_js_and_css() {
+    $version = wp_get_theme()->get('Version');
+
+    wp_enqueue_style('customstyle', get_template_directory_uri() . '/assets/css/style.css', array(), $version, 'all');
+
+    wp_enqueue_script('mirage', get_theme_file_uri('/assets/js/index.js'), [], $version, true);
+
+    wp_localize_script('mirage', 'i18n', vt_i18n_strings());
+
+    $current_user_id = get_current_user_id();
+    
+    // 本地化脚本，传递AJAX URL和其他数据到前端
+    wp_localize_script('mirage', 'ajax_object', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce' => wp_create_nonce('ajax_nonce'),
+        'current_user_id' => $current_user_id
+    ));
+}
+add_action('wp_enqueue_scripts', 'vt_custom_js_and_css');
+
+
 
 function add_theme_support_all()
 {

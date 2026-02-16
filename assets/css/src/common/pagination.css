@@ -61,6 +61,6 @@ nav.pagination a:hover {
 
 @media only screen and (min-width: 900px) {
   nav.pagination {
-    padding: 20px 0 0 0;
+    padding: 0px 0 0 0;
   }
 }

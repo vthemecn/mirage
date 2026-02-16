@@ -16,7 +16,7 @@ function mobileMenu(){
   if (!mobileTopMenuButton) {
     return;
   }
-  console.log('mobileMenuCloseButton', mobileMenuCloseButton);
+  // console.log('mobileMenuCloseButton', mobileMenuCloseButton);
 
   mobileTopMenuButton.addEventListener('click', function () {
     mobileTopMenuButton.classList.add('hidden');

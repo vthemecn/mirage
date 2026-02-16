@@ -3,26 +3,30 @@
 /**
  * 语言文件支持
  */
-
-
-// add_action('after_setup_theme', 'alanhou_setup');
-// function alanhou_setup(){
-//   load_theme_textdomain('vt', get_template_directory.'/languages');
-// }
-
-
-// add_action('after_setup_theme', 'vt_theme_load_theme_textdomain');
-// function vt_theme_load_theme_textdomain()
-// {
+function vt_theme_load_theme_textdomain(){
     load_theme_textdomain('vt', get_template_directory() . '/inc/languages');
-// }
+}
+add_action('after_setup_theme', 'vt_theme_load_theme_textdomain');
 
-/**
- * 根据设置，修改当前语言
- */
-// add_filter('locale', 'vt_theme_localized');
-// function vt_theme_localized($locale)
-// {
-//     $vt_config = vt_get_config();
-//     return $vt_config['language'] ? $vt_config['language'] : 'zh_CN';
-// }
+
+function vt_i18n_strings(){
+    // global $vt_global_i18n_strings;
+    $vt_global_i18n_strings = [
+        'loading' => __('Loading...', 'vt'),
+        'network_error' => __('Network error, please try again.', 'vt'),
+        'operation_failed' => __('Operation failed', 'vt'),
+        'remove_like' => __('Remove like', 'vt'),
+        'like' => __('Like', 'vt'),
+        'remove_star' => __('Remove star', 'vt'),
+        'star' => __('Star', 'vt'),
+        'please_log_in' => __('Please log in', 'vt'),
+    ];
+
+    return $vt_global_i18n_strings;
+}
+
+
+
+
+
+
