@@ -90,23 +90,6 @@ if( class_exists( 'CSF' ) ) {
                 'preview' => true
             ),
             array(
-                'id'         => 'user_center_is_on',
-                'type'       => 'radio',
-                'title'      => __('Personal Center','vt'),
-                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
-                'default'    => '1',
-                'inline'     => true,
-                'desc'=> '关闭后将禁止前台注册登录和重置密码，也不会显示header登录按钮'
-            ),
-            array(
-                'id'         => 'comments_is_on',
-                'type'       => 'radio',
-                'title'      => __('Open comment','vt'),
-                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
-                'default'    => '1',
-                'inline' => true
-            ),
-            array(
                 'id'         => 'attempts_is_on',
                 'type'       => 'radio',
                 'title'      => __('Anti brute force cracking','vt'),
@@ -128,12 +111,12 @@ if( class_exists( 'CSF' ) ) {
         'icon'   => 'dashicons dashicons-admin-generic',
         'fields' => array(
             array(
-                'id'    => 'meta_keywords',
+                'id'    => 'keywords',
                 'type'  => 'text',
-                'title' => __('keyword','vt')
+                'title' => __('keywords','vt')
             ),
             array(
-                'id'    => 'meta_description',
+                'id'    => 'description',
                 'type'  => 'textarea',
                 'title' => __('description','vt')
             ),
@@ -410,7 +393,7 @@ if( class_exists( 'CSF' ) ) {
             array(
                 'id'    => 'list_type',
                 'type'  => 'radio',
-                'title' => __('List Format','vt'),
+                'title' => __('Layout','vt'),
                 'options'    => array('0' => __('List','vt'), '1' => __('Card','vt')),
                 'default'    => '0',
                 'inline' => true
@@ -453,7 +436,7 @@ if( class_exists( 'CSF' ) ) {
                 'type'       => 'radio',
                 'title'      => __('Top Toolbar','vt'),
                 'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
-                'default'    => '1',
+                'default'    => '0',
                 'inline' => true
             ),
         )
@@ -501,13 +484,13 @@ if( class_exists( 'CSF' ) ) {
      * 文章设置
      */
     CSF::createSection( $prefix, array(
-        'title'  => __('Article Settings','vt'),
+        'title'  => __('Article settings','vt'),
         'icon'   => 'dashicons dashicons-admin-generic',
         'fields' => array(
             array(
                 'id'         => 'vt_columns',
                 'type'       => 'radio',
-                'title'      => __('Number of columns per row','vt'),
+                'title'      => __('Number of rows and columns','vt'),
                 'options'    => array(
                     '2' => __('2','vt'),
                     '3' => __('3','vt'),
@@ -525,22 +508,10 @@ if( class_exists( 'CSF' ) ) {
                     '0' => __('Gutenberg Editor','vt'),
                     '1' => __('Classic Editor','vt')
                 ),
-                'default'    => '1',
+                'default'    => '0',
                 'inline' => true
             ),
             array(
-                'id'         => 'tinymce_codesample',
-                'type'       => 'radio',
-                'title'      => __('Classic editor insert code','vt'),
-                'options'    => array(
-                    '0' => __('off','vt'),
-                    '1' => __('enable','vt')
-                ),
-                'default'    => '1',
-                'inline' => true,
-                'dependency' => array('editor_type', '==', 'true'),
-            ),
-                        array(
                 'id'         => 'editor_revision',
                 'type'       => 'radio',
                 'title'      => __('Article revision version','vt'),
@@ -564,7 +535,7 @@ if( class_exists( 'CSF' ) ) {
             array(
                 'id'         => 'highlight_is_on',
                 'type'       => 'radio',
-                'title'      => __('Code Highlighting','vt'),
+                'title'      => __('Code highlighting','vt'),
                 'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
                 'default'    => '1',
                 'inline' => true
@@ -576,7 +547,7 @@ if( class_exists( 'CSF' ) ) {
                 'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
                 'default'    => '1',
                 'inline'     => true,
-                'desc'       => '根据文章标题自动生成目录'
+                'desc'       => ''
             ),
             array(
                 'id'    => 'qrcode_image',
@@ -605,24 +576,21 @@ if( class_exists( 'CSF' ) ) {
     ));
 
 
-
-
-    $email_test = home_url('/wp-json/vtheme/v1/sendmail-test') . '?_wpnonce=' . wp_create_nonce('wp_rest');
     /**
      * 邮箱设置
      */
     CSF::createSection( $prefix, array(
-        'title'  => __('Mailbox Settings','vt'),
+        'title'  => __('Email settings','vt'),
         'icon'   => 'dashicons dashicons-admin-generic',
         'fields' => array(
             array(
                 'id'    => 'smtp_is_on',
                 'type'  => 'radio',
-                'title' => __('Open mailbox','vt'),
+                'title' => __('Customize email','vt'),
                 'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
                 'default'    => '1',
                 'inline' => true,
-                'desc' => __('SMTP test link. After completing the settings, click this link to send an email to the administrator','vt')."<br><a href='$email_test' target='_blank'>$email_test</a>"
+                'desc' => ""
 
             ),
             array(
@@ -634,6 +602,7 @@ if( class_exists( 'CSF' ) ) {
                 'id'    => 'smtp_port',
                 'type'  => 'text',
                 'title' => __('SMTP port','vt'),
+                'default' => '465'
             ),
             array(
                 'id'    => 'smtp_username',

@@ -3,10 +3,10 @@
 /**
  * 语言文件支持
  */
-function vt_theme_load_theme_textdomain(){
+// function vt_theme_load_theme_textdomain(){
     load_theme_textdomain('vt', get_template_directory() . '/inc/languages');
-}
-add_action('after_setup_theme', 'vt_theme_load_theme_textdomain');
+// }
+// add_action('after_setup_theme', 'vt_theme_load_theme_textdomain');
 
 
 function vt_i18n_strings(){

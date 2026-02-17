@@ -167,6 +167,13 @@
   height: 20px;
   border-radius: 50%;
 }
+.vt-card-author span{
+  display: inline-block !important;
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 .vt-card-time {
   display: flex;

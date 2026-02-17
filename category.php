@@ -24,17 +24,22 @@ if($vt_list_type > 0){
 
 // 获取分类第一篇文章的缩略图或者图片
 $banner_image = get_bloginfo('template_url') . '/assets/images/banner.jpg';
-$args = array(
-    'cat' => $cat,
-    'orderby' => array("menu_order" => "desc",'date' => "desc"),
-    'posts_per_page'=>1
-);
-$query_posts = new WP_Query($args);
-if($query_posts->posts){
-    $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($query_posts->posts[0]->ID), 'medium');
-    $banner_image = $thumbnail ? $thumbnail[0] : $banner_image;
-}
 
+$term_meta_thumbnail = get_term_meta($cat, 'vt-thumbnail', true);
+if($term_meta_thumbnail){
+    $banner_image = $term_meta_thumbnail;
+} else {
+    $args = array(
+        'cat' => $cat,
+        'orderby' => array("menu_order" => "desc",'date' => "desc"),
+        'posts_per_page'=>1
+    );
+    $query_posts = new WP_Query($args);
+    if($query_posts->posts){
+        $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($query_posts->posts[0]->ID), 'medium');
+        $banner_image = $thumbnail ? $thumbnail[0] : $banner_image;
+    }
+}
 ?>
 
 

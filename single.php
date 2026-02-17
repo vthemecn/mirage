@@ -104,11 +104,9 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     <i class="fa-solid fa-eye"></i><?php echo get_post_views(get_the_ID()); ?>
                 </div>
 
-                <?php if($config['comments_is_on']):?>
                 <div class='meta-item comment-counter'>
                     <i class="fa-solid fa-comment"></i><?php echo $post->comment_count; ?>
                 </div>
-                <?php endif ?>
             </div>
             
             <div class="article-content content-style line-numbers">
@@ -248,7 +246,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
         </div>
 
         <?php
-        if ($config['comments_is_on'] && (comments_open() || get_comments_number()) ) {
+        if ( comments_open() || get_comments_number() ) {
             comments_template();
         }
         ?>

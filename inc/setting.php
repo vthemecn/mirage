@@ -355,10 +355,12 @@ function code_sample_button($mce_buttons)
     return $mce_buttons;
 }
 
-if($vt_config['tinymce_codesample']){
-    add_filter('mce_external_plugins', 'code_sample_add_external_plugin', 999, 1);
-    add_filter('mce_buttons', 'code_sample_button', 999, 1);
-}
+
+/**
+ * 添加 TinyMCE 插件, 插入代码
+ */
+add_filter('mce_external_plugins', 'code_sample_add_external_plugin', 999, 1);
+add_filter('mce_buttons', 'code_sample_button', 999, 1);
 
 
 /**

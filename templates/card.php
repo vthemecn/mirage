@@ -13,7 +13,7 @@ $avatar = vt_get_custom_avatar_url($post->post_author);
             <?php endif; ?>
             <div class="vt-card-badget-widget">
                 <?php if(is_sticky()): ?>
-                    <div class="vt-card-badget sticky">置顶</div>
+                    <div class="vt-card-badget sticky"><?=__('Sticky','vt')?></div>
                 <?php endif ?>
                 <?php /* <div class="vt-card-badget vip">VIP</div> */ ?>
             </div>
@@ -61,13 +61,21 @@ $avatar = vt_get_custom_avatar_url($post->post_author);
         </div>
 
         <div class="vt-card-footer">
-            <a class="vt-card-author" href="" target="_blank">
-                <div class="avatar"><img src="<?=$avatar?>"></div>
-                <span><?= get_the_author_meta('nickname', $post->post_author) ?></span>
-            </a>
+            <?php if(!is_captain_active()):?>
+                <div class="vt-card-author">
+                    <div class="avatar"><img src="<?=$avatar?>"></div>
+                    <span><?= get_the_author_meta('display_name', $post->post_author) ?></span>
+                </div>
+            <?php else: ?>
+                <?php $profile_url = home_url('/profile/' . $post->post_author)?>
+                <a class="vt-card-author" href="$profile_url" target="_blank">
+                    <div class="avatar"><img src="<?=$avatar?>"></div>
+                    <span><?= get_the_author_meta('display_name', $post->post_author) ?></span>
+                </a>
+            <?php endif; ?>
             <div class="vt-card-time">
                 <i class="fas fa-clock"></i>
-                <?php echo get_the_time('Y-m-d'); ?>
+                <?php echo vt_get_time(get_the_time('Y-m-d H:i:s') ); ?>
             </div>
             <div class="vt-card-stats">
                 <span class="vt-user-post-stat-item">

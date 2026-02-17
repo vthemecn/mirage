@@ -10,18 +10,14 @@
   margin: 8px 0px;
 }
 
-@media only screen and (min-width: 900px) {
+.media-list .vt-card-item:first-child{ margin-top: 0; }
+.media-list .vt-card-item:last-child{ margin-bottom: 0; }
 
-}
+@media (min-width: 768px) {
+  .media-list .vt-card-item{
+    margin: 13px 0px;
+  }
 
-
-
-/*
-  * 样式覆盖
-  */
-
-/* 平板端样式增强 */
-@media (min-width: 769px) {
   .media-list.vt-column{
     display: flex;
     justify-content: flex-start;
@@ -44,32 +40,13 @@
     width: calc(20% - 10px);
     margin:0 10px 10px 0;
   }
-  .media-list .vt-card-author{
+  .media-list.vt-column .vt-card-excerpt{
     display: none;
   }
-  .media-list .vt-card-excerpt{
+  .media-list.vt-column .vt-card-stats .vt-user-post-stat-item:nth-child(2),
+  .media-list.vt-column .vt-card-stats .vt-user-post-stat-item:nth-child(3){
     display: none;
   }
+  
 
 }
-
-/* 桌面端样式增强 - 水平布局 */
-/* @media (min-width: 769px) {
-  .media-list.column-2{
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    margin-right: -10px;
-  }
-  .media-list.column-2 .vt-card-item{
-    width: calc(50% - 10px);
-    margin:0 10px 10px 0;
-  }
-  .media-list .vt-card-author{
-    display: none;
-  }
-  .media-list .vt-card-excerpt{
-    display: none;
-  }
-
-} */

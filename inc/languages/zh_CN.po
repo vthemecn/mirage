@@ -9,12 +9,13 @@ msgstr ""
 "X-Generator: GlotPress/3.0.0-rc.3\n"
 "Language: zh_CN\n"
 
+
 msgid "Mirage"
 msgstr "海市蜃楼"
 
 
 # 通用的
-###########################################################
+###############################################################################
 
 msgid "on"
 msgstr "开启"
@@ -115,275 +116,17 @@ msgstr "自定义JS代码"
 msgid "Add menu"
 msgstr "添加菜单"
 
+msgid "Sticky"
+msgstr "置顶"
 
-# 配置页面
-###########################################################
+msgid "keywords"
+msgstr "关键字"
 
-msgid "Mirage settings"
-msgstr "Mirage 设置"
-
-msgid "General settings"
-msgstr "常规设置"
-
-msgid "SEO settings"
-msgstr "SEO设置"
-
-msgid "Home page settings"
-msgstr "首页设置"
-
-msgid "Header settings"
-msgstr "顶部设置"
-
-msgid "Footer setting"
-msgstr "底部设置"
-
-msgid "Email settings"
-msgstr "邮箱设置"
-
-msgid "backups"
+msgid "Backup"
 msgstr "备份"
 
-
-
-# 配置页面 - 常规设置
-###########################################################
-
-msgid "Website Logo"
-msgstr "网站LOGO"
-
-msgid "Website Logo (Dark Mode)"
-msgstr "网站LOGO(暗黑模式)"
-
-msgid "Theme color tone"
-msgstr "主题色调"
-
-msgid "Update prompt"
-msgstr "更新提示"
-
-msgid "After closing, there will be no prompts for PHP version, theme, and plugin updates"
-msgstr "关闭以后，不提示PHP版本，主题和插件更新提示"
-
-msgid "Editor Mode"
-msgstr "编辑器模式"
-
-msgid "Gutenberg Editor"
-msgstr "古腾堡编辑器"
-
-msgid "Classic Editor"
-msgstr "经典编辑器"
-
-msgid "Border Title Style"
-msgstr "边框标题样式"
-
-msgid "none"
-msgstr "无"
-
-msgid "Vertical line"
-msgstr "竖线"
-
-msgid "round dot"
-msgstr "圆点"
-
-msgid "horizontal line"
-msgstr "横线"
-
-msgid "Display page parameters"
-msgstr "显示页面参数"
-
-msgid "Number of rows and columns"
-msgstr "每行列数"
-
-msgid "Module Title"
-msgstr "模块标题"
-
-msgid "Right column"
-msgstr "右侧栏目"
-
-msgid "Top Toolbar"
-msgstr "顶部工具栏"
-
-msgid "Article Copyright Statement"
-msgstr "文章版权声明"
-
-msgid "Image aspect ratio"
-msgstr "图片高宽比"
-
-msgid "Fill in the aspect ratio of the image, for example: 70%"
-msgstr "填入图片高宽比，例如：70%"
-
-msgid "Dark mode"
-msgstr "暗黑模式"
-
-msgid "Anti brute force cracking"
-msgstr "防暴力破解"
-
-msgid "Within one hour, there were 0 IP addresses and 0 login failures"
-msgstr "一个小时内有0个IP，0次登录失败"
-
-msgid "Revised version of the article"
-msgstr "文章修订版本"
-
-msgid "Payment QR code"
-msgstr "收款二维码"
-
-msgid "QR code title"
-msgstr "二维码标题"
-
-msgid "Editor"
-msgstr "编辑器"
-
-msgid "Personal Center"
-msgstr "个人中心"
-
-msgid "Code highlighting"
-msgstr "代码高亮"
-
-msgid "Open comment"
-msgstr "开启评论"
-
-msgid "Card"
-msgstr "卡片"
-
-msgid "Articles"
-msgstr "文章"
-
-
-
-# 配置页面 - SEO设置
-###########################################################
-
-
-
-# 配置页面 - 首页设置 - 布局设置
-###########################################################
-
-msgid "Layout setting"
-msgstr "布局设置"
-
-msgid "Sliders"
-msgstr "幻灯片"
-
-msgid "Recommendation"
-msgstr "热门推荐"
-
-msgid "Latest"
-msgstr "最新文章"
-
-msgid "Links"
-msgstr "友情链接"
-
-
-# 配置页面 - 首页设置 - 幻灯片模块
-###########################################################
-
-msgid "Slide height"
-msgstr "幻灯片高度"
-
-msgid "Slide list"
-msgstr "幻灯片列表"
-
-
-# 配置页面 - 首页设置 - 推荐模块
-###########################################################
-
-msgid "Hot topics"
-msgstr "推荐模块标题"
-
-msgid "Recommended module"
-msgstr "推荐模块"
-
-msgid "Recommended List"
-msgstr "推荐列表"
-
-
-# 配置页面 - 首页设置 - 文章列表
-###########################################################
-msgid "Category"
-msgstr "文章分类"
-
-msgid "Exclude classification"
-msgstr "排除分类"
-
-msgid "Auto Load"
-msgstr "自动加载"
-
-msgid "Automatic loading times"
-msgstr "自动加载次数"
-
-
-# 配置页面 - 顶部设置
-###########################################################
-msgid "header slogan"
-msgstr "顶部副标题"
-
-msgid "tel title"
-msgstr "电话标题"
-
-msgid "tel number"
-msgstr "电话号码"
-
-msgid "header image"
-msgstr "顶部图片"
-
-
-# 配置页面 - 底部设置
-###########################################################
-msgid "display type"
-msgstr "显示类型"
-
-msgid "Footer copyright"
-msgstr "底部版权"
-
-msgid "Footer Logo"
-msgstr "底部LOGO"
-
-msgid "Footer description"
-msgstr "底部描述"
-
-msgid "qrcode description"
-msgstr "二维码描述"
-
-msgid "nav bar"
-msgstr "移动导航栏"
-
-msgid "nav bar settings"
-msgstr "导航栏设置"
-
-
-# 配置页面 - 邮箱设置
-###########################################################
-msgid "Customize email"
-msgstr "自定义邮箱"
-
-msgid "SMTP address"
-msgstr "SMTP地址"
-
-msgid "SMTP port"
-msgstr "SMTP端口"
-
-msgid "SMTP account"
-msgstr "SMTP账户"
-
-msgid "SMTP password"
-msgstr "SMTP密码"
-
-msgid "Sender nickname"
-msgstr "发件人昵称"
-
-
-
-# 配置页面 - 默认数据
-###########################################################
-
-msgid "Hello Mirage"
-msgstr "你好，Mirage"
-
-
-
-
-
 # 前台
-###########################################################
+###############################################################################
 
 msgid "Number"
 msgstr "数量"
@@ -462,7 +205,7 @@ msgstr "暂无内容"
 
 
 # 前台 - 文章页
-###########################################################
+###############################################################################
 msgid "Like"
 msgstr "喜欢"
 
@@ -486,7 +229,7 @@ msgstr "生成中"
 
 
 # 前台 - 文章页 - 评论
-###########################################################
+###############################################################################
 msgid "Nickname (*)"
 msgstr "昵称(*)"
 
@@ -528,7 +271,7 @@ msgstr "没有了"
 
 
 # 其他
-###########################################################
+###############################################################################
 msgid "Please create a theme side menu"
 msgstr "请创建主题侧边菜单"
 
@@ -573,3 +316,267 @@ msgstr "请登录"
 
 msgid "Invalid object ID"
 msgstr "无效的对象ID"
+
+
+# 配置页面
+###############################################################################
+###############################################################################
+###############################################################################
+
+msgid "Mirage settings"
+msgstr "Mirage 设置"
+
+msgid "General settings"
+msgstr "常规设置"
+
+msgid "SEO settings"
+msgstr "SEO设置"
+
+msgid "Home page settings"
+msgstr "首页设置"
+
+msgid "Header settings"
+msgstr "顶部设置"
+
+msgid "Footer setting"
+msgstr "底部设置"
+
+msgid "Email settings"
+msgstr "邮箱设置"
+
+msgid "backups"
+msgstr "备份"
+
+
+
+# 配置页面 - 常规设置
+###############################################################################
+
+msgid "Website Logo"
+msgstr "网站LOGO"
+
+msgid "Website Logo (Dark Mode)"
+msgstr "网站LOGO(暗黑模式)"
+
+msgid "Theme color tone"
+msgstr "主题色调"
+
+msgid "Update prompt"
+msgstr "更新提示"
+
+msgid "After closing, there will be no prompts for PHP version, theme, and plugin updates"
+msgstr "关闭以后，不提示PHP版本，主题和插件更新提示"
+
+msgid "Editor Mode"
+msgstr "编辑器模式"
+
+msgid "Gutenberg Editor"
+msgstr "古腾堡编辑器"
+
+msgid "Classic Editor"
+msgstr "经典编辑器"
+
+msgid "none"
+msgstr "无"
+
+msgid "Display page parameters"
+msgstr "显示页面参数"
+
+msgid "Right column"
+msgstr "右侧栏目"
+
+msgid "Top Toolbar"
+msgstr "顶部工具栏"
+
+msgid "Image aspect ratio"
+msgstr "图片高宽比"
+
+msgid "Fill in the aspect ratio of the image, for example: 70%"
+msgstr "填入图片高宽比，例如：70%"
+
+msgid "Dark mode"
+msgstr "暗黑模式"
+
+msgid "Anti brute force cracking"
+msgstr "防暴力破解"
+
+msgid "Within one hour, there were 0 IP addresses and 0 login failures"
+msgstr "一个小时内有0个IP，0次登录失败"
+
+msgid "Payment QR code"
+msgstr "收款二维码"
+
+msgid "QR code title"
+msgstr "二维码标题"
+
+msgid "Editor"
+msgstr "编辑器"
+
+msgid "Card"
+msgstr "卡片"
+
+msgid "Articles"
+msgstr "文章"
+
+msgid "Full width"
+msgstr "全宽"
+
+msgid "Layout"
+msgstr "布局"
+
+msgid "List"
+msgstr "列表"
+
+
+# 配置页面 - 首页设置 - 布局设置
+###############################################################################
+
+msgid "Layout setting"
+msgstr "布局设置"
+
+msgid "Sliders"
+msgstr "幻灯片"
+
+msgid "Recommendation"
+msgstr "热门推荐"
+
+msgid "Latest"
+msgstr "最新文章"
+
+msgid "Links"
+msgstr "友情链接"
+
+
+# 配置页面 - 首页设置 - 幻灯片模块
+###############################################################################
+
+msgid "Slide height"
+msgstr "幻灯片高度"
+
+msgid "Slide list"
+msgstr "幻灯片列表"
+
+
+# 配置页面 - 首页设置 - 推荐模块
+###############################################################################
+
+msgid "Hot topics"
+msgstr "推荐模块标题"
+
+msgid "Recommended module"
+msgstr "推荐模块"
+
+msgid "Recommended List"
+msgstr "推荐列表"
+
+
+# 配置页面 - 首页设置 - 文章列表
+###############################################################################
+msgid "Category"
+msgstr "文章分类"
+
+msgid "Exclude classification"
+msgstr "排除分类"
+
+msgid "Auto Load"
+msgstr "自动加载"
+
+msgid "Automatic loading times"
+msgstr "自动加载次数"
+
+
+# 配置页面 - 顶部设置
+###############################################################################
+msgid "header slogan"
+msgstr "顶部副标题"
+
+msgid "tel title"
+msgstr "电话标题"
+
+msgid "tel number"
+msgstr "电话号码"
+
+msgid "header image"
+msgstr "顶部图片"
+
+
+# 配置页面 - 底部设置
+###############################################################################
+msgid "display type"
+msgstr "显示类型"
+
+msgid "Footer copyright"
+msgstr "底部版权"
+
+msgid "Footer Logo"
+msgstr "底部LOGO"
+
+msgid "Footer description"
+msgstr "底部描述"
+
+msgid "qrcode description"
+msgstr "二维码描述"
+
+msgid "nav bar"
+msgstr "移动导航栏"
+
+msgid "nav bar settings"
+msgstr "导航栏设置"
+
+
+# 配置页面 - 文章设置
+###############################################################################
+
+msgid "Article settings"
+msgstr "文章设置"
+
+msgid "Number of rows and columns"
+msgstr "每行列数"
+
+msgid "Module Title"
+msgstr "模块标题"
+
+msgid "Article revision version"
+msgstr "文章修订版本"
+
+msgid "Article copyright statement"
+msgstr "文章版权声明"
+
+msgid "Code highlighting"
+msgstr "代码高亮"
+
+msgid "Generate table of contents"
+msgstr "生成目录"
+
+
+# 配置页面 - 邮箱设置
+###############################################################################
+msgid "Customize email"
+msgstr "自定义邮箱"
+
+msgid "SMTP address"
+msgstr "SMTP地址"
+
+msgid "SMTP port"
+msgstr "SMTP端口"
+
+msgid "SMTP account"
+msgstr "SMTP账户"
+
+msgid "SMTP password"
+msgstr "SMTP密码"
+
+msgid "Sender nickname"
+msgstr "发件人昵称"
+
+
+
+# 配置页面 - 默认数据
+###############################################################################
+
+msgid "Hello Mirage"
+msgstr "你好，Mirage"
+
+
+
+

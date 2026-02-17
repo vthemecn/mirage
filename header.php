@@ -21,8 +21,8 @@ $sidebar_position = '';
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
-    $keywords    = $vt_config['meta_keywords'];
-    $description = $vt_config['meta_description'];
+    $keywords    = $vt_config['keywords'];
+    $description = $vt_config['description'];
     if (is_home()) {
     } elseif (is_category()) {
         // $keywords = single_cat_title('', false);
@@ -34,7 +34,7 @@ $sidebar_position = '';
         $description = get_the_excerpt();
     }
     $keywords    = $keywords ? trim(strip_tags($keywords)) : '';
-    $description = $description ? trim(strip_tags($description)) : $vt_config['meta_description'];
+    $description = $description ? trim(strip_tags($description)) : $vt_config['description'];
     ?>
     <meta name="keywords" content="<?php echo $keywords ?>">
     <meta name="description" content="<?php echo $description ?>">
