@@ -10,14 +10,14 @@
   height: auto;
   background-color: var(--vt-bg-color-card);
   box-shadow: 0 0 1px 0 var(--vt-shadow-color);
-  color: var(--vt-text-color);
+  color: var(--vt-text-color-grey);
   font-size: var(--vt-font-size-sm);
-  padding: 25px 0;
+  padding: 45px 0;
 }
 
 .footer a {
   font-size: var(--vt-font-size-sm);
-  color: var(--vt-text-color);
+  color: var(--vt-text-color-grey);
 }
 
 .footer-container {
@@ -59,4 +59,43 @@ footer[darkness] a {
 }
 
 
+
+.footer-sns{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: -10px 0 15px 0;
+  padding: 0 30px;
+}
+.footer-sns a{ margin:0 6px; }
+.footer-sns img{ width: 35px; height: 35px;}
+@media only screen and (min-width: 768px) {
+  .footer-sns a{ margin:0 15px 0 0; }
+}
+
+
+.footer-links{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 0 8px 0;
+  padding: 0 30px;
+}
+.footer-links a{
+  display: inline-block;
+  position: relative;
+  margin: 0 30px 10px 0;
+}
+.footer-links a::after{
+  content: '';
+  width: 0;
+  height: 10px;
+  border-right: 1px solid var(--vt-text-color-grey);
+  position: absolute;
+  right: -15px;
+  top: 2px;
+}
+.footer-links a:last-child{ margin: 0; }
+.footer-links a:last-child::after { display: none; }
 

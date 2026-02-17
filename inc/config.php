@@ -49,7 +49,7 @@ if( class_exists( 'CSF' ) ) {
                 'id'         => 'update_is_on',
                 'type'       => 'radio',
                 'title'      => __('Update prompt','vt'),
-                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
+                'options'    => array('1' => __('On','vt'), '0' => __('Off','vt')),
                 'default'    => '0',
                 'inline' => true,
                 'desc' => __('After closing, there will be no prompts for PHP version, theme, and plugin updates','vt')
@@ -59,7 +59,7 @@ if( class_exists( 'CSF' ) ) {
                 'id'         => 'page_data_type',
                 'type'       => 'radio',
                 'title'      => __('Display page parameters','vt'),
-                'options'    => array('1' => __('display','vt'), '0' => __('hide','vt')),
+                'options'    => array('0' => __('Hide','vt'), '1' => __('Display','vt'), '2'=>'console.log'),
                 'default'    => '0',
                 'inline' => true
             ),
@@ -68,8 +68,8 @@ if( class_exists( 'CSF' ) ) {
                 'type'       => 'radio',
                 'title'      => __('Dark mode','vt'),
                 'options'    => array(
-                    '1' => __('on','vt'),
-                    '0' => __('off','vt'),
+                    '1' => __('On','vt'),
+                    '0' => __('Off','vt'),
                     '2' => __('Follow the system','vt'),
                 ),
                 'default'    => '1',
@@ -93,7 +93,7 @@ if( class_exists( 'CSF' ) ) {
                 'id'         => 'attempts_is_on',
                 'type'       => 'radio',
                 'title'      => __('Anti brute force cracking','vt'),
-                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
+                'options'    => array('1' => __('On','vt'), '0' => __('Off','vt')),
                 'default'    => '1',
                 'desc'       => $attempts_text,
                 'inline'     => true
@@ -113,12 +113,12 @@ if( class_exists( 'CSF' ) ) {
             array(
                 'id'    => 'keywords',
                 'type'  => 'text',
-                'title' => __('keywords','vt')
+                'title' => __('Keywords','vt')
             ),
             array(
                 'id'    => 'description',
                 'type'  => 'textarea',
-                'title' => __('description','vt')
+                'title' => __('Description','vt')
             ),
         )
     ));
@@ -146,8 +146,8 @@ if( class_exists( 'CSF' ) ) {
                 'id'             => 'home_layout',
                 'type'           => 'sorter',
                 'title'          => '',
-                'enabled_title'  => __('display','vt'),
-                'disabled_title' => __('hide','vt'),
+                'enabled_title'  => __('Display','vt'),
+                'disabled_title' => __('Hide','vt'),
                 'default'        => array(
                     'enabled'  => array(
                         'slider'   => __('Sliders','vt'),
@@ -173,7 +173,7 @@ if( class_exists( 'CSF' ) ) {
             array(
                 'id'      => 'slider_autoplay',
                 'type'    => 'switcher',
-                'title'   => __('autoplay','vt'),
+                'title'   => __('Autoplay','vt'),
                 'label'   => '',
                 'default' => true,
             ),
@@ -191,12 +191,12 @@ if( class_exists( 'CSF' ) ) {
                     array(
                         'id'      => 'title',
                         'type'    => 'text',
-                        'title'   => __('title','vt')
+                        'title'   => __('Title','vt')
                     ),
                     array(
                         'id'          => 'image',
                         'type'        => 'upload',
-                        'title'       => __('upload','vt'),
+                        'title'       => __('Upload','vt'),
                         'library'     => 'image',
                         'placeholder' => 'http://',
                         'preview'     => true
@@ -204,13 +204,13 @@ if( class_exists( 'CSF' ) ) {
                     array(
                         'id'      => 'target',
                         'type'    => 'switcher',
-                        'title'   => __('new window opens link','vt'),
+                        'title'   => __('New window opens link','vt'),
                         'label'   => ''
                     ),
                     array(
                         'id'      => 'link',
                         'type'    => 'text',
-                        'title'   => __('link address','vt')
+                        'title'   => __('Link address','vt')
                     ),
                 ),
                 'default' => array(
@@ -236,12 +236,12 @@ if( class_exists( 'CSF' ) ) {
                     array(
                         'id'      => 'title',
                         'type'    => 'text',
-                        'title'   => __('title','vt')
+                        'title'   => __('Title','vt')
                     ),
                     array(
                         'id'          => 'image',
                         'type'        => 'upload',
-                        'title'       => __('upload','vt'),
+                        'title'       => __('Upload','vt'),
                         'library'     => 'image',
                         'placeholder' => 'http://',
                         'preview'     => true
@@ -249,13 +249,13 @@ if( class_exists( 'CSF' ) ) {
                     array(
                         'id'      => 'target',
                         'type'    => 'switcher',
-                        'title'   => __('new window opens link','vt'),
+                        'title'   => __('New window opens link','vt'),
                         'label'   => ''
                     ),
                     array(
                         'id'      => 'link',
                         'type'    => 'text',
-                        'title'   => __('link address','vt')
+                        'title'   => __('Link address','vt')
                     ),
                 ),
                 'default' => array(
@@ -286,7 +286,7 @@ if( class_exists( 'CSF' ) ) {
                 'id'    => 'hot_is_show',
                 'type'  => 'radio',
                 'title' => __('Recommended module','vt'),
-                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
+                'options'    => array('1' => __('On','vt'), '0' => __('Off','vt')),
                 'default'    => '1',
                 'inline' => true
             ),
@@ -369,7 +369,7 @@ if( class_exists( 'CSF' ) ) {
                 'id'    => 'posts_auto_load',
                 'type'  => 'radio',
                 'title' => __('Auto Load','vt'),
-                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
+                'options'    => array('1' => __('On','vt'), '0' => __('Off','vt')),
                 'default'    => '1',
                 'inline' => true,
                 'dependency' => array('posts_nav', '==', '1'),
@@ -435,7 +435,7 @@ if( class_exists( 'CSF' ) ) {
                 'id'         => 'show_admin_bar',
                 'type'       => 'radio',
                 'title'      => __('Top Toolbar','vt'),
-                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
+                'options'    => array('1' => __('On','vt'), '0' => __('Off','vt')),
                 'default'    => '0',
                 'inline' => true
             ),
@@ -461,7 +461,7 @@ if( class_exists( 'CSF' ) ) {
                 'id'    => 'footer_copyright',
                 'type'  => 'textarea',
                 'title' => __('Footer copyright','vt'),
-                'default' => '&copy; '.date('Y').' <a href="http://www.vtheme.cn">vtheme.cn</a> All Rights Reserved.<br/>'
+                'default' => '&copy; '.date('Y').' <a href="http://www.vtheme.cn">VTHEME.cn</a> All Rights Reserved.'
             ),
             array(
                 'id'       => 'footer_js',
@@ -474,7 +474,85 @@ if( class_exists( 'CSF' ) ) {
                 // ),
                 'sanitize' => false,
                 'default'  => '',
-            )
+            ),
+            array(
+                'id'         => 'sns_items',
+                'type'       => 'group',
+                'title'      => __('SNS links','vt'),
+                'fields'     => array(
+                    array(
+                        'id'      => 'title',
+                        'type'    => 'text',
+                        'title'   => __('Title','vt')
+                    ),
+                    array(
+                        'id'          => 'image',
+                        'type'        => 'upload',
+                        'title'       => __('Upload','vt'),
+                        'library'     => 'image',
+                        'placeholder' => 'http://',
+                        'preview'     => true
+                    ),
+                    array(
+                        'id'      => 'link',
+                        'type'    => 'text',
+                        'title'   => __('Link','vt'),
+                        'default' => '',
+                    )
+                ),
+                'default' => array(
+                                array(
+                                    'title' => 'Gitee',
+                                    'image' => get_template_directory_uri() . '/assets/images/sns-gitee.png',
+                                    'link' => 'https://gitee.com/'
+                                ),
+                                array(
+                                    'title' => 'Github',
+                                    'image' => get_template_directory_uri() . '/assets/images/sns-github.png',
+                                    'link' => 'https://github.com/'
+                                ),
+                                array(
+                                    'title' => '抖音',
+                                    'image' => get_template_directory_uri() . '/assets/images/sns-douyin.png',
+                                    'link' => 'https://douyin.com/'
+                                ),
+                                array(
+                                    'title' => 'Bilibili',
+                                    'image' => get_template_directory_uri() . '/assets/images/sns-bilibili.png',
+                                    'link' => 'https://bilibili.com/'
+                                ),
+                                array(
+                                    'title' => 'Weibo',
+                                    'image' => get_template_directory_uri() . '/assets/images/sns-weibo.png',
+                                    'link' => 'https://weibo.com/'
+                                )
+                            )
+            ),
+            array(
+                'id'         => 'footer_links',
+                'type'       => 'group',
+                'title'      => __('Links','vt'),
+                'fields'     => array(
+                    array(
+                        'id'      => 'title',
+                        'type'    => 'text',
+                        'title'   => __('Title','vt')
+                    ),
+                    array(
+                        'id'      => 'link',
+                        'type'    => 'text',
+                        'title'   => __('Link','vt'),
+                        'default' => '',
+                    )
+                ),
+                'default' => array(
+                                array( 'title' => 'VTHEME', 'link' => 'https://vtheme.cn/'),
+                                array( 'title' => 'Mirage theme', 'link' => 'https://vtheme.cn/mirage'),
+                                array( 'title' => 'WordPress', 'link' => 'https://wordpress.org/'),
+                                array( 'title' => 'WordPress CN', 'link' => 'https://cn.wordpress.org/'),
+                                array( 'title' => 'About', 'link' => home_url()),
+                            )
+            ),
         )
     ));
 
@@ -515,7 +593,7 @@ if( class_exists( 'CSF' ) ) {
                 'id'         => 'editor_revision',
                 'type'       => 'radio',
                 'title'      => __('Article revision version','vt'),
-                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
+                'options'    => array('1' => __('On','vt'), '0' => __('Off','vt')),
                 'default'    => '0',
                 'inline' => true
             ),
@@ -536,7 +614,7 @@ if( class_exists( 'CSF' ) ) {
                 'id'         => 'highlight_is_on',
                 'type'       => 'radio',
                 'title'      => __('Code highlighting','vt'),
-                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
+                'options'    => array('1' => __('On','vt'), '0' => __('Off','vt')),
                 'default'    => '1',
                 'inline' => true
             ),
@@ -544,24 +622,10 @@ if( class_exists( 'CSF' ) ) {
                 'id'         => 'toc_is_on',
                 'type'       => 'radio',
                 'title'      => __('Generate table of contents','vt'),
-                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
+                'options'    => array('1' => __('On','vt'), '0' => __('Off','vt')),
                 'default'    => '1',
                 'inline'     => true,
                 'desc'       => ''
-            ),
-            array(
-                'id'    => 'qrcode_image',
-                'type'  => 'upload',
-                'title' => __('Collection QR code','vt'),
-                'default' => get_template_directory_uri() . '/assets/images/qrcode.jpg',
-                'preview' => true
-            ),
-            array(
-                'id'    => 'qrcode_title',
-                'type'  => 'text',
-                'title' => __('QR code title','vt'),
-                'default' => __('QR code title','vt'),
-                'preview' => true
             ),
             array(
                 'id'    => 'image_items_height',
@@ -571,6 +635,37 @@ if( class_exists( 'CSF' ) ) {
                 'max'   => '300',
                 'default' => '100'
             ),
+            array(
+                'id'         => 'qrcode_items',
+                'type'       => 'group',
+                'title'      => __('Payment QR code','vt'),
+                'fields'     => array(
+                    array(
+                        'id'      => 'title',
+                        'type'    => 'text',
+                        'title'   => __('标题','vt'),
+                    ),
+                    array(
+                        'id'          => 'image',
+                        'type'        => 'upload',
+                        'title'       => __('上传','vt'),
+                        'library'     => 'image',
+                        'placeholder' => 'http://',
+                        'preview'     => true
+                    ),
+
+                ),
+                'default' => array(
+                                array(
+                                    'title' => __('扫描二维码','vt'),
+                                    'image' => get_template_directory_uri() . '/assets/images/qrcode.jpg'
+                                ),
+                                array(
+                                    'title' => __('扫描二维码','vt'),
+                                    'image' => get_template_directory_uri() . '/assets/images/qrcode.jpg'
+                                )
+                            )
+            )
             
         )   
     ));
@@ -587,7 +682,7 @@ if( class_exists( 'CSF' ) ) {
                 'id'    => 'smtp_is_on',
                 'type'  => 'radio',
                 'title' => __('Customize email','vt'),
-                'options'    => array('1' => __('on','vt'), '0' => __('off','vt')),
+                'options'    => array('1' => __('On','vt'), '0' => __('Off','vt')),
                 'default'    => '1',
                 'inline' => true,
                 'desc' => ""

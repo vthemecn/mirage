@@ -17,25 +17,25 @@ msgstr "海市蜃楼"
 # 通用的
 ###############################################################################
 
-msgid "on"
+msgid "On"
 msgstr "开启"
 
-msgid "off"
+msgid "Off"
 msgstr "关闭"
 
 msgid "Follow the system"
 msgstr "跟随系统"
 
-msgid "simple"
+msgid "Simple"
 msgstr "简单"
 
-msgid "all"
+msgid "All"
 msgstr "全部"
 
 msgid "Default Image"
 msgstr "默认图片"
 
-msgid "image"
+msgid "Image"
 msgstr "图片"
 
 msgid "light"
@@ -50,37 +50,37 @@ msgstr "二维码"
 msgid "Scan QR code"
 msgstr "扫描二维码"
 
-msgid "display"
+msgid "Display"
 msgstr "显示"
 
-msgid "hide"
+msgid "Hide"
 msgstr "隐藏"
 
-msgid "left"
+msgid "Left"
 msgstr "左侧"
 
-msgid "center"
+msgid "Center"
 msgstr "居中"
 
-msgid "right"
+msgid "Right"
 msgstr "右侧"
 
-msgid "title"
+msgid "Title"
 msgstr "标题"
 
-msgid "description"
+msgid "Description"
 msgstr "描述"
 
-msgid "upload"
+msgid "Upload"
 msgstr "上传"
 
-msgid "new window opens link"
+msgid "New window opens link"
 msgstr "新窗口打开链接"
 
-msgid "link address"
+msgid "Link address"
 msgstr "链接地址"
 
-msgid "autoplay"
+msgid "Autoplay"
 msgstr "自动播放"
 
 msgid "Support HTML"
@@ -89,10 +89,10 @@ msgstr "支持 HTML"
 msgid "Related Categories"
 msgstr "相关分类"
 
-msgid "icon"
+msgid "Icon"
 msgstr "图标"
 
-msgid "link"
+msgid "Link"
 msgstr "链接"
 
 msgid "unit"
@@ -119,7 +119,7 @@ msgstr "添加菜单"
 msgid "Sticky"
 msgstr "置顶"
 
-msgid "keywords"
+msgid "Keywords"
 msgstr "关键字"
 
 msgid "Backup"
@@ -270,6 +270,14 @@ msgid "No more"
 msgstr "没有了"
 
 
+# 前台 - Footer
+###############################################################################
+msgid "Query Count"
+msgstr "查询次数"
+
+msgid "Execution Time"
+msgstr "执行时间"
+
 # 其他
 ###############################################################################
 msgid "Please create a theme side menu"
@@ -406,9 +414,6 @@ msgstr "一个小时内有0个IP，0次登录失败"
 msgid "Payment QR code"
 msgstr "收款二维码"
 
-msgid "QR code title"
-msgstr "二维码标题"
-
 msgid "Editor"
 msgstr "编辑器"
 
@@ -514,6 +519,9 @@ msgstr "底部LOGO"
 msgid "Footer description"
 msgstr "底部描述"
 
+msgid "qrcode"
+msgstr "二维码"
+
 msgid "qrcode description"
 msgstr "二维码描述"
 
@@ -522,6 +530,9 @@ msgstr "移动导航栏"
 
 msgid "nav bar settings"
 msgstr "导航栏设置"
+
+msgid "SNS links"
+msgstr "SNS 链接"
 
 
 # 配置页面 - 文章设置

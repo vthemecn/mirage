@@ -143,7 +143,6 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
                             <img src="<?php echo $avatar ?>" class="avatar" alt="Avatar">
                             <div class="user-meta">
                                 <div class="user-nickname"><?php echo $nickname ?></div>
-                                <div class="user-more"><?php echo $description ?></div>
                             </div>
                         </div>
                         <div class="links-widget">

@@ -66,7 +66,7 @@ msgstr "右"
 msgid "title"
 msgstr "タイトル"
 
-msgid "description"
+msgid "Description"
 msgstr "説明"
 
 msgid "upload"
@@ -117,7 +117,7 @@ msgstr "メニューを追加"
 msgid "Sticky"
 msgstr "固定"
 
-msgid "keywords"
+msgid "Keywords"
 msgstr "キーワード"
 
 msgid "Backup"

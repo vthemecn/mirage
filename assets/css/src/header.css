@@ -634,6 +634,7 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   display: flex;
   align-items: center;
   padding: 10px 0;
+  margin-top: 0;
 }
 
 .user-widget-mobile .user-header .avatar {
@@ -655,17 +656,6 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   font-weight: bold;
   font-size: 16px;
   margin: 0 0 10px 0;
-}
-
-.user-widget-mobile .user-more {
-  color: var(--vt-text-color-grey);
-  font-size: 14px;
-  box-sizing: border-box;
-  padding: 0 20px;
-  line-height: 25px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .user-widget-mobile .links-widget {
