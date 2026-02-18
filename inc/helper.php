@@ -180,7 +180,38 @@ function get_user_by_id($user_id)
 }
 
 
-
+/**
+ * 缩减浏览次数显示
+ */
+function vt_format_view_count($count) {
+    $count = (int)$count;
+    $locale = get_locale();
+    
+    // 中文系语言
+    $is_chinese = in_array($locale, ['zh_CN', 'zh_TW', 'zh_HK', 'ja', 'ko_KR']);
+    
+    if ($count <= 1000) {
+        return number_format_i18n($count);
+    }
+    
+    if ($count < 10000) {
+        $num = rtrim(rtrim(round($count / 1000, 1), '0'), '.');
+        return $num . ($is_chinese ? '千' : 'k');
+    }
+    
+    if ($count < 100000000) {
+        if ($is_chinese) {
+            $num = rtrim(rtrim(round($count / 10000, 1), '0'), '.');
+            return $num . '万';
+        } else {
+            $num = rtrim(rtrim(round($count / 1000000, 1), '0'), '.');
+            return $num . 'M';
+        }
+    }
+    
+    $num = rtrim(rtrim(round($count / 100000000, 1), '0'), '.');
+    return $num . ($is_chinese ? '亿' : 'M');
+}
 
 
 

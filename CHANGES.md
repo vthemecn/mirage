@@ -5,6 +5,11 @@
 * 首页添加公告
 * 增加广告功能
 
+### 2.82.0
+- feat 浏览次数友善显示
+- fix 修复了 tag.php 和 search.php 的 bug
+- fix 处理 card 的相关样式
+
 ### 2.81.0
 - feat 底部打赏可以添加两个首款码
 - fixed 优化文章卡片，以兼容 Safari 浏览器

@@ -43,8 +43,6 @@ if($query_posts->posts){
     $banner_image = $thumbnail ? $thumbnail[0] : $banner_image;
 }
 
-// 列数
-$col_num_class = $config['list_cards_col'];
 ?>
 
 
@@ -61,7 +59,7 @@ $col_num_class = $config['list_cards_col'];
 <div class="main-container" <?=$full_width?> >
     <div class="main-widget">
         <?php if (have_posts()) : ?>
-            <div class="posts-widget <?php echo $col_num_class?>">
+            <div class="media-list <?= $vt_list_type_class; ?>">
                 <?php
                 wp_reset_postdata();
 
@@ -78,7 +76,7 @@ $col_num_class = $config['list_cards_col'];
 
                 <?php while ($query_posts->have_posts()) : ?>
                     <?php $query_posts->the_post(); ?>
-                    <?php get_template_part( 'templates/media/card' ); ?>
+                    <?php get_template_part( 'templates/card' ); ?>
                 <?php endwhile; ?>
                 <?php wp_reset_postdata(); ?>
             </div>

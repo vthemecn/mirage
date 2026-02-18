@@ -49,10 +49,17 @@
   height: 100%;
   object-fit: cover;
 }
+.article-box .author span {
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+} 
 
 .article-box .meta-item,
 .article-box .meta-item a {
   margin-right: 30px;
+  margin-bottom: 20px;
   font-size: 14px;
   color: var(--vt-text-color-grey);
 }

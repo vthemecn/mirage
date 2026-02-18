@@ -1,6 +1,6 @@
 <?php
 global $post;
-$target = 'target="_blank"';
+$target = false ? 'target="_blank"' : '';
 $avatar = vt_get_custom_avatar_url($post->post_author);
 ?>
 <div class="vt-card-item">
@@ -68,7 +68,7 @@ $avatar = vt_get_custom_avatar_url($post->post_author);
                 </div>
             <?php else: ?>
                 <?php $profile_url = home_url('/profile/' . $post->post_author)?>
-                <a class="vt-card-author" href="$profile_url" target="_blank">
+                <a class="vt-card-author" href="$profile_url">
                     <div class="avatar"><img src="<?=$avatar?>"></div>
                     <span><?= get_the_author_meta('display_name', $post->post_author) ?></span>
                 </a>
@@ -80,7 +80,7 @@ $avatar = vt_get_custom_avatar_url($post->post_author);
             <div class="vt-card-stats">
                 <span class="vt-user-post-stat-item">
                     <i class="fas fa-eye"></i>
-                    <?php echo get_post_views(get_the_ID()); ?>
+                    <?php echo vt_format_view_count(get_post_views(get_the_ID())); ?>
                 </span>
                 <span class="vt-user-post-stat-item">
                     <i class="fas fa-heart"></i>

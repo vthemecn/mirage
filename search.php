@@ -46,7 +46,7 @@ $banner_image = get_bloginfo('template_url') . '/assets/images/banner.jpg';
             <div class="media-list">
                 <?php while (have_posts()) : the_post(); ?>
                     <?php $vt_post_type = get_post_meta( $post->ID, 'vt_post_type', true ); ?>
-                    <?php get_template_part( 'templates/media/media' ); ?>
+                    <?php get_template_part( 'templates/card' ); ?>
                 <?php endwhile; ?>
             </div>
         <?php else : ?>

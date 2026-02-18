@@ -1724,10 +1724,17 @@ nav.pagination a:hover {
   height: 100%;
   object-fit: cover;
 }
+.article-box .author span {
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+} 
 
 .article-box .meta-item,
 .article-box .meta-item a {
   margin-right: 30px;
+  margin-bottom: 20px;
   font-size: 14px;
   color: var(--vt-text-color-grey);
 }
@@ -2179,7 +2186,7 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
   overflow: hidden;
   border-radius: 8px;
   position: relative;
-  margin: 0 30px 0 0;
+  margin: 0 12px 0 0;
   align-self: flex-start;
   /* outline: 1px solid green; */
 }
@@ -2225,6 +2232,10 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
 .vt-card-thumbnail .vt-card-badget.vip{
   background-color: rgba(247, 195, 46, 0.75);
   color: rgb(149, 0, 0);
+}
+.vt-card-thumbnail .vt-card-badget.sticky{
+  background-color: var(--vt-color-danger);
+  color: var(--vt-text-color-inverse);
 }
 
 /* 内容区域 */
@@ -2329,7 +2340,7 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
   border-radius: 50%;
 }
 .vt-card-author span{
-  display: inline-block !important;
+  display: inline-block;
   max-width: 80px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2361,6 +2372,9 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
   .vt-card-item {
     padding: 20px;
   }
+  .vt-card-item .vt-card-thumbnail {
+    margin: 0 18px 0 0;
+  }
 }
 
 /*****************************************************************************/
@@ -2383,6 +2397,45 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
 }
 
 /*****************************************************************************/
+
+/**
+ * 窄屏模式，隐藏某些元素
+ */
+.vt-card-item .vt-card-meta,
+.vt-card-item .vt-card-time,
+.vt-card-item .vt-user-post-stat-item:nth-child(2),
+.vt-card-item .vt-user-post-stat-item:nth-child(3),
+.vt-card-item .vt-card-excerpt{
+  display: none;
+}
+ 
+@media (min-width: 481px) {
+  .vt-card-item .vt-card-meta,
+  .vt-card-item .vt-card-author span,
+  .vt-card-item .vt-user-post-stat-item:nth-child(2),
+  .vt-card-item .vt-user-post-stat-item:nth-child(3){
+    display: flex;
+  }
+  .vt-card-item .vt-card-excerpt{
+    display: none;
+  }
+  .vt-card-item .vt-card-time{
+    display: none;
+  }
+}
+
+@media (min-width: 769px) { 
+  .vt-card-item .vt-card-excerpt{
+    display: -webkit-box;
+  }
+  .vt-card-item .vt-card-time{
+    display: flex;
+  }
+}
+ 
+
+/*****************************************************************************/
+
 /**
  * 卡片样式
  */
@@ -2396,39 +2449,28 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
   margin: 10px 0 0 0;
 }
 
-
 /**
- * 窄屏模式，隐藏某些元素
+ * 窄屏卡片
  */
-.vt-card-item .vt-card-meta,
-.vt-card-item .vt-card-author span,
-.vt-card-item .vt-user-post-stat-item:nth-child(2),
-.vt-card-item .vt-user-post-stat-item:nth-child(3),
-.vt-card-item .vt-card-excerpt{
+.vt-column .vt-card-item .vt-card-time{
   display: none;
 }
-
+  
 @media (min-width: 481px) {
-  .vt-card-item .vt-card-meta,
-  .vt-card-item .vt-card-author span,
-  .vt-card-item .vt-user-post-stat-item:nth-child(2),
-  .vt-card-item .vt-user-post-stat-item:nth-child(3){
-    display: flex;
-  }
-  .vt-card-item .vt-card-excerpt{
-    display: -webkit-box;
-  }
+
 }
+
+
+/*****************************************************************************/
 
 
 /**
  * 样式覆盖
  */
-.vt-card-item.vt-no-border{
+ .vt-card-item.vt-no-border{
   border: none;
 }
-
-
+ 
 /*
 * 文章列表样式
 */

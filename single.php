@@ -95,7 +95,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                 <?php
                 $post_categories = wp_get_post_categories($vt_post_id);
                 ?>
-                <div class='meta-item'>
+                <div class='meta-item category'>
                     <i class="fa-solid fa-folder"></i><?php foreach ($post_categories as $c): ?><?php $cat = get_category($c); ?><a href="<?=esc_url(get_category_link($cat->term_id))?>" class="category-meta-item"  target="_blank"><?=$cat->name?></a>
                     <?php endforeach; ?>
                 </div>
