@@ -89,13 +89,15 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   right: 0;
   width: 65vw;
   height: 100vh;
-  flex-direction: column;
   align-items: center;
   z-index: 6;
+  display: flex;
+  flex-direction: column;
 }
 
 .header.mobile .mobile-menu .action-widget {
   height: 50px;
+  width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -125,6 +127,7 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   overflow-y: scroll;
   scrollbar-width: none;
   height: calc(100vh - 400px);
+  flex-grow: 1;
 }
 .header.mobile .mobile-menu .mobile-ul::-webkit-scrollbar {
   display: none;

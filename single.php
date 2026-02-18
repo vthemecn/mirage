@@ -169,13 +169,6 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
             </div>
 
             <div class="content-action">
-                <script type="text/javascript">
-                var post_object = {
-                    post_url: "<?php echo get_permalink(); ?>",
-                    post_id: "<?= get_the_ID(); ?>",
-                };
-                </script>
-
                 <div class="widget-action like <?php echo $is_like ? ' active' : '' ?>">
                     <i class="fa-solid fa-heart"></i>
                     <span><?= $is_like ? __('Remove like','vt') : __('Like','vt')?></span>
@@ -349,23 +342,29 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
 </div>
 
 
-<?php
-$qrcode_image = $config['qrcode_image'] ? $config['qrcode_image'] : get_template_directory_uri() . '/assets/images/default.jpg';
-?>
 <div class="vt-dialog" id="coin-dialog" class="normal-dialog">
     <div class="coin-dialog-widget dialog-widget">
         <a href="javascript:;" class="close-button close">
             <i class="fa-solid fa-xmark"></i>
         </a>
-        <div class="coin-widget">
-            <img src="<?= $qrcode_image?>">
+        <div class="coin-widget-list">
+            <?php foreach($config['qrcode_items'] as $item):?>
+                <div class="coin-widget">
+                    <img src="<?= $item['image']?>">
+                    <div class="coin-info"><?= $item['title']?></div>
+                </div>
+            <?php endforeach; ?>
         </div>
-        <div class="coin-info"><?=$config['qrcode_title']?></div>
     </div>
 </div>
 
 
-<!-- 已将必要的隐藏字段移至 content-action 区域 -->
+<script type="text/javascript">
+var post_object = {
+    post_url: "<?php echo get_permalink(); ?>",
+    post_id: "<?= get_the_ID(); ?>",
+};
+</script>
 
 <?php if($config['highlight_is_on']):?>
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/assets/lib/prism/prism.css">

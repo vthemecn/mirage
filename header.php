@@ -123,6 +123,7 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
             <?php endif */ ?>
         </div>
 
+
         <!-- 移动端菜单 -->
         <div class="mobile-menu-modal">
             <div class="mobile-menu">
@@ -166,16 +167,18 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
                         </div>
                     </div>
                 <?php else: ?>
-                    <div class="user-widget-mobile">
-                        <div class="user-header login-button open-login-dialog">
-                            <?php $avatar = vt_get_custom_avatar_url($current_user->ID) ?>
-                            <img src="<?=$avatar ?>" class="avatar" alt="Avatar">
-                            <div class="user-meta">
-                                <div class="user-nickname" style="cursor: pointer;"><?php _e('请登录', 'vt') ?></div>
-                                <div class="user-more"></div>
+                    <?php if(is_captain_active()):?>
+                        <div class="user-widget-mobile">
+                            <div class="user-header login-button open-login-dialog">
+                                <?php $avatar = vt_get_custom_avatar_url($current_user->ID) ?>
+                                <img src="<?=$avatar ?>" class="avatar" alt="Avatar">
+                                <div class="user-meta">
+                                    <div class="user-nickname" style="cursor: pointer;"><?php _e('请登录', 'vt') ?></div>
+                                    <div class="user-more"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
                 <?php endif ?>
 
                 <?php

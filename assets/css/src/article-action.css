@@ -47,7 +47,6 @@
   padding: 10px;
   border-radius: var(--vt-border-radius);
   background-color: var(--vt-bg-color-card);
-  box-shadow: 0 0 20px var(--vt-shadow-color);
   position: relative;
   color: var(--vt-text-color);
 }
@@ -61,11 +60,6 @@
   text-align: center;
   color: var(--vt-text-color-grey);
 }
-
-/* .share-dialog-widget .close-button i {
-  font-size: 23px;
-  font-weight: bold;
-} */
 
 .share-dialog-widget .share-card {
   margin: 15px 0 0 0;
@@ -176,26 +170,33 @@
 .coin-dialog-widget {
   box-sizing: border-box;
   font-size: 18px;
-  max-width: 100%;
+  max-width: 90%;
   padding: 15px !important;
   border-radius: var(--vt-border-radius);
   background-color: var(--vt-bg-color-card);
-  box-shadow: 0 0 20px var(--vt-shadow-color);
   position: relative;
   color: var(--vt-text-color);
 }
 
+.coin-dialog-widget .coin-widget-list{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
 .coin-dialog-widget .coin-widget {
   display: flex;
-  margin: 20px 0 0 0;
+  flex-direction: column;
+  margin: 20px 0 0 20px;
 }
+.coin-dialog-widget .coin-widget:first-child { margin-left: 0; }
 
 .coin-dialog-widget .coin-widget img {
-  width: 180px;
-  height: 180px;
+  width: 160px;
+  height: 160px;
 }
 
-.coin-dialog-widget .coin-info {
+.coin-dialog-widget .coin-widget .coin-info {
   font-size: 14px;
   text-align: center;
   line-height: 30px;

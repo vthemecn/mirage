@@ -1518,7 +1518,6 @@ nav.pagination a:hover {
   padding: 10px;
   border-radius: var(--vt-border-radius);
   background-color: var(--vt-bg-color-card);
-  box-shadow: 0 0 20px var(--vt-shadow-color);
   position: relative;
   color: var(--vt-text-color);
 }
@@ -1532,11 +1531,6 @@ nav.pagination a:hover {
   text-align: center;
   color: var(--vt-text-color-grey);
 }
-
-/* .share-dialog-widget .close-button i {
-  font-size: 23px;
-  font-weight: bold;
-} */
 
 .share-dialog-widget .share-card {
   margin: 15px 0 0 0;
@@ -1647,26 +1641,33 @@ nav.pagination a:hover {
 .coin-dialog-widget {
   box-sizing: border-box;
   font-size: 18px;
-  max-width: 100%;
+  max-width: 90%;
   padding: 15px !important;
   border-radius: var(--vt-border-radius);
   background-color: var(--vt-bg-color-card);
-  box-shadow: 0 0 20px var(--vt-shadow-color);
   position: relative;
   color: var(--vt-text-color);
 }
 
+.coin-dialog-widget .coin-widget-list{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
 .coin-dialog-widget .coin-widget {
   display: flex;
-  margin: 20px 0 0 0;
+  flex-direction: column;
+  margin: 20px 0 0 20px;
 }
+.coin-dialog-widget .coin-widget:first-child { margin-left: 0; }
 
 .coin-dialog-widget .coin-widget img {
-  width: 180px;
-  height: 180px;
+  width: 160px;
+  height: 160px;
 }
 
-.coin-dialog-widget .coin-info {
+.coin-dialog-widget .coin-widget .coin-info {
   font-size: 14px;
   text-align: center;
   line-height: 30px;
@@ -2150,7 +2151,7 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
 }
 
 /**
- * 通用文章卡片 20250209
+ * 通用文章卡片 20250209, 20250218
  *
  * @author vthemecn <mail@vtheme.cn>
  * @link https://vtheme.cn
@@ -2162,11 +2163,9 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  gap: 15px;
   box-sizing: border-box;
   padding: 15px;
   margin: 10px 0;
-  /* border: 1px solid var(--vt-border-color); */
   transition: background-color 0.3s ease;
   border-radius: var(--vt-border-radius);
   background-color: var(--vt-bg-color-card);
@@ -2176,22 +2175,33 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
 .vt-card-thumbnail {
   flex: 0 0 auto;
   width: 120px;
-  aspect-ratio: 1 / 0.6;
+  height: auto;
   overflow: hidden;
   border-radius: 8px;
   position: relative;
+  margin: 0 30px 0 0;
+  align-self: flex-start;
+  /* outline: 1px solid green; */
 }
+
 .vt-card-thumbnail a{
   display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
+  padding-bottom: 68%;
+  /* background-color: aqua; */
+  
 }
 
-.vt-card-thumbnail img {
+.vt-card-thumbnail a img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* display: none; */
 }
 
 .vt-card-item:hover .vt-card-thumbnail img {
@@ -2204,7 +2214,6 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
   position: absolute;
   top: 10px;
   left: 10px;
-  gap: 5px;
 }
 .vt-card-thumbnail .vt-card-badget{
   padding: 3px 5px;
@@ -2255,19 +2264,20 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
   color: var(--vt-text-color-grey);
   display: flex;
   overflow-x: scroll;
-  gap: 5px;
 }
 
 .vt-card-tag {
   flex: 0 0 auto;
   display: inline-block;
   padding: 2px 8px;
+  margin: 0 7px 0 0;
   background-color: var(--vt-bg-color-grey);
   color: var(--vt-text-color-grey);
   font-size: 12px;
   text-decoration: none;
   border-radius: 3px;
   transition: all 0.3s ease;
+  
 }
 .vt-card-tag:hover {
   background-color: var(--vt-color-primary);
@@ -2297,7 +2307,6 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 10px;
   margin-top: auto;
   font-size: 13px;
   color: var(--vt-text-color-grey);
@@ -2308,10 +2317,11 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
   color: var(--vt-text-color-grey);
 }
 
+.vt-card-footer i{ margin:0 5px 0 0; }
+
 .vt-card-author {
   display: flex;
   align-items: center;
-  gap: 5px;
 }
 .vt-card-author img {
   width: 20px;
@@ -2324,24 +2334,24 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin: 0 0 0 5px;
 }
 
 .vt-card-time {
   display: flex;
   align-items: center;
-  gap: 5px;
+  margin: 0 0 0 15px;
 }
 
 .vt-card-stats {
   display: flex;
-  gap: 10px;
   margin-left: auto;
 }
 
 .vt-user-post-stat-item {
   display: flex;
   align-items: center;
-  gap: 5px;
+  margin: 0 0 0 15px;
 }
 
 
@@ -2350,16 +2360,6 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
 @media (min-width: 481px) {
   .vt-card-item {
     padding: 20px;
-    gap: 20px;
-  }
-  
-  .vt-card-thumbnail {
-    flex: 0 0 200px;
-    height: auto;
-  }
-  
-  .vt-card-stats {
-    gap: 15px;
   }
 }
 
@@ -2373,7 +2373,6 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
   
   .vt-card-thumbnail {
     width: 220px;
-    aspect-ratio: 1 / 0.7;
   }
   
   .vt-card-footer {
@@ -2392,6 +2391,9 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
 }
 .vt-column .vt-card-item .vt-card-thumbnail {
   width: 100%;
+}
+.vt-column .vt-card-item .vt-card-body{
+  margin: 10px 0 0 0;
 }
 
 
@@ -2859,13 +2861,15 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   right: 0;
   width: 65vw;
   height: 100vh;
-  flex-direction: column;
   align-items: center;
   z-index: 6;
+  display: flex;
+  flex-direction: column;
 }
 
 .header.mobile .mobile-menu .action-widget {
   height: 50px;
+  width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -2895,6 +2899,7 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   overflow-y: scroll;
   scrollbar-width: none;
   height: calc(100vh - 400px);
+  flex-grow: 1;
 }
 .header.mobile .mobile-menu .mobile-ul::-webkit-scrollbar {
   display: none;
@@ -3882,6 +3887,10 @@ footer[darkness] a {
   margin: 15px 0 0 0;
   font-size: 22px;
   font-weight: bold;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .user-header .description {

@@ -1,5 +1,5 @@
 /**
- * 通用文章卡片 20250209
+ * 通用文章卡片 20250209, 20250218
  *
  * @author vthemecn <mail@vtheme.cn>
  * @link https://vtheme.cn
@@ -11,11 +11,9 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  gap: 15px;
   box-sizing: border-box;
   padding: 15px;
   margin: 10px 0;
-  /* border: 1px solid var(--vt-border-color); */
   transition: background-color 0.3s ease;
   border-radius: var(--vt-border-radius);
   background-color: var(--vt-bg-color-card);
@@ -25,22 +23,33 @@
 .vt-card-thumbnail {
   flex: 0 0 auto;
   width: 120px;
-  aspect-ratio: 1 / 0.6;
+  height: auto;
   overflow: hidden;
   border-radius: 8px;
   position: relative;
+  margin: 0 30px 0 0;
+  align-self: flex-start;
+  /* outline: 1px solid green; */
 }
+
 .vt-card-thumbnail a{
   display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
+  padding-bottom: 68%;
+  /* background-color: aqua; */
+  
 }
 
-.vt-card-thumbnail img {
+.vt-card-thumbnail a img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* display: none; */
 }
 
 .vt-card-item:hover .vt-card-thumbnail img {
@@ -53,7 +62,6 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  gap: 5px;
 }
 .vt-card-thumbnail .vt-card-badget{
   padding: 3px 5px;
@@ -104,19 +112,20 @@
   color: var(--vt-text-color-grey);
   display: flex;
   overflow-x: scroll;
-  gap: 5px;
 }
 
 .vt-card-tag {
   flex: 0 0 auto;
   display: inline-block;
   padding: 2px 8px;
+  margin: 0 7px 0 0;
   background-color: var(--vt-bg-color-grey);
   color: var(--vt-text-color-grey);
   font-size: 12px;
   text-decoration: none;
   border-radius: 3px;
   transition: all 0.3s ease;
+  
 }
 .vt-card-tag:hover {
   background-color: var(--vt-color-primary);
@@ -146,7 +155,6 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 10px;
   margin-top: auto;
   font-size: 13px;
   color: var(--vt-text-color-grey);
@@ -157,10 +165,11 @@
   color: var(--vt-text-color-grey);
 }
 
+.vt-card-footer i{ margin:0 5px 0 0; }
+
 .vt-card-author {
   display: flex;
   align-items: center;
-  gap: 5px;
 }
 .vt-card-author img {
   width: 20px;
@@ -173,24 +182,24 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin: 0 0 0 5px;
 }
 
 .vt-card-time {
   display: flex;
   align-items: center;
-  gap: 5px;
+  margin: 0 0 0 15px;
 }
 
 .vt-card-stats {
   display: flex;
-  gap: 10px;
   margin-left: auto;
 }
 
 .vt-user-post-stat-item {
   display: flex;
   align-items: center;
-  gap: 5px;
+  margin: 0 0 0 15px;
 }
 
 
@@ -199,16 +208,6 @@
 @media (min-width: 481px) {
   .vt-card-item {
     padding: 20px;
-    gap: 20px;
-  }
-  
-  .vt-card-thumbnail {
-    flex: 0 0 200px;
-    height: auto;
-  }
-  
-  .vt-card-stats {
-    gap: 15px;
   }
 }
 
@@ -222,7 +221,6 @@
   
   .vt-card-thumbnail {
     width: 220px;
-    aspect-ratio: 1 / 0.7;
   }
   
   .vt-card-footer {
@@ -241,6 +239,9 @@
 }
 .vt-column .vt-card-item .vt-card-thumbnail {
   width: 100%;
+}
+.vt-column .vt-card-item .vt-card-body{
+  margin: 10px 0 0 0;
 }
 
 
