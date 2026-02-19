@@ -5,6 +5,11 @@
 * 首页添加公告
 * 增加广告功能
 
+### 2.83.0
+- feat 添加广告设置和翻译文件
+- feat 各个页面添加广告
+- refactor 重构侧边栏
+
 ### 2.82.0
 - feat 浏览次数友善显示
 - fix 修复了 tag.php 和 search.php 的 bug

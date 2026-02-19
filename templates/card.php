@@ -9,7 +9,7 @@ $avatar = vt_get_custom_avatar_url($post->post_author);
             <?php if (has_post_thumbnail()) : ?>
                 <?php the_post_thumbnail('media'); ?>
             <?php else : ?>
-                <img src="<?= esc_url( TEMP_URL . '/assets/images/default.jpg'); ?>" alt="<?php the_title_attribute(); ?>" />
+                <img src="<?= esc_url( THEME_URL . '/assets/images/default.jpg'); ?>" alt="<?php the_title_attribute(); ?>" />
             <?php endif; ?>
             <div class="vt-card-badget-widget">
                 <?php if(is_sticky()): ?>

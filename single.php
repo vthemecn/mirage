@@ -110,6 +110,8 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
             </div>
             
             <div class="article-content content-style line-numbers">
+                <?= vt_theme_ad('ad_single_top'); ?>
+
                 <?php /* if(get_the_excerpt()): ?>
                     <div class="content-excerpt">
                         <?php echo get_the_excerpt() ?>
@@ -153,7 +155,6 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     </div>
                 <?php endif ?>
 
-
                 <?php
                 $tags = get_the_tags($vt_post_id);
                 ?>
@@ -166,6 +167,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     </div>
                 <?php endif; ?>
 
+                <?= vt_theme_ad('ad_single_bottom'); ?>
             </div>
 
             <div class="content-action">
@@ -309,11 +311,12 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
 
     </div><!-- .main-widget -->
 
-    <div class="sider little-widget">
-        <?php if ( is_active_sidebar( 'posts-sidebar' ) ) : ?>
-            <?php dynamic_sidebar( 'posts-sidebar' ); ?>
-        <?php endif; ?>
-    </div>
+    <?php
+    $full_width = false;
+    if(!$full_width){
+        get_sidebar();
+    }
+    ?>
 </div>
 
 

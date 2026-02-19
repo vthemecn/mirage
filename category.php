@@ -109,13 +109,11 @@ if($term_meta_thumbnail){
         
     </div>
 
-    <?php if(!$full_width):?>
-    <div class="sider little-widget">
-        <?php if ( is_active_sidebar( 'default-sidebar' ) ) { ?>
-            <?php dynamic_sidebar( 'default-sidebar' ); ?>
-        <?php } ?>
-    </div>
-    <?php endif; ?>
+    <?php
+    if(!$full_width){
+        get_sidebar();
+    }
+    ?>
 </div>
 
 

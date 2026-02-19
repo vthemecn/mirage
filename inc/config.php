@@ -1,5 +1,5 @@
 <?php
-require_once TEMP_DIR .'/inc/codestar/codestar-framework.php';
+require_once THEME_DIR .'/inc/codestar/codestar-framework.php';
 
 
 $attempts_text = "";
@@ -717,6 +717,7 @@ if( class_exists( 'CSF' ) ) {
         )
     ));
 
+    require_once THEME_DIR . '/inc/config/ads.php';
 
     /**
      * 备份

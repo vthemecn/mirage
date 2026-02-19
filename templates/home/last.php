@@ -15,7 +15,6 @@ if($vt_list_type > 0){
 
 <div class="main-container" <?=$full_width_class?>>
     <div class="main-widget">
-
         <?php if($config['hot_is_show']):?>
         <div class="hot-widget">
             <div class="header">
@@ -36,6 +35,9 @@ if($vt_list_type > 0){
             </div>
         </div>
         <?php endif;?>
+
+        
+        <?= vt_theme_ad('ad_header'); ?>
 
 
         <?php
@@ -163,16 +165,15 @@ if($vt_list_type > 0){
             'aria_label' => "",
         ));
         ?>
+
+        <?= vt_theme_ad('ad_footer'); ?>
     </div>
 
-
-    <?php if(!vt_get_config('full_width')):?>
-        <div class="sider little-widget">
-            <?php if ( is_active_sidebar( 'default-sidebar' ) ) : ?>
-                <?php dynamic_sidebar( 'default-sidebar' ); ?>
-            <?php endif; ?>
-        </div>
-    <?php endif; ?>
+    <?php
+    if(!vt_get_config('full_width')){
+        get_sidebar();
+    }
+    ?>
 
 </div>
 

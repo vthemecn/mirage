@@ -44,7 +44,7 @@ $version = $current_theme->get('Version');
 
 
 <?php
-require_once(TEMP_DIR . "/templates/bar.php");
+require_once(THEME_DIR . "/templates/bar.php");
 ?>
 
 <script src="<?php bloginfo('template_url'); ?>/assets/lib/qrcode.js"></script>

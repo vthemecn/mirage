@@ -8,8 +8,8 @@
  */
 
 define('THEME_OPTION_NAME', 'mirage');
-define('TEMP_DIR', get_template_directory());
-define('TEMP_URL', get_bloginfo('template_url'));
+define('THEME_DIR', get_template_directory());
+define('THEME_URL', get_bloginfo('template_url'));
 
 
 if (!function_exists('p')) :
@@ -41,18 +41,18 @@ function vt_get_config($key = null, $default = null)
 $config = vt_get_config();
 
 
-require_once TEMP_DIR . '/inc/helper.php';
-require_once TEMP_DIR . '/inc/i18n.php';
-require_once TEMP_DIR . '/inc/config.php';
-require_once TEMP_DIR . '/inc/menu.php';
-require_once TEMP_DIR . '/inc/widget.php';
-require_once TEMP_DIR . '/inc/setting.php';
-require_once TEMP_DIR . '/inc/switch.php';
-require_once TEMP_DIR . '/inc/shortcode.php';
-require_once TEMP_DIR . '/inc/category.php';
-require_once TEMP_DIR . '/inc/user.php';
-require_once TEMP_DIR . '/inc/validator/validator.php';
-require_once TEMP_DIR . '/inc/ajax.php';
+require_once THEME_DIR . '/inc/helper.php';
+require_once THEME_DIR . '/inc/i18n.php';
+require_once THEME_DIR . '/inc/config.php';
+require_once THEME_DIR . '/inc/menu.php';
+require_once THEME_DIR . '/inc/widget.php';
+require_once THEME_DIR . '/inc/setting.php';
+require_once THEME_DIR . '/inc/switch.php';
+require_once THEME_DIR . '/inc/shortcode.php';
+require_once THEME_DIR . '/inc/category.php';
+require_once THEME_DIR . '/inc/user.php';
+require_once THEME_DIR . '/inc/validator/validator.php';
+require_once THEME_DIR . '/inc/ajax.php';
 
 
 /**
@@ -147,7 +147,7 @@ if (!function_exists('vt_get_custom_avatar_url')) {
         if ($attachment_id) {
             $avatar = wp_get_attachment_image_src($attachment_id, 'medium')[0];
         } else {
-            $avatar = TEMP_URL . '/assets/images/avatar.jpg';
+            $avatar = THEME_URL . '/assets/images/avatar.jpg';
         }
         return $avatar;
     }
@@ -174,6 +174,59 @@ if (!function_exists('vt_get_thumbnail_url')) {
 }
 
 
+/**
+ * 显示广告
+ * 头部广告      ad_header
+ * 底部广告      ad_footer
+ * 侧边栏广告    ad_sidebar
+ * 文章头部广告  ad_single_top
+ * 文章底部广告  ad_single_bottom
+ */
+// function theme_ad($position) {
+//     $config = vt_get_config();
+    
+//     $enable = $config[$position . '_enable'] ?? false;
+//     $code = $config[$position . '_code'] ?? '';
+    
+//     // 未启用或无代码则返回空
+//     if (empty($enable) || empty($code)) {
+//         return '';
+//     }
+    
+//     $html = '<div class="vt-theme-ad ad-' . esc_attr($position) . '">' . $code . '</div>';
+//     return $html;
+// }
+function vt_theme_ad($position) {
+    $config = vt_get_config();
+    
+    $enable = $config[$position . '_enable'] ?? false;
+    $code = $config[$position . '_code'] ?? '';
+    $code_pc = $config[$position . '_code_pc'] ?? '';
+    
+    // 未启用则返回空
+    if (empty($enable)) {
+        return '';
+    }
+    
+    // 至少需要移动端代码
+    if (empty($code)) {
+        return '';
+    }
+    
+    $html = '<div class="vt-theme-ad ad-' . esc_attr($position) . '">';
+    
+    // 移动端广告（默认显示）
+    $html .= '<div class="ad-mobile">' . $code . '</div>';
+    
+    // PC 端广告（可选，不填则使用移动端代码）
+    if (!empty($code_pc)) {
+        $html .= '<div class="ad-pc">' . $code_pc . '</div>';
+    }
+    
+    $html .= '</div>';
+    
+    return $html;
+}
 
 
 

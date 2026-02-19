@@ -581,6 +581,35 @@ msgid "Sender nickname"
 msgstr "发件人昵称"
 
 
+# 配置页面 - 广告设置
+###############################################################################
+msgid "Ad settings"
+msgstr "广告设置"
+
+msgid "Header Ad"
+msgstr "头部广告"
+
+msgid "Footer Ad"
+msgstr "底部广告"
+
+msgid "Sidebar Ad"
+msgstr "侧边栏广告"
+
+msgid "Article Header Ad"
+msgstr "文章头部广告"
+
+msgid "Article Footer Ad"
+msgstr "文章底部广告"
+
+msgid "Mobile Code"
+msgstr "移动端代码"
+
+msgid "PC Code"
+msgstr "PC 端代码"
+
+msgid "AD Code for width > 481px"
+msgstr "宽度 > 481px 时显示（可选，不填则使用移动端代码）"
+
 
 # 配置页面 - 默认数据
 ###############################################################################

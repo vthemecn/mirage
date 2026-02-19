@@ -1,0 +1,92 @@
+/**
+ * 广告样式 - 移动端优先
+ * 文件位置：/assets/css/ads.css
+ */
+
+/* ========== 广告容器 ========== */
+.vt-theme-ad {
+  margin: 20px 0;
+  text-align: center;
+  clear: both;
+  border-radius: var(--vt-border-radius);
+  overflow: hidden;
+  transition: filter 0.3s ease;
+}
+
+.vt-theme-ad:hover {
+  filter: brightness(1.1);
+}
+
+.vt-theme-ad img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ========== 设备显示控制 ========== */
+
+/* 默认：移动端显示，PC 端隐藏 */
+.ad-mobile {
+  display: block;
+}
+
+.ad-pc {
+  display: none;
+}
+
+/* PC 端：宽度 > 481px 时，PC 端显示，移动端隐藏 */
+@media (min-width: 482px) {
+  .ad-mobile {
+    display: none;
+  }
+
+  .ad-pc {
+    display: block;
+  }
+}
+
+/* ========== 各广告位样式 ========== */
+
+/* 头部广告 */
+.ad-header {
+  margin: 0 0 20px 0;
+}
+
+/* 底部广告 */
+.ad-footer {
+  margin: 20px 0 0 0;
+}
+
+/* 侧边栏广告 */
+.ad-sidebar {
+  margin: 20px 0;
+}
+
+/* 文章头部广告 */
+.ad-single-top {
+  margin: 0 0 25px 0;
+}
+
+/* 文章底部广告 */
+.ad-single-bottom {
+  margin: 25px 0 0 0;
+}
+
+/* ========== 移动端优化 ========== */
+@media (max-width: 481px) {
+  .vt-theme-ad {
+    margin: 15px 0;
+  }
+
+  /* 移动端隐藏侧边栏广告（可选） */
+  .ad-sidebar {
+    display: none;
+  }
+}
+
+
+.vt-theme-ad.ad-ad_sidebar{ margin: 0; }
+.vt-theme-ad.ad-ad_sidebar .ad-pc{ display: none; }
+.vt-theme-ad.ad-ad_sidebar .ad-mobile{ display: block; }
+.vt-theme-ad.ad-ad_footer { margin: 0; }
