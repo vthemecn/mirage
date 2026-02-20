@@ -479,6 +479,10 @@ body:before {
   background-attachment: fixed;
   content: "";
 }
+body.dark-mode:before{
+  display: none !important;
+}
+
 
 a {
   color: var(--vt-text-color);
