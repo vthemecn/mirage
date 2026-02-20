@@ -10,7 +10,7 @@ add_filter( 'use_widgets_block_editor', '__return_false');
 
 function vt_widgets_init() {
     $args = array(
-        'name' => __( '默认侧边栏', 'vt' ),
+        'name' => __( 'Default Sidebar', 'vt' ),
         'id' => 'default-sidebar',
         'before_widget' => '',
         'after_widget' => '',
@@ -20,7 +20,7 @@ function vt_widgets_init() {
     register_sidebar($args);
 
     $args = array(
-        'name' => __( '文章页侧边栏', 'vt' ),
+        'name' => __( 'Post Sidebar', 'vt' ),
         'id' => 'posts-sidebar',
         'before_widget' => '',
         'after_widget' => '',
@@ -33,18 +33,18 @@ add_action('init', 'vt_widgets_init');
 
 
 /**
- * 最新文章
+ * Recent Posts
  */
 class ArticleWidget extends WP_Widget {
     function __construct(){
-        parent::__construct( 'image-article-list', '[Mirage] '.__( '最新文章', 'vt' ), array( 'description' => __('最新文章', 'vt' ) ) );
+        parent::__construct( 'image-article-list', '[Mirage] '.__( 'Recent Posts', 'vt' ), array( 'description' => __('Recent Posts', 'vt' ) ) );
     }
     function widget( $args, $instance ) {
         extract( $args, EXTR_SKIP );
         echo $before_widget;
     
         // 标题
-        $title = ! empty( $instance['title'] ) ? $instance['title'] : __( '最新文章', 'vt' );
+        $title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Recent Posts', 'vt' );
         $posts_per_page = (int) ( $instance['posts_per_page']) > 0 ? (int) ( $instance['posts_per_page']) : 4;
 
         // 构建查询参数
@@ -102,15 +102,15 @@ class ArticleWidget extends WP_Widget {
         $cat_id = !empty($instance['cat_id']) ? $instance['cat_id'] : '';
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?= __('标题','vt') ?>:</label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?= __('title','vt') ?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($title); ?>">
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>"><?= __('数量','vt') ?>:</label>
+            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>"><?= __('count','vt') ?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('posts_per_page'); ?>" name="<?php echo $this->get_field_name('posts_per_page'); ?>" value="<?php echo esc_attr($posts_per_page); ?>">
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('cat_id'); ?>"><?= __('分类ID','vt') ?>:</label>
+            <label for="<?php echo $this->get_field_id('cat_id'); ?>"><?= __('Category ID','vt') ?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('cat_id'); ?>" name="<?php echo $this->get_field_name('cat_id'); ?>" value="<?php echo esc_attr($cat_id); ?>">
         </p>
         <?php
@@ -127,11 +127,11 @@ class ArticleWidget extends WP_Widget {
 
 
 /**
- * 热门
+ * Popular
  */
 class HotWidget extends WP_Widget {
     function __construct(){
-       parent::__construct( 'hot-list', '[Mirage] '.__( '热门', 'vt' ), array( 'description' => __( '热门', 'vt' ) ) );
+       parent::__construct( 'hot-list', '[Mirage] '.__( 'Popular', 'vt' ), array( 'description' => __( 'Popular', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -140,7 +140,7 @@ class HotWidget extends WP_Widget {
 
         $vt_config = vt_get_config();
 
-        $title = !empty($instance['title']) ? $instance['title'] : __('热门文章', 'vt');
+        $title = !empty($instance['title']) ? $instance['title'] : __('Popular', 'vt');
         $posts_per_page = (int) ( $instance['posts_per_page']) > 0 ? (int) ( $instance['posts_per_page']) : 4;
 
         $args = array(
@@ -184,11 +184,11 @@ class HotWidget extends WP_Widget {
         $posts_per_page = !empty($instance['posts_per_page']) ? $instance['posts_per_page'] : '';
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?= __('标题','vt')?>:</label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?= __('title','vt')?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($title); ?>">
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>"><?= __('数量','vt')?>:</label>
+            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>"><?= __('count','vt')?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('posts_per_page'); ?>" name="<?php echo $this->get_field_name('posts_per_page'); ?>" value="<?php echo esc_attr($posts_per_page); ?>">
         </p>
         <?php
@@ -207,7 +207,7 @@ class HotWidget extends WP_Widget {
  */
 class CategoryWidget extends WP_Widget {
     function __construct(){
-        parent::__construct( 'category-list', '[Mirage] '.__( '分类列表', 'vt' ), array( 'description' => __( '分类列表', 'vt' ) ) );
+        parent::__construct( 'category-list', '[Mirage] '.__( 'Category List', 'vt' ), array( 'description' => __( 'Category List', 'vt' ) ) );
     }
  
     function widget( $args, $instance ){
@@ -216,7 +216,7 @@ class CategoryWidget extends WP_Widget {
 
         $vt_config = vt_get_config();
 
-        $title = isset($instance['title']) ? $instance['title'] : __('分类列表', 'vt');
+        $title = isset($instance['title']) ? $instance['title'] : __('Category List', 'vt');
         ?>
         <div class="category widget-container">
             <div class="widget-header">
@@ -261,7 +261,7 @@ class CategoryWidget extends WP_Widget {
     function form($instance) {
         ?>
         <p>
-            <?= __('请创建主题侧边菜单','vt') ?>
+            <?= __('Please create theme sidebar menu','vt') ?>
         </p>
         <?php
     }
@@ -332,13 +332,13 @@ class UserWidget extends WP_Widget {
                 </div>
                 <div class="user-meta">
                     <div class="meta-item">
-                        <span><?php echo $posts_counter ?></span> <span><?= __('文章','vt') ?></span>
+                        <span><?php echo $posts_counter ?></span> <span><?= __('Articles','vt') ?></span>
                     </div>
                     <div class="meta-item">
-                        <span><?php echo $comments_counter ?></span> <span><?= __('评论','vt') ?></span>
+                        <span><?php echo $comments_counter ?></span> <span><?= __('Comments','vt') ?></span>
                     </div>
                     <div class="meta-item">
-                        <span><?php echo $like_counter ?></span> <span><?= __('收藏','vt') ?></span>
+                        <span><?php echo $like_counter ?></span> <span><?= __('Like','vt') ?></span>
                     </div>
                 </div>
             </div>
@@ -355,7 +355,7 @@ class UserWidget extends WP_Widget {
         $post_type = !empty($instance['post_type']) ? $instance['post_type'] : '';
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?= __('标题','vt')?>:</label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?= __('title','vt')?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($title); ?>">
         </p>
         <?php
@@ -411,7 +411,7 @@ class TagsWidget extends WP_Widget {
         $title = !empty($instance['title']) ? $instance['title'] : '';
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?= __('标题','vt')?>:</label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?= __('title','vt')?>:</label>
             <input type="text" class="" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($title); ?>">
         </p>
         <?php
@@ -493,11 +493,11 @@ class CommentsWidget extends WP_Widget {
         $comments_per_page = !empty($instance['comments_per_page']) ? $instance['comments_per_page'] : '';
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?= __('标题','vt')?>:</label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?= __('title','vt')?>:</label>
             <input type="text" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($title); ?>">
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('comments_per_page'); ?>"><?= __('评论数量','vt')?>:</label>
+            <label for="<?php echo $this->get_field_id('comments_per_page'); ?>"><?= __('Count','vt')?>:</label>
             <input type="text" class="widefat" id="<?php echo $this->get_field_id('comments_per_page'); ?>" name="<?php echo $this->get_field_name('comments_per_page'); ?>" value="<?php echo esc_attr($comments_per_page); ?>">
         </p>
         <?php

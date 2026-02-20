@@ -67,19 +67,27 @@ function nav(){
   });
 }
 
-/* 头像点击 */
+
 function avatarShow(){
-  var avatarShowButton = document.querySelector('.header-top-avatar');
-  if(!avatarShowButton){
-    return false;
-  }
+  var btn = document.querySelector('.header-top-avatar');
+  var widget = document.querySelector('.user-widget');
+  var timer = null;
   
-  avatarShowButton.addEventListener('click', function(e){
-    this.classList.toggle('active');
-    if (this.classList.contains('active')) {
-      document.querySelector('.header.pc .user-widget').classList.add('show');
-    } else {
-      document.querySelector('.header.pc .user-widget').classList.remove('show');
-    }
-  });
+  if(!btn || !widget) return;
+  
+  var show = function(){
+    clearTimeout(timer);
+    widget.classList.add('show');
+  };
+  
+  var hide = function(){
+    timer = setTimeout(function(){
+      widget.classList.remove('show');
+    }, 200);
+  };
+  
+  btn.onmouseenter = show;
+  btn.onmouseleave = hide;
+  widget.onmouseenter = show;
+  widget.onmouseleave = hide;
 }

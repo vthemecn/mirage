@@ -124,7 +124,7 @@ if($vt_config['update_is_on'] == 0){
 /**
  * 是否禁用古腾堡编辑器，启用经典编辑器
  */
-if ($vt_config['editor_type'] == 1) {
+if ($vt_config['editor_type'] == 0) {
     /* Disable Gutenberg Block Editor */
     add_filter('use_block_editor_for_post', '__return_false', 10);
     /* Disable Widgets Block Editor */

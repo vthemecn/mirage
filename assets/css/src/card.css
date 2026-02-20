@@ -181,7 +181,7 @@
   border-radius: 50%;
 }
 .vt-card-author span{
-  display: inline-block;
+  display: inline-block !important;
   max-width: 80px;
   overflow: hidden;
   text-overflow: ellipsis;

@@ -59,7 +59,7 @@
 .article-box .meta-item,
 .article-box .meta-item a {
   margin-right: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   font-size: 14px;
   color: var(--vt-text-color-grey);
 }
@@ -227,6 +227,7 @@
   border: 1px solid var(--vt-border-color);
   border-radius: var(--vt-border-radius);
   padding: 15px;
+  margin: 20px 0;
 }
 .toc-header{
   display: flex;

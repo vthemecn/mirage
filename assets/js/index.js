@@ -726,21 +726,29 @@
     });
   }
 
-  /* 头像点击 */
+
   function avatarShow(){
-    var avatarShowButton = document.querySelector('.header-top-avatar');
-    if(!avatarShowButton){
-      return false;
-    }
+    var btn = document.querySelector('.header-top-avatar');
+    var widget = document.querySelector('.user-widget');
+    var timer = null;
     
-    avatarShowButton.addEventListener('click', function(e){
-      this.classList.toggle('active');
-      if (this.classList.contains('active')) {
-        document.querySelector('.header.pc .user-widget').classList.add('show');
-      } else {
-        document.querySelector('.header.pc .user-widget').classList.remove('show');
-      }
-    });
+    if(!btn || !widget) return;
+    
+    var show = function(){
+      clearTimeout(timer);
+      widget.classList.add('show');
+    };
+    
+    var hide = function(){
+      timer = setTimeout(function(){
+        widget.classList.remove('show');
+      }, 200);
+    };
+    
+    btn.onmouseenter = show;
+    btn.onmouseleave = hide;
+    widget.onmouseenter = show;
+    widget.onmouseleave = hide;
   }
 
   function homeInit() {
@@ -1175,13 +1183,14 @@
       
       const result = await response.json();
       
-      if(result.success) {
+      // 修改判断逻辑：检查是否有error字段来判断是否成功
+      if (!result.error) {
         showNotification('验证码已发送，请查收邮件', 'success');
         
         // 启动倒计时
         startCountdown(btn, originalText, 60);
       } else {
-        showNotification(result.data || result.message || '验证码发送失败', 'error');
+        showNotification(result.error.message || '验证码发送失败', 'error');
         btn.disabled = false;
         btn.textContent = originalText;
       }
@@ -1234,15 +1243,17 @@
       });
       
       const result = await response.json();
+      console.log('result', result);
       
-      if(result.success) {
+      // 修改判断逻辑：检查是否有error字段来判断是否成功
+      if (!result.error) {
         showNotification('登录成功，正在跳转...', 'success');
         // 登录成功，刷新页面
         setTimeout(() => {
           location.reload();
         }, 1000);
       } else {
-        showNotification(result.data || result.message || '登录失败，请重试', 'error');
+        showNotification(result.error.message || '登录失败，请重试', 'error');
       }
     } catch(error) {
       showNotification('网络错误，请稍后重试', 'error');
@@ -1261,6 +1272,7 @@
     const email = formData.get('email');
     const password = formData.get('password');
     const verificationCode = formData.get('verification_code');
+    const confirmPassword = formData.get('confirm_password'); // 修正确认密码字段名
     
     // 验证
     if (!username || !email || !password || !verificationCode) {
@@ -1302,14 +1314,15 @@
       
       const result = await response.json();
       
-      if(result.success) {
+      // 修改判断逻辑：检查是否有error字段来判断是否成功
+      if (!result.error) {
         showNotification('注册成功，正在自动登录...', 'success');
         // 注册成功，刷新页面以反映登录状态
         setTimeout(() => {
           location.reload();
         }, 1000);
       } else {
-        showNotification(result.data || result.message || '注册失败，请重试', 'error');
+        showNotification(result.error.message || '注册失败，请重试', 'error');
       }
     } catch(error) {
       showNotification('网络错误，请稍后重试', 'error');
@@ -1355,12 +1368,13 @@
       
       const result = await response.json();
       
-      if(result.success) {
+      // 修改判断逻辑：检查是否有error字段来判断是否成功
+      if (!result.error) {
         showNotification('密码重置验证码已发送到您的邮箱', 'success');
         // 显示第二步表单
         showForgotStep2();
       } else {
-        showNotification(result.data || result.message || '发送失败，请重试', 'error');
+        showNotification(result.error.message || '发送失败，请重试', 'error');
       }
     } catch(error) {
       showNotification('网络错误，请稍后重试', 'error');
@@ -1425,7 +1439,7 @@
           document.querySelector('.dialog-header .title').textContent = '用户登录';
         }, 1500);
       } else {
-        showNotification(result.data || result.message || '重置失败，请重试', 'error');
+        showNotification(result.error.message || '重置失败，请重试', 'error');
       }
     } catch(error) {
       showNotification('网络错误，请稍后重试', 'error');

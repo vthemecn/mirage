@@ -48,7 +48,6 @@ require_once THEME_DIR . '/inc/menu.php';
 require_once THEME_DIR . '/inc/widget.php';
 require_once THEME_DIR . '/inc/setting.php';
 require_once THEME_DIR . '/inc/switch.php';
-require_once THEME_DIR . '/inc/shortcode.php';
 require_once THEME_DIR . '/inc/category.php';
 require_once THEME_DIR . '/inc/user.php';
 require_once THEME_DIR . '/inc/validator/validator.php';

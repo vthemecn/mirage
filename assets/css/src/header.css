@@ -1,10 +1,6 @@
 /**
-* header 移动端菜单
-*/
-
-.no-scroll {
-  overflow-y: hidden;
-}
+ * header 移动端菜单
+ */
 
 .header.mobile {
   width: 100%;
@@ -59,9 +55,6 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
 }
 
 
-
-/*****************************************************************************/
-/*****************************************************************************/
 /*****************************************************************************/
 
 
@@ -259,8 +252,6 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
 
 
 /*****************************************************************************/
-/*****************************************************************************/
-/*****************************************************************************/
 
 
 /**
@@ -351,10 +342,18 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
     position: relative;
     top: -1px;
   }
-  .pc-nav li a i.fa-solid { font-size: 14px; font-weight: bold; }
+  .pc-nav li a i.fa-solid {
+    font-size: 10px;
+    font-weight: bold;
+  }
+  .pc-nav > li > a i.fa-solid {
+    position: relative;
+    left: 3px;
+    top: -2px;
+  }
   .pc-nav li a{
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
-}
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+  }
   .child-menu {
     background-color: var(--vt-bg-color-card);
     box-shadow: 0 0 3px 0 var(--vt-shadow-color);
@@ -393,6 +392,7 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   }
   .menu-item-has-children .menu-item-has-children i{
     top: 15px;
+    right: 10px;
   }
   .menu-item-has-children.active > a i {
     display: inline-block;
@@ -457,12 +457,21 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   .header.pc .search-toggle-button.active {
     color: var(--vt-color-primary);
   }
-  .header.pc .header-top-avatar {
+
+
+  /**
+   * 用户中心 - 头像按钮
+   */
+  .header.pc .header-top-profile {
+    position: relative;
+  }
+  .header-top-profile .header-top-avatar {
+    display: flex;
     width: 30px;
     height: 30px;
     margin-left: 10px;
   }
-  .header.pc .header-top-avatar img {
+  .header-top-profile .header-top-avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -475,63 +484,10 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
     clear: both;
   }
 
-  
-  /*****************************************************************************/
-  
-
-  /* 搜索框 */
-  .search-widget {
-    width: 100%;
-    min-height: 160px;
-    display: none;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background-color: var(--vt-bg-color-card);
-    box-shadow: 0 5px 5px 0 var(--vt-shadow-color);
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: center;
-    border-top: 1px solid var(--vt-border-color);
-  }
-  .search-widget.show {
-    display: flex;
-  }
-  .search-widget .close-widget {
-    width: 600px;
-    display: flex;
-    justify-content: flex-end;
-    padding-top: 15px;
-  }
-  .search-widget .close-widget a i {
-    font-size: 25px;
-  }
-  .search-widget .search {
-    display: flex;
-    width: 500px;
-    height: 40px;
-    margin-top: 20px;
-    justify-content: space-between;
-  }
-  .search-widget .search input {
-    width: 410px;
-    outline: none;
-    border: 1px solid var(--vt-border-color);
-    border-radius: var(--vt-border-radius);
-    text-indent: 10px;
-  }
-  .search-widget .search input:focus {
-    box-shadow: 0 0 3px 0 var(--vt-color-primary);
-  }
-  .search-widget .search .search-button {
-    width: 80px;
-    border: 1px solid var(--vt-color-primary);
-    background-color: var(--vt-color-primary);
-    border-radius: var(--vt-border-radius);
-  }
-  .search-widget .search-button i {
-    font-size: 18px;
-    color: var(--vt-text-color-inverse);
+  .header-top-profile .header-top-avatar:hover .user-widget,
+  .header-top-profile .header-top-avatar:hover + .user-widget,
+  .header-top-profile .user-widget:hover {
+    display: block;
   }
 
   
@@ -542,7 +498,7 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   .header.pc .user-widget {
     position: absolute;
     right: 0;
-    top: 60px;
+    top: 35px;
     width: 200px;
     min-height: 100px;
     padding: 15px;
@@ -581,6 +537,8 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   .user-widget .user-header .user-more {
     margin-top: 7px;
     color: var(--vt-text-color-grey);
+    line-height: 20px;
+    text-align: center;
   }
   .user-widget .links-widget {
     display: flex;
@@ -605,6 +563,65 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
 /*****************************************************************************/
 
 
+/* 搜索框 */
+.search-widget {
+  width: 100%;
+  min-height: 160px;
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  background-color: var(--vt-bg-color-card);
+  box-shadow: 0 5px 5px 0 var(--vt-shadow-color);
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px solid var(--vt-border-color);
+}
+.search-widget.show {
+  display: flex;
+}
+.search-widget .close-widget {
+  width: 600px;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 15px;
+}
+.search-widget .close-widget a i {
+  font-size: 25px;
+}
+.search-widget .search {
+  display: flex;
+  width: 500px;
+  height: 40px;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+.search-widget .search input {
+  width: 410px;
+  outline: none;
+  border: 1px solid var(--vt-border-color);
+  border-radius: var(--vt-border-radius);
+  text-indent: 10px;
+}
+.search-widget .search input:focus {
+  box-shadow: 0 0 3px 0 var(--vt-color-primary);
+}
+.search-widget .search .search-button {
+  width: 80px;
+  border: 1px solid var(--vt-color-primary);
+  background-color: var(--vt-color-primary);
+  border-radius: var(--vt-border-radius);
+}
+.search-widget .search-button i {
+  font-size: 18px;
+  color: var(--vt-text-color-inverse);
+}
+
+
+/*****************************************************************************/
+
+
 /* 样式覆盖 */
 .menu-item badge{
   font-size: 12px;
@@ -621,8 +638,8 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
 }
 
 
-
 /*****************************************************************************/
+
 
 /**
  * 移动端菜单
@@ -690,7 +707,4 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   margin-right: 10px;
   text-align: center;
 }
-
-
-
 

@@ -11,7 +11,7 @@ msgstr ""
 
 
 msgid "Mirage"
-msgstr "海市蜃楼"
+msgstr "Mirage"
 
 
 # 通用的
@@ -324,6 +324,34 @@ msgstr "请登录"
 
 msgid "Invalid object ID"
 msgstr "无效的对象ID"
+
+
+# 小工具
+###############################################################################
+msgid "Default Sidebar"
+msgstr "默认侧边栏"
+
+msgid "Post Sidebar"
+msgstr "文章页侧边栏"
+
+msgid "Recent Posts"
+msgstr "最新文章"
+
+msgid "Popular"
+msgstr "热门"
+
+msgid "Category List"
+msgstr "分类列表"
+
+msgid "Please create theme sidebar menu"
+msgstr "请创建主题侧边菜单"
+
+msgid "User Card"
+msgstr "用户卡片"
+
+msgid "User Card Description"
+msgstr "用户卡片描述"
+
 
 
 # 配置页面

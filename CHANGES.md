@@ -5,6 +5,13 @@
 * 首页添加公告
 * 增加广告功能
 
+### 2.84.0
+- fix 移除短代码
+- fix 修改文章页侧边栏的bug
+- feat 新增主题screenshot.png
+- refactor 修改广告图片
+- refactor 优化了pc端用户头像弹窗交互方式
+
 ### 2.83.0
 - feat 添加广告设置和翻译文件
 - feat 各个页面添加广告

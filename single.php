@@ -313,10 +313,16 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
 
     <?php
     $full_width = false;
-    if(!$full_width){
-        get_sidebar();
-    }
+    // if(!$full_width){ get_sidebar(); }
     ?>
+    <div class="sider little-widget">
+        <?php if ( is_active_sidebar( 'posts-sidebar' ) ) { ?>
+            <?php dynamic_sidebar( 'posts-sidebar' ); ?>
+        <?php } ?>
+
+        <?= vt_theme_ad('ad_sidebar'); ?>
+    </div>
+</div>
 </div>
 
 

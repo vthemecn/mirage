@@ -121,13 +121,14 @@ async function handleSendVerificationCode() {
     
     const result = await response.json();
     
-    if(result.success) {
+    // 修改判断逻辑：检查是否有error字段来判断是否成功
+    if (!result.error) {
       showNotification('验证码已发送，请查收邮件', 'success');
       
       // 启动倒计时
       startCountdown(btn, originalText, 60);
     } else {
-      showNotification(result.data || result.message || '验证码发送失败', 'error');
+      showNotification(result.error.message || '验证码发送失败', 'error');
       btn.disabled = false;
       btn.textContent = originalText;
     }
@@ -180,15 +181,17 @@ async function handleLoginFormSubmit(e) {
     });
     
     const result = await response.json();
+    console.log('result', result);
     
-    if(result.success) {
+    // 修改判断逻辑：检查是否有error字段来判断是否成功
+    if (!result.error) {
       showNotification('登录成功，正在跳转...', 'success');
       // 登录成功，刷新页面
       setTimeout(() => {
         location.reload();
       }, 1000);
     } else {
-      showNotification(result.data || result.message || '登录失败，请重试', 'error');
+      showNotification(result.error.message || '登录失败，请重试', 'error');
     }
   } catch(error) {
     showNotification('网络错误，请稍后重试', 'error');
@@ -207,6 +210,7 @@ async function handleRegisterFormSubmit(e) {
   const email = formData.get('email');
   const password = formData.get('password');
   const verificationCode = formData.get('verification_code');
+  const confirmPassword = formData.get('confirm_password'); // 修正确认密码字段名
   
   // 验证
   if (!username || !email || !password || !verificationCode) {
@@ -248,14 +252,15 @@ async function handleRegisterFormSubmit(e) {
     
     const result = await response.json();
     
-    if(result.success) {
+    // 修改判断逻辑：检查是否有error字段来判断是否成功
+    if (!result.error) {
       showNotification('注册成功，正在自动登录...', 'success');
       // 注册成功，刷新页面以反映登录状态
       setTimeout(() => {
         location.reload();
       }, 1000);
     } else {
-      showNotification(result.data || result.message || '注册失败，请重试', 'error');
+      showNotification(result.error.message || '注册失败，请重试', 'error');
     }
   } catch(error) {
     showNotification('网络错误，请稍后重试', 'error');
@@ -301,12 +306,13 @@ async function handleForgotStep1Submit(e) {
     
     const result = await response.json();
     
-    if(result.success) {
+    // 修改判断逻辑：检查是否有error字段来判断是否成功
+    if (!result.error) {
       showNotification('密码重置验证码已发送到您的邮箱', 'success');
       // 显示第二步表单
       showForgotStep2();
     } else {
-      showNotification(result.data || result.message || '发送失败，请重试', 'error');
+      showNotification(result.error.message || '发送失败，请重试', 'error');
     }
   } catch(error) {
     showNotification('网络错误，请稍后重试', 'error');
@@ -371,7 +377,7 @@ async function handleForgotStep2Submit(e) {
         document.querySelector('.dialog-header .title').textContent = '用户登录';
       }, 1500);
     } else {
-      showNotification(result.data || result.message || '重置失败，请重试', 'error');
+      showNotification(result.error.message || '重置失败，请重试', 'error');
     }
   } catch(error) {
     showNotification('网络错误，请稍后重试', 'error');

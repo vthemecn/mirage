@@ -67,8 +67,8 @@ $avatar = vt_get_custom_avatar_url($post->post_author);
                     <span><?= get_the_author_meta('display_name', $post->post_author) ?></span>
                 </div>
             <?php else: ?>
-                <?php $profile_url = home_url('/profile/' . $post->post_author)?>
-                <a class="vt-card-author" href="$profile_url">
+                <?php $profile_url = home_url('/user/' . $post->post_author)?>
+                <a class="vt-card-author" href="<?=$profile_url?>">
                     <div class="avatar"><img src="<?=$avatar?>"></div>
                     <span><?= get_the_author_meta('display_name', $post->post_author) ?></span>
                 </a>

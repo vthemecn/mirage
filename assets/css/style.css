@@ -572,6 +572,10 @@ a:hover {
   color: var(--vt-text-color);
 }
 
+.no-scroll {
+  overflow-y: hidden;
+}
+
 .no-scrollbar {
   /* 隐藏滚动条（WebKit 浏览器：Chrome, Safari, Edge） */
   -ms-overflow-style: none;  /* IE 和 Edge（旧版） */
@@ -860,7 +864,7 @@ nav.pagination a:hover {
 }
 
 .content-style p {
-  margin-top: 30px;
+  margin-top: 20px;
   overflow: hidden;
 }
 
@@ -1734,7 +1738,7 @@ nav.pagination a:hover {
 .article-box .meta-item,
 .article-box .meta-item a {
   margin-right: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   font-size: 14px;
   color: var(--vt-text-color-grey);
 }
@@ -1902,6 +1906,7 @@ nav.pagination a:hover {
   border: 1px solid var(--vt-border-color);
   border-radius: var(--vt-border-radius);
   padding: 15px;
+  margin: 20px 0;
 }
 .toc-header{
   display: flex;
@@ -2340,7 +2345,7 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
   border-radius: 50%;
 }
 .vt-card-author span{
-  display: inline-block;
+  display: inline-block !important;
   max-width: 80px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2813,12 +2818,8 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
 
 
 /**
-* header 移动端菜单
-*/
-
-.no-scroll {
-  overflow-y: hidden;
-}
+ * header 移动端菜单
+ */
 
 .header.mobile {
   width: 100%;
@@ -2873,9 +2874,6 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
 }
 
 
-
-/*****************************************************************************/
-/*****************************************************************************/
 /*****************************************************************************/
 
 
@@ -3073,8 +3071,6 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
 
 
 /*****************************************************************************/
-/*****************************************************************************/
-/*****************************************************************************/
 
 
 /**
@@ -3165,10 +3161,18 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
     position: relative;
     top: -1px;
   }
-  .pc-nav li a i.fa-solid { font-size: 14px; font-weight: bold; }
+  .pc-nav li a i.fa-solid {
+    font-size: 10px;
+    font-weight: bold;
+  }
+  .pc-nav > li > a i.fa-solid {
+    position: relative;
+    left: 3px;
+    top: -2px;
+  }
   .pc-nav li a{
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
-}
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+  }
   .child-menu {
     background-color: var(--vt-bg-color-card);
     box-shadow: 0 0 3px 0 var(--vt-shadow-color);
@@ -3207,6 +3211,7 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   }
   .menu-item-has-children .menu-item-has-children i{
     top: 15px;
+    right: 10px;
   }
   .menu-item-has-children.active > a i {
     display: inline-block;
@@ -3271,12 +3276,21 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   .header.pc .search-toggle-button.active {
     color: var(--vt-color-primary);
   }
-  .header.pc .header-top-avatar {
+
+
+  /**
+   * 用户中心 - 头像按钮
+   */
+  .header.pc .header-top-profile {
+    position: relative;
+  }
+  .header-top-profile .header-top-avatar {
+    display: flex;
     width: 30px;
     height: 30px;
     margin-left: 10px;
   }
-  .header.pc .header-top-avatar img {
+  .header-top-profile .header-top-avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -3289,63 +3303,10 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
     clear: both;
   }
 
-  
-  /*****************************************************************************/
-  
-
-  /* 搜索框 */
-  .search-widget {
-    width: 100%;
-    min-height: 160px;
-    display: none;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background-color: var(--vt-bg-color-card);
-    box-shadow: 0 5px 5px 0 var(--vt-shadow-color);
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: center;
-    border-top: 1px solid var(--vt-border-color);
-  }
-  .search-widget.show {
-    display: flex;
-  }
-  .search-widget .close-widget {
-    width: 600px;
-    display: flex;
-    justify-content: flex-end;
-    padding-top: 15px;
-  }
-  .search-widget .close-widget a i {
-    font-size: 25px;
-  }
-  .search-widget .search {
-    display: flex;
-    width: 500px;
-    height: 40px;
-    margin-top: 20px;
-    justify-content: space-between;
-  }
-  .search-widget .search input {
-    width: 410px;
-    outline: none;
-    border: 1px solid var(--vt-border-color);
-    border-radius: var(--vt-border-radius);
-    text-indent: 10px;
-  }
-  .search-widget .search input:focus {
-    box-shadow: 0 0 3px 0 var(--vt-color-primary);
-  }
-  .search-widget .search .search-button {
-    width: 80px;
-    border: 1px solid var(--vt-color-primary);
-    background-color: var(--vt-color-primary);
-    border-radius: var(--vt-border-radius);
-  }
-  .search-widget .search-button i {
-    font-size: 18px;
-    color: var(--vt-text-color-inverse);
+  .header-top-profile .header-top-avatar:hover .user-widget,
+  .header-top-profile .header-top-avatar:hover + .user-widget,
+  .header-top-profile .user-widget:hover {
+    display: block;
   }
 
   
@@ -3356,7 +3317,7 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   .header.pc .user-widget {
     position: absolute;
     right: 0;
-    top: 60px;
+    top: 35px;
     width: 200px;
     min-height: 100px;
     padding: 15px;
@@ -3395,6 +3356,8 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   .user-widget .user-header .user-more {
     margin-top: 7px;
     color: var(--vt-text-color-grey);
+    line-height: 20px;
+    text-align: center;
   }
   .user-widget .links-widget {
     display: flex;
@@ -3419,6 +3382,65 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
 /*****************************************************************************/
 
 
+/* 搜索框 */
+.search-widget {
+  width: 100%;
+  min-height: 160px;
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  background-color: var(--vt-bg-color-card);
+  box-shadow: 0 5px 5px 0 var(--vt-shadow-color);
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px solid var(--vt-border-color);
+}
+.search-widget.show {
+  display: flex;
+}
+.search-widget .close-widget {
+  width: 600px;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 15px;
+}
+.search-widget .close-widget a i {
+  font-size: 25px;
+}
+.search-widget .search {
+  display: flex;
+  width: 500px;
+  height: 40px;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+.search-widget .search input {
+  width: 410px;
+  outline: none;
+  border: 1px solid var(--vt-border-color);
+  border-radius: var(--vt-border-radius);
+  text-indent: 10px;
+}
+.search-widget .search input:focus {
+  box-shadow: 0 0 3px 0 var(--vt-color-primary);
+}
+.search-widget .search .search-button {
+  width: 80px;
+  border: 1px solid var(--vt-color-primary);
+  background-color: var(--vt-color-primary);
+  border-radius: var(--vt-border-radius);
+}
+.search-widget .search-button i {
+  font-size: 18px;
+  color: var(--vt-text-color-inverse);
+}
+
+
+/*****************************************************************************/
+
+
 /* 样式覆盖 */
 .menu-item badge{
   font-size: 12px;
@@ -3435,8 +3457,8 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
 }
 
 
-
 /*****************************************************************************/
+
 
 /**
  * 移动端菜单
@@ -3504,9 +3526,6 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   margin-right: 10px;
   text-align: center;
 }
-
-
-
 
 
 
@@ -4383,6 +4402,11 @@ body.dark-mode .user-card {
 .vt-theme-ad.ad-ad_sidebar .ad-pc{ display: none; }
 .vt-theme-ad.ad-ad_sidebar .ad-mobile{ display: block; }
 .vt-theme-ad.ad-ad_footer { margin: 0; }
+
+.vt-theme-ad.ad-ad_single_top{ margin: 0 0 20px 0; }
+
+
+
 
 .dark-mode input, .dark-mode textarea {
   color: var(--vt-text-color);

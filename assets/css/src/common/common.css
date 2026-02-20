@@ -141,6 +141,10 @@ a:hover {
   color: var(--vt-text-color);
 }
 
+.no-scroll {
+  overflow-y: hidden;
+}
+
 .no-scrollbar {
   /* 隐藏滚动条（WebKit 浏览器：Chrome, Safari, Edge） */
   -ms-overflow-style: none;  /* IE 和 Edge（旧版） */

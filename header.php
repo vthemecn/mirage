@@ -281,46 +281,42 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
                 <?php endif ?>
             </div>
 
+
             <?php if ($current_user->ID && is_captain_active()) : ?>
                 <?php $avatar = vt_get_custom_avatar_url($current_user->ID) ?>
-                <a href="javascript:;" class="header-top-avatar">
-                    <img src="<?php echo $avatar ?>" alt="">
-                </a>
-            <?php endif ?>
-             
-            <!-- 用户登录后的弹窗 -->
-            <?php if ($current_user->ID && is_captain_active()): ?>
-                <?php
-                $nickname = get_user_meta($current_user->ID, 'nickname', true);
-                $description = get_user_meta($current_user->ID, 'description', true);
-                ?>
-                <div class="user-widget">
-                    <div class="user-header">
-                        <img src="<?php echo $avatar ?>" class="avatar">
-                        <div class="user-meta">
-                            <div class="user-nickname"><?php echo $nickname ?></div>
-                            <div class="user-more"><?php echo $description ?></div>
+                <div class="header-top-profile">
+                    <a href="javascript:;" class="header-top-avatar">
+                        <img src="<?php echo $avatar ?>" alt="">
+                    </a>
+
+                    <!-- 用户登录后的弹窗 -->
+                    <?php
+                    $nickname = get_user_meta($current_user->ID, 'nickname', true);
+                    $description = get_user_meta($current_user->ID, 'description', true);
+                    ?>
+                    <div class="user-widget">
+                        <div class="user-header">
+                            <img src="<?php echo $avatar ?>" class="avatar">
+                            <div class="user-meta">
+                                <div class="user-nickname"><?php echo $nickname ?></div>
+                                <div class="user-more"><?php echo $description ?></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="links-widget">
-                        <?php if(is_captain_active()):?>
+                        <div class="links-widget">
                             <a href="<?php bloginfo('url') ?>/account">
-                                <i class="fa-solid fa-user"></i><?= __('Dashboard','vt') ?>
-                            </a>
-                        <?php else: ?>
-                            <a href="<?php bloginfo('url') ?>/wp-admin/profile.php">
                                 <i class="fa-solid fa-user"></i><?= __('Profile','vt') ?>
                             </a>
-                        <?php endif ?>
 
-                        <?php if (in_array('administrator', $current_user->roles)) :?>
-                            <a href="<?php bloginfo('url') ?>/wp-admin/index.php">
-                                <i class="fa-solid fa-gauge"></i><?= __('Dashboard','vt') ?>
+                            <?php if (in_array('administrator', $current_user->roles)) :?>
+                                <a href="<?php bloginfo('url') ?>/wp-admin/index.php">
+                                    <i class="fa-solid fa-gauge"></i><?= __('Dashboard','vt') ?>
+                                </a>
+                            <?php endif ?>
+                            
+                            <a href="<?php echo wp_logout_url($current_url); ?>">
+                                <i class="fa-solid fa-right-from-bracket"></i><?= __('Logout','vt') ?>
                             </a>
-                        <?php endif ?>
-                        <a href="<?php echo wp_logout_url($current_url); ?>">
-                            <i class="fa-solid fa-right-from-bracket"></i><?= __('Logout','vt') ?>
-                        </a>
+                        </div>
                     </div>
                 </div>
             <?php endif ?>
