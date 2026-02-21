@@ -12,7 +12,7 @@ $theme_url = defined('THEME_URL') ? THEME_URL : get_template_directory_uri();
             <?php if (has_post_thumbnail()) : ?>
                 <?php 
                 $thumbnail_id = get_post_thumbnail_id();
-                $thumbnail_url = wp_get_attachment_image_src($thumbnail_id, 'media')[0];
+                $thumbnail_url = wp_get_attachment_image_src($thumbnail_id, 'medium')[0];
                 $placeholder_url = $theme_url . '/assets/images/placeholder.svg';
                 ?>
                 <img class="lazyload-img" 

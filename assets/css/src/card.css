@@ -49,7 +49,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  /* display: none; */
+  filter: blur(0.3px) contrast(92%);
 }
 
 .vt-card-item:hover .vt-card-thumbnail img {
