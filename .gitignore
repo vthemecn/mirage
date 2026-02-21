@@ -103,3 +103,4 @@ docs/.vitepress/dist
 .vitepress
 
 .editorconfig
+docs

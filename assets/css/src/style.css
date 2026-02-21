@@ -8,6 +8,7 @@
 @import './common/content-style.css';
 @import './common/bar.css';
 @import './common/dialog.css';
+@import './common/lazy-load.css';
 @import './home/home.css';
 @import './home/slider.css';
 @import './home/hot.css';
@@ -33,4 +34,3 @@ lg: 1024px
 xl: 1280px
 2xl: 1536px
 */
-

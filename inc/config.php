@@ -97,6 +97,12 @@ if( class_exists( 'CSF' ) ) {
                 'preview' => true
             ),
             array(
+                'id'      => 'lazy_load_enabled',
+                'type'    => 'switcher',
+                'title'   => __('Lazy Loading','vt'),
+                'default' => true
+            ),
+            array(
                 'id'         => 'attempts_is_on',
                 'type'       => 'radio',
                 'title'      => __('Anti brute force cracking','vt'),
@@ -105,7 +111,6 @@ if( class_exists( 'CSF' ) ) {
                 'desc'       => $attempts_text,
                 'inline'     => true
             )
-
         )
     ));
 

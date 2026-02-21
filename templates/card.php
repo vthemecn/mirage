@@ -2,14 +2,25 @@
 global $post;
 $target = false ? 'target="_blank"' : '';
 $avatar = vt_get_custom_avatar_url($post->post_author);
+
+// 获取主题URL常量
+$theme_url = defined('THEME_URL') ? THEME_URL : get_template_directory_uri();
 ?>
 <div class="vt-card-item">
     <div class="vt-card-thumbnail">
         <a href="<?php the_permalink(); ?>" <?=$target?> >
             <?php if (has_post_thumbnail()) : ?>
-                <?php the_post_thumbnail('media'); ?>
+                <?php 
+                $thumbnail_id = get_post_thumbnail_id();
+                $thumbnail_url = wp_get_attachment_image_src($thumbnail_id, 'media')[0];
+                $placeholder_url = $theme_url . '/assets/images/placeholder.svg';
+                ?>
+                <img class="lazyload-img" 
+                     data-src="<?= esc_url($thumbnail_url); ?>" 
+                     src="<?= esc_url($placeholder_url); ?>" 
+                     alt="<?php the_title_attribute(); ?>" />
             <?php else : ?>
-                <img src="<?= esc_url( THEME_URL . '/assets/images/default.jpg'); ?>" alt="<?php the_title_attribute(); ?>" />
+                <img src="<?= esc_url($theme_url . '/assets/images/default.jpg'); ?>" alt="<?php the_title_attribute(); ?>" />
             <?php endif; ?>
             <div class="vt-card-badget-widget">
                 <?php if(is_sticky()): ?>

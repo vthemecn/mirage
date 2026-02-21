@@ -1159,6 +1159,61 @@ nav.pagination a:hover {
   margin: 0 0 0 10px;
 }
 
+/**
+ * 懒加载图片样式 - 简化版本
+ */
+
+/* 基础懒加载图片样式 */
+.lazyload-img {
+    /* opacity: 0; */
+    transition: opacity 0.3s ease-in-out;
+    /* background-color: rgba(241, 241, 241, 0.5); */
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* 加载完成状态 */
+.lazyload-img.loaded {
+    opacity: 1;
+    background-image: none;
+    background-color: transparent;
+}
+
+/* 加载中状态 - 简单脉冲动画 */
+.lazyload-img.loading {
+    animation: pulse 1.5s infinite;
+}
+
+/* 加载失败状态 */
+.lazyload-img.load-error {
+    opacity: 0.7;
+}
+
+/* 简化脉冲动画 */
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+/* 文章卡片特殊样式 */
+.vt-card-thumbnail .lazyload-img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* 响应式处理 */
+@media (max-width: 768px) {
+    .vt-card-thumbnail .lazyload-img {
+        border-radius: 4px;
+    }
+}
+
 
 /**
  * top
@@ -4431,4 +4486,3 @@ lg: 1024px
 xl: 1280px
 2xl: 1536px
 */
-
