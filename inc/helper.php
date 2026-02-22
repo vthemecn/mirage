@@ -36,7 +36,7 @@ function formatHumanTime($time, $lang = '') {
         return $invalidTexts[$langKey] ?? 'Invalid time';
     }
     
-    $diff = time() - $timestamp;
+    $diff =  current_time('timestamp') - $timestamp;
     
     // 未来时间
     if ($diff < 0) {

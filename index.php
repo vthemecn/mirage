@@ -18,7 +18,11 @@ if($config['home_layout']['enabled']){
     foreach($vt_config['home_layout']['enabled'] AS $k=>$v){
         $k = str_replace('\\', '', $k);
         $k = str_replace('/', '', $k);
-        require get_template_directory() . '/templates/home/'. $k .'.php';
+        $file_path = THEME_DIR . '/templates/home/'. $k .'.php';
+        
+        if(file_exists($file_path)){
+            require $file_path;
+        }
     }
 }
 ?>

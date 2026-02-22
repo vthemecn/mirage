@@ -428,7 +428,7 @@ add_filter('the_content', 'add_heading_ids_to_content');
  */
 function vt_add_admin_js(){ 
     wp_enqueue_media();
-    wp_enqueue_script('vt-uploader', get_bloginfo('template_url').'/assets/lib/admin.js', array('jquery'), false, true );
+    wp_enqueue_script('vt-uploader', THEME_URL.'/assets/lib/admin.js', array('jquery'), false, true );
 }
 add_action('admin_enqueue_scripts', 'vt_add_admin_js');
 

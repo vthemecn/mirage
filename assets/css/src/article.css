@@ -320,8 +320,9 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
 
 @media (min-width: 481px) {
   .related-posts-widget .vt-card-thumbnail {
-      flex: 0 0 auto !important;
+    flex: 0 0 auto !important;
   }
+  .related-posts-widget .vt-card-time { display: none !important; }
 }
 
 @media only screen and (min-width: 768px) { 

@@ -64,32 +64,17 @@ class ArticleWidget extends WP_Widget {
     
         // 输出 HTML
         ?>
-        <div class="image-title widget-container">
+        <div class="recent-posts widget-container">
             <div class="widget-header">
                 <div class="widget-title"><?php echo esc_html( $title ); ?></div>
             </div>
-            <div class="item-list-wrapper">
-                <ul class='item-list'>
-                    <?php if ( $query->have_posts() ) : ?>
-                        <?php while ( $query->have_posts() ) : $query->the_post(); ?>
-                            <?php
-                            $thumbnail = vt_get_thumbnail_url( get_the_ID(), 'medium' );
-                            $price = get_post_meta( get_the_ID(), 'price', true );
-                            $price = $price ? number_format( $price / 100, 2 ) : '';
-                            ?>
-                            <li class='item-widget'>
-                                <a href="<?php the_permalink(); ?>">
-                                    <img src="<?php echo esc_url( $thumbnail ); ?>" alt="<?php the_title_attribute(); ?>">
-                                    <div class="item-title">
-                                        <div><?php the_title(); ?></div>
-                                        <span><?php echo vt_get_time( get_the_time( 'Y-m-d H:i:s' ) ); ?></span>
-                                    </div>
-                                </a>
-                            </li>
-                        <?php endwhile; ?>
-                    <?php endif; ?>
-                    <?php wp_reset_postdata(); ?>
-                </ul>
+            <div class="recent-posts-wrapper">
+                <?php if ( $query->have_posts() ) : ?>
+                    <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+                        <?php get_template_part('templates/card'); ?>
+                    <?php endwhile; ?>
+                <?php endif; ?>
+                <?php wp_reset_postdata(); ?>
             </div>
         </div>
         <?php

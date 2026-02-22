@@ -79,7 +79,7 @@ function vt_custom_avatar($avatar, $id_or_email, $size, $default, $alt)
     $avatar_item = wp_get_attachment_image_src($attachment_id, 'thumbnail');
 
     if(!$avatar_item) {
-        $avatar = get_bloginfo('template_url') . '/assets/images/avatar.jpg';
+        $avatar = THEME_URL . '/assets/images/avatar.jpg';
     } else {
         $avatar = $avatar_item[0];
     }

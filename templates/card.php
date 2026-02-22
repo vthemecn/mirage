@@ -84,7 +84,7 @@ $theme_url = defined('THEME_URL') ? THEME_URL : get_template_directory_uri();
                     <span><?= get_the_author_meta('display_name', $post->post_author) ?></span>
                 </a>
             <?php endif; ?>
-            <div class="vt-card-time">
+            <div class="vt-card-time"  data-time="<?= get_the_time('Y-m-d H:i:s') ?>">
                 <i class="fas fa-clock"></i>
                 <?php echo vt_get_time(get_the_time('Y-m-d H:i:s') ); ?>
             </div>

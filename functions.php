@@ -9,7 +9,7 @@
 
 define('THEME_OPTION_NAME', 'mirage');
 define('THEME_DIR', get_template_directory());
-define('THEME_URL', get_bloginfo('template_url'));
+define('THEME_URL', get_template_directory_uri());
 
 
 if (!function_exists('p')) :

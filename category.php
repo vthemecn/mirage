@@ -23,7 +23,7 @@ if($vt_list_type > 0){
 }
 
 // 获取分类第一篇文章的缩略图或者图片
-$banner_image = get_bloginfo('template_url') . '/assets/images/banner.jpg';
+$banner_image = THEME_URL . '/assets/images/banner.jpg';
 
 $term_meta_thumbnail = get_term_meta($cat, 'vt-thumbnail', true);
 if($term_meta_thumbnail){

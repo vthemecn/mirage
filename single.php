@@ -64,7 +64,7 @@ $user_profile_url = home_url() . '/user/' .$post->post_author;
 
 // 获取文章缩略图
 $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($vt_post_id), 'large');
-$thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '/assets/images/banner.jpg';
+$thumbnail_image = $thumbnail ? $thumbnail[0] : THEME_URL . '/assets/images/banner.jpg';
 ?>
 
 
@@ -88,7 +88,7 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : get_bloginfo('template_url') . '
                     </div>
                 <?php endif ?>
                 
-                <div class="meta-item date">
+                <div class="meta-item date" data-time="<?= get_the_time('Y-m-d H:i:s') ?>">
                     <i class="fa-solid fa-clock"></i><?= vt_get_time(get_the_time('Y-m-d H:i:s')) ?>
                 </div>
 
