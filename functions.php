@@ -228,4 +228,17 @@ function vt_theme_ad($position) {
 }
 
 
-
+function vt_clean_the_excerpt($content) {
+    $protected = ['logged_in_visible', 'vip_content', 'comment_visible', 'member_only', 'paid_content'];
+    
+    foreach ($protected as $shortcode) {
+        $content = preg_replace('/\[' . $shortcode . '\].*?\[\/' . $shortcode . '\]/s', '', $content);
+        $content = preg_replace('/\[' . $shortcode . '\]/', '', $content);
+    }
+    
+    $content = strip_shortcodes($content);
+    $content = wp_strip_all_tags($content);
+    
+    return trim($content);
+}
+// add_filter('the_excerpt', 'vt_clean_the_excerpt', 1);

@@ -11,26 +11,23 @@
 get_header();
 
 $config = vt_get_config();
-
 ?>
 
 
-<?php
-if (have_posts()) {
+<div class="main-container">
+    <div class="main-widget">
+        <?php
+        if (have_posts()) {
 
-    while (have_posts()) {
-        the_post();
-        the_content();
-        // get_template_part( 'templates/content', get_post_type() );
-    }
-}
-?>
+            while (have_posts()) {
+                the_post();
+                the_content();
+                // get_template_part( 'templates/content', get_post_type() );
+            }
+        }
+        ?>
+    </div>
+</div>
 
-<?php /* if( current_user_can( 'manage_options' ) ): ?>
-    <a href="/wp-admin/post.php?post=<?php echo get_the_ID() ?>&action=edit" class="widget-action">
-        <i class="fa-solid fa-pen-to-square"></i> <span>编辑</span>
-    </a>
-<?php endif  */ ?>
-            
 
 <?php get_footer(); ?>

@@ -468,4 +468,3 @@ function vt_login_redirect( $redirect_to, $request, $user ) {
 
 add_filter( 'login_redirect', 'vt_login_redirect', 10, 3 );
 
-

@@ -12,7 +12,8 @@ $theme_url = defined('THEME_URL') ? THEME_URL : get_template_directory_uri();
             <?php if (has_post_thumbnail()) : ?>
                 <?php 
                 $thumbnail_id = get_post_thumbnail_id();
-                $thumbnail_url = wp_get_attachment_image_src($thumbnail_id, 'medium')[0];
+                $thumbnail_size = !empty($post->vt_image_size) ? $post->vt_image_size : 'medium';
+                $thumbnail_url = wp_get_attachment_image_src($thumbnail_id, $thumbnail_size)[0];
                 $placeholder_url = $theme_url . '/assets/images/placeholder.svg';
                 ?>
                 <img class="lazyload-img" 
@@ -38,11 +39,7 @@ $theme_url = defined('THEME_URL') ? THEME_URL : get_template_directory_uri();
         </h3>
 
         <div class="vt-card-excerpt">
-            <?php if (has_excerpt()) : ?>
-                <?php the_excerpt(); ?>
-            <?php else : ?>
-                <?php echo wp_trim_words(get_the_content(), 100, '...'); ?>
-            <?php endif; ?>
+            <?= vt_clean_the_excerpt(get_the_excerpt()); ?>
         </div>
 
         <div class="vt-card-meta no-scrollbar">
