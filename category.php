@@ -8,8 +8,6 @@
 
 get_header();
 
-$config = vt_get_config();
-
 $category = get_term($cat);
 
 $full_width = get_term_meta( $cat, 'vt_full_width', true );
@@ -18,7 +16,7 @@ $full_width_class = $full_width==1 ? 'full-width' : '';
 $vt_list_type = get_term_meta( $cat, 'vt_list_type', true );
 $vt_list_type_class = '';
 if($vt_list_type > 0){
-    $vt_columns_num = $config['vt_columns'];
+    $vt_columns_num = vt_get_config('vt_columns', 3);
     $vt_list_type_class = 'vt-column vt-column-' . $vt_columns_num;
 }
 

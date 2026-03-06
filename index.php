@@ -9,13 +9,13 @@
 
 get_header();
 
-$config = vt_get_config();
+$home_layout_enabled = vt_get_config('home_layout', ['enabled' => []])['enabled'];
 
 ?>
 
 <?php
-if($config['home_layout']['enabled']){
-    foreach($vt_config['home_layout']['enabled'] AS $k=>$v){
+if($home_layout_enabled){
+    foreach($home_layout_enabled AS $k=>$v){
         $k = str_replace('\\', '', $k);
         $k = str_replace('/', '', $k);
         $file_path = THEME_DIR . '/templates/home/'. $k .'.php';

@@ -43,15 +43,17 @@ if($vt_list_type > 0){
         <?php
         wp_reset_postdata();
 
-        $vt_config = vt_get_config();
-
         $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
         $posts_per_page = get_option('posts_per_page');
         $offset = ($paged - 1) * $posts_per_page;
 
-        // 获取置顶文章ID
+        // 获取置顶文章 ID
         $sticky_posts = get_option('sticky_posts');
         $sticky_ids = !empty($sticky_posts) ? implode(',', array_map('intval', $sticky_posts)) : '0';
+        
+        // 获取配置
+        $posts_ids = vt_get_config('posts_ids', []);
+        $posts_not_in_ids = vt_get_config('posts_not_in_ids', []);
         ?>
 
 
@@ -63,8 +65,8 @@ if($vt_list_type > 0){
                 
                 // 构建分类条件
                 $cat_where = '';
-                if( $vt_config['posts_ids'] ){
-                    $cat_ids = implode(',', array_map('intval', $vt_config['posts_ids']));
+                if( $posts_ids ){
+                    $cat_ids = implode(',', array_map('intval', $posts_ids));
                     $cat_where .= " AND p.ID IN (
                         SELECT object_id FROM {$wpdb->term_relationships} tr
                         INNER JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
@@ -72,8 +74,8 @@ if($vt_list_type > 0){
                     )";
                 }
                 
-                if( $vt_config['posts_not_in_ids'] ){
-                    $not_cat_ids = implode(',', array_map('intval', $vt_config['posts_not_in_ids']));
+                if( $posts_not_in_ids ){
+                    $not_cat_ids = implode(',', array_map('intval', $posts_not_in_ids));
                     $cat_where .= " AND p.ID NOT IN (
                         SELECT object_id FROM {$wpdb->term_relationships} tr
                         INNER JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
@@ -81,7 +83,7 @@ if($vt_list_type > 0){
                     )";
                 }
                 
-                // 使用自定义SQL确保置顶文章优先
+                // 使用自定义 SQL 确保置顶文章优先
                 $sql = "
                     SELECT * FROM (
                         -- 置顶文章查询
@@ -140,12 +142,12 @@ if($vt_list_type > 0){
             'fields' => 'ids'
         );
 
-        if( $vt_config['posts_ids'] ){
-            $args['category__in'] = $vt_config['posts_ids'];
+        if( $posts_ids ){
+            $args['category__in'] = $posts_ids;
         }
 
-        if( $vt_config['posts_not_in_ids'] ){
-            $args['category__not_in'] = $vt_config['posts_not_in_ids'];
+        if( $posts_not_in_ids ){
+            $args['category__not_in'] = $posts_not_in_ids;
         }
 
         $count_query = new WP_Query($args);

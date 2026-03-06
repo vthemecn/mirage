@@ -38,9 +38,6 @@ function vt_get_config($key = null, $default = null)
     return array_key_exists($key, $config) ? $config[$key] : $default;
 }
 
-$config = vt_get_config();
-
-
 require_once THEME_DIR . '/inc/helper.php';
 require_once THEME_DIR . '/inc/i18n.php';
 require_once THEME_DIR . '/inc/config.php';
@@ -161,11 +158,9 @@ if (!function_exists('vt_get_custom_avatar_url')) {
 if (!function_exists('vt_get_thumbnail_url')) {
     function vt_get_thumbnail_url($post_id, $size='thumbnail')
     {
-        $config = vt_get_config();
-    
         $url = get_the_post_thumbnail_url($post_id, $size);
         if (!$url) {
-            $url = $config['default_image'];
+            $url = vt_get_config('default_image', '');
             $url = $url ? $url : get_template_directory_uri() . '/assets/images/default.jpg';
         }
         return $url;
@@ -196,11 +191,9 @@ if (!function_exists('vt_get_thumbnail_url')) {
 //     return $html;
 // }
 function vt_theme_ad($position) {
-    $config = vt_get_config();
-    
-    $enable = $config[$position . '_enable'] ?? false;
-    $code = $config[$position . '_code'] ?? '';
-    $code_pc = $config[$position . '_code_pc'] ?? '';
+    $enable = vt_get_config($position . '_enable', true);
+    $code = vt_get_config($position . '_code', '');
+    $code_pc = vt_get_config($position . '_code_pc', '');
     
     // 未启用则返回空
     if (empty($enable)) {

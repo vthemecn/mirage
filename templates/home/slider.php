@@ -1,10 +1,14 @@
 <?php
-$vt_config = vt_get_config();
+
+$slider_height = vt_get_config('slider_height', 300);
+$slider_autoplay = vt_get_config('slider_autoplay', 5000);
+$slider_items = vt_get_config('slider_items', []);
+$top_items = vt_get_config('top_items', []);
 ?>
 
 <style>
 @media screen and (min-width:900px) {
-    .swiper.swiper-container { height: <?= $vt_config['slider_height'] ?>px; }
+    .swiper.swiper-container { height: <?= $slider_height ?>px; }
 }
 
 
@@ -13,10 +17,10 @@ $vt_config = vt_get_config();
 <div class="main-container top">
     <div class="main-widget">
 
-        <div class="swiper swiper-container" data-autoplay="<?= $vt_config['slider_autoplay'] ?>">
+        <div class="swiper swiper-container" data-autoplay="<?= $slider_autoplay ?>">
             <div class="swiper-wrapper">
-                <?php if ($vt_config['slider_items']) : ?>
-                    <?php foreach ($vt_config['slider_items'] as $k => $v) : ?>
+                <?php if ($slider_items) : ?>
+                    <?php foreach ($slider_items as $k => $v) : ?>
                         <?php
                         $target = (isset($v['target']) && $v['target']) ? 'target="_blank"' : '';    
                         ?>
@@ -35,8 +39,8 @@ $vt_config = vt_get_config();
         </div>
 
         <div class="hot-img-widget">
-            <?php if ($vt_config['top_items']) : ?>
-                <?php foreach ($vt_config['top_items'] as $k => $v) : ?>
+            <?php if ($top_items) : ?>
+                <?php foreach ($top_items as $k => $v) : ?>
                     <?php if($k>1) break; ?>
                     <?php
                     $target = (isset($v['target']) && $v['target']) ? 'target="_blank"' : '';    
@@ -51,3 +55,4 @@ $vt_config = vt_get_config();
 
     </div>
 </div>
+

@@ -123,8 +123,6 @@ class HotWidget extends WP_Widget {
         extract( $args, EXTR_SKIP );
         echo $before_widget;
 
-        $vt_config = vt_get_config();
-
         $title = !empty($instance['title']) ? $instance['title'] : __('Popular', 'vt');
         $posts_per_page = (int) ( $instance['posts_per_page']) > 0 ? (int) ( $instance['posts_per_page']) : 4;
 
@@ -198,8 +196,6 @@ class CategoryWidget extends WP_Widget {
     function widget( $args, $instance ){
         extract( $args, EXTR_SKIP );
         echo $before_widget;
-
-        $vt_config = vt_get_config();
 
         $title = isset($instance['title']) ? $instance['title'] : __('Category List', 'vt');
         ?>
@@ -275,8 +271,6 @@ class UserWidget extends WP_Widget {
         global $wpdb;
         wp_reset_postdata();
 
-        $vt_config = vt_get_config();
-        
         $title = $instance['title'];
 
         $user_id = get_the_author_meta('ID');
@@ -368,7 +362,6 @@ class TagsWidget extends WP_Widget {
         global $wpdb;
         wp_reset_postdata();
 
-        $vt_config = vt_get_config();
         $title = $instance['title'] ? $instance['title'] : __('Tags','vt');
 
         $tags = get_tags(array('orderby'=>'count', 'order'=>'DESC', 'hide_empty'=>false));

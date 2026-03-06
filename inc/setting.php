@@ -1,5 +1,4 @@
 <?php
-$vt_config = vt_get_config();
 
 
 vt_footer_check();
@@ -80,7 +79,7 @@ add_filter('rest_prepare_post', 'vt_prepare_post', 12, 3);
 
 
 // 不显示顶部的工具栏
-if($vt_config['show_admin_bar'] != 1){
+if(vt_get_config('show_admin_bar', 2) != 1){
   show_admin_bar(false);
 }
 
@@ -102,7 +101,7 @@ function vt_excerpt_length($length) {
 /**
  * 禁用更新
  */
-if($vt_config['update_is_on'] == 0){
+if(vt_get_config('update_is_on', 1) == 0){
     add_filter( 'pre_site_transient_update_core', '__return_null'); // 移除版本更新提示
     add_filter( 'pre_site_transient_update_plugins', '__return_null'); // 移除插件更新提示
     add_filter('pre_site_transient_update_themes', '__return_null'); // 关闭插件提示
@@ -124,7 +123,7 @@ if($vt_config['update_is_on'] == 0){
 /**
  * 是否禁用古腾堡编辑器，启用经典编辑器
  */
-if ($vt_config['editor_type'] == 0) {
+if (vt_get_config('editor_type', 1) == 0) {
     /* Disable Gutenberg Block Editor */
     add_filter('use_block_editor_for_post', '__return_false', 10);
     /* Disable Widgets Block Editor */
@@ -171,10 +170,9 @@ add_filter('login_display_language_dropdown', '__return_false');
 
 /* 修改登录页的样式 */
 function custom_loginlogo() {
-    $vt_config = vt_get_config();
     echo '<style type="text/css">
     h1 a {
-        background-image: url('. $vt_config['site_logo'] .') !important;
+        background-image: url('. vt_get_config('site_logo', '') .') !important;
         width:260px !important;
         height:80px !important;
         margin: 0 auto !important;
@@ -192,7 +190,7 @@ function login_headerurl_action(){ return get_bloginfo('url'); }
 
 
 /* 文章自动保存 */
-if($vt_config['editor_revision'] == 0){
+if(vt_get_config('editor_revision', 1) == 0){
     //禁用文章自动保存
     add_action('wp_print_scripts','vt_not_autosave');
     function vt_not_autosave(){
@@ -223,33 +221,29 @@ function vt_upload_filter($file)
 
 
 
-if ($vt_config['smtp_is_on'] == 1) {
+if (vt_get_config('smtp_is_on', 0) == 1) {
     add_action('phpmailer_init', 'mail_smtp');
     function mail_smtp($phpmailer)
     {
-        $config = vt_get_config();
-
         $phpmailer->IsSMTP();
         $phpmailer->SMTPAuth     = true;
         $phpmailer->SMTPSecure   = "ssl";
-        $phpmailer->Port         = $config['smtp_port'];
-        $phpmailer->Host         = $config['smtp_host'];
-        $phpmailer->Username     = $config['smtp_username'];
-        $phpmailer->Password     = $config['smtp_password'];
+        $phpmailer->Port         = vt_get_config('smtp_port', '465');
+        $phpmailer->Host         = vt_get_config('smtp_host', '');
+        $phpmailer->Username     = vt_get_config('smtp_username', '');
+        $phpmailer->Password     = vt_get_config('smtp_password', '');
     }
 
     add_filter('wp_mail_from', 'vt_wp_mail_from');
     function vt_wp_mail_from()
     {
-        $config = vt_get_config();
-        return $config['smtp_username'];
+        return vt_get_config('smtp_username', '');
     }
 
     add_filter('wp_mail_from_name', 'mail_from_name');
     function mail_from_name()
     {
-        $config = vt_get_config();
-        return $config['smtp_nicename'];
+        return vt_get_config('smtp_nicename', '');
     }
 
     // 保存邮件发送错误信息
@@ -264,7 +258,7 @@ if ($vt_config['smtp_is_on'] == 1) {
 /**
  * 限制登录尝试次数
  */
-if($vt_config['attempts_is_on']){
+if(vt_get_config('attempts_is_on', 0)){
     add_filter('authenticate', 'vt_authenticate_action', 1, 3);
 }
 function vt_authenticate_action($user, $username, $password){
@@ -298,7 +292,7 @@ function vt_authenticate_action($user, $username, $password){
 /**
  * 更新错误记录
  */
-if($vt_config['attempts_is_on']){
+if(vt_get_config('attempts_is_on', 0)){
     add_action('wp_login_failed', 'vt_login_failed_action');
 }
 function vt_login_failed_action($username){
@@ -452,12 +446,11 @@ add_action('template_redirect', 'disable_attachment_pages');
 
 /* 登录后跳转控制 */
 function vt_login_redirect( $redirect_to, $request, $user ) {
-    $vt_config = vt_get_config();
     // 如果登录成功并且用户是管理员，则跳转到后台管理页面
     if ( isset( $user->roles ) && in_array( 'administrator', $user->roles ) ) {
         return admin_url();
     } else {
-        // 如果有redirect_to参数，则跳转到该地址
+        // 如果有 redirect_to 参数，则跳转到该地址
         if (!empty($request)) {
             return $request;
         }

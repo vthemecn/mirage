@@ -10,6 +10,7 @@
 
 import {getCookie, setCookie} from './utils.js';
 import dialogTools from './dialog.js';
+import { Notyf } from '../../lib/notyf/notyf.es.js';
 
 export default function () {
   // 创建 Notyf 实例

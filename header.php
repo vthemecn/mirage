@@ -6,8 +6,6 @@
  * @link https://vtheme.cn
  */
 
-$vt_config = vt_get_config();
-
 $current_url = home_url(add_query_arg(array(), $wp->request));
 
 $sidebar_position = '';
@@ -21,8 +19,8 @@ $sidebar_position = '';
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
-    $keywords    = $vt_config['keywords'];
-    $description = $vt_config['description'];
+    $keywords    = vt_get_config('keywords', '');
+    $description = vt_get_config('description', '');
     if (is_home()) {
     } elseif (is_category()) {
         // $keywords = single_cat_title('', false);
@@ -34,7 +32,7 @@ $sidebar_position = '';
         $description = get_the_excerpt();
     }
     $keywords    = $keywords ? trim(strip_tags($keywords)) : '';
-    $description = $description ? trim(strip_tags($description)) : $vt_config['description'];
+    $description = $description ? trim(strip_tags($description)) : vt_get_config('description', '');
     ?>
     <meta name="keywords" content="<?php echo $keywords ?>">
     <meta name="description" content="<?php echo $description ?>">
@@ -49,19 +47,31 @@ $sidebar_position = '';
     <script src="<?php bloginfo('template_url'); ?>/assets/lib/swiper/swiper-bundle.min.js"></script>
 
     <?php
-    $primary = $vt_config['basic_style'];
-    $hover = $vt_config['basic_style'];
-    echo "<style>:root{ --vt-color-primary:{$primary}; --vt-color-primary-hover:{ $hover}; }</style>";
+    $primary = vt_get_config('basic_style', '');
+    $hover = vt_get_config('basic_style', '');
     ?>
+    <style>
+    :root {
+        --primary-color: <?= $primary ?>;
+        --hover-color: <?= $hover ?>;
+    }
+    </style>
 
-    <?php if($vt_config['background_image']): ?>
-    <style>body:before { background-image:url(<?php echo $vt_config['background_image']?>) }</style>
-    <?php endif ?>
-    
-    <style> .card-item a.card-image { padding-bottom: <?= $vt_config['image_items_height'] ?>% !important; } </style>
+    <?php if(vt_get_config('background_image', '')): ?>
+    <style>body:before { background-image:url(<?php echo vt_get_config('background_image', '')?>)</style>
+    <?php endif; ?>
 
-    <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/assets/lib/notyf/notyf.min.css">
-    <script src="<?php bloginfo('template_url'); ?>/assets/lib/notyf/notyf.umd.js"></script>
+    <style> .card-item a.card-image { padding-bottom: <?= vt_get_config('image_items_height', 75) ?>% !important; } </style>
+
+    <?php
+    if(vt_get_config('dark_mode_type', 2) == 0){ // 禁用
+        echo '<style>.dark-mode-switch{display:none;}</style>';
+    } elseif(vt_get_config('dark_mode_type', 2) == 1) { // 手动
+        echo '<style>.dark-mode-switch{display:block;}</style>';
+    } elseif(vt_get_config('dark_mode_type', 2) == 2) { // 自动
+        echo '<style>.dark-mode-switch{display:block;}</style>';
+    }
+    ?>
 </head>
 
 
@@ -69,13 +79,14 @@ $sidebar_position = '';
 /* 暗黑模式 */
 $is_dark_mode = false;
 $dark_mode_class = '';
-if($vt_config['dark_mode_type'] == 0){ // 禁用
+$dark_mode_type = vt_get_config('dark_mode_type', 2);
+if($dark_mode_type == 0){ // 禁用
     $_COOKIE['darkModeType'] = 0;
-} elseif($vt_config['dark_mode_type'] == 1) { // 手动
+} elseif($dark_mode_type == 1) { // 手动
     $_COOKIE['darkModeType'] = 1;
     $is_dark_mode = isset($_COOKIE['darkMode']) && $_COOKIE['darkMode'] == 1 ? true : false;
     $dark_mode_class = $is_dark_mode ? "dark-mode" : '';
-} elseif($vt_config['dark_mode_type'] == 2) { // 自动
+} elseif($dark_mode_type == 2) { // 自动
     $_COOKIE['darkModeType'] = 2;
     $is_dark_mode = isset($_COOKIE['darkMode']) && $_COOKIE['darkMode'] == 1 ? true : false;
     $dark_mode_class = 'dark-mode-auto';
@@ -96,8 +107,8 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
     <header class="header mobile">
         <div class="header-nav">
             <a href="<?php bloginfo('url') ?>" class="logo" title="" rel="home">
-                <img light src="<?= $vt_config['site_logo']; ?>" alt="<?php bloginfo('name') ?>">
-                <img darkness src="<?= $vt_config['site_logo_darkness']; ?>" alt="<?php bloginfo('name') ?>">
+                <img light src="<?= vt_get_config('site_logo', ''); ?>" alt="<?php bloginfo('name') ?>">
+                <img darkness src="<?= vt_get_config('site_logo_darkness', ''); ?>" alt="<?php bloginfo('name') ?>">
             </a>
             <a class="top-nav-button dark-mode-button  <?php echo $is_dark_mode ? 'dark' : '' ?>">
                 <i class="fa-solid fa-sun sun"></i>
@@ -109,7 +120,7 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
             <a class="top-nav-button menu-button" href="javascript:;">
                 <i class="fa-solid fa-bars"></i>
             </a>
-            <?php /* if (!$current_user->ID && $vt_config['is_show_login_register']) : ?>
+            <?php /* if (!$current_user->ID && vt_get_config('is_show_login_register', true)) : ?>
                 <a class="top-nav-button login-button open-login-dialog" href="javascript:;">
                     <i class="fa-solid fa-right-to-bracket"></i>
                 </a>
@@ -235,8 +246,8 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
     <header class="header pc">
         <div class="header-nav">
             <a href="<?php bloginfo('url') ?>" class="logo" title="" rel="home">
-                <img light src="<?= $vt_config['site_logo']; ?>" alt="<?php bloginfo('name') ?>">
-                <img darkness src="<?= $vt_config['site_logo_darkness']; ?>" alt="<?php bloginfo('name') ?>">
+                <img light src="<?= vt_get_config('site_logo', ''); ?>" alt="<?php bloginfo('name') ?>">
+                <img darkness src="<?= vt_get_config('site_logo_darkness', ''); ?>" alt="<?php bloginfo('name') ?>">
             </a>
 
             <?php
@@ -270,7 +281,7 @@ if($vt_config['dark_mode_type'] == 0){ // 禁用
                 <a class="nav-button search-toggle-button" href="javascript:;">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </a>
-                <?php if($vt_config['dark_mode_type'] == 1): ?>
+                <?php if(vt_get_config('dark_mode_type', 2) == 1): ?>
                     <a class="nav-button dark-mode-button  <?php echo $is_dark_mode ? 'dark' : '' ?>">
                         <i class="fa-solid fa-sun sun"></i>
                         <i class="fa-solid fa-moon moon"></i>
