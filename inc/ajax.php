@@ -316,6 +316,8 @@ function get_like_status() {
         ));
         $is_liked = !empty($existing);
     }
+
+    update_post_meta($object_id, '_likes_count', $like_count);
     
     wp_send_json_success([
         'like_count' => $like_count,

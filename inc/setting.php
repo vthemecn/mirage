@@ -15,14 +15,13 @@ function vt_custom_js_and_css() {
 
     wp_localize_script('mirage', 'i18n', vt_i18n_strings());
 
-    $current_user_id = get_current_user_id();
-    
+    // $current_user_id = get_current_user_id();
     // 本地化脚本，传递AJAX URL和其他数据到前端
-    wp_localize_script('mirage', 'ajax_object', array(
-        'ajax_url' => admin_url('admin-ajax.php'),
-        'nonce' => wp_create_nonce('ajax_nonce'),
-        'current_user_id' => $current_user_id
-    ));
+    // wp_localize_script('mirage', 'ajax_object', array(
+    //     'ajax_url' => admin_url('admin-ajax.php'),
+    //     'nonce' => wp_create_nonce('ajax_nonce'),
+    //     'current_user_id' => $current_user_id
+    // ));
 }
 add_action('wp_enqueue_scripts', 'vt_custom_js_and_css');
 

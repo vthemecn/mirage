@@ -1204,13 +1204,13 @@ nav.pagination a:hover {
 .vt-card-thumbnail .lazyload-img {
     aspect-ratio: 16/9;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: var(--vt-border-radius);
 }
 
 /* 响应式处理 */
 @media (max-width: 768px) {
     .vt-card-thumbnail .lazyload-img {
-        border-radius: 4px;
+        border-radius: var(--vt-border-radius);
     }
 }
 
@@ -2249,7 +2249,7 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
   width: 120px;
   height: auto;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: var(--vt-border-radius);
   position: relative;
   margin: 0 12px 0 0;
   align-self: flex-start;
@@ -2261,8 +2261,7 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
   width: 100%;
   height: auto;
   padding-bottom: 68%;
-  /* background-color: aqua; */
-  
+  background-color: var(--vt-bg-color-grey) 
 }
 
 .vt-card-thumbnail a img {
@@ -2565,9 +2564,10 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
     width: calc(50% - 10px);
     margin:0 10px 10px 0;
   }
+  .vt-column.vt-column-3 { margin-right: -15px; }
   .vt-column.vt-column-3 .vt-card-item{
-    width: calc(33.33% - 10px);
-    margin:0 10px 10px 0;
+    width: calc(33.33% - 15px);
+    margin:0 15px 15px 0;
   }
   .vt-column.vt-column-4 .vt-card-item{
     width: calc(25% - 10px);
@@ -2900,6 +2900,7 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
 .header.mobile .header-nav a.logo {
   display: block;
   height: 30px;
+  line-height: 30px;
   margin-right: auto;
 }
 .header.mobile .header-nav a.logo img { height: 30px; }
@@ -3241,7 +3242,7 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
     left: 0;
     display: none;
     flex-direction: column;
-    width: 160px;
+    min-width: 160px;
   }
   .child-menu li {
     height: auto;

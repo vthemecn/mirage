@@ -72,6 +72,17 @@ $sidebar_position = '';
         echo '<style>.dark-mode-switch{display:block;}</style>';
     }
     ?>
+
+    <?php
+    $ajax_data = array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce'    => wp_create_nonce('ajax_nonce'),
+        'current_user_id' => get_current_user_id()
+    );?>
+    
+    <script type="text/javascript">
+    var ajax_object = <?php echo json_encode($ajax_data); ?>;
+    </script>
 </head>
 
 
@@ -107,8 +118,12 @@ if($dark_mode_type == 0){ // 禁用
     <header class="header mobile">
         <div class="header-nav">
             <a href="<?php bloginfo('url') ?>" class="logo" title="" rel="home">
-                <img light src="<?= vt_get_config('site_logo', ''); ?>" alt="<?php bloginfo('name') ?>">
-                <img darkness src="<?= vt_get_config('site_logo_darkness', ''); ?>" alt="<?php bloginfo('name') ?>">
+                <?php if(vt_get_config('site_logo', '') == ''):?>
+                    <?=get_bloginfo('name')?>
+                <?php else: ?>
+                    <img light src="<?= vt_get_config('site_logo', ''); ?>" alt="<?php bloginfo('name') ?>">
+                    <img darkness src="<?= vt_get_config('site_logo_darkness', ''); ?>" alt="<?php bloginfo('name') ?>">
+                <?php endif; ?>
             </a>
             <a class="top-nav-button dark-mode-button  <?php echo $is_dark_mode ? 'dark' : '' ?>">
                 <i class="fa-solid fa-sun sun"></i>
@@ -152,7 +167,7 @@ if($dark_mode_type == 0){ // 禁用
                     ?>
                     <div class="user-widget-mobile">
                         <div class="user-header">
-                            <img src="<?php echo $avatar ?>" class="avatar" alt="Avatar">
+                            <?php echo get_avatar($current_user->ID, 80, '', '', ''); ?>
                             <div class="user-meta">
                                 <div class="user-nickname"><?php echo $nickname ?></div>
                             </div>
@@ -181,8 +196,7 @@ if($dark_mode_type == 0){ // 禁用
                     <?php if(is_captain_active()):?>
                         <div class="user-widget-mobile">
                             <div class="user-header login-button open-login-dialog">
-                                <?php $avatar = vt_get_custom_avatar_url($current_user->ID) ?>
-                                <img src="<?=$avatar ?>" class="avatar" alt="Avatar">
+                                <?php echo get_avatar($current_user->ID, 80, '', '', ''); ?>
                                 <div class="user-meta">
                                     <div class="user-nickname" style="cursor: pointer;"><?php _e('请登录', 'vt') ?></div>
                                     <div class="user-more"></div>
@@ -246,8 +260,12 @@ if($dark_mode_type == 0){ // 禁用
     <header class="header pc">
         <div class="header-nav">
             <a href="<?php bloginfo('url') ?>" class="logo" title="" rel="home">
-                <img light src="<?= vt_get_config('site_logo', ''); ?>" alt="<?php bloginfo('name') ?>">
-                <img darkness src="<?= vt_get_config('site_logo_darkness', ''); ?>" alt="<?php bloginfo('name') ?>">
+                <?php if(vt_get_config('site_logo', '') == ''):?>
+                    <?=get_bloginfo('name')?>
+                <?php else: ?>
+                    <img light src="<?= vt_get_config('site_logo', ''); ?>" alt="<?php bloginfo('name') ?>">
+                    <img darkness src="<?= vt_get_config('site_logo_darkness', ''); ?>" alt="<?php bloginfo('name') ?>">
+                <?php endif; ?>
             </a>
 
             <?php
@@ -294,10 +312,10 @@ if($dark_mode_type == 0){ // 禁用
 
 
             <?php if ($current_user->ID && is_captain_active()) : ?>
-                <?php $avatar = vt_get_custom_avatar_url($current_user->ID) ?>
+                <?php // $avatar = vt_get_custom_avatar_url($current_user->ID) ?>
                 <div class="header-top-profile">
                     <a href="javascript:;" class="header-top-avatar">
-                        <img src="<?php echo $avatar ?>" alt="">
+                        <?php echo get_avatar($current_user->ID, 80, '', '', ''); ?>
                     </a>
 
                     <!-- 用户登录后的弹窗 -->
@@ -307,7 +325,7 @@ if($dark_mode_type == 0){ // 禁用
                     ?>
                     <div class="user-widget">
                         <div class="user-header">
-                            <img src="<?php echo $avatar ?>" class="avatar">
+                            <?php echo get_avatar($current_user->ID, 80, '', '', ''); ?>
                             <div class="user-meta">
                                 <div class="user-nickname"><?php echo $nickname ?></div>
                                 <div class="user-more"><?php echo $description ?></div>

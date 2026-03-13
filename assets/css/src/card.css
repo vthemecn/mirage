@@ -25,7 +25,7 @@
   width: 120px;
   height: auto;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: var(--vt-border-radius);
   position: relative;
   margin: 0 12px 0 0;
   align-self: flex-start;
@@ -37,8 +37,7 @@
   width: 100%;
   height: auto;
   padding-bottom: 68%;
-  /* background-color: aqua; */
-  
+  background-color: var(--vt-bg-color-grey) 
 }
 
 .vt-card-thumbnail a img {

@@ -12,34 +12,6 @@ function vt_add_profile_fields( $user ) {
     ?>
     <input type="hidden" name="vt_avatar_id" id="vt_avatar_id" value="<?php echo !empty($avatar_id) ? $avatar_id : ''; ?>" />
     <?php
-    
-    // 获取当前用户会员等级
-    $membership_level = ($user!=='add-new-user') ? get_user_meta($user->ID, 'membership_level', true) : 'free';
-    $membership_level = $membership_level !=="" ? $membership_level : 'free';
-
-    // 显示会员等级选择
-    echo '<h3>' . __('会员等级', 'vt') . '</h3>';
-    echo '<table class="form-table">';
-    echo '<tr>';
-    echo '<th><label for="membership_level">' . __('等级选择', 'vt') . '</label></th>';
-    echo '<td>';
-    
-    // 定义会员等级选项
-    $levels = array(
-        'free' => __('普通用户', 'vt'),
-        'vip' => __('VIP用户', 'vt'),
-        'svip' => __('SVIP用户', 'vt')
-    );
-    
-    foreach ($levels as $level_key => $level_label) {
-        $checked = ($membership_level === $level_key) ? ' checked="checked"' : '';
-        echo '<p><input type="radio" id="level_'.$level_key.'" name="membership_level" value="'.$level_key.'"'.$checked.'> ';
-        echo '<label for="level_'.$level_key.'">'.$level_label.'</label></p>';
-    }
-    
-    echo '</td>';
-    echo '</tr>';
-    echo '</table>';
 }
 add_action( 'show_user_profile', 'vt_add_profile_fields' );
 add_action( 'edit_user_profile', 'vt_add_profile_fields' );
@@ -49,23 +21,35 @@ add_action( 'user_new_form', 'vt_add_profile_fields' );
 /**
  * 更新用户头像和会员等级
  */
-function vt_update_profile($user_id){
-    if( current_user_can('edit_users') ){
-        // 检查POST数据中是否提供了vt_avatar_id
-        if (isset($_POST['vt_avatar_id'])) {
-            $avatar_id = empty($_POST['vt_avatar_id']) ? '' : $_POST['vt_avatar_id'];
-            update_user_meta($user_id, 'user_avatar_attachment_id', $avatar_id);
-        }
-        
-        // 检查POST数据中是否提供了会员等级
-        if (isset($_POST['membership_level'])) {
-            $membership_level = sanitize_text_field($_POST['membership_level']);
-            update_user_meta($user_id, 'membership_level', $membership_level);
-        }
-    }
-}
-add_action('profile_update', 'vt_update_profile');
-add_action('user_register', 'vt_update_profile');
+// function vt_update_profile($user_id){
+//     if( current_user_can('edit_users') ){
+//         // 检查POST数据中是否提供了vt_avatar_id
+//         if (isset($_POST['vt_avatar_id'])) {
+//             $avatar_id = empty($_POST['vt_avatar_id']) ? '' : $_POST['vt_avatar_id'];
+//             update_user_meta($user_id, 'user_avatar_attachment_id', $avatar_id);
+//         }
+//     }
+// }
+// add_action('profile_update', 'vt_update_profile');
+// add_action('user_register', 'vt_update_profile');
+
+// function v_update_profile($user_id, $old_data = null){
+//     // 仅在后台执行，且当前用户有编辑用户权限
+//     if (!is_admin() || !current_user_can('edit_users')) {
+//         return;
+//     }
+
+//     // 检查 POST 数据中是否提供了会员等级
+//     if (isset($_POST['membership_level'])) {
+//         echo 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'.$_POST['membership_level'];
+//         $membership_level = sanitize_text_field($_POST['membership_level']);
+//         update_user_meta($user_id, 'membership_level', $membership_level);
+//     }
+// }
+// add_action('profile_update', 'v_update_profile', 10, 2);
+// add_action('user_register', 'v_update_profile');
+
+
 
 
 /*
@@ -103,69 +87,4 @@ function set_profile_avatar() {
 add_filter( 'user_profile_picture_description', 'set_profile_avatar', 1 );
 
 
-/**
- * 获取用户会员等级
- */
-function get_user_membership_level($user_id) {
-    $level = get_user_meta($user_id, 'membership_level', true);
-    return !empty($level) ? $level : 'free';
-}
 
-/**
- * 在用户列表中添加会员等级列
- */
-add_filter('manage_users_columns', 'add_membership_level_column');
-function add_membership_level_column($columns) {
-    $columns['membership_level'] = __('会员等级', 'vt');
-    return $columns;
-}
-
-/**
- * 填充会员等级列的数据
- */
-add_filter('manage_users_custom_column', 'show_membership_level_column_content', 10, 3);
-function show_membership_level_column_content($value, $column_name, $user_id) {
-    if ('membership_level' !== $column_name) {
-        return $value;
-    }
-
-    $level = get_user_meta($user_id, 'membership_level', true);
-    
-    // 如果没有设置等级，默认为 free
-    if (empty($level)) {
-        $level = 'free';
-    }
-    
-    // 定义等级对应的显示文本
-    $levels = array(
-        'free' => __('普通用户', 'vt'),
-        'vip' => __('VIP用户', 'vt'),
-        'svip' => __('SVIP用户', 'vt')
-    );
-    
-    return isset($levels[$level]) ? $levels[$level] : $levels['free'];
-}
-
-/**
- * 使会员等级列可排序
- */
-add_filter('manage_users_sortable_columns', 'add_membership_level_column_sortable');
-function add_membership_level_column_sortable($columns) {
-    $columns['membership_level'] = 'membership_level';
-    return $columns;
-}
-
-/**
- * 处理用户列表排序
- */
-add_action('pre_get_users', 'handle_membership_level_column_sorting');
-function handle_membership_level_column_sorting($query) {
-    if (!is_admin() || !$query->is_main_query()) {
-        return;
-    }
-    
-    if ('membership_level' === $query->get('orderby')) {
-        $query->set('meta_key', 'membership_level');
-        $query->set('orderby', 'meta_value');
-    }
-}

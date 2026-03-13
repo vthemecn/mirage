@@ -28,9 +28,10 @@
     width: calc(50% - 10px);
     margin:0 10px 10px 0;
   }
+  .vt-column.vt-column-3 { margin-right: -15px; }
   .vt-column.vt-column-3 .vt-card-item{
-    width: calc(33.33% - 10px);
-    margin:0 10px 10px 0;
+    width: calc(33.33% - 15px);
+    margin:0 15px 15px 0;
   }
   .vt-column.vt-column-4 .vt-card-item{
     width: calc(25% - 10px);
