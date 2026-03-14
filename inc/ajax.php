@@ -373,3 +373,110 @@ function get_star_status() {
         'can_star' => true // 登录用户都可以收藏
     ]);
 }
+
+
+add_action('wp_ajax_nopriv_custom_submit_comment', 'my_strict_json_comment_submit');
+add_action('wp_ajax_custom_submit_comment', 'my_strict_json_comment_submit');
+
+function my_strict_json_comment_submit() {
+    // 1. 验证 Nonce (安全校验)
+    if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'ajax_nonce')) {
+        wp_send_json_error(array(
+            'message' => '安全验证失败，请刷新页面重试。'
+        ), 403);
+        return;
+    }
+
+    // 2. 调用 WordPress 核心处理函数
+    $comment = wp_handle_comment_submission(wp_unslash($_POST));
+
+    // 3. 处理错误
+    if (is_wp_error($comment)) {
+        $error_code = $comment->get_error_code();
+        $error_message = $comment->get_error_message();
+
+        // 定义一个干净的错误消息映射表，原始错误提示，带有html标签
+        $custom_message_arr = array(
+            'comment_content_required' => '评论内容不能为空。',
+            'comment_failure'          => '请输入有效的电子邮箱地址。', // 对应邮箱或作者名错误
+            'comment_flood'            => '您发表得太快了，请稍后再试。',
+            'comment_duplicate'        => '您已经发表过相同的评论了。',
+            'comment_closed'           => '评论已关闭。',
+            'comment_trash'            => '评论被视为垃圾信息。',
+            'require_valid_email'      => '请输入有效的电子邮箱地址。',
+            'require_name_email'       => '必须填入姓名与电子邮箱地址',
+            // 默认兜底消息
+            'default'                  => '评论提交失败，请检查您的输入。'
+        );
+
+        // 获取对应的干净消息，如果没有匹配到则使用默认消息
+        $custom_message = isset($custom_message_arr[$error_code]) 
+            ? $custom_message_arr[$error_code] 
+            : $custom_message_arr['default'];
+
+        wp_send_json_error(array(
+            'code'    => $error_code,
+            'message' => $error_message,
+            'custom_message' => $custom_message
+        ), 400); 
+        return;
+    }
+
+    // 5. 处理成功
+    $user = wp_get_current_user();
+    
+    // 设置评论 Cookie (保持原生行为)
+    if ( empty($user->ID) ) {
+        if ( apply_filters('comment_cookies_consent', true, $comment, $user) ) {
+            wp_set_comment_cookies($comment, $user);
+        }
+    }
+
+    // 判断审核状态
+    $status_msg = ($comment->comment_approved == '1') ? '评论发布成功！' : '评论提交成功，等待管理员审核。';
+
+    // 准备评论数据供前端动态添加
+    $comment_id = $comment->comment_ID;
+    $comment_author = get_comment_author($comment_id);
+    $comment_date = get_comment_date('Y-m-d H:i', $comment_id);
+    $comment_content = get_comment_text($comment_id);
+    $comment_approved = $comment->comment_approved;
+    
+    // 获取头像
+    $avatar = get_avatar($comment->user_id, 60);
+    
+    // 获取用户昵称
+    $nickname = get_user_meta($comment->user_id, 'nickname', true);
+    $display_name = $nickname ? $nickname : $comment_author;
+    
+    // 获取用户网址
+    $user_url = get_comment_author_url($comment_id);
+    
+    // 构建返回数据
+    $response_data = array(
+        'message' => $status_msg,
+        'comment_id' => $comment_id,
+        'approved' => $comment_approved,
+        'author' => array(
+            'name' => $display_name,
+            'url' => $user_url,
+            'avatar' => $avatar
+        ),
+        'date' => $comment_date,
+        'content' => $comment_content,
+        'user_id' => $comment->user_id
+    );
+
+    // 【关键】返回 JSON 格式的成功
+    wp_send_json_success($response_data);
+}
+
+/* 评论排序 */
+// 平台	      添加位置	评论排序
+// WordPress 默认	底部	正序（旧→新）
+// Facebook	顶部	倒序（新→旧）
+// YouTube	顶部	倒序（新→旧）
+// 知乎评论	底部	正序（旧→新）
+// Twitter	顶部	倒序（新→旧）
+// 微信公众号	底部	正序（旧→新）
+

@@ -107,6 +107,13 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : THEME_URL . '/assets/images/bann
                 <div class='meta-item comment-counter'>
                     <i class="fa-solid fa-comment"></i><?php echo $post->comment_count; ?>
                 </div>
+
+                <?php if( current_user_can( 'manage_options' ) ): ?>
+                <a href="/wp-admin/post.php?post=<?php echo get_the_ID() ?>&action=edit" class="meta-item">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <span><?=__('Edit','vt')?></span>
+                </a>
+                <?php endif ?>
             </div>
             
             <div class="article-content content-style line-numbers">
@@ -194,13 +201,6 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : THEME_URL . '/assets/images/bann
                     <i class="fa-solid fa-coins"></i>
                     <span><?=__('Donate','vt')?></span>
                 </div>
-
-                <?php if( current_user_can( 'manage_options' ) ): ?>
-                <a href="/wp-admin/post.php?post=<?php echo get_the_ID() ?>&action=edit" class="widget-action">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <span><?=__('Edit','vt')?></span>
-                </a>
-                <?php endif ?>
             </div>
 
 
