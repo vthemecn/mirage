@@ -375,10 +375,10 @@ function get_star_status() {
 }
 
 
-add_action('wp_ajax_nopriv_custom_submit_comment', 'my_strict_json_comment_submit');
-add_action('wp_ajax_custom_submit_comment', 'my_strict_json_comment_submit');
+add_action('wp_ajax_nopriv_custom_submit_comment', 'vt_comment_submit');
+add_action('wp_ajax_custom_submit_comment', 'vt_comment_submit');
 
-function my_strict_json_comment_submit() {
+function vt_comment_submit() {
     // 1. 验证 Nonce (安全校验)
     if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'ajax_nonce')) {
         wp_send_json_error(array(
@@ -387,10 +387,35 @@ function my_strict_json_comment_submit() {
         return;
     }
 
-    // 2. 调用 WordPress 核心处理函数
+    // 2. 字数限制验证
+    $comment_content = isset($_POST['comment']) ? sanitize_textarea_field($_POST['comment']) : '';
+    $max_length = 1000; // 最大 1000 字
+    
+    $content_length = mb_strlen($comment_content, 'UTF-8');
+    
+    // 验证不能为空
+    if ($content_length < 1) {
+        wp_send_json_error([
+            'message' => __('Comment cannot be empty.', 'vt')
+        ]);
+        return;
+    }
+    
+    // 验证最大长度
+    if ($content_length > $max_length) {
+        wp_send_json_error([
+            'message' => sprintf(
+                __('Comment cannot exceed %d characters.', 'vt'),
+                $max_length
+            )
+        ]);
+        return;
+    }
+
+    // 3. 调用 WordPress 核心处理函数
     $comment = wp_handle_comment_submission(wp_unslash($_POST));
 
-    // 3. 处理错误
+    // 4. 处理错误
     if (is_wp_error($comment)) {
         $error_code = $comment->get_error_code();
         $error_message = $comment->get_error_message();

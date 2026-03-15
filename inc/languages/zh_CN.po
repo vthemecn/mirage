@@ -649,5 +649,60 @@ msgid "Hello Mirage"
 msgstr "你好，Mirage"
 
 
+# 评论功能相关
+###############################################################################
 
+msgid "No comments"
+msgstr "暂无评论"
+
+msgid "One comment"
+msgstr "一条评论"
+
+msgid "comments"
+msgstr "条评论"
+
+msgid "Submitting..."
+msgstr "提交中..."
+
+msgid "Submit failed"
+msgstr "提交失败"
+
+msgid "Network error, please try again."
+msgstr "网络错误，请稍后重试。"
+
+msgid "Are you sure you want to delete this comment?"
+msgstr "确定要删除这条评论吗？"
+
+msgid "Deleting..."
+msgstr "删除中..."
+
+msgid "Comment deleted successfully"
+msgstr "评论删除成功"
+
+msgid "Delete failed"
+msgstr "删除失败"
+
+msgid "Reply to comment..."
+msgstr "回复评论..."
+
+msgid "Submit Reply"
+msgstr "提交回复"
+
+msgid "Please enter reply content"
+msgstr "请输入回复内容"
+
+msgid "Your comment is awaiting moderation."
+msgstr "您的评论正在等待审核。"
+
+msgid "Comment form not found"
+msgstr "评论表单未找到"
+
+# 评论字数限制
+###############################################################################
+
+msgid "Comment cannot be empty."
+msgstr "评论不能为空"
+
+msgid "Comment cannot exceed %d characters."
+msgstr "评论不能超过 %d 个字符"
 

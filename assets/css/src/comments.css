@@ -145,7 +145,7 @@
   font-size: var(--vt-font-size-sm);
 }
 
-.comment-list li.comment .children {
+.comment-list .children {
   padding-left: 50px;
 }
 
@@ -257,4 +257,104 @@
   align-items: center;
   font-size: 12px;
 }
+
+
+/*****************************************************************************/
+
+/* 内联回复表单样式 */
+.inline-reply-form {
+  margin-top: 15px;
+  padding: 15px;
+  background: var(--vt-bg-color-card);
+  border: 1px solid var(--vt-border-color);
+  border-radius: var(--vt-border-radius);
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reply-form-container textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--vt-border-color);
+  border-radius: var(--vt-border-radius);
+  padding: 10px;
+  font-size: 14px;
+  resize: vertical;
+  min-height: 80px;
+  background-color: var(--vt-bg-color-card);
+  color: var(--vt-text-color);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.reply-form-container textarea:focus {
+  border-color: var(--vt-color-primary);
+}
+
+.reply-form-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.reply-form-actions button {
+  padding: 6px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: var(--vt-border-radius);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.reply-form-actions .submit-reply {
+  background: var(--vt-color-primary);
+  color: #fff;
+}
+
+.reply-form-actions .submit-reply:hover {
+  opacity: 0.9;
+}
+
+.reply-form-actions .submit-reply:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.reply-form-actions .cancel-reply {
+  background: transparent;
+  color: var(--vt-text-color-grey);
+  border: 1px solid var(--vt-border-color);
+}
+
+.reply-form-actions .cancel-reply:hover {
+  background: var(--vt-bg-color);
+}
+
+/* 移动端适配 */
+@media only screen and (max-width: 768px) {
+  .inline-reply-form {
+    padding: 12px;
+  }
+  
+  .reply-form-actions {
+    flex-direction: row-reverse;
+  }
+  
+  .reply-form-actions button {
+    flex: 1;
+    max-width: 120px;
+  }
+}
+
 

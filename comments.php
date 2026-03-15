@@ -162,9 +162,11 @@ function vt_comment($comment, $args, $depth)
 				$url = get_permalink();
 				$url = $url . "?replytocom=" . get_comment_ID() . "#respond";
 				?>
-				<?php if($depth <= 1):?>
-					<a href="<?php echo $url?>" <?php echo $current_user->ID ? 'login="false"' : ''?> ><?=__('Reply','vt')?></a>
-				<?php endif ?>
+				<?php //if($depth <= 1):?>
+					<a href="<?php echo $url?>" <?php echo $current_user->ID ? 'login="false"' : ''?> class="reply-link">
+						<?=__('Reply','vt')?>
+					</a>
+				<?php //endif ?>
 
 				<?php if($comment->user_id == $current_user->ID && $current_user->ID != 0):?>
 					<a href="javascript:;" class="delete-comment" data-comment-id="<?=get_comment_ID()?>">
@@ -200,3 +202,4 @@ function get_top_level_comment_count($post_id) {
 
 
 ?>
+
