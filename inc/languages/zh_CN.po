@@ -257,9 +257,6 @@ msgstr "注册不是必须的"
 msgid "Current Account"
 msgstr "当前账户"
 
-msgid "Login required, create login button here"
-msgstr "需要登录，这里创建登录按钮"
-
 msgid "条评论"
 msgstr "条评论"
 
@@ -651,6 +648,9 @@ msgstr "你好，Mirage"
 
 # 评论功能相关
 ###############################################################################
+
+msgid "You must be logged in to post a comment."
+msgstr "您必须登录后才能发表评论。"
 
 msgid "No comments"
 msgstr "暂无评论"

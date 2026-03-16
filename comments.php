@@ -45,7 +45,10 @@ $comment_count = get_comments_number();
 		'comment_notes_after' => '',
 		'id_submit' => __('comment-submit'),
 		'logged_in_as' => '<div class="top-info logged-in-as">'.__('Current Account','vt').': ' . $current_user->nickname . '</div>',
-		'must_log_in'  => '<div class="top-info must-log-in">'.__('Login required, create login button here','vt').'</div>'
+		'must_log_in'  => '<div class="top-info must-log-in">
+						     <p>' . __('You must be logged in to post a comment.','vt') . '</p>
+						     <a href="javascript:;" class="button login-button open-login-dialog">' . __('Login','vt') . '</a>
+						   </div>'
 	);
 	comment_form($comments_args);
 	?>
@@ -161,12 +164,18 @@ function vt_comment($comment, $args, $depth)
 				<?php
 				$url = get_permalink();
 				$url = $url . "?replytocom=" . get_comment_ID() . "#respond";
+
+				// 检查是否需要登录才能评论
+				$must_login = get_option('comment_registration');
 				?>
 				<?php //if($depth <= 1):?>
-					<a href="<?php echo $url?>" <?php echo $current_user->ID ? 'login="false"' : ''?> class="reply-link">
-						<?=__('Reply','vt')?>
-					</a>
 				<?php //endif ?>
+				
+				<?php if( !($must_login && !$current_user->ID) ): ?>
+					<a href="<?php echo $url?>" <?php echo $current_user->ID ? 'login="false"' : ''?> class="reply-link">
+					<?=__('Reply','vt')?>
+				</a>
+				<?php endif; ?>
 
 				<?php if($comment->user_id == $current_user->ID && $current_user->ID != 0):?>
 					<a href="javascript:;" class="delete-comment" data-comment-id="<?=get_comment_ID()?>">

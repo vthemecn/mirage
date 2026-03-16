@@ -2648,6 +2648,31 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
   color: var(--vt-color-primary);
 }
 
+/* 必须登录提示框 */
+.top-info.must-log-in {
+  text-align: center;
+  padding: 30px 0;
+  background-color: var(--vt-bg-color-grey);
+  border-radius: var(--vt-border-radius);
+}
+.top-info.must-log-in p {
+  margin: 0 0 15px 0;
+  color: var(--vt-color-warning);
+  font-size: 14px;
+}
+.top-info.must-log-in .login-button {
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0px 10px;
+  font-size: 14px;
+  color: var(--vt-text-color);
+  margin-left: 12px;
+  border-radius: var(--vt-border-radius);
+  border: 1px solid var(--vt-border-color);
+  background-color: var(--vt-bg-color-card);
+}
+
 .comment-form {
   font-size: var(--vt-font-size-base);
 }
