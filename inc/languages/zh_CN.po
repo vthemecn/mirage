@@ -718,5 +718,5 @@ msgstr "基础设置"
 msgid "Full Width"
 msgstr "全宽显示"
 
-msgid "Show Table of Contents"
-msgstr "显示文章目录"
+msgid "Table of Contents"
+msgstr "文章目录"

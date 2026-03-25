@@ -4,7 +4,7 @@
 .notice-container{
 	background-color: var(--vt-bg-color-card);
 	border-radius: var(--vt-border-radius);
-	border: 1px solid var(--vt-border-color);
+	box-shadow: 0 0 3px 0 var(--vt-shadow-color);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

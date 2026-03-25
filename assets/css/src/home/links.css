@@ -6,7 +6,7 @@
   flex-direction: column;
   overflow: hidden;
   background-color: var(--vt-bg-color-card);
-  box-shadow: 0 0 2px 0 var(--vt-shadow-color);
+  box-shadow: 0 0 3px 0 var(--vt-shadow-color);
   border-radius: var(--vt-border-radius);
   box-sizing: border-box;
 }
@@ -34,7 +34,13 @@
   background-color: var(--vt-bg-color-card);
   padding: 10px;
   border-radius: var(--vt-border-radius);
-  box-shadow: 0 0 2px var(--vt-shadow-color);
+  border: 1px solid var(--vt-border-color);
+  /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+}
+
+.links-widget .link-item:hover {
+  box-shadow: 0 0 15px 0 var(--vt-shadow-color);
+  /* transform: translateY(-2px) !important; */
 }
 
 .links-widget .link-item a{

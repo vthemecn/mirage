@@ -24,12 +24,19 @@ function vt_basic_setting_callback($post) {
     
     // 获取现有值
     $full_width = get_post_meta($post->ID, '_vt_article_full_width', true);
-    $checked = ($full_width === 'on') ? 'checked="checked"' : '';
+    $show_table = get_post_meta($post->ID, '_vt_article_show_table', true);
     
     echo '<p>
             <label for="vt_article_full_width">
-                <input type="checkbox" id="vt_article_full_width" name="vt_article_full_width" value="on" ' . $checked . ' /> 
+                <input type="checkbox" id="vt_article_full_width" name="vt_article_full_width" value="1" ' . checked($full_width, '1', false) . ' /> 
                 '. __('Full Width','vt') .'
+            </label>
+          </p>';
+    
+    echo '<p>
+            <label for="vt_article_show_table">
+                <input type="checkbox" id="vt_article_show_table" name="vt_article_show_table" value="1" ' . checked($show_table, '1', false) . ' /> 
+                '. __('Table of Contents','vt') .'
             </label>
           </p>';
 }
@@ -53,10 +60,17 @@ function vt_save_article_meta($post_id) {
         return;
     }
     
-    // 保存或更新元数据
+    // 保存或更新全宽设置 - 选中保存 '1'，未选中删除
     if (isset($_POST['vt_article_full_width'])) {
-        update_post_meta($post_id, '_vt_article_full_width', 'on');
+        update_post_meta($post_id, '_vt_article_full_width', '1');
     } else {
-        update_post_meta($post_id, '_vt_article_full_width', 'off');
+        delete_post_meta($post_id, '_vt_article_full_width');
+    }
+    
+    // 保存或更新目录显示设置 - 选中保存 '1'，未选中删除
+    if (isset($_POST['vt_article_show_table'])) {
+        update_post_meta($post_id, '_vt_article_show_table', '1');
+    } else {
+        delete_post_meta($post_id, '_vt_article_show_table');
     }
 }

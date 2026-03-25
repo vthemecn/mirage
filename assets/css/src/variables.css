@@ -19,7 +19,7 @@
   --vt-bg-color-card: #ffffff;
   --vt-border-radius: 4px;
   --vt-border-color: #e5ebeb;
-  --vt-shadow-color: #d1d2d3;
+  --vt-shadow-color: rgba(209, 210, 211, 0.5);
 }
 
 body.dark-mode {
@@ -34,7 +34,7 @@ body.dark-mode {
   --vt-bg-color-mask: rgba(50, 50, 50, 0.5);
   --vt-bg-color-card: #272727;
   --vt-border-color: #303030;
-  --vt-shadow-color: #181818;
+  --vt-shadow-color: rgba(24, 24, 24, 0.9);
 }
 
 body.dark-mode img {

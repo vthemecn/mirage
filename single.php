@@ -69,6 +69,8 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : THEME_URL . '/assets/images/bann
 // 全宽显示
 $full_width = get_post_meta($post->ID, '_vt_article_full_width', true);
 $full_width_attribute = $full_width ? 'full-width' : '';
+
+$show_table = get_post_meta($post->ID, '_vt_article_show_table', true);
 ?>
 
 
@@ -129,23 +131,25 @@ $full_width_attribute = $full_width ? 'full-width' : '';
                     </div>
                 <?php endif */ ?>
                 
-                <?php
-                $content = get_the_content();
-                $toc = create_table_of_contents($content);
-                ?>
-                <?php if($config['toc_is_on'] && $toc):?>                    
-                    <div class="toc-widget show">
-                        <div class="toc-header">
-                            <span>目录</span>
-                            <div class="toc-button">
-                                <span>展开<i class="fa-regular fa-chevron-down"></i></span>
-                                <span>收起<i class="fa-regular fa-chevron-up"></i></span>
+                <?php if($show_table):?>
+                    <?php
+                    $content = get_the_content();
+                    $toc = create_table_of_contents($content);
+                    ?>
+                    <?php if($config['toc_is_on'] && $toc):?>                    
+                        <div class="toc-widget show">
+                            <div class="toc-header">
+                                <span>目录</span>
+                                <div class="toc-button">
+                                    <span>展开<i class="fa-regular fa-chevron-down"></i></span>
+                                    <span>收起<i class="fa-regular fa-chevron-up"></i></span>
+                                </div>
+                            </div>
+                            <div class="toc-body">
+                                <?=$toc?>
                             </div>
                         </div>
-                        <div class="toc-body">
-                            <?=$toc?>
-                        </div>
-                    </div>
+                    <?php endif; ?>
                 <?php endif; ?>
                 
 

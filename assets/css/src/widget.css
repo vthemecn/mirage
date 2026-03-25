@@ -1,6 +1,6 @@
 .widget-container {
   background-color: var(--vt-bg-color-card);
-  box-shadow: 0 0 2px 0 var(--vt-shadow-color);
+  box-shadow: 0 0 3px 0 var(--vt-shadow-color);
   border-radius: var(--vt-border-radius);
 }
 .widget-container .widget-header {
@@ -34,7 +34,7 @@
 .image-title.widget-container {
   box-sizing: border-box;
   background-color: var(--vt-bg-color-card);
-  box-shadow: 0 0 2px var(--vt-shadow-color);
+  box-shadow: 0 0 3px 0 var(--vt-shadow-color);
   border-radius: var(--vt-border-radius);
 }
 
@@ -276,7 +276,7 @@
   box-sizing: border-box;
   border-radius: var(--vt-border-radius);
   background-color: var(--vt-bg-color-card);
-  box-shadow: 0 0 2px 0 var(--vt-shadow-color);
+  box-shadow: 0 0 3px 0 var(--vt-shadow-color);
   border-radius: var(--vt-border-radius);
   margin: 0px 0 0 0;
   display: flex;
@@ -357,7 +357,7 @@ body.dark-mode .user-card {
  * HTML 卡片
  */
 .html-card-container {
-  box-shadow: 0 0 2px 0 var(--vt-shadow-color);
+  box-shadow: 0 0 3px 0 var(--vt-shadow-color);
   overflow: hidden;
   /* padding: 15px; */
 }
@@ -378,7 +378,7 @@ body.dark-mode .user-card {
   margin-top: 10px;
   overflow: hidden;
   background-color: var(--vt-bg-color-card);
-  box-shadow: 0 0 2px 0 var(--vt-shadow-color);
+  box-shadow: 0 0 3px 0 var(--vt-shadow-color);
   border-radius: var(--vt-border-radius);
   box-sizing: border-box;
 }

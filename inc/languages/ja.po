@@ -718,5 +718,5 @@ msgstr "きほんせってい"
 msgid "Full Width"
 msgstr "全幅表示"
 
-msgid "Show Table of Contents"
-msgstr "目次を表示"
+msgid "Table of Contents"
+msgstr "目次表示"
