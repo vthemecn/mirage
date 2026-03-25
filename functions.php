@@ -42,6 +42,7 @@ require_once THEME_DIR . '/inc/helper.php';
 require_once THEME_DIR . '/inc/i18n.php';
 require_once THEME_DIR . '/inc/config.php';
 require_once THEME_DIR . '/inc/menu.php';
+require_once THEME_DIR . '/inc/meta.php';
 require_once THEME_DIR . '/inc/widget.php';
 require_once THEME_DIR . '/inc/setting.php';
 require_once THEME_DIR . '/inc/switch.php';

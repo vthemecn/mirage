@@ -65,10 +65,14 @@ $user_profile_url = home_url() . '/user/' .$post->post_author;
 // 获取文章缩略图
 $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($vt_post_id), 'large');
 $thumbnail_image = $thumbnail ? $thumbnail[0] : THEME_URL . '/assets/images/banner.jpg';
+
+// 全宽显示
+$full_width = get_post_meta($post->ID, '_vt_article_full_width', true);
+$full_width_attribute = $full_width ? 'full-width' : '';
 ?>
 
 
-<div class="main-container">
+<div class="main-container" <?=$full_width_attribute?> >
     <div class="main-widget">
         <div class="article-widget">
             <div class="article-title">
@@ -312,18 +316,12 @@ $thumbnail_image = $thumbnail ? $thumbnail[0] : THEME_URL . '/assets/images/bann
     </div><!-- .main-widget -->
 
     <?php
-    $full_width = false;
-    // if(!$full_width){ get_sidebar(); }
+    if(!$full_width){
+        get_sidebar();
+    }
     ?>
-    <div class="sider little-widget">
-        <?php if ( is_active_sidebar( 'posts-sidebar' ) ) { ?>
-            <?php dynamic_sidebar( 'posts-sidebar' ); ?>
-        <?php } ?>
+</div>
 
-        <?= vt_theme_ad('ad_sidebar'); ?>
-    </div>
-</div>
-</div>
 
 
 <div class="vt-dialog" id="share-dialog" class="normal-dialog">

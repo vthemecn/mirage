@@ -43,11 +43,17 @@
  * 最新文章
  */
 .recent-posts.widget-container .recent-posts-wrapper {
-  padding: 0;
+  padding: 10px 0;
   box-sizing: border-box;
 }
 .recent-posts-wrapper .vt-card-item{
   margin: 0;
+  padding: 10px 15px;
+  box-shadow: none;
+}
+.recent-posts-wrapper .vt-card-item .vt-card-title a {
+  font-weight: normal;
+  font-size: 14px;
 }
 .recent-posts-wrapper .vt-card-item .vt-card-badget-widget{
   display: none;
@@ -58,16 +64,16 @@
 
 @media only screen and (min-width: 768px) {
   .recent-posts-wrapper .vt-card-item{
-    padding: 15px;
+    padding: 10px 15px;
   }
-  .recent-posts-wrapper .vt-card-item .vt-card-title a {
-    font-weight: normal;
-    font-size: 15px;
-  }
+
   .recent-posts-wrapper .vt-card-item .vt-card-thumbnail {
     flex: 0 0 auto;
     width: 90px;
     margin: 0 10px 0 0;
+  }
+  .recent-posts-wrapper .vt-card-item .vt-card-thumbnail a {
+    padding-bottom: 73%;
   }
   .recent-posts-wrapper .vt-card-item .vt-card-meta,
   .recent-posts-wrapper .vt-card-item .vt-card-author,
@@ -388,12 +394,14 @@ body.dark-mode .user-card {
   overflow: hidden;
   border-radius: 3px;
   margin: 0 10px 10px 0;
-  padding: 3px 5px;
+  padding: 6px 6px;
   text-align: center;
   cursor: pointer;
   font-size: 13px;
+  line-height: 15px;
   display: block;
   color: var(--vt-text-color);
+  background-color: var(--vt-bg-color-grey);
   border: 1px solid var(--vt-border-color);
 }
 .tag-container .tag-list .tag-item:hover {
@@ -403,6 +411,8 @@ body.dark-mode .user-card {
 .tag-container .tag-list .tag-item span {
   font-size: 16px;
   font-weight: bold;
+  position: relative;
+  top: 1px;
 }
 
 @media only screen and (min-width: 900px) {

@@ -1,6 +1,5 @@
 <?php
 $config = vt_get_config();
-$hot_items = $config['hot_items'] ? $config['hot_items'] : array();
 
 $full_width = $config['full_width'];
 $full_width_class = $full_width==1 ? 'full-width' : '';
@@ -14,29 +13,7 @@ if($vt_list_type > 0){
 ?>
 
 <div class="main-container" <?=$full_width_class?>>
-    <div class="main-widget">
-        <?php if($config['hot_is_show']):?>
-        <div class="hot-widget">
-            <div class="header">
-                <div class="title"><?=$config['hot_title']?></div>
-                <?php /* ?><a href="/">更多</a> <?php */ ?>
-            </div>
-            <div class="body">
-                <div class="hot-list">
-                    <?php foreach($hot_items as $k => $v):?>
-                        <a class="hot-item" href="<?= $v['link']?>" target="_blank">
-                            <div class="hot-thumbnail">
-                                <img src="<?= $v['image']?>" alt="<?= $v['title']?>">
-                            </div>
-                            <div class="hot-title"><?= $v['title']?></div>
-                        </a>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </div>
-        <?php endif;?>
-
-        
+    <div class="main-widget">        
         <?= vt_theme_ad('ad_header'); ?>
 
 

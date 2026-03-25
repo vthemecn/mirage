@@ -18,6 +18,12 @@
   color: var(--vt-text-color);
 }
 
+.page-title .page-edit-action {
+  font-size: 13px;
+  color: var(--vt-text-color-grey);
+  float: right;
+}
+
 .page-meta {
   margin: 2rem 0rem 5rem 0rem;
 }
@@ -25,3 +31,33 @@
 .page-content {
   margin-top: 30px;
 }
+
+
+/*****************************************************************************/
+
+/**
+ * Links Page
+ */
+.page-link .links-widget {
+  margin-top: 20px;
+  padding: 0px;
+}
+
+.page-link .links-widget .widget-title {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 15px 0;
+  color: var(--vt-text-color);
+}
+
+.page-link .links-widget .link-items {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+
+
+
+
+

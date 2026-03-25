@@ -169,6 +169,7 @@ add_filter('login_display_language_dropdown', '__return_false');
 
 /* 修改登录页的样式 */
 function custom_loginlogo() {
+    if(vt_get_config('site_logo', '')=='') return;
     echo '<style type="text/css">
     h1 a {
         background-image: url('. vt_get_config('site_logo', '') .') !important;
@@ -256,64 +257,62 @@ if (vt_get_config('smtp_is_on', 0) == 1) {
 
 /**
  * 限制登录尝试次数
+ * 使用 transient 实现 IP 级别失败次数限制，1 小时后自动重置
  */
 if(vt_get_config('attempts_is_on', 0)){
     add_filter('authenticate', 'vt_authenticate_action', 1, 3);
 }
+
 function vt_authenticate_action($user, $username, $password){
+    // 如果已经认证失败（密码错误等），记录失败次数
+    if (is_wp_error($user)) {
+        return $user;
+    }
+    
     $ip = $_SERVER['REMOTE_ADDR'];
-    $attempts = get_option('vt_failed_attempts');
-    $need_update = false;
+    $transient_key = 'vt_login_failed_' . md5($ip);
+    $failed_count = get_transient($transient_key);
 
-    if (!$attempts) {
-        $attempts = array();
-    } else {
-        foreach ($attempts as $k => $v) {
-            if($v['flag'] != wp_date('YmdH')){
-                unset($attempts[$k]);
-                $need_update = true;
-            }
-        }
-    }
-
-    if($need_update){
-        update_option('vt_failed_attempts', $attempts);
-    }
-
-    $max_attempts = 30;
-    if (isset($attempts[$ip]) && $attempts[$ip]['counter'] >= $max_attempts) {
+    // 确保是整数类型
+    $failed_count = intval($failed_count);
+    
+    // 如果失败次数达到上限，阻止登录
+    if ($failed_count >= 20) {
         remove_filter('authenticate', 'wp_authenticate_username_password', 20, 3);
         remove_filter('authenticate', 'wp_authenticate_email_password', 20, 3);
-        return new WP_Error('too_many_retries', '您已多次登录失败，请1小时后重试！');
+        return new WP_Error(
+            'too_many_retries',
+            __('Too many failures. Wait 1 hour', 'vt')
+        );
     }
+    
+    return $user;
 }
 
 /**
- * 更新错误记录
+ * 记录登录失败次数
+ * 使用 transient 存储，1 小时后自动过期
  */
 if(vt_get_config('attempts_is_on', 0)){
     add_action('wp_login_failed', 'vt_login_failed_action');
 }
+
 function vt_login_failed_action($username){
     $ip = $_SERVER['REMOTE_ADDR'];
-    $attempts = get_option('vt_failed_attempts');
- 
-    if (!$attempts) {
-        $attempts = array();
-    } else {
-        foreach ($attempts as $k => $v) {
-            if($v['flag'] != wp_date('YmdH')){ unset($attempts[$k]); }
-        }
+    $transient_key = 'vt_login_failed_' . md5($ip);
+    $failed_count = get_transient($transient_key);
+    
+    // 如果没有记录或不存在，初始化为 0
+    if ($failed_count === false) {
+        $failed_count = 0;
     }
- 
-    if (isset($attempts[$ip])) {
-        $attempts[$ip]['counter']++;
-    } else {
-        $item = array('flag'=>wp_date('YmdH'), 'counter'=>1);
-        $attempts[$ip] = $item;
-    }
- 
-    update_option('vt_failed_attempts', $attempts);
+    
+    // 增加失败次数并设置 1 小时过期
+    set_transient(
+        $transient_key, 
+        intval($failed_count) + 1, 
+        HOUR_IN_SECONDS // 3600 秒，1 小时
+    );
 }
 
 /**
@@ -460,3 +459,8 @@ function vt_login_redirect( $redirect_to, $request, $user ) {
 
 add_filter( 'login_redirect', 'vt_login_redirect', 10, 3 );
 
+
+// 开启 WordPress 隐藏的友情链接功能
+if(vt_get_config('links_switcher')){
+    add_filter( 'pre_option_link_manager_enabled', '__return_true' );
+}

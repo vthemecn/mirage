@@ -2,7 +2,8 @@ nav.pagination {
   font-size: 20px;
   border-top: 0px;
   border-bottom: 0px;
-  padding: 20px 0 20px 0;
+  padding:0;
+  margin: 8px 0;
 }
 
 nav.pagination .nav-links {
@@ -62,5 +63,7 @@ nav.pagination a:hover {
 @media only screen and (min-width: 900px) {
   nav.pagination {
     /* padding: 0px 0 0 0; */
+    /* margin-bottom: -7px; */
+    margin: 20px 0;
   }
 }

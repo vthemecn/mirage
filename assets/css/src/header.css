@@ -357,7 +357,7 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   }
   .child-menu {
     background-color: var(--vt-bg-color-card);
-    box-shadow: 0 0 3px 0 var(--vt-shadow-color);
+    box-shadow: 0 0 2px 0 var(--vt-shadow-color);
     border-radius: var(--vt-border-radius);
     position: absolute;
     top: 60px;

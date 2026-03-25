@@ -31,7 +31,7 @@
 }
 
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 768px) {
   .main-container {
     width: 1200px;
     margin: 20px auto;
@@ -69,7 +69,7 @@
   margin-top: 0;
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 768px) {
   .sider {
     width: 300px;
     flex: 0 0 300px;
@@ -78,7 +78,7 @@
     position: relative;
   }
   /* 最后一个模块粘性定位 */
-  .sider .widget-container:last-child {
+  .sider > div:last-child {
     position: sticky;
     top: 20px;
   }
@@ -92,7 +92,7 @@
 /**
  * 宽屏样式覆盖
  */
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 768px) {
   .main-container[full-width] .main-widget {
     width: 100%;
   }

@@ -7,11 +7,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: GlotPress/3.0.0-rc.3\n"
-"Language: ja_JP\n"
+"Language: ja\n"
 
 
 msgid "Mirage"
-msgstr "ミラージュ"
+msgstr "Mirage"
 
 
 # 通用的
@@ -24,7 +24,7 @@ msgid "Off"
 msgstr "オフ"
 
 msgid "Follow the system"
-msgstr "システムに従う"
+msgstr "システムに合わせる"
 
 msgid "Simple"
 msgstr "シンプル"
@@ -45,10 +45,10 @@ msgid "dark"
 msgstr "ダーク"
 
 msgid "QR code"
-msgstr "QRコード"
+msgstr "QR コード"
 
 msgid "Scan QR code"
-msgstr "QRコードをスキャン"
+msgstr "QR コードをスキャン"
 
 msgid "Display"
 msgstr "表示"
@@ -75,7 +75,7 @@ msgid "Upload"
 msgstr "アップロード"
 
 msgid "New window opens link"
-msgstr "新しいウィンドウでリンクを開く"
+msgstr "新規ウィンドウでリンクを開く"
 
 msgid "Link address"
 msgstr "リンクアドレス"
@@ -84,7 +84,7 @@ msgid "Autoplay"
 msgstr "自動再生"
 
 msgid "Support HTML"
-msgstr "HTMLをサポート"
+msgstr "HTML サポート"
 
 msgid "Related Categories"
 msgstr "関連カテゴリ"
@@ -99,10 +99,10 @@ msgid "unit"
 msgstr "単位"
 
 msgid "More"
-msgstr "もっと"
+msgstr "もっと見る"
 
 msgid "Learn more"
-msgstr "詳しく見る"
+msgstr "詳細を見る"
 
 msgid "Background color"
 msgstr "背景色"
@@ -111,10 +111,10 @@ msgid "Background image"
 msgstr "背景画像"
 
 msgid "Customize JS code"
-msgstr "JSコードをカスタマイズ"
+msgstr "JS カスタムコード"
 
 msgid "Add menu"
-msgstr "メニューを追加"
+msgstr "メニュー追加"
 
 msgid "Sticky"
 msgstr "固定"
@@ -132,7 +132,7 @@ msgid "Number"
 msgstr "数"
 
 msgid "Category ID"
-msgstr "カテゴリID"
+msgstr "カテゴリ ID"
 
 msgid "Images article list"
 msgstr "画像記事リスト"
@@ -150,7 +150,7 @@ msgid "Images list description"
 msgstr "画像リストの説明"
 
 msgid "Articles Description"
-msgstr "記事の説明"
+msgstr "記事リストの説明"
 
 msgid "User card"
 msgstr "ユーザーカード"
@@ -165,16 +165,16 @@ msgid "Comments"
 msgstr "コメント"
 
 msgid "Star"
-msgstr "スター"
+msgstr "お気に入り"
 
 msgid "HTML card"
-msgstr "HTMLカード"
+msgstr "HTML カード"
 
 msgid "HTML card description"
-msgstr "HTMLカードの説明"
+msgstr "HTML カードの説明"
 
 msgid "Hot"
-msgstr "ホット"
+msgstr "人気"
 
 msgid "Dashboard"
 msgstr "ダッシュボード"
@@ -192,16 +192,16 @@ msgid "Search"
 msgstr "検索"
 
 msgid "results"
-msgstr "の結果"
+msgstr "件の結果"
 
 msgid "Go to home"
-msgstr "ホームに戻る"
+msgstr "ホームへ戻る"
 
 msgid "Page not found"
 msgstr "ページが見つかりません"
 
 msgid "Not content"
-msgstr "コンテンツなし"
+msgstr "コンテンツがありません"
 
 
 # 前台 - 文章页
@@ -210,7 +210,7 @@ msgid "Like"
 msgstr "いいね"
 
 msgid "Share"
-msgstr "共有"
+msgstr "シェア"
 
 msgid "Donate"
 msgstr "寄付"
@@ -231,10 +231,10 @@ msgstr "生成中"
 # 前台 - 文章页 - 评论
 ###############################################################################
 msgid "Nickname (*)"
-msgstr "ニックネーム(*)"
+msgstr "ニックネーム (*)"
 
 msgid "Email (*)"
-msgstr "メール(*)"
+msgstr "メール (*)"
 
 msgid "Website Address"
 msgstr "ウェブサイトアドレス"
@@ -252,16 +252,13 @@ msgid "Comment Content"
 msgstr "コメント内容"
 
 msgid "Registration is not required"
-msgstr "登録は必須ではありません"
+msgstr "登録不要"
 
 msgid "Current Account"
 msgstr "現在のアカウント"
 
-msgid "Login required, create login button here"
-msgstr "ログインが必要です、ここにログインボタンを作成"
-
 msgid "条评论"
-msgstr "コメント"
+msgstr "件のコメント"
 
 msgid "Delete"
 msgstr "削除"
@@ -287,34 +284,34 @@ msgid "Tags"
 msgstr "タグ"
 
 msgid "Please keep the theme footer credit intact."
-msgstr "テーマフッターのクレジットをそのままにしてください"
+msgstr "テーマフッターのクレジットをそのまま残してください"
 
 msgid "keep_theme_footer"
-msgstr "テーマフッターのクレジットを保持してください"
+msgstr "テーマフッターのクレジットを保持"
 
 msgid "Remove like"
-msgstr "いいねを削除"
+msgstr "いいねを解除"
 
 msgid "Already liked"
 msgstr "すでにいいね済み"
 
 msgid "Remove star"
-msgstr "スターを削除"
+msgstr "お気に入りを解除"
 
 msgid "Already starred"
-msgstr "すでにスター済み"
+msgstr "すでにお気に入り済み"
 
 msgid "Operation failed"
-msgstr "操作失敗"
+msgstr "操作に失敗しました"
 
 msgid "Operation succeeded"
-msgstr "操作成功"
+msgstr "操作に成功しました"
 
 msgid "Network error. Please try again"
-msgstr "ネットワークエラー。もう一度お試しください"
+msgstr "ネットワークエラー。再試行してください"
 
 msgid "Security verification failed"
-msgstr "セキュリティ認証失敗"
+msgstr "セキュリティ認証に失敗しました"
 
 msgid "Invalid action type"
 msgstr "無効なアクションタイプ"
@@ -323,7 +320,7 @@ msgid "Please log in"
 msgstr "ログインしてください"
 
 msgid "Invalid object ID"
-msgstr "無効なオブジェクトID"
+msgstr "無効なオブジェクト ID"
 
 
 # 小工具
@@ -335,7 +332,7 @@ msgid "Post Sidebar"
 msgstr "投稿サイドバー"
 
 msgid "Recent Posts"
-msgstr "最近の投稿"
+msgstr "最新投稿"
 
 msgid "Popular"
 msgstr "人気"
@@ -360,13 +357,13 @@ msgstr "ユーザーカードの説明"
 ###############################################################################
 
 msgid "Mirage settings"
-msgstr "ミラージュ設定"
+msgstr "Mirage 設定"
 
 msgid "General settings"
 msgstr "一般設定"
 
 msgid "SEO settings"
-msgstr "SEO設定"
+msgstr "SEO 設定"
 
 msgid "Home page settings"
 msgstr "ホームページ設定"
@@ -389,19 +386,19 @@ msgstr "バックアップ"
 ###############################################################################
 
 msgid "Website Logo"
-msgstr "ウェブサイトロゴ"
+msgstr "サイトロゴ"
 
 msgid "Website Logo (Dark Mode)"
-msgstr "ウェブサイトロゴ（ダークモード）"
+msgstr "サイトロゴ（ダークモード）"
 
 msgid "Theme color tone"
-msgstr "テーマカラートーン"
+msgstr "テーマカラー"
 
 msgid "Update prompt"
-msgstr "更新プロンプト"
+msgstr "更新通知"
 
 msgid "After closing, there will be no prompts for PHP version, theme, and plugin updates"
-msgstr "閉じた後、PHPバージョン、テーマ、プラグインの更新プロンプトはありません"
+msgstr "無効にすると、PHP バージョン、テーマ、プラグインの更新通知が表示されません"
 
 msgid "Editor Mode"
 msgstr "エディターモード"
@@ -428,19 +425,19 @@ msgid "Image aspect ratio"
 msgstr "画像アスペクト比"
 
 msgid "Fill in the aspect ratio of the image, for example: 70%"
-msgstr "画像のアスペクト比を入力してください、例：70%"
+msgstr "画像のアスペクト比を入力（例：70%）"
 
 msgid "Dark mode"
 msgstr "ダークモード"
 
 msgid "Anti brute force cracking"
-msgstr "ブルートフォース攻撃防止"
+msgstr "総当たり攻撃防止"
 
-msgid "Within one hour, there were 0 IP addresses and 0 login failures"
-msgstr "1時間以内に0個のIPアドレスと0回のログイン失敗がありました"
+msgid "Too many failures. Wait 1 hour"
+msgstr "失敗が多すぎます。1 時間待ってください"
 
 msgid "Payment QR code"
-msgstr "支払いQRコード"
+msgstr "支払い QR コード"
 
 msgid "Editor"
 msgstr "エディター"
@@ -460,6 +457,12 @@ msgstr "レイアウト"
 msgid "List"
 msgstr "リスト"
 
+msgid "Lazy Loading"
+msgstr "遅延読み込み"
+
+msgid "Recommendation"
+msgstr "おすすめ"
+
 
 # 配置页面 - 首页设置 - 布局设置
 ###############################################################################
@@ -470,11 +473,14 @@ msgstr "レイアウト設定"
 msgid "Sliders"
 msgstr "スライダー"
 
-msgid "Recommendation"
-msgstr "おすすめ"
+msgid "Notices"
+msgstr "お知らせ"
+
+msgid "Hot topics"
+msgstr "おすすめ人気記事"
 
 msgid "Latest"
-msgstr "最新"
+msgstr "最新記事"
 
 msgid "Links"
 msgstr "リンク"
@@ -484,23 +490,20 @@ msgstr "リンク"
 ###############################################################################
 
 msgid "Slide height"
-msgstr "スライドの高さ"
+msgstr "スライド高さ"
 
 msgid "Slide list"
-msgstr "スライドリスト"
+msgstr "スライドリンクスト"
 
 
 # 配置页面 - 首页设置 - 推荐模块
 ###############################################################################
 
-msgid "Hot topics"
-msgstr "ホットトピック"
+msgid "Article ID list"
+msgstr "記事IDリスト"
 
-msgid "Recommended module"
-msgstr "おすすめモジュール"
-
-msgid "Recommended List"
-msgstr "おすすめリスト"
+msgid "Enter IDs separated by commas (e.g., 1087, 1090). Blank uses auto mode."
+msgstr "カンマ区切りでIDを入力（例: 1087, 1090）。空白時は自動。"
 
 
 # 配置页面 - 首页设置 - 文章列表
@@ -509,7 +512,7 @@ msgid "Category"
 msgstr "カテゴリ"
 
 msgid "Exclude classification"
-msgstr "除外分類"
+msgstr "除外カテゴリ"
 
 msgid "Auto Load"
 msgstr "自動読み込み"
@@ -521,10 +524,10 @@ msgstr "自動読み込み回数"
 # 配置页面 - 顶部设置
 ###############################################################################
 msgid "header slogan"
-msgstr "ヘッダースローガン"
+msgstr "ヘッダーキャッチコピー"
 
 msgid "tel title"
-msgstr "電話タイトル"
+msgstr "電話番号タイトル"
 
 msgid "tel number"
 msgstr "電話番号"
@@ -548,10 +551,10 @@ msgid "Footer description"
 msgstr "フッター説明"
 
 msgid "qrcode"
-msgstr "QRコード"
+msgstr "QR コード"
 
 msgid "qrcode description"
-msgstr "QRコード説明"
+msgstr "QR コードの説明"
 
 msgid "nav bar"
 msgstr "ナビゲーションバー"
@@ -560,7 +563,7 @@ msgid "nav bar settings"
 msgstr "ナビゲーションバー設定"
 
 msgid "SNS links"
-msgstr "SNSリンク"
+msgstr "SNS リンク"
 
 
 # 配置页面 - 文章设置
@@ -570,7 +573,7 @@ msgid "Article settings"
 msgstr "記事設定"
 
 msgid "Number of rows and columns"
-msgstr "行数と列数"
+msgstr "行列数"
 
 msgid "Module Title"
 msgstr "モジュールタイトル"
@@ -579,7 +582,7 @@ msgid "Article revision version"
 msgstr "記事改訂バージョン"
 
 msgid "Article copyright statement"
-msgstr "記事著作権声明"
+msgstr "記事著作権ステートメント"
 
 msgid "Code highlighting"
 msgstr "コードハイライト"
@@ -591,22 +594,22 @@ msgstr "目次を生成"
 # 配置页面 - 邮箱设置
 ###############################################################################
 msgid "Customize email"
-msgstr "メールをカスタマイズ"
+msgstr "カスタムメール"
 
 msgid "SMTP address"
-msgstr "SMTPアドレス"
+msgstr "SMTP アドレス"
 
 msgid "SMTP port"
-msgstr "SMTPポート"
+msgstr "SMTP ポート"
 
 msgid "SMTP account"
-msgstr "SMTPアカウント"
+msgstr "SMTP アカウント"
 
 msgid "SMTP password"
-msgstr "SMTPパスワード"
+msgstr "SMTP パスワード"
 
 msgid "Sender nickname"
-msgstr "送信者ニックネーム"
+msgstr "送信者名"
 
 
 # 配置页面 - 广告设置
@@ -633,14 +636,87 @@ msgid "Mobile Code"
 msgstr "モバイルコード"
 
 msgid "PC Code"
-msgstr "PCコード"
+msgstr "PC コード"
 
 msgid "AD Code for width > 481px"
-msgstr "幅 > 481px の広告コード"
+msgstr "幅 481px 以上の広告コード（オプション、未記入時はモバイルコードを使用）"
 
 
 # 配置页面 - 默认数据
 ###############################################################################
 
 msgid "Hello Mirage"
-msgstr "こんにちは、ミラージュ"
+msgstr "こんにちは、Mirage"
+
+
+# 评论功能相关
+###############################################################################
+
+msgid "You must be logged in to post a comment."
+msgstr "コメントを投稿するにはログインが必要です"
+
+msgid "No comments"
+msgstr "コメントがありません"
+
+msgid "One comment"
+msgstr "1 件のコメント"
+
+msgid "comments"
+msgstr "件のコメント"
+
+msgid "Submitting..."
+msgstr "送信中..."
+
+msgid "Submit failed"
+msgstr "送信に失敗しました"
+
+msgid "Network error, please try again."
+msgstr "ネットワークエラー。後ほど再試行してください"
+
+msgid "Are you sure you want to delete this comment?"
+msgstr "このコメントを削除してもよろしいですか？"
+
+msgid "Deleting..."
+msgstr "削除中..."
+
+msgid "Comment deleted successfully"
+msgstr "コメントが正常に削除されました"
+
+msgid "Delete failed"
+msgstr "削除に失敗しました"
+
+msgid "Reply to comment..."
+msgstr "コメントに返信..."
+
+msgid "Submit Reply"
+msgstr "返信を送信"
+
+msgid "Please enter reply content"
+msgstr "返信内容を入力してください"
+
+msgid "Your comment is awaiting moderation."
+msgstr "あなたのコメントは承認待ちです"
+
+msgid "Comment form not found"
+msgstr "コメントフォームが見つかりません"
+
+# 评论字数限制
+###############################################################################
+
+msgid "Comment cannot be empty."
+msgstr "コメントは空にできません"
+
+msgid "Comment cannot exceed %d characters."
+msgstr "コメントは %d 文字を超えられません"
+
+# 文章详情页
+###############################################################################
+
+msgid "Basic Settings"
+msgstr "きほんせってい"
+
+msgid "Full Width"
+msgstr "全幅表示"
+
+msgid "Show Table of Contents"
+msgstr "目次を表示"

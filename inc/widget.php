@@ -45,7 +45,7 @@ class ArticleWidget extends WP_Widget {
     
         // 标题
         $title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Recent Posts', 'vt' );
-        $posts_per_page = (int) ( $instance['posts_per_page']) > 0 ? (int) ( $instance['posts_per_page']) : 4;
+        $posts_per_page = ! empty( $instance['posts_per_page']) > 0 ? (int) ( $instance['posts_per_page']) : 4;
 
         // 构建查询参数
         $query_args = array(
@@ -124,7 +124,7 @@ class HotWidget extends WP_Widget {
         echo $before_widget;
 
         $title = !empty($instance['title']) ? $instance['title'] : __('Popular', 'vt');
-        $posts_per_page = (int) ( $instance['posts_per_page']) > 0 ? (int) ( $instance['posts_per_page']) : 4;
+        $posts_per_page = ! empty( $instance['posts_per_page']) > 0 ? (int) ( $instance['posts_per_page']) : 4;
 
         $args = array(
             'post_type' => 'post',

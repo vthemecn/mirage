@@ -12,6 +12,8 @@
 @import './home/home.css';
 @import './home/slider.css';
 @import './home/hot.css';
+@import './home/notices.css';
+@import './home/links.css';
 @import './article-action.css';
 @import './article.css';
 @import './card.css';

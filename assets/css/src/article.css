@@ -8,6 +8,7 @@
   background-color: var(--vt-bg-color-card);
   box-shadow: 0 0 2px 0 var(--vt-shadow-color);
   border-radius: var(--vt-border-radius);
+  overflow: hidden;
 }
 
 .article-widget .article-title {
@@ -308,6 +309,20 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
 .related-posts-list .vt-card-item{
   margin: 0;
   padding: 0;
+  box-shadow: none;
+}
+
+.related-posts-widget .vt-card-body {
+  box-sizing: border-box;
+  padding: 5px 0;
+}
+
+.related-posts-widget .vt-card-title a {
+  font-size: 14px;
+}
+
+.related-posts-widget .vt-card-item .vt-card-thumbnail {
+  margin: 0 10px 0 0;
 }
 
 .related-posts-list .vt-card-item .vt-card-meta,

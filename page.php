@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Template Name: 页面模板
- * Template Post Type: post
+ * Template Name: Page
+ * Template Post Type: page
  * 
  * @author: vtheme <mail@vtheme.cn>
  * @link https://vtheme.cn
@@ -21,6 +21,15 @@ $config = vt_get_config();
                 <?php the_title(); ?>
             </div>
 
+            <div class="content-action">
+                <?php if( current_user_can( 'manage_options' ) ): ?>
+                    <a href="/wp-admin/post.php?post=<?php echo get_the_ID() ?>&action=edit" class="widget-action">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span><?=__('Edit','vt')?></span>
+                    </a>
+                <?php endif ?>
+            </div>
+
             <div class="page-content content-style">
                 <?php
                 if (have_posts()) {
@@ -32,15 +41,6 @@ $config = vt_get_config();
                     }
                 }
                 ?>
-            </div>
-
-            <div class="content-action">
-                <?php if( current_user_can( 'manage_options' ) ): ?>
-                    <a href="/wp-admin/post.php?post=<?php echo get_the_ID() ?>&action=edit" class="widget-action">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        <span><?=__('Edit','vt')?></span>
-                    </a>
-                <?php endif ?>
             </div>
         </div>
     </div><!-- .main-widget -->

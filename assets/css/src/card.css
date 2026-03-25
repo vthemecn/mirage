@@ -17,6 +17,12 @@
   transition: background-color 0.3s ease;
   border-radius: var(--vt-border-radius);
   background-color: var(--vt-bg-color-card);
+  box-shadow: 0 0 2px var(--vt-shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.vt-card-item:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 0 3px var(--vt-shadow-color);
 }
 
 /* 图片区域 - 移动端样式 */

@@ -433,8 +433,8 @@ msgstr "暗黑模式"
 msgid "Anti brute force cracking"
 msgstr "防暴力破解"
 
-msgid "Within one hour, there were 0 IP addresses and 0 login failures"
-msgstr "一个小时内有0个IP，0次登录失败"
+msgid "Too many failures. Wait 1 hour"
+msgstr "多次登录失败，请1小时后重试"
 
 msgid "Payment QR code"
 msgstr "收款二维码"
@@ -460,6 +460,9 @@ msgstr "列表"
 msgid "Lazy Loading"
 msgstr "懒加载"
 
+msgid "Recommendation"
+msgstr "推荐"
+
 
 # 配置页面 - 首页设置 - 布局设置
 ###############################################################################
@@ -470,8 +473,11 @@ msgstr "布局设置"
 msgid "Sliders"
 msgstr "幻灯片"
 
-msgid "Recommendation"
-msgstr "热门推荐"
+msgid "Notices"
+msgstr "通知公告"
+
+msgid "Hot topics"
+msgstr "热门文章"
 
 msgid "Latest"
 msgstr "最新文章"
@@ -490,17 +496,14 @@ msgid "Slide list"
 msgstr "幻灯片列表"
 
 
-# 配置页面 - 首页设置 - 推荐模块
+# 配置页面 - 首页设置 - 热门文章
 ###############################################################################
 
-msgid "Hot topics"
-msgstr "推荐模块标题"
+msgid "Article ID list"
+msgstr "文章ID列表"
 
-msgid "Recommended module"
-msgstr "推荐模块"
-
-msgid "Recommended List"
-msgstr "推荐列表"
+msgid "Enter IDs separated by commas (e.g., 1087, 1090). Blank uses auto mode."
+msgstr "输入逗号分隔的ID（如：1087, 1090）。留空使用自动模式。"
 
 
 # 配置页面 - 首页设置 - 文章列表
@@ -706,3 +709,14 @@ msgstr "评论不能为空"
 msgid "Comment cannot exceed %d characters."
 msgstr "评论不能超过 %d 个字符"
 
+# 文章详情页
+###############################################################################
+
+msgid "Basic Settings"
+msgstr "基础设置"
+
+msgid "Full Width"
+msgstr "全宽显示"
+
+msgid "Show Table of Contents"
+msgstr "显示文章目录"
