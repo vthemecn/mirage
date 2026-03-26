@@ -416,11 +416,19 @@ add_filter('the_content', 'add_heading_ids_to_content');
 
 
 /**
- * 后台添加自定义js
+ * 后台添加自定义 js
  */
 function vt_add_admin_js(){ 
     wp_enqueue_media();
-    wp_enqueue_script('vt-uploader', THEME_URL.'/assets/lib/admin.js', array('jquery'), false, true );
+    $theme_version = wp_get_theme()->get('Version');
+    wp_enqueue_script('vt-uploader', THEME_URL.'/assets/lib/admin.js', array('jquery'), $theme_version, true );
+    
+    // 将主题版本等信息注入到前端 JS
+    wp_localize_script('vt-uploader', 'vt_admin_data', array(
+        'theme_version' => $theme_version,
+        'site_url' => site_url(),
+        'admin_url' => admin_url()
+    ));
 }
 add_action('admin_enqueue_scripts', 'vt_add_admin_js');
 

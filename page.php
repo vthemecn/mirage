@@ -45,11 +45,9 @@ $config = vt_get_config();
         </div>
     </div><!-- .main-widget -->
 
-    <div class="sider little-widget">
-        <?php if ( is_active_sidebar( 'default-sidebar' ) ) : ?>
-            <?php dynamic_sidebar( 'default-sidebar' ); ?>
-        <?php endif; ?>
-    </div>
+    <?php
+    get_sidebar();
+    ?>
 </div>
 
 <?php get_footer(); ?>

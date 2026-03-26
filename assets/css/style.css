@@ -594,6 +594,14 @@ a:hover {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+
+
+
+
+
+
+
 .field {
   margin: 20px 0 0 0;
   position: relative;
@@ -1030,6 +1038,7 @@ nav.pagination a:hover {
   border-radius: 50%;
   background-color: var(--vt-bg-color-card);
   cursor: pointer;
+  border: 1px solid var(--vt-border-color);
 }
 
 .float-widget a.tool-button i {
@@ -1039,7 +1048,7 @@ nav.pagination a:hover {
   user-select: none;
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 768px) {
   .float-widget {
     position: fixed;
     right: 20px;
@@ -1048,7 +1057,7 @@ nav.pagination a:hover {
   }
 }
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 1500px) {
   .float-widget {
     right: calc(50% - 680px);
   }
@@ -1470,6 +1479,8 @@ nav.pagination a:hover {
   overflow: hidden;
   cursor: pointer;
   display: block;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hot-item .hot-thumbnail {
@@ -1479,6 +1490,8 @@ nav.pagination a:hover {
   padding-bottom: 70%;
   position: relative;
   background-color: var(--vt-bg-color-grey);
+  border-radius: var(--vt-border-radius);
+  overflow: hidden;
 }
 
 .hot-item .hot-thumbnail img {
@@ -1488,19 +1501,31 @@ nav.pagination a:hover {
   position: absolute;
   top: 0;
   left: 0;
-  border-radius: var(--vt-border-radius);
+  transition: transform 0.3s ease;
+}
+
+.hot-item:hover .hot-thumbnail img {
+  transform: scale(1.05);
+}
+
+.hot-item .hot-mask {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
 }
 
 .hot-item .hot-title {
+  box-sizing: border-box;
   width: 100%;
-  /*  height: 30px;*/
-  /*  line-height: 30px;*/
-  padding: 10px 0 0 0;
-  text-align: center;
   font-size: 14px;
-  overflow: hidden;
-  text-overflow:ellipsis;
-  white-space: nowrap;
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
 }
 
 @media only screen and (min-width: 900px) {
@@ -1630,6 +1655,7 @@ nav.pagination a:hover {
 
 .links-widget .link-item:hover {
   box-shadow: 0 0 15px 0 var(--vt-shadow-color);
+  background-color: var(--vt-bg-color-grey);
   /* transform: translateY(-2px) !important; */
 }
 
@@ -2541,27 +2567,28 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
 .vt-card-tag {
   flex: 0 0 auto;
   display: inline-block;
-  padding: 2px 8px;
+  padding: 2px 5px;
   margin: 0 7px 0 0;
   background-color: var(--vt-bg-color-grey);
   color: var(--vt-text-color-grey);
   font-size: 12px;
   text-decoration: none;
   border-radius: 3px;
-  transition: all 0.3s ease;
-  
+  transition: all 0.2s ease;
 }
-.vt-card-tag:hover {
-  background-color: var(--vt-color-primary);
-  color: var(--vt-text-color-inverse);
-  text-decoration: none;
-}
-.vt-card-tag.vt-category:first-child{ background-color:rgba(41, 151, 247, 0.1); color: rgb(41, 151, 247); }
-.vt-card-tag.vt-category:nth-child(2){ background-color:rgb(255, 160, 0, 0.1); color: rgb(255, 160, 0); }
-.vt-card-tag.vt-category:nth-child(3){ background-color:rgba(18, 185, 40, 0.1); color: rgb(24, 165, 42); }
-.vt-card-tag.vt-category:nth-child(4){ background-color:rgba(213, 72, 245, 0.1); color: rgb(228, 52, 225); }
-.vt-card-tag.vt-category:nth-child(5){ background-color:rgba(255, 84, 115, 0.1); color: rgb(255, 84, 115); }
 
+.vt-card-tag:first-child{ background-color:rgba(41, 151, 247, 0.1); color: rgb(41, 151, 247); }
+.vt-card-tag:nth-child(2){ background-color:rgb(255, 160, 0, 0.1); color: rgb(255, 160, 0); }
+.vt-card-tag:nth-child(3){ background-color:rgba(18, 185, 40, 0.1); color: rgb(24, 165, 42); }
+.vt-card-tag:nth-child(4){ background-color:rgba(213, 72, 245, 0.1); color: rgb(228, 52, 225); }
+.vt-card-tag:nth-child(5){ background-color:rgba(255, 84, 115, 0.1); color: rgb(255, 84, 115); }
+
+.vt-card-tag:hover {
+  /* background-color: var(--vt-color-primary);
+  color: var(--vt-text-color-inverse);
+  text-decoration: none; */
+  filter: brightness(120%);
+}
 
 .vt-card-excerpt {
   margin-bottom: 15px;
@@ -4625,9 +4652,9 @@ body.dark-mode .user-card {
   .sider > div:last-child {
     position: sticky;
     top: 20px;
+    margin-bottom: 0;
   }
   .sider > div {
-    /*    margin-bottom: 20px;*/
     margin: 0 0 20px 0;
   }
 }
@@ -4833,6 +4860,47 @@ body.dark-mode .user-card {
 }
 
 
+
+/* /* 未启用 */
+
+.header .title {
+  position: relative;
+  box-sizing: border-box;
+  padding-left: 15px;
+}
+
+.header .title::after {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 15px;
+  background-color: var(--vt-color-primary);
+  position: absolute;
+  left: 0;
+  top:2px;
+  border-radius: 2px;
+}
+
+
+.home-header {
+  position: relative;
+  padding-left: 23px !important;
+}
+.home-header::after {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 15px;
+  background-color: var(--vt-color-primary);
+  position: absolute;
+  left: 9px;
+  top:17px;
+  border-radius: 2px;
+}
+
+
+
+ */
 
 
 /*

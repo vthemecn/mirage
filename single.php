@@ -136,7 +136,7 @@ $show_table = get_post_meta($post->ID, '_vt_article_show_table', true);
                     $content = get_the_content();
                     $toc = create_table_of_contents($content);
                     ?>
-                    <?php if($config['toc_is_on'] && $toc):?>                    
+                    <?php if($toc):?>                    
                         <div class="toc-widget show">
                             <div class="toc-header">
                                 <span>目录</span>

@@ -33,18 +33,30 @@ function infoInit(){
   if(flag == time){ return; }
   localStorage.setItem('mirage', time);
 
-  const data = { domain:window.location.host, project:'mirage' };
+  // 从全局变量获取主题版本等信息
+  const data = { 
+    domain: window.location.host, 
+    project: 'mirage',
+    version: vt_admin_data ? vt_admin_data.theme_version : 'unknown'
+  };
+
+  // 创建 AbortController 用于控制请求超时
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 3000); // 3 秒超时
 
   fetch('https://vtheme.cn/wp-json/wm/v1/info', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify(data),
+      signal: controller.signal // 传入 abort signal
   })
   .then(response => response.json())
   .then(responseJson => {
+      clearTimeout(timeoutId); // 清除超时定时器
       // console.log(responseJson);
   })
   .catch(error => {
+      clearTimeout(timeoutId); // 清除超时定时器
       // console.error(error);
   });
 }

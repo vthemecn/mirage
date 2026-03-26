@@ -214,5 +214,33 @@ function vt_format_view_count($count) {
 }
 
 
-
+/**
+ * 初始化暗黑模式配置
+ * 
+ * @return array 包含暗黑模式状态和 CSS 类名的数组
+ *               - is_dark_mode (bool): 是否为暗黑模式
+ *               - dark_mode_class (string): 要应用的 CSS 类名
+ */
+function vt_init_dark_mode() {
+    $is_dark_mode = false;
+    $dark_mode_class = '';
+    $dark_mode_type = vt_get_config('dark_mode_type', 2);
+    
+    if ($dark_mode_type == 0) { // 禁用
+        $_COOKIE['darkModeType'] = 0;
+    } elseif ($dark_mode_type == 1) { // 手动
+        $_COOKIE['darkModeType'] = 1;
+        $is_dark_mode = isset($_COOKIE['darkMode']) && $_COOKIE['darkMode'] == 1 ? true : false;
+        $dark_mode_class = $is_dark_mode ? 'dark-mode' : '';
+    } elseif ($dark_mode_type == 2) { // 自动
+        $_COOKIE['darkModeType'] = 2;
+        $is_dark_mode = isset($_COOKIE['darkMode']) && $_COOKIE['darkMode'] == 1 ? true : false;
+        $dark_mode_class = 'dark-mode-auto';
+    }
+    
+    return array(
+        'is_dark_mode' => $is_dark_mode,
+        'dark_mode_class' => $dark_mode_class,
+    );
+}
 

@@ -78,6 +78,51 @@ if (function_exists('register_nav_menus')) {
 }
 
 
+/**
+ * 主题激活后检查和更新模块配置
+ */
+add_action('after_switch_theme', 'vt_init_theme_modules');
+
+function vt_init_theme_modules() {
+    // 只有超级管理员才能执行
+    if (!current_user_can('manage_options')) {
+        return;
+    }
+    
+    $config = get_option(THEME_OPTION_NAME);
+    
+    // 定义默认模块（与 config.php 中的 default 保持一致）
+    $default_modules = array(
+        'slider'   => __('Sliders', 'vt'),
+        'notices'  => __('Notices', 'vt'),
+        'hot'      => __('Hot topics', 'vt'),
+        'last'     => __('Latest', 'vt'),
+        'links'    => __('Links', 'vt'),
+    );
+    
+    // 获取当前配置的 enabled 和 disabled
+    $enabled = isset($config['home_layout']['enabled']) ? $config['home_layout']['enabled'] : array();
+    $disabled = isset($config['home_layout']['disabled']) ? $config['home_layout']['disabled'] : array();
+    
+    // 合并为 current
+    $current = array_merge($enabled, $disabled);
+    
+    // 找出缺失的模块（在 default 中但不在 current 中）
+    $missing = array_diff_key($default_modules, $current);
+    
+    // 如果有缺失的模块，添加到 disabled 中
+    if (!empty($missing)) {
+        foreach ($missing as $key => $name) {
+            $disabled[$key] = $name;
+        }
+        
+        // 更新配置
+        $config['home_layout']['enabled'] = $enabled;
+        $config['home_layout']['disabled'] = $disabled;
+        update_option(THEME_OPTION_NAME, $config);
+    }
+}
+
 
 function vt_get_post_category_name($post_ID){
     global $wpdb;

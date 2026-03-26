@@ -502,33 +502,41 @@ function vt_add_widget(){
 add_action( 'widgets_init', 'vt_add_widget' );
 
 
-// 1. 禁用区块小工具
-add_action('after_setup_theme', function() {
-    remove_theme_support('widgets-block-editor');
-});
+/**
+ * 移除不需要的小工具（核心、区块及第三方）
+ */
+function mytheme_unregister_unused_widgets() {
+    // --- 1. 核心经典小工具 ---
+    unregister_widget('WP_Widget_Archives');       // 归档
+    unregister_widget('WP_Widget_Calendar');       // 日历
+    unregister_widget('WP_Widget_Categories');     // 分类
+    unregister_widget('WP_Widget_Pages');          // 页面列表
+    unregister_widget('WP_Widget_Recent_Posts');   // 近期文章
+    unregister_widget('WP_Widget_Recent_Comments');// 近期评论
+    unregister_widget('WP_Widget_Meta');           // 其他操作 (登录/RSS/WP链接)
+    unregister_widget('WP_Widget_RSS');            // RSS
+    unregister_widget('WP_Widget_Search');         // 搜索
+    unregister_widget('WP_Widget_Tag_Cloud');      // 标签云
+    unregister_widget('WP_Widget_Links');          // 链接表
+    unregister_widget('WP_Nav_Menu_Widget');       // 导航菜单
 
-// 2. 移除区块小工具菜单项
-add_action('admin_menu', function() {
-    remove_submenu_page('themes.php', 'gutenberg-widgets');
-}, 999);
+    // --- 2. 媒体小工具 ---
+    unregister_widget('WP_Widget_Media_Audio');    // 音频
+    unregister_widget('WP_Widget_Media_Video');    // 视频
+    unregister_widget('WP_Widget_Media_Image');    // 图像
+    unregister_widget('WP_Widget_Media_Gallery');  // 画廊
 
-// 3. 只保留自定义小工具（传统模式下）
-add_action('widgets_init', function() {
-    if (!is_admin()) return;
-    
-    global $wp_widget_factory;
-    $allowed = [
-        'HotWidget',
-        'ArticleWidget',
-        'UserWidget',
-        'TagsWidget',
-        'CommentsWidget',
-        'CategoryWidget',
-    ];
-    
-    foreach (array_keys($wp_widget_factory->widgets) as $class) {
-        if (!in_array($class, $allowed, true)) {
-            unregister_widget($class);
-        }
+    // --- 3. 区块与高自由度小工具 (谨慎移除) ---
+    unregister_widget('WP_Widget_Block');          // 区块小工具 (Gutenberg)
+    unregister_widget('WP_Widget_Text');           // 文本 (任意文字)
+    unregister_widget('WP_Widget_Custom_HTML');    // 自定义 HTML
+
+    // --- 4. 常见插件小工具 (存在则移除) ---
+    if (class_exists('WPSEO_Widget_Breadcrumbs')) {
+        unregister_widget('WPSEO_Widget_Breadcrumbs'); // Yoast SEO
     }
-}, 9999);
+    if (class_exists('WPCF7_Widget')) {
+        unregister_widget('WPCF7_Widget');             // Contact Form 7
+    }
+}
+add_action('widgets_init', 'mytheme_unregister_unused_widgets', 20);

@@ -1,0 +1,39 @@
+/* 未启用 */
+
+.header .title {
+  position: relative;
+  box-sizing: border-box;
+  padding-left: 15px;
+}
+
+.header .title::after {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 15px;
+  background-color: var(--vt-color-primary);
+  position: absolute;
+  left: 0;
+  top:2px;
+  border-radius: 2px;
+}
+
+
+.home-header {
+  position: relative;
+  padding-left: 23px !important;
+}
+.home-header::after {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 15px;
+  background-color: var(--vt-color-primary);
+  position: absolute;
+  left: 9px;
+  top:17px;
+  border-radius: 2px;
+}
+
+
+

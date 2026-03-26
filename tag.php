@@ -98,11 +98,9 @@ if($query_posts->posts){
         ?>
     </div>
     
-    <div class="sider little-widget">
-        <?php if ( is_active_sidebar( 'default-sidebar' ) ) : ?>
-            <?php dynamic_sidebar( 'default-sidebar' ); ?>
-        <?php endif; ?>
-    </div>
+    <?php
+    get_sidebar();
+    ?>
 </div>
 
 <?php get_footer(); ?>

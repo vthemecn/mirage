@@ -40,6 +40,7 @@
 
 .links-widget .link-item:hover {
   box-shadow: 0 0 15px 0 var(--vt-shadow-color);
+  background-color: var(--vt-bg-color-grey);
   /* transform: translateY(-2px) !important; */
 }
 

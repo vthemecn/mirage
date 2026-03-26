@@ -231,7 +231,10 @@ class SideMenu extends Walker_Nav_Menu
 
 
         if($depth == 1){
-            $item_output .= '('.get_category($menu_item->object_id)->count.')';
+            $category = get_category($menu_item->object_id);
+            if ($category && !is_wp_error($category)) {
+                $item_output .= '(' . $category->count . ')';
+            }
         }
 
         if (in_array('menu-item-has-children', $classes)) {

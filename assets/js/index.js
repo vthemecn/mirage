@@ -10,6 +10,7 @@
 
     // 根据 data-autoplay 属性决定是否自动播放
     const autoplay = swiperContainer.dataset.autoplay == '1';
+    const effect = swiperContainer.dataset.effect;
 
     new Swiper('.swiper-container', {
       pagination: {
@@ -24,7 +25,8 @@
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
-      }
+      },
+      effect: effect
     });
   }
 

@@ -81,6 +81,7 @@ if (!empty($hot_post_ids)) {
                         <div class="hot-thumbnail">
                             <img src="<?=$post['thumbnail']?>" alt="<?=$post['title']?>">
                         </div>
+                        <div class="hot-mask"></div>
                         <div class="hot-title"><?=$post['title']?></div>
                     </a>
                 <?php endforeach; ?>

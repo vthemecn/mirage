@@ -125,27 +125,28 @@
 .vt-card-tag {
   flex: 0 0 auto;
   display: inline-block;
-  padding: 2px 8px;
+  padding: 2px 5px;
   margin: 0 7px 0 0;
   background-color: var(--vt-bg-color-grey);
   color: var(--vt-text-color-grey);
   font-size: 12px;
   text-decoration: none;
   border-radius: 3px;
-  transition: all 0.3s ease;
-  
+  transition: all 0.2s ease;
 }
-.vt-card-tag:hover {
-  background-color: var(--vt-color-primary);
-  color: var(--vt-text-color-inverse);
-  text-decoration: none;
-}
-.vt-card-tag.vt-category:first-child{ background-color:rgba(41, 151, 247, 0.1); color: rgb(41, 151, 247); }
-.vt-card-tag.vt-category:nth-child(2){ background-color:rgb(255, 160, 0, 0.1); color: rgb(255, 160, 0); }
-.vt-card-tag.vt-category:nth-child(3){ background-color:rgba(18, 185, 40, 0.1); color: rgb(24, 165, 42); }
-.vt-card-tag.vt-category:nth-child(4){ background-color:rgba(213, 72, 245, 0.1); color: rgb(228, 52, 225); }
-.vt-card-tag.vt-category:nth-child(5){ background-color:rgba(255, 84, 115, 0.1); color: rgb(255, 84, 115); }
 
+.vt-card-tag:first-child{ background-color:rgba(41, 151, 247, 0.1); color: rgb(41, 151, 247); }
+.vt-card-tag:nth-child(2){ background-color:rgb(255, 160, 0, 0.1); color: rgb(255, 160, 0); }
+.vt-card-tag:nth-child(3){ background-color:rgba(18, 185, 40, 0.1); color: rgb(24, 165, 42); }
+.vt-card-tag:nth-child(4){ background-color:rgba(213, 72, 245, 0.1); color: rgb(228, 52, 225); }
+.vt-card-tag:nth-child(5){ background-color:rgba(255, 84, 115, 0.1); color: rgb(255, 84, 115); }
+
+.vt-card-tag:hover {
+  /* background-color: var(--vt-color-primary);
+  color: var(--vt-text-color-inverse);
+  text-decoration: none; */
+  filter: brightness(120%);
+}
 
 .vt-card-excerpt {
   margin-bottom: 15px;

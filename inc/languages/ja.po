@@ -421,12 +421,6 @@ msgstr "右カラム"
 msgid "Top Toolbar"
 msgstr "トップツールバー"
 
-msgid "Image aspect ratio"
-msgstr "画像アスペクト比"
-
-msgid "Fill in the aspect ratio of the image, for example: 70%"
-msgstr "画像のアスペクト比を入力（例：70%）"
-
 msgid "Dark mode"
 msgstr "ダークモード"
 
@@ -489,8 +483,8 @@ msgstr "リンク"
 # 配置页面 - 首页设置 - 幻灯片模块
 ###############################################################################
 
-msgid "Slide height"
-msgstr "スライド高さ"
+msgid "Slider Effects"
+msgstr "スライドショー効果"
 
 msgid "Slide list"
 msgstr "スライドリンクスト"
@@ -502,8 +496,8 @@ msgstr "スライドリンクスト"
 msgid "Article ID list"
 msgstr "記事IDリスト"
 
-msgid "Enter IDs separated by commas (e.g., 1087, 1090). Blank uses auto mode."
-msgstr "カンマ区切りでIDを入力（例: 1087, 1090）。空白時は自動。"
+msgid "Enter IDs separated by commas (e.g., 1087, 1090)."
+msgstr "カンマ区切りでIDを入力（例: 1087, 1090）。"
 
 
 # 配置页面 - 首页设置 - 文章列表
@@ -586,9 +580,6 @@ msgstr "記事著作権ステートメント"
 
 msgid "Code highlighting"
 msgstr "コードハイライト"
-
-msgid "Generate table of contents"
-msgstr "目次を生成"
 
 
 # 配置页面 - 邮箱设置

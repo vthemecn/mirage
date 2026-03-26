@@ -421,12 +421,6 @@ msgstr "右侧栏目"
 msgid "Top Toolbar"
 msgstr "顶部工具栏"
 
-msgid "Image aspect ratio"
-msgstr "图片高宽比"
-
-msgid "Fill in the aspect ratio of the image, for example: 70%"
-msgstr "填入图片高宽比，例如：70%"
-
 msgid "Dark mode"
 msgstr "暗黑模式"
 
@@ -489,8 +483,8 @@ msgstr "友情链接"
 # 配置页面 - 首页设置 - 幻灯片模块
 ###############################################################################
 
-msgid "Slide height"
-msgstr "幻灯片高度"
+msgid "Slider Effects"
+msgstr "切换效果"
 
 msgid "Slide list"
 msgstr "幻灯片列表"
@@ -502,8 +496,8 @@ msgstr "幻灯片列表"
 msgid "Article ID list"
 msgstr "文章ID列表"
 
-msgid "Enter IDs separated by commas (e.g., 1087, 1090). Blank uses auto mode."
-msgstr "输入逗号分隔的ID（如：1087, 1090）。留空使用自动模式。"
+msgid "Enter IDs separated by commas (e.g., 1087, 1090)."
+msgstr "输入逗号分隔的ID（如：1087, 1090）。"
 
 
 # 配置页面 - 首页设置 - 文章列表
@@ -586,9 +580,6 @@ msgstr "文章版权声明"
 
 msgid "Code highlighting"
 msgstr "代码高亮"
-
-msgid "Generate table of contents"
-msgstr "生成目录"
 
 
 # 配置页面 - 邮箱设置

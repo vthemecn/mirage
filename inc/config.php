@@ -178,10 +178,20 @@ CSF::createSection($prefix, array(
             'default' => true,
         ),
         array(
-            'id'      => 'slider_height',
-            'type'    => 'text',
-            'title'   => __('Slide height','vt'),
-            'default' => '380'
+            'id'    => 'slider_effect',
+            'type'  => 'radio',
+            'title' => __('Slider Effects','vt'),
+            'options'    => array(
+                'slide'     => 'slide',
+                'fade'      => 'fade',
+                'cube'      => 'cube',
+                'coverflow' => 'coverflow',
+                'flip'      => 'flip',
+                'cards'     => 'cards',
+                'creative'  => 'creative'
+            ),
+            'default'    => 'slide',
+            'inline' => true
         ),
         array(
             'id'         => 'slider_items',
@@ -339,20 +349,20 @@ CSF::createSection($prefix, array(
             'default' => __('Hot topics','vt'),
         ),
         array(
-            'id'         => 'hot_post_ids',
-            'type'       => 'text',
-            'title'      => __('Article ID list','vt'),
-            'desc'       => __('Enter IDs separated by commas (e.g., 1087, 1090). Blank uses auto mode.','vt'),
-            'default'    => '',
-        ),
-        array(
             'id'      => 'hot_cat_id',
             'type'    => 'select',
             'title'   => __('Category','vt'),
             'chosen'      => true,
             'multiple'    => true,
             'options'     => 'categories'
-        )
+        ),
+        array(
+            'id'         => 'hot_post_ids',
+            'type'       => 'text',
+            'title'      => __('Article ID list','vt'),
+            'desc'       => __('Enter IDs separated by commas (e.g., 1087, 1090).','vt'),
+            'default'    => '',
+        ),
     )
 ));
 
@@ -647,23 +657,6 @@ CSF::createSection( $prefix, array(
             'options'    => array('1' => __('On','vt'), '0' => __('Off','vt')),
             'default'    => '1',
             'inline' => true
-        ),
-        array(
-            'id'         => 'toc_is_on',
-            'type'       => 'radio',
-            'title'      => __('Generate table of contents','vt'),
-            'options'    => array('1' => __('On','vt'), '0' => __('Off','vt')),
-            'default'    => '1',
-            'inline'     => true,
-            'desc'       => ''
-        ),
-        array(
-            'id'    => 'image_items_height',
-            'type'  => 'slider',
-            'title' => __('Image aspect ratio','vt'),
-            'unit'  => '%',
-            'max'   => '300',
-            'default' => '100'
         ),
         array(
             'id'         => 'qrcode_items',
