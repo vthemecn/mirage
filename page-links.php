@@ -111,9 +111,15 @@ $link_categories = get_categories(array(
         </div>
     </div><!-- .main-widget -->
 
-    <?php
-    get_sidebar();
-    ?>
+    <?php if(!$full_width):?>
+        <div class="sider">
+            <?php if ( is_active_sidebar( 'default-sidebar' ) ) { ?>
+                <?php dynamic_sidebar( 'default-sidebar' ); ?>
+            <?php } ?>
+
+            <?= vt_theme_ad('ad_sidebar'); ?>
+        </div>
+    <?php endif; ?>
 </div>
 
 

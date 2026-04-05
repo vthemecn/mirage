@@ -148,11 +148,15 @@ if($vt_list_type > 0){
         <?= vt_theme_ad('ad_footer'); ?>
     </div>
 
-    <?php
-    if(!vt_get_config('full_width')){
-        get_sidebar();
-    }
-    ?>
+    <?php if(!$full_width):?>
+        <div class="sider">
+            <?php if ( is_active_sidebar( 'default-sidebar' ) ) { ?>
+                <?php dynamic_sidebar( 'default-sidebar' ); ?>
+            <?php } ?>
+
+            <?= vt_theme_ad('ad_sidebar'); ?>
+        </div>
+    <?php endif; ?>
 
 </div>
 

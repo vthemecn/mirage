@@ -28,7 +28,7 @@ $top_items = vt_get_config('top_items', []);
                         <?php
                         $target = (isset($v['target']) && $v['target']) ? 'target="_blank"' : '';    
                         ?>
-                        <a class="swiper-slide" href="<?php echo $v['link'] ?>" <?=$target?> >
+                        <a class="swiper-slide" href="<?= isset($v['link']) ? $v['link'] : '' ?>" <?=$target?> >
                             <img src="<?php echo $v['image'] ?>" />
                             <?php if (!empty($v['title'])) : ?>
                                 <div class="slider-title"><?php echo esc_html($v['title']); ?></div>
@@ -49,7 +49,7 @@ $top_items = vt_get_config('top_items', []);
                     <?php
                     $target = (isset($v['target']) && $v['target']) ? 'target="_blank"' : '';    
                     ?>
-                    <a class="item" href="<?php echo $v['link'] ?>" <?=$target?> >
+                    <a class="item" href="<?= isset($v['link']) ? $v['link'] : '' ?>" <?=$target?> >
                         <img src="<?= $v['image'] ?>" />
                         <div class="title"><?= $v['title'] ?></div>
                     </a>

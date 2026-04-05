@@ -118,7 +118,7 @@ $dark_mode_class = $dark_mode_config['dark_mode_class'];
                                 <div class="user-nickname"><?php echo $nickname ?></div>
                             </div>
                         </div>
-                        <div class="links-widget">
+                        <div class="user-links-widget">
                             <?php if(is_captain_active()):?>
                                 <a href="<?php bloginfo('url') ?>/account">
                                     <i class="fa-solid fa-user"></i><?= __('Dashboard','vt') ?>
@@ -277,7 +277,7 @@ $dark_mode_class = $dark_mode_config['dark_mode_class'];
                                 <div class="user-more"><?php echo $description ?></div>
                             </div>
                         </div>
-                        <div class="links-widget">
+                        <div class="user-links-widget">
                             <a href="<?php bloginfo('url') ?>/account">
                                 <i class="fa-solid fa-user"></i><?= __('Profile','vt') ?>
                             </a>

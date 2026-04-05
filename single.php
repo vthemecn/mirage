@@ -319,11 +319,16 @@ $show_table = get_post_meta($post->ID, '_vt_article_show_table', true);
 
     </div><!-- .main-widget -->
 
-    <?php
-    if(!$full_width){
-        get_sidebar();
-    }
-    ?>
+
+    <?php if(!$full_width):?>
+        <div class="sider">
+            <?php if ( is_active_sidebar( 'posts-sidebar' ) ) { ?>
+                <?php dynamic_sidebar( 'posts-sidebar' ); ?>
+            <?php } ?>
+
+            <?= vt_theme_ad('ad_sidebar'); ?>
+        </div>
+    <?php endif; ?>
 </div>
 
 

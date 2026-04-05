@@ -1636,6 +1636,7 @@ nav.pagination a:hover {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  margin-right: -8px;
 }
 
 .links-widget .link-item {
@@ -3770,6 +3771,7 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
     background-color: var(--vt-bg-color-card);
     box-shadow: 0 0 3px 0 var(--vt-shadow-color);
     border-radius: var(--vt-border-radius);
+    border: 1px solid var(--vt-border-color);
     overflow: hidden;
     display: none;
   }
@@ -3787,7 +3789,11 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
     border: 1px solid var(--vt-border-color);
     margin-right: 10px;
   }
+  .user-widget .user-header{
+    width: 100%;
+  }
   .user-widget .user-header .user-meta {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -3804,17 +3810,21 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
     color: var(--vt-text-color-grey);
     line-height: 20px;
     text-align: center;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-  .user-widget .links-widget {
+  .user-widget .user-links-widget {
     display: flex;
     flex-direction: column;
     margin-top: 15px;
   }
-  .user-widget .links-widget a {
+  .user-widget .user-links-widget a {
     font-size: 15px;
     margin: 5px 0;
   }
-  .user-widget .links-widget i {
+  .user-widget .user-links-widget i {
     color: var(--vt-color-primary);
     display: inline-block;
     position: relative;
@@ -3943,14 +3953,14 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   margin: 0 0 10px 0;
 }
 
-.user-widget-mobile .links-widget {
+.user-widget-mobile .user-links-widget {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 10px 0;
 }
 
-.user-widget-mobile .links-widget a {
+.user-widget-mobile .user-links-widget a {
   display: flex;
   align-items: center;
   padding: 12px 15px;
@@ -3962,12 +3972,12 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   font-size: 14px;
 }
 
-.user-widget-mobile .links-widget a:hover {
+.user-widget-mobile .user-links-widget a:hover {
   background: var(--vt-color-primary);
   color: white;
 }
 
-.user-widget-mobile .links-widget a i {
+.user-widget-mobile .user-links-widget a i {
   width: 20px;
   margin-right: 10px;
   text-align: center;

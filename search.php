@@ -12,9 +12,10 @@ get_header();
  */
 $vt_options = vt_get_config();
 
+$full_width = 0;
+
 // 获取分类第一篇文章的缩略图或者图片
 $banner_image = THEME_URL . '/assets/images/banner.jpg';
-
 
 // $posts_per_page =  get_option('posts_per_page');
 // $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -67,9 +68,16 @@ $banner_image = THEME_URL . '/assets/images/banner.jpg';
         ?>
     </div>
 
-    <?php
-    get_sidebar();
-    ?>
+
+    <?php if(!$full_width):?>
+        <div class="sider">
+            <?php if ( is_active_sidebar( 'default-sidebar' ) ) { ?>
+                <?php dynamic_sidebar( 'default-sidebar' ); ?>
+            <?php } ?>
+
+            <?= vt_theme_ad('ad_sidebar'); ?>
+        </div>
+    <?php endif; ?>
 </div>
 
 

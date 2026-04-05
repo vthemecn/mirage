@@ -14,6 +14,8 @@ get_header();
 <?php
 $config = vt_get_config();
 
+$full_width = 0;
+
 // $category = get_term($cat);
 $tagName = single_tag_title('',false);
 $tagObject = get_term_by('name',$tagName,'post_tag');
@@ -98,9 +100,16 @@ if($query_posts->posts){
         ?>
     </div>
     
-    <?php
-    get_sidebar();
-    ?>
+
+    <?php if(!$full_width):?>
+        <div class="sider">
+            <?php if ( is_active_sidebar( 'default-sidebar' ) ) { ?>
+                <?php dynamic_sidebar( 'default-sidebar' ); ?>
+            <?php } ?>
+
+            <?= vt_theme_ad('ad_sidebar'); ?>
+        </div>
+    <?php endif; ?>
 </div>
 
 <?php get_footer(); ?>
