@@ -18,6 +18,8 @@ $link_categories = get_categories(array(
     'hide_empty' => false
 ));
 
+$full_width = 0;
+
 ?>
 
 <div class="main-container page-link">

@@ -134,16 +134,29 @@ if($vt_list_type > 0){
         $max_num_pages = ceil($total_posts / $posts_per_page);
 
         // 显示分页
-        the_posts_pagination(array(
-            'current' => $paged,
-            'total' => $max_num_pages,
-            'mid_size' => 2,
-            'prev_text' => '<',
-            'next_text' => '>',
-            'screen_reader_text' => ' ',
-            'aria_label' => "",
-        ));
+        // the_posts_pagination(array(
+        //     'current' => $paged,
+        //     'total' => $max_num_pages,
+        //     'mid_size' => 2,
+        //     'prev_text' => '<',
+        //     'next_text' => '>',
+        //     'screen_reader_text' => ' ',
+        //     'aria_label' => "",
+        // ));
+        $pagination = paginate_links([
+            'current'   => $paged,
+            'total'     => $max_num_pages,
+            'prev_text' => '<i class="fas fa-chevron-left"></i>',
+            'next_text' => '<i class="fas fa-chevron-right"></i>',
+            'type'      => 'list',
+            'end_size'  => 2,
+            'mid_size'  => 2,
+        ]);
         ?>
+
+        <div class="vt-captain-pagination pagination-container">
+            <?php echo $pagination ?>
+        </div>
 
         <?= vt_theme_ad('ad_footer'); ?>
     </div>

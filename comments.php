@@ -44,7 +44,7 @@ $comment_count = get_comments_number();
 		'comment_notes_before' => '<div class="top-info logged-in-as">'.__('Registration is not required','vt').'</div>',
 		'comment_notes_after' => '',
 		'id_submit' => __('comment-submit'),
-		'logged_in_as' => '<div class="top-info logged-in-as">'.__('Current Account','vt').': ' . $current_user->nickname . '</div>',
+		'logged_in_as' => '<div class="top-info logged-in-as">' . get_avatar($current_user->ID, 32) . '<span>' . $current_user->nickname . '</span></div>',
 		'must_log_in'  => '<div class="top-info must-log-in">
 						     <p>' . __('You must be logged in to post a comment.','vt') . '</p>
 						     <a href="javascript:;" class="button login-button open-login-dialog">' . __('Login','vt') . '</a>

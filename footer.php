@@ -1,4 +1,5 @@
 <?php
+global $current_user;
 
 $footer_bg_type = vt_get_config('footer_bg_type', 'light') == 'darkness' ? 'darkness' : 'light';
 $sns_items = vt_get_config('sns_items', []);
@@ -49,6 +50,11 @@ $version = $current_theme->get('Version');
 
 <?php
 require_once(THEME_DIR . "/templates/bar.php");
+
+if (!$current_user->ID) {
+    require_once(THEME_DIR . "/templates/login-dialog.php");
+}
+
 ?>
 
 <script src="<?php bloginfo('template_url'); ?>/assets/lib/qrcode.js"></script>

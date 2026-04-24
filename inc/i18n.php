@@ -14,10 +14,10 @@ function vt_i18n_strings(){
     $vt_global_i18n_strings = [
         'loading' => __('Loading...', 'vt'),
         'network_error' => __('Network error, please try again.', 'vt'),
-        'operation_failed' => __('Operation failed', 'vt'),
-        'remove_like' => __('Remove like', 'vt'),
+        'operation_failed' => __('Operation Failed', 'vt'),
+        'remove_like' => __('Remove Like', 'vt'),
         'like' => __('Like', 'vt'),
-        'remove_star' => __('Remove star', 'vt'),
+        'remove_star' => __('Remove Star', 'vt'),
         'star' => __('Star', 'vt'),
         'please_log_in' => __('Please log in', 'vt'),
         
@@ -61,7 +61,43 @@ function vt_i18n_strings(){
 }
 
 
+/**
+ * 解析语言文件
+ */
+function parse_po_file($po_file_path) {
+    $translations = [];
+    $content = file_get_contents($po_file_path);
+    
+    // 匹配 msgid 和 msgstr
+    preg_match_all('/msgid\s+"([^"]+)"\s+msgstr\s+"([^"]+)"/s', $content, $matches);
+    
+    foreach ($matches[1] as $index => $msgid) {
+        $msgstr = $matches[2][$index];
+        if (!empty($msgstr)) {
+            $translations[$msgid] = $msgstr;
+        }
+    }
+    
+    return $translations;
+}
 
+
+/**
+ * 获取解析缓存
+ */
+function vt_get_translations_cached() {
+    $cache_key = 'vt_translations_' . determine_locale();
+    $cached = get_transient($cache_key);
+    
+    if ($cached !== false) {
+        return $cached;
+    }
+    
+    $translations = parse_po_file(get_template_directory() . '/inc/languages/' . determine_locale() . '.po');
+    set_transient($cache_key, $translations, DAY_IN_SECONDS);
+    
+    return $translations;
+}
 
 
 

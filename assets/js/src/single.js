@@ -58,9 +58,7 @@ async function likeInit(notyf){
       try {
         const response = await fetch(ajax_object.ajax_url, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
           body: new URLSearchParams({
             action: 'like_action',
             object_id: objectId,
@@ -79,23 +77,22 @@ async function likeInit(notyf){
             // 更新按钮文本显示
             const spanElement = that.querySelector('span');
             if (spanElement) {
-              spanElement.textContent = i18n.remove_like;
-              console.log('i18n.remove_like',i18n.remove_like);
-              
+              spanElement.textContent = __('Remove Like');
             }
           } else {
             that.classList.remove('active');
             // 更新按钮文本显示
             const spanElement = that.querySelector('span');
             if (spanElement) {
-              spanElement.textContent = i18n.like;
+              spanElement.textContent = __('Like');
             }
           }
           
           // 更新喜欢数
           const numberElement = that.querySelector('.number');
           if (numberElement) {
-            numberElement.textContent = result.data.like_count || '';
+            let like_count = result.data.like_count!=0 ? result.data.like_count : '';
+            numberElement.textContent = like_count;
           }
         } else {
           notyf.error(result.data.message || i18n.operation_failed);
@@ -145,9 +142,7 @@ async function starInit(notyf){
       try {
         const response = await fetch(ajax_object.ajax_url, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
           body: new URLSearchParams({
             action: 'star_action',
             object_id: objectId,
@@ -165,26 +160,27 @@ async function starInit(notyf){
             // 更新按钮文本显示
             const spanElement = that.querySelector('span');
             if (spanElement) {
-              spanElement.textContent = i18n.remove_star;
+              spanElement.textContent = __('Remove Star');
             }
           } else {
             that.classList.remove('active');
             // 更新按钮文本显示
             const spanElement = that.querySelector('span');
             if (spanElement) {
-              spanElement.textContent = i18n.star;
+              spanElement.textContent = __('Star');
             }
           }
           
           // 更新收藏数
           const numberElement = that.querySelector('.number');
           if (numberElement) {
-            numberElement.textContent = result.data.star_count || '';
+            let star_count = result.data.star_count!=0 ? result.data.star_count : '';
+            numberElement.textContent = star_count;
           }
           
           // notyf.success(result.data.message);
         } else {
-          notyf.error(result.data.message || i18n.operation_failed);
+          notyf.error(result.data.message || __('Operation Failed') );
           // 如果是未登录错误，显示登录对话框
           if (result.data.message && result.data.message.includes(i18n.please_log_in)) {
             var loginModal = document.querySelector('.login-register-dialog');
@@ -196,7 +192,7 @@ async function starInit(notyf){
         }
       } catch (error) {
         console.error(error);
-        notyf.error('网络错误，请重试');
+        notyf.error(__('Network error. Please try again'));
       }
     });
   });

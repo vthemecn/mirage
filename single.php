@@ -188,17 +188,15 @@ $show_table = get_post_meta($post->ID, '_vt_article_show_table', true);
             <div class="content-action">
                 <div class="widget-action like <?php echo $is_like ? ' active' : '' ?>">
                     <i class="fa-solid fa-heart"></i>
-                    <span><?= $is_like ? __('Remove like','vt') : __('Like','vt')?></span>
+                    <span><?= $is_like ? __('Remove Like','vt') : __('Like','vt')?></span>
                     <span class='number'><?= $like_counter ? $like_counter : '' ?></span>
                 </div>
 
-                <?php if(is_captain_active()):?>
                 <div class="widget-action star <?php echo $is_star ? ' active' : '' ?>">
                     <i class="fa-solid fa-star"></i>
-                    <span><?= $is_star ? __('Remove star','vt') : __('Star','vt')?></span>
+                    <span><?= $is_star ? __('Remove Star','vt') : __('Star','vt')?></span>
                     <span class='number'><?= $star_counter ? $star_counter : '' ?></span>
                 </div>
-                <?php endif; ?>
                
                 <div class="widget-action share-poster">
                     <i class="fa-solid fa-share-nodes"></i>

@@ -1,69 +1,81 @@
-nav.pagination {
-  font-size: 20px;
-  border-top: 0px;
-  border-bottom: 0px;
-  padding:0;
-  margin: 8px 0;
+/**
+ * Captain 专用分页样式
+ */
+
+.vt-captain-pagination{
+    padding: 20px 0;
 }
 
-nav.pagination .nav-links {
-  align-items: baseline;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  font-size: 16px;
-  font-weight: 100;
-  width: 100%;
-  margin: 0 0 -7px 0;
+/* 容器：去除默认列表样式 */
+.vt-captain-pagination .page-numbers {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	justify-content: center;
 }
 
-nav.pagination .pagination-separator {
-  margin: 16px 0;
+/* 所有分页项（链接和当前页） */
+.vt-captain-pagination .page-numbers a,
+.vt-captain-pagination .page-numbers span {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 33px;
+	height: 33px;
+	padding: 0 8px;
+	font-size: 14px;
+	font-weight: normal;
+	color: var(--vt-color-primary);
+	text-decoration: none;
+	background: var(--vt-bg-color-card);
+	border: 1px solid var(--vt-border-color);
+	border-radius: var(--vt-border-radius);
+	transition: all 0.2s ease;
+	box-sizing: border-box;
 }
 
-nav.pagination .nav-links > * {
-  min-width: 30px;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-  font-size: 15px;
-  font-weight: 300;
-  border: 1px solid var(--vt-border-color);
-  margin: 0px 7px 7px 0;
-  display: block;
-  background-color: var(--vt-bg-color-card);
-  box-shadow: 0 0 1px var(--vt-shadow-color);
-  padding: 1px 1px;
+/* 当前页（高亮） */
+.vt-captain-pagination .page-numbers .current {
+	color: var(--vt-text-color-inverse);
+	background: var(--vt-color-primary);
+	border-color: var(--vt-color-primary);
+	cursor: default;
 }
 
-nav.pagination .nav-links > .current {
-  background-color: var(--vt-color-primary);
-  border-color: var(--vt-color-primary);
-  color: #fff;
-  border-radius: 3px;
-  box-shadow: 0 0 3px 0 var(--vt-shadow-color);
-}
-.dark-mode nav.pagination .nav-links > .current { color: #b9b9b9; }
-
-nav.pagination .nav-links .placeholder {
-  display: none;
-  visibility: hidden;
+/* 悬停效果（仅链接） */
+.vt-captain-pagination .page-numbers a:hover {
+	color: var(--vt-text-color-inverse);
+	background: var(--vt-color-primary);
+	border-color: var --vt-color-primary;
 }
 
-nav.pagination a {
-  text-decoration: none;
-  border-radius: 3px;
+/* 上一页 / 下一页 文字按钮 */
+.vt-captain-pagination .page-numbers .prev,
+.vt-captain-pagination .page-numbers .next {
+	min-width: auto;
+	padding: 0 12px;
 }
 
-nav.pagination a:hover {
-  color: var(--vt-color-primary);
-  border-color: var(--vt-color-primary);
+/* 禁用状态（例如第一页时“上一页”不可点） */
+.vt-captain-pagination .page-numbers .disabled {
+	opacity: 0.5;
+	pointer-events: none;
+	color: var(--vt-text-color-grey) !important;
+	background: var(--vt-bg-color-card) !important;
+	border-color: var(--vt-border-color) !important;
 }
 
-@media only screen and (min-width: 900px) {
-  nav.pagination {
-    /* padding: 0px 0 0 0; */
-    /* margin-bottom: -7px; */
-    margin: 20px 0;
-  }
+/* 响应式：小屏缩小字体 */
+@media (max-width: 768px) {
+	.vt-captain-pagination .page-numbers a,
+	.vt-captain-pagination .page-numbers span {
+		min-width: 32px;
+		height: 32px;
+		font-size: var(--vt-font-size-sm);
+		padding: 0 6px;
+	}
 }
+

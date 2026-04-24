@@ -2,302 +2,12 @@
   'use strict';
 
   /**
-   * 幻灯片
+   * JavaScript 国际化翻译函数
+   * 从 wp_localize_script 注入的 window.i18n 对象中获取翻译
    */
-  function swiper () {
-    const swiperContainer = document.querySelector('.swiper-container');
-    if (!swiperContainer) return;
-
-    // 根据 data-autoplay 属性决定是否自动播放
-    const autoplay = swiperContainer.dataset.autoplay == '1';
-    const effect = swiperContainer.dataset.effect;
-
-    new Swiper('.swiper-container', {
-      pagination: {
-        el: '.swiper-pagination',
-      },
-      // 根据 autoplay 变量决定是否启用自动播放
-      autoplay: autoplay ? {
-        delay: 5000,
-        disableOnInteraction: false,
-      } : false,
-      loop: true,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      effect: effect
-    });
+  function __$1(key) {
+    return (typeof window.i18n !== 'undefined' && window.i18n[key]) ? window.i18n[key] : key;
   }
-
-  function init$1(){
-    toTopInit();
-  }
-
-  /*
-   * 回到顶部
-   */
-  function toTopInit() {
-    var btn = document.querySelector(".to-top");
-    if (!btn) { return; }
-
-    var clientHeight = document.documentElement.clientHeight;
-    var timer = null;
-    var istop = true;
-
-    window.onscroll = function () {
-      var dtop = document.documentElement.scrollTop || document.body.scrollTop;
-      if (dtop >= (clientHeight * 0.1)) {
-        btn.style.display = "flex";
-      } else {
-        btn.style.display = "none";
-      }
-      if (!istop) {
-        clearInterval(timer);
-      }
-      istop = false;
-    };
-
-    btn.onclick = function () {
-      timer = setInterval(function () {
-        var dtop = document.documentElement.scrollTop || document.body.scrollTop;
-        var speed = Math.floor(-dtop / 10);
-        document.documentElement.scrollTop = dtop + speed;
-        document.body.scrollTop = dtop + speed;
-        istop = true;
-        if (dtop == 0) {
-          clearInterval(timer);
-        }
-      }, 15);
-    };
-  }
-
-  /**
-   * 图片懒加载
-   * 使用Intersection Observer API实现现代浏览器支持
-   * 降级使用传统的滚动监听方式兼容老旧浏览器
-   */
-
-  // 配置参数
-  const LAZY_LOAD_CONFIG = {
-      offset: 100,   // 预加载偏移量(px)
-      rootMargin: '100px 0px 100px 0px' // 视口边距
-  };
-
-  /**
-   * 检测浏览器是否支持Intersection Observer API
-   * @returns {boolean} 是否支持
-   */
-  function isIntersectionObserverSupported() {
-      return 'IntersectionObserver' in window;
-  }
-
-  /**
-   * 现代浏览器实现：使用Intersection Observer API
-   */
-  function modernLazyLoad() {
-      const images = document.querySelectorAll('.lazyload-img');
-      
-      if (!images.length) return;
-
-      const imageObserver = new IntersectionObserver((entries, observer) => {
-          entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                  const img = entry.target;
-                  loadImage(img);
-                  observer.unobserve(img);
-              }
-          });
-      }, {
-          rootMargin: LAZY_LOAD_CONFIG.rootMargin
-      });
-
-      images.forEach(img => imageObserver.observe(img));
-  }
-
-  /**
-   * 传统浏览器实现：使用滚动监听
-   */
-  function legacyLazyLoad() {
-      const images = document.querySelectorAll('.lazyload-img');
-      
-      if (!images.length) return;
-
-      function loadVisibleImages() {
-          images.forEach(img => {
-              if (isElementInViewport(img, LAZY_LOAD_CONFIG.offset)) {
-                  loadImage(img);
-              }
-          });
-      }
-
-      // 初始加载
-      loadVisibleImages();
-
-      // 滚动监听
-      let ticking = false;
-      window.addEventListener('scroll', () => {
-          if (!ticking) {
-              requestAnimationFrame(() => {
-                  loadVisibleImages();
-                  ticking = false;
-              });
-              ticking = true;
-          }
-      });
-  }
-
-  /**
-   * 检查元素是否在视口中
-   * @param {Element} element - 要检查的元素
-   * @param {number} offset - 偏移量
-   * @returns {boolean} 是否在视口中
-   */
-  function isElementInViewport(element, offset = 0) {
-      const rect = element.getBoundingClientRect();
-      return (
-          rect.top <= (window.innerHeight + offset) &&
-          rect.bottom >= -offset
-      );
-  }
-
-  /**
-   * 加载单张图片
-   * @param {Element} img - 图片元素
-   */
-  function loadImage(img) {
-      if (!img || img.classList.contains('loaded')) return;
-
-      const src = img.dataset.src;
-      if (!src) return;
-
-      // 添加加载状态类
-      img.classList.add('loading');
-
-      const newImg = new Image();
-      newImg.onload = function() {
-          img.src = src;
-          img.classList.remove('loading');
-          img.classList.add('loaded');
-      };
-
-      newImg.onerror = function() {
-          img.classList.remove('loading');
-          img.classList.add('load-error');
-      };
-
-      newImg.src = src;
-  }
-
-  /**
-   * 初始化懒加载功能
-   */
-  function lazyLoad() {
-
-      // 等待DOM加载完成
-      if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', initLazyLoad);
-      } else {
-          initLazyLoad();
-      }
-  }
-
-  /**
-   * 初始化懒加载
-   */
-  function initLazyLoad() {
-      if (isIntersectionObserverSupported()) {
-          modernLazyLoad();
-      } else {
-          legacyLazyLoad();
-      }
-  }
-
-  /**
-   * 公共函数
-   */
-
-  function getCookie(c_name) {
-    if (document.cookie.length > 0) {
-      var c_start = document.cookie.indexOf(c_name + "=");
-      if (c_start != -1) {
-        c_start = c_start + c_name.length + 1;
-        var c_end = document.cookie.indexOf(";", c_start);
-        if (c_end == -1) c_end = document.cookie.length;
-        return unescape(document.cookie.substring(c_start, c_end));
-      }
-    }
-    return ""
-  }
-
-
-  function setCookie(c_name, value, expiredays) {
-    var exdate = new Date();
-    exdate.setDate(exdate.getDate() + expiredays);
-    var cookieStr = c_name + "=" + escape(value) + ("" );
-    cookieStr += "; path=/";
-    document.cookie = cookieStr;
-  }
-
-
-  /**
-   * 判断是否出现在视口
-   * @param {{}}} el 需要判断的 div 选择器
-   * @returns {Boolean}
-   */
-  function isElementVisible(el) {
-    const rect = el.getBoundingClientRect();
-    const vWidth = window.innerWidth || document.documentElement.clientWidth;
-    const vHeight = window.innerHeight || document.documentElement.clientHeight;
-    if (
-      rect.right < 0 ||
-      rect.bottom < 0 ||
-      rect.left > vWidth ||
-      rect.top > vHeight
-    ) {
-      return false
-    }
-    return true
-  }
-
-  /**
-   * dialogTools
-   */
-
-  function registerDialog(selector){
-    selector.show = show;
-    selector.showModal = showModal;
-    selector.close = close;
-
-    closeButtonInit.apply(selector);
-  }
-
-  function show() {
-    this.setAttribute('open','');
-  }
-
-  function showModal() {
-    document.body.classList.add('no-scroll');
-    this.setAttribute('modal','');
-    this.setAttribute('open','');
-  }
-
-  function close() {
-    document.body.classList.remove('no-scroll');
-    this.removeAttribute('modal');
-    this.removeAttribute('open');
-  }
-
-  function closeButtonInit() {
-    var closeButtons = this.querySelectorAll('.close');
-    closeButtons.forEach(btn => {
-      btn.addEventListener('click', e => {
-        this.close();
-      });
-    });
-  }
-
-  var dialogTools = { registerDialog };
 
   /*! *****************************************************************************
   Copyright (c) Microsoft Corporation.
@@ -740,11 +450,421 @@
   }());
 
   /**
+   * 全局Notyf配置文件
+   * 将Notyf实例挂载到window对象，供全局使用
+   */
+
+
+
+  // 创建全局Notyf实例配置
+  var globalNotyfConfig = {
+      duration: 3000,
+      position: { 
+          x: 'center', 
+          y: 'top' 
+      },
+      ripple: true,
+      dismissible: false,
+      types: [
+          {
+              type: 'success',
+              background: '#3dc763',
+              className: 'notyf__toast--success',
+              icon: {
+                  className: 'notyf__icon--success',
+                  tagName: 'i'
+              }
+          },
+          {
+              type: 'error',
+              background: '#ed3d3d',
+              className: 'notyf__toast--error',
+              icon: {
+                  className: 'notyf__icon--error',
+                  tagName: 'i'
+              }
+          },
+          {
+              type: 'warning',
+              background: 'orange',
+              className: 'notyf__toast--warning',
+              icon: {
+                  className: 'notyf__icon--warning',
+                  tagName: 'i',
+                  text: '⚠'
+              }
+          },
+          {
+              type: 'info',
+              background: '#3b82f6',
+              className: 'notyf__toast--info',
+              icon: {
+                  className: 'notyf__icon--info',
+                  tagName: 'i',
+                  text: 'ℹ'
+              }
+          }
+      ]
+  };
+
+  // 创建全局Notyf实例
+  var globalNotyf = new Notyf(globalNotyfConfig);
+
+  // 挂载到window对象
+  window.GlobalNotyf = globalNotyf;
+
+  // 创建便捷的全局函数
+  function showNotification$2(message, type, options) {
+      // 如果没有传入类型，默认为success
+      type = type || 'success';
+      
+      // 合并配置
+      var config = Object.assign({
+          message: message,
+          type: type
+      }, options || {});
+      
+      try {
+          switch(type.toLowerCase()) {
+              case 'success':
+                  return globalNotyf.success(message);
+              case 'error':
+                  return globalNotyf.error(message);
+              case 'warning':
+                  return globalNotyf.open(Object.assign(config, { type: 'warning' }));
+              case 'info':
+                  return globalNotyf.open(Object.assign(config, { type: 'info' }));
+              default:
+                  return globalNotyf.success(message);
+          }
+      } catch (error) {
+          console.error('Notyf error:', error);
+          // Fallback到浏览器原生alert
+          alert(message);
+          return null;
+      }
+  }
+
+  // 同时挂载到window对象，保持向后兼容
+  window.showNotification = showNotification$2;
+
+  // 为向后兼容保留原来的showSuccess和showError方法
+  function showSuccess(message) {
+      return showNotification$2(message, 'success');
+  }
+
+  function showError(message) {
+      return showNotification$2(message, 'error');
+  }
+
+  // 同时挂载到window对象
+  window.showSuccess = showSuccess;
+  window.showError = showError;
+
+  /**
+   * 幻灯片
+   */
+  function swiper () {
+    const swiperContainer = document.querySelector('.swiper-container');
+    if (!swiperContainer) return;
+
+    // 根据 data-autoplay 属性决定是否自动播放
+    const autoplay = swiperContainer.dataset.autoplay == '1';
+    const effect = swiperContainer.dataset.effect;
+
+    new Swiper('.swiper-container', {
+      pagination: {
+        el: '.swiper-pagination',
+      },
+      // 根据 autoplay 变量决定是否启用自动播放
+      autoplay: autoplay ? {
+        delay: 5000,
+        disableOnInteraction: false,
+      } : false,
+      loop: true,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      effect: effect
+    });
+  }
+
+  function init(){
+    toTopInit();
+  }
+
+  /*
+   * 回到顶部
+   */
+  function toTopInit() {
+    var btn = document.querySelector(".to-top");
+    if (!btn) { return; }
+
+    var clientHeight = document.documentElement.clientHeight;
+    var timer = null;
+    var istop = true;
+
+    window.onscroll = function () {
+      var dtop = document.documentElement.scrollTop || document.body.scrollTop;
+      if (dtop >= (clientHeight * 0.1)) {
+        btn.style.display = "flex";
+      } else {
+        btn.style.display = "none";
+      }
+      if (!istop) {
+        clearInterval(timer);
+      }
+      istop = false;
+    };
+
+    btn.onclick = function () {
+      timer = setInterval(function () {
+        var dtop = document.documentElement.scrollTop || document.body.scrollTop;
+        var speed = Math.floor(-dtop / 10);
+        document.documentElement.scrollTop = dtop + speed;
+        document.body.scrollTop = dtop + speed;
+        istop = true;
+        if (dtop == 0) {
+          clearInterval(timer);
+        }
+      }, 15);
+    };
+  }
+
+  /**
+   * 图片懒加载
+   * 使用Intersection Observer API实现现代浏览器支持
+   * 降级使用传统的滚动监听方式兼容老旧浏览器
+   */
+
+  // 配置参数
+  const LAZY_LOAD_CONFIG = {
+      offset: 100,   // 预加载偏移量(px)
+      rootMargin: '100px 0px 100px 0px' // 视口边距
+  };
+
+  /**
+   * 检测浏览器是否支持Intersection Observer API
+   * @returns {boolean} 是否支持
+   */
+  function isIntersectionObserverSupported() {
+      return 'IntersectionObserver' in window;
+  }
+
+  /**
+   * 现代浏览器实现：使用Intersection Observer API
+   */
+  function modernLazyLoad() {
+      const images = document.querySelectorAll('.lazyload-img');
+      
+      if (!images.length) return;
+
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  const img = entry.target;
+                  loadImage(img);
+                  observer.unobserve(img);
+              }
+          });
+      }, {
+          rootMargin: LAZY_LOAD_CONFIG.rootMargin
+      });
+
+      images.forEach(img => imageObserver.observe(img));
+  }
+
+  /**
+   * 传统浏览器实现：使用滚动监听
+   */
+  function legacyLazyLoad() {
+      const images = document.querySelectorAll('.lazyload-img');
+      
+      if (!images.length) return;
+
+      function loadVisibleImages() {
+          images.forEach(img => {
+              if (isElementInViewport(img, LAZY_LOAD_CONFIG.offset)) {
+                  loadImage(img);
+              }
+          });
+      }
+
+      // 初始加载
+      loadVisibleImages();
+
+      // 滚动监听
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+          if (!ticking) {
+              requestAnimationFrame(() => {
+                  loadVisibleImages();
+                  ticking = false;
+              });
+              ticking = true;
+          }
+      });
+  }
+
+  /**
+   * 检查元素是否在视口中
+   * @param {Element} element - 要检查的元素
+   * @param {number} offset - 偏移量
+   * @returns {boolean} 是否在视口中
+   */
+  function isElementInViewport(element, offset = 0) {
+      const rect = element.getBoundingClientRect();
+      return (
+          rect.top <= (window.innerHeight + offset) &&
+          rect.bottom >= -offset
+      );
+  }
+
+  /**
+   * 加载单张图片
+   * @param {Element} img - 图片元素
+   */
+  function loadImage(img) {
+      if (!img || img.classList.contains('loaded')) return;
+
+      const src = img.dataset.src;
+      if (!src) return;
+
+      // 添加加载状态类
+      img.classList.add('loading');
+
+      const newImg = new Image();
+      newImg.onload = function() {
+          img.src = src;
+          img.classList.remove('loading');
+          img.classList.add('loaded');
+      };
+
+      newImg.onerror = function() {
+          img.classList.remove('loading');
+          img.classList.add('load-error');
+      };
+
+      newImg.src = src;
+  }
+
+  /**
+   * 初始化懒加载功能
+   */
+  function lazyLoad() {
+
+      // 等待DOM加载完成
+      if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initLazyLoad);
+      } else {
+          initLazyLoad();
+      }
+  }
+
+  /**
+   * 初始化懒加载
+   */
+  function initLazyLoad() {
+      if (isIntersectionObserverSupported()) {
+          modernLazyLoad();
+      } else {
+          legacyLazyLoad();
+      }
+  }
+
+  /**
+   * 公共函数
+   */
+
+  function getCookie(c_name) {
+    if (document.cookie.length > 0) {
+      var c_start = document.cookie.indexOf(c_name + "=");
+      if (c_start != -1) {
+        c_start = c_start + c_name.length + 1;
+        var c_end = document.cookie.indexOf(";", c_start);
+        if (c_end == -1) c_end = document.cookie.length;
+        return unescape(document.cookie.substring(c_start, c_end));
+      }
+    }
+    return ""
+  }
+
+
+  function setCookie(c_name, value, expiredays) {
+    var exdate = new Date();
+    exdate.setDate(exdate.getDate() + expiredays);
+    var cookieStr = c_name + "=" + escape(value) + ("" );
+    cookieStr += "; path=/";
+    document.cookie = cookieStr;
+  }
+
+
+  /**
+   * 判断是否出现在视口
+   * @param {{}}} el 需要判断的 div 选择器
+   * @returns {Boolean}
+   */
+  function isElementVisible(el) {
+    const rect = el.getBoundingClientRect();
+    const vWidth = window.innerWidth || document.documentElement.clientWidth;
+    const vHeight = window.innerHeight || document.documentElement.clientHeight;
+    if (
+      rect.right < 0 ||
+      rect.bottom < 0 ||
+      rect.left > vWidth ||
+      rect.top > vHeight
+    ) {
+      return false
+    }
+    return true
+  }
+
+  /**
+   * dialogTools
+   */
+
+  function registerDialog(selector){
+    selector.show = show;
+    selector.showModal = showModal;
+    selector.close = close;
+
+    closeButtonInit.apply(selector);
+  }
+
+  function show() {
+    this.setAttribute('open','');
+  }
+
+  function showModal() {
+    document.body.classList.add('no-scroll');
+    this.setAttribute('modal','');
+    this.setAttribute('open','');
+  }
+
+  function close() {
+    document.body.classList.remove('no-scroll');
+    this.removeAttribute('modal');
+    this.removeAttribute('open');
+  }
+
+  function closeButtonInit() {
+    var closeButtons = this.querySelectorAll('.close');
+    closeButtons.forEach(btn => {
+      btn.addEventListener('click', e => {
+        this.close();
+      });
+    });
+  }
+
+  var dialogTools$1 = { registerDialog };
+
+  /**
    * 文章页
    */
 
 
-  function articles () {
+  function single () {
     // 创建 Notyf 实例
     const notyf = new Notyf({
       duration: 2000,
@@ -790,9 +910,7 @@
         try {
           const response = await fetch(ajax_object.ajax_url, {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
-            },
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             body: new URLSearchParams({
               action: 'like_action',
               object_id: objectId,
@@ -811,23 +929,22 @@
               // 更新按钮文本显示
               const spanElement = that.querySelector('span');
               if (spanElement) {
-                spanElement.textContent = i18n.remove_like;
-                console.log('i18n.remove_like',i18n.remove_like);
-                
+                spanElement.textContent = __('Remove Like');
               }
             } else {
               that.classList.remove('active');
               // 更新按钮文本显示
               const spanElement = that.querySelector('span');
               if (spanElement) {
-                spanElement.textContent = i18n.like;
+                spanElement.textContent = __('Like');
               }
             }
             
             // 更新喜欢数
             const numberElement = that.querySelector('.number');
             if (numberElement) {
-              numberElement.textContent = result.data.like_count || '';
+              let like_count = result.data.like_count!=0 ? result.data.like_count : '';
+              numberElement.textContent = like_count;
             }
           } else {
             notyf.error(result.data.message || i18n.operation_failed);
@@ -877,9 +994,7 @@
         try {
           const response = await fetch(ajax_object.ajax_url, {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
-            },
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             body: new URLSearchParams({
               action: 'star_action',
               object_id: objectId,
@@ -897,26 +1012,27 @@
               // 更新按钮文本显示
               const spanElement = that.querySelector('span');
               if (spanElement) {
-                spanElement.textContent = i18n.remove_star;
+                spanElement.textContent = __('Remove Star');
               }
             } else {
               that.classList.remove('active');
               // 更新按钮文本显示
               const spanElement = that.querySelector('span');
               if (spanElement) {
-                spanElement.textContent = i18n.star;
+                spanElement.textContent = __('Star');
               }
             }
             
             // 更新收藏数
             const numberElement = that.querySelector('.number');
             if (numberElement) {
-              numberElement.textContent = result.data.star_count || '';
+              let star_count = result.data.star_count!=0 ? result.data.star_count : '';
+              numberElement.textContent = star_count;
             }
             
             // notyf.success(result.data.message);
           } else {
-            notyf.error(result.data.message || i18n.operation_failed);
+            notyf.error(result.data.message || __('Operation Failed') );
             // 如果是未登录错误，显示登录对话框
             if (result.data.message && result.data.message.includes(i18n.please_log_in)) {
               var loginModal = document.querySelector('.login-register-dialog');
@@ -928,7 +1044,7 @@
           }
         } catch (error) {
           console.error(error);
-          notyf.error('网络错误，请重试');
+          notyf.error(__('Network error. Please try again'));
         }
       });
     });
@@ -958,7 +1074,7 @@
     var shareSelector = document.querySelector('.share-poster');
     var shareDialog = document.querySelector('#share-dialog');
     if(!shareSelector || !shareDialog){ return; }
-    dialogTools.registerDialog(shareDialog);
+    dialogTools$1.registerDialog(shareDialog);
 
     shareSelector.addEventListener('click', function(e){
       // shareDialog.show();
@@ -1006,7 +1122,7 @@
 
     var coinDialog = document.querySelector('#coin-dialog');
     if(!coinButton){ return; }
-    dialogTools.registerDialog(coinDialog);
+    dialogTools$1.registerDialog(coinDialog);
 
     coinButton && coinButton.addEventListener('click', async e=> {
       coinDialog.showModal();
@@ -1382,80 +1498,459 @@
     homeInit
   };
 
-  function init (){
-    avatarUploadAction();
-    mobileNavAction();
+  /**
+   * 登录/注册/找回密码对话框 - REST API版本
+   */
+
+
+
+  function dialogTools() {
+    initLoginDialog();
   }
 
-  /**
-   * 用户中心，头像上传事件绑定
-   */
-  function avatarUploadAction(){
-    var uploadAvatarButton = document.querySelector(".upload-avatar-button");
-    if(!uploadAvatarButton) return;
-    
-    uploadAvatarButton.addEventListener('click', function(e) {
-      document.querySelector('#avatar-input').click();
-    });
-    
-    var uploadInputControl = document.querySelector("#avatar-input");
-    uploadInputControl.onchange = function() {
-      if (!this.files[0] || this.files[0] == undefined) return;
-      
-      // toast.open({title:"上传开始"});
-      
-      var fd = new FormData();
-      fd.append("avatar-input", this.files[0]);
-    
-      axios({
-        method: 'post',
-        url: document.querySelector('#avatar_upload').getAttribute('action'),
-        data: fd,
-        headers: {
-          'content-type': 'multipart/form-data'
-        },
-      }).then(function(response) {
-        if (response.status == 201) {
-          toast.open({title:"头像上传成功"});
-          
-          document.querySelector(".user-avatar .avatar").src = response.data.avatar_url;
-          document.querySelector(".header-top-avatar img").src = response.data.avatar_url;
-    
-        } else {
-          console.log("图片上传错误");
-        }
-        uploadInputControl.value = null;
-      }).catch(function(error) {
-        // layer.closeAll();
-        console.log("error: ", error);
-        if (error.response.status == 422) {
-          alert("文件类型错误");
-          return;
-        } else {
-          alert(error.message);
-        }
-        uploadInputControl.value = null;
-      });
-    };
-  }
+  function initLoginDialog() {
+    // console.log('vtheme captain - REST API version');
+    // console.log('Notyf', Notyf);
 
+    const dialogElement = document.querySelector('.login-register-dialog');
+    if(!dialogElement) return;
 
-  /**
-   * 移动端的一些事件
-   */
-  function mobileNavAction(){
-    var userButton = document.querySelector('.mobile-nav .nav-button.mine');
-    if( userButton ){
-      userButton.addEventListener('click', e=>{
-        if( parseInt(userButton.dataset.userId) > 0){
-          location.href = '/users/' + userButton.dataset.userId;
-        } else {
-          var loginModal = document.querySelector('.modal.login-modal');
-          if(loginModal){ loginModal.classList.add('modal-show'); }
-        }
+    // console.log('dialogElement', dialogElement);
+    
+    // 注册对话框功能
+    dialogTools$1.registerDialog(dialogElement);
+    
+    // 打开登录对话框
+    const loginBtns = document.querySelectorAll('.open-login-dialog');
+    if(loginBtns.length > 0) {
+      loginBtns.forEach(function(loginBtn) {
+        loginBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          dialogElement.showModal();
+        });
       });
     }
+    
+    const tabBtns = document.querySelectorAll('a.tab-nav');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        // 移除所有活动状态
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+           
+        // 添加当前活动状态
+        document.getElementById(`tab-${this.dataset.tab}`).classList.add('active');
+
+        // 如果切换到找回密码标签，重置为第一步
+        if(this.dataset.tab === 'forgot') {
+          showForgotStep1();
+        }
+      });
+    });
+
+
+    // Tab切换功能
+    /*
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        // 移除所有活动状态
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        
+        // 添加当前活动状态
+        this.classList.add('active');
+        document.getElementById(`tab-${this.dataset.tab}`).classList.add('active');
+        
+        // 更新标题
+        document.querySelector('.dialog-header .title').textContent = this.textContent;
+        
+        // 如果切换到找回密码标签，重置为第一步
+        if(this.dataset.tab === 'forgot') {
+          showForgotStep1();
+        }
+      });
+    });
+    */
+    
+    // 登录表单提交
+    const loginForm = document.getElementById('login-form');
+    if(loginForm) {
+      loginForm.addEventListener('submit', handleLoginFormSubmit);
+    }
+    
+    // 注册表单提交
+    const registerForm = document.getElementById('register-form');
+    if(registerForm) {
+      registerForm.addEventListener('submit', handleRegisterFormSubmit);
+    }
+    
+    // 添加发送验证码功能
+    const sendVerificationBtn = document.getElementById('send-verification-code');
+    if(sendVerificationBtn) {
+      sendVerificationBtn.addEventListener('click', handleSendVerificationCode);
+    }
+    
+    // 找回密码第一步表单提交
+    const forgotFormStep1 = document.getElementById('forgot-form-step1');
+    if(forgotFormStep1) {
+      forgotFormStep1.addEventListener('submit', handleForgotStep1Submit);
+    }
+    
+    // 找回密码第二步表单提交
+    const forgotFormStep2 = document.getElementById('forgot-form-step2');
+    if(forgotFormStep2) {
+      forgotFormStep2.addEventListener('submit', handleForgotStep2Submit);
+    }
   }
+
+  // 显示找回密码第一步
+  function showForgotStep1() {
+    document.getElementById('forgot-form-step1').style.display = 'block';
+    document.getElementById('forgot-form-step2').style.display = 'none';
+    document.getElementById('forgot-back').style.display = 'none';
+  }
+
+  // 显示找回密码第二步
+  function showForgotStep2() {
+    document.getElementById('forgot-form-step1').style.display = 'none';
+    document.getElementById('forgot-form-step2').style.display = 'block';
+    document.getElementById('forgot-back').style.display = 'block';
+  }
+
+  // 获取REST API基础URL
+  function getRestApiBaseUrl() {
+    return window.location.origin + '/wp-json/vtheme/v1';
+  }
+
+  // 通用的API请求函数 - 按照RESTful规范处理响应
+  async function apiRequest(endpoint, options = {}) {
+    const url = getRestApiBaseUrl() + endpoint;
+    const defaultOptions = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    
+    const mergedOptions = {
+      ...defaultOptions,
+      ...options,
+      headers: {
+        ...defaultOptions.headers,
+        ...options.headers,
+      },
+    };
+
+    try {
+      const response = await fetch(url, mergedOptions);
+      const result = await response.json();
+      
+      // 按照RESTful规范：通过HTTP状态码判断成功/失败
+      if (response.ok) {
+        // 2xx 状态码表示成功，直接返回资源数据
+        return {
+          success: true,
+          data: result,
+          status: response.status
+        };
+      } else {
+        // 非 2xx 状态码表示失败，返回错误信息
+        return {
+          success: false,
+          error: result.error || { message: '请求失败' },
+          status: response.status
+        };
+      }
+    } catch (error) {
+      console.error('API request failed:', error);
+      return {
+        success: false,
+        error: { message: '网络错误，请稍后重试' },
+        status: 0
+      };
+    }
+  }
+
+  async function handleSendVerificationCode() {
+    const emailInput = document.getElementById('register-email');
+    const email = emailInput.value;
+    
+    // 验证邮箱格式
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      showNotification(__$1('Please enter a valid email address'), 'error');
+      return;
+    }
+    
+    // 更改按钮状态
+    const btn = this;
+    btn.disabled = true;
+    const originalText = btn.textContent;
+    btn.textContent = __$1('Sending...');
+    
+    try {
+      const result = await apiRequest('/accounts/send-verification-code', {
+        method: 'POST',
+        body: JSON.stringify({ email: email })
+      });
+      
+      if(result.success) {
+        showNotification(__$1('Verification code has been sent, please check your email'), 'success');
+        
+        // 启动倒计时
+        startCountdown(btn, originalText, 60);
+      } else {
+        const errorMessage = result.error?.message || __$1('Failed to send verification code');
+        showNotification(errorMessage, 'error');
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
+    } catch(error) {
+      showNotification(__$1('Network error, please try again later'), 'error');
+      btn.disabled = false;
+      btn.textContent = originalText;
+    }
+  }
+
+  function startCountdown(button, originalText, seconds) {
+    if(seconds <= 0) {
+      button.disabled = false;
+      button.textContent = originalText;
+      return;
+    }
+    
+    button.textContent = __$1('Retry in %d seconds').replace('%d', seconds);
+    setTimeout(() => {
+      startCountdown(button, originalText, seconds - 1);
+    }, 1000);
+  }
+
+  async function handleLoginFormSubmit(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    const username = formData.get('username');
+    const password = formData.get('password');
+    
+    // 简单验证
+    if (!username || !password) {
+      showNotification(__$1('Please fill in all required fields'), 'error');
+      return;
+    }
+    
+    // 显示加载状态
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = __$1('Logging in...');
+    submitBtn.disabled = true;
+    
+    try {
+      const result = await apiRequest('/accounts/login', {
+        method: 'POST',
+        body: JSON.stringify({
+          username: username,
+          password: password
+        })
+      });
+      
+      if(result.success) {
+        showNotification(__$1('Login successful, redirecting...'), 'success');
+        // 登录成功，刷新页面
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+      } else {
+        const errorMessage = result.error?.message || __$1('Login failed, please try again');
+        showNotification(errorMessage, 'error');
+      }
+    } catch(error) {
+      showNotification(__$1('Network error, please try again later'), 'error');
+    } finally {
+      // 恢复按钮状态
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  }
+
+  async function handleRegisterFormSubmit(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const username = formData.get('username');
+    const email = formData.get('email');
+    const password = formData.get('password');
+    const verificationCode = formData.get('verification_code');
+    
+    // 验证
+    if (!username || !email || !password || !verificationCode) {
+      showNotification(__$1('Please fill in all required fields'), 'error');
+      return;
+    }
+    
+    if (password.length < 6) {
+      showNotification(__$1('Password must be at least 6 characters long'), 'error');
+      return;
+    }
+    
+    // 验证邮箱格式
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      showNotification(__$1('Please enter a valid email address'), 'error');
+      return;
+    }
+    
+    // 显示加载状态
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = __$1('Registering...');
+    submitBtn.disabled = true;
+    
+    try {
+      const result = await apiRequest('/accounts/register', {
+        method: 'POST',
+        body: JSON.stringify({
+          username: username,
+          email: email,
+          password: password,
+          verification_code: verificationCode
+        })
+      });
+      
+      if(result.success) {
+        showNotification(__$1('Registration successful, logging in automatically...'), 'success');
+        // 注册成功，刷新页面以反映登录状态
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+      } else {
+        const errorMessage = result.error?.message || __$1('Registration failed, please try again');
+        showNotification(errorMessage, 'error');
+      }
+    } catch(error) {
+      showNotification(__$1('Network error, please try again later'), 'error');
+    } finally {
+      // 恢复按钮状态
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  }
+
+  async function handleForgotStep1Submit(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const email = formData.get('email');
+    
+    if (!email) {
+      showNotification(__$1('Please enter your email address'), 'error');
+      return;
+    }
+    
+    // 验证邮箱格式
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      showNotification(__$1('Please enter a valid email address'), 'error');
+      return;
+    }
+    
+    // 显示加载状态
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = __$1('Sending...');
+    submitBtn.disabled = true;
+    
+    try {
+      const result = await apiRequest('/accounts/forgot-password', {
+        method: 'POST',
+        body: JSON.stringify({ email: email })
+      });
+      
+      if(result.success) {
+        showNotification(__$1('Password reset verification code has been sent to your email'), 'success');
+        // 显示第二步表单
+        showForgotStep2();
+      } else {
+        const errorMessage = result.error?.message || __$1('Failed to send, please try again');
+        showNotification(errorMessage, 'error');
+      }
+    } catch(error) {
+      showNotification(__$1('Network error, please try again later'), 'error');
+    } finally {
+      // 恢复按钮状态
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  }
+
+  async function handleForgotStep2Submit(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const email = document.getElementById('forgot-email').value; // 从前一步获取邮箱
+    const code = formData.get('code');
+    const newPassword = formData.get('new_password');
+    
+    // 验证
+    if (!email || !code || !newPassword) {
+      showNotification(__$1('Please fill in all required fields'), 'error');
+      return;
+    }
+    
+    if (newPassword.length < 6) {
+      showNotification(__$1('Password must be at least 6 characters long'), 'error');
+      return;
+    }
+    
+    // 显示加载状态
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = __$1('Resetting...');
+    submitBtn.disabled = true;
+    
+    try {
+      const result = await apiRequest('/accounts/reset-password', {
+        method: 'POST',
+        body: JSON.stringify({
+          email: email,
+          code: code,
+          new_password: newPassword
+        })
+      });
+      
+      if(result.success) {
+        showNotification(__$1('Password reset successful, logging in automatically...'), 'success');
+        // 重置密码成功后刷新页面以反映登录状态
+        setTimeout(() => {
+          location.reload();
+        }, 1500);
+      } else {
+        const errorMessage = result.error?.message || __$1('Reset failed, please try again');
+        showNotification(errorMessage, 'error');
+      }
+    } catch(error) {
+      showNotification(__$1('Network error, please try again later'), 'error');
+    } finally {
+      // 恢复按钮状态
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  }
+
+  // function showNotification(message, type) {
+  //   const notyf = new Notyf({
+  //     duration: 3000,
+  //     position: { x: 'center', y: 'top' }
+  //   });
+
+  //   if (typeof notyf !== 'undefined') {
+  //     if (type === 'success') {
+  //       notyf.success(message);
+  //     } else {
+  //       notyf.error(message);
+  //     }
+  //   } else {
+  //     alert(message);
+  //   }
+  // }
 
   /**
    * 评论相关功能
@@ -1470,7 +1965,7 @@
   }
 
 
-  function showNotification(message, type) {
+  function showNotification$1(message, type) {
     const notyf = new Notyf({
       duration: 3000,
       position: { x: 'center', y: 'top' }
@@ -1510,11 +2005,11 @@
       const newCount = increment ? currentCount + 1 : Math.max(0, currentCount - 1);
 
       if (newCount === 0) {
-        countElement.textContent = i18n.no_comments;
+        countElement.textContent = __('No comments');
       } else if (newCount === 1) {
-        countElement.textContent = i18n.one_comment;
+        countElement.textContent = __('One comment');
       } else {
-        countElement.textContent = newCount + ' ' + i18n.multiple_comments;
+        countElement.textContent = newCount + ' ' + __('comments');
       }
     }
   }
@@ -1547,7 +2042,7 @@
         
         // 验证不能为空
         if (!content || content.length === 0) {
-            showNotification(i18n.comment_cannot_be_empty, 'error');
+            showNotification$1(__('Comment cannot be empty.'), 'error');
             submitBtn.value = originalText;
             submitBtn.disabled = false;
             return;
@@ -1555,8 +2050,8 @@
         
         // 验证最大长度
         if (content.length > maxLength) {
-            showNotification(
-                i18n.comment_max_length.replace('%d', maxLength),
+            showNotification$1(
+                __('Comment cannot exceed %d characters.').replace('%d', maxLength),
                 'error'
             );
             submitBtn.value = originalText;
@@ -1568,7 +2063,7 @@
         const originalText = submitBtn.value;
         
         // 锁定按钮
-        submitBtn.value = i18n.submitting;
+        submitBtn.value = __('Submitting...');
         submitBtn.disabled = true;
 
         // 构建数据
@@ -1586,7 +2081,7 @@
               console.log('Response:', data);
               // 如果 HTTP 状态不是 200-299，或者 data.success 为 false，则视为错误
               if (!response.ok || !data.success) {
-                  throw new Error(data.data && data.data.message ? data.data.message : i18n.submit_failed);
+                  throw new Error(data.data && data.data.message ? data.data.message : __('Submit failed'));
               }
               return data;
             });
@@ -1594,7 +2089,7 @@
         .then(data => {
             // 成功逻辑
             if (data.success) {
-                showNotification(data.data.message, 'success');
+                showNotification$1(data.data.message, 'success');
                 form.reset(); // 清空表单
                 
                 // 动态添加新评论到评论列表
@@ -1606,7 +2101,7 @@
         .catch(error => {
             // 错误逻辑
             // error.message 包含了我们在 PHP 中设置的错误信息
-            showNotification(error.message || i18n.network_error_retry, 'error');
+            showNotification$1(error.message || __('Network error, please try again.'), 'error');
             console.error('提交失败:', error, error.message);
         })
         .finally(() => {
@@ -1654,7 +2149,7 @@
     if (userId > 0 && typeof ajax_object !== 'undefined' && ajax_object.current_user_id == userId) {
       deleteLinkHtml = `
       <a href="javascript:;" class="delete-comment" data-comment-id="${commentId}">
-        ${i18n.delete}
+        ${__('Delete')}
       </a>
     `;
     }
@@ -1664,7 +2159,7 @@
     if (commentData.approved === '0') {
       statusHtml = `
       <div class="comment-status">
-        ${i18n.awaiting_moderation}
+        ${__('Your comment is awaiting moderation.')}
       </div>
     `;
     }
@@ -1688,7 +2183,7 @@
         ${commentContent}
       </div>
       <div class="comment-actions">
-        <a href="?replytocom=${commentId}#respond" class="reply-link">${i18n.reply}</a>
+        <a href="?replytocom=${commentId}#respond" class="reply-link">${__('Reply')}</a>
         ${deleteLinkHtml}
       </div>
     </div>
@@ -1797,10 +2292,10 @@
     
     form.innerHTML = `
     <div class="reply-form-container">
-      <textarea placeholder="${i18n.reply_to_comment}" rows="3"></textarea>
+      <textarea placeholder="${__('Reply to comment...')}" rows="3"></textarea>
       <div class="reply-form-actions">
-        <button type="submit" class="submit-reply">${i18n.submit_reply}</button>
-        <button type="button" class="cancel-reply">${i18n.cancel}</button>
+        <button type="submit" class="submit-reply">${__('Submit Reply')}</button>
+        <button type="button" class="cancel-reply">${__('Cancel')}</button>
       </div>
     </div>
   `;
@@ -1821,21 +2316,21 @@
       const maxLength = 1000;
       
       if (!content) {
-        showNotification(i18n.please_enter_reply, 'error');
+        showNotification$1(__('Please enter reply content'), 'error');
         return;
       }
       
       // ========== 新增：字数验证 ==========
       // 验证不能为空
       if (content.length === 0) {
-        showNotification(i18n.comment_cannot_be_empty, 'error');
+        showNotification$1(__('Comment cannot be empty.'), 'error');
         return;
       }
       
       // 验证最大长度
       if (content.length > maxLength) {
-        showNotification(
-          i18n.comment_max_length.replace('%d', maxLength),
+        showNotification$1(
+          __('Comment cannot exceed %d characters.').replace('%d', maxLength),
           'error'
         );
         return;
@@ -1844,14 +2339,14 @@
       
       // 锁定按钮
       const originalText = submitBtn.textContent;
-      submitBtn.textContent = i18n.submitting_reply;
+      submitBtn.textContent = __('Submitting reply...');
       submitBtn.disabled = true;
       
       try {
         // 获取主表单的数据
         const mainForm = document.getElementById('commentform');
         if (!mainForm) {
-          showNotification(i18n.comment_form_not_found, 'error');
+          showNotification$1(__('Comment form not found'), 'error');
           return;
         }
         
@@ -1873,7 +2368,7 @@
         const result = await response.json();
         
         if (result.success) {
-          showNotification(result.data.message, 'success');
+          showNotification$1(result.data.message, 'success');
           form.remove(); // 移除表单
           
           // 如果评论已审核通过，添加到列表
@@ -1881,13 +2376,13 @@
             addNewCommentToList(result.data, commentId);
           }
         } else {
-          showNotification(result.data.message || i18n.submit_failed, 'error');
+          showNotification$1(result.data.message || __('Submit failed'), 'error');
           submitBtn.textContent = originalText;
           submitBtn.disabled = false;
         }
       } catch (error) {
         console.error('Submit reply error:', error);
-        showNotification(i18n.network_error_retry, 'error');
+        showNotification$1(__('Network error, please try again.'), 'error');
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
       }
@@ -1946,7 +2441,7 @@
     link.addEventListener('click', async function (e) {
       e.preventDefault();
 
-      if (!confirm(i18n.confirm_delete_comment)) {
+      if (!confirm(__('Are you sure you want to delete this comment?'))) {
         return;
       }
 
@@ -1954,7 +2449,7 @@
       const commentItem = this.closest('.comment-item');
 
       const originalText = this.textContent;
-      this.textContent = i18n.deleting;
+      this.textContent = __('Deleting...');
       this.style.pointerEvents = 'none';
 
       try {
@@ -1980,17 +2475,17 @@
             setTimeout(() => {
               commentItem.remove();
               updateCommentCount(false);
-              showNotification(i18n.delete_success, 'success');
+              showNotification$1(__('Comment deleted successfully'), 'success');
             }, 300);
           }
         } else {
-          showNotification(result.data.message || i18n.delete_failed, 'error');
+          showNotification$1(result.data.message || __('Delete failed'), 'error');
           this.textContent = originalText;
           this.style.pointerEvents = 'auto';
         }
       } catch (error) {
         console.error('删除评论失败:', error);
-        showNotification(i18n.network_error_retry, 'error');
+        showNotification$1(__('Network error, please try again.'), 'error');
         this.textContent = originalText;
         this.style.pointerEvents = 'auto';
       }
@@ -2023,15 +2518,17 @@
    * JavaScript 项目主文件
    */
 
+  // 将翻译函数挂载到全局 window 对象,供其他模块使用
+  window.__ = __$1;
   swiper();
-  init$1();
+  init();
   lazyLoad();
-  articles();
+  single();
   darkModeInit();
   headerMobile();
   headerPc();
   home.homeInit();
-  init();
+  dialogTools();
   comments();
   widget.sideMenuInit();
 

@@ -416,13 +416,13 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
 .privilege-content-wrapper {
   position: relative;
   margin: 20px 0;
+  padding: 20px 10px;
   border: 2px dashed var(--vt-border-color);
   border-radius: var(--vt-border-radius);
   min-height: 180px;
   overflow: hidden;
   background-color: #eaf6ff;
   box-sizing: border-box;
-  padding: 10px;
 }
 
 .dark-mode .privilege-content-wrapper { background-color: var(--vt-bg-color-card); }

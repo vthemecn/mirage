@@ -95,7 +95,25 @@ CSF::createSection( $prefix, array(
             'options'    => array('1' => __('On','vt'), '0' => __('Off','vt')),
             'default'    => '1',
             'inline'     => true
-        )
+        ),
+        array(
+            'id'    => 'privacy_policy',
+            'type'  => 'text',
+            'title' => __('Privacy Policy','vt'),
+            'default' => get_privacy_policy_url()
+        ),
+        array(
+            'id'    => 'terms_of_service',
+            'type'  => 'text',
+            'title' => __('Terms of Service','vt'),
+            'default' => home_url('/#terms_of_service')
+        ),
+        array(
+            'id'      => 'vip_avatar_upload',
+            'type'    => 'switcher',
+            'title'   => __('VIP Avatar Upload','vt'),
+            'default' => true
+        ),
     )
 ));
 

@@ -2,6 +2,12 @@
  * JavaScript 项目主文件
  */
 
+import __ from './i18n.js';
+// 将翻译函数挂载到全局 window 对象,供其他模块使用
+window.__ = __;
+
+import './notyf.js';
+
 // 幻灯片
 import swiper from './swiper';
 swiper();
@@ -9,12 +15,11 @@ swiper();
 import bar from './bar';
 bar();
 
-
 import { lazyLoad } from './lazy-load';
 lazyLoad();
 
-import articles from './articles.js';
-articles();
+import single from './single.js';
+single();
 
 import { darkModeInit } from './dark-mode';
 darkModeInit();
@@ -28,8 +33,8 @@ headerPc();
 import home from './home';
 home.homeInit();
 
-import users from './users.js';
-users();
+import dialogTools from './login-dialog.js';
+dialogTools();
 
 import comments from './comments.js';
 comments();

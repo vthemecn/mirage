@@ -10,6 +10,7 @@
 define('THEME_OPTION_NAME', 'mirage');
 define('THEME_DIR', get_template_directory());
 define('THEME_URL', get_template_directory_uri());
+define('VT_JWT_SECRET', 'ssssss');
 
 
 if (!function_exists('p')) :
@@ -45,11 +46,21 @@ require_once THEME_DIR . '/inc/menu.php';
 require_once THEME_DIR . '/inc/meta.php';
 require_once THEME_DIR . '/inc/widget.php';
 require_once THEME_DIR . '/inc/setting.php';
+require_once THEME_DIR . '/inc/shortcode.php';
 require_once THEME_DIR . '/inc/switch.php';
 require_once THEME_DIR . '/inc/category.php';
 require_once THEME_DIR . '/inc/user.php';
 require_once THEME_DIR . '/inc/validator/validator.php';
 require_once THEME_DIR . '/inc/ajax.php';
+require_once THEME_DIR . '/inc/rewrite.php';
+require_once THEME_DIR . '/inc/common/user-stat.php';
+
+require_once THEME_DIR . "/inc/php-jwt/src/JWT.php";
+require_once THEME_DIR . "/inc/php-jwt/src/BeforeValidException.php";
+require_once THEME_DIR . "/inc/php-jwt/src/ExpiredException.php";
+require_once THEME_DIR . "/inc/php-jwt/src/SignatureInvalidException.php";
+
+require_once THEME_DIR . '/api/routes.php';
 
 
 /**
@@ -70,9 +81,9 @@ function is_captain_active() {
 if (function_exists('register_nav_menus')) {
     register_nav_menus(
         array(
-            'header_main' => __('Mirage 顶部菜单'),
-            'footer_nav'  => __('Mirage 底部菜单'),
-            'side_menu'   => __('Mirage 侧边菜单')
+            'header_main' => __('Mirage Header Menu'),
+            'footer_nav'  => __('Mirage Footer Menu'),
+            'side_menu'   => __('Mirage Sider Menu')
         )
     );
 }
@@ -281,3 +292,99 @@ function vt_clean_the_excerpt($content) {
     return trim($content);
 }
 // add_filter('the_excerpt', 'vt_clean_the_excerpt', 1);
+
+
+/**
+ * 验证JWT访问令牌
+ * 
+ * @param string $token JWT令牌字符串
+ * @return int|false 用户ID或false（验证失败）
+ */
+function v_validate_jwt_token($token = null) {
+    if (!$token) {
+        return false;
+    }
+
+    try {
+        $secret = defined('VT_JWT_SECRET') ? VT_JWT_SECRET : 'your_strong_secret_key';
+        $decoded = Firebase\JWT\JWT::decode($token, $secret, array('HS256'));
+        
+        if (isset($decoded->exp) && $decoded->exp < time()) {
+            return false;
+        }
+
+        return $decoded->user_id ?? false;
+    } catch (Exception $e) {
+        error_log('JWT 验证失败: ' . $e->getMessage());
+        return false;
+    }
+}
+
+
+/**
+ * 生成JWT访问令牌
+ * 
+ * @param int $user_id 用户ID
+ * @param int $expires_in 过期时间（秒），默认24小时
+ * @return string|false JWT令牌字符串或false（生成失败）
+ */
+function v_generate_jwt_token($user_id, $expires_in = 86400) {
+    if (!$user_id || !get_user_by('ID', $user_id)) {
+        return false;
+    }
+
+    try {
+        // 优先使用WordPress选项配置的密钥，否则使用默认密钥
+        $secret = get_option('captain_jwt_secret', 'default-jwt-secret-key');
+        
+        $issued_at = time();
+        $expiration_time = $issued_at + $expires_in;
+        
+        $payload = [
+            'iss' => home_url(),          // 签发者
+            'iat' => $issued_at,          // 签发时间
+            'exp' => $expiration_time,    // 过期时间
+            'user_id' => $user_id,        // 用户ID
+            'sub' => "user_{$user_id}"    // 主题
+        ];
+        
+        $token = Firebase\JWT\JWT::encode($payload, $secret, 'HS256');
+        return $token;
+    } catch (Exception $e) {
+        error_log('JWT 生成失败: ' . $e->getMessage());
+        return false;
+    }
+}
+
+
+
+function vt_truncate_comment_content($content, $length = 100) {
+    $safe = wp_kses_post($content);
+    if (mb_strlen($safe, 'UTF-8') <= $length) {
+        return $safe;
+    }
+    return mb_substr($safe, 0, $length, 'UTF-8') . '…';
+}
+
+function vt_friendly_time( $datetime ) {
+    $timestamp = is_numeric( $datetime ) ? $datetime : strtotime( $datetime );
+    if ( ! $timestamp ) return '';
+    return sprintf( __( '%s ago', 'v' ), human_time_diff( $timestamp, current_time( 'timestamp' ) ) );
+}
+
+function v_active($current, $action){
+    $current = sanitize_key($current);
+    $action = sanitize_key($action);
+    return $action === $current ? 'active' : '';
+}
+
+
+/**
+ * 在前端页面中生成美化URL的辅助函数
+ */
+function v_get_user_url($user_id, $action = 'profile') {
+    if ($action === 'profile') {
+        return home_url("/user/{$user_id}");
+    }
+    return home_url("/user/{$user_id}/{$action}");
+}

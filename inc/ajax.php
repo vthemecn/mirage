@@ -94,7 +94,7 @@ function handle_like_action() {
                 wp_send_json_error(['message' => 'Like failed']);
             }
         } else {
-            wp_send_json_success(['message' => 'Already liked']);
+            wp_send_json_success(['message' => 'Already Liked']);
         }
     } elseif ($action_type === 'unlike') {
         // 取消喜欢
@@ -188,15 +188,15 @@ function handle_star_action() {
                 ));
                 
                 wp_send_json_success([
-                    'message' => __('Operation succeeded','vt'),
+                    'message' => __('Operation Succeeded','vt'),
                     'star_count' => $star_count,
                     'starred' => true
                 ]);
             } else {
-                wp_send_json_error(['message' => __('Operation failed','vt')]);
+                wp_send_json_error(['message' => __('Operation Failed','vt')]);
             }
         } else {
-            wp_send_json_success(['message' => __('Already starred','vt') ]);
+            wp_send_json_success(['message' => __('Already Starred','vt') ]);
         }
     } elseif ($action_type === 'unstar') {
         // 取消收藏
@@ -218,12 +218,12 @@ function handle_star_action() {
             ));
             
             wp_send_json_success([
-                'message' => __('Operation succeeded','vt'),
+                'message' => __('Operation Succeeded','vt'),
                 'star_count' => $star_count,
                 'starred' => false
             ]);
         } else {
-            wp_send_json_error(['message' => __('Operation failed','vt')]);
+            wp_send_json_error(['message' => __('Operation Failed','vt')]);
         }
     } else {
         wp_send_json_error(['message' => __('Invalid action type','vt')]);
@@ -239,7 +239,7 @@ add_action('wp_ajax_delete_comment', 'handle_delete_comment');
 function handle_delete_comment() {
     // 验证 nonce 安全性
     if (!wp_verify_nonce($_POST['nonce'], 'ajax_nonce')) {
-        wp_send_json_error(['message' => '安全验证失败']);
+        wp_send_json_error(['message' => __('Security verification failed', 'vt')]);
         return;
     }
     
@@ -255,12 +255,12 @@ function handle_delete_comment() {
     // 验证用户权限（只能删除自己的评论）
     $comment = get_comment($comment_id);
     if (!$comment) {
-        wp_send_json_error(['message' => '评论不存在']);
+        wp_send_json_error(['message' => __('Comment does not exist', 'vt')]);
         return;
     }
     
     if ($comment->user_id != $user_id) {
-        wp_send_json_error(['message' => '没有权限删除此评论']);
+        wp_send_json_error(['message' => __('No permission to delete this comment', 'vt')]);
         return;
     }
     
@@ -268,9 +268,9 @@ function handle_delete_comment() {
     $result = wp_delete_comment($comment_id, true);
     
     if ($result) {
-        wp_send_json_success(['message' => '评论删除成功']);
+        wp_send_json_success(['message' => __('Comment deleted successfully', 'vt')]);
     } else {
-        wp_send_json_error(['message' => '删除失败']);
+        wp_send_json_error(['message' => __('Delete failed', 'vt')]);
     }
 }
 
@@ -284,7 +284,7 @@ function get_like_status() {
     $object_id = intval($_POST['object_id']);
     
     if (!$object_id) {
-        wp_send_json_error(['message' => '无效的对象ID']);
+        wp_send_json_error(['message' => __('Invalid object ID', 'vt')]);
         return;
     }
     
@@ -336,7 +336,7 @@ function get_star_status() {
     $object_id = intval($_POST['object_id']);
     
     if (!$object_id) {
-        wp_send_json_error(['message' => '无效的对象ID']);
+        wp_send_json_error(['message' => __('Invalid object ID', 'vt')]);
         return;
     }
     
@@ -382,7 +382,7 @@ function vt_comment_submit() {
     // 1. 验证 Nonce (安全校验)
     if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'ajax_nonce')) {
         wp_send_json_error(array(
-            'message' => '安全验证失败，请刷新页面重试。'
+            'message' => __('Security verification failed, please refresh the page and try again.', 'vt')
         ), 403);
         return;
     }
@@ -420,30 +420,10 @@ function vt_comment_submit() {
         $error_code = $comment->get_error_code();
         $error_message = $comment->get_error_message();
 
-        // 定义一个干净的错误消息映射表，原始错误提示，带有html标签
-        $custom_message_arr = array(
-            'comment_content_required' => '评论内容不能为空。',
-            'comment_failure'          => '请输入有效的电子邮箱地址。', // 对应邮箱或作者名错误
-            'comment_flood'            => '您发表得太快了，请稍后再试。',
-            'comment_duplicate'        => '您已经发表过相同的评论了。',
-            'comment_closed'           => '评论已关闭。',
-            'comment_trash'            => '评论被视为垃圾信息。',
-            'require_valid_email'      => '请输入有效的电子邮箱地址。',
-            'require_name_email'       => '必须填入姓名与电子邮箱地址',
-            // 默认兜底消息
-            'default'                  => '评论提交失败，请检查您的输入。'
-        );
-
-        // 获取对应的干净消息，如果没有匹配到则使用默认消息
-        $custom_message = isset($custom_message_arr[$error_code]) 
-            ? $custom_message_arr[$error_code] 
-            : $custom_message_arr['default'];
-
         wp_send_json_error(array(
             'code'    => $error_code,
-            'message' => $error_message,
-            'custom_message' => $custom_message
-        ), 400); 
+            'message' => $error_message
+        ), 400);
         return;
     }
 
@@ -458,7 +438,7 @@ function vt_comment_submit() {
     }
 
     // 判断审核状态
-    $status_msg = ($comment->comment_approved == '1') ? '评论发布成功！' : '评论提交成功，等待管理员审核。';
+    $status_msg = ($comment->comment_approved == '1') ? __('Comment published successfully!', 'vt') : __('Comment submitted successfully, waiting for administrator review.', 'vt');
 
     // 准备评论数据供前端动态添加
     $comment_id = $comment->comment_ID;

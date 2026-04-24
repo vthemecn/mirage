@@ -13,7 +13,8 @@ function vt_custom_js_and_css() {
 
     wp_enqueue_script('mirage', get_theme_file_uri('/assets/js/index.js'), [], $version, true);
 
-    wp_localize_script('mirage', 'i18n', vt_i18n_strings());
+    // wp_localize_script('mirage', 'i18n', vt_i18n_strings());
+    wp_localize_script('mirage', 'i18n', vt_get_translations_cached());
 
     // $current_user_id = get_current_user_id();
     // 本地化脚本，传递AJAX URL和其他数据到前端
@@ -472,3 +473,5 @@ add_filter( 'login_redirect', 'vt_login_redirect', 10, 3 );
 if(vt_get_config('links_switcher')){
     add_filter( 'pre_option_link_manager_enabled', '__return_true' );
 }
+
+

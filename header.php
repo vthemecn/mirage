@@ -40,6 +40,7 @@ $dark_mode_class = $dark_mode_config['dark_mode_class'];
     $ajax_data = array(
         'ajax_url' => admin_url('admin-ajax.php'),
         'nonce'    => wp_create_nonce('ajax_nonce'),
+        'wp_rest_nonce'    => wp_create_nonce('wp_rest'),
         'current_user_id' => get_current_user_id()
     );?>
     
@@ -119,15 +120,10 @@ $dark_mode_class = $dark_mode_config['dark_mode_class'];
                             </div>
                         </div>
                         <div class="user-links-widget">
-                            <?php if(is_captain_active()):?>
-                                <a href="<?php bloginfo('url') ?>/account">
-                                    <i class="fa-solid fa-user"></i><?= __('Dashboard','vt') ?>
-                                </a>
-                            <?php else: ?>
-                                <a href="<?php bloginfo('url') ?>/wp-admin/profile.php">
-                                    <i class="fa-solid fa-user"></i><?= __('Profile','vt') ?>
-                                </a>
-                            <?php endif ?>
+                            <a href="<?php bloginfo('url') ?>/account">
+                                <i class="fa-solid fa-user"></i><?= __('Profile','vt') ?>
+                            </a>
+                                
                             <?php if (in_array('administrator', $current_user->roles)) :?>
                                 <a href="<?php bloginfo('url') ?>/wp-admin/index.php">
                                     <i class="fa-solid fa-gauge"></i><?= __('Dashboard','vt') ?>
@@ -139,17 +135,15 @@ $dark_mode_class = $dark_mode_config['dark_mode_class'];
                         </div>
                     </div>
                 <?php else: ?>
-                    <?php if(is_captain_active()):?>
-                        <div class="user-widget-mobile">
-                            <div class="user-header login-button open-login-dialog">
-                                <?php echo get_avatar($current_user->ID, 80, '', '', ''); ?>
-                                <div class="user-meta">
-                                    <div class="user-nickname" style="cursor: pointer;"><?php _e('请登录', 'vt') ?></div>
-                                    <div class="user-more"></div>
-                                </div>
+                    <div class="user-widget-mobile">
+                        <div class="user-header login-button open-login-dialog">
+                            <?php echo get_avatar($current_user->ID, 80, '', '', ''); ?>
+                            <div class="user-meta">
+                                <div class="user-nickname" style="cursor: pointer;"><?php _e('请登录', 'vt') ?></div>
+                                <div class="user-more"></div>
                             </div>
                         </div>
-                    <?php endif; ?>
+                    </div>
                 <?php endif ?>
 
                 <?php
@@ -186,12 +180,12 @@ $dark_mode_class = $dark_mode_config['dark_mode_class'];
         <div class="mobile-search-modal modal" id="search-modal-dialog">
             <div class="modal-dialog">
                 <form action="/" method="get">
-                    <div class="modal-header">搜索一下</div>
+                    <div class="modal-header"><?= __('Search','vt')?></div>
                     <div class="field field-text">
-                        <input type="text" name="s" value="" placeholder="请输入关键词">
+                        <input type="text" name="s" value="" placeholder="<?= __('Search','vt')?>...">
                     </div>
                     <div class="field field-button">
-                        <button type="submit" class="">搜索</button>
+                        <button type="submit" class=""><?= __('Search','vt')?></button>
                     </div>
                 </form>
                 <a class="modal-close-button" href="javascript:;">
@@ -251,13 +245,13 @@ $dark_mode_class = $dark_mode_config['dark_mode_class'];
                         <i class="fa-solid fa-moon moon"></i>
                     </a>
                 <?php endif; ?>
-                <?php if (!$current_user->ID && is_captain_active()) : ?>
+                <?php if (!$current_user->ID) : ?>
                     <a href="javascript:;" class="button login-button open-login-dialog"><?= __('Login','vt')?></a>
                 <?php endif ?>
             </div>
 
 
-            <?php if ($current_user->ID && is_captain_active()) : ?>
+            <?php if ($current_user->ID) : ?>
                 <?php // $avatar = vt_get_custom_avatar_url($current_user->ID) ?>
                 <div class="header-top-profile">
                     <a href="javascript:;" class="header-top-avatar">

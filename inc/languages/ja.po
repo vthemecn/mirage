@@ -11,10 +11,10 @@ msgstr ""
 
 
 msgid "Mirage"
-msgstr "Mirage"
+msgstr "ミラージュ"
 
 
-# 通用的
+# 通用の
 ###############################################################################
 
 msgid "On"
@@ -24,7 +24,7 @@ msgid "Off"
 msgstr "オフ"
 
 msgid "Follow the system"
-msgstr "システムに合わせる"
+msgstr "システムに従う"
 
 msgid "Simple"
 msgstr "シンプル"
@@ -45,10 +45,10 @@ msgid "dark"
 msgstr "ダーク"
 
 msgid "QR code"
-msgstr "QR コード"
+msgstr "QRコード"
 
 msgid "Scan QR code"
-msgstr "QR コードをスキャン"
+msgstr "QRコードをスキャン"
 
 msgid "Display"
 msgstr "表示"
@@ -75,7 +75,7 @@ msgid "Upload"
 msgstr "アップロード"
 
 msgid "New window opens link"
-msgstr "新規ウィンドウでリンクを開く"
+msgstr "新しいウィンドウでリンクを開く"
 
 msgid "Link address"
 msgstr "リンクアドレス"
@@ -84,7 +84,7 @@ msgid "Autoplay"
 msgstr "自動再生"
 
 msgid "Support HTML"
-msgstr "HTML サポート"
+msgstr "HTMLをサポート"
 
 msgid "Related Categories"
 msgstr "関連カテゴリ"
@@ -111,10 +111,10 @@ msgid "Background image"
 msgstr "背景画像"
 
 msgid "Customize JS code"
-msgstr "JS カスタムコード"
+msgstr "JSコードをカスタマイズ"
 
 msgid "Add menu"
-msgstr "メニュー追加"
+msgstr "メニューを追加"
 
 msgid "Sticky"
 msgstr "固定"
@@ -132,16 +132,16 @@ msgid "Number"
 msgstr "数"
 
 msgid "Category ID"
-msgstr "カテゴリ ID"
+msgstr "カテゴリID"
 
 msgid "Images article list"
-msgstr "画像記事リスト"
+msgstr "画像付き記事リスト"
 
 msgid "Category list"
 msgstr "カテゴリリスト"
 
 msgid "Images article description"
-msgstr "画像記事の説明"
+msgstr "画像付き記事の説明"
 
 msgid "Images list"
 msgstr "画像リスト"
@@ -168,10 +168,10 @@ msgid "Star"
 msgstr "お気に入り"
 
 msgid "HTML card"
-msgstr "HTML カード"
+msgstr "HTMLカード"
 
 msgid "HTML card description"
-msgstr "HTML カードの説明"
+msgstr "HTMLカードの説明"
 
 msgid "Hot"
 msgstr "人気"
@@ -195,7 +195,7 @@ msgid "results"
 msgstr "件の結果"
 
 msgid "Go to home"
-msgstr "ホームへ戻る"
+msgstr "ホームに戻る"
 
 msgid "Page not found"
 msgstr "ページが見つかりません"
@@ -210,7 +210,7 @@ msgid "Like"
 msgstr "いいね"
 
 msgid "Share"
-msgstr "シェア"
+msgstr "共有"
 
 msgid "Donate"
 msgstr "寄付"
@@ -252,7 +252,7 @@ msgid "Comment Content"
 msgstr "コメント内容"
 
 msgid "Registration is not required"
-msgstr "登録不要"
+msgstr "登録は不要です"
 
 msgid "Current Account"
 msgstr "現在のアカウント"
@@ -264,7 +264,7 @@ msgid "Delete"
 msgstr "削除"
 
 msgid "No more"
-msgstr "もうありません"
+msgstr "これ以上ありません"
 
 
 # 前台 - Footer
@@ -278,40 +278,40 @@ msgstr "実行時間"
 # 其他
 ###############################################################################
 msgid "Please create a theme side menu"
-msgstr "テーマサイドメニューを作成してください"
+msgstr "テーマのサイドメニューを作成してください"
 
 msgid "Tags"
 msgstr "タグ"
 
 msgid "Please keep the theme footer credit intact."
-msgstr "テーマフッターのクレジットをそのまま残してください"
+msgstr "keep_theme_footer"
 
 msgid "keep_theme_footer"
-msgstr "テーマフッターのクレジットを保持"
+msgstr "テーマフッターのクレジットをそのまま残してください"
 
-msgid "Remove like"
-msgstr "いいねを解除"
+msgid "Remove Like"
+msgstr "いいねを取り消し"
 
-msgid "Already liked"
+msgid "Already Liked"
 msgstr "すでにいいね済み"
 
-msgid "Remove star"
+msgid "Remove Star"
 msgstr "お気に入りを解除"
 
-msgid "Already starred"
+msgid "Already Starred"
 msgstr "すでにお気に入り済み"
 
-msgid "Operation failed"
+msgid "Operation Failed"
 msgstr "操作に失敗しました"
 
-msgid "Operation succeeded"
-msgstr "操作に成功しました"
+msgid "Operation Succeeded"
+msgstr "操作が成功しました"
 
 msgid "Network error. Please try again"
-msgstr "ネットワークエラー。再試行してください"
+msgstr "ネットワークエラー。もう一度お試しください"
 
 msgid "Security verification failed"
-msgstr "セキュリティ認証に失敗しました"
+msgstr "セキュリティ検証に失敗しました"
 
 msgid "Invalid action type"
 msgstr "無効なアクションタイプ"
@@ -320,7 +320,7 @@ msgid "Please log in"
 msgstr "ログインしてください"
 
 msgid "Invalid object ID"
-msgstr "無効なオブジェクト ID"
+msgstr "無効なオブジェクトID"
 
 
 # 小工具
@@ -332,7 +332,7 @@ msgid "Post Sidebar"
 msgstr "投稿サイドバー"
 
 msgid "Recent Posts"
-msgstr "最新投稿"
+msgstr "最新の投稿"
 
 msgid "Popular"
 msgstr "人気"
@@ -341,7 +341,7 @@ msgid "Category List"
 msgstr "カテゴリリスト"
 
 msgid "Please create theme sidebar menu"
-msgstr "テーマサイドバーメニューを作成してください"
+msgstr "テーマのサイドバーメニューを作成してください"
 
 msgid "User Card"
 msgstr "ユーザーカード"
@@ -351,19 +351,19 @@ msgstr "ユーザーカードの説明"
 
 
 
-# 配置页面
+# 配置ページ
 ###############################################################################
 ###############################################################################
 ###############################################################################
 
 msgid "Mirage settings"
-msgstr "Mirage 設定"
+msgstr "ミラージュ設定"
 
 msgid "General settings"
 msgstr "一般設定"
 
 msgid "SEO settings"
-msgstr "SEO 設定"
+msgstr "SEO設定"
 
 msgid "Home page settings"
 msgstr "ホームページ設定"
@@ -382,29 +382,29 @@ msgstr "バックアップ"
 
 
 
-# 配置页面 - 常规设置
+# 配置ページ - 常规设置
 ###############################################################################
 
 msgid "Website Logo"
-msgstr "サイトロゴ"
+msgstr "ウェブサイトロゴ"
 
 msgid "Website Logo (Dark Mode)"
-msgstr "サイトロゴ（ダークモード）"
+msgstr "ウェブサイトロゴ（ダークモード）"
 
 msgid "Theme color tone"
 msgstr "テーマカラー"
 
 msgid "Update prompt"
-msgstr "更新通知"
+msgstr "更新プロンプト"
 
 msgid "After closing, there will be no prompts for PHP version, theme, and plugin updates"
-msgstr "無効にすると、PHP バージョン、テーマ、プラグインの更新通知が表示されません"
+msgstr "閉じると、PHPバージョン、テーマ、プラグインの更新プロンプトが表示されなくなります"
 
 msgid "Editor Mode"
 msgstr "エディターモード"
 
 msgid "Gutenberg Editor"
-msgstr "グーテンベルクエディター"
+msgstr "グーテンベルグエディター"
 
 msgid "Classic Editor"
 msgstr "クラシックエディター"
@@ -425,13 +425,13 @@ msgid "Dark mode"
 msgstr "ダークモード"
 
 msgid "Anti brute force cracking"
-msgstr "総当たり攻撃防止"
+msgstr "ブルートフォース攻撃対策"
 
 msgid "Too many failures. Wait 1 hour"
-msgstr "失敗が多すぎます。1 時間待ってください"
+msgstr "ログイン失敗が多すぎます。1時間後にもう一度お試しください"
 
 msgid "Payment QR code"
-msgstr "支払い QR コード"
+msgstr "支払い用QRコード"
 
 msgid "Editor"
 msgstr "エディター"
@@ -458,7 +458,7 @@ msgid "Recommendation"
 msgstr "おすすめ"
 
 
-# 配置页面 - 首页设置 - 布局设置
+# 配置ページ - 首页设置 - 布局设置
 ###############################################################################
 
 msgid "Layout setting"
@@ -471,42 +471,42 @@ msgid "Notices"
 msgstr "お知らせ"
 
 msgid "Hot topics"
-msgstr "おすすめ人気記事"
+msgstr "人気トピック"
 
 msgid "Latest"
-msgstr "最新記事"
+msgstr "最新"
 
 msgid "Links"
 msgstr "リンク"
 
 
-# 配置页面 - 首页设置 - 幻灯片模块
+# 配置ページ - 首页設定 - 幻灯片モジュール
 ###############################################################################
 
 msgid "Slider Effects"
-msgstr "スライドショー効果"
+msgstr "スライダー効果"
 
 msgid "Slide list"
-msgstr "スライドリンクスト"
+msgstr "スライドリスト"
 
 
-# 配置页面 - 首页设置 - 推荐模块
+# 配置ページ - 首页設定 - 热門文章
 ###############################################################################
 
 msgid "Article ID list"
 msgstr "記事IDリスト"
 
 msgid "Enter IDs separated by commas (e.g., 1087, 1090)."
-msgstr "カンマ区切りでIDを入力（例: 1087, 1090）。"
+msgstr "カンマ区切りでIDを入力してください（例：1087, 1090）。"
 
 
-# 配置页面 - 首页设置 - 文章列表
+# 配置ページ - 首页設定 - 文章リスト
 ###############################################################################
 msgid "Category"
 msgstr "カテゴリ"
 
 msgid "Exclude classification"
-msgstr "除外カテゴリ"
+msgstr "除外する分類"
 
 msgid "Auto Load"
 msgstr "自動読み込み"
@@ -515,13 +515,13 @@ msgid "Automatic loading times"
 msgstr "自動読み込み回数"
 
 
-# 配置页面 - 顶部设置
+# 配置ページ - 顶部設定
 ###############################################################################
 msgid "header slogan"
-msgstr "ヘッダーキャッチコピー"
+msgstr "ヘッダースローガン"
 
 msgid "tel title"
-msgstr "電話番号タイトル"
+msgstr "電話タイトル"
 
 msgid "tel number"
 msgstr "電話番号"
@@ -530,13 +530,13 @@ msgid "header image"
 msgstr "ヘッダー画像"
 
 
-# 配置页面 - 底部设置
+# 配置ページ - 底部設定
 ###############################################################################
 msgid "display type"
 msgstr "表示タイプ"
 
 msgid "Footer copyright"
-msgstr "フッター著作権"
+msgstr "フッター著作権表示"
 
 msgid "Footer Logo"
 msgstr "フッターロゴ"
@@ -545,10 +545,10 @@ msgid "Footer description"
 msgstr "フッター説明"
 
 msgid "qrcode"
-msgstr "QR コード"
+msgstr "QRコード"
 
 msgid "qrcode description"
-msgstr "QR コードの説明"
+msgstr "QRコードの説明"
 
 msgid "nav bar"
 msgstr "ナビゲーションバー"
@@ -557,53 +557,60 @@ msgid "nav bar settings"
 msgstr "ナビゲーションバー設定"
 
 msgid "SNS links"
-msgstr "SNS リンク"
+msgstr "SNSリンク"
 
 
-# 配置页面 - 文章设置
+# 配置ページ - 文章設定
 ###############################################################################
 
 msgid "Article settings"
 msgstr "記事設定"
 
 msgid "Number of rows and columns"
-msgstr "行列数"
+msgstr "行と列の数"
 
 msgid "Module Title"
 msgstr "モジュールタイトル"
 
 msgid "Article revision version"
-msgstr "記事改訂バージョン"
+msgstr "記事リビジョンバージョン"
 
 msgid "Article copyright statement"
-msgstr "記事著作権ステートメント"
+msgstr "記事著作権表示"
 
 msgid "Code highlighting"
 msgstr "コードハイライト"
 
 
-# 配置页面 - 邮箱设置
+# 配置ページ - 会员設定
+###############################################################################
+
+msgid "VIP Avatar Upload"
+msgstr "VIPのみアバターアップロード可能"
+
+
+# 配置ページ - 邮箱設定
 ###############################################################################
 msgid "Customize email"
 msgstr "カスタムメール"
 
 msgid "SMTP address"
-msgstr "SMTP アドレス"
+msgstr "SMTPアドレス"
 
 msgid "SMTP port"
-msgstr "SMTP ポート"
+msgstr "SMTPポート"
 
 msgid "SMTP account"
-msgstr "SMTP アカウント"
+msgstr "SMTPアカウント"
 
 msgid "SMTP password"
-msgstr "SMTP パスワード"
+msgstr "SMTPパスワード"
 
 msgid "Sender nickname"
 msgstr "送信者名"
 
 
-# 配置页面 - 广告设置
+# 配置ページ - 广告設定
 ###############################################################################
 msgid "Ad settings"
 msgstr "広告設定"
@@ -627,30 +634,30 @@ msgid "Mobile Code"
 msgstr "モバイルコード"
 
 msgid "PC Code"
-msgstr "PC コード"
+msgstr "PCコード"
 
 msgid "AD Code for width > 481px"
-msgstr "幅 481px 以上の広告コード（オプション、未記入時はモバイルコードを使用）"
+msgstr "幅 > 481px の時に表示（オプション、空白の場合はモバイルコードを使用）"
 
 
-# 配置页面 - 默认数据
+# 配置ページ - 默认数据
 ###############################################################################
 
 msgid "Hello Mirage"
-msgstr "こんにちは、Mirage"
+msgstr "こんにちは、ミラージュ"
 
 
-# 评论功能相关
+# 评论機能関連
 ###############################################################################
 
 msgid "You must be logged in to post a comment."
-msgstr "コメントを投稿するにはログインが必要です"
+msgstr "コメントを投稿するにはログインが必要です。"
 
 msgid "No comments"
-msgstr "コメントがありません"
+msgstr "コメントはありません"
 
 msgid "One comment"
-msgstr "1 件のコメント"
+msgstr "1件のコメント"
 
 msgid "comments"
 msgstr "件のコメント"
@@ -662,7 +669,7 @@ msgid "Submit failed"
 msgstr "送信に失敗しました"
 
 msgid "Network error, please try again."
-msgstr "ネットワークエラー。後ほど再試行してください"
+msgstr "ネットワークエラー、もう一度お試しください。"
 
 msgid "Are you sure you want to delete this comment?"
 msgstr "このコメントを削除してもよろしいですか？"
@@ -686,7 +693,7 @@ msgid "Please enter reply content"
 msgstr "返信内容を入力してください"
 
 msgid "Your comment is awaiting moderation."
-msgstr "あなたのコメントは承認待ちです"
+msgstr "あなたのコメントは承認待ちです。"
 
 msgid "Comment form not found"
 msgstr "コメントフォームが見つかりません"
@@ -695,19 +702,302 @@ msgstr "コメントフォームが見つかりません"
 ###############################################################################
 
 msgid "Comment cannot be empty."
-msgstr "コメントは空にできません"
+msgstr "コメントは空にできません。"
 
 msgid "Comment cannot exceed %d characters."
-msgstr "コメントは %d 文字を超えられません"
+msgstr "コメントは %d 文字を超えることはできません。"
 
 # 文章详情页
 ###############################################################################
 
 msgid "Basic Settings"
-msgstr "きほんせってい"
+msgstr "基本設定"
 
 msgid "Full Width"
 msgstr "全幅表示"
 
 msgid "Table of Contents"
-msgstr "目次表示"
+msgstr "目次"
+
+
+# api/accounts.php
+###############################################################################
+
+msgid "Please fill in all required fields"
+msgstr "すべての必須項目を入力してください"
+
+msgid "Password must be at least 6 characters long"
+msgstr "パスワードは6文字以上である必要があります"
+
+msgid "Verification code is incorrect or expired"
+msgstr "認証コードが正しくないか、期限切れです"
+
+msgid "Username already exists"
+msgstr "ユーザー名は既に存在します"
+
+msgid "Email has been registered"
+msgstr "メールは既に登録されています"
+
+msgid "This email has been registered"
+msgstr "このメールは既に登録されています"
+
+msgid "Please enter your email address"
+msgstr "メールアドレスを入力してください"
+
+msgid "Please enter a valid email address"
+msgstr "有効なメールアドレスを入力してください"
+
+msgid "Registration Verification Code"
+msgstr "登録用認証コード"
+
+msgid "Your registration verification code is: %s, valid for 10 minutes."
+msgstr "あなたの登録用認証コードは：%s、有効期限は10分です。"
+
+msgid "Verification code has been sent to your email"
+msgstr "認証コードがメールに送信されました"
+
+msgid "Failed to send verification code, please try again later"
+msgstr "認証コードの送信に失敗しました。後でもう一度お試しください"
+
+msgid "No account found associated with this email"
+msgstr "このメールに関連付けられたアカウントが見つかりません"
+
+msgid "Password Reset Verification Code"
+msgstr "パスワードリセット用認証コード"
+
+msgid "You requested to reset your password. Your verification code is: %s, valid for 10 minutes."
+msgstr "パスワードのリセットをリクエストしました。認証コードは：%s、有効期限は10分です。"
+
+msgid "Failed to send email, please contact administrator"
+msgstr "メールの送信に失敗しました。管理者にお問い合わせください"
+
+msgid "Verification code has expired, please request a new one"
+msgstr "認証コードの有効期限が切れました。新しいコードをリクエストしてください"
+
+msgid "Verification code is incorrect"
+msgstr "認証コードが正しくありません"
+
+msgid "Password reset successful"
+msgstr "パスワードのリセットが成功しました"
+
+msgid "Please login first"
+msgstr "まずログインしてください"
+
+msgid "Please select an avatar file to upload"
+msgstr "アップロードするアバターファイルを選択してください"
+
+msgid "Only JPG, PNG or GIF format images are allowed"
+msgstr "JPG、PNG、またはGIF形式の画像のみ許可されています"
+
+msgid "Avatar file size cannot exceed 5MB"
+msgstr "アバターファイルサイズは5MBを超えることはできません"
+
+msgid "You do not have permission to upload avatar"
+msgstr "アバターをアップロードする権限がありません"
+
+msgid "User does not exist"
+msgstr "ユーザーが存在しません"
+
+msgid "Logout successful"
+msgstr "ログアウトしました"
+
+
+# api/users.php
+###############################################################################
+
+msgid "No permission to modify this user"
+msgstr "このユーザーを変更する権限がありません"
+
+
+# templates/login-dialog.php
+###############################################################################
+
+msgid "Username or Email"
+msgstr "ユーザー名またはメール"
+
+msgid "Password"
+msgstr "パスワード"
+
+msgid "Forgot Password?"
+msgstr "パスワードをお忘れですか？"
+
+msgid "Register Account"
+msgstr "アカウント登録"
+
+msgid "By registering/logging in, you agree to our <a>Privacy Policy</a> and <a>Terms of Service</a>"
+msgstr "登録/ログインすることで、<a>プライバシーポリシー</a>と<a>利用規約</a>に同意したことになります"
+
+msgid "Privacy Policy"
+msgstr "プライバシーポリシー"
+
+msgid "Terms of Service"
+msgstr "利用規約"
+
+msgid "Username"
+msgstr "ユーザー名"
+
+msgid "Email"
+msgstr "メール"
+
+msgid "Verification Code"
+msgstr "認証コード"
+
+msgid "Please enter verification code"
+msgstr "認証コードを入力してください"
+
+msgid "Send Verification Code"
+msgstr "認証コードを送信"
+
+msgid "Register"
+msgstr "登録"
+
+msgid "Login Account"
+msgstr "アカウントにログイン"
+
+msgid "Login to Account"
+msgstr "アカウントにログイン"
+
+msgid "Please enter the verification code you received"
+msgstr "受信した認証コードを入力してください"
+
+msgid "New Password"
+msgstr "新しいパスワード"
+
+msgid "Please enter new password"
+msgstr "新しいパスワードを入力してください"
+
+msgid "Reset Password"
+msgstr "パスワードをリセット"
+
+msgid "← Back to enter email"
+msgstr "← メール入力に戻る"
+
+
+# assets/js/src/login-dialog.js
+###############################################################################
+
+msgid "Sending..."
+msgstr "送信中..."
+
+msgid "Verification code has been sent, please check your email"
+msgstr "認証コードが送信されました。メールをご確認ください"
+
+msgid "Failed to send verification code"
+msgstr "認証コードの送信に失敗しました"
+
+msgid "Network error, please try again later"
+msgstr "ネットワークエラー、後でもう一度お試しください"
+
+msgid "Retry in %d seconds"
+msgstr "%d秒後に再試行"
+
+msgid "Logging in..."
+msgstr "ログイン中..."
+
+msgid "Login successful, redirecting..."
+msgstr "ログイン成功、リダイレクト中..."
+
+msgid "Login failed, please try again"
+msgstr "ログインに失敗しました。もう一度お試しください"
+
+msgid "Registering..."
+msgstr "登録中..."
+
+msgid "Registration successful, logging in automatically..."
+msgstr "登録成功、自動的にログイン中..."
+
+msgid "Registration failed, please try again"
+msgstr "登録に失敗しました。もう一度お試しください"
+
+msgid "Password reset verification code has been sent to your email"
+msgstr "パスワードリセット用認証コードがメールに送信されました"
+
+msgid "Failed to send, please try again"
+msgstr "送信に失敗しました。もう一度お試しください"
+
+msgid "Resetting..."
+msgstr "リセット中..."
+
+msgid "Password reset successful, logging in automatically..."
+msgstr "パスワードリセット成功、自動的にログイン中..."
+
+msgid "Reset failed, please try again"
+msgstr "リセットに失敗しました。もう一度お試しください"
+
+
+# templates/account/edit.php
+###############################################################################
+
+msgid "Edit Profile"
+msgstr "プロフィール編集"
+
+msgid "Upload Avatar"
+msgstr "アバターをアップロード"
+
+msgid "No bio yet"
+msgstr "自己紹介はまだありません"
+
+msgid "Free User"
+msgstr "無料ユーザー"
+
+msgid "VIP User"
+msgstr "VIPユーザー"
+
+msgid "SVIP User"
+msgstr "SVIPユーザー"
+
+msgid "Username:"
+msgstr "ユーザー名:"
+
+msgid "Nickname:"
+msgstr "ニックネーム:"
+
+msgid "Gender:"
+msgstr "性別:"
+
+msgid "Male"
+msgstr "男性"
+
+msgid "Female"
+msgstr "女性"
+
+msgid "Secret"
+msgstr "非公開"
+
+msgid "Email:"
+msgstr "メール:"
+
+msgid "Bio:"
+msgstr "自己紹介:"
+
+msgid "Confirm"
+msgstr "確認"
+
+msgid "Please select an image file"
+msgstr "画像ファイルを選択してください"
+
+msgid "Uploading avatar..."
+msgstr "アバターをアップロード中..."
+
+msgid "Avatar uploaded successfully"
+msgstr "アバターのアップロードが成功しました"
+
+msgid "Upload failed"
+msgstr "アップロードに失敗しました"
+
+msgid "Invalid response format"
+msgstr "無効なレスポンス形式"
+
+msgid "User Avatar"
+msgstr "ユーザーアバター"
+
+msgid "Update failed"
+msgstr "更新に失敗しました"
+
+msgid "Update successful"
+msgstr "更新が成功しました"
+
+msgid "Update failed: "
+msgstr "更新に失敗しました: "
+
+

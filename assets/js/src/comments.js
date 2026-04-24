@@ -53,11 +53,11 @@ function updateCommentCount(increment = false) {
     const newCount = increment ? currentCount + 1 : Math.max(0, currentCount - 1);
 
     if (newCount === 0) {
-      countElement.textContent = i18n.no_comments;
+      countElement.textContent = __('No comments');
     } else if (newCount === 1) {
-      countElement.textContent = i18n.one_comment;
+      countElement.textContent = __('One comment');
     } else {
-      countElement.textContent = newCount + ' ' + i18n.multiple_comments;
+      countElement.textContent = newCount + ' ' + __('comments');
     }
   }
 }
@@ -90,7 +90,7 @@ function initCommentReply() {
       
       // 验证不能为空
       if (!content || content.length === 0) {
-          showNotification(i18n.comment_cannot_be_empty, 'error');
+          showNotification(__('Comment cannot be empty.'), 'error');
           submitBtn.value = originalText;
           submitBtn.disabled = false;
           return;
@@ -99,7 +99,7 @@ function initCommentReply() {
       // 验证最大长度
       if (content.length > maxLength) {
           showNotification(
-              i18n.comment_max_length.replace('%d', maxLength),
+              __('Comment cannot exceed %d characters.').replace('%d', maxLength),
               'error'
           );
           submitBtn.value = originalText;
@@ -111,7 +111,7 @@ function initCommentReply() {
       const originalText = submitBtn.value;
       
       // 锁定按钮
-      submitBtn.value = i18n.submitting;
+      submitBtn.value = __('Submitting...');
       submitBtn.disabled = true;
 
       // 构建数据
@@ -129,7 +129,7 @@ function initCommentReply() {
             console.log('Response:', data);
             // 如果 HTTP 状态不是 200-299，或者 data.success 为 false，则视为错误
             if (!response.ok || !data.success) {
-                throw new Error(data.data && data.data.message ? data.data.message : i18n.submit_failed);
+                throw new Error(data.data && data.data.message ? data.data.message : __('Submit failed'));
             }
             return data;
           });
@@ -149,7 +149,7 @@ function initCommentReply() {
       .catch(error => {
           // 错误逻辑
           // error.message 包含了我们在 PHP 中设置的错误信息
-          showNotification(error.message || i18n.network_error_retry, 'error');
+          showNotification(error.message || __('Network error, please try again.'), 'error');
           console.error('提交失败:', error, error.message);
       })
       .finally(() => {
@@ -197,7 +197,7 @@ function addNewCommentToList(commentData, parentId = null) {
   if (userId > 0 && typeof ajax_object !== 'undefined' && ajax_object.current_user_id == userId) {
     deleteLinkHtml = `
       <a href="javascript:;" class="delete-comment" data-comment-id="${commentId}">
-        ${i18n.delete}
+        ${__('Delete')}
       </a>
     `;
   }
@@ -207,7 +207,7 @@ function addNewCommentToList(commentData, parentId = null) {
   if (commentData.approved === '0') {
     statusHtml = `
       <div class="comment-status">
-        ${i18n.awaiting_moderation}
+        ${__('Your comment is awaiting moderation.')}
       </div>
     `;
   }
@@ -231,7 +231,7 @@ function addNewCommentToList(commentData, parentId = null) {
         ${commentContent}
       </div>
       <div class="comment-actions">
-        <a href="?replytocom=${commentId}#respond" class="reply-link">${i18n.reply}</a>
+        <a href="?replytocom=${commentId}#respond" class="reply-link">${__('Reply')}</a>
         ${deleteLinkHtml}
       </div>
     </div>
@@ -340,10 +340,10 @@ function createInlineReplyForm(commentId, commentItem) {
   
   form.innerHTML = `
     <div class="reply-form-container">
-      <textarea placeholder="${i18n.reply_to_comment}" rows="3"></textarea>
+      <textarea placeholder="${__('Reply to comment...')}" rows="3"></textarea>
       <div class="reply-form-actions">
-        <button type="submit" class="submit-reply">${i18n.submit_reply}</button>
-        <button type="button" class="cancel-reply">${i18n.cancel}</button>
+        <button type="submit" class="submit-reply">${__('Submit Reply')}</button>
+        <button type="button" class="cancel-reply">${__('Cancel')}</button>
       </div>
     </div>
   `;
@@ -364,21 +364,21 @@ function createInlineReplyForm(commentId, commentItem) {
     const maxLength = 1000;
     
     if (!content) {
-      showNotification(i18n.please_enter_reply, 'error');
+      showNotification(__('Please enter reply content'), 'error');
       return;
     }
     
     // ========== 新增：字数验证 ==========
     // 验证不能为空
     if (content.length === 0) {
-      showNotification(i18n.comment_cannot_be_empty, 'error');
+      showNotification(__('Comment cannot be empty.'), 'error');
       return;
     }
     
     // 验证最大长度
     if (content.length > maxLength) {
       showNotification(
-        i18n.comment_max_length.replace('%d', maxLength),
+        __('Comment cannot exceed %d characters.').replace('%d', maxLength),
         'error'
       );
       return;
@@ -387,14 +387,14 @@ function createInlineReplyForm(commentId, commentItem) {
     
     // 锁定按钮
     const originalText = submitBtn.textContent;
-    submitBtn.textContent = i18n.submitting_reply;
+    submitBtn.textContent = __('Submitting reply...');
     submitBtn.disabled = true;
     
     try {
       // 获取主表单的数据
       const mainForm = document.getElementById('commentform');
       if (!mainForm) {
-        showNotification(i18n.comment_form_not_found, 'error');
+        showNotification(__('Comment form not found'), 'error');
         return;
       }
       
@@ -424,13 +424,13 @@ function createInlineReplyForm(commentId, commentItem) {
           addNewCommentToList(result.data, commentId);
         }
       } else {
-        showNotification(result.data.message || i18n.submit_failed, 'error');
+        showNotification(result.data.message || __('Submit failed'), 'error');
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
       }
     } catch (error) {
       console.error('Submit reply error:', error);
-      showNotification(i18n.network_error_retry, 'error');
+      showNotification(__('Network error, please try again.'), 'error');
       submitBtn.textContent = originalText;
       submitBtn.disabled = false;
     }
@@ -489,7 +489,7 @@ function bindDeleteButton(link) {
   link.addEventListener('click', async function (e) {
     e.preventDefault();
 
-    if (!confirm(i18n.confirm_delete_comment)) {
+    if (!confirm(__('Are you sure you want to delete this comment?'))) {
       return;
     }
 
@@ -497,7 +497,7 @@ function bindDeleteButton(link) {
     const commentItem = this.closest('.comment-item');
 
     const originalText = this.textContent;
-    this.textContent = i18n.deleting;
+    this.textContent = __('Deleting...');
     this.style.pointerEvents = 'none';
 
     try {
@@ -523,17 +523,17 @@ function bindDeleteButton(link) {
           setTimeout(() => {
             commentItem.remove();
             updateCommentCount(false);
-            showNotification(i18n.delete_success, 'success');
+            showNotification(__('Comment deleted successfully'), 'success');
           }, 300);
         }
       } else {
-        showNotification(result.data.message || i18n.delete_failed, 'error');
+        showNotification(result.data.message || __('Delete failed'), 'error');
         this.textContent = originalText;
         this.style.pointerEvents = 'auto';
       }
     } catch (error) {
       console.error('删除评论失败:', error);
-      showNotification(i18n.network_error_retry, 'error');
+      showNotification(__('Network error, please try again.'), 'error');
       this.textContent = originalText;
       this.style.pointerEvents = 'auto';
     }

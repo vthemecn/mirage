@@ -12,6 +12,7 @@ get_header();
 
 $config = vt_get_config();
 
+$full_width = 0;
 ?>
 
 <div class="main-container">

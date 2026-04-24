@@ -5,6 +5,7 @@
   transform: translate(-50%, -50%);
   z-index: 99;
   display: none;
+  box-shadow: 0 0 3px 0 var(--vt-shadow-color);
 }
 
 .vt-dialog[open] {
@@ -42,7 +43,7 @@
 .dialog-widget {
   box-sizing: border-box;
   font-size: 18px;
-  padding: 25px;
+  padding: 20px;
   border-radius: var(--vt-border-radius);
   background-color: var(--vt-bg-color-card);
   /* box-shadow: 0 0 20px var(--vt-shadow-color); */
@@ -59,8 +60,13 @@
   text-align: center;
   color: var(--vt-text-color-grey);
   z-index: 9;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: green; */
 }
-
+.dialog-widget .close-button:hover { opacity: 1; }
 .dialog-widget .close-button i {
   font-size: 22px;
   font-weight: bold;
@@ -79,7 +85,8 @@
   float: right;
   font-size: 25px;
   position: relative;
-  top: -5px;
+  top: -15px;
+  right: -15px;
 }
 
 .dialog-body {
