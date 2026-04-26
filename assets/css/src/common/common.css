@@ -67,24 +67,28 @@ a:hover {
 /**
  * 文章页，文档页等 公共的喜欢，收藏 模块
  */
+
+
+/*****************************************************************************/
 /**
  * 面包屑
  */
 .breadcrumbs {
   width: auto;
-  height: 35px;
-  line-height: 35px;
-  font-size: var(--vt-font-size-sm);
+  line-height: 30px;
+  font-size: 14px;
   color: var(--vt-text-color-grey);
 }
 .breadcrumbs i {
-  font-size: var(--vt-font-size-lg);
-  vertical-align: -5px;
+  font-size: 14px;
+  vertical-align: 0px;
+  margin: 0 3px 0 0;
 }
 .breadcrumbs a {
-  font-size: var(--vt-font-size-sm);
+  font-size: 14px;
   color: var(--vt-text-color-grey);
 }
+
 
 /**
  * 404

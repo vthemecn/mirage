@@ -97,55 +97,122 @@ function vt_footer_check()
 
 
 /**
- * breadcrumb 面包屑导航
+ * 增强版面包屑导航
+ * 支持：首页、分类（含父子级）、文章、页面（含父子级）、标签、搜索、归档、404等
  * @return void
  */
-function get_breadcrumbs()
-{
-    global $wp_query;
-    if (!is_home()) {
-        // Start the UL
-        echo '';
-        // Add the Home link
-        $url = get_bloginfo('url');
-        echo '<a href="' . $url . '">首页</a>';
-        if (is_category()) {
-            $catTitle = single_cat_title("", false);
-            $cat = get_cat_ID($catTitle);
-            echo " &gt; " . get_category_parents($cat, TRUE, " &gt; ") . "";
-        } elseif (is_archive() ) {
-            $category = get_queried_object();
-            echo " &gt; " . $category->name;
-        } elseif (is_search()) {
-            echo " &gt; 搜索结果";
-        } elseif (is_404()) {
-            echo " &gt; 404 Not Found";
-        } elseif (is_single()) {
-            $post_id = get_the_ID();
-            echo ' &gt; ' . vt_get_post_category_name($post_id) . ' > ';
-        } elseif (is_page()) {
-            $post = $wp_query->get_queried_object();
-            if ($post->post_parent == 0) {
-                echo " &gt; " . the_title('', '', FALSE) . "";
-            } else {
-                $title = the_title('', '', FALSE);
-                $ancestors = array_reverse(get_post_ancestors($post->ID));
-                array_push($ancestors, $post->ID);
-                foreach ($ancestors as $ancestor) {
-                    if (
-                        $ancestor != end($ancestors)
-                    ) {
-                        echo ' &gt; ' . strip_tags(apply_filters('single_post_title', get_the_title($ancestor))) . '';
-                    } else {
-                        echo ' &gt; ' . strip_tags(apply_filters('single_post_title', get_the_title($ancestor))) . '';
-                    }
-                }
-            }
-        }
-        // End the UL
-        echo "";
+function get_breadcrumbs() {
+    // 如果是首页，不显示面包屑
+    if (is_front_page() || is_home()) {
+        return;
     }
+
+    echo '<div class="breadcrumbs">';
+    
+    // 首页链接
+    echo '<a href="' . home_url() . '"><i class="fa-solid fa-house"></i>' . __('Home', 'vt') . '</a>';
+    
+    // 文章页面
+    if (is_single()) {
+        $categories = get_the_category();
+        if (!empty($categories)) {
+            // 获取第一个分类
+            $category = $categories[0];
+            // 获取分类的完整层级路径
+            $category_parents = get_category_parents($category->term_id, true, ' &gt; ');
+            // 移除末尾的分隔符
+            $category_parents = rtrim($category_parents, ' &gt; ');
+            echo ' &gt; ' . $category_parents;
+        }
+        echo ' &gt; <span class="current">' . __('Content', 'vt') . '</span>';
+    }
+    
+    // 分类归档页面
+    elseif (is_category()) {
+        $category = get_queried_object();
+        // 获取完整的分类层级（包括所有父级分类）
+        $category_parents = get_category_parents($category->term_id, true, ' &gt; ');
+        // 移除末尾的分隔符
+        $category_parents = rtrim($category_parents, ' &gt; ');
+        echo ' &gt; ' . $category_parents;
+    }
+    
+    // 标签归档页面
+    elseif (is_tag()) {
+        $tag = get_queried_object();
+        echo ' &gt; ' . __('Tag:', 'vt') . ' <span class="current">' . $tag->name . '</span>';
+    }
+    
+    // 作者归档页面
+    elseif (is_author()) {
+        $author = get_queried_object();
+        echo ' &gt; ' . __('Author:', 'vt') . ' <span class="current">' . $author->display_name . '</span>';
+    }
+    
+    // 日期归档页面
+    elseif (is_date()) {
+        if (is_year()) {
+            echo ' &gt; <span class="current">' . get_the_time('Y') . __(' Year', 'vt') . '</span>';
+        } elseif (is_month()) {
+            echo ' &gt; <a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . __(' Year', 'vt') . '</a>';
+            echo ' &gt; <span class="current">' . get_the_time('m') . __(' Month', 'vt') . '</span>';
+        } elseif (is_day()) {
+            echo ' &gt; <a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . __(' Year', 'vt') . '</a>';
+            echo ' &gt; <a href="' . get_month_link(get_the_time('Y'), get_the_time('m')) . '">' . get_the_time('m') . __(' Month', 'vt') . '</a>';
+            echo ' &gt; <span class="current">' . get_the_time('d') . __(' Day', 'vt') . '</span>';
+        }
+    }
+    
+    // 自定义文章类型归档
+    elseif (is_post_type_archive()) {
+        $post_type = get_queried_object();
+        echo ' &gt; <span class="current">' . $post_type->label . '</span>';
+    }
+    
+    // 自定义分类法归档
+    elseif (is_tax()) {
+        $term = get_queried_object();
+        $taxonomy = get_taxonomy($term->taxonomy);
+        echo ' &gt; ' . $taxonomy->label . ' &gt; <span class="current">' . $term->name . '</span>';
+    }
+    
+    // 页面（支持父子级页面）
+    elseif (is_page()) {
+        $page = get_queried_object();
+        $ancestors = get_post_ancestors($page->ID);
+        // 反转数组，从顶层到当前层
+        $ancestors = array_reverse($ancestors);
+        
+        // 输出所有父级页面
+        foreach ($ancestors as $ancestor_id) {
+            echo ' &gt; <a href="' . get_permalink($ancestor_id) . '">' . get_the_title($ancestor_id) . '</a>';
+        }
+        
+        // 输出当前页面
+        echo ' &gt; <span class="current">' . __('Content', 'vt') . '</span>';
+    }
+    
+    // 搜索结果页面
+    elseif (is_search()) {
+        echo ' &gt; ' . __('Search Results:', 'vt') . ' <span class="current">' . get_search_query() . '</span>';
+    }
+    
+    // 404 页面
+    elseif (is_404()) {
+        echo ' &gt; <span class="current">' . __('404 Page Not Found', 'vt') . '</span>';
+    }
+    
+    // 附件页面
+    elseif (is_attachment()) {
+        $attachment = get_queried_object();
+        $parent = get_post($attachment->post_parent);
+        echo ' &gt; <a href="' . get_permalink($parent->ID) . '">' . $parent->post_title . '</a>';
+        echo ' &gt; <span class="current">' . __('Content', 'vt') . '</span>';
+    }
+    
+    echo '</div>';
 }
+
 
 
 function get_user_by_id($user_id)

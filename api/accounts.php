@@ -18,6 +18,65 @@ if (!function_exists('wp_handle_upload')) {
 class Accounts {
     
     /**
+     * 检查邮箱发送频率限制
+     * @param string $email 目标邮箱
+     * @return bool|WP_Error 返回 true 表示允许发送，WP_Error 表示被拦截
+     */
+    private function checkEmailThrottle($email) {
+        // 获取客户端 IP
+        $ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
+        
+        // --- 1. IP 每日限制 (防暴力刷) ---
+        $ip_count_key = 'email_throttle_ip_' . md5($ip);
+        $ip_current_count = get_transient($ip_count_key);
+        
+        // 每日最大发送次数：10次
+        if ($ip_current_count && $ip_current_count >= 10) {
+            return new \WP_Error(
+                'too_frequent',
+                __('This IP has reached the daily sending limit.', 'vt')
+            );
+        }
+        
+        // --- 2. 邮箱疲劳度限制 (防骚扰) ---
+        $email_count_key = 'email_throttle_count_' . md5($email);
+        $current_count = get_transient($email_count_key);
+        
+        // 每日最大发送次数：5次
+        if ($current_count && $current_count >= 2) {
+            return new \WP_Error(
+                'daily_limit',
+                __('This email has reached the daily sending limit.', 'vt')
+            );
+        }
+        
+        return true; // 检查通过
+    }
+    
+    /**
+     * 记录邮件发送成功
+     * @param string $email 目标邮箱
+     */
+    private function recordEmailSent($email) {
+        // 获取客户端 IP
+        $ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
+        
+        // 1. 增加 IP 发送计数（每日限制）
+        $ip_count_key = 'email_throttle_ip_' . md5($ip);
+        $ip_current_count = get_transient($ip_count_key);
+        $ip_new_count = $ip_current_count ? $ip_current_count + 1 : 1;
+        set_transient($ip_count_key, $ip_new_count, DAY_IN_SECONDS);
+        
+        // 2. 增加邮箱发送计数
+        $email_count_key = 'email_throttle_count_' . md5($email);
+        $current_count = get_transient($email_count_key);
+        $new_count = $current_count ? $current_count + 1 : 1;
+        
+        // 存储计数，过期时间设为 24 小时
+        set_transient($email_count_key, $new_count, DAY_IN_SECONDS);
+    }
+    
+    /**
      * 用户登录接口
      */
     public function login(\WP_REST_Request $request) {
@@ -189,6 +248,17 @@ class Accounts {
             ], 400);
         }
         
+        // ⭐ 检查邮箱发送频率限制
+        $throttle_check = $this->checkEmailThrottle($email);
+        if (is_wp_error($throttle_check)) {
+            return new \WP_REST_Response([
+                'error' => [
+                    'code' => $throttle_check->get_error_code(),
+                    'message' => $throttle_check->get_error_message()
+                ]
+            ], 429); // 429 Too Many Requests
+        }
+        
         // 检查邮箱是否已被注册
         if (email_exists($email)) {
             return new \WP_REST_Response([
@@ -212,6 +282,9 @@ class Accounts {
         $sent = wp_mail($email, $subject, $message);
         
         if ($sent) {
+            // ⭐ 记录发送成功，更新限流计数
+            $this->recordEmailSent($email);
+            
             return new \WP_REST_Response([
                 'message' => __('Verification code has been sent to your email', 'vt')
             ], 200);
@@ -238,6 +311,17 @@ class Accounts {
                     'message' => __('Please enter your email address', 'vt')
                 ]
             ], 400);
+        }
+        
+        // ⭐ 检查邮箱发送频率限制
+        $throttle_check = $this->checkEmailThrottle($user_email);
+        if (is_wp_error($throttle_check)) {
+            return new \WP_REST_Response([
+                'error' => [
+                    'code' => $throttle_check->get_error_code(),
+                    'message' => $throttle_check->get_error_message()
+                ]
+            ], 429); // 429 Too Many Requests
         }
         
         // 获取用户数据
@@ -274,6 +358,9 @@ class Accounts {
         $sent = wp_mail($user_email, $subject, $message);
         
         if ($sent) {
+            // ⭐ 记录发送成功，更新限流计数
+            $this->recordEmailSent($user_email);
+            
             return new \WP_REST_Response([
                 'message' => __('Password reset verification code has been sent to your email', 'vt')
             ], 200);

@@ -32,6 +32,8 @@
   right: 2px;
 }
 
+.widget-action.active .number { margin: 0 0 0 2px; }
+
 .widget-action.share-poster i {
   font-size: 20px;
 }

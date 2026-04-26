@@ -87,33 +87,7 @@ CSF::createSection( $prefix, array(
             'type'    => 'switcher',
             'title'   => __('Lazy Loading','vt'),
             'default' => true
-        ),
-        array(
-            'id'         => 'attempts_is_on',
-            'type'       => 'radio',
-            'title'      => __('Anti brute force cracking','vt'),
-            'options'    => array('1' => __('On','vt'), '0' => __('Off','vt')),
-            'default'    => '1',
-            'inline'     => true
-        ),
-        array(
-            'id'    => 'privacy_policy',
-            'type'  => 'text',
-            'title' => __('Privacy Policy','vt'),
-            'default' => get_privacy_policy_url()
-        ),
-        array(
-            'id'    => 'terms_of_service',
-            'type'  => 'text',
-            'title' => __('Terms of Service','vt'),
-            'default' => home_url('/#terms_of_service')
-        ),
-        array(
-            'id'      => 'vip_avatar_upload',
-            'type'    => 'switcher',
-            'title'   => __('VIP Avatar Upload','vt'),
-            'default' => true
-        ),
+        )
     )
 ));
 
@@ -677,6 +651,21 @@ CSF::createSection( $prefix, array(
             'inline' => true
         ),
         array(
+            'id'      => 'breadcrumbs_enabled',
+            'type'    => 'checkbox',
+            'title'   => __('Breadcrumbs','vt'),
+            'label'   => __('On','vt'),
+            'default' => false
+        ),
+        array(
+            'id'      => 'auto_fallback_thumbnail',
+            'type'    => 'checkbox',
+            'title'   => __('Auto Fallback Thumbnail','vt'),
+            'label'   => __('On','vt'),
+            'default' => false,
+            'desc'    => __('If no featured image is set, automatically use the first image found in the post content.','vt')
+        ),         
+        array(
             'id'         => 'qrcode_items',
             'type'       => 'group',
             'title'      => __('Payment QR code','vt'),
@@ -710,6 +699,133 @@ CSF::createSection( $prefix, array(
         
     )   
 ));
+
+
+/**
+ * 广告设置
+ */
+CSF::createSection('mirage', [
+    'title'  => __('Ad settings','vt'),
+    'icon'   => 'fas fa-ad',
+    'fields' => [
+        
+        /* 头部广告 */
+        [
+            'type'    => 'switcher',
+            'id'      => 'ad_header_enable',
+            'title'   => __('Header Ad','vt'),
+            'default' => false,
+        ],
+        [
+            'type'       => 'code_editor',
+            'id'         => 'ad_header_code',
+            'title'      => __('Header Ad','vt').' - '.__('Mobile Code','vt'),
+            'default'    => '<a href="https://vtheme.cn/mirage" target="_blank"><img src="'.THEME_URL.'/assets/images/ads-sm.jpg" style="width:100%"></a>',
+            'dependency' => ['ad_header_enable', '==', 'true'],
+        ],
+        [
+            'type'       => 'code_editor',
+            'id'         => 'ad_header_code_pc',
+            'title'      => __('Header Ad','vt').' - ' .__('PC Code','vt'),
+            'desc'       => __('AD Code for width > 481px','vt'),
+            'default'    => '<a href="https://vtheme.cn/mirage" target="_blank"><img src="'.THEME_URL.'/assets/images/ads.jpg" style="width:100%"></a>',
+            'dependency' => ['ad_header_enable', '==', 'true'],
+        ],
+        
+        /* 底部广告 */
+        [
+            'type'    => 'switcher',
+            'id'      => 'ad_footer_enable',
+            'title'   => __('Footer Ad','vt'),
+            'default' => false,
+        ],
+        [
+            'type'       => 'code_editor',
+            'id'         => 'ad_footer_code',
+            'title'      => __('Footer Ad','vt').' - '.__('Mobile Code','vt'),
+            'default'    => '<a href="https://vtheme.cn/mirage" target="_blank"><img src="'.THEME_URL.'/assets/images/ads-sm.jpg" style="width:100%"></a>',
+            'dependency' => ['ad_footer_enable', '==', 'true'],
+        ],
+        [
+            'type'       => 'code_editor',
+            'id'         => 'ad_footer_code_pc',
+            'title'      => __('Footer Ad','vt').' - ' .__('PC Code','vt'),
+            'desc'       => __('AD Code for width > 481px','vt'),
+            'default'    => '<a href="https://vtheme.cn/mirage" target="_blank"><img src="'.THEME_URL.'/assets/images/ads.jpg" style="width:100%"></a>',
+            'dependency' => ['ad_footer_enable', '==', 'true'],
+        ],
+        
+        /* 侧边栏广告 */
+        [
+            'type'    => 'switcher',
+            'id'      => 'ad_sidebar_enable',
+            'title'   => __('Sidebar Ad','vt'),
+            'default' => false,
+        ],
+        [
+            'type'       => 'code_editor',
+            'id'         => 'ad_sidebar_code',
+            'title'      => __('Sidebar Ad','vt').' - '.__('Mobile Code','vt'),
+            'default'    => '<a href="https://vtheme.cn/mirage" target="_blank"><img src="'.THEME_URL.'/assets/images/ads-sm.jpg" style="width:100%"></a>',
+            'dependency' => ['ad_sidebar_enable', '==', 'true'],
+        ],
+        [
+            'type'       => 'code_editor',
+            'id'         => 'ad_sidebar_code_pc',
+            'title'      => __('Sidebar Ad','vt').' - ' .__('PC Code','vt'),
+            'desc'       => __('AD Code for width > 481px','vt'),
+            'default'    => '<a href="https://vtheme.cn/mirage" target="_blank"><img src="'.THEME_URL.'/assets/images/ads.jpg" style="width:100%"></a>',
+            'dependency' => ['ad_sidebar_enable', '==', 'true'],
+        ],
+        
+        /* 文章头部广告 */
+        [
+            'type'    => 'switcher',
+            'id'      => 'ad_single_top_enable',
+            'title'   => __('Article Header Ad','vt'),
+            'default' => false,
+        ],
+        [
+            'type'       => 'code_editor',
+            'id'         => 'ad_single_top_code',
+            'title'      => __('Article Header Ad','vt').' - '.__('Mobile Code','vt'),
+            'default'    => '<a href="https://vtheme.cn/mirage" target="_blank"><img src="'.THEME_URL.'/assets/images/ads-sm.jpg" style="width:100%"></a>',
+            'dependency' => ['ad_single_top_enable', '==', 'true'],
+        ],
+        [
+            'type'       => 'code_editor',
+            'id'         => 'ad_single_top_code_pc',
+            'title'      => __('Article Header Ad','vt').' - ' .__('PC Code','vt'),
+            'desc'       => __('AD Code for width > 481px','vt'),
+            'default'    => '<a href="https://vtheme.cn/mirage" target="_blank"><img src="'.THEME_URL.'/assets/images/ads.jpg" style="width:100%"></a>',
+            'dependency' => ['ad_single_top_enable', '==', 'true'],
+        ],
+        
+        /* 文章底部广告 */
+        [
+            'type'    => 'switcher',
+            'id'      => 'ad_single_bottom_enable',
+            'title'   => __('Article Footer Ad','vt'),
+            'default' => false,
+        ],
+        [
+            'type'       => 'code_editor',
+            'id'         => 'ad_single_bottom_code',
+            'title'      => __('Article Footer Ad','vt').' - '.__('Mobile Code','vt'),
+            'default'    => '<a href="https://vtheme.cn/mirage" target="_blank"><img src="'.THEME_URL.'/assets/images/ads-sm.jpg" style="width:100%"></a>',
+            'dependency' => ['ad_single_bottom_enable', '==', 'true'],
+        ],
+        [
+            'type'       => 'code_editor',
+            'id'         => 'ad_single_bottom_code_pc',
+            'title'      => __('Article Footer Ad','vt').' - ' .__('PC Code','vt'),
+            'desc'       => __('AD Code for width > 481px','vt'),
+            'default'    => '<a href="https://vtheme.cn/mirage" target="_blank"><img src="'.THEME_URL.'/assets/images/ads.jpg" style="width:100%"></a>',
+            'dependency' => ['ad_single_bottom_enable', '==', 'true'],
+        ],
+        
+    ],
+]);
 
 
 /**
@@ -760,130 +876,60 @@ CSF::createSection( $prefix, array(
 
 
 /**
- * 广告设置
+ * 会员设置
  */
-CSF::createSection('mirage', [
-    'title'  => __('Ad settings','vt'),
-    'icon'   => 'fas fa-ad',
-    'fields' => [
-        
-        // ========== 头部广告 ==========
-        [
+CSF::createSection( $prefix, array(
+    'title'  => __('Member settings','vt'),
+    'icon'   => 'dashicons dashicons-admin-generic',
+    'fields' => array(
+        array(
+            'id'         => 'attempts_is_on',
+            'type'       => 'radio',
+            'title'      => __('Anti brute force cracking','vt'),
+            'options'    => array('1' => __('On','vt'), '0' => __('Off','vt')),
+            'default'    => '1',
+            'inline'     => true
+        ),
+        array(
+            'id'    => 'privacy_policy',
+            'type'  => 'text',
+            'title' => __('Privacy Policy','vt'),
+            'default' => get_privacy_policy_url()
+        ),
+        array(
+            'id'    => 'terms_of_service',
+            'type'  => 'text',
+            'title' => __('Terms of Service','vt'),
+            'default' => home_url('/#terms_of_service')
+        ),
+        array(
+            'id'      => 'vip_avatar_upload',
             'type'    => 'switcher',
-            'id'      => 'ad_header_enable',
-            'title'   => __('Header Ad','vt'),
-            'default' => false,
-        ],
-        [
-            'type'       => 'code_editor',
-            'id'         => 'ad_header_code',
-            'title'      => __('Header Ad','vt').' - '.__('Mobile Code','vt'),
-            'default'    => '<a href="https://vtheme.cn/mirage" target="_blank"><img src="'.THEME_URL.'/assets/images/ads-sm.jpg" style="width:100%"></a>',
-            'dependency' => ['ad_header_enable', '==', 'true'],
-        ],
-        [
-            'type'       => 'code_editor',
-            'id'         => 'ad_header_code_pc',
-            'title'      => __('Header Ad','vt').' - ' .__('PC Code','vt'),
-            'desc'       => __('AD Code for width > 481px','vt'),
-            'default'    => '<a href="https://vtheme.cn/mirage" target="_blank"><img src="'.THEME_URL.'/assets/images/ads.jpg" style="width:100%"></a>',
-            'dependency' => ['ad_header_enable', '==', 'true'],
-        ],
-        
-        // ========== 底部广告 ==========
-        [
-            'type'    => 'switcher',
-            'id'      => 'ad_footer_enable',
-            'title'   => __('Footer Ad','vt'),
-            'default' => false,
-        ],
-        [
-            'type'       => 'code_editor',
-            'id'         => 'ad_footer_code',
-            'title'      => __('Footer Ad','vt').' - '.__('Mobile Code','vt'),
-            'default'    => '<a href="https://vtheme.cn/mirage" target="_blank"><img src="'.THEME_URL.'/assets/images/ads-sm.jpg" style="width:100%"></a>',
-            'dependency' => ['ad_footer_enable', '==', 'true'],
-        ],
-        [
-            'type'       => 'code_editor',
-            'id'         => 'ad_footer_code_pc',
-            'title'      => __('Footer Ad','vt').' - ' .__('PC Code','vt'),
-            'desc'       => __('AD Code for width > 481px','vt'),
-            'default'    => '<a href="https://vtheme.cn/mirage" target="_blank"><img src="'.THEME_URL.'/assets/images/ads.jpg" style="width:100%"></a>',
-            'dependency' => ['ad_footer_enable', '==', 'true'],
-        ],
-        
-        // ========== 侧边栏广告 ==========
-        [
-            'type'    => 'switcher',
-            'id'      => 'ad_sidebar_enable',
-            'title'   => __('Sidebar Ad','vt'),
-            'default' => false,
-        ],
-        [
-            'type'       => 'code_editor',
-            'id'         => 'ad_sidebar_code',
-            'title'      => __('Sidebar Ad','vt').' - '.__('Mobile Code','vt'),
-            'default'    => '<a href="https://vtheme.cn/mirage" target="_blank"><img src="'.THEME_URL.'/assets/images/ads-sm.jpg" style="width:100%"></a>',
-            'dependency' => ['ad_sidebar_enable', '==', 'true'],
-        ],
-        [
-            'type'       => 'code_editor',
-            'id'         => 'ad_sidebar_code_pc',
-            'title'      => __('Sidebar Ad','vt').' - ' .__('PC Code','vt'),
-            'desc'       => __('AD Code for width > 481px','vt'),
-            'default'    => '<a href="https://vtheme.cn/mirage" target="_blank"><img src="'.THEME_URL.'/assets/images/ads.jpg" style="width:100%"></a>',
-            'dependency' => ['ad_sidebar_enable', '==', 'true'],
-        ],
-        
-        // ========== 文章头部广告 ==========
-        [
-            'type'    => 'switcher',
-            'id'      => 'ad_single_top_enable',
-            'title'   => __('Article Header Ad','vt'),
-            'default' => false,
-        ],
-        [
-            'type'       => 'code_editor',
-            'id'         => 'ad_single_top_code',
-            'title'      => __('Article Header Ad','vt').' - '.__('Mobile Code','vt'),
-            'default'    => '<a href="https://vtheme.cn/mirage" target="_blank"><img src="'.THEME_URL.'/assets/images/ads-sm.jpg" style="width:100%"></a>',
-            'dependency' => ['ad_single_top_enable', '==', 'true'],
-        ],
-        [
-            'type'       => 'code_editor',
-            'id'         => 'ad_single_top_code_pc',
-            'title'      => __('Article Header Ad','vt').' - ' .__('PC Code','vt'),
-            'desc'       => __('AD Code for width > 481px','vt'),
-            'default'    => '<a href="https://vtheme.cn/mirage" target="_blank"><img src="'.THEME_URL.'/assets/images/ads.jpg" style="width:100%"></a>',
-            'dependency' => ['ad_single_top_enable', '==', 'true'],
-        ],
-        
-        // ========== 文章底部广告 ==========
-        [
-            'type'    => 'switcher',
-            'id'      => 'ad_single_bottom_enable',
-            'title'   => __('Article Footer Ad','vt'),
-            'default' => false,
-        ],
-        [
-            'type'       => 'code_editor',
-            'id'         => 'ad_single_bottom_code',
-            'title'      => __('Article Footer Ad','vt').' - '.__('Mobile Code','vt'),
-            'default'    => '<a href="https://vtheme.cn/mirage" target="_blank"><img src="'.THEME_URL.'/assets/images/ads-sm.jpg" style="width:100%"></a>',
-            'dependency' => ['ad_single_bottom_enable', '==', 'true'],
-        ],
-        [
-            'type'       => 'code_editor',
-            'id'         => 'ad_single_bottom_code_pc',
-            'title'      => __('Article Footer Ad','vt').' - ' .__('PC Code','vt'),
-            'desc'       => __('AD Code for width > 481px','vt'),
-            'default'    => '<a href="https://vtheme.cn/mirage" target="_blank"><img src="'.THEME_URL.'/assets/images/ads.jpg" style="width:100%"></a>',
-            'dependency' => ['ad_single_bottom_enable', '==', 'true'],
-        ],
-        
-    ],
-]);
+            'title'   => __('VIP Avatar Upload','vt'),
+            'default' => true
+        ),
+        // array(
+        //     'id'      => 'turnstile',
+        //     'type'    => 'checkbox',
+        //     'title'   => 'Turnstile',
+        //     'label'   => __('On','vt'),
+        //     'default' => false
+        // ),
+        // array(
+        //     'id'      => 'turnstile_key',
+        //     'type'    => 'text',
+        //     'title'   => 'Turnstile Key',
+        //     'dependency' => array('turnstile', '==', true),
+        // ),
+        // array(
+        //     'id'      => 'turnstile_secret',
+        //     'type'    => 'text',
+        //     'title'   => 'Turnstile Secret',
+        //     'dependency' => array('turnstile', '==', true),
+        // )
+          
+    )
+));
 
 
 /**

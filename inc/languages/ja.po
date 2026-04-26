@@ -1000,4 +1000,6 @@ msgstr "更新が成功しました"
 msgid "Update failed: "
 msgstr "更新に失敗しました: "
 
+msgid "Content"
+msgstr "本文"
 

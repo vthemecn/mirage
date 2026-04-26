@@ -57,7 +57,7 @@ body.dark-mode .logo {
     --vt-bg-color-mask: rgba(50, 50, 50, 0.5);
     --vt-bg-color-card: #272727;
     --vt-border-color: #303030;
-    --vt-shadow-color: #181818;
+    --vt-shadow-color: rgba(24, 24, 24, 0.9);
   }
   body.dark-mode-auto img {
     filter: brightness(70%);
@@ -499,24 +499,28 @@ a:hover {
 /**
  * 文章页，文档页等 公共的喜欢，收藏 模块
  */
+
+
+/*****************************************************************************/
 /**
  * 面包屑
  */
 .breadcrumbs {
   width: auto;
-  height: 35px;
-  line-height: 35px;
-  font-size: var(--vt-font-size-sm);
+  line-height: 30px;
+  font-size: 14px;
   color: var(--vt-text-color-grey);
 }
 .breadcrumbs i {
-  font-size: var(--vt-font-size-lg);
-  vertical-align: -5px;
+  font-size: 14px;
+  vertical-align: 0px;
+  margin: 0 3px 0 0;
 }
 .breadcrumbs a {
-  font-size: var(--vt-font-size-sm);
+  font-size: 14px;
   color: var(--vt-text-color-grey);
 }
+
 
 /**
  * 404
@@ -2064,6 +2068,8 @@ input:focus + .form-help {
   right: 2px;
 }
 
+.widget-action.active .number { margin: 0 0 0 2px; }
+
 .widget-action.share-poster i {
   font-size: 20px;
 }
@@ -3207,7 +3213,7 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
 /* 必须登录提示框 */
 .top-info.must-log-in {
   text-align: center;
-  padding: 30px 0;
+  padding: 50px 0;
   background-color: var(--vt-bg-color-grey);
   border-radius: var(--vt-border-radius);
 }

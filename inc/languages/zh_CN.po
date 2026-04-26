@@ -320,9 +320,6 @@ msgstr "操作成功"
 msgid "Network error. Please try again"
 msgstr "网络错误，请重试"
 
-msgid "Security verification failed"
-msgstr "安全验证失败"
-
 msgid "Invalid action type"
 msgstr "无效的操作类型"
 
@@ -386,6 +383,9 @@ msgstr "底部设置"
 
 msgid "Email settings"
 msgstr "邮箱设置"
+
+msgid "Member settings"
+msgstr "会员设置"
 
 msgid "backups"
 msgstr "备份"
@@ -591,6 +591,12 @@ msgstr "文章版权声明"
 msgid "Code highlighting"
 msgstr "代码高亮"
 
+msgid "Auto Fallback Thumbnail"
+msgstr "自动获取缩略图"
+
+msgid "If no featured image is set, automatically use the first image found in the post content."
+msgstr "当文章未设置特色图片时，自动提取文章内容的第一个图片作为特色图片"
+
 
 # 配置页面 - 会员设置
 ###############################################################################
@@ -726,15 +732,6 @@ msgstr "评论发布成功！"
 msgid "Comment submitted successfully, waiting for administrator review."
 msgstr "评论提交成功，等待管理员审核。"
 
-msgid "Delete"
-msgstr "删除"
-
-msgid "Reply"
-msgstr "回复"
-
-msgid "Cancel"
-msgstr "取消"
-
 msgid "Submitting reply..."
 msgstr "提交回复中..."
 
@@ -845,6 +842,12 @@ msgstr "用户不存在"
 msgid "Logout successful"
 msgstr "登出成功"
 
+msgid "This IP has reached the daily sending limit."
+msgstr "该 IP 今日发送次数已达上限。"
+
+msgid "This email has reached the daily sending limit."
+msgstr "该邮箱今日发送次数已达上限。"
+
 
 # api/users.php
 ###############################################################################
@@ -868,8 +871,8 @@ msgstr "忘记密码？"
 msgid "Register Account"
 msgstr "注册账户"
 
-msgid "By registering/logging in, you agree to our <a>Privacy Policy</a> and <a>Terms of Service</a>"
-msgstr "注册/登录即表示您同意<a>隐私声明</a>和<a>服务条款</a>"
+msgid "By registering/logging in, you agree to our <a href='%s'>Privacy Policy</a> and <a href='%s'>Terms of Service</a>"
+msgstr "注册/登录即表示您同意<a href='%s'>隐私声明</a>和<a href='%s'>服务条款</a>"
 
 msgid "Privacy Policy"
 msgstr "隐私声明"
@@ -1040,5 +1043,41 @@ msgstr "修改成功"
 
 msgid "Update failed: "
 msgstr "修改失败："
+
+
+###############################################################################
+### 面包屑导航
+
+msgid "Breadcrumbs"
+msgstr "面包屑导航"
+
+msgid "Home"
+msgstr "首页"
+
+msgid "Tag:"
+msgstr "标签:"
+
+msgid "Author:"
+msgstr "作者:"
+
+msgid " Year"
+msgstr "年"
+
+msgid " Month"
+msgstr "月"
+
+msgid " Day"
+msgstr "日"
+
+msgid "Search Results:"
+msgstr "搜索结果:"
+
+msgid "404 Page Not Found"
+msgstr "404 页面未找到"
+
+msgid "Content"
+msgstr "正文"
+
+
 
 

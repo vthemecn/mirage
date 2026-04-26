@@ -74,6 +74,14 @@ $show_table = get_post_meta($post->ID, '_vt_article_show_table', true);
 ?>
 
 
+<?php if(vt_get_config('breadcrumbs_enabled')):?>
+    <div class="main-container" <?=$full_width_attribute?> >
+        <div class="main-widget">
+            <?php echo get_breadcrumbs() ?>
+        </div>
+    </div>
+<?php endif;?>
+
 <div class="main-container" <?=$full_width_attribute?> >
     <div class="main-widget">
         <div class="article-widget">
@@ -110,9 +118,11 @@ $show_table = get_post_meta($post->ID, '_vt_article_show_table', true);
                     <i class="fa-solid fa-eye"></i><?php echo get_post_views(get_the_ID()); ?>
                 </div>
 
+                <?php /*?>
                 <div class='meta-item comment-counter'>
                     <i class="fa-solid fa-comment"></i><?php echo $post->comment_count; ?>
                 </div>
+                <?php */ ?>
 
                 <?php if( current_user_can( 'manage_options' ) ): ?>
                 <a href="/wp-admin/post.php?post=<?php echo get_the_ID() ?>&action=edit" class="meta-item">
@@ -188,13 +198,13 @@ $show_table = get_post_meta($post->ID, '_vt_article_show_table', true);
             <div class="content-action">
                 <div class="widget-action like <?php echo $is_like ? ' active' : '' ?>">
                     <i class="fa-solid fa-heart"></i>
-                    <span><?= $is_like ? __('Remove Like','vt') : __('Like','vt')?></span>
+                    <span><?=__('Like','vt')?></span>
                     <span class='number'><?= $like_counter ? $like_counter : '' ?></span>
                 </div>
 
                 <div class="widget-action star <?php echo $is_star ? ' active' : '' ?>">
                     <i class="fa-solid fa-star"></i>
-                    <span><?= $is_star ? __('Remove Star','vt') : __('Star','vt')?></span>
+                    <span><?=__('Star','vt')?></span>
                     <span class='number'><?= $star_counter ? $star_counter : '' ?></span>
                 </div>
                

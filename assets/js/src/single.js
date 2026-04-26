@@ -45,8 +45,6 @@ async function likeInit(notyf){
   
   likeButtons.forEach(button => {
     button.addEventListener('click', async function() {
-      console.log('click like button');
-      
       var that = this;
       
       const objectId = post_object.post_id;
@@ -74,18 +72,8 @@ async function likeInit(notyf){
           // 更新UI
           if (actionType === 'like') {
             that.classList.add('active');
-            // 更新按钮文本显示
-            const spanElement = that.querySelector('span');
-            if (spanElement) {
-              spanElement.textContent = __('Remove Like');
-            }
           } else {
             that.classList.remove('active');
-            // 更新按钮文本显示
-            const spanElement = that.querySelector('span');
-            if (spanElement) {
-              spanElement.textContent = __('Like');
-            }
           }
           
           // 更新喜欢数
@@ -157,18 +145,8 @@ async function starInit(notyf){
           // 更新UI
           if (actionType === 'star') {
             that.classList.add('active');
-            // 更新按钮文本显示
-            const spanElement = that.querySelector('span');
-            if (spanElement) {
-              spanElement.textContent = __('Remove Star');
-            }
           } else {
             that.classList.remove('active');
-            // 更新按钮文本显示
-            const spanElement = that.querySelector('span');
-            if (spanElement) {
-              spanElement.textContent = __('Star');
-            }
           }
           
           // 更新收藏数

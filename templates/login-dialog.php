@@ -35,7 +35,15 @@
                         <a href="javascript:;" class="tab-nav" data-tab="register"><?php _e('Register Account', 'vt'); ?></a>
                     </div>
                     <div class="login-privacy">
-                        <?php printf(__('By registering/logging in, you agree to our <a>Privacy Policy</a> and <a>Terms of Service</a>', 'vt'), '<a href="#">' . __('Privacy Policy', 'vt') . '</a>', '<a href="#">' . __('Terms of Service', 'vt') . '</a>'); ?>
+                        <?php 
+                        $privacy_policy_url = vt_get_config('privacy_policy', get_privacy_policy_url());
+                        $terms_of_service_url = vt_get_config('terms_of_service');
+                        printf(
+                            __("By registering/logging in, you agree to our <a href='%s'>Privacy Policy</a> and <a href='%s'>Terms of Service</a>", 'vt'),
+                            esc_url($privacy_policy_url),
+                            esc_url($terms_of_service_url)
+                        ); 
+                        ?>
                     </div>
                 </div>
                 
@@ -70,7 +78,15 @@
                         <a href="javascript:;" class="tab-nav" data-tab="login"><?php _e('Login Account', 'vt'); ?></a>
                     </div>
                     <div class="login-privacy">
-                        <?php printf(__('By registering/logging in, you agree to our <a>Privacy Policy</a> and <a>Terms of Service</a>', 'vt'), '<a href="#">' . __('Privacy Policy', 'vt') . '</a>', '<a href="#">' . __('Terms of Service', 'vt') . '</a>'); ?>
+                        <?php 
+                        $privacy_policy_url = vt_get_config('privacy_policy', get_privacy_policy_url());
+                        $terms_of_service_url = vt_get_config('terms_of_service');
+                        printf(
+                            __("By registering/logging in, you agree to our <a href='%s'>Privacy Policy</a> and <a href='%s'>Terms of Service</a>", 'vt'),
+                            esc_url($privacy_policy_url),
+                            esc_url($terms_of_service_url)
+                        ); 
+                        ?>
                     </div>
                 </div>
                 
@@ -109,7 +125,15 @@
                         <a href="javascript:;" class="tab-nav" data-tab="register"><?php _e('Register Account', 'vt'); ?></a>
                     </div>
                     <div class="login-privacy">
-                        <?php printf(__('By registering/logging in, you agree to our <a>Privacy Policy</a> and <a>Terms of Service</a>', 'vt'), '<a href="#">' . __('Privacy Policy', 'vt') . '</a>', '<a href="#">' . __('Terms of Service', 'vt') . '</a>'); ?>
+                        <?php 
+                        $privacy_policy_url = vt_get_config('privacy_policy', get_privacy_policy_url());
+                        $terms_of_service_url = vt_get_config('terms_of_service');
+                        printf(
+                            __("By registering/logging in, you agree to our <a href='%s'>Privacy Policy</a> and <a href='%s'>Terms of Service</a>", 'vt'),
+                            esc_url($privacy_policy_url),
+                            esc_url($terms_of_service_url)
+                        ); 
+                        ?>
                     </div>
                 </div>
             </div>

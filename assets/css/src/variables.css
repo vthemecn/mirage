@@ -57,7 +57,7 @@ body.dark-mode .logo {
     --vt-bg-color-mask: rgba(50, 50, 50, 0.5);
     --vt-bg-color-card: #272727;
     --vt-border-color: #303030;
-    --vt-shadow-color: #181818;
+    --vt-shadow-color: rgba(24, 24, 24, 0.9);
   }
   body.dark-mode-auto img {
     filter: brightness(70%);

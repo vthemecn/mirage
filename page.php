@@ -13,7 +13,18 @@ get_header();
 $config = vt_get_config();
 
 $full_width = 0;
+$full_width_attribute = $full_width ? 'full-width' : '';
 ?>
+
+
+<?php if(vt_get_config('breadcrumbs_enabled')):?>
+    <div class="main-container" <?=$full_width_attribute?> >
+        <div class="main-widget">
+            <?php echo get_breadcrumbs() ?>
+        </div>
+    </div>
+<?php endif;?>
+
 
 <div class="main-container">
     <div class="main-widget">
