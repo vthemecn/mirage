@@ -80,7 +80,7 @@
 }
 .vt-card-thumbnail .vt-card-badget.sticky{
   background-color: var(--vt-color-danger);
-  color: var(--vt-text-color-inverse);
+  color: #f0f0f0;
 }
 
 /* 内容区域 */

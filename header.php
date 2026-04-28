@@ -13,6 +13,7 @@ $dark_mode_config = vt_init_dark_mode();
 $is_dark_mode = $dark_mode_config['is_dark_mode'];
 $dark_mode_class = $dark_mode_config['dark_mode_class'];
 
+$sticky_header = vt_get_config('sticky_header', false) ? 'sticky-header' : '';
 ?>
 
 
@@ -50,7 +51,7 @@ $dark_mode_class = $dark_mode_config['dark_mode_class'];
 </head>
 
 
-<body class="<?php echo $dark_mode_class ?>">
+<body class="<?php echo $dark_mode_class ?>" <?=$sticky_header?> >
     
     <?php wp_body_open(); ?>
 
@@ -308,3 +309,5 @@ $dark_mode_class = $dark_mode_config['dark_mode_class'];
             </form>
         </div>
     </header>
+
+    

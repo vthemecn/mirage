@@ -527,6 +527,9 @@ msgstr ""
 
 # 配置页面 - 顶部设置
 ###############################################################################
+msgid "Sticky Header"
+msgstr ""
+
 msgid "header slogan"
 msgstr ""
 

@@ -11,20 +11,20 @@ msgstr ""
 
 
 msgid "Mirage"
-msgstr "Mirage"
+msgstr "미라지"
 
 
 # 通用的
 ###############################################################################
 
 msgid "On"
-msgstr "켜기"
+msgstr "켜짐"
 
 msgid "Off"
-msgstr "끄기"
+msgstr "꺼짐"
 
 msgid "Follow the system"
-msgstr "시스템 따라가기"
+msgstr "시스템 따르기"
 
 msgid "Simple"
 msgstr "간단히"
@@ -75,7 +75,7 @@ msgid "Upload"
 msgstr "업로드"
 
 msgid "New window opens link"
-msgstr "새 창에서 링크 열기"
+msgstr "새 창에서 열기"
 
 msgid "Link address"
 msgstr "링크 주소"
@@ -111,7 +111,7 @@ msgid "Background image"
 msgstr "배경 이미지"
 
 msgid "Customize JS code"
-msgstr "사용자 정의 JS 코드"
+msgstr "JS 코드 사용자 정의"
 
 msgid "Add menu"
 msgstr "메뉴 추가"
@@ -126,10 +126,10 @@ msgid "Backup"
 msgstr "백업"
 
 msgid "Nothing here"
-msgstr "여기에 아무것도 없습니다"
+msgstr "여기에 아무것도 없음"
 
 msgid "No Content"
-msgstr "콘텐츠 없음"
+msgstr "내용 없음"
 
 
 # 前台
@@ -142,13 +142,13 @@ msgid "Category ID"
 msgstr "카테고리 ID"
 
 msgid "Images article list"
-msgstr "이미지 기사 목록"
+msgstr "이미지 게시글 목록"
 
 msgid "Category list"
 msgstr "카테고리 목록"
 
 msgid "Images article description"
-msgstr "이미지 기사 설명"
+msgstr "이미지 게시글 설명"
 
 msgid "Images list"
 msgstr "이미지 목록"
@@ -157,7 +157,7 @@ msgid "Images list description"
 msgstr "이미지 목록 설명"
 
 msgid "Articles Description"
-msgstr "기사 설명"
+msgstr "게시글 설명"
 
 msgid "User card"
 msgstr "사용자 카드"
@@ -166,7 +166,7 @@ msgid "User card description"
 msgstr "사용자 카드 설명"
 
 msgid "Hot articles"
-msgstr "인기 기사"
+msgstr "인기 게시글"
 
 msgid "Comments"
 msgstr "댓글"
@@ -208,10 +208,10 @@ msgid "Go to home"
 msgstr "홈으로 이동"
 
 msgid "Page not found"
-msgstr "페이지를 찾을 수 없습니다"
+msgstr "페이지를 찾을 수 없음"
 
 msgid "Not content"
-msgstr "콘텐츠 없음"
+msgstr "내용 없음"
 
 
 # 前台 - 文章页
@@ -238,7 +238,7 @@ msgid "Generating"
 msgstr "생성 중"
 
 
-# 前台 - 문장글 - 评论
+# 前台 - 文章页 - 评论
 ###############################################################################
 msgid "Nickname (*)"
 msgstr "닉네임 (*)"
@@ -288,7 +288,7 @@ msgstr "실행 시간"
 # 其他
 ###############################################################################
 msgid "Please create a theme side menu"
-msgstr "테마 사이드 메뉴를 생성해주세요"
+msgstr "테마 사이드 메뉴를 생성하세요"
 
 msgid "Tags"
 msgstr "태그"
@@ -297,7 +297,7 @@ msgid "Please keep the theme footer credit intact."
 msgstr "테마 푸터 크레딧을 그대로 유지해주세요."
 
 msgid "keep_theme_footer"
-msgstr "테마_푸터_유지"
+msgstr "keep_theme_footer"
 
 msgid "Remove Like"
 msgstr "좋아요 취소"
@@ -318,13 +318,13 @@ msgid "Operation Succeeded"
 msgstr "작업 성공"
 
 msgid "Network error. Please try again"
-msgstr "네트워크 오류. 다시 시도해주세요"
+msgstr "네트워크 오류. 다시 시도하세요"
 
 msgid "Invalid action type"
 msgstr "잘못된 작업 유형"
 
 msgid "Please log in"
-msgstr "로그인해주세요"
+msgstr "로그인하세요"
 
 msgid "Invalid object ID"
 msgstr "잘못된 객체 ID"
@@ -336,10 +336,10 @@ msgid "Default Sidebar"
 msgstr "기본 사이드바"
 
 msgid "Post Sidebar"
-msgstr "게시물 사이드바"
+msgstr "게시글 사이드바"
 
 msgid "Recent Posts"
-msgstr "최근 게시물"
+msgstr "최근 게시글"
 
 msgid "Popular"
 msgstr "인기"
@@ -348,7 +348,7 @@ msgid "Category List"
 msgstr "카테고리 목록"
 
 msgid "Please create theme sidebar menu"
-msgstr "테마 사이드바 메뉴를 생성해주세요"
+msgstr "테마 사이드바 메뉴를 생성하세요"
 
 msgid "User Card"
 msgstr "사용자 카드"
@@ -358,13 +358,13 @@ msgstr "사용자 카드 설명"
 
 
 
-# 配정 페이지
+# 配置页面
 ###############################################################################
 ###############################################################################
 ###############################################################################
 
 msgid "Mirage settings"
-msgstr "Mirage 설정"
+msgstr "미라지 설정"
 
 msgid "General settings"
 msgstr "일반 설정"
@@ -385,21 +385,21 @@ msgid "Email settings"
 msgstr "이메일 설정"
 
 msgid "Member settings"
-msgstr "멤버 설정"
+msgstr "회원 설정"
 
 msgid "backups"
 msgstr "백업"
 
 
 
-# 配정 페이지 - 일반 설정
+# 配置页面 - 常规设置
 ###############################################################################
 
 msgid "Website Logo"
 msgstr "웹사이트 로고"
 
 msgid "Website Logo (Dark Mode)"
-msgstr "웹사이트 로고 (다크 모드)"
+msgstr "웹사이트 로고 (어두운 모드)"
 
 msgid "Theme color tone"
 msgstr "테마 색상 톤"
@@ -408,16 +408,16 @@ msgid "Update prompt"
 msgstr "업데이트 알림"
 
 msgid "After closing, there will be no prompts for PHP version, theme, and plugin updates"
-msgstr "닫으면 PHP 버전, 테마 및 플러그인 업데이트에 대한 알림이 표시되지 않습니다"
+msgstr "닫으면 PHP 버전, 테마 및 플러그인 업데이트 알림이 표시되지 않습니다"
 
 msgid "Editor Mode"
-msgstr "편집기 모드"
+msgstr "에디터 모드"
 
 msgid "Gutenberg Editor"
-msgstr "구텐베르크 편집기"
+msgstr "구텐베르크 에디터"
 
 msgid "Classic Editor"
-msgstr "클래식 편집기"
+msgstr "클래식 에디터"
 
 msgid "none"
 msgstr "없음"
@@ -429,28 +429,28 @@ msgid "Right column"
 msgstr "오른쪽 열"
 
 msgid "Top Toolbar"
-msgstr "상단 도구 모음"
+msgstr "상단 툴바"
 
 msgid "Dark mode"
-msgstr "다크 모드"
+msgstr "어두운 모드"
 
 msgid "Anti brute force cracking"
 msgstr "무차별 대입 공격 방지"
 
 msgid "Too many failures. Wait 1 hour"
-msgstr "실패 횟수가 너무 많습니다. 1시간 대기"
+msgstr "실패 횟수 초과. 1시간 대기"
 
 msgid "Payment QR code"
 msgstr "결제 QR 코드"
 
 msgid "Editor"
-msgstr "편집기"
+msgstr "에디터"
 
 msgid "Card"
 msgstr "카드"
 
 msgid "Articles"
-msgstr "게시물"
+msgstr "게시글"
 
 msgid "Full width"
 msgstr "전체 너비"
@@ -468,7 +468,7 @@ msgid "Recommendation"
 msgstr "추천"
 
 
-# 설정 페이지 - 홈 설정 - 레이아웃 설정
+# 配置页面 - 首页设置 - 布局设置
 ###############################################################################
 
 msgid "Layout setting"
@@ -490,7 +490,7 @@ msgid "Links"
 msgstr "링크"
 
 
-# 설정 페이지 - 홈 설정 - 슬라이더 모듈
+# 配置页面 - 首页设置 - 幻灯片模块
 ###############################################################################
 
 msgid "Slider Effects"
@@ -500,17 +500,17 @@ msgid "Slide list"
 msgstr "슬라이드 목록"
 
 
-# 설정 페이지 - 홈 설정 - 인기 게시물
+# 配置页面 - 首页设置 - 热门文章
 ###############################################################################
 
 msgid "Article ID list"
-msgstr "게시물 ID 목록"
+msgstr "게시글 ID 목록"
 
 msgid "Enter IDs separated by commas (e.g., 1087, 1090)."
-msgstr "쉼표로 구분하여 ID를 입력하세요 (예: 1087, 1090)."
+msgstr "쉼표로 구분하여 ID 입력 (예: 1087, 1090)."
 
 
-# 설정 페이지 - 홈 설정 - 게시물 목록
+# 配置页面 - 首页设置 - 文章列表
 ###############################################################################
 msgid "Category"
 msgstr "카테고리"
@@ -525,8 +525,11 @@ msgid "Automatic loading times"
 msgstr "자동 로드 횟수"
 
 
-# 설정 페이지 - 상단 설정
+# 配置页面 - 顶部设置
 ###############################################################################
+msgid "Sticky Header"
+msgstr "고정 헤더"
+
 msgid "header slogan"
 msgstr "헤더 슬로건"
 
@@ -534,13 +537,13 @@ msgid "tel title"
 msgstr "전화 제목"
 
 msgid "tel number"
-msgstr "전화번호"
+msgstr "전화 번호"
 
 msgid "header image"
 msgstr "헤더 이미지"
 
 
-# 설정 페이지 - 하단 설정
+# 配置页面 - 底部设置
 ###############################################################################
 msgid "display type"
 msgstr "표시 유형"
@@ -561,32 +564,32 @@ msgid "qrcode description"
 msgstr "QR 코드 설명"
 
 msgid "nav bar"
-msgstr "탐색 바"
+msgstr "네비게이션 바"
 
 msgid "nav bar settings"
-msgstr "탐색 바 설정"
+msgstr "네비게이션 바 설정"
 
 msgid "SNS links"
 msgstr "SNS 링크"
 
 
-# 설정 페이지 - 게시물 설정
+# 配置页面 - 文章设置
 ###############################################################################
 
 msgid "Article settings"
-msgstr "게시물 설정"
+msgstr "게시글 설정"
 
 msgid "Number of rows and columns"
-msgstr "행과 열의 수"
+msgstr "행과 열 수"
 
 msgid "Module Title"
 msgstr "모듈 제목"
 
 msgid "Article revision version"
-msgstr "게시물 수정 버전"
+msgstr "게시글 수정 버전"
 
 msgid "Article copyright statement"
-msgstr "게시물 저작권 성명"
+msgstr "게시글 저작권 문구"
 
 msgid "Code highlighting"
 msgstr "코드 강조"
@@ -595,22 +598,22 @@ msgid "Auto Fallback Thumbnail"
 msgstr "자동 대체 썸네일"
 
 msgid "If no featured image is set, automatically use the first image found in the post content."
-msgstr "대표 이미지가 설정되지 않은 경우, 게시물 콘텐츠에서 찾은 첫 번째 이미지를 자동으로 사용합니다."
+msgstr "대표 이미지가 설정되지 않은 경우, 게시글 내용에서 찾은 첫 번째 이미지를 자동으로 사용합니다."
 
 msgid "Hide Login Button"
 msgstr "로그인 버튼 숨기기"
 
-# 설정 페이지 - 회원 설정
+# 配置页面 - 会员设置
 ###############################################################################
 
 msgid "VIP Avatar Upload"
 msgstr "VIP 아바타 업로드"
 
 
-# 설정 페이지 - 이메일 설정
+# 配置页面 - 邮箱设置
 ###############################################################################
 msgid "Customize email"
-msgstr "사용자 정의 이메일"
+msgstr "이메일 사용자 정의"
 
 msgid "SMTP address"
 msgstr "SMTP 주소"
@@ -625,10 +628,10 @@ msgid "SMTP password"
 msgstr "SMTP 비밀번호"
 
 msgid "Sender nickname"
-msgstr "발신자 닉네임"
+msgstr "보내는 사람 닉네임"
 
 
-# 설정 페이지 - 광고 설정
+# 配置页面 - 广告设置
 ###############################################################################
 msgid "Ad settings"
 msgstr "광고 설정"
@@ -643,10 +646,10 @@ msgid "Sidebar Ad"
 msgstr "사이드바 광고"
 
 msgid "Article Header Ad"
-msgstr "게시물 헤더 광고"
+msgstr "게시글 헤더 광고"
 
 msgid "Article Footer Ad"
-msgstr "게시물 푸터 광고"
+msgstr "게시글 푸터 광고"
 
 msgid "Mobile Code"
 msgstr "모바일 코드"
@@ -655,17 +658,17 @@ msgid "PC Code"
 msgstr "PC 코드"
 
 msgid "AD Code for width > 481px"
-msgstr "너비 > 481px용 광고 코드"
+msgstr "너비 > 481px 광고 코드"
 
 
-# 설정 페이지 - 기본 데이터
+# 配置页面 - 默认数据
 ###############################################################################
 
 msgid "Hello Mirage"
-msgstr "안녕하세요 Mirage"
+msgstr "안녕하세요 미라지"
 
 
-# 댓글 기능 관련
+# 评论功能相关
 ###############################################################################
 
 msgid "You must be logged in to post a comment."
@@ -687,7 +690,7 @@ msgid "Submit failed"
 msgstr "제출 실패"
 
 msgid "Network error, please try again."
-msgstr "네트워크 오류, 다시 시도해주세요."
+msgstr "네트워크 오류, 다시 시도하세요."
 
 msgid "Are you sure you want to delete this comment?"
 msgstr "이 댓글을 삭제하시겠습니까?"
@@ -708,37 +711,37 @@ msgid "Submit Reply"
 msgstr "답글 제출"
 
 msgid "Please enter reply content"
-msgstr "답글 내용을 입력해주세요"
+msgstr "답글 내용을 입력하세요"
 
 msgid "Your comment is awaiting moderation."
-msgstr "댓글이 승인을 기다리고 있습니다."
+msgstr "댓글이 검토 대기 중입니다."
 
 msgid "Comment form not found"
-msgstr "댓글 양식을 찾을 수 없습니다"
+msgstr "댓글 양식을 찾을 수 없음"
 
 msgid "Security verification failed"
 msgstr "보안 검증 실패"
 
 msgid "Comment does not exist"
-msgstr "댓글이 존재하지 않습니다"
+msgstr "댓글이 존재하지 않음"
 
 msgid "No permission to delete this comment"
-msgstr "이 댓글을 삭제할 권한이 없습니다"
+msgstr "이 댓글을 삭제할 권한이 없음"
 
 msgid "Security verification failed, please refresh the page and try again."
-msgstr "보안 검증 실패, 페이지를 새로고침하고 다시 시도해주세요."
+msgstr "보안 검증 실패, 페이지를 새로고침하고 다시 시도하세요."
 
 msgid "Comment published successfully!"
 msgstr "댓글이 성공적으로 게시되었습니다!"
 
 msgid "Comment submitted successfully, waiting for administrator review."
-msgstr "댓글이 성공적으로 제출되었으며, 관리자 검토를 기다리고 있습니다."
+msgstr "댓글이 성공적으로 제출되었으며, 관리자 검토를 기다리는 중입니다."
 
 msgid "Submitting reply..."
 msgstr "답글 제출 중..."
 
 
-# 댓글 글자 수 제한
+# 评论字数限制
 ###############################################################################
 
 msgid "Comment cannot be empty."
@@ -747,7 +750,7 @@ msgstr "댓글은 비워둘 수 없습니다."
 msgid "Comment cannot exceed %d characters."
 msgstr "댓글은 %d자를 초과할 수 없습니다."
 
-# 게시물 상세 페이지
+# 文章详情页
 ###############################################################################
 
 msgid "Basic Settings"
@@ -764,13 +767,13 @@ msgstr "목차"
 ###############################################################################
 
 msgid "Please fill in all required fields"
-msgstr "모든 필수 필드를 입력해주세요"
+msgstr "모든 필수 항목을 입력하세요"
 
 msgid "Password must be at least 6 characters long"
 msgstr "비밀번호는 최소 6자 이상이어야 합니다"
 
 msgid "Verification code is incorrect or expired"
-msgstr "인증 코드가 올바르지 않거나 만료되었습니다"
+msgstr "인증 코드가 잘못되었거나 만료되었습니다"
 
 msgid "Username already exists"
 msgstr "사용자 이름이 이미 존재합니다"
@@ -782,10 +785,10 @@ msgid "This email has been registered"
 msgstr "이 이메일은 이미 등록되었습니다"
 
 msgid "Please enter your email address"
-msgstr "이메일 주소를 입력해주세요"
+msgstr "이메일 주소를 입력하세요"
 
 msgid "Please enter a valid email address"
-msgstr "유효한 이메일 주소를 입력해주세요"
+msgstr "유효한 이메일 주소를 입력하세요"
 
 msgid "Registration Verification Code"
 msgstr "가입 인증 코드"
@@ -797,7 +800,7 @@ msgid "Verification code has been sent to your email"
 msgstr "인증 코드가 이메일로 전송되었습니다"
 
 msgid "Failed to send verification code, please try again later"
-msgstr "인증 코드 전송 실패, 나중에 다시 시도해주세요"
+msgstr "인증 코드 전송 실패, 나중에 다시 시도하세요"
 
 msgid "No account found associated with this email"
 msgstr "이 이메일과 연결된 계정을 찾을 수 없습니다"
@@ -812,22 +815,22 @@ msgid "Password reset verification code has been sent to your email"
 msgstr "비밀번호 재설정 인증 코드가 이메일로 전송되었습니다"
 
 msgid "Failed to send email, please contact administrator"
-msgstr "이메일 전송 실패, 관리자에게 문의해주세요"
+msgstr "이메일 전송 실패, 관리자에게 문의하세요"
 
 msgid "Verification code has expired, please request a new one"
-msgstr "인증 코드가 만료되었습니다. 새 코드를 요청해주세요"
+msgstr "인증 코드가 만료되었습니다, 새 코드를 요청하세요"
 
 msgid "Verification code is incorrect"
-msgstr "인증 코드가 올바르지 않습니다"
+msgstr "인증 코드가 잘못되었습니다"
 
 msgid "Password reset successful"
 msgstr "비밀번호 재설정 성공"
 
 msgid "Please login first"
-msgstr "먼저 로그인해주세요"
+msgstr "먼저 로그인하세요"
 
 msgid "Please select an avatar file to upload"
-msgstr "업로드할 아바타 파일을 선택해주세요"
+msgstr "업로드할 아바타 파일을 선택하세요"
 
 msgid "Only JPG, PNG or GIF format images are allowed"
 msgstr "JPG, PNG 또는 GIF 형식의 이미지만 허용됩니다"
@@ -874,10 +877,10 @@ msgid "Register Account"
 msgstr "계정 등록"
 
 msgid "By registering/logging in, you agree to our <a href='%s'>Privacy Policy</a> and <a href='%s'>Terms of Service</a>"
-msgstr "등록/로그인함으로써 <a href='%s'>개인정보 보호정책</a> 및 <a href='%s'>서비스 약관</a>에 동의합니다"
+msgstr "등록/로그인함으로써 <a href='%s'>개인정보 처리방침</a> 및 <a href='%s'>서비스 약관</a>에 동의합니다"
 
 msgid "Privacy Policy"
-msgstr "개인정보 보호정책"
+msgstr "개인정보 처리방침"
 
 msgid "Terms of Service"
 msgstr "서비스 약관"
@@ -892,10 +895,10 @@ msgid "Verification Code"
 msgstr "인증 코드"
 
 msgid "Please enter verification code"
-msgstr "인증 코드를 입력해주세요"
+msgstr "인증 코드를 입력하세요"
 
 msgid "Send Verification Code"
-msgstr "인증 코드 전송"
+msgstr "인증 코드 보내기"
 
 msgid "Register"
 msgstr "등록"
@@ -907,13 +910,13 @@ msgid "Login to Account"
 msgstr "계정에 로그인"
 
 msgid "Please enter the verification code you received"
-msgstr "받은 인증 코드를 입력해주세요"
+msgstr "받은 인증 코드를 입력하세요"
 
 msgid "New Password"
 msgstr "새 비밀번호"
 
 msgid "Please enter new password"
-msgstr "새 비밀번호를 입력해주세요"
+msgstr "새 비밀번호를 입력하세요"
 
 msgid "Reset Password"
 msgstr "비밀번호 재설정"
@@ -929,16 +932,16 @@ msgid "Sending..."
 msgstr "전송 중..."
 
 msgid "Verification code has been sent, please check your email"
-msgstr "인증 코드가 전송되었습니다. 이메일을 확인해주세요"
+msgstr "인증 코드가 전송되었습니다, 이메일을 확인하세요"
 
 msgid "Failed to send verification code"
 msgstr "인증 코드 전송 실패"
 
 msgid "Network error, please try again later"
-msgstr "네트워크 오류, 나중에 다시 시도해주세요"
+msgstr "네트워크 오류, 나중에 다시 시도하세요"
 
 msgid "Retry in %d seconds"
-msgstr "%d초 후 다시 시도"
+msgstr "%d초 후 재시도"
 
 msgid "Logging in..."
 msgstr "로그인 중..."
@@ -947,7 +950,7 @@ msgid "Login successful, redirecting..."
 msgstr "로그인 성공, 리다이렉트 중..."
 
 msgid "Login failed, please try again"
-msgstr "로그인 실패, 다시 시도해주세요"
+msgstr "로그인 실패, 다시 시도하세요"
 
 msgid "Registering..."
 msgstr "등록 중..."
@@ -956,10 +959,10 @@ msgid "Registration successful, logging in automatically..."
 msgstr "등록 성공, 자동 로그인 중..."
 
 msgid "Registration failed, please try again"
-msgstr "등록 실패, 다시 시도해주세요"
+msgstr "등록 실패, 다시 시도하세요"
 
 msgid "Failed to send, please try again"
-msgstr "전송 실패, 다시 시도해주세요"
+msgstr "전송 실패, 다시 시도하세요"
 
 msgid "Resetting..."
 msgstr "재설정 중..."
@@ -968,7 +971,7 @@ msgid "Password reset successful, logging in automatically..."
 msgstr "비밀번호 재설정 성공, 자동 로그인 중..."
 
 msgid "Reset failed, please try again"
-msgstr "재설정 실패, 다시 시도해주세요"
+msgstr "재설정 실패, 다시 시도하세요"
 
 
 # templates/account/edit.php
@@ -1020,7 +1023,7 @@ msgid "Confirm"
 msgstr "확인"
 
 msgid "Please select an image file"
-msgstr "이미지 파일을 선택해주세요"
+msgstr "이미지 파일을 선택하세요"
 
 msgid "Uploading avatar..."
 msgstr "아바타 업로드 중..."
@@ -1048,10 +1051,10 @@ msgstr "업데이트 실패: "
 
 
 ###############################################################################
-### 위치 표시
+### 面包屑导航
 
 msgid "Breadcrumbs"
-msgstr "위치 표시"
+msgstr "브레드크럼"
 
 msgid "Home"
 msgstr "홈"
@@ -1063,19 +1066,19 @@ msgid "Author:"
 msgstr "작성자:"
 
 msgid " Year"
-msgstr " 년"
+msgstr "년"
 
 msgid " Month"
-msgstr " 월"
+msgstr "월"
 
 msgid " Day"
-msgstr " 일"
+msgstr "일"
 
 msgid "Search Results:"
 msgstr "검색 결과:"
 
 msgid "404 Page Not Found"
-msgstr "404 페이지를 찾을 수 없습니다"
+msgstr "404 페이지를 찾을 수 없음"
 
 msgid "Content"
-msgstr "콘텐츠"
+msgstr "내용"

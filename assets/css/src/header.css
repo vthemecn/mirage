@@ -253,18 +253,14 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
 
 
 /*****************************************************************************/
-
-
 /*****************************************************************************/
-
-
 /*****************************************************************************/
 
 
 /**
-* header 900px+
+* header 768px+
 */
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 768px) {
   .header.mobile {
     display: none;
   }
@@ -300,10 +296,14 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
     display: block;
     max-height: 70%;
   }
+
+  /**
+   * darkness overwrite
+   */
   .header.pc .header-nav a.logo img[darkness]{ display:none; }
   body.dark-mode .header.pc .header-nav a.logo img[light]{ display:none; }
   body.dark-mode .header.pc .header-nav a.logo img[darkness]{ display:block; }
-
+  
 
   /*****************************************************************************/
   
@@ -722,5 +722,30 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   width: 20px;
   margin-right: 10px;
   text-align: center;
+}
+
+
+/*****************************************************************************/
+/*****************************************************************************/
+/*****************************************************************************/
+
+
+/**
+ * 顶部工具栏和导航悬浮覆盖
+ */
+@media screen and (min-width:768px) {
+  body[sticky-header] {
+    padding-top: 60px;
+  }
+  body[sticky-header] .header.pc {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+  }
+
+  /* wpadminbar */
+  body.customize-support[sticky-header] .header.pc {
+    top: 32px;
+  }
 }
 

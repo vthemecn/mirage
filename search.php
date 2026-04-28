@@ -58,14 +58,19 @@ $banner_image = THEME_URL . '/assets/images/banner.jpg';
         <?php endif; ?>
 
         <?php
-        the_posts_pagination(array(
-            'mid_size' => 3,
-            'prev_text' => '<',
-            'next_text' => '>',
-            'screen_reader_text' => ' ',
-            'aria_label' => "",
-        ));
+        $pagination = paginate_links([
+            'current'   => $paged,
+            'prev_text' => '<i class="fas fa-chevron-left"></i>',
+            'next_text' => '<i class="fas fa-chevron-right"></i>',
+            'type'      => 'list',
+            'end_size'  => 2,
+            'mid_size'  => 2,
+        ]);
         ?>
+
+        <div class="vt-captain-pagination pagination-container">
+            <?php echo $pagination ?>
+        </div>
     </div>
 
 

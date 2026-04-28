@@ -1,0 +1,1084 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Mirage\n"
+"PO-Revision-Date: 2025-01-13 23:58:04+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: GlotPress/3.0.0-rc.3\n"
+"Language: ru_RU\n"
+
+
+msgid "Mirage"
+msgstr "Мираж"
+
+
+# 通用的
+###############################################################################
+
+msgid "On"
+msgstr "Вкл"
+
+msgid "Off"
+msgstr "Выкл"
+
+msgid "Follow the system"
+msgstr "Как в системе"
+
+msgid "Simple"
+msgstr "Простой"
+
+msgid "All"
+msgstr "Все"
+
+msgid "Default Image"
+msgstr "Изображение по умолчанию"
+
+msgid "Image"
+msgstr "Изображение"
+
+msgid "light"
+msgstr "светлая"
+
+msgid "dark"
+msgstr "темная"
+
+msgid "QR code"
+msgstr "QR-код"
+
+msgid "Scan QR code"
+msgstr "Сканировать QR-код"
+
+msgid "Display"
+msgstr "Показать"
+
+msgid "Hide"
+msgstr "Скрыть"
+
+msgid "Left"
+msgstr "Слева"
+
+msgid "Center"
+msgstr "По центру"
+
+msgid "Right"
+msgstr "Справа"
+
+msgid "Title"
+msgstr "Заголовок"
+
+msgid "Description"
+msgstr "Описание"
+
+msgid "Upload"
+msgstr "Загрузить"
+
+msgid "New window opens link"
+msgstr "Открыть в новом окне"
+
+msgid "Link address"
+msgstr "Адрес ссылки"
+
+msgid "Autoplay"
+msgstr "Автовоспроизведение"
+
+msgid "Support HTML"
+msgstr "Поддержка HTML"
+
+msgid "Related Categories"
+msgstr "Связанные категории"
+
+msgid "Icon"
+msgstr "Иконка"
+
+msgid "Link"
+msgstr "Ссылка"
+
+msgid "unit"
+msgstr "ед."
+
+msgid "More"
+msgstr "Еще"
+
+msgid "Learn more"
+msgstr "Подробнее"
+
+msgid "Background color"
+msgstr "Цвет фона"
+
+msgid "Background image"
+msgstr "Фоновое изображение"
+
+msgid "Customize JS code"
+msgstr "Пользовательский JS код"
+
+msgid "Add menu"
+msgstr "Добавить меню"
+
+msgid "Sticky"
+msgstr "Закрепить"
+
+msgid "Keywords"
+msgstr "Ключевые слова"
+
+msgid "Backup"
+msgstr "Резервная копия"
+
+msgid "Nothing here"
+msgstr "Здесь пусто"
+
+msgid "No Content"
+msgstr "Нет содержимого"
+
+
+# 前台
+###############################################################################
+
+msgid "Number"
+msgstr "Номер"
+
+msgid "Category ID"
+msgstr "ID категории"
+
+msgid "Images article list"
+msgstr "Список статей с изображениями"
+
+msgid "Category list"
+msgstr "Список категорий"
+
+msgid "Images article description"
+msgstr "Описание статьи с изображениями"
+
+msgid "Images list"
+msgstr "Список изображений"
+
+msgid "Images list description"
+msgstr "Описание списка изображений"
+
+msgid "Articles Description"
+msgstr "Описание статей"
+
+msgid "User card"
+msgstr "Карточка пользователя"
+
+msgid "User card description"
+msgstr "Описание карточки пользователя"
+
+msgid "Hot articles"
+msgstr "Популярные статьи"
+
+msgid "Comments"
+msgstr "Комментарии"
+
+msgid "Star"
+msgstr "В избранное"
+
+msgid "HTML card"
+msgstr "HTML карточка"
+
+msgid "HTML card description"
+msgstr "Описание HTML карточки"
+
+msgid "Hot"
+msgstr "Популярное"
+
+msgid "Dashboard"
+msgstr "Панель управления"
+
+msgid "Profile"
+msgstr "Профиль"
+
+msgid "Account"
+msgstr "Аккаунт"
+
+msgid "Logout"
+msgstr "Выйти"
+
+msgid "Login"
+msgstr "Войти"
+
+msgid "Search"
+msgstr "Поиск"
+
+msgid "results"
+msgstr "результатов"
+
+msgid "Go to home"
+msgstr "На главную"
+
+msgid "Page not found"
+msgstr "Страница не найдена"
+
+msgid "Not content"
+msgstr "Нет содержимого"
+
+
+# 前台 - 文章页
+###############################################################################
+msgid "Like"
+msgstr "Нравится"
+
+msgid "Share"
+msgstr "Поделиться"
+
+msgid "Donate"
+msgstr "Поддержать"
+
+msgid "Edit"
+msgstr "Редактировать"
+
+msgid "Previous"
+msgstr "Предыдущий"
+
+msgid "Next"
+msgstr "Следующий"
+
+msgid "Generating"
+msgstr "Генерация"
+
+
+# 前台 - 文章页 - 评论
+###############################################################################
+msgid "Nickname (*)"
+msgstr "Никнейм (*)"
+
+msgid "Email (*)"
+msgstr "Email (*)"
+
+msgid "Website Address"
+msgstr "Адрес сайта"
+
+msgid "Leave a comment"
+msgstr "Оставить комментарий"
+
+msgid "Reply"
+msgstr "Ответить"
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Comment Content"
+msgstr "Текст комментария"
+
+msgid "Registration is not required"
+msgstr "Регистрация не требуется"
+
+msgid "Current Account"
+msgstr "Текущий аккаунт"
+
+msgid "条评论"
+msgstr "комментариев"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "No more"
+msgstr "Больше нет"
+
+
+# 前台 - Footer
+###############################################################################
+msgid "Query Count"
+msgstr "Количество запросов"
+
+msgid "Execution Time"
+msgstr "Время выполнения"
+
+# 其他
+###############################################################################
+msgid "Please create a theme side menu"
+msgstr "Создайте боковое меню темы"
+
+msgid "Tags"
+msgstr "Теги"
+
+msgid "Please keep the theme footer credit intact."
+msgstr "Сохраните копирайт темы в подвале."
+
+msgid "keep_theme_footer"
+msgstr "keep_theme_footer"
+
+msgid "Remove Like"
+msgstr "Убрать лайк"
+
+msgid "Already Liked"
+msgstr "Уже понравилось"
+
+msgid "Remove Star"
+msgstr "Убрать из избранного"
+
+msgid "Already Starred"
+msgstr "Уже в избранном"
+
+msgid "Operation Failed"
+msgstr "Операция не удалась"
+
+msgid "Operation Succeeded"
+msgstr "Операция выполнена успешно"
+
+msgid "Network error. Please try again"
+msgstr "Ошибка сети. Попробуйте снова"
+
+msgid "Invalid action type"
+msgstr "Неверный тип действия"
+
+msgid "Please log in"
+msgstr "Пожалуйста, войдите"
+
+msgid "Invalid object ID"
+msgstr "Неверный ID объекта"
+
+
+# 小工具
+###############################################################################
+msgid "Default Sidebar"
+msgstr "Боковая панель по умолчанию"
+
+msgid "Post Sidebar"
+msgstr "Боковая панель записей"
+
+msgid "Recent Posts"
+msgstr "Последние записи"
+
+msgid "Popular"
+msgstr "Популярное"
+
+msgid "Category List"
+msgstr "Список категорий"
+
+msgid "Please create theme sidebar menu"
+msgstr "Создайте меню боковой панели темы"
+
+msgid "User Card"
+msgstr "Карточка пользователя"
+
+msgid "User Card Description"
+msgstr "Описание карточки пользователя"
+
+
+
+# 配置页面
+###############################################################################
+###############################################################################
+###############################################################################
+
+msgid "Mirage settings"
+msgstr "Настройки Мираж"
+
+msgid "General settings"
+msgstr "Общие настройки"
+
+msgid "SEO settings"
+msgstr "Настройки SEO"
+
+msgid "Home page settings"
+msgstr "Настройки главной страницы"
+
+msgid "Header settings"
+msgstr "Настройки шапки"
+
+msgid "Footer setting"
+msgstr "Настройки подвала"
+
+msgid "Email settings"
+msgstr "Настройки email"
+
+msgid "Member settings"
+msgstr "Настройки участников"
+
+msgid "backups"
+msgstr "резервные копии"
+
+
+
+# 配置页面 - 常规设置
+###############################################################################
+
+msgid "Website Logo"
+msgstr "Логотип сайта"
+
+msgid "Website Logo (Dark Mode)"
+msgstr "Логотип сайта (темный режим)"
+
+msgid "Theme color tone"
+msgstr "Цветовая тема"
+
+msgid "Update prompt"
+msgstr "Уведомления об обновлениях"
+
+msgid "After closing, there will be no prompts for PHP version, theme, and plugin updates"
+msgstr "После отключения уведомления о версии PHP, теме и плагинах не будут отображаться"
+
+msgid "Editor Mode"
+msgstr "Режим редактора"
+
+msgid "Gutenberg Editor"
+msgstr "Редактор Гутенберг"
+
+msgid "Classic Editor"
+msgstr "Классический редактор"
+
+msgid "none"
+msgstr "нет"
+
+msgid "Display page parameters"
+msgstr "Показывать параметры страницы"
+
+msgid "Right column"
+msgstr "Правая колонка"
+
+msgid "Top Toolbar"
+msgstr "Верхняя панель инструментов"
+
+msgid "Dark mode"
+msgstr "Темный режим"
+
+msgid "Anti brute force cracking"
+msgstr "Защита от перебора паролей"
+
+msgid "Too many failures. Wait 1 hour"
+msgstr "Слишком много попыток. Подождите 1 час"
+
+msgid "Payment QR code"
+msgstr "QR-код для оплаты"
+
+msgid "Editor"
+msgstr "Редактор"
+
+msgid "Card"
+msgstr "Карточка"
+
+msgid "Articles"
+msgstr "Статьи"
+
+msgid "Full width"
+msgstr "На всю ширину"
+
+msgid "Layout"
+msgstr "Макет"
+
+msgid "List"
+msgstr "Список"
+
+msgid "Lazy Loading"
+msgstr "Отложенная загрузка"
+
+msgid "Recommendation"
+msgstr "Рекомендации"
+
+
+# 配置页面 - 首页设置 - 布局设置
+###############################################################################
+
+msgid "Layout setting"
+msgstr "Настройки макета"
+
+msgid "Sliders"
+msgstr "Слайдеры"
+
+msgid "Notices"
+msgstr "Объявления"
+
+msgid "Hot topics"
+msgstr "Популярные темы"
+
+msgid "Latest"
+msgstr "Последние"
+
+msgid "Links"
+msgstr "Ссылки"
+
+
+# 配置页面 - 首页设置 - 幻灯片模块
+###############################################################################
+
+msgid "Slider Effects"
+msgstr "Эффекты слайдера"
+
+msgid "Slide list"
+msgstr "Список слайдов"
+
+
+# 配置页面 - 首页设置 - 热门文章
+###############################################################################
+
+msgid "Article ID list"
+msgstr "Список ID статей"
+
+msgid "Enter IDs separated by commas (e.g., 1087, 1090)."
+msgstr "Введите ID через запятую (например, 1087, 1090)."
+
+
+# 配置页面 - 首页设置 - 文章列表
+###############################################################################
+msgid "Category"
+msgstr "Категория"
+
+msgid "Exclude classification"
+msgstr "Исключить категорию"
+
+msgid "Auto Load"
+msgstr "Автозагрузка"
+
+msgid "Automatic loading times"
+msgstr "Количество автозагрузок"
+
+
+# 配置页面 - 顶部设置
+###############################################################################
+msgid "Sticky Header"
+msgstr "Закрепленная шапка"
+
+msgid "header slogan"
+msgstr "слоган шапки"
+
+msgid "tel title"
+msgstr "заголовок телефона"
+
+msgid "tel number"
+msgstr "номер телефона"
+
+msgid "header image"
+msgstr "изображение шапки"
+
+
+# 配置页面 - 底部设置
+###############################################################################
+msgid "display type"
+msgstr "тип отображения"
+
+msgid "Footer copyright"
+msgstr "Копирайт в подвале"
+
+msgid "Footer Logo"
+msgstr "Логотип в подвале"
+
+msgid "Footer description"
+msgstr "Описание в подвале"
+
+msgid "qrcode"
+msgstr "QR-код"
+
+msgid "qrcode description"
+msgstr "описание QR-кода"
+
+msgid "nav bar"
+msgstr "навигационная панель"
+
+msgid "nav bar settings"
+msgstr "настройки навигационной панели"
+
+msgid "SNS links"
+msgstr "Ссылки соцсетей"
+
+
+# 配置页面 - 文章设置
+###############################################################################
+
+msgid "Article settings"
+msgstr "Настройки статей"
+
+msgid "Number of rows and columns"
+msgstr "Количество строк и столбцов"
+
+msgid "Module Title"
+msgstr "Заголовок модуля"
+
+msgid "Article revision version"
+msgstr "Версия ревизии статьи"
+
+msgid "Article copyright statement"
+msgstr "Заявление об авторских правах"
+
+msgid "Code highlighting"
+msgstr "Подсветка кода"
+
+msgid "Auto Fallback Thumbnail"
+msgstr "Автоматическая миниатюра"
+
+msgid "If no featured image is set, automatically use the first image found in the post content."
+msgstr "Если не установлено главное изображение, автоматически использовать первое изображение из содержимого поста."
+
+msgid "Hide Login Button"
+msgstr "Скрыть кнопку входа"
+
+# 配置页面 - 会员设置
+###############################################################################
+
+msgid "VIP Avatar Upload"
+msgstr "Загрузка аватара VIP"
+
+
+# 配置页面 - 邮箱设置
+###############################################################################
+msgid "Customize email"
+msgstr "Пользовательский email"
+
+msgid "SMTP address"
+msgstr "SMTP адрес"
+
+msgid "SMTP port"
+msgstr "SMTP порт"
+
+msgid "SMTP account"
+msgstr "SMTP аккаунт"
+
+msgid "SMTP password"
+msgstr "SMTP пароль"
+
+msgid "Sender nickname"
+msgstr "Имя отправителя"
+
+
+# 配置页面 - 广告设置
+###############################################################################
+msgid "Ad settings"
+msgstr "Настройки рекламы"
+
+msgid "Header Ad"
+msgstr "Реклама в шапке"
+
+msgid "Footer Ad"
+msgstr "Реклама в подвале"
+
+msgid "Sidebar Ad"
+msgstr "Реклама в боковой панели"
+
+msgid "Article Header Ad"
+msgstr "Реклама в шапке статьи"
+
+msgid "Article Footer Ad"
+msgstr "Реклама в подвале статьи"
+
+msgid "Mobile Code"
+msgstr "Код для мобильных"
+
+msgid "PC Code"
+msgstr "Код для ПК"
+
+msgid "AD Code for width > 481px"
+msgstr "Рекламный код для ширины > 481px"
+
+
+# 配置页面 - 默认数据
+###############################################################################
+
+msgid "Hello Mirage"
+msgstr "Привет, Мираж"
+
+
+# 评论功能相关
+###############################################################################
+
+msgid "You must be logged in to post a comment."
+msgstr "Вы должны войти, чтобы оставить комментарий."
+
+msgid "No comments"
+msgstr "Нет комментариев"
+
+msgid "One comment"
+msgstr "Один комментарий"
+
+msgid "comments"
+msgstr "комментариев"
+
+msgid "Submitting..."
+msgstr "Отправка..."
+
+msgid "Submit failed"
+msgstr "Отправка не удалась"
+
+msgid "Network error, please try again."
+msgstr "Ошибка сети, попробуйте снова."
+
+msgid "Are you sure you want to delete this comment?"
+msgstr "Вы уверены, что хотите удалить этот комментарий?"
+
+msgid "Deleting..."
+msgstr "Удаление..."
+
+msgid "Comment deleted successfully"
+msgstr "Комментарий успешно удален"
+
+msgid "Delete failed"
+msgstr "Удаление не удалось"
+
+msgid "Reply to comment..."
+msgstr "Ответить на комментарий..."
+
+msgid "Submit Reply"
+msgstr "Отправить ответ"
+
+msgid "Please enter reply content"
+msgstr "Введите текст ответа"
+
+msgid "Your comment is awaiting moderation."
+msgstr "Ваш комментарий ожидает модерации."
+
+msgid "Comment form not found"
+msgstr "Форма комментария не найдена"
+
+msgid "Security verification failed"
+msgstr "Проверка безопасности не пройдена"
+
+msgid "Comment does not exist"
+msgstr "Комментарий не существует"
+
+msgid "No permission to delete this comment"
+msgstr "Нет прав для удаления этого комментария"
+
+msgid "Security verification failed, please refresh the page and try again."
+msgstr "Проверка безопасности не пройдена, обновите страницу и попробуйте снова."
+
+msgid "Comment published successfully!"
+msgstr "Комментарий успешно опубликован!"
+
+msgid "Comment submitted successfully, waiting for administrator review."
+msgstr "Комментарий успешно отправлен, ожидает проверки администратора."
+
+msgid "Submitting reply..."
+msgstr "Отправка ответа..."
+
+
+# 评论字数限制
+###############################################################################
+
+msgid "Comment cannot be empty."
+msgstr "Комментарий не может быть пустым."
+
+msgid "Comment cannot exceed %d characters."
+msgstr "Комментарий не может превышать %d символов."
+
+# 文章详情页
+###############################################################################
+
+msgid "Basic Settings"
+msgstr "Основные настройки"
+
+msgid "Full Width"
+msgstr "На всю ширину"
+
+msgid "Table of Contents"
+msgstr "Содержание"
+
+
+# api/accounts.php
+###############################################################################
+
+msgid "Please fill in all required fields"
+msgstr "Заполните все обязательные поля"
+
+msgid "Password must be at least 6 characters long"
+msgstr "Пароль должен содержать минимум 6 символов"
+
+msgid "Verification code is incorrect or expired"
+msgstr "Код подтверждения неверен или истек"
+
+msgid "Username already exists"
+msgstr "Имя пользователя уже существует"
+
+msgid "Email has been registered"
+msgstr "Email уже зарегистрирован"
+
+msgid "This email has been registered"
+msgstr "Этот email уже зарегистрирован"
+
+msgid "Please enter your email address"
+msgstr "Введите ваш email адрес"
+
+msgid "Please enter a valid email address"
+msgstr "Введите корректный email адрес"
+
+msgid "Registration Verification Code"
+msgstr "Код подтверждения регистрации"
+
+msgid "Your registration verification code is: %s, valid for 10 minutes."
+msgstr "Ваш код подтверждения регистрации: %s, действителен 10 минут."
+
+msgid "Verification code has been sent to your email"
+msgstr "Код подтверждения отправлен на ваш email"
+
+msgid "Failed to send verification code, please try again later"
+msgstr "Не удалось отправить код подтверждения, попробуйте позже"
+
+msgid "No account found associated with this email"
+msgstr "Аккаунт с этим email не найден"
+
+msgid "Password Reset Verification Code"
+msgstr "Код подтверждения сброса пароля"
+
+msgid "You requested to reset your password. Your verification code is: %s, valid for 10 minutes."
+msgstr "Вы запросили сброс пароля. Ваш код подтверждения: %s, действителен 10 минут."
+
+msgid "Password reset verification code has been sent to your email"
+msgstr "Код подтверждения сброса пароля отправлен на ваш email"
+
+msgid "Failed to send email, please contact administrator"
+msgstr "Не удалось отправить письмо, свяжитесь с администратором"
+
+msgid "Verification code has expired, please request a new one"
+msgstr "Код подтверждения истек, запросите новый"
+
+msgid "Verification code is incorrect"
+msgstr "Код подтверждения неверен"
+
+msgid "Password reset successful"
+msgstr "Пароль успешно сброшен"
+
+msgid "Please login first"
+msgstr "Сначала войдите"
+
+msgid "Please select an avatar file to upload"
+msgstr "Выберите файл аватара для загрузки"
+
+msgid "Only JPG, PNG or GIF format images are allowed"
+msgstr "Разрешены только изображения формата JPG, PNG или GIF"
+
+msgid "Avatar file size cannot exceed 5MB"
+msgstr "Размер файла аватара не может превышать 5 МБ"
+
+msgid "You do not have permission to upload avatar"
+msgstr "У вас нет прав для загрузки аватара"
+
+msgid "User does not exist"
+msgstr "Пользователь не существует"
+
+msgid "Logout successful"
+msgstr "Выход выполнен успешно"
+
+msgid "This IP has reached the daily sending limit."
+msgstr "Этот IP достиг дневного лимита отправки."
+
+msgid "This email has reached the daily sending limit."
+msgstr "Этот email достиг дневного лимита отправки."
+
+
+# api/users.php
+###############################################################################
+
+msgid "No permission to modify this user"
+msgstr "Нет прав для изменения этого пользователя"
+
+
+# templates/login-dialog.php
+###############################################################################
+
+msgid "Username or Email"
+msgstr "Имя пользователя или Email"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Forgot Password?"
+msgstr "Забыли пароль?"
+
+msgid "Register Account"
+msgstr "Зарегистрировать аккаунт"
+
+msgid "By registering/logging in, you agree to our <a href='%s'>Privacy Policy</a> and <a href='%s'>Terms of Service</a>"
+msgstr "Регистрируясь/входя, вы соглашаетесь с нашей <a href='%s'>Политикой конфиденциальности</a> и <a href='%s'>Условиями использования</a>"
+
+msgid "Privacy Policy"
+msgstr "Политика конфиденциальности"
+
+msgid "Terms of Service"
+msgstr "Условия использования"
+
+msgid "Username"
+msgstr "Имя пользователя"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Verification Code"
+msgstr "Код подтверждения"
+
+msgid "Please enter verification code"
+msgstr "Введите код подтверждения"
+
+msgid "Send Verification Code"
+msgstr "Отправить код подтверждения"
+
+msgid "Register"
+msgstr "Зарегистрироваться"
+
+msgid "Login Account"
+msgstr "Войти в аккаунт"
+
+msgid "Login to Account"
+msgstr "Вход в аккаунт"
+
+msgid "Please enter the verification code you received"
+msgstr "Введите полученный код подтверждения"
+
+msgid "New Password"
+msgstr "Новый пароль"
+
+msgid "Please enter new password"
+msgstr "Введите новый пароль"
+
+msgid "Reset Password"
+msgstr "Сбросить пароль"
+
+msgid "← Back to enter email"
+msgstr "← Назад к вводу email"
+
+
+# assets/js/src/login-dialog.js
+###############################################################################
+
+msgid "Sending..."
+msgstr "Отправка..."
+
+msgid "Verification code has been sent, please check your email"
+msgstr "Код подтверждения отправлен, проверьте ваш email"
+
+msgid "Failed to send verification code"
+msgstr "Не удалось отправить код подтверждения"
+
+msgid "Network error, please try again later"
+msgstr "Ошибка сети, попробуйте позже"
+
+msgid "Retry in %d seconds"
+msgstr "Повтор через %d секунд"
+
+msgid "Logging in..."
+msgstr "Вход..."
+
+msgid "Login successful, redirecting..."
+msgstr "Вход выполнен, перенаправление..."
+
+msgid "Login failed, please try again"
+msgstr "Вход не удался, попробуйте снова"
+
+msgid "Registering..."
+msgstr "Регистрация..."
+
+msgid "Registration successful, logging in automatically..."
+msgstr "Регистрация успешна, автоматический вход..."
+
+msgid "Registration failed, please try again"
+msgstr "Регистрация не удалась, попробуйте снова"
+
+msgid "Failed to send, please try again"
+msgstr "Не удалось отправить, попробуйте снова"
+
+msgid "Resetting..."
+msgstr "Сброс..."
+
+msgid "Password reset successful, logging in automatically..."
+msgstr "Пароль успешно сброшен, автоматический вход..."
+
+msgid "Reset failed, please try again"
+msgstr "Сброс не удался, попробуйте снова"
+
+
+# templates/account/edit.php
+###############################################################################
+
+msgid "Edit Profile"
+msgstr "Редактировать профиль"
+
+msgid "Upload Avatar"
+msgstr "Загрузить аватар"
+
+msgid "No bio yet"
+msgstr "Информация отсутствует"
+
+msgid "Free User"
+msgstr "Бесплатный пользователь"
+
+msgid "VIP User"
+msgstr "VIP пользователь"
+
+msgid "SVIP User"
+msgstr "SVIP пользователь"
+
+msgid "Username:"
+msgstr "Имя пользователя:"
+
+msgid "Nickname:"
+msgstr "Никнейм:"
+
+msgid "Gender:"
+msgstr "Пол:"
+
+msgid "Male"
+msgstr "Мужской"
+
+msgid "Female"
+msgstr "Женский"
+
+msgid "Secret"
+msgstr "Скрыто"
+
+msgid "Email:"
+msgstr "Email:"
+
+msgid "Bio:"
+msgstr "О себе:"
+
+msgid "Confirm"
+msgstr "Подтвердить"
+
+msgid "Please select an image file"
+msgstr "Выберите файл изображения"
+
+msgid "Uploading avatar..."
+msgstr "Загрузка аватара..."
+
+msgid "Avatar uploaded successfully"
+msgstr "Аватар успешно загружен"
+
+msgid "Upload failed"
+msgstr "Загрузка не удалась"
+
+msgid "Invalid response format"
+msgstr "Неверный формат ответа"
+
+msgid "User Avatar"
+msgstr "Аватар пользователя"
+
+msgid "Update failed"
+msgstr "Обновление не удалось"
+
+msgid "Update successful"
+msgstr "Обновление успешно"
+
+msgid "Update failed: "
+msgstr "Обновление не удалось: "
+
+
+###############################################################################
+### 面包屑导航
+
+msgid "Breadcrumbs"
+msgstr "Хлебные крошки"
+
+msgid "Home"
+msgstr "Главная"
+
+msgid "Tag:"
+msgstr "Тег:"
+
+msgid "Author:"
+msgstr "Автор:"
+
+msgid " Year"
+msgstr " год"
+
+msgid " Month"
+msgstr " месяц"
+
+msgid " Day"
+msgstr " день"
+
+msgid "Search Results:"
+msgstr "Результаты поиска:"
+
+msgid "404 Page Not Found"
+msgstr "404 Страница не найдена"
+
+msgid "Content"
+msgstr "Содержимое"

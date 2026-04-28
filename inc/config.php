@@ -476,13 +476,19 @@ CSF::createSection( $prefix, array(
             'preview' => true
         ),
         array(
-            'id'         => 'show_admin_bar',
-            'type'       => 'radio',
-            'title'      => __('Top Toolbar','vt'),
-            'options'    => array('1' => __('On','vt'), '0' => __('Off','vt')),
-            'default'    => '0',
-            'inline' => true
+            'id'      => 'show_admin_bar',
+            'type'    => 'checkbox',
+            'title'   => __('Top Toolbar','vt'),
+            'label'   => __('On','vt'),
+            'default' => false
         ),
+        array(
+            'id'      => 'sticky_header',
+            'type'    => 'checkbox',
+            'title'   => __('Sticky Header','vt'),
+            'label'   => __('On','vt'),
+            'default' => false
+        )
     )
 ));
 
