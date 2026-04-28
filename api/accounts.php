@@ -43,7 +43,7 @@ class Accounts {
         $current_count = get_transient($email_count_key);
         
         // 每日最大发送次数：5次
-        if ($current_count && $current_count >= 2) {
+        if ($current_count && $current_count >= 10) {
             return new \WP_Error(
                 'daily_limit',
                 __('This email has reached the daily sending limit.', 'vt')

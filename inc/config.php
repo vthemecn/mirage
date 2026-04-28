@@ -908,6 +908,13 @@ CSF::createSection( $prefix, array(
             'title'   => __('VIP Avatar Upload','vt'),
             'default' => true
         ),
+        array(
+            'id'      => 'hide_login_button',
+            'type'    => 'checkbox',
+            'title'   => __('Hide Login Button','vt'),
+            'label'   => __('On','vt'),
+            'default' => false
+        ),
         // array(
         //     'id'      => 'turnstile',
         //     'type'    => 'checkbox',

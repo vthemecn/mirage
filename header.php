@@ -135,15 +135,17 @@ $dark_mode_class = $dark_mode_config['dark_mode_class'];
                         </div>
                     </div>
                 <?php else: ?>
-                    <div class="user-widget-mobile">
-                        <div class="user-header login-button open-login-dialog">
-                            <?php echo get_avatar($current_user->ID, 80, '', '', ''); ?>
-                            <div class="user-meta">
-                                <div class="user-nickname" style="cursor: pointer;"><?php _e('请登录', 'vt') ?></div>
-                                <div class="user-more"></div>
+                    <?php if(vt_get_config('hide_login_button', true) == false):?>
+                        <div class="user-widget-mobile">
+                            <div class="user-header login-button open-login-dialog">
+                                <?php echo get_avatar($current_user->ID, 80, '', '', ''); ?>
+                                <div class="user-meta">
+                                    <div class="user-nickname" style="cursor: pointer;"><?php _e('请登录', 'vt') ?></div>
+                                    <div class="user-more"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endif ?>
                 <?php endif ?>
 
                 <?php
@@ -245,9 +247,11 @@ $dark_mode_class = $dark_mode_config['dark_mode_class'];
                         <i class="fa-solid fa-moon moon"></i>
                     </a>
                 <?php endif; ?>
-                <?php if (!$current_user->ID) : ?>
-                    <a href="javascript:;" class="button login-button open-login-dialog"><?= __('Login','vt')?></a>
-                <?php endif ?>
+                <?php if(vt_get_config('hide_login_button', true) == false):?>
+                    <?php if (!$current_user->ID) : ?>
+                        <a href="javascript:;" class="button login-button open-login-dialog"><?= __('Login','vt')?></a>
+                    <?php endif ?>
+                <?php endif?>
             </div>
 
 
