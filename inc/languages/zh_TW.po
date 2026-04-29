@@ -23,6 +23,12 @@ msgstr "開啟"
 msgid "Off"
 msgstr "關閉"
 
+msgid "Enable"
+msgstr "啟用"
+
+msgid "Disable"
+msgstr "停用"
+
 msgid "Follow the system"
 msgstr "跟隨系統"
 
@@ -294,10 +300,10 @@ msgid "Tags"
 msgstr "標籤"
 
 msgid "Please keep the theme footer credit intact."
-msgstr "keep_theme_footer"
+msgstr "請保留主題底部署名"
 
 msgid "keep_theme_footer"
-msgstr "請保留主題底部署名"
+msgstr "keep_theme_footer"
 
 msgid "Remove Like"
 msgstr "取消喜歡"
@@ -608,6 +614,33 @@ msgstr "隱藏登入按鈕"
 
 msgid "VIP Avatar Upload"
 msgstr "僅VIP可上傳頭像"
+
+msgid "Advanced Settings"
+msgstr "進階設定"
+
+msgid "User Level"
+msgstr "使用者等級"
+
+msgid "Regular User"
+msgstr "普通使用者"
+
+msgid "VIP User"
+msgstr "VIP使用者"
+
+msgid "SVIP User"
+msgstr "SVIP使用者"
+
+msgid "Block User"
+msgstr "封鎖使用者"
+
+msgid "Blocked"
+msgstr "已封鎖"
+
+msgid "Active"
+msgstr "啟用"
+
+msgid "Your account has been disabled."
+msgstr "您的帳戶已被停用。"
 
 
 # 配置页面 - 邮箱设置
@@ -985,15 +1018,6 @@ msgstr "上傳頭像"
 
 msgid "No bio yet"
 msgstr "暫無個人簡介"
-
-msgid "Free User"
-msgstr "普通使用者"
-
-msgid "VIP User"
-msgstr "VIP使用者"
-
-msgid "SVIP User"
-msgstr "SVIP使用者"
 
 msgid "Username:"
 msgstr "帳號:"

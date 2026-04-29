@@ -23,6 +23,12 @@ msgstr "开启"
 msgid "Off"
 msgstr "关闭"
 
+msgid "Enable"
+msgstr "启用"
+
+msgid "Disable"
+msgstr "停用"
+
 msgid "Follow the system"
 msgstr "跟随系统"
 
@@ -609,6 +615,33 @@ msgstr "隐藏登录按钮"
 msgid "VIP Avatar Upload"
 msgstr "仅VIP可上传头像"
 
+msgid "Advanced Settings"
+msgstr "高级设置"
+
+msgid "User Level"
+msgstr "用户等级"
+
+msgid "Regular User"
+msgstr "普通用户"
+
+msgid "VIP User"
+msgstr "VIP用户"
+
+msgid "SVIP User"
+msgstr "SVIP用户"
+
+msgid "Block User"
+msgstr "拉黑用户"
+
+msgid "Blocked"
+msgstr "拉黑"
+
+msgid "Active"
+msgstr "有效"
+
+msgid "Your account has been disabled."
+msgstr "您的账号已被禁止访问。"
+
 
 # 配置页面 - 邮箱设置
 ###############################################################################
@@ -985,15 +1018,6 @@ msgstr "上传头像"
 
 msgid "No bio yet"
 msgstr "暂无个人简介"
-
-msgid "Free User"
-msgstr "普通用户"
-
-msgid "VIP User"
-msgstr "VIP用户"
-
-msgid "SVIP User"
-msgstr "SVIP用户"
 
 msgid "Username:"
 msgstr "账号:"

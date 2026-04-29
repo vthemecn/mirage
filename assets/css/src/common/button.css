@@ -45,7 +45,7 @@
 }
 
 .btn.btn-error {
-  background-color: var(--vt-color-error);
+  background-color: var(--vt-color-danger);
   color: var(--vt-text-color-inverse);
 }
 
@@ -65,8 +65,8 @@
 }
 
 .btn.btn-error-sec {
-  border: 1px solid var(--vt-color-error);
-  color: var(--vt-color-error);
+  border: 1px solid var(--vt-color-danger);
+  color: var(--vt-color-danger);
 }
 
 @media only screen and (min-width: 900px) {

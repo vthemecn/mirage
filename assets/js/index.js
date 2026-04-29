@@ -1168,6 +1168,46 @@
   function headerMobile () {
     mobileMenu();
     mobileSearch();
+    initHeaderScrollBehavior();
+  }
+
+
+  /**
+   * 移动端向下滑动时隐藏header，向上滑动时显示header
+   * 特点：
+   * 1. requestAnimationFrame: scroll 把操作频率限制在屏幕刷新率内，避免掉帧，让动画更流畅
+   * 2. { passive: true } 不会阻止这个事件的默认行为（比如阻止滚动）”。这让浏览器能更早地处理滚动，显著提升移动端滚动的流畅度
+   * 3. ticking 标志位: 节流机制。它确保在上一帧动画执行完之前，不会重复请求下一帧，减少计算
+   */
+  function initHeaderScrollBehavior() {
+    const header = document.querySelector('.header.mobile');
+    if (!header) return;
+
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function updateHeader() {
+      const currentScrollY = window.scrollY;
+      
+      // 向下滑动且滚动距离超过50px时隐藏
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        header.classList.add('header-hidden');
+      } 
+      // 向上滑动时显示
+      else if (currentScrollY < lastScrollY) {
+        header.classList.remove('header-hidden');
+      }
+      
+      lastScrollY = currentScrollY;
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateHeader);
+        ticking = true;
+      }
+    }, { passive: true });
   }
 
 

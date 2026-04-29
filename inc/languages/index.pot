@@ -7,7 +7,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: GlotPress/3.0.0-rc.3\n"
-"Language: \n"
+"Language: en\n"
 
 
 msgid "Mirage"
@@ -21,6 +21,12 @@ msgid "On"
 msgstr ""
 
 msgid "Off"
+msgstr ""
+
+msgid "Enable"
+msgstr ""
+
+msgid "Disable"
 msgstr ""
 
 msgid "Follow the system"
@@ -609,6 +615,33 @@ msgstr ""
 msgid "VIP Avatar Upload"
 msgstr ""
 
+msgid "Advanced Settings"
+msgstr ""
+
+msgid "User Level"
+msgstr ""
+
+msgid "Regular User"
+msgstr ""
+
+msgid "VIP User"
+msgstr ""
+
+msgid "SVIP User"
+msgstr ""
+
+msgid "Block User"
+msgstr ""
+
+msgid "Blocked"
+msgstr ""
+
+msgid "Active"
+msgstr ""
+
+msgid "Your account has been disabled."
+msgstr ""
+
 
 # 配置页面 - 邮箱设置
 ###############################################################################
@@ -986,15 +1019,6 @@ msgstr ""
 msgid "No bio yet"
 msgstr ""
 
-msgid "Free User"
-msgstr ""
-
-msgid "VIP User"
-msgstr ""
-
-msgid "SVIP User"
-msgstr ""
-
 msgid "Username:"
 msgstr ""
 
@@ -1082,3 +1106,6 @@ msgstr ""
 
 msgid "Content"
 msgstr ""
+
+
+

@@ -28,7 +28,7 @@ $param_user_level = get_user_meta($param_user->ID, 'membership_level', true);
 $param_user_level = $param_user_level !=="" ? $param_user_level : 'free';
 
 $levels = array(
-        'free' => __('Free User', 'vt'),
+        'free' => __('Regular User', 'vt'),
         'vip' => __('VIP User', 'vt'),
         'svip' => __('SVIP User', 'vt')
     );

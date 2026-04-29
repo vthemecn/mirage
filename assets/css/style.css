@@ -2,7 +2,6 @@
   --vt-color-primary: #007aff;
   --vt-color-success: #4cd964;
   --vt-color-warning: #f0ad4e;
-  --vt-color-error: #dd524d;
   --vt-color-danger: #dd524d;
   --vt-font-size-sm: 13px;
   --vt-font-size-base:16px;
@@ -654,7 +653,7 @@ a:hover {
 }
 
 .btn.btn-error {
-  background-color: var(--vt-color-error);
+  background-color: var(--vt-color-danger);
   color: var(--vt-text-color-inverse);
 }
 
@@ -674,8 +673,8 @@ a:hover {
 }
 
 .btn.btn-error-sec {
-  border: 1px solid var(--vt-color-error);
-  color: var(--vt-color-error);
+  border: 1px solid var(--vt-color-danger);
+  color: var(--vt-color-danger);
 }
 
 @media only screen and (min-width: 900px) {
@@ -3587,6 +3586,14 @@ ul.toc_list .level-6 a{ padding:0 0 0 60px; }
   width: 100%;
   height: 50px;
   background-color: var(--vt-bg-color-card);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transition: transform 0.3s ease;
+}
+.header.mobile.header-hidden {
+  transform: translateY(-100%);
 }
 .header.mobile .header-nav {
   box-sizing: border-box;
@@ -4233,6 +4240,10 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
   background-color: #fe3459;
   transform: translate(-7px, -12px) scale(.85);
 }
+.menu-item badge.primary{ background-color: var(--vt-color-primary); }
+.menu-item badge.success{ background-color: var(--vt-color-success); }
+.menu-item badge.warning{ background-color: var(--vt-color-warning); }
+.menu-item badge.danger{ background-color: var(--vt-color-danger); }
 
 
 /*****************************************************************************/
@@ -4314,6 +4325,17 @@ body.dark-mode .header.mobile .header-nav a.logo img[darkness]{ display:block; }
 /**
  * 顶部工具栏和导航悬浮覆盖
  */
+@media screen and (max-width: 767px) {
+  body {
+    padding-top: 50px;
+  }
+  
+  /* wpadminbar */
+  body.customize-support {
+    padding-top: 82px;
+  }
+}
+
 @media screen and (min-width:768px) {
   body[sticky-header] {
     padding-top: 60px;

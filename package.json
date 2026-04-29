@@ -7,7 +7,13 @@
     "css":"node --watch ./assets/css/src/_css.js",
     "docs": "vitepress dev docs --port 8080",
     "js": "rollup ./assets/js/src/index.js --file ./assets/js/index.js --format iife --watch",
-    "i18n": "msgfmt -o inc/languages/zh_CN.mo inc/languages/zh_CN.po && msgfmt -o inc/languages/en_US.mo inc/languages/en_US.po && msgfmt -o inc/languages/ja.mo inc/languages/ja.po && msgfmt -o inc/languages/zh_TW.mo inc/languages/zh_TW.po && msgfmt -o inc/languages/ko_KR.mo inc/languages/ko_KR.po"
+    "i18n:cn": "msgfmt -o inc/languages/zh_CN.mo inc/languages/zh_CN.po",
+    "i18n:en": "msgfmt -o inc/languages/en_US.mo inc/languages/en_US.po",
+    "i18n:ja": "msgfmt -o inc/languages/ja.mo inc/languages/ja.po",
+    "i18n:tw": "msgfmt -o inc/languages/zh_TW.mo inc/languages/zh_TW.po",
+    "i18n:ko": "msgfmt -o inc/languages/ko_KR.mo inc/languages/ko_KR.po",
+    "i18n:ru": "msgfmt -o inc/languages/ru_RU.mo inc/languages/ru_RU.po",
+    "i18n": "npm run i18n:cn && npm run i18n:en && npm run i18n:ja && npm run i18n:tw && npm run i18n:ko && npm run i18n:ru"
   },
   "repository": {
     "type": "git",
